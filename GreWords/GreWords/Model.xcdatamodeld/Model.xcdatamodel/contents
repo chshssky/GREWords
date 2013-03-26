@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="History" syncable="YES">
+        <attribute name="event" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="time" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="Note" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="note2word" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Word" inverseName="word2note" inverseEntity="Word" syncable="YES"/>
+    </entity>
+    <entity name="Word" syncable="YES">
+        <attribute name="lastChecks" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastMistakeTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="plistID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="word2note" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="note2word" inverseEntity="Note" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Word" positionX="160" positionY="192" width="128" height="103"/>
+        <element name="Note" positionX="358" positionY="189" width="128" height="73"/>
+        <element name="History" positionX="252" positionY="63" width="128" height="88"/>
+    </elements>
+</model>

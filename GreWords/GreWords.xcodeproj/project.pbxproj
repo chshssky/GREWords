@@ -18,6 +18,7 @@
 		3F70ECA11701CADB00327770 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F70ECA01701CADB00327770 /* Default-568h@2x.png */; };
 		3F70ECA41701CADB00327770 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F70ECA21701CADB00327770 /* MainStoryboard.storyboard */; };
 		3F70ECA71701CADB00327770 /* GreWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F70ECA61701CADB00327770 /* GreWordsViewController.m */; };
+		E4E8FE671701F32D009DD43A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E4E8FE651701F32D009DD43A /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		3F70ECA31701CADB00327770 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		3F70ECA51701CADB00327770 /* GreWordsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GreWordsViewController.h; sourceTree = "<group>"; };
 		3F70ECA61701CADB00327770 /* GreWordsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GreWordsViewController.m; sourceTree = "<group>"; };
+		E4E8FE661701F32D009DD43A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		3F70EC901701CADB00327770 /* GreWords */ = {
 			isa = PBXGroup;
 			children = (
+				E4E8FE651701F32D009DD43A /* Model.xcdatamodeld */,
 				3F70EC991701CADB00327770 /* GreWordsAppDelegate.h */,
 				3F70EC9A1701CADB00327770 /* GreWordsAppDelegate.m */,
 				3F70ECA21701CADB00327770 /* MainStoryboard.storyboard */,
@@ -177,6 +180,7 @@
 				3F70EC971701CADB00327770 /* main.m in Sources */,
 				3F70EC9B1701CADB00327770 /* GreWordsAppDelegate.m in Sources */,
 				3F70ECA71701CADB00327770 /* GreWordsViewController.m in Sources */,
+				E4E8FE671701F32D009DD43A /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,8 +303,22 @@
 				3F70ECAC1701CADB00327770 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E4E8FE651701F32D009DD43A /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E4E8FE661701F32D009DD43A /* Model.xcdatamodel */,
+			);
+			currentVersion = E4E8FE661701F32D009DD43A /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3F70EC7F1701CADB00327770 /* Project object */;
 }
