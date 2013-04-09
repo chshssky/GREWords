@@ -23,4 +23,5 @@
 -(NSArray*)wordsHomoionym;
 -(NSArray*)wordsRatioOfMistake;
 
+-(int)wordCount;
 @end

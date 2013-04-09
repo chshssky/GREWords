@@ -93,4 +93,9 @@ WordHelper* _wordHelperInstance = nil;
 }
 
 
+-(int)wordCount
+{
+    return wordList.count;
+}
+
 @end

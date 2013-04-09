@@ -10,8 +10,19 @@
 
 @implementation GreWordsAppDelegate
 
+- (void)initUserDefault
+{
+    [NSUserDefaults initialize];
+    
+    NSDictionary *userDefaultsDefaults = @{@"firstTimeRun" : @YES};
+    
+    [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsDefaults];
+}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self initUserDefault];
     // Override point for customization after application launch.
     return YES;
 }

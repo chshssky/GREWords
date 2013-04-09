@@ -23,4 +23,6 @@
 -(void)resetAllData;
 -(void)initData;
 
+-(bool)isFirstTimeRun;
+
 @end

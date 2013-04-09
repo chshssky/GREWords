@@ -54,6 +54,18 @@ MyDataStorage* _datainstance;
 }
 
 
+- (void)deleteDaatabase
+{
+    NSError *error;
+    NSArray *stores = [self.persistentStoreCoordinator persistentStores];
+    
+    for(NSPersistentStore *store in stores) {
+        [self.persistentStoreCoordinator removePersistentStore:store error:&error];
+        [[NSFileManager defaultManager] removeItemAtPath:store.URL.path error:nil];
+    }
+}
+
+
 #pragma mark - Core Data stack
 
 // Returns the managed object context for the application.

@@ -7,6 +7,8 @@
 //
 
 #import "ConfigurationHelper.h"
+#import "MyDataStorage.h"
+#import "Word.h"
 
 @implementation ConfigurationHelper
 
@@ -155,14 +157,39 @@ ConfigurationHelper* _configurationHelperInstance = nil;
 
 -(void)resetAllData
 {
+    [[MyDataStorage instance] deleteDaatabase];
+    [self boolPlistSetter:YES key:@"firstTimeRun"];
     NSAssert(NO, @"function not implemented yet");
 }
 
 -(void)initData
 {
+    NSManagedObjectContext *context = [[MyDataStorage instance] managedObjectContext];
+    NSArray *arr;
+    NSString *infoSouceFile = [[NSBundle mainBundle] pathForResource:@"words" ofType:@"plist"];
+    NSData* data = [NSData dataWithContentsOfFile:infoSouceFile];
+    NSError *error;
+    NSPropertyListFormat format;
+    arr = [NSPropertyListSerialization propertyListWithData:data options:0 format:&format error:&error];
+    int count = arr.count;
+    arr = nil;
+    for(int i = 0; i < count; i++)
+    {
+        Word *word = [NSEntityDescription
+                      insertNewObjectForEntityForName:@"Word"
+                      inManagedObjectContext:context];
+        word.plistID = [NSNumber numberWithInt:i];
+    }
+    [[MyDataStorage instance] saveContext];
+    
+    [self boolPlistSetter:NO key:@"firstTimeRun"];
     NSAssert(NO, @"function not implemented yet");
 }
 
+-(bool)isFirstTimeRun
+{
+    return [self boolPlistGetter:@"firstTimeRun"];
+}
 
 @end
 
