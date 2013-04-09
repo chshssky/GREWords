@@ -183,7 +183,7 @@ ConfigurationHelper* _configurationHelperInstance = nil;
     [[MyDataStorage instance] saveContext];
     
     [self boolPlistSetter:NO key:@"firstTimeRun"];
-    NSAssert(NO, @"function not implemented yet");
+    //NSAssert(NO, @"function not implemented yet");
 }
 
 -(bool)isFirstTimeRun
