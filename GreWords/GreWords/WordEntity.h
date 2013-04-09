@@ -10,6 +10,17 @@
 
 @interface WordEntity : NSObject
 
-@property (nonatomic) NSDictionary *data;
+@property (nonatomic,retain,readonly) NSDictionary *data;
+@property (nonatomic,retain) NSString *note;
+@property (nonatomic,readonly) float ratioOfMistake;
+@property (nonatomic,retain,readonly) NSArray *currentMistkeStatus;
+@property (nonatomic,retain,readonly) NSDate *lastMistakeTime;
+@property (nonatomic,readonly) int wordID;
+
+-(void)didMadeAMistakeOnDate:(NSDate*)date;
+
+
+-(id)initWithID:(int)wordID data:(NSDictionary*)data;
+
 
 @end

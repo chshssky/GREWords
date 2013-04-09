@@ -10,22 +10,30 @@
 		3F70EC8B1701CADB00327770 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F70EC8A1701CADB00327770 /* UIKit.framework */; };
 		3F70EC8D1701CADB00327770 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F70EC8C1701CADB00327770 /* Foundation.framework */; };
 		3F70EC8F1701CADB00327770 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F70EC8E1701CADB00327770 /* CoreGraphics.framework */; };
-		3F70EC951701CADB00327770 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F70EC931701CADB00327770 /* InfoPlist.strings */; };
-		3F70EC971701CADB00327770 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EC961701CADB00327770 /* main.m */; };
-		3F70EC9B1701CADB00327770 /* GreWordsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F70EC9A1701CADB00327770 /* GreWordsAppDelegate.m */; };
-		3F70EC9D1701CADB00327770 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F70EC9C1701CADB00327770 /* Default.png */; };
-		3F70EC9F1701CADB00327770 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F70EC9E1701CADB00327770 /* Default@2x.png */; };
-		3F70ECA11701CADB00327770 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F70ECA01701CADB00327770 /* Default-568h@2x.png */; };
-		3F70ECA41701CADB00327770 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F70ECA21701CADB00327770 /* MainStoryboard.storyboard */; };
-		3F70ECA71701CADB00327770 /* GreWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F70ECA61701CADB00327770 /* GreWordsViewController.m */; };
-		73BD8CFC1714210400935730 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73BD8CFB1714210400935730 /* CoreText.framework */; };
-		73BD8CFF1714213D00935730 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73BD8CFE1714213D00935730 /* TTTAttributedLabel.m */; };
+		3FA4846C171411D8003E88A6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA4846B171411D8003E88A6 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		3FA4846F17141F34003E88A6 /* BaseEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA4846E17141F34003E88A6 /* BaseEvent.m */; };
+		3FA48474171420A7003E88A6 /* NewWordEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA48473171420A7003E88A6 /* NewWordEvent.m */; };
+		3FA48477171420BC003E88A6 /* ReviewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA48476171420BC003E88A6 /* ReviewEvent.m */; };
+		3FA4847A171420ED003E88A6 /* ExamEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA48479171420ED003E88A6 /* ExamEvent.m */; };
+		3FA4848117142B87003E88A6 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4847E17142B87003E88A6 /* Default-568h@2x.png */; };
+		3FA4848217142B87003E88A6 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4847F17142B87003E88A6 /* Default.png */; };
+		3FA4848317142B87003E88A6 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848017142B87003E88A6 /* Default@2x.png */; };
+		3FA4848717142BB3003E88A6 /* GreWords-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848517142BB3003E88A6 /* GreWords-Info.plist */; };
+		3FA4848A17142BC0003E88A6 /* GreWordsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA4848917142BC0003E88A6 /* GreWordsAppDelegate.m */; };
+		3FA4848C17142BD4003E88A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA4848B17142BD4003E88A6 /* main.m */; };
+		3FA4849117142BF9003E88A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848D17142BF9003E88A6 /* InfoPlist.strings */; };
+		3FA4849217142BF9003E88A6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848F17142BF9003E88A6 /* MainStoryboard.storyboard */; };
+		E4134CDB1714225D00553AD2 /* WordHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E4134CDA1714225D00553AD2 /* WordHelper.m */; };
+		E414B68E17142FEC00C29D3C /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B68917142FEC00C29D3C /* History.m */; };
+		E414B68F17142FEC00C29D3C /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B68B17142FEC00C29D3C /* Note.m */; };
+		E414B69017142FEC00C29D3C /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B68D17142FEC00C29D3C /* Word.m */; };
+		E414B6931714300400C29D3C /* WordEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B6921714300400C29D3C /* WordEntity.m */; };
+		E414B6961714301700C29D3C /* ConfigurationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B6941714301700C29D3C /* ConfigurationHelper.m */; };
+		E414B69C1714303F00C29D3C /* GreWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B6971714303F00C29D3C /* GreWordsViewController.m */; };
+		E414B69D1714303F00C29D3C /* WordLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E414B6981714303F00C29D3C /* WordLayoutViewController.xib */; };
+		E414B69E1714303F00C29D3C /* WordLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B69A1714303F00C29D3C /* WordLayoutViewController.m */; };
+		E418DA5F1713E5E8002C6743 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */; };
 		E46CF2CD171184E000634ED7 /* words.plist in Resources */ = {isa = PBXBuildFile; fileRef = E46CF2CC171184E000634ED7 /* words.plist */; };
-		E46CF2D11711850500634ED7 /* WordLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46CF2CF1711850500634ED7 /* WordLayoutViewController.m */; };
-		E46CF2D21711850500634ED7 /* WordLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E46CF2D01711850500634ED7 /* WordLayoutViewController.xib */; };
-		E46CF2D51711859500634ED7 /* WordEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = E46CF2D41711859500634ED7 /* WordEntity.m */; };
-		E48ABC1A1701F6BD00CF576D /* 单词APP功能点.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E48ABC181701F6BD00CF576D /* 单词APP功能点.pdf */; };
-		E48ABC1B1701F6BD00CF576D /* 单词App架构.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E48ABC191701F6BD00CF576D /* 单词App架构.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,29 +41,44 @@
 		3F70EC8A1701CADB00327770 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3F70EC8C1701CADB00327770 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3F70EC8E1701CADB00327770 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		3F70EC921701CADB00327770 /* GreWords-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GreWords-Info.plist"; sourceTree = "<group>"; };
-		3F70EC941701CADB00327770 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3F70EC961701CADB00327770 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3F70EC981701CADB00327770 /* GreWords-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GreWords-Prefix.pch"; sourceTree = "<group>"; };
-		3F70EC991701CADB00327770 /* GreWordsAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GreWordsAppDelegate.h; sourceTree = "<group>"; };
-		3F70EC9A1701CADB00327770 /* GreWordsAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GreWordsAppDelegate.m; sourceTree = "<group>"; };
-		3F70EC9C1701CADB00327770 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		3F70EC9E1701CADB00327770 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		3F70ECA01701CADB00327770 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		3F70ECA31701CADB00327770 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		3F70ECA51701CADB00327770 /* GreWordsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GreWordsViewController.h; sourceTree = "<group>"; };
-		3F70ECA61701CADB00327770 /* GreWordsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GreWordsViewController.m; sourceTree = "<group>"; };
-		73BD8CFB1714210400935730 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		73BD8CFD1714213D00935730 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
-		73BD8CFE1714213D00935730 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
+		3FA4846B171411D8003E88A6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3FA4846D17141F34003E88A6 /* BaseEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEvent.h; sourceTree = "<group>"; };
+		3FA4846E17141F34003E88A6 /* BaseEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEvent.m; sourceTree = "<group>"; };
+		3FA48472171420A7003E88A6 /* NewWordEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewWordEvent.h; sourceTree = "<group>"; };
+		3FA48473171420A7003E88A6 /* NewWordEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewWordEvent.m; sourceTree = "<group>"; };
+		3FA48475171420BC003E88A6 /* ReviewEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewEvent.h; sourceTree = "<group>"; };
+		3FA48476171420BC003E88A6 /* ReviewEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewEvent.m; sourceTree = "<group>"; };
+		3FA48478171420ED003E88A6 /* ExamEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamEvent.h; sourceTree = "<group>"; };
+		3FA48479171420ED003E88A6 /* ExamEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamEvent.m; sourceTree = "<group>"; };
+		3FA4847E17142B87003E88A6 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		3FA4847F17142B87003E88A6 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		3FA4848017142B87003E88A6 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		3FA4848517142BB3003E88A6 /* GreWords-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GreWords-Info.plist"; sourceTree = "<group>"; };
+		3FA4848617142BB3003E88A6 /* GreWords-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GreWords-Prefix.pch"; sourceTree = "<group>"; };
+		3FA4848817142BC0003E88A6 /* GreWordsAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreWordsAppDelegate.h; sourceTree = "<group>"; };
+		3FA4848917142BC0003E88A6 /* GreWordsAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreWordsAppDelegate.m; sourceTree = "<group>"; };
+		3FA4848B17142BD4003E88A6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3FA4848E17142BF9003E88A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3FA4849017142BF9003E88A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		E4134CD91714225D00553AD2 /* WordHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordHelper.h; sourceTree = "<group>"; };
+		E4134CDA1714225D00553AD2 /* WordHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordHelper.m; sourceTree = "<group>"; };
+		E414B68817142FEC00C29D3C /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
+		E414B68917142FEC00C29D3C /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
+		E414B68A17142FEC00C29D3C /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		E414B68B17142FEC00C29D3C /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		E414B68C17142FEC00C29D3C /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
+		E414B68D17142FEC00C29D3C /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
+		E414B6911714300400C29D3C /* WordEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordEntity.h; sourceTree = "<group>"; };
+		E414B6921714300400C29D3C /* WordEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordEntity.m; sourceTree = "<group>"; };
+		E414B6941714301700C29D3C /* ConfigurationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationHelper.m; sourceTree = "<group>"; };
+		E414B6951714301700C29D3C /* ConfigurationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationHelper.h; sourceTree = "<group>"; };
+		E414B6971714303F00C29D3C /* GreWordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreWordsViewController.m; sourceTree = "<group>"; };
+		E414B6981714303F00C29D3C /* WordLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordLayoutViewController.xib; sourceTree = "<group>"; };
+		E414B6991714303F00C29D3C /* WordLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordLayoutViewController.h; sourceTree = "<group>"; };
+		E414B69A1714303F00C29D3C /* WordLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordLayoutViewController.m; sourceTree = "<group>"; };
+		E414B69B1714303F00C29D3C /* GreWordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreWordsViewController.h; sourceTree = "<group>"; };
+		E418DA5E1713E5E8002C6743 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E46CF2CC171184E000634ED7 /* words.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = words.plist; sourceTree = "<group>"; };
-		E46CF2CE1711850500634ED7 /* WordLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordLayoutViewController.h; sourceTree = "<group>"; };
-		E46CF2CF1711850500634ED7 /* WordLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordLayoutViewController.m; sourceTree = "<group>"; };
-		E46CF2D01711850500634ED7 /* WordLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordLayoutViewController.xib; sourceTree = "<group>"; };
-		E46CF2D31711859500634ED7 /* WordEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordEntity.h; sourceTree = "<group>"; };
-		E46CF2D41711859500634ED7 /* WordEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordEntity.m; sourceTree = "<group>"; };
-		E48ABC181701F6BD00CF576D /* 单词APP功能点.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "单词APP功能点.pdf"; sourceTree = "<group>"; };
-		E48ABC191701F6BD00CF576D /* 单词App架构.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "单词App架构.pdf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				73BD8CFC1714210400935730 /* CoreText.framework in Frameworks */,
+				3FA4846C171411D8003E88A6 /* CoreData.framework in Frameworks */,
 				3F70EC8B1701CADB00327770 /* UIKit.framework in Frameworks */,
 				3F70EC8D1701CADB00327770 /* Foundation.framework in Frameworks */,
 				3F70EC8F1701CADB00327770 /* CoreGraphics.framework in Frameworks */,
@@ -93,7 +116,7 @@
 		3F70EC891701CADB00327770 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				73BD8CFB1714210400935730 /* CoreText.framework */,
+				3FA4846B171411D8003E88A6 /* CoreData.framework */,
 				3F70EC8A1701CADB00327770 /* UIKit.framework */,
 				3F70EC8C1701CADB00327770 /* Foundation.framework */,
 				3F70EC8E1701CADB00327770 /* CoreGraphics.framework */,
@@ -104,55 +127,93 @@
 		3F70EC901701CADB00327770 /* GreWords */ = {
 			isa = PBXGroup;
 			children = (
-				73BD8D001714214E00935730 /* TTTAttributedLabel */,
-				E48ABC171701F6B100CF576D /* doc */,
-				E4E8FE651701F32D009DD43A /* Model.xcdatamodeld */,
-				3F70EC991701CADB00327770 /* GreWordsAppDelegate.h */,
-				3F70EC9A1701CADB00327770 /* GreWordsAppDelegate.m */,
-				3F70ECA21701CADB00327770 /* MainStoryboard.storyboard */,
-				3F70ECA51701CADB00327770 /* GreWordsViewController.h */,
-				3F70ECA61701CADB00327770 /* GreWordsViewController.m */,
-				E46CF2D31711859500634ED7 /* WordEntity.h */,
-				E46CF2D41711859500634ED7 /* WordEntity.m */,
-				E46CF2CE1711850500634ED7 /* WordLayoutViewController.h */,
-				E46CF2CF1711850500634ED7 /* WordLayoutViewController.m */,
-				E46CF2D01711850500634ED7 /* WordLayoutViewController.xib */,
-				3F70EC911701CADB00327770 /* Supporting Files */,
+				3FA4847C17142536003E88A6 /* Resource */,
+				3FA4847017141F53003E88A6 /* LogicalLayer */,
+				3FA4847D17142731003E88A6 /* PresetationLayer */,
+				E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */,
+				3FA4848F17142BF9003E88A6 /* MainStoryboard.storyboard */,
+				3FA4848817142BC0003E88A6 /* GreWordsAppDelegate.h */,
+				3FA4848917142BC0003E88A6 /* GreWordsAppDelegate.m */,
+				3FA4848417142B96003E88A6 /* Supporting Files */,
 			);
 			path = GreWords;
 			sourceTree = "<group>";
 		};
-		3F70EC911701CADB00327770 /* Supporting Files */ = {
+		3FA4847017141F53003E88A6 /* LogicalLayer */ = {
+			isa = PBXGroup;
+			children = (
+				3FA4847B1714250A003E88A6 /* Entity */,
+				3FA4847117142065003E88A6 /* Event */,
+				E4134CD91714225D00553AD2 /* WordHelper.h */,
+				E4134CDA1714225D00553AD2 /* WordHelper.m */,
+				E414B6911714300400C29D3C /* WordEntity.h */,
+				E414B6921714300400C29D3C /* WordEntity.m */,
+				E414B6941714301700C29D3C /* ConfigurationHelper.m */,
+				E414B6951714301700C29D3C /* ConfigurationHelper.h */,
+			);
+			name = LogicalLayer;
+			sourceTree = "<group>";
+		};
+		3FA4847117142065003E88A6 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				3FA4846D17141F34003E88A6 /* BaseEvent.h */,
+				3FA4846E17141F34003E88A6 /* BaseEvent.m */,
+				3FA48472171420A7003E88A6 /* NewWordEvent.h */,
+				3FA48473171420A7003E88A6 /* NewWordEvent.m */,
+				3FA48475171420BC003E88A6 /* ReviewEvent.h */,
+				3FA48476171420BC003E88A6 /* ReviewEvent.m */,
+				3FA48478171420ED003E88A6 /* ExamEvent.h */,
+				3FA48479171420ED003E88A6 /* ExamEvent.m */,
+			);
+			name = Event;
+			sourceTree = "<group>";
+		};
+		3FA4847B1714250A003E88A6 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				E414B68817142FEC00C29D3C /* History.h */,
+				E414B68917142FEC00C29D3C /* History.m */,
+				E414B68A17142FEC00C29D3C /* Note.h */,
+				E414B68B17142FEC00C29D3C /* Note.m */,
+				E414B68C17142FEC00C29D3C /* Word.h */,
+				E414B68D17142FEC00C29D3C /* Word.m */,
+			);
+			name = Entity;
+			sourceTree = "<group>";
+		};
+		3FA4847C17142536003E88A6 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
 				E46CF2CC171184E000634ED7 /* words.plist */,
-				3F70EC921701CADB00327770 /* GreWords-Info.plist */,
-				3F70EC931701CADB00327770 /* InfoPlist.strings */,
-				3F70EC961701CADB00327770 /* main.m */,
-				3F70EC981701CADB00327770 /* GreWords-Prefix.pch */,
-				3F70EC9C1701CADB00327770 /* Default.png */,
-				3F70EC9E1701CADB00327770 /* Default@2x.png */,
-				3F70ECA01701CADB00327770 /* Default-568h@2x.png */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		3FA4847D17142731003E88A6 /* PresetationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				E414B6971714303F00C29D3C /* GreWordsViewController.m */,
+				E414B6981714303F00C29D3C /* WordLayoutViewController.xib */,
+				E414B6991714303F00C29D3C /* WordLayoutViewController.h */,
+				E414B69A1714303F00C29D3C /* WordLayoutViewController.m */,
+				E414B69B1714303F00C29D3C /* GreWordsViewController.h */,
+			);
+			name = PresetationLayer;
+			sourceTree = "<group>";
+		};
+		3FA4848417142B96003E88A6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3FA4848D17142BF9003E88A6 /* InfoPlist.strings */,
+				3FA4848B17142BD4003E88A6 /* main.m */,
+				3FA4848517142BB3003E88A6 /* GreWords-Info.plist */,
+				3FA4848617142BB3003E88A6 /* GreWords-Prefix.pch */,
+				3FA4847E17142B87003E88A6 /* Default-568h@2x.png */,
+				3FA4847F17142B87003E88A6 /* Default.png */,
+				3FA4848017142B87003E88A6 /* Default@2x.png */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		73BD8D001714214E00935730 /* TTTAttributedLabel */ = {
-			isa = PBXGroup;
-			children = (
-				73BD8CFD1714213D00935730 /* TTTAttributedLabel.h */,
-				73BD8CFE1714213D00935730 /* TTTAttributedLabel.m */,
-			);
-			name = TTTAttributedLabel;
-			sourceTree = "<group>";
-		};
-		E48ABC171701F6B100CF576D /* doc */ = {
-			isa = PBXGroup;
-			children = (
-				E48ABC181701F6BD00CF576D /* 单词APP功能点.pdf */,
-				E48ABC191701F6BD00CF576D /* 单词App架构.pdf */,
-			);
-			name = doc;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,15 +268,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F70EC951701CADB00327770 /* InfoPlist.strings in Resources */,
-				3F70EC9D1701CADB00327770 /* Default.png in Resources */,
-				3F70EC9F1701CADB00327770 /* Default@2x.png in Resources */,
-				3F70ECA11701CADB00327770 /* Default-568h@2x.png in Resources */,
-				3F70ECA41701CADB00327770 /* MainStoryboard.storyboard in Resources */,
-				E48ABC1A1701F6BD00CF576D /* 单词APP功能点.pdf in Resources */,
-				E48ABC1B1701F6BD00CF576D /* 单词App架构.pdf in Resources */,
 				E46CF2CD171184E000634ED7 /* words.plist in Resources */,
-				E46CF2D21711850500634ED7 /* WordLayoutViewController.xib in Resources */,
+				3FA4848117142B87003E88A6 /* Default-568h@2x.png in Resources */,
+				3FA4848217142B87003E88A6 /* Default.png in Resources */,
+				3FA4848317142B87003E88A6 /* Default@2x.png in Resources */,
+				3FA4848717142BB3003E88A6 /* GreWords-Info.plist in Resources */,
+				3FA4849117142BF9003E88A6 /* InfoPlist.strings in Resources */,
+				3FA4849217142BF9003E88A6 /* MainStoryboard.storyboard in Resources */,
+				E414B69D1714303F00C29D3C /* WordLayoutViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,30 +286,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F70EC971701CADB00327770 /* main.m in Sources */,
-				3F70EC9B1701CADB00327770 /* GreWordsAppDelegate.m in Sources */,
-				3F70ECA71701CADB00327770 /* GreWordsViewController.m in Sources */,
-				E46CF2D11711850500634ED7 /* WordLayoutViewController.m in Sources */,
-				E46CF2D51711859500634ED7 /* WordEntity.m in Sources */,
-				73BD8CFF1714213D00935730 /* TTTAttributedLabel.m in Sources */,
+				E418DA5F1713E5E8002C6743 /* Model.xcdatamodeld in Sources */,
+				3FA4846F17141F34003E88A6 /* BaseEvent.m in Sources */,
+				3FA48474171420A7003E88A6 /* NewWordEvent.m in Sources */,
+				3FA48477171420BC003E88A6 /* ReviewEvent.m in Sources */,
+				3FA4847A171420ED003E88A6 /* ExamEvent.m in Sources */,
+				E4134CDB1714225D00553AD2 /* WordHelper.m in Sources */,
+				3FA4848A17142BC0003E88A6 /* GreWordsAppDelegate.m in Sources */,
+				3FA4848C17142BD4003E88A6 /* main.m in Sources */,
+				E414B68E17142FEC00C29D3C /* History.m in Sources */,
+				E414B68F17142FEC00C29D3C /* Note.m in Sources */,
+				E414B69017142FEC00C29D3C /* Word.m in Sources */,
+				E414B6931714300400C29D3C /* WordEntity.m in Sources */,
+				E414B6961714301700C29D3C /* ConfigurationHelper.m in Sources */,
+				E414B69C1714303F00C29D3C /* GreWordsViewController.m in Sources */,
+				E414B69E1714303F00C29D3C /* WordLayoutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		3F70EC931701CADB00327770 /* InfoPlist.strings */ = {
+		3FA4848D17142BF9003E88A6 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3F70EC941701CADB00327770 /* en */,
+				3FA4848E17142BF9003E88A6 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		3F70ECA21701CADB00327770 /* MainStoryboard.storyboard */ = {
+		3FA4848F17142BF9003E88A6 /* MainStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3F70ECA31701CADB00327770 /* en */,
+				3FA4849017142BF9003E88A6 /* en */,
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
@@ -359,10 +428,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E4E8FE651701F32D009DD43A /* Model.xcdatamodeld */ = {
+		E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E418DA5E1713E5E8002C6743 /* Model.xcdatamodel */,
 			);
+			currentVersion = E418DA5E1713E5E8002C6743 /* Model.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

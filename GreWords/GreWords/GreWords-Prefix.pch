@@ -11,4 +11,11 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    enum Stage {
+        STAGE_1 = 0,
+        STAGE_2 = 1,
+        STAGE_3 = 2,
+        STAGE_4 = 3
+    };
+
 #endif
