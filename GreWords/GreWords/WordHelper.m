@@ -56,7 +56,8 @@ WordHelper* _wordHelperInstance = nil;
 
 -(WordEntity*)wordWithString:(NSString*)string
 {
-    return wordIndexes[string];
+    int index = [wordIndexes[string] integerValue];
+    return wordList[index];
 }
 
 -(WordEntity*)wordWithID:(int)wordID
