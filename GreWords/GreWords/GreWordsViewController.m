@@ -8,6 +8,7 @@
 
 #import "GreWordsViewController.h"
 #import "WordLayoutViewController.h"
+#import "WordHelper.h"
 
 @interface GreWordsViewController ()
 
@@ -19,8 +20,7 @@
 {
     [super viewDidLoad];
     WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
-    WordEntity *word = [[WordEntity alloc] init];
-    [vc displayWord:word withOption:nil];
+    [vc displayWord:[[WordHelper instance] wordWithID:3] withOption:nil];
     [self.view addSubview:vc.view];
 	// Do any additional setup after loading the view, typically from a nib.
 }
