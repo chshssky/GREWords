@@ -18,6 +18,10 @@
 		3F70ECA11701CADB00327770 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F70ECA01701CADB00327770 /* Default-568h@2x.png */; };
 		3F70ECA41701CADB00327770 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F70ECA21701CADB00327770 /* MainStoryboard.storyboard */; };
 		3F70ECA71701CADB00327770 /* GreWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F70ECA61701CADB00327770 /* GreWordsViewController.m */; };
+		3FA4846417140D5E003E88A6 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA4846317140D5E003E88A6 /* Word.m */; };
+		3FA4846717140D5E003E88A6 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA4846617140D5E003E88A6 /* History.m */; };
+		3FA4846A17140D5E003E88A6 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA4846917140D5E003E88A6 /* Note.m */; };
+		3FA4846C171411D8003E88A6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA4846B171411D8003E88A6 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		E418DA5C1713E4B3002C6743 /* ConfigurationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E418DA5B1713E4B3002C6743 /* ConfigurationHelper.m */; };
 		E418DA5F1713E5E8002C6743 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */; };
 		E46CF2CD171184E000634ED7 /* words.plist in Resources */ = {isa = PBXBuildFile; fileRef = E46CF2CC171184E000634ED7 /* words.plist */; };
@@ -45,6 +49,13 @@
 		3F70ECA31701CADB00327770 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		3F70ECA51701CADB00327770 /* GreWordsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GreWordsViewController.h; sourceTree = "<group>"; };
 		3F70ECA61701CADB00327770 /* GreWordsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GreWordsViewController.m; sourceTree = "<group>"; };
+		3FA4846217140D5E003E88A6 /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
+		3FA4846317140D5E003E88A6 /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
+		3FA4846517140D5E003E88A6 /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
+		3FA4846617140D5E003E88A6 /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
+		3FA4846817140D5E003E88A6 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		3FA4846917140D5E003E88A6 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		3FA4846B171411D8003E88A6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		E418DA5A1713E4B3002C6743 /* ConfigurationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationHelper.h; sourceTree = "<group>"; };
 		E418DA5B1713E4B3002C6743 /* ConfigurationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationHelper.m; sourceTree = "<group>"; };
 		E418DA5E1713E5E8002C6743 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -63,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FA4846C171411D8003E88A6 /* CoreData.framework in Frameworks */,
 				3F70EC8B1701CADB00327770 /* UIKit.framework in Frameworks */,
 				3F70EC8D1701CADB00327770 /* Foundation.framework in Frameworks */,
 				3F70EC8F1701CADB00327770 /* CoreGraphics.framework in Frameworks */,
@@ -92,6 +104,7 @@
 		3F70EC891701CADB00327770 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3FA4846B171411D8003E88A6 /* CoreData.framework */,
 				3F70EC8A1701CADB00327770 /* UIKit.framework */,
 				3F70EC8C1701CADB00327770 /* Foundation.framework */,
 				3F70EC8E1701CADB00327770 /* CoreGraphics.framework */,
@@ -103,6 +116,16 @@
 			isa = PBXGroup;
 			children = (
 				E48ABC171701F6B100CF576D /* doc */,
+<<<<<<< HEAD
+=======
+				E418DA5A1713E4B3002C6743 /* ConfigurationHelper.h */,
+				3FA4846217140D5E003E88A6 /* Word.h */,
+				3FA4846817140D5E003E88A6 /* Note.h */,
+				3FA4846917140D5E003E88A6 /* Note.m */,
+				3FA4846517140D5E003E88A6 /* History.h */,
+				3FA4846617140D5E003E88A6 /* History.m */,
+				3FA4846317140D5E003E88A6 /* Word.m */,
+>>>>>>> 8b5cc1a2bb0291fcaf8f7400d8afacf0906d4383
 				E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */,
 				E418DA5A1713E4B3002C6743 /* ConfigurationHelper.h */,
 				E418DA5B1713E4B3002C6743 /* ConfigurationHelper.m */,
@@ -223,6 +246,9 @@
 				E46CF2D51711859500634ED7 /* WordEntity.m in Sources */,
 				E418DA5C1713E4B3002C6743 /* ConfigurationHelper.m in Sources */,
 				E418DA5F1713E5E8002C6743 /* Model.xcdatamodeld in Sources */,
+				3FA4846417140D5E003E88A6 /* Word.m in Sources */,
+				3FA4846717140D5E003E88A6 /* History.m in Sources */,
+				3FA4846A17140D5E003E88A6 /* Note.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
