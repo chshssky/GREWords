@@ -7,8 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MyDataStorage.h"
+#import "Note.h"
+#import "Word.h"
 
 @interface WordEntity : NSObject
+{
+    Word *wordManagedObject;
+    Note *noteManagedObject;
+}
 
 @property (nonatomic,retain,readonly) NSDictionary *data;
 @property (nonatomic,retain) NSString *note;
@@ -18,7 +25,7 @@
 @property (nonatomic,readonly) int wordID;
 
 -(void)didMadeAMistakeOnDate:(NSDate*)date;
-
+-(void)didRightOnDate:(NSDate*)date;
 
 -(id)initWithID:(int)wordID data:(NSDictionary*)data;
 
