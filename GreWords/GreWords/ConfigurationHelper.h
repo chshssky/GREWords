@@ -19,4 +19,8 @@
 @property (nonatomic,retain) NSDate* freshWordAlertTime;
 @property (nonatomic,retain) NSDate* reviewAlertTime;
 
++(ConfigurationHelper*)instance;
+-(void)resetAllData;
+-(void)initData;
+
 @end

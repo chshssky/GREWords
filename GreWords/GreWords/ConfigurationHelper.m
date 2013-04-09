@@ -10,6 +10,19 @@
 
 @implementation ConfigurationHelper
 
+ConfigurationHelper* _configurationHelperInstance = nil;
+
++(ConfigurationHelper*)instance
+{
+    if(!_configurationHelperInstance)
+    {
+        _configurationHelperInstance = [[ConfigurationHelper alloc] init];
+    }
+    return _configurationHelperInstance;
+}
+
+#pragma mark Helper Methods
+
 - (bool)boolPlistGetter:(NSString*)key
 {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
@@ -23,6 +36,8 @@
     [ud setBool:value forKey:key];
     [ud synchronize];
 }
+
+#pragma mark bool getter and setters 
 
 -(bool)meaningVisibility
 {
@@ -60,7 +75,40 @@
     [self boolPlistSetter:antonymVisiblity key:@"antonymVisiblity"];
 }
 
+#pragma mark NSDate setter and getter
 
+-(NSDate*)freshWordAlertTime
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    return [ud objectForKey:@"freshWordAlertTime"];
+}
+-(void)setFreshWordAlertTime:(NSDate*)freshWordAlertTime
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setObject:freshWordAlertTime  forKey:@"freshWordAlertTime"];
+    [ud synchronize];
+    
+    [self schedulePushNotificationAt:freshWordAlertTime message:@"该学习新单词了"];
+}
+
+
+-(NSDate*)reviewAlertTime
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    return [ud objectForKey:@"reviewAlertTime"];
+}
+-(void)setReviewAlertTime:(NSDate*)reviewAlertTime
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setObject:reviewAlertTime  forKey:@"reviewAlertTime"];
+    [ud synchronize];
+    
+    [self schedulePushNotificationAt:reviewAlertTime message:@"该学习新单词了"];
+}
+
+
+
+#pragma mark notification system
 
 -(void)schedulePushNotificationAt:(NSDate*)alertTime message:(NSString*)message
 {
@@ -102,33 +150,17 @@
 }
 
 
--(NSDate*)freshWordAlertTime
+
+#pragma mark system function
+
+-(void)resetAllData
 {
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    return [ud objectForKey:@"freshWordAlertTime"];
-}
--(void)setFreshWordAlertTime:(NSDate*)freshWordAlertTime
-{
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    [ud setObject:freshWordAlertTime  forKey:@"freshWordAlertTime"];
-    [ud synchronize];
-    
-    [self schedulePushNotificationAt:freshWordAlertTime message:@"该学习新单词了"];
+    NSAssert(NO, @"function not implemented yet");
 }
 
-
--(NSDate*)reviewAlertTime
+-(void)initData
 {
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    return [ud objectForKey:@"reviewAlertTime"];
-}
--(void)setReviewAlertTime:(NSDate*)reviewAlertTime
-{
-    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    [ud setObject:reviewAlertTime  forKey:@"reviewAlertTime"];
-    [ud synchronize];
-    
-    [self schedulePushNotificationAt:reviewAlertTime message:@"该学习新单词了"];
+    NSAssert(NO, @"function not implemented yet");
 }
 
 
