@@ -8,6 +8,10 @@
 
 #import "HistoryManager.h"
 #import "MyDataStorage.h"
+#import "History.h"
+#import "NewWordEvent.h"
+#import "ReviewEvent.h"
+#import "ExamEvent.h"
 
 @implementation HistoryManager
 
@@ -24,7 +28,22 @@ HistoryManager* _historyManagerInstance = nil;
 
 - (void)addEvent:(BaseEvent *)aEvent
 {
-    
+    MyDataStorage *myDateStorage;
+    NSManagedObjectContext *context = [myDateStorage managedObjectContext];
+    if ([aEvent isKindOfClass:[NewWordEvent class]]) {
+        History *history = [NSEntityDescription insertNewObjectForEntityForName:@"History" inManagedObjectContext:context];
+        [history setStartTime:[NSDate date]];
+        [history setEvent:@"NewWordEvent"];
+        
+        [(NewWordEvent *)aEvent duration];
+        
+    } else if ([aEvent isKindOfClass:[ReviewEvent class]]) {
+        
+    } else if ([aEvent isKindOfClass:[ExamEvent class]]) {
+        
+    } else {
+        NSLog(@"BaseEvent is not a specific class");
+    }
     
 }
 
@@ -38,16 +57,16 @@ HistoryManager* _historyManagerInstance = nil;
 - (int)currentStage
 {
     MyDataStorage *myDataStorage;
-    [myDataStorage managedObjectContext];
     
-//    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
-//    
-//    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"foodID" ascending:NO]];
-//    [request setFetchLimit:1];
-//    NSError *foodError = nil;
-//    NSArray *foodMatches = [context executeFetchRequest:foodRequest error:&foodError];
-//    return [food.foodID integerValue];
-
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
+    
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
+    [request setFetchLimit:1];
+    NSError *fetchError = nil;
+    NSArray *fetchMatches = [[myDataStorage managedObjectContext] executeFetchRequest:request error:&fetchError];
+    History *history = [fetchMatches lastObject];
+    
+    //waiting For json
     
     return 0;
 }
