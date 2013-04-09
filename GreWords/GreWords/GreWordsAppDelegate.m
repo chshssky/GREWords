@@ -7,11 +7,28 @@
 //
 
 #import "GreWordsAppDelegate.h"
+#import "MyDataStorage.h"
+#import "ConfigurationHelper.h"
 
 @implementation GreWordsAppDelegate
 
+- (void)initUserDefault
+{
+    [NSUserDefaults initialize];
+    
+    NSDictionary *userDefaultsDefaults = @{@"firstTimeRun" : @YES};
+    
+    [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsDefaults];
+}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self initUserDefault];
+    if([[ConfigurationHelper instance] isFirstTimeRun])
+    {
+        [[ConfigurationHelper instance] initData];
+    }
     // Override point for customization after application launch.
     return YES;
 }

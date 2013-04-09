@@ -20,6 +20,9 @@
 {
     [super viewDidLoad];
     WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
+//    for (int i=0; i<3073; i++) {
+//        [vc displayWord:[[WordHelper instance] wordWithID:i] withOption:nil];
+//    }
     [vc displayWord:[[WordHelper instance] wordWithID:3] withOption:nil];
     [self.view addSubview:vc.view];
 	// Do any additional setup after loading the view, typically from a nib.

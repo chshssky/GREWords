@@ -22,7 +22,7 @@
         NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
         NSString *simplePredicateFormat = [NSString stringWithFormat:@"plistID == %d",_wordID];
         NSPredicate *simplePredicate = [NSPredicate predicateWithFormat:simplePredicateFormat];
-        [fetchRequest setEntity:[NSEntityDescription entityForName:@"News" inManagedObjectContext:context]];
+        [fetchRequest setEntity:[NSEntityDescription entityForName:@"Word" inManagedObjectContext:context]];
         [fetchRequest setPredicate:simplePredicate];
         NSArray *matching = [context executeFetchRequest:fetchRequest error:&error];
         if(!matching || matching.count == 0)
