@@ -34,6 +34,7 @@
 		E414B69E1714303F00C29D3C /* WordLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B69A1714303F00C29D3C /* WordLayoutViewController.m */; };
 		E418DA5F1713E5E8002C6743 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */; };
 		E46CF2CD171184E000634ED7 /* words.plist in Resources */ = {isa = PBXBuildFile; fileRef = E46CF2CC171184E000634ED7 /* words.plist */; };
+		E46DCFB017144E4F0038C149 /* MyDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = E46DCFAF17144E4F0038C149 /* MyDataStorage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,8 @@
 		E414B69B1714303F00C29D3C /* GreWordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreWordsViewController.h; sourceTree = "<group>"; };
 		E418DA5E1713E5E8002C6743 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E46CF2CC171184E000634ED7 /* words.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = words.plist; sourceTree = "<group>"; };
+		E46DCFAE17144E4F0038C149 /* MyDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDataStorage.h; sourceTree = "<group>"; };
+		E46DCFAF17144E4F0038C149 /* MyDataStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDataStorage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +153,8 @@
 				E414B6921714300400C29D3C /* WordEntity.m */,
 				E414B6941714301700C29D3C /* ConfigurationHelper.m */,
 				E414B6951714301700C29D3C /* ConfigurationHelper.h */,
+				E46DCFAE17144E4F0038C149 /* MyDataStorage.h */,
+				E46DCFAF17144E4F0038C149 /* MyDataStorage.m */,
 			);
 			name = LogicalLayer;
 			sourceTree = "<group>";
@@ -301,6 +306,7 @@
 				E414B6961714301700C29D3C /* ConfigurationHelper.m in Sources */,
 				E414B69C1714303F00C29D3C /* GreWordsViewController.m in Sources */,
 				E414B69E1714303F00C29D3C /* WordLayoutViewController.m in Sources */,
+				E46DCFB017144E4F0038C149 /* MyDataStorage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +394,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GreWords/GreWords-Prefix.pch";
 				INFOPLIST_FILE = "GreWords/GreWords-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -399,6 +406,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GreWords/GreWords-Prefix.pch";
 				INFOPLIST_FILE = "GreWords/GreWords-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
