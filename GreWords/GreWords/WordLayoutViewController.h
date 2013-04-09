@@ -11,11 +11,7 @@
 
 @interface WordLayoutViewController : UIViewController
 
-
-
-
 /*
- 
  word has a property "data" which is a dictionary
  key: word          
     the word. eg: abondon
@@ -43,6 +39,9 @@
  key: shouldShowAntonyms            default:[NSNumber numberWithBool:YES]
  this maybe nil to apply all default options
 */
+
 - (void)displayWord:(WordEntity*)word withOption:(NSDictionary*)options;
 
 @end
+
+

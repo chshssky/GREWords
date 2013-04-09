@@ -18,6 +18,8 @@
 		3F70ECA11701CADB00327770 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F70ECA01701CADB00327770 /* Default-568h@2x.png */; };
 		3F70ECA41701CADB00327770 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F70ECA21701CADB00327770 /* MainStoryboard.storyboard */; };
 		3F70ECA71701CADB00327770 /* GreWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F70ECA61701CADB00327770 /* GreWordsViewController.m */; };
+		73BD8CFC1714210400935730 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73BD8CFB1714210400935730 /* CoreText.framework */; };
+		73BD8CFF1714213D00935730 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 73BD8CFE1714213D00935730 /* TTTAttributedLabel.m */; };
 		E46CF2CD171184E000634ED7 /* words.plist in Resources */ = {isa = PBXBuildFile; fileRef = E46CF2CC171184E000634ED7 /* words.plist */; };
 		E46CF2D11711850500634ED7 /* WordLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46CF2CF1711850500634ED7 /* WordLayoutViewController.m */; };
 		E46CF2D21711850500634ED7 /* WordLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E46CF2D01711850500634ED7 /* WordLayoutViewController.xib */; };
@@ -43,6 +45,9 @@
 		3F70ECA31701CADB00327770 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		3F70ECA51701CADB00327770 /* GreWordsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GreWordsViewController.h; sourceTree = "<group>"; };
 		3F70ECA61701CADB00327770 /* GreWordsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GreWordsViewController.m; sourceTree = "<group>"; };
+		73BD8CFB1714210400935730 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		73BD8CFD1714213D00935730 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
+		73BD8CFE1714213D00935730 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		E46CF2CC171184E000634ED7 /* words.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = words.plist; sourceTree = "<group>"; };
 		E46CF2CE1711850500634ED7 /* WordLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordLayoutViewController.h; sourceTree = "<group>"; };
 		E46CF2CF1711850500634ED7 /* WordLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordLayoutViewController.m; sourceTree = "<group>"; };
@@ -58,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73BD8CFC1714210400935730 /* CoreText.framework in Frameworks */,
 				3F70EC8B1701CADB00327770 /* UIKit.framework in Frameworks */,
 				3F70EC8D1701CADB00327770 /* Foundation.framework in Frameworks */,
 				3F70EC8F1701CADB00327770 /* CoreGraphics.framework in Frameworks */,
@@ -87,6 +93,7 @@
 		3F70EC891701CADB00327770 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				73BD8CFB1714210400935730 /* CoreText.framework */,
 				3F70EC8A1701CADB00327770 /* UIKit.framework */,
 				3F70EC8C1701CADB00327770 /* Foundation.framework */,
 				3F70EC8E1701CADB00327770 /* CoreGraphics.framework */,
@@ -97,6 +104,7 @@
 		3F70EC901701CADB00327770 /* GreWords */ = {
 			isa = PBXGroup;
 			children = (
+				73BD8D001714214E00935730 /* TTTAttributedLabel */,
 				E48ABC171701F6B100CF576D /* doc */,
 				E4E8FE651701F32D009DD43A /* Model.xcdatamodeld */,
 				3F70EC991701CADB00327770 /* GreWordsAppDelegate.h */,
@@ -127,6 +135,15 @@
 				3F70ECA01701CADB00327770 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		73BD8D001714214E00935730 /* TTTAttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				73BD8CFD1714213D00935730 /* TTTAttributedLabel.h */,
+				73BD8CFE1714213D00935730 /* TTTAttributedLabel.m */,
+			);
+			name = TTTAttributedLabel;
 			sourceTree = "<group>";
 		};
 		E48ABC171701F6B100CF576D /* doc */ = {
@@ -214,6 +231,7 @@
 				3F70ECA71701CADB00327770 /* GreWordsViewController.m in Sources */,
 				E46CF2D11711850500634ED7 /* WordLayoutViewController.m in Sources */,
 				E46CF2D51711859500634ED7 /* WordEntity.m in Sources */,
+				73BD8CFF1714213D00935730 /* TTTAttributedLabel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
