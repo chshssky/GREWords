@@ -23,8 +23,9 @@
 		3FA4848C17142BD4003E88A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA4848B17142BD4003E88A6 /* main.m */; };
 		3FA4849117142BF9003E88A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848D17142BF9003E88A6 /* InfoPlist.strings */; };
 		3FA4849217142BF9003E88A6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848F17142BF9003E88A6 /* MainStoryboard.storyboard */; };
-		73D209AC1714367F00C718A6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D209AB1714367F00C718A6 /* CoreText.framework */; };
 		3FA48495171463FC003E88A6 /* HistoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA48494171463FB003E88A6 /* HistoryManager.m */; };
+		7315DF5317147B1B00CF1556 /* TaskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7315DF5217147B1B00CF1556 /* TaskGenerator.m */; };
+		73D209AC1714367F00C718A6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D209AB1714367F00C718A6 /* CoreText.framework */; };
 		E4134CDB1714225D00553AD2 /* WordHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E4134CDA1714225D00553AD2 /* WordHelper.m */; };
 		E414B68E17142FEC00C29D3C /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B68917142FEC00C29D3C /* History.m */; };
 		E414B68F17142FEC00C29D3C /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B68B17142FEC00C29D3C /* Note.m */; };
@@ -63,9 +64,11 @@
 		3FA4848B17142BD4003E88A6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3FA4848E17142BF9003E88A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3FA4849017142BF9003E88A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		73D209AB1714367F00C718A6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		3FA48493171463FB003E88A6 /* HistoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryManager.h; sourceTree = "<group>"; };
 		3FA48494171463FB003E88A6 /* HistoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryManager.m; sourceTree = "<group>"; };
+		7315DF5117147B1B00CF1556 /* TaskGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskGenerator.h; path = ../TaskGenerator.h; sourceTree = "<group>"; };
+		7315DF5217147B1B00CF1556 /* TaskGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskGenerator.m; path = ../TaskGenerator.m; sourceTree = "<group>"; };
+		73D209AB1714367F00C718A6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		E4134CD91714225D00553AD2 /* WordHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordHelper.h; sourceTree = "<group>"; };
 		E4134CDA1714225D00553AD2 /* WordHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordHelper.m; sourceTree = "<group>"; };
 		E414B68817142FEC00C29D3C /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
@@ -164,6 +167,8 @@
 				E46DCFAF17144E4F0038C149 /* MyDataStorage.m */,
 				3FA48493171463FB003E88A6 /* HistoryManager.h */,
 				3FA48494171463FB003E88A6 /* HistoryManager.m */,
+				7315DF5117147B1B00CF1556 /* TaskGenerator.h */,
+				7315DF5217147B1B00CF1556 /* TaskGenerator.m */,
 			);
 			name = LogicalLayer;
 			sourceTree = "<group>";
@@ -317,6 +322,7 @@
 				E414B69E1714303F00C29D3C /* WordLayoutViewController.m in Sources */,
 				E46DCFB017144E4F0038C149 /* MyDataStorage.m in Sources */,
 				3FA48495171463FC003E88A6 /* HistoryManager.m in Sources */,
+				7315DF5317147B1B00CF1556 /* TaskGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

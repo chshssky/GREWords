@@ -116,7 +116,7 @@ float sumHeight = 30.0;
     }else{
         //////////////////
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, h, 65, 25)];
-        label.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
+        label.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
         label.textColor = [UIColor orangeColor];
         if (b == YES) {
             label.text = @"[考法]";
@@ -129,7 +129,7 @@ float sumHeight = 30.0;
         [self.view addSubview:label];
         //////////////////
         label = [[UILabel alloc] initWithFrame:CGRectMake(85, h, 300, 25)];
-        label.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
+        label.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
         NSRange range = [theUsage rangeOfString:@"："];
         label.text = [theUsage substringToIndex:range.location];
         label.lineBreakMode = NSLineBreakByWordWrapping;
@@ -154,7 +154,7 @@ float sumHeight = 30.0;
     }else{
         ////////////////////
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(52, sumHeight, 65, 25)];
-        label.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
+        label.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
         label.text = @"例";
         label.lineBreakMode = NSLineBreakByWordWrapping;
         label.numberOfLines = 0;
@@ -177,7 +177,7 @@ float sumHeight = 30.0;
     }else{
         ////////////////////
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(52, sumHeight, 65, 25)];
-        label.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
+        label.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
         label.text = @"近";
         label.lineBreakMode = NSLineBreakByWordWrapping;
         label.numberOfLines = 0;
@@ -198,7 +198,7 @@ float sumHeight = 30.0;
         NSLog(@"找不到这个单词的反义词");
     }else{
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(52, sumHeight, 65, 25)];
-        label.font = [UIFont fontWithName:@"Helvetica-Bold" size:16];
+        label.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
         label.text = @"反";
         label.lineBreakMode = NSLineBreakByWordWrapping;
         label.numberOfLines = 0;
