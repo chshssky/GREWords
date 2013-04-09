@@ -11,6 +11,7 @@
 @interface WordHelper : NSObject
 {
     NSMutableArray *wordList;
+    NSMutableDictionary *wordIndexes;
 }
 +(WordHelper*) instance;
 -(WordEntity*)wordWithString:(NSString*)string;

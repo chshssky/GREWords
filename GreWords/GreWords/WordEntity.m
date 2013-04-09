@@ -10,17 +10,14 @@
 
 @implementation WordEntity
 
--(NSDictionary*)data
+-(id)initWithID:(int)wordID data:(NSDictionary*)data
 {
-    NSArray *arr;
+    if(self = [super init])
     {
-        NSString *infoSouceFile = [[NSBundle mainBundle] pathForResource:@"words" ofType:@"plist"];
-        NSData* data = [NSData dataWithContentsOfFile:infoSouceFile];
-        NSError *error;
-        NSPropertyListFormat format;
-        arr = [NSPropertyListSerialization propertyListWithData:data options:0 format:&format error:&error];
+        _wordID = wordID;
+        _data = data;
     }
-    return arr[0];
+    return self;
 }
 
 
