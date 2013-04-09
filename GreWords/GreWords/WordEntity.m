@@ -10,26 +10,14 @@
 
 @implementation WordEntity
 
--(id)initWithID:(int)wordID data:(NSDictionary*)data
+-(id)initWithID:(int)wordID data:(NSDictionary*)data word:(Word*)wordManagedObj;
 {
     if(self = [super init])
     {
         _wordID = wordID;
         _data = data;
         
-        NSError *error;
-        NSManagedObjectContext *context = [[MyDataStorage instance] managedObjectContext];
-        NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-        NSString *simplePredicateFormat = [NSString stringWithFormat:@"plistID == %d",_wordID];
-        NSPredicate *simplePredicate = [NSPredicate predicateWithFormat:simplePredicateFormat];
-        [fetchRequest setEntity:[NSEntityDescription entityForName:@"Word" inManagedObjectContext:context]];
-        [fetchRequest setPredicate:simplePredicate];
-        NSArray *matching = [context executeFetchRequest:fetchRequest error:&error];
-        if(!matching || matching.count == 0)
-        {
-            NSAssert(NO,@"fail to find counterpart in database for word:%d %@",_wordID,_data[@"word"]);
-        }
-        wordManagedObject = matching.lastObject;
+        wordManagedObject = wordManagedObj;
         noteManagedObject = wordManagedObject.word2note;
     }
     return self;

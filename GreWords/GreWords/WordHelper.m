@@ -34,10 +34,22 @@ WordHelper* _wordHelperInstance = nil;
     NSPropertyListFormat format;
     arr = [NSPropertyListSerialization propertyListWithData:data options:0 format:&format error:&error];
     NSAssert(error == nil, @"Error loading word plist:%@",[error description]);
+    
+    NSManagedObjectContext *context = [[MyDataStorage instance] managedObjectContext];
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:[NSEntityDescription entityForName:@"Word" inManagedObjectContext:context]];
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc]
+                              initWithKey:@"plistID" ascending:YES];
+    [fetchRequest setSortDescriptors:[NSArray arrayWithObject:sort]];
+    
+    NSArray *matching = [context executeFetchRequest:fetchRequest error:&error];
+    
     for(NSDictionary *dict in arr)
     {
         NSString *text = dict[@"word"];
-        WordEntity *theWord = [[WordEntity alloc] initWithID:wordList.count data:dict];
+        Word* word = matching[wordList.count];
+        NSAssert(wordList.count == [word.plistID integerValue],@"fail to count database counterpart");
+        WordEntity *theWord = [[WordEntity alloc] initWithID:wordList.count data:dict word:word];
         wordIndexes[text] = [NSNumber numberWithInt:wordList.count];
         [wordList addObject:theWord];
     }
