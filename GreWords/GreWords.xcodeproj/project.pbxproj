@@ -18,6 +18,8 @@
 		3F70ECA11701CADB00327770 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F70ECA01701CADB00327770 /* Default-568h@2x.png */; };
 		3F70ECA41701CADB00327770 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F70ECA21701CADB00327770 /* MainStoryboard.storyboard */; };
 		3F70ECA71701CADB00327770 /* GreWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F70ECA61701CADB00327770 /* GreWordsViewController.m */; };
+		E418DA5C1713E4B3002C6743 /* ConfigurationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E418DA5B1713E4B3002C6743 /* ConfigurationHelper.m */; };
+		E418DA5F1713E5E8002C6743 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */; };
 		E46CF2CD171184E000634ED7 /* words.plist in Resources */ = {isa = PBXBuildFile; fileRef = E46CF2CC171184E000634ED7 /* words.plist */; };
 		E46CF2D11711850500634ED7 /* WordLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E46CF2CF1711850500634ED7 /* WordLayoutViewController.m */; };
 		E46CF2D21711850500634ED7 /* WordLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E46CF2D01711850500634ED7 /* WordLayoutViewController.xib */; };
@@ -43,6 +45,9 @@
 		3F70ECA31701CADB00327770 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		3F70ECA51701CADB00327770 /* GreWordsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GreWordsViewController.h; sourceTree = "<group>"; };
 		3F70ECA61701CADB00327770 /* GreWordsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GreWordsViewController.m; sourceTree = "<group>"; };
+		E418DA5A1713E4B3002C6743 /* ConfigurationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationHelper.h; sourceTree = "<group>"; };
+		E418DA5B1713E4B3002C6743 /* ConfigurationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationHelper.m; sourceTree = "<group>"; };
+		E418DA5E1713E5E8002C6743 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E46CF2CC171184E000634ED7 /* words.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = words.plist; sourceTree = "<group>"; };
 		E46CF2CE1711850500634ED7 /* WordLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordLayoutViewController.h; sourceTree = "<group>"; };
 		E46CF2CF1711850500634ED7 /* WordLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordLayoutViewController.m; sourceTree = "<group>"; };
@@ -98,7 +103,9 @@
 			isa = PBXGroup;
 			children = (
 				E48ABC171701F6B100CF576D /* doc */,
-				E4E8FE651701F32D009DD43A /* Model.xcdatamodeld */,
+				E418DA5A1713E4B3002C6743 /* ConfigurationHelper.h */,
+				E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */,
+				E418DA5B1713E4B3002C6743 /* ConfigurationHelper.m */,
 				3F70EC991701CADB00327770 /* GreWordsAppDelegate.h */,
 				3F70EC9A1701CADB00327770 /* GreWordsAppDelegate.m */,
 				3F70ECA21701CADB00327770 /* MainStoryboard.storyboard */,
@@ -214,6 +221,8 @@
 				3F70ECA71701CADB00327770 /* GreWordsViewController.m in Sources */,
 				E46CF2D11711850500634ED7 /* WordLayoutViewController.m in Sources */,
 				E46CF2D51711859500634ED7 /* WordEntity.m in Sources */,
+				E418DA5C1713E4B3002C6743 /* ConfigurationHelper.m in Sources */,
+				E418DA5F1713E5E8002C6743 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,10 +350,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E4E8FE651701F32D009DD43A /* Model.xcdatamodeld */ = {
+		E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				E418DA5E1713E5E8002C6743 /* Model.xcdatamodel */,
 			);
+			currentVersion = E418DA5E1713E5E8002C6743 /* Model.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
