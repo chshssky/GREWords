@@ -27,7 +27,7 @@
 -(void)didMadeAMistakeOnDate:(NSDate*)date;
 -(void)didRightOnDate:(NSDate*)date;
 
--(id)initWithID:(int)wordID data:(NSDictionary*)data;
+-(id)initWithID:(int)wordID data:(NSDictionary*)data word:(Word*)wordManagedObj;
 
 
 @end
