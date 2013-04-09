@@ -13,6 +13,7 @@
     NSMutableArray *wordList;
     NSMutableDictionary *wordIndexes;
 }
+
 +(WordHelper*) instance;
 -(WordEntity*)wordWithString:(NSString*)string;
 -(WordEntity*)wordWithID:(int)wordID;
