@@ -103,8 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				E48ABC171701F6B100CF576D /* doc */,
-				E418DA5A1713E4B3002C6743 /* ConfigurationHelper.h */,
 				E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */,
+				E418DA5A1713E4B3002C6743 /* ConfigurationHelper.h */,
 				E418DA5B1713E4B3002C6743 /* ConfigurationHelper.m */,
 				3F70EC991701CADB00327770 /* GreWordsAppDelegate.h */,
 				3F70EC9A1701CADB00327770 /* GreWordsAppDelegate.m */,

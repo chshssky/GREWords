@@ -16,4 +16,7 @@
 @property (nonatomic) bool homoionymVisibility;
 @property (nonatomic) bool antonymVisiblity;
 
+@property (nonatomic,retain) NSDate* freshWordAlertTime;
+@property (nonatomic,retain) NSDate* reviewAlertTime;
+
 @end
