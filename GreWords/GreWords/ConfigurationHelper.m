@@ -159,7 +159,7 @@ ConfigurationHelper* _configurationHelperInstance = nil;
 {
     [[MyDataStorage instance] deleteDaatabase];
     [self boolPlistSetter:YES key:@"firstTimeRun"];
-    NSAssert(NO, @"function not implemented yet");
+    //NSAssert(NO, @"function not implemented yet");
 }
 
 -(void)initData
