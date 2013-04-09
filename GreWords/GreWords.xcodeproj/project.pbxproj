@@ -116,8 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				E48ABC171701F6B100CF576D /* doc */,
-<<<<<<< HEAD
-=======
 				E418DA5A1713E4B3002C6743 /* ConfigurationHelper.h */,
 				3FA4846217140D5E003E88A6 /* Word.h */,
 				3FA4846817140D5E003E88A6 /* Note.h */,
@@ -125,7 +123,6 @@
 				3FA4846517140D5E003E88A6 /* History.h */,
 				3FA4846617140D5E003E88A6 /* History.m */,
 				3FA4846317140D5E003E88A6 /* Word.m */,
->>>>>>> 8b5cc1a2bb0291fcaf8f7400d8afacf0906d4383
 				E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */,
 				E418DA5A1713E4B3002C6743 /* ConfigurationHelper.h */,
 				E418DA5B1713E4B3002C6743 /* ConfigurationHelper.m */,
