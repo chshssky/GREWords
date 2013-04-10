@@ -13,5 +13,8 @@
 @property (nonatomic) NSString *info;
 @property (nonatomic) NSDate *startTime;
 @property (nonatomic) NSDate *endTime;
+@property (nonatomic) NSTimeInterval duration;
+@property (nonatomic) int totalWordCount;
+@property (nonatomic) int wrongWordCount;
 
 @end

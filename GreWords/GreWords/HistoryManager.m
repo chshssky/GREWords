@@ -31,9 +31,23 @@ HistoryManager* _historyManagerInstance = nil;
     MyDataStorage *myDateStorage;
     NSManagedObjectContext *context = [myDateStorage managedObjectContext];
     if ([aEvent isKindOfClass:[NewWordEvent class]]) {
+        NewWordEvent *newWordEvent = (NewWordEvent *)aEvent;
+        
         History *history = [NSEntityDescription insertNewObjectForEntityForName:@"History" inManagedObjectContext:context];
         [history setStartTime:[NSDate date]];
         [history setEvent:@"NewWordEvent"];
+        
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        // convert enum to NSNumber
+        [dict setObject:[NSNumber numberWithInt:[newWordEvent stage_now]] forKey:@"stage"];
+        [dict setObject:[NSNumber numberWithInt:[newWordEvent unit]] forKey:@"unit"];
+        [dict setObject:[NSNumber numberWithInt:[newWordEvent round]] forKey:@"round"];
+        [dict setObject:[NSNumber numberWithInt:[newWordEvent orderInUnit]] forKey:@"orderInUnit"];
+        [dict setObject:[NSNumber numberWithInt:[newWordEvent totalWordCount]] forKey:@"totalWordCount"];
+        [dict setObject:[NSNumber numberWithInt:[newWordEvent wrongWordCount]] forKey:@"wrongWordCount"];
+        [dict setObject:[NSNumber numberWithDouble:[newWordEvent duration]] forKey:@"duration"];
+                
+        [history setInfo:[NSString stringWithFormat:@"%@", dict]];
         
         [(NewWordEvent *)aEvent duration];
         
