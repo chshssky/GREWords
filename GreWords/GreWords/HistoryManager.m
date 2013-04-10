@@ -76,14 +76,25 @@ HistoryManager* _historyManagerInstance = nil;
     
     NSError *error = nil;
     if (![self.context save:&error]) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        NSLog(@"Save Event error %@, %@", error, [error userInfo]);
         abort();
     }
 }
 
-- (void)updateEvent:(BaseEvent *)aEvent
+- (void)endEvent:(BaseEvent *)aEvent
 {
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
+    request.predicate = [NSPredicate predicateWithFormat:@"event = %@ && endTime = %@", aEvent.eventType, @""];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
+    NSError *err = nil;
+    NSArray *matches = [self.context executeFetchRequest:request error:&err];
     
+    History *history = [matches lastObject];
+    [history setEndTime:aEvent.endTime];
+    
+    if (![self.context save:&err]) {
+        NSLog(@"End Event error");
+    }
 }
 
 //Statistic Methods
