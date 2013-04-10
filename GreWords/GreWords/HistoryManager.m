@@ -47,36 +47,38 @@ HistoryManager* _historyManagerInstance = nil;
     History *history = [NSEntityDescription insertNewObjectForEntityForName:@"History" inManagedObjectContext:self.context];
     [history setStartTime:aEvent.startTime];
     [history setEvent:aEvent.eventType];
+    [history setTotalWordCount:[NSNumber numberWithInt:aEvent.totalWordCount]];
+    [history setWrongWordCount:[NSNumber numberWithInt:aEvent.wrongWordCount]];
+    [history setDuration:[NSNumber numberWithDouble:aEvent.duration]];
+    
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     
     if ([aEvent isKindOfClass:[NewWordEvent class]]) {
         NewWordEvent *newWordEvent = (NewWordEvent *)aEvent;
-        
-        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
         // convert enum to NSNumber
         [dict setObject:[NSNumber numberWithInt:[newWordEvent stage_now]] forKey:@"stage"];
         [dict setObject:[NSNumber numberWithInt:[newWordEvent unit]] forKey:@"unit"];
         [dict setObject:[NSNumber numberWithInt:[newWordEvent round]] forKey:@"round"];
         [dict setObject:[NSNumber numberWithInt:[newWordEvent orderInUnit]] forKey:@"orderInUnit"];
-        [dict setObject:[NSNumber numberWithInt:[newWordEvent totalWordCount]] forKey:@"totalWordCount"];
-        [dict setObject:[NSNumber numberWithInt:[newWordEvent wrongWordCount]] forKey:@"wrongWordCount"];
-        [dict setObject:[NSNumber numberWithDouble:[newWordEvent duration]] forKey:@"duration"];
-                
-        [history setInfo:[NSString stringWithFormat:@"%@", dict]];
-        
-        NSError *error = nil;
-        if (![self.context save:&error]) {
-            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-            abort();
-        }
-        
     } else if ([aEvent isKindOfClass:[ReviewEvent class]]) {
-        
+        ReviewEvent *reviewEvent = (ReviewEvent *)aEvent;
+        [dict setObject:[NSNumber numberWithInt:[reviewEvent stage_now]] forKey:@"stage"];
+        [dict setObject:[NSNumber numberWithInt:[reviewEvent unit]] forKey:@"unit"];
+        [dict setObject:[NSNumber numberWithInt:[reviewEvent orderInUnit]] forKey:@"orderInUnit"];
     } else if ([aEvent isKindOfClass:[ExamEvent class]]) {
-        
+        ExamEvent *examEvent = (ExamEvent *)aEvent;
+        [dict setObject:[NSNumber numberWithInt:[examEvent difficulty]] forKey:@"difficulty"];
     } else {
         NSLog(@"BaseEvent is not a specific class");
     }
     
+    [history setInfo:[NSString stringWithFormat:@"%@", dict]];
+    
+    NSError *error = nil;
+    if (![self.context save:&error]) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
 }
 
 - (void)updateEvent:(BaseEvent *)aEvent
