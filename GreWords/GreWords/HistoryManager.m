@@ -13,7 +13,14 @@
 #import "ReviewEvent.h"
 #import "ExamEvent.h"
 
+@interface HistoryManager ()
+
+@property (weak, nonatomic) NSManagedObjectContext *context;
+
+@end
+
 @implementation HistoryManager
+@synthesize context = _context;
 
 HistoryManager* _historyManagerInstance = nil;
 
@@ -26,16 +33,23 @@ HistoryManager* _historyManagerInstance = nil;
     return _historyManagerInstance;
 }
 
+- (NSManagedObjectContext *)context
+{
+    if (!_context) {
+        MyDataStorage *myDateStorage;
+        _context = [myDateStorage managedObjectContext];
+    }
+    return _context;
+}
+
 - (void)addEvent:(BaseEvent *)aEvent
 {
-    MyDataStorage *myDateStorage;
-    NSManagedObjectContext *context = [myDateStorage managedObjectContext];
+    History *history = [NSEntityDescription insertNewObjectForEntityForName:@"History" inManagedObjectContext:self.context];
+    [history setStartTime:aEvent.startTime];
+    [history setEvent:aEvent.eventType];
+    
     if ([aEvent isKindOfClass:[NewWordEvent class]]) {
         NewWordEvent *newWordEvent = (NewWordEvent *)aEvent;
-        
-        History *history = [NSEntityDescription insertNewObjectForEntityForName:@"History" inManagedObjectContext:context];
-        [history setStartTime:[NSDate date]];
-        [history setEvent:@"NewWordEvent"];
         
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
         // convert enum to NSNumber
@@ -49,7 +63,11 @@ HistoryManager* _historyManagerInstance = nil;
                 
         [history setInfo:[NSString stringWithFormat:@"%@", dict]];
         
-        [(NewWordEvent *)aEvent duration];
+        NSError *error = nil;
+        if (![self.context save:&error]) {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
         
     } else if ([aEvent isKindOfClass:[ReviewEvent class]]) {
         

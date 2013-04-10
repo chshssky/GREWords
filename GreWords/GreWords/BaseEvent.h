@@ -10,7 +10,7 @@
 
 @interface BaseEvent : NSObject
 
-@property (nonatomic) NSString *info;
+@property (nonatomic) NSString *eventType;
 @property (nonatomic) NSDate *startTime;
 @property (nonatomic) NSDate *endTime;
 @property (nonatomic) NSTimeInterval duration;

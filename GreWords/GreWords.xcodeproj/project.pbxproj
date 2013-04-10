@@ -24,12 +24,12 @@
 		3FA4849117142BF9003E88A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848D17142BF9003E88A6 /* InfoPlist.strings */; };
 		3FA4849217142BF9003E88A6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848F17142BF9003E88A6 /* MainStoryboard.storyboard */; };
 		3FA48495171463FC003E88A6 /* HistoryManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA48494171463FB003E88A6 /* HistoryManager.m */; };
+		3FA4849817159F9C003E88A6 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA4849717159F9C003E88A6 /* History.m */; };
+		3FA4849B17159F9D003E88A6 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA4849A17159F9C003E88A6 /* Word.m */; };
+		3FA4849E17159F9D003E88A6 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA4849D17159F9D003E88A6 /* Note.m */; };
 		7315DF5317147B1B00CF1556 /* TaskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7315DF5217147B1B00CF1556 /* TaskGenerator.m */; };
 		73D209AC1714367F00C718A6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D209AB1714367F00C718A6 /* CoreText.framework */; };
 		E4134CDB1714225D00553AD2 /* WordHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E4134CDA1714225D00553AD2 /* WordHelper.m */; };
-		E414B68E17142FEC00C29D3C /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B68917142FEC00C29D3C /* History.m */; };
-		E414B68F17142FEC00C29D3C /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B68B17142FEC00C29D3C /* Note.m */; };
-		E414B69017142FEC00C29D3C /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B68D17142FEC00C29D3C /* Word.m */; };
 		E414B6931714300400C29D3C /* WordEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B6921714300400C29D3C /* WordEntity.m */; };
 		E414B6961714301700C29D3C /* ConfigurationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B6941714301700C29D3C /* ConfigurationHelper.m */; };
 		E414B69C1714303F00C29D3C /* GreWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B6971714303F00C29D3C /* GreWordsViewController.m */; };
@@ -66,17 +66,17 @@
 		3FA4849017142BF9003E88A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		3FA48493171463FB003E88A6 /* HistoryManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryManager.h; sourceTree = "<group>"; };
 		3FA48494171463FB003E88A6 /* HistoryManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryManager.m; sourceTree = "<group>"; };
+		3FA4849617159F9C003E88A6 /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
+		3FA4849717159F9C003E88A6 /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
+		3FA4849917159F9C003E88A6 /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
+		3FA4849A17159F9C003E88A6 /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
+		3FA4849C17159F9D003E88A6 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		3FA4849D17159F9D003E88A6 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 		7315DF5117147B1B00CF1556 /* TaskGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskGenerator.h; path = ../TaskGenerator.h; sourceTree = "<group>"; };
 		7315DF5217147B1B00CF1556 /* TaskGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskGenerator.m; path = ../TaskGenerator.m; sourceTree = "<group>"; };
 		73D209AB1714367F00C718A6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		E4134CD91714225D00553AD2 /* WordHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordHelper.h; sourceTree = "<group>"; };
 		E4134CDA1714225D00553AD2 /* WordHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordHelper.m; sourceTree = "<group>"; };
-		E414B68817142FEC00C29D3C /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
-		E414B68917142FEC00C29D3C /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
-		E414B68A17142FEC00C29D3C /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
-		E414B68B17142FEC00C29D3C /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
-		E414B68C17142FEC00C29D3C /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
-		E414B68D17142FEC00C29D3C /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
 		E414B6911714300400C29D3C /* WordEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordEntity.h; sourceTree = "<group>"; };
 		E414B6921714300400C29D3C /* WordEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordEntity.m; sourceTree = "<group>"; };
 		E414B6941714301700C29D3C /* ConfigurationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationHelper.m; sourceTree = "<group>"; };
@@ -191,12 +191,12 @@
 		3FA4847B1714250A003E88A6 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				E414B68817142FEC00C29D3C /* History.h */,
-				E414B68917142FEC00C29D3C /* History.m */,
-				E414B68A17142FEC00C29D3C /* Note.h */,
-				E414B68B17142FEC00C29D3C /* Note.m */,
-				E414B68C17142FEC00C29D3C /* Word.h */,
-				E414B68D17142FEC00C29D3C /* Word.m */,
+				3FA4849C17159F9D003E88A6 /* Note.h */,
+				3FA4849D17159F9D003E88A6 /* Note.m */,
+				3FA4849917159F9C003E88A6 /* Word.h */,
+				3FA4849A17159F9C003E88A6 /* Word.m */,
+				3FA4849617159F9C003E88A6 /* History.h */,
+				3FA4849717159F9C003E88A6 /* History.m */,
 			);
 			name = Entity;
 			sourceTree = "<group>";
@@ -313,9 +313,6 @@
 				E4134CDB1714225D00553AD2 /* WordHelper.m in Sources */,
 				3FA4848A17142BC0003E88A6 /* GreWordsAppDelegate.m in Sources */,
 				3FA4848C17142BD4003E88A6 /* main.m in Sources */,
-				E414B68E17142FEC00C29D3C /* History.m in Sources */,
-				E414B68F17142FEC00C29D3C /* Note.m in Sources */,
-				E414B69017142FEC00C29D3C /* Word.m in Sources */,
 				E414B6931714300400C29D3C /* WordEntity.m in Sources */,
 				E414B6961714301700C29D3C /* ConfigurationHelper.m in Sources */,
 				E414B69C1714303F00C29D3C /* GreWordsViewController.m in Sources */,
@@ -323,6 +320,9 @@
 				E46DCFB017144E4F0038C149 /* MyDataStorage.m in Sources */,
 				3FA48495171463FC003E88A6 /* HistoryManager.m in Sources */,
 				7315DF5317147B1B00CF1556 /* TaskGenerator.m in Sources */,
+				3FA4849817159F9C003E88A6 /* History.m in Sources */,
+				3FA4849B17159F9D003E88A6 /* Word.m in Sources */,
+				3FA4849E17159F9D003E88A6 /* Note.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
