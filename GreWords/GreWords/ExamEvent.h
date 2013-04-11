@@ -10,10 +10,6 @@
 
 @interface ExamEvent : BaseEvent
 
-@property (nonatomic) int totalWordCount;
-@property (nonatomic) int wrongWordCount;
 @property (nonatomic) int difficulty;
-@property (nonatomic) NSTimeInterval duration;
-
 
 @end

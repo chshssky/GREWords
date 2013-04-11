@@ -14,8 +14,6 @@
 @property (nonatomic) int unit;
 @property (nonatomic) int round;
 @property (nonatomic) int orderInUnit;
-@property (nonatomic) NSTimeInterval duration;
-@property (nonatomic) int totalWordCount;
-@property (nonatomic) int wrongWordCount;
+
 
 @end
