@@ -155,12 +155,28 @@ float sumHeight = 30.0;
         }
         else
         {
-            label.text = theUsage;
+            int offset = 0;
+            for(int i=0; i< [theUsage length];i++){
+                int a = [theUsage characterAtIndex:i];
+                if( a > 0x4e00 && a < 0x9fff)
+                    offset = i;
+            }
+            label.text = [theUsage substringToIndex:offset];
             label.lineBreakMode = NSLineBreakByWordWrapping;
             label.numberOfLines = 0;
             [label sizeToFit];
             [self.view addSubview:label];
             sumHeight = label.frame.origin.y + label.frame.size.height;
+            ////////////////////
+            label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
+            label.font = [UIFont fontWithName:@"Helvetica" size:15];
+            label.text = [theUsage substringFromIndex:offset+1];
+            label.lineBreakMode = NSLineBreakByWordWrapping;
+            label.numberOfLines = 0;
+            [label sizeToFit];
+            [self.view addSubview:label];
+            sumHeight = label.frame.origin.y + label.frame.size.height + 8.0;
+            ///////////////////
             
         }
     }
