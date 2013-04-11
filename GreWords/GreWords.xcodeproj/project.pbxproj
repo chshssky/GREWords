@@ -36,6 +36,24 @@
 		E414B69D1714303F00C29D3C /* WordLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E414B6981714303F00C29D3C /* WordLayoutViewController.xib */; };
 		E414B69E1714303F00C29D3C /* WordLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B69A1714303F00C29D3C /* WordLayoutViewController.m */; };
 		E418DA5F1713E5E8002C6743 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */; };
+		E449257F1716CF3400F0523A /* SmartWordListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E449257D1716CF3400F0523A /* SmartWordListViewController.m */; };
+		E44925801716CF3400F0523A /* SmartWordListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E449257E1716CF3400F0523A /* SmartWordListViewController.xib */; };
+		E44925831716D00C00F0523A /* SmartWordListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E44925821716D00C00F0523A /* SmartWordListCell.m */; };
+		E44925981716DA0D00F0523A /* GCRetractableSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E449258E1716DA0D00F0523A /* GCRetractableSectionController.m */; };
+		E44925991716DA0D00F0523A /* DownAccessory.png in Resources */ = {isa = PBXBuildFile; fileRef = E44925901716DA0D00F0523A /* DownAccessory.png */; };
+		E449259A1716DA0D00F0523A /* DownAccessory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E44925911716DA0D00F0523A /* DownAccessory@2x.png */; };
+		E449259B1716DA0D00F0523A /* DownAccessoryWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = E44925921716DA0D00F0523A /* DownAccessoryWhite.png */; };
+		E449259C1716DA0D00F0523A /* DownAccessoryWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E44925931716DA0D00F0523A /* DownAccessoryWhite@2x.png */; };
+		E449259D1716DA0D00F0523A /* UpAccessory.png in Resources */ = {isa = PBXBuildFile; fileRef = E44925941716DA0D00F0523A /* UpAccessory.png */; };
+		E449259E1716DA0D00F0523A /* UpAccessory@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E44925951716DA0D00F0523A /* UpAccessory@2x.png */; };
+		E449259F1716DA0D00F0523A /* UpAccessoryWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = E44925961716DA0D00F0523A /* UpAccessoryWhite.png */; };
+		E44925A01716DA0D00F0523A /* UpAccessoryWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E44925971716DA0D00F0523A /* UpAccessoryWhite@2x.png */; };
+		E44925A31716DBB600F0523A /* SmartWordListSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = E44925A21716DBB500F0523A /* SmartWordListSectionController.m */; };
+		E44925A51716E22E00F0523A /* SmartWordListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E44925A41716E22D00F0523A /* SmartWordListCell.xib */; };
+		E44925A81716E8FB00F0523A /* SmartWordListHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E44925A71716E8FB00F0523A /* SmartWordListHeaderCell.m */; };
+		E44925AA1716E91000F0523A /* SmartWordListHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E44925A91716E90F00F0523A /* SmartWordListHeaderCell.xib */; };
+		E44925B51716F5F500F0523A /* SmartWordListHeaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E44925B31716F5EE00F0523A /* SmartWordListHeaderViewController.m */; };
+		E44925B61716F5F500F0523A /* SmartWordListHeaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E44925B41716F5F000F0523A /* SmartWordListHeaderViewController.xib */; };
 		E46CF2CD171184E000634ED7 /* words.plist in Resources */ = {isa = PBXBuildFile; fileRef = E46CF2CC171184E000634ED7 /* words.plist */; };
 		E46DCFB017144E4F0038C149 /* MyDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = E46DCFAF17144E4F0038C149 /* MyDataStorage.m */; };
 /* End PBXBuildFile section */
@@ -87,6 +105,30 @@
 		E414B69A1714303F00C29D3C /* WordLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordLayoutViewController.m; sourceTree = "<group>"; };
 		E414B69B1714303F00C29D3C /* GreWordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreWordsViewController.h; sourceTree = "<group>"; };
 		E418DA5E1713E5E8002C6743 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		E449257C1716CF3400F0523A /* SmartWordListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartWordListViewController.h; sourceTree = "<group>"; };
+		E449257D1716CF3400F0523A /* SmartWordListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartWordListViewController.m; sourceTree = "<group>"; };
+		E449257E1716CF3400F0523A /* SmartWordListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmartWordListViewController.xib; sourceTree = "<group>"; };
+		E44925811716D00C00F0523A /* SmartWordListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartWordListCell.h; sourceTree = "<group>"; };
+		E44925821716D00C00F0523A /* SmartWordListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartWordListCell.m; sourceTree = "<group>"; };
+		E449258D1716DA0D00F0523A /* GCRetractableSectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCRetractableSectionController.h; sourceTree = "<group>"; };
+		E449258E1716DA0D00F0523A /* GCRetractableSectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCRetractableSectionController.m; sourceTree = "<group>"; };
+		E44925901716DA0D00F0523A /* DownAccessory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DownAccessory.png; sourceTree = "<group>"; };
+		E44925911716DA0D00F0523A /* DownAccessory@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DownAccessory@2x.png"; sourceTree = "<group>"; };
+		E44925921716DA0D00F0523A /* DownAccessoryWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DownAccessoryWhite.png; sourceTree = "<group>"; };
+		E44925931716DA0D00F0523A /* DownAccessoryWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DownAccessoryWhite@2x.png"; sourceTree = "<group>"; };
+		E44925941716DA0D00F0523A /* UpAccessory.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UpAccessory.png; sourceTree = "<group>"; };
+		E44925951716DA0D00F0523A /* UpAccessory@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UpAccessory@2x.png"; sourceTree = "<group>"; };
+		E44925961716DA0D00F0523A /* UpAccessoryWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UpAccessoryWhite.png; sourceTree = "<group>"; };
+		E44925971716DA0D00F0523A /* UpAccessoryWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UpAccessoryWhite@2x.png"; sourceTree = "<group>"; };
+		E44925A11716DBB500F0523A /* SmartWordListSectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartWordListSectionController.h; sourceTree = "<group>"; };
+		E44925A21716DBB500F0523A /* SmartWordListSectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartWordListSectionController.m; sourceTree = "<group>"; };
+		E44925A41716E22D00F0523A /* SmartWordListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmartWordListCell.xib; sourceTree = "<group>"; };
+		E44925A61716E8FB00F0523A /* SmartWordListHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmartWordListHeaderCell.h; path = GCRetractableSectionController/SmartWordListHeaderCell.h; sourceTree = "<group>"; };
+		E44925A71716E8FB00F0523A /* SmartWordListHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmartWordListHeaderCell.m; path = GCRetractableSectionController/SmartWordListHeaderCell.m; sourceTree = "<group>"; };
+		E44925A91716E90F00F0523A /* SmartWordListHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SmartWordListHeaderCell.xib; sourceTree = "<group>"; };
+		E44925B21716F5ED00F0523A /* SmartWordListHeaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SmartWordListHeaderViewController.h; path = ../SmartWordListHeaderViewController.h; sourceTree = "<group>"; };
+		E44925B31716F5EE00F0523A /* SmartWordListHeaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SmartWordListHeaderViewController.m; path = ../SmartWordListHeaderViewController.m; sourceTree = "<group>"; };
+		E44925B41716F5F000F0523A /* SmartWordListHeaderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SmartWordListHeaderViewController.xib; path = ../SmartWordListHeaderViewController.xib; sourceTree = "<group>"; };
 		E46CF2CC171184E000634ED7 /* words.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = words.plist; sourceTree = "<group>"; };
 		E46DCFAE17144E4F0038C149 /* MyDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDataStorage.h; sourceTree = "<group>"; };
 		E46DCFAF17144E4F0038C149 /* MyDataStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDataStorage.m; sourceTree = "<group>"; };
@@ -217,6 +259,7 @@
 				E414B6981714303F00C29D3C /* WordLayoutViewController.xib */,
 				E414B6991714303F00C29D3C /* WordLayoutViewController.h */,
 				E414B69A1714303F00C29D3C /* WordLayoutViewController.m */,
+				E449258B1716D9FD00F0523A /* SmartWordList */,
 			);
 			name = PresetationLayer;
 			sourceTree = "<group>";
@@ -233,6 +276,53 @@
 				3FA4848017142B87003E88A6 /* Default@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E449258B1716D9FD00F0523A /* SmartWordList */ = {
+			isa = PBXGroup;
+			children = (
+				E449258C1716DA0D00F0523A /* GCRetractableSectionController */,
+				E449257C1716CF3400F0523A /* SmartWordListViewController.h */,
+				E449257D1716CF3400F0523A /* SmartWordListViewController.m */,
+				E449257E1716CF3400F0523A /* SmartWordListViewController.xib */,
+				E44925B21716F5ED00F0523A /* SmartWordListHeaderViewController.h */,
+				E44925B31716F5EE00F0523A /* SmartWordListHeaderViewController.m */,
+				E44925B41716F5F000F0523A /* SmartWordListHeaderViewController.xib */,
+				E44925A61716E8FB00F0523A /* SmartWordListHeaderCell.h */,
+				E44925A71716E8FB00F0523A /* SmartWordListHeaderCell.m */,
+				E44925A91716E90F00F0523A /* SmartWordListHeaderCell.xib */,
+				E44925811716D00C00F0523A /* SmartWordListCell.h */,
+				E44925821716D00C00F0523A /* SmartWordListCell.m */,
+				E44925A41716E22D00F0523A /* SmartWordListCell.xib */,
+				E44925A11716DBB500F0523A /* SmartWordListSectionController.h */,
+				E44925A21716DBB500F0523A /* SmartWordListSectionController.m */,
+			);
+			name = SmartWordList;
+			sourceTree = "<group>";
+		};
+		E449258C1716DA0D00F0523A /* GCRetractableSectionController */ = {
+			isa = PBXGroup;
+			children = (
+				E449258D1716DA0D00F0523A /* GCRetractableSectionController.h */,
+				E449258E1716DA0D00F0523A /* GCRetractableSectionController.m */,
+				E449258F1716DA0D00F0523A /* Images */,
+			);
+			path = GCRetractableSectionController;
+			sourceTree = "<group>";
+		};
+		E449258F1716DA0D00F0523A /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				E44925901716DA0D00F0523A /* DownAccessory.png */,
+				E44925911716DA0D00F0523A /* DownAccessory@2x.png */,
+				E44925921716DA0D00F0523A /* DownAccessoryWhite.png */,
+				E44925931716DA0D00F0523A /* DownAccessoryWhite@2x.png */,
+				E44925941716DA0D00F0523A /* UpAccessory.png */,
+				E44925951716DA0D00F0523A /* UpAccessory@2x.png */,
+				E44925961716DA0D00F0523A /* UpAccessoryWhite.png */,
+				E44925971716DA0D00F0523A /* UpAccessoryWhite@2x.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,6 +385,18 @@
 				3FA4849117142BF9003E88A6 /* InfoPlist.strings in Resources */,
 				3FA4849217142BF9003E88A6 /* MainStoryboard.storyboard in Resources */,
 				E414B69D1714303F00C29D3C /* WordLayoutViewController.xib in Resources */,
+				E44925801716CF3400F0523A /* SmartWordListViewController.xib in Resources */,
+				E44925991716DA0D00F0523A /* DownAccessory.png in Resources */,
+				E449259A1716DA0D00F0523A /* DownAccessory@2x.png in Resources */,
+				E449259B1716DA0D00F0523A /* DownAccessoryWhite.png in Resources */,
+				E449259C1716DA0D00F0523A /* DownAccessoryWhite@2x.png in Resources */,
+				E449259D1716DA0D00F0523A /* UpAccessory.png in Resources */,
+				E449259E1716DA0D00F0523A /* UpAccessory@2x.png in Resources */,
+				E449259F1716DA0D00F0523A /* UpAccessoryWhite.png in Resources */,
+				E44925A01716DA0D00F0523A /* UpAccessoryWhite@2x.png in Resources */,
+				E44925A51716E22E00F0523A /* SmartWordListCell.xib in Resources */,
+				E44925AA1716E91000F0523A /* SmartWordListHeaderCell.xib in Resources */,
+				E44925B61716F5F500F0523A /* SmartWordListHeaderViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +425,12 @@
 				3FA4849817159F9C003E88A6 /* History.m in Sources */,
 				3FA4849B17159F9D003E88A6 /* Word.m in Sources */,
 				3FA4849E17159F9D003E88A6 /* Note.m in Sources */,
+				E449257F1716CF3400F0523A /* SmartWordListViewController.m in Sources */,
+				E44925831716D00C00F0523A /* SmartWordListCell.m in Sources */,
+				E44925981716DA0D00F0523A /* GCRetractableSectionController.m in Sources */,
+				E44925A31716DBB600F0523A /* SmartWordListSectionController.m in Sources */,
+				E44925A81716E8FB00F0523A /* SmartWordListHeaderCell.m in Sources */,
+				E44925B51716F5F500F0523A /* SmartWordListHeaderViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
