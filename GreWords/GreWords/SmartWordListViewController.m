@@ -10,6 +10,7 @@
 #import "WordLayoutViewController.h"
 #import "SmartWordListCell.h"
 #import "SmartWordListSectionController.h"
+#import "WordHelper.h"
 
 @interface SmartWordListViewController ()
 
@@ -22,14 +23,14 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        _array = [[NSMutableArray alloc]initWithObjects:@1,@2, nil];
+        _array = [[WordHelper instance] wordsAlphabeticOrder];
         
         retractableControllers = [@[] mutableCopy];
         
         for(int i = 0; i < _array.count;i++)
         {
             SmartWordListSectionController* sectionController = [[SmartWordListSectionController alloc] initWithViewController:self];
-            sectionController.wordID = [_array[i] integerValue];
+            sectionController.wordID = ((WordEntity*)_array[i]).wordID;
             [retractableControllers addObject:sectionController];
         }
         

@@ -10,7 +10,7 @@
 
 @interface SmartWordListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
-    NSMutableArray *_array;
+    NSArray *_array;
     NSMutableArray* retractableControllers;
 
 }

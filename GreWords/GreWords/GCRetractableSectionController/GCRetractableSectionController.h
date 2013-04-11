@@ -17,6 +17,7 @@
 //Used by the UITableView's dataSource
 - (UITableViewCell*) cellForRow:(NSUInteger) row;
 - (CGFloat) heightForRow:(NSUInteger)row;
+- (void)close;
 
 @property (nonatomic, readonly) NSUInteger numberOfRow;
 

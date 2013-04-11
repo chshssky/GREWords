@@ -14,6 +14,8 @@
 #import "WordHelper.h"
 #import "SmartWordListHeaderViewController.h"
 
+#define ScrollViewHeight 340
+
 @implementation SmartWordListSectionController
 
 #pragma mark -
@@ -52,10 +54,21 @@
     WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
     [vc displayWord:[[WordHelper instance] wordWithID:self.wordID] withOption:nil];
     CGRect frame = vc.view.frame;
-    frame.origin.x = 0;
-    frame.origin.y = 0;
-    cell.frame = vc.view.frame;
-     [cell addSubview:vc.view];
+    
+    if(frame.size.height > ScrollViewHeight)
+    {
+        frame.size.height = ScrollViewHeight;
+        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:frame];
+        scrollView.contentSize = vc.view.frame.size;
+        [scrollView addSubview:vc.view];
+        [cell addSubview:scrollView];
+    }
+    else
+    {
+        [cell addSubview:vc.view];
+    }
+    cell.frame  = frame;
+     
     cell.clipsToBounds = YES;
 	return cell;
 }

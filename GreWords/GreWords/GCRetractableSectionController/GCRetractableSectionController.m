@@ -160,6 +160,13 @@
 	else [self didSelectContentCellAtRow:row - 1];
 }
 
+- (void)close
+{
+    if(!self.open)
+        return;
+    [self didSelectTitleCell];
+}
+
 - (void) didSelectTitleCell {
 	self.open = !self.open;
 	if (self.contentNumberOfRow != 0) [self setAccessoryViewOnCell:[self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]]];
