@@ -85,7 +85,7 @@ HistoryManager* _historyManagerInstance = nil;
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
     request.predicate = [NSPredicate predicateWithFormat:@"event = %@ && endTime = %@", aEvent.eventType, @""];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
     NSError *err = nil;
     NSArray *matches = [self.context executeFetchRequest:request error:&err];
     
@@ -101,17 +101,16 @@ HistoryManager* _historyManagerInstance = nil;
 
 - (int)currentStage
 {
-    MyDataStorage *myDataStorage;
-    
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
     
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
     [request setFetchLimit:1];
+    
     NSError *fetchError = nil;
-    NSArray *fetchMatches = [[myDataStorage managedObjectContext] executeFetchRequest:request error:&fetchError];
+    NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
     History *history = [fetchMatches lastObject];
     
-    //waiting For json
+    //NSDictionary *info = [[NSDictionary alloc] init:[history info]];
     
     return 0;
 }
