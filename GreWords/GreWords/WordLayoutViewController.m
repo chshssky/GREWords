@@ -103,6 +103,8 @@ float sumHeight = 30.0;
             [self showMeanings:theDetail[i] numberOfThisMeaning:i whetherOnlyOneMeaning:theDetail.count==0?YES:NO startHeight:sumHeight];
         }
     }
+    self.view.frame = CGRectMake(0, 0, 320, sumHeight);
+    sumHeight = 30.0;
 }
 
 - (void)showMeanings:(NSDictionary *)wordMeaningDictionary
@@ -128,25 +130,55 @@ float sumHeight = 30.0;
         [label sizeToFit]; 
         [self.view addSubview:label];
         //////////////////
-        label = [[UILabel alloc] initWithFrame:CGRectMake(85, h, 300, 25)];
+        label = [[UILabel alloc] initWithFrame:CGRectMake(85, h, 215, 25)];
         label.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
         NSRange range = [theUsage rangeOfString:@"："];
-        label.text = [theUsage substringToIndex:range.location];
-        label.lineBreakMode = NSLineBreakByWordWrapping;
-        label.numberOfLines = 0;
-        [label sizeToFit]; 
-        [self.view addSubview:label];
-        sumHeight = label.frame.origin.y + label.frame.size.height;
-        ////////////////////
-        label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
-        label.font = [UIFont fontWithName:@"Helvetica" size:15];
-        label.text = [theUsage substringFromIndex:range.location+1];
-        label.lineBreakMode = NSLineBreakByWordWrapping;
-        label.numberOfLines = 0;
-        [label sizeToFit]; 
-        [self.view addSubview:label];
-        sumHeight = label.frame.origin.y + label.frame.size.height + 8.0;
-        ///////////////////
+        if(range.location != NSNotFound)
+        {
+            label.text = [theUsage substringToIndex:range.location];
+            label.lineBreakMode = NSLineBreakByWordWrapping;
+            label.numberOfLines = 0;
+            [label sizeToFit];
+            [self.view addSubview:label];
+            sumHeight = label.frame.origin.y + label.frame.size.height;
+            ////////////////////
+            label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
+            label.font = [UIFont fontWithName:@"Helvetica" size:15];
+            label.text = [theUsage substringFromIndex:range.location+1];
+            label.lineBreakMode = NSLineBreakByWordWrapping;
+            label.numberOfLines = 0;
+            [label sizeToFit];
+            [self.view addSubview:label];
+            sumHeight = label.frame.origin.y + label.frame.size.height + 8.0;
+            ///////////////////
+
+        }
+        else
+        {
+            int offset = 0;
+            for(int i=0; i< [theUsage length];i++){
+                int a = [theUsage characterAtIndex:i];
+                if( a > 0x4e00 && a < 0x9fff)
+                    offset = i;
+            }
+            label.text = [theUsage substringToIndex:offset];
+            label.lineBreakMode = NSLineBreakByWordWrapping;
+            label.numberOfLines = 0;
+            [label sizeToFit];
+            [self.view addSubview:label];
+            sumHeight = label.frame.origin.y + label.frame.size.height;
+            ////////////////////
+            label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
+            label.font = [UIFont fontWithName:@"Helvetica" size:15];
+            label.text = [theUsage substringFromIndex:offset+1];
+            label.lineBreakMode = NSLineBreakByWordWrapping;
+            label.numberOfLines = 0;
+            [label sizeToFit];
+            [self.view addSubview:label];
+            sumHeight = label.frame.origin.y + label.frame.size.height + 8.0;
+            ///////////////////
+            
+        }
     }
     NSString *theExample = [wordMeaningDictionary objectForKey:@"example"];
     if (theExample == nil) {
@@ -214,8 +246,6 @@ float sumHeight = 30.0;
         [self.view addSubview:label];
         sumHeight = label.frame.origin.y + label.frame.size.height + 30.0;
     }
-    
-
 }
 
 @end
