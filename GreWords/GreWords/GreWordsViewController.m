@@ -11,6 +11,9 @@
 #import "WordHelper.h"
 #import "SmartWordListViewController.h"
 #import "AwesomeMenu.h"
+#import "HistoryStatisticsViewController.h"
+#import "SettingsViewController.h"
+#import "ExamViewController.h"
 
 @interface GreWordsViewController ()
 
@@ -115,7 +118,15 @@
     NSLog(@"Select the index : %d",idx);
     if (idx == 0) {
         SmartWordListViewController *vc = [[SmartWordListViewController alloc] init];
-
+        [self.view addSubview:vc.view];
+    } else if (idx == 1) {
+        ExamViewController *vc = [[ExamViewController alloc] init];
+        [self.view addSubview:vc.view];
+    } else if (idx == 2) {
+        HistoryStatisticsViewController *vc = [[HistoryStatisticsViewController alloc] init];
+        [self.view addSubview:vc.view];
+    } else if (idx == 3) {
+        SettingsViewController *vc = [[SettingsViewController alloc] init];
         [self.view addSubview:vc.view];
     }
 }

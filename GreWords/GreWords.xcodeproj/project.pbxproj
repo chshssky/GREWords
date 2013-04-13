@@ -44,6 +44,12 @@
 		3FA484C117195741003E88A6 /* icon-star.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FA484B117195741003E88A6 /* icon-star.png */; };
 		3FA484C217195741003E88A6 /* icon-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FA484B217195741003E88A6 /* icon-star@2x.png */; };
 		3FA484C41719590D003E88A6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA484C31719590D003E88A6 /* QuartzCore.framework */; };
+		3FA484CB17197D2A003E88A6 /* HistoryStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA484C917197D2A003E88A6 /* HistoryStatisticsViewController.m */; };
+		3FA484CC17197D2A003E88A6 /* HistoryStatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA484CA17197D2A003E88A6 /* HistoryStatisticsViewController.xib */; };
+		3FA484D017197D4D003E88A6 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA484CE17197D4D003E88A6 /* SettingsViewController.m */; };
+		3FA484D117197D4D003E88A6 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA484CF17197D4D003E88A6 /* SettingsViewController.xib */; };
+		3FA484D617197E20003E88A6 /* ExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA484D417197E20003E88A6 /* ExamViewController.m */; };
+		3FA484D717197E20003E88A6 /* ExamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA484D517197E20003E88A6 /* ExamViewController.xib */; };
 		7315DF5317147B1B00CF1556 /* TaskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7315DF5217147B1B00CF1556 /* TaskGenerator.m */; };
 		73D209AC1714367F00C718A6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D209AB1714367F00C718A6 /* CoreText.framework */; };
 		E4134CDB1714225D00553AD2 /* WordHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E4134CDA1714225D00553AD2 /* WordHelper.m */; };
@@ -126,6 +132,15 @@
 		3FA484B117195741003E88A6 /* icon-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-star.png"; sourceTree = "<group>"; };
 		3FA484B217195741003E88A6 /* icon-star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-star@2x.png"; sourceTree = "<group>"; };
 		3FA484C31719590D003E88A6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3FA484C817197D2A003E88A6 /* HistoryStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryStatisticsViewController.h; sourceTree = "<group>"; };
+		3FA484C917197D2A003E88A6 /* HistoryStatisticsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryStatisticsViewController.m; sourceTree = "<group>"; };
+		3FA484CA17197D2A003E88A6 /* HistoryStatisticsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryStatisticsViewController.xib; sourceTree = "<group>"; };
+		3FA484CD17197D4D003E88A6 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		3FA484CE17197D4D003E88A6 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		3FA484CF17197D4D003E88A6 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		3FA484D317197E20003E88A6 /* ExamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamViewController.h; sourceTree = "<group>"; };
+		3FA484D417197E20003E88A6 /* ExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamViewController.m; sourceTree = "<group>"; };
+		3FA484D517197E20003E88A6 /* ExamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamViewController.xib; sourceTree = "<group>"; };
 		7315DF5117147B1B00CF1556 /* TaskGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskGenerator.h; path = ../TaskGenerator.h; sourceTree = "<group>"; };
 		7315DF5217147B1B00CF1556 /* TaskGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskGenerator.m; path = ../TaskGenerator.m; sourceTree = "<group>"; };
 		73D209AB1714367F00C718A6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -223,10 +238,6 @@
 				3FA4847C17142536003E88A6 /* Resource */,
 				3FA4847017141F53003E88A6 /* LogicalLayer */,
 				3FA4847D17142731003E88A6 /* PresetationLayer */,
-				E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */,
-				3FA4848F17142BF9003E88A6 /* MainStoryboard.storyboard */,
-				3FA4848817142BC0003E88A6 /* GreWordsAppDelegate.h */,
-				3FA4848917142BC0003E88A6 /* GreWordsAppDelegate.m */,
 				3FA4848417142B96003E88A6 /* Supporting Files */,
 			);
 			path = GreWords;
@@ -293,13 +304,14 @@
 		3FA4847D17142731003E88A6 /* PresetationLayer */ = {
 			isa = PBXGroup;
 			children = (
-				E449258B1716D9FD00F0523A /* SmartWordList */,
-				3FA4849F17195740003E88A6 /* AwesomeMenu */,
 				E414B69B1714303F00C29D3C /* GreWordsViewController.h */,
 				E414B6971714303F00C29D3C /* GreWordsViewController.m */,
-				E414B6981714303F00C29D3C /* WordLayoutViewController.xib */,
-				E414B6991714303F00C29D3C /* WordLayoutViewController.h */,
-				E414B69A1714303F00C29D3C /* WordLayoutViewController.m */,
+				3FA484D217197E05003E88A6 /* Exam */,
+				3FA484C517197A9F003E88A6 /* WordDetail */,
+				3FA484C617197AC1003E88A6 /* Settings */,
+				3FA484C717197AD5003E88A6 /* HistoryStatistics */,
+				E449258B1716D9FD00F0523A /* SmartWordList */,
+				3FA4849F17195740003E88A6 /* AwesomeMenu */,
 			);
 			name = PresetationLayer;
 			sourceTree = "<group>";
@@ -307,6 +319,10 @@
 		3FA4848417142B96003E88A6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */,
+				3FA4848F17142BF9003E88A6 /* MainStoryboard.storyboard */,
+				3FA4848817142BC0003E88A6 /* GreWordsAppDelegate.h */,
+				3FA4848917142BC0003E88A6 /* GreWordsAppDelegate.m */,
 				3FA4848D17142BF9003E88A6 /* InfoPlist.strings */,
 				3FA4848B17142BD4003E88A6 /* main.m */,
 				3FA4848517142BB3003E88A6 /* GreWords-Info.plist */,
@@ -348,6 +364,46 @@
 				3FA484B217195741003E88A6 /* icon-star@2x.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		3FA484C517197A9F003E88A6 /* WordDetail */ = {
+			isa = PBXGroup;
+			children = (
+				E414B6981714303F00C29D3C /* WordLayoutViewController.xib */,
+				E414B6991714303F00C29D3C /* WordLayoutViewController.h */,
+				E414B69A1714303F00C29D3C /* WordLayoutViewController.m */,
+			);
+			name = WordDetail;
+			sourceTree = "<group>";
+		};
+		3FA484C617197AC1003E88A6 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				3FA484CD17197D4D003E88A6 /* SettingsViewController.h */,
+				3FA484CE17197D4D003E88A6 /* SettingsViewController.m */,
+				3FA484CF17197D4D003E88A6 /* SettingsViewController.xib */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		3FA484C717197AD5003E88A6 /* HistoryStatistics */ = {
+			isa = PBXGroup;
+			children = (
+				3FA484C817197D2A003E88A6 /* HistoryStatisticsViewController.h */,
+				3FA484C917197D2A003E88A6 /* HistoryStatisticsViewController.m */,
+				3FA484CA17197D2A003E88A6 /* HistoryStatisticsViewController.xib */,
+			);
+			name = HistoryStatistics;
+			sourceTree = "<group>";
+		};
+		3FA484D217197E05003E88A6 /* Exam */ = {
+			isa = PBXGroup;
+			children = (
+				3FA484D317197E20003E88A6 /* ExamViewController.h */,
+				3FA484D417197E20003E88A6 /* ExamViewController.m */,
+				3FA484D517197E20003E88A6 /* ExamViewController.xib */,
+			);
+			name = Exam;
 			sourceTree = "<group>";
 		};
 		E449258B1716D9FD00F0523A /* SmartWordList */ = {
@@ -483,6 +539,9 @@
 				3FA484C017195741003E88A6 /* icon-plus@2x.png in Resources */,
 				3FA484C117195741003E88A6 /* icon-star.png in Resources */,
 				3FA484C217195741003E88A6 /* icon-star@2x.png in Resources */,
+				3FA484CC17197D2A003E88A6 /* HistoryStatisticsViewController.xib in Resources */,
+				3FA484D117197D4D003E88A6 /* SettingsViewController.xib in Resources */,
+				3FA484D717197E20003E88A6 /* ExamViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +578,9 @@
 				E44925B51716F5F500F0523A /* SmartWordListHeaderViewController.m in Sources */,
 				3FA484B317195741003E88A6 /* AwesomeMenu.m in Sources */,
 				3FA484B417195741003E88A6 /* AwesomeMenuItem.m in Sources */,
+				3FA484CB17197D2A003E88A6 /* HistoryStatisticsViewController.m in Sources */,
+				3FA484D017197D4D003E88A6 /* SettingsViewController.m in Sources */,
+				3FA484D617197E20003E88A6 /* ExamViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
