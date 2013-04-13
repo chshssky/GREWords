@@ -121,14 +121,17 @@
         [self.view addSubview:vc.view];
     } else if (idx == 1) {
         ExamViewController *vc = [[ExamViewController alloc] init];
-        [self.view addSubview:vc.view];
+        vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        [self presentModalViewController:vc animated:YES];
+        //[self.view addSubview:vc.view];
     } else if (idx == 2) {
         HistoryStatisticsViewController *vc = [[HistoryStatisticsViewController alloc] init];
-        [self.view addSubview:vc.view];
+        vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self presentModalViewController:vc animated:YES];
     } else if (idx == 3) {
         SettingsViewController *vc = [[SettingsViewController alloc] init];
-        [self.view addSubview:vc.view];
-    }
+        vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentModalViewController:vc animated:YES];    }
 }
 - (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
     NSLog(@"Menu was closed!");
