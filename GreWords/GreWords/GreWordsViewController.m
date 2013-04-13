@@ -58,7 +58,7 @@
                                                            highlightedImage:storyMenuItemImagePressed
                                                                ContentImage:starImage
                                                     highlightedContentImage:nil];
-    AwesomeMenuItem *starMenuItem5 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
+    /*AwesomeMenuItem *starMenuItem5 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
                                                            highlightedImage:storyMenuItemImagePressed
                                                                ContentImage:starImage
                                                     highlightedContentImage:nil];
@@ -77,23 +77,24 @@
     AwesomeMenuItem *starMenuItem9 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
                                                            highlightedImage:storyMenuItemImagePressed
                                                                ContentImage:starImage
-                                                    highlightedContentImage:nil];
+                                                    highlightedContentImage:nil];*/
     
-    NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, starMenuItem5, starMenuItem6, starMenuItem7,starMenuItem8,starMenuItem9, nil];
+    NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, nil];
+    NSLog(@"count: %d", menus.count);
     
     AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.view.bounds menus:menus];
     
 	// customize menu
-	/*
-     menu.rotateAngle = M_PI/3;
-     menu.menuWholeAngle = M_PI;
-     menu.timeOffset = 0.2f;
-     menu.farRadius = 180.0f;
-     menu.endRadius = 100.0f;
-     menu.nearRadius = 50.0f;
-     */
     
-    //menu.startPoint = CGPointMake(120.0, 240.0);
+    menu.rotateAngle = 0.0;
+    menu.menuWholeAngle = M_PI / 2 + M_PI / 6;
+    menu.timeOffset = 0.015f;
+    menu.farRadius = 95.0f;
+    menu.endRadius = 80.0f;
+    menu.nearRadius = 70.0f;
+    NSLog(@"size: %f, %f", self.view.bounds.size.height, self.view.bounds.size.width);
+    
+    menu.startPoint = CGPointMake(40.0, self.view.bounds.size.height - 40.0);
 	
     menu.delegate = self;
     [self.view addSubview:menu];
@@ -107,7 +108,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-//#pragma <#arguments#>
+#pragma mark - AwesomeMenu Response Delegate
 
 - (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
