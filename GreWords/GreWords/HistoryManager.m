@@ -118,6 +118,7 @@ HistoryManager* _historyManagerInstance = nil;
 - (float)currentStageProgress
 {
     
+    return 0;
 }
 
 - (BOOL)isFinishedForDate:(NSDate *)date
