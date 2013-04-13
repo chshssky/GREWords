@@ -118,15 +118,16 @@
     NSLog(@"Select the index : %d",idx);
     if (idx == 0) {
         SmartWordListViewController *vc = [[SmartWordListViewController alloc] init];
-        [self.view addSubview:vc.view];
+        vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentModalViewController:vc animated:YES];
     } else if (idx == 1) {
         ExamViewController *vc = [[ExamViewController alloc] init];
-        vc.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         [self presentModalViewController:vc animated:YES];
         //[self.view addSubview:vc.view];
     } else if (idx == 2) {
         HistoryStatisticsViewController *vc = [[HistoryStatisticsViewController alloc] init];
-        vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         [self presentModalViewController:vc animated:YES];
     } else if (idx == 3) {
         SettingsViewController *vc = [[SettingsViewController alloc] init];
