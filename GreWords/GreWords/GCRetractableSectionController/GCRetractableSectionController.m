@@ -7,6 +7,7 @@
 //
 
 #import "GCRetractableSectionController.h"
+#import "WordSpeaker.h"
 
 @interface GCRetractableSectionController ()
 
