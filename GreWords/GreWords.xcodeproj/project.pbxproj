@@ -79,6 +79,8 @@
 		E44925B61716F5F500F0523A /* SmartWordListHeaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E44925B41716F5F000F0523A /* SmartWordListHeaderViewController.xib */; };
 		E46CF2CD171184E000634ED7 /* words.plist in Resources */ = {isa = PBXBuildFile; fileRef = E46CF2CC171184E000634ED7 /* words.plist */; };
 		E46DCFB017144E4F0038C149 /* MyDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = E46DCFAF17144E4F0038C149 /* MyDataStorage.m */; };
+		E4983ED0171A8CD90055A0E7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */; };
+		E4983ED2171A8CF60055A0E7 /* IAThreadSafeCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4983ED1171A8CF60055A0E7 /* IAThreadSafeCoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -183,6 +185,8 @@
 		E46CF2CC171184E000634ED7 /* words.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = words.plist; sourceTree = "<group>"; };
 		E46DCFAE17144E4F0038C149 /* MyDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDataStorage.h; sourceTree = "<group>"; };
 		E46DCFAF17144E4F0038C149 /* MyDataStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDataStorage.m; sourceTree = "<group>"; };
+		E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E4983ED1171A8CF60055A0E7 /* IAThreadSafeCoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IAThreadSafeCoreData.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,12 +194,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4983ED0171A8CD90055A0E7 /* AVFoundation.framework in Frameworks */,
 				3FA484C41719590D003E88A6 /* QuartzCore.framework in Frameworks */,
 				73D209AC1714367F00C718A6 /* CoreText.framework in Frameworks */,
 				3FA4846C171411D8003E88A6 /* CoreData.framework in Frameworks */,
 				3F70EC8B1701CADB00327770 /* UIKit.framework in Frameworks */,
 				3F70EC8D1701CADB00327770 /* Foundation.framework in Frameworks */,
 				3F70EC8F1701CADB00327770 /* CoreGraphics.framework in Frameworks */,
+				E4983ED2171A8CF60055A0E7 /* IAThreadSafeCoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +228,8 @@
 		3F70EC891701CADB00327770 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E4983ED1171A8CF60055A0E7 /* IAThreadSafeCoreData.framework */,
+				E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */,
 				3FA484C31719590D003E88A6 /* QuartzCore.framework */,
 				73D209AB1714367F00C718A6 /* CoreText.framework */,
 				3FA4846B171411D8003E88A6 /* CoreData.framework */,
@@ -665,6 +673,10 @@
 		3F70ECAB1701CADB00327770 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GreWords/GreWords-Prefix.pch";
 				INFOPLIST_FILE = "GreWords/GreWords-Info.plist";
@@ -677,6 +689,10 @@
 		3F70ECAC1701CADB00327770 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GreWords/GreWords-Prefix.pch";
 				INFOPLIST_FILE = "GreWords/GreWords-Info.plist";
