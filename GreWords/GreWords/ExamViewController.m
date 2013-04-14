@@ -35,4 +35,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload {
+    [self setExitButton:nil];
+    [super viewDidUnload];
+}
+- (IBAction)exitPressed:(id)sender {
+    //[self dealloc];
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 @end

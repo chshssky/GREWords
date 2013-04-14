@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HistoryStatisticsViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *exitButton;
 
 @end

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ExamViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *exitButton;
 
 @end
