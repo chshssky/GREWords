@@ -5,6 +5,7 @@
 //  Created by Song on 13-4-9.
 //  Copyright (c) 2013年 Song. All rights reserved.
 //
+#import <IAThreadSafeCoreData/IAThreadSafeContext.h>
 
 @interface MyDataStorage : NSObject
 {

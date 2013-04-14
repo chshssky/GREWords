@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import <IAThreadSafeCoreData/IAThreadSafeManagedObject.h>
 
 @class Note;
 
-@interface Word : NSManagedObject
+@interface Word : IAThreadSafeManagedObject
 
 @property (nonatomic, retain) NSString * lastChecks;
 @property (nonatomic, retain) NSDate * lastMistakeTime;

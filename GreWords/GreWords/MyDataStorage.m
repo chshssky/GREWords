@@ -78,7 +78,7 @@ MyDataStorage* _datainstance;
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil) {
-        __managedObjectContext = [[NSManagedObjectContext alloc] init];
+        __managedObjectContext = [[IAThreadSafeContext alloc] init];
         [__managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
     return __managedObjectContext;
