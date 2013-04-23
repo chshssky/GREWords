@@ -3148,6 +3148,14 @@
 		E49856C8171A8E780055A0E7 /* zealot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4984ACE171A8E750055A0E7 /* zealot.mp3 */; };
 		E49856C9171A8E780055A0E7 /* zenith.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4984ACF171A8E750055A0E7 /* zenith.mp3 */; };
 		E49856CA171A8E780055A0E7 /* zesty.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E4984AD0171A8E750055A0E7 /* zesty.mp3 */; };
+		E4E82F321726D10800460BEC /* PieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E82F2F1726D10800460BEC /* PieChart.m */; };
+		E4E82F331726D10800460BEC /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4E82F311726D10800460BEC /* DashboardViewController.m */; };
+		E4E82F3A1726D12C00460BEC /* Main_menu_circle_out@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E82F341726D12C00460BEC /* Main_menu_circle_out@2x.png */; };
+		E4E82F3B1726D12C00460BEC /* Main_menu_circleLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E82F351726D12C00460BEC /* Main_menu_circleLight@2x.png */; };
+		E4E82F3C1726D12C00460BEC /* Main_menu_circle_center@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E82F361726D12C00460BEC /* Main_menu_circle_center@2x.png */; };
+		E4E82F3D1726D12C00460BEC /* Main_menu_circle_center.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E82F371726D12C00460BEC /* Main_menu_circle_center.png */; };
+		E4E82F3E1726D12C00460BEC /* Main_menu_circle_out.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E82F381726D12C00460BEC /* Main_menu_circle_out.png */; };
+		E4E82F3F1726D12C00460BEC /* Main_menu_circleLight.png in Resources */ = {isa = PBXBuildFile; fileRef = E4E82F391726D12C00460BEC /* Main_menu_circleLight.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -6322,6 +6330,16 @@
 		E4984ACE171A8E750055A0E7 /* zealot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = zealot.mp3; sourceTree = "<group>"; };
 		E4984ACF171A8E750055A0E7 /* zenith.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = zenith.mp3; sourceTree = "<group>"; };
 		E4984AD0171A8E750055A0E7 /* zesty.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = zesty.mp3; sourceTree = "<group>"; };
+		E4E82F2E1726D10800460BEC /* PieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieChart.h; sourceTree = "<group>"; };
+		E4E82F2F1726D10800460BEC /* PieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieChart.m; sourceTree = "<group>"; };
+		E4E82F301726D10800460BEC /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
+		E4E82F311726D10800460BEC /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
+		E4E82F341726D12C00460BEC /* Main_menu_circle_out@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_menu_circle_out@2x.png"; sourceTree = "<group>"; };
+		E4E82F351726D12C00460BEC /* Main_menu_circleLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_menu_circleLight@2x.png"; sourceTree = "<group>"; };
+		E4E82F361726D12C00460BEC /* Main_menu_circle_center@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main_menu_circle_center@2x.png"; sourceTree = "<group>"; };
+		E4E82F371726D12C00460BEC /* Main_menu_circle_center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Main_menu_circle_center.png; sourceTree = "<group>"; };
+		E4E82F381726D12C00460BEC /* Main_menu_circle_out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Main_menu_circle_out.png; sourceTree = "<group>"; };
+		E4E82F391726D12C00460BEC /* Main_menu_circleLight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Main_menu_circleLight.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -6450,6 +6468,7 @@
 		3FA4847D17142731003E88A6 /* PresetationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				E4E82F401726D13200460BEC /* DashBoardView */,
 				E414B69B1714303F00C29D3C /* GreWordsViewController.h */,
 				E414B6971714303F00C29D3C /* GreWordsViewController.m */,
 				3FA484D217197E05003E88A6 /* Exam */,
@@ -6494,6 +6513,12 @@
 		3FA484A417195740003E88A6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				E4E82F341726D12C00460BEC /* Main_menu_circle_out@2x.png */,
+				E4E82F351726D12C00460BEC /* Main_menu_circleLight@2x.png */,
+				E4E82F361726D12C00460BEC /* Main_menu_circle_center@2x.png */,
+				E4E82F371726D12C00460BEC /* Main_menu_circle_center.png */,
+				E4E82F381726D12C00460BEC /* Main_menu_circle_out.png */,
+				E4E82F391726D12C00460BEC /* Main_menu_circleLight.png */,
 				3FA484A517195741003E88A6 /* bg-addbutton-highlighted.png */,
 				3FA484A617195741003E88A6 /* bg-addbutton-highlighted@2x.png */,
 				3FA484A717195741003E88A6 /* bg-addbutton.png */,
@@ -9672,6 +9697,17 @@
 			path = voices;
 			sourceTree = "<group>";
 		};
+		E4E82F401726D13200460BEC /* DashBoardView */ = {
+			isa = PBXGroup;
+			children = (
+				E4E82F2E1726D10800460BEC /* PieChart.h */,
+				E4E82F2F1726D10800460BEC /* PieChart.m */,
+				E4E82F301726D10800460BEC /* DashboardViewController.h */,
+				E4E82F311726D10800460BEC /* DashboardViewController.m */,
+			);
+			name = DashBoardView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -12827,6 +12863,12 @@
 				E49856C8171A8E780055A0E7 /* zealot.mp3 in Resources */,
 				E49856C9171A8E780055A0E7 /* zenith.mp3 in Resources */,
 				E49856CA171A8E780055A0E7 /* zesty.mp3 in Resources */,
+				E4E82F3A1726D12C00460BEC /* Main_menu_circle_out@2x.png in Resources */,
+				E4E82F3B1726D12C00460BEC /* Main_menu_circleLight@2x.png in Resources */,
+				E4E82F3C1726D12C00460BEC /* Main_menu_circle_center@2x.png in Resources */,
+				E4E82F3D1726D12C00460BEC /* Main_menu_circle_center.png in Resources */,
+				E4E82F3E1726D12C00460BEC /* Main_menu_circle_out.png in Resources */,
+				E4E82F3F1726D12C00460BEC /* Main_menu_circleLight.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -12867,6 +12909,8 @@
 				3FA484D017197D4D003E88A6 /* SettingsViewController.m in Sources */,
 				3FA484D617197E20003E88A6 /* ExamViewController.m in Sources */,
 				E4983ED5171A8D880055A0E7 /* WordSpeaker.m in Sources */,
+				E4E82F321726D10800460BEC /* PieChart.m in Sources */,
+				E4E82F331726D10800460BEC /* DashboardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

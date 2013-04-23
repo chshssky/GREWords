@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DashboardViewController.h"
 
 @interface GreWordsViewController : UIViewController
-
+{
+    DashboardViewController *dashboard;
+}
 @end

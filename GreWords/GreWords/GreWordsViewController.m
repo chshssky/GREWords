@@ -27,15 +27,18 @@
     
     [self initAwesomeMenu];
     
+    dashboard = [[DashboardViewController alloc] init];
+    dashboard.nonFinishedNumber = 300;
+    dashboard.sumNumber = 500;
+    
+    [self.view addSubview:dashboard.view];
+    
 //    for (int i=0; i<3073; i++) {
 //        [vc displayWord:[[WordHelper instance] wordWithID:i] withOption:nil];
 //    }
     //[vc displayWord:[[WordHelper instance] wordWithID:3] withOption:nil];
     
 	// Do any additional setup after loading the view, typically from a nib.
-    
-    
-    
 }
 
 - (void)initAwesomeMenu
