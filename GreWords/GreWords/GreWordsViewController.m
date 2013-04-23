@@ -25,7 +25,7 @@
 {
     [super viewDidLoad];
     
-    [self initAwesomeMenu];
+    
     
     dashboard = [[DashboardViewController alloc] init];
     dashboard.nonFinishedNumber = 300;
@@ -39,6 +39,7 @@
     //[vc displayWord:[[WordHelper instance] wordWithID:3] withOption:nil];
     
 	// Do any additional setup after loading the view, typically from a nib.
+    [self initAwesomeMenu];
 }
 
 - (void)initAwesomeMenu
