@@ -44,26 +44,22 @@
 
 - (void)initAwesomeMenu
 {
-    UIImage *storyMenuItemImage = [UIImage imageNamed:@"bg-menuitem.png"];
-    UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"bg-menuitem-highlighted.png"];
     
-    UIImage *starImage = [UIImage imageNamed:@"icon-star.png"];
-    
-    AwesomeMenuItem *starMenuItem1 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                           highlightedImage:storyMenuItemImagePressed
-                                                               ContentImage:starImage
+    AwesomeMenuItem *starMenuItem1 = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Main menu_xSettingButton.png"]
+                                                           highlightedImage:[UIImage imageNamed:@"Main menu_xSettingButton_clicked.png"]
+                                                               ContentImage:nil
                                                     highlightedContentImage:nil];
-    AwesomeMenuItem *starMenuItem2 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                           highlightedImage:storyMenuItemImagePressed
-                                                               ContentImage:starImage
+    AwesomeMenuItem *starMenuItem2 = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Main menu_xTestButton.png"]
+                                                           highlightedImage:[UIImage imageNamed:@"Main menu_xTestButton_clicked.png"]
+                                                               ContentImage:nil
                                                     highlightedContentImage:nil];
-    AwesomeMenuItem *starMenuItem3 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                           highlightedImage:storyMenuItemImagePressed
-                                                               ContentImage:starImage
+    AwesomeMenuItem *starMenuItem3 = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Main menu_xHistoryButton.png"]
+                                                           highlightedImage:[UIImage imageNamed:@"Main menu_xHistoryButton_clicked.png"]
+                                                               ContentImage:nil
                                                     highlightedContentImage:nil];
-    AwesomeMenuItem *starMenuItem4 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                           highlightedImage:storyMenuItemImagePressed
-                                                               ContentImage:starImage
+    AwesomeMenuItem *starMenuItem4 = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Main menu_xListButton.png"]
+                                                           highlightedImage:[UIImage imageNamed:@"Main menu_xListButton_clicked.png"]
+                                                               ContentImage:nil
                                                     highlightedContentImage:nil];
     /*AwesomeMenuItem *starMenuItem5 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
                                                            highlightedImage:storyMenuItemImagePressed
@@ -90,9 +86,14 @@
     NSLog(@"count: %d", menus.count);
     
     AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.view.bounds menus:menus];
+    UIImage *storyMenuItemImage = [UIImage imageNamed:@"Main menu_xButton.png"];
+    UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"Main menu_xButton_clicked.png"];
     
 	// customize menu
-    
+    menu.image = storyMenuItemImage;
+    menu.highlightedImage = storyMenuItemImagePressed;
+    menu.contentImage = nil;
+    menu.highlightedContentImage = nil;
     menu.rotateAngle = 0.0;
     menu.menuWholeAngle = M_PI / 2 + M_PI / 6;
     menu.timeOffset = 0.015f;
