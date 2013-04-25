@@ -31,6 +31,7 @@
         {
             SmartWordListSectionController* sectionController = [[SmartWordListSectionController alloc] initWithViewController:self];
             sectionController.wordID = ((WordEntity*)_array[i]).wordID;
+            sectionController.sectionID = i;
             [retractableControllers addObject:sectionController];
         }
         
@@ -79,7 +80,23 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     GCRetractableSectionController* sectionController = [retractableControllers objectAtIndex:indexPath.section];
-    return [sectionController didSelectCellAtRow:indexPath.row];
+    
+    [sectionController didSelectCellNoScrollAtRow:indexPath.row];
+    
+    [self.tableView beginUpdates];
+    //[sectionController closeOthers];
+    for(int i = 0; i < retractableControllers.count; i++)
+    {
+        if(i == indexPath.section)
+            continue;
+        GCRetractableSectionController* aController = [retractableControllers objectAtIndex:i];
+        [aController close];
+    }
+    [self.tableView endUpdates];
+    
+    [sectionController scroll];
+    
+    
 }
 
 
