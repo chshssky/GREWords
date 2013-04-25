@@ -35,7 +35,7 @@
         }
         
 		self.viewController = givenViewController;
-		self.open = NO;
+		open = NO;
         self.useOnlyWhiteImages = NO;
         self.rowAnimation = UITableViewRowAnimationTop;
 	}
@@ -161,16 +161,24 @@
 	else [self didSelectContentCellAtRow:row - 1];
 }
 
-- (void)close
-{
-    if(!self.open)
-        return;
-    [self didSelectTitleCell];
+- (void) didSelectCellNoScrollAtRow:(NSUInteger)row {
+	if (row == 0) [self didSelectTitleCellNoScroll];
+	else [self didSelectContentCellAtRow:row - 1];
 }
 
-- (void) didSelectTitleCell {
-	self.open = !self.open;
-	if (self.contentNumberOfRow != 0) [self setAccessoryViewOnCell:[self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]]];
+- (void)close
+{
+    if([self.tableView numberOfRowsInSection:self.sectionID] == 1)
+        return;
+    NSIndexPath* indexPathToDelete = [NSIndexPath indexPathForRow:1 inSection:self.sectionID];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPathToDelete] withRowAnimation:UITableViewRowAnimationNone ];
+    self.open = NO;
+}
+
+- (void)didSelectTitleCellNoScroll
+{
+    open = !open;
+    //	if (self.contentNumberOfRow != 0) [self setAccessoryViewOnCell:[self.tableView cellForRowAtIndexPath:[self.tableView indexPathForSelectedRow]]];
 	
 	NSIndexPath* indexPath = [self.tableView indexPathForSelectedRow];
 	NSUInteger section = indexPath.section;
@@ -188,6 +196,17 @@
 	else [self.tableView deleteRowsAtIndexPaths:rowToInsert withRowAnimation:self.rowAnimation];
 	
 	[self.tableView endUpdates];
+
+}
+
+
+- (void) didSelectTitleCell {
+    [self didSelectTitleCellNoScroll];
+    [self scroll];
+}
+
+- (void) scroll {
+    NSIndexPath* indexPath = [self.tableView indexPathForSelectedRow];
 	
 	if (self.open) [self.tableView scrollToNearestSelectedRowAtScrollPosition:UITableViewScrollPositionTop animated:YES];
 	[self.tableView deselectRowAtIndexPath:indexPath animated:YES];

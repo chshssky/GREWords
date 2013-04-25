@@ -19,6 +19,8 @@
 - (CGFloat) heightForRow:(NSUInteger)row;
 - (void)close;
 
+@property (nonatomic, assign) NSUInteger sectionID;
+
 @property (nonatomic, readonly) NSUInteger numberOfRow;
 
 //Customize appearance
@@ -39,8 +41,11 @@
 
 //Respond to cell selection
 - (void) didSelectCellAtRow:(NSUInteger) row;
+- (void) didSelectCellNoScrollAtRow:(NSUInteger)row;
 - (void) didSelectTitleCell;
 - (void) didSelectContentCellAtRow:(NSUInteger) row;
+
+- (void)scroll;
 
 //Reserved for subclasses
 @property (nonatomic, readonly) UIViewController *viewController;
