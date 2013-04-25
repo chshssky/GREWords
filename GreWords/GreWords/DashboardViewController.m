@@ -113,7 +113,7 @@
     shadowImageView.center = self.centerPoint;
     shadowImageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     shadowImageView.gestureRecognizers = self.FimageView.gestureRecognizers;
-    shadowImageView.alpha = 0.5;
+    //shadowImageView.alpha = 0.5;
     [self.view addSubview:shadowImageView];
     
     centerCircleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_center.png"]];
