@@ -93,4 +93,18 @@
     [self setWrongButton:nil];
     [super viewDidUnload];
 }
+
+- (IBAction)rightButtonPushed:(id)sender {
+    
+}
+
+- (IBAction)wrongButtonPushed:(id)sender {
+    
+}
+
+- (IBAction)pronounceButtonPushed:(id)sender {
+    
+}
+
+
 @end
