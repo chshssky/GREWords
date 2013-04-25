@@ -105,7 +105,7 @@ float sumHeight = 5.0;//10.0;
         }
     }
     self.view.frame = CGRectMake(0, 0, 320, sumHeight);
-    sumHeight = 30.0;
+    sumHeight = 5.0;
 }
 
 - (void)showMeanings:(NSDictionary *)wordMeaningDictionary
@@ -255,7 +255,7 @@ float sumHeight = 5.0;//10.0;
         label.numberOfLines = 0;
         [label sizeToFit];
         [self.view addSubview:label];
-        sumHeight = label.frame.origin.y + label.frame.size.height + 30.0;
+        sumHeight = label.frame.origin.y + label.frame.size.height + 5.0;
     }
 }
 
