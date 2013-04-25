@@ -17,6 +17,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *PronounceButton;
 @property (weak, nonatomic) IBOutlet UIButton *RightButton;
 @property (weak, nonatomic) IBOutlet UIButton *WrongButton;
+@property (weak, nonatomic) IBOutlet UIImageView *RightUpImage;
+@property (weak, nonatomic) IBOutlet UIImageView *RightDownImage;
 
 @end
 
@@ -91,6 +93,8 @@
     [self setPronounceButton:nil];
     [self setRightButton:nil];
     [self setWrongButton:nil];
+    [self setRightUpImage:nil];
+    [self setRightDownImage:nil];
     [super viewDidUnload];
 }
 
