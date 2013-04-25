@@ -16,7 +16,8 @@
     UIImageView *shadowImageView;
     UIImageView *centerCircleView;
     UIImageView *circleLightView;
-    float tempPercent;
+    UIImageView *circlePointView;
+    
 }
 
 @property(nonatomic) int nonFinishedNumber;

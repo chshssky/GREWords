@@ -28,11 +28,6 @@
     <resources>
         <image name="Main menu_backgournd_blank.png" width="320" height="568"/>
     </resources>
-    <classes>
-        <class className="GreWordsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GreWordsViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

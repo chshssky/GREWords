@@ -52,7 +52,6 @@
     //self.nonFinishedNumber = 270;
     //self.sumNumber = 300;
     _percent = (float)_nonFinishedNumber/_sumNumber*(0.999-0.001)+0.001;
-    tempPercent = _percent;
     
     self.slices = [NSMutableArray arrayWithCapacity:10];
     
@@ -108,30 +107,37 @@
     self.FimageView.transform = CGAffineTransformMakeRotation(_percent*2*M_PI);
     
     
-    circleLightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main_menu_circleLight.png"]];
-    circleLightView.center = self.centerPoint;
-    circleLightView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    circleLightView.gestureRecognizers = self.FimageView.gestureRecognizers;
-    circleLightView.alpha = 0;
     
-    [self.view addSubview:circleLightView];
     
-    shadowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main_menu_circle_out.png"]];
+    shadowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_out.png"]];
     shadowImageView.center = self.centerPoint;
     shadowImageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     shadowImageView.gestureRecognizers = self.FimageView.gestureRecognizers;
-
+    shadowImageView.alpha = 0.5;
     [self.view addSubview:shadowImageView];
     
-    centerCircleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main_menu_circle_center.png"]];
+    centerCircleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_center.png"]];
     centerCircleView.center = self.centerPoint;
     centerCircleView.layer.anchorPoint = CGPointMake(0.551, 0.5);
     centerCircleView.gestureRecognizers = self.FimageView.gestureRecognizers;
     centerCircleView.transform = CGAffineTransformMakeRotation(M_PI/2.0);
     [self.view addSubview:centerCircleView];
     
+    circlePointView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_point.png"]];
+    circlePointView.center = self.centerPoint;
+    circlePointView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    circlePointView.gestureRecognizers = self.FimageView.gestureRecognizers;
+    //circlePointView.alpha = 0.5f;
+    [self.view addSubview:circlePointView];
     
     
+    circleLightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_beard.png"]];
+    circleLightView.center = self.centerPoint;
+    circleLightView.layer.anchorPoint = CGPointMake(0.5, 0.4);
+    circleLightView.gestureRecognizers = self.FimageView.gestureRecognizers;
+    circleLightView.alpha = 0;
+    
+    [self.view addSubview:circleLightView];
 //    UIImage *k = [self maskImage:self.FimageView  withMask:[UIImage imageNamed:@"mask2.png"]];
 //    self.FimageView = [[UIImageView alloc] initWithImage:k];
 //    [self.view addSubview:self.FimageView];
