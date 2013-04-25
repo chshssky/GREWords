@@ -51,7 +51,7 @@
 
 @implementation WordLayoutViewController
 
-float sumHeight = 30.0;
+float sumHeight = 5.0;//10.0;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -68,6 +68,7 @@ float sumHeight = 30.0;
     // Do any additional setup after loading the view from its nib.
     CGRect rect = CGRectMake(100, 200, 550, 50);
     UILabel *label = [[UILabel alloc] initWithFrame:rect];
+    label.backgroundColor = [UIColor clearColor];
     
 }
 
@@ -118,6 +119,7 @@ float sumHeight = 30.0;
     }else{
         //////////////////
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, h, 65, 25)];
+        label.backgroundColor = [UIColor clearColor];
         label.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
         label.textColor = [UIColor orangeColor];
         if (b == YES) {
@@ -131,6 +133,7 @@ float sumHeight = 30.0;
         [self.view addSubview:label];
         //////////////////
         label = [[UILabel alloc] initWithFrame:CGRectMake(85, h, 215, 25)];
+        label.backgroundColor = [UIColor clearColor];
         label.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
         NSRange range = [theUsage rangeOfString:@"："];
         if(range.location != NSNotFound)
@@ -143,6 +146,7 @@ float sumHeight = 30.0;
             sumHeight = label.frame.origin.y + label.frame.size.height;
             ////////////////////
             label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
+            label.backgroundColor = [UIColor clearColor];
             label.font = [UIFont fontWithName:@"Helvetica" size:15];
             label.text = [theUsage substringFromIndex:range.location+1];
             label.lineBreakMode = NSLineBreakByWordWrapping;
@@ -169,6 +173,7 @@ float sumHeight = 30.0;
             sumHeight = label.frame.origin.y + label.frame.size.height;
             ////////////////////
             label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
+            label.backgroundColor = [UIColor clearColor];
             label.font = [UIFont fontWithName:@"Helvetica" size:15];
             label.text = [theUsage substringFromIndex:offset+1];
             label.lineBreakMode = NSLineBreakByWordWrapping;
@@ -186,6 +191,7 @@ float sumHeight = 30.0;
     }else{
         ////////////////////
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(52, sumHeight, 65, 25)];
+        label.backgroundColor = [UIColor clearColor];
         label.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
         label.text = @"例";
         label.lineBreakMode = NSLineBreakByWordWrapping;
@@ -194,6 +200,7 @@ float sumHeight = 30.0;
         [self.view addSubview:label];
         ////////////////////
         label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
+        label.backgroundColor = [UIColor clearColor];
         label.font = [UIFont fontWithName:@"Helvetica" size:15];
         label.text = [theExample substringFromIndex:0];
         label.lineBreakMode = NSLineBreakByWordWrapping;
@@ -209,6 +216,7 @@ float sumHeight = 30.0;
     }else{
         ////////////////////
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(52, sumHeight, 65, 25)];
+        label.backgroundColor = [UIColor clearColor];
         label.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
         label.text = @"近";
         label.lineBreakMode = NSLineBreakByWordWrapping;
@@ -217,6 +225,7 @@ float sumHeight = 30.0;
         [self.view addSubview:label];
         ////////////////////
         label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
+        label.backgroundColor = [UIColor clearColor];
         label.font = [UIFont fontWithName:@"Helvetica" size:15];
         label.text = [theHomoionym substringFromIndex:0];
         label.lineBreakMode = NSLineBreakByWordWrapping;
@@ -230,6 +239,7 @@ float sumHeight = 30.0;
         NSLog(@"找不到这个单词的反义词");
     }else{
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(52, sumHeight, 65, 25)];
+        label.backgroundColor = [UIColor clearColor];
         label.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
         label.text = @"反";
         label.lineBreakMode = NSLineBreakByWordWrapping;
@@ -238,6 +248,7 @@ float sumHeight = 30.0;
         [self.view addSubview:label];
         ////////////////////
         label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
+        label.backgroundColor = [UIColor clearColor];
         label.font = [UIFont fontWithName:@"Helvetica" size:16];
         label.text = [theAntonym substringFromIndex:0];
         label.lineBreakMode = NSLineBreakByWordWrapping;

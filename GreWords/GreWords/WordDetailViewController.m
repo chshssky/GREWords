@@ -7,12 +7,16 @@
 //
 
 #import "WordDetailViewController.h"
+#import "WordLayoutViewController.h"
+#import "WordHelper.h"
 
-@interface WordDetailViewController ()
+@interface WordDetailViewController () <UIScrollViewDelegate>
+
 
 @end
 
 @implementation WordDetailViewController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +31,32 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
+    [vc displayWord:[[WordHelper instance] wordWithID:0] withOption:nil];
+    CGRect frame = vc.view.frame;
+    
+//    if(frame.size.height > ScrollViewHeight)
+//    {
+//        frame.size.height = ScrollViewHeight;
+//        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:frame];
+//        scrollView.contentSize = vc.view.frame.size;
+//        [scrollView addSubview:vc.view];
+//        [cell addSubview:scrollView];
+//
+//    }
+//    else
+//    {
+//        [cell addSubview:vc.view];
+//
+//    }
+    self.WordParaphraseView.delegate = self;
+    self.WordParaphraseView.contentSize = vc.view.frame.size;
+    [self.WordParaphraseView addSubview:vc.view];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //NSLog(@"hehehehehe~");
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,4 +65,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload {
+    [self setWordParaphraseView:nil];
+    [super viewDidUnload];
+}
 @end

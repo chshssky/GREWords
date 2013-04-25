@@ -14,6 +14,7 @@
 #import "HistoryStatisticsViewController.h"
 #import "SettingsViewController.h"
 #import "ExamViewController.h"
+#import "WordDetailViewController.h"
 
 @interface GreWordsViewController ()
 
@@ -61,26 +62,6 @@
                                                            highlightedImage:[UIImage imageNamed:@"Main menu_xListButton_clicked.png"]
                                                                ContentImage:nil
                                                     highlightedContentImage:nil];
-    /*AwesomeMenuItem *starMenuItem5 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                           highlightedImage:storyMenuItemImagePressed
-                                                               ContentImage:starImage
-                                                    highlightedContentImage:nil];
-    AwesomeMenuItem *starMenuItem6 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                           highlightedImage:storyMenuItemImagePressed
-                                                               ContentImage:starImage
-                                                    highlightedContentImage:nil];
-    AwesomeMenuItem *starMenuItem7 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                           highlightedImage:storyMenuItemImagePressed
-                                                               ContentImage:starImage
-                                                    highlightedContentImage:nil];
-    AwesomeMenuItem *starMenuItem8 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                           highlightedImage:storyMenuItemImagePressed
-                                                               ContentImage:starImage
-                                                    highlightedContentImage:nil];
-    AwesomeMenuItem *starMenuItem9 = [[AwesomeMenuItem alloc] initWithImage:storyMenuItemImage
-                                                           highlightedImage:storyMenuItemImagePressed
-                                                               ContentImage:starImage
-                                                    highlightedContentImage:nil];*/
     
     NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, nil];
     NSLog(@"count: %d", menus.count);
@@ -131,11 +112,11 @@
         [self presentModalViewController:vc animated:YES];
         //[self.view addSubview:vc.view];
     } else if (idx == 2) {
-        HistoryStatisticsViewController *vc = [[HistoryStatisticsViewController alloc] init];
+        WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
         vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         [self presentModalViewController:vc animated:YES];
     } else if (idx == 3) {
-        SettingsViewController *vc = [[SettingsViewController alloc] init];
+        WordDetailViewController *vc = [[WordDetailViewController alloc] init];
         vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         [self presentModalViewController:vc animated:YES];    }
 }

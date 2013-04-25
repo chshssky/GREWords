@@ -10,4 +10,5 @@
 
 @interface WordDetailViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIScrollView *WordParaphraseView;
 @end

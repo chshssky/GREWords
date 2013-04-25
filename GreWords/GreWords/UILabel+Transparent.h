@@ -10,4 +10,6 @@
 
 @interface UILabel (Transparent)
 
++ (void)tranparent;
+
 @end
