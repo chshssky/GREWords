@@ -10,7 +10,14 @@
 
 @interface TaskGenerator : NSObject
 + (TaskGenerator *)instance;
-- (NSArray *)newWordTask;
-- (NSArray *)reviewTask;
+- (NSArray *)newWordTask_twoList:(int)day;
+- (NSArray *)newWordTask_threeList:(int)day;
+- (NSArray *)reviewTask_threeList:(int)day;
+- (NSArray *)reviewTask_twoList:(int)day;
 - (NSArray *)testTaskWithOptions:(NSDictionary *)dict;
+- (void)setWhetherNoOrder:(bool)flag;
+
+
+@property(nonatomic) bool whetherViewNoOrder;
+
 @end
