@@ -19,6 +19,7 @@
 @implementation SmartWordListViewController
 
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -31,9 +32,14 @@
         SmartWordListSectionController* sectionController = [[SmartWordListSectionController alloc] initWithViewController:self];
         sectionController.wordID = ((WordEntity*)_array[i]).wordID;
         sectionController.sectionID = i;
+        sectionController.type = self.type;
         [retractableControllers addObject:sectionController];
     }
 
+    topTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0, -38, 320, 38)];
+    topTexture.image = [UIImage imageNamed:@"learning list_cell_bg.png"];
+    
+    [self.tableView addSubview:topTexture];
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -45,7 +51,6 @@
 
 - (void)viewDidUnload {
     self.tableView = nil;
-    [self setTableView:nil];
     [super viewDidUnload];
 }
 

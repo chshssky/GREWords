@@ -228,6 +228,7 @@
 {
     if (idx == 0) {
         SmartWordListViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
+        vc.type = SmartListType_Slide;
         vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         [self presentModalViewController:vc animated:YES];
     } else if (idx == 1) {

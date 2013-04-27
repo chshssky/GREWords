@@ -8,8 +8,21 @@
 
 #import "GCRetractableSectionController.h"
 
+
+typedef enum 
+{
+    SmartListType_Slide,
+    SmartListType_Full,
+    SmartListType_Homo
+}SmartListType;
+
 @interface SmartWordListSectionController : GCRetractableSectionController
 
+
 @property (nonatomic) int wordID;
+
+@property (nonatomic) SmartListType type;
+
+- (id) initWithViewController:(UIViewController*) givenViewController;
 
 @end

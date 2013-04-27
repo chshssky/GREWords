@@ -13,25 +13,65 @@
 #import "SmartWordListHeaderCell.h"
 #import "SmartWordListContentCell.h"
 
-#define ScrollViewHeight 340
+#define ScrollViewHeight 279
 
 @implementation SmartWordListSectionController
 
 #pragma mark -
 #pragma mark Simple subclass
 
+
+static NSDictionary* typeDict = nil;
+
+- (id) initWithViewController:(UIViewController*) givenViewController 
+{
+    if(self = [super  initWithViewController:givenViewController ])
+    {
+        if(!typeDict)
+        {
+            typeDict = @{
+              @"normal":@{@"height":@60,@"identifer":@"smartwordheader"},
+              @"slide":@{@"height":@38,@"identifer":@"smartwordheader_slide"}
+              };
+        }
+        _type = SmartListType_Slide;
+        
+    }
+    return self;
+}
+
 - (NSUInteger)contentNumberOfRow {
     return 1;
 }
 
+-(NSDictionary*)configurationForTpye:(SmartListType)type
+{
+    switch (type) {
+        case SmartListType_Slide:
+            return typeDict[@"slide"];
+            break;
+        case SmartListType_Full:
+            return typeDict[@"normal"];
+        default:
+            return typeDict[@"normal"];
+            break;
+    }
+}
+
+- (CGFloat) heightForRow:(NSUInteger)row {
+	if (row == 0)
+    {
+        NSNumber * n = [self configurationForTpye:self.type][@"height"];
+        return [n floatValue];
+    }
+	return [super heightForRow:row];
+}
 
 - (UITableViewCell *)titleCell {
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SmartWordListStoryboard" bundle:[NSBundle mainBundle]];
 //    storyboard in
     
-    NSLog(@"%@",self.tableView);
-    
-    SmartWordListHeaderCell *cell=(SmartWordListHeaderCell *)[self.tableView dequeueReusableCellWithIdentifier:@"smartwordheader"];
+    SmartWordListHeaderCell *cell=(SmartWordListHeaderCell *)[self.tableView dequeueReusableCellWithIdentifier:([self configurationForTpye:self.type][@"identifer"])];
 
     cell.wordLabel.text =  [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
     //vc.text = [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
@@ -51,18 +91,22 @@
     if(frame.size.height > ScrollViewHeight)
     {
         frame.size.height = ScrollViewHeight;
-        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:frame];
+        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:cell.contentView.frame];
         scrollView.contentSize = vc.view.frame.size;
         [scrollView addSubview:vc.view];
-        [cell addSubview:scrollView];
+        scrollView.clipsToBounds = YES;
+        [cell.contentView addSubview:scrollView];
+        //[cell sendSubviewToBack:scrollView];
+        
     }
     else
     {
-        [cell addSubview:vc.view];
+        [cell.contentView addSubview:vc.view];
     }
-    cell.frame  = frame;
-     
-    cell.clipsToBounds = YES;
+    //cell.contentView.frame = frame;
+    //cell.frame  = frame;
+    
+    //cell.clipsToBounds = YES;
 	return cell;
 }
 
