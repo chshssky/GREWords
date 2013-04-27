@@ -227,7 +227,10 @@
 - (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
     if (idx == 0) {
-        [self performSelector:@selector(settingController) withObject:nil afterDelay:0.3];
+        SmartWordListViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
+        vc.type = SmartListType_Slide;
+        vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentModalViewController:vc animated:YES];
     } else if (idx == 1) {
         [self performSelector:@selector(examController) withObject:nil afterDelay:0.3];
     } else if (idx == 2) {

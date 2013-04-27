@@ -7,13 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SmartWordListSectionController.h"
 
 @interface SmartWordListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
     NSArray *_array;
     NSMutableArray* retractableControllers;
-
+    UIImageView *topTexture;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (nonatomic) SmartListType type;
 
 @end
