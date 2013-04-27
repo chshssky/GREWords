@@ -28,8 +28,8 @@
     
     
     dashboard = [[DashboardViewController alloc] init];
-    dashboard.nonFinishedNumber = 300;
-    dashboard.sumNumber = 500;
+    dashboard.nonFinishedNumber = 100;
+    dashboard.sumNumber = 300;
     
     [self.view addSubview:dashboard.view];
     
@@ -94,8 +94,8 @@
     menu.highlightedImage = storyMenuItemImagePressed;
     menu.contentImage = nil;
     menu.highlightedContentImage = nil;
-    menu.rotateAngle = 0.0;
-    menu.menuWholeAngle = M_PI / 2 + M_PI / 6;
+    menu.rotateAngle = -0.1;
+    menu.menuWholeAngle = M_PI / 2 + M_PI / 4;
     menu.timeOffset = 0.015f;
     menu.farRadius = 95.0f;
     menu.endRadius = 80.0f;

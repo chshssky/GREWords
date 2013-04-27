@@ -17,7 +17,9 @@
     UIImageView *centerCircleView;
     UIImageView *circleLightView;
     UIImageView *circlePointView;
-    
+    UIImageView *textView;
+    UIImageView *startTextView;
+    UILabel *wordNumberTest;
 }
 
 @property(nonatomic) int nonFinishedNumber;

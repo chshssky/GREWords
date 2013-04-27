@@ -37,6 +37,8 @@
 		3FA484D617197E20003E88A6 /* ExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA484D417197E20003E88A6 /* ExamViewController.m */; };
 		3FA484D717197E20003E88A6 /* ExamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA484D517197E20003E88A6 /* ExamViewController.xib */; };
 		7315DF5317147B1B00CF1556 /* TaskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7315DF5217147B1B00CF1556 /* TaskGenerator.m */; };
+		735FAF3B172AD25B0071ED69 /* Main menu_circle_buttom.png in Resources */ = {isa = PBXBuildFile; fileRef = 735FAF39172AD25B0071ED69 /* Main menu_circle_buttom.png */; };
+		735FAF3C172AD25B0071ED69 /* Main menu_circle_buttom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 735FAF3A172AD25B0071ED69 /* Main menu_circle_buttom@2x.png */; };
 		73D209AC1714367F00C718A6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D209AB1714367F00C718A6 /* CoreText.framework */; };
 		E4134CDB1714225D00553AD2 /* WordHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E4134CDA1714225D00553AD2 /* WordHelper.m */; };
 		E414B6931714300400C29D3C /* WordEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B6921714300400C29D3C /* WordEntity.m */; };
@@ -3236,6 +3238,8 @@
 		3FA484D517197E20003E88A6 /* ExamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamViewController.xib; sourceTree = "<group>"; };
 		7315DF5117147B1B00CF1556 /* TaskGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskGenerator.h; path = ../TaskGenerator.h; sourceTree = "<group>"; };
 		7315DF5217147B1B00CF1556 /* TaskGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskGenerator.m; path = ../TaskGenerator.m; sourceTree = "<group>"; };
+		735FAF39172AD25B0071ED69 /* Main menu_circle_buttom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Main menu_circle_buttom.png"; path = "Resources/Main_menu/Main menu_circle_buttom.png"; sourceTree = SOURCE_ROOT; };
+		735FAF3A172AD25B0071ED69 /* Main menu_circle_buttom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Main menu_circle_buttom@2x.png"; path = "Resources/Main_menu/Main menu_circle_buttom@2x.png"; sourceTree = SOURCE_ROOT; };
 		73D209AB1714367F00C718A6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		E4134CD91714225D00553AD2 /* WordHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordHelper.h; sourceTree = "<group>"; };
 		E4134CDA1714225D00553AD2 /* WordHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordHelper.m; sourceTree = "<group>"; };
@@ -9752,6 +9756,8 @@
 		E4E8304617293DBC00460BEC /* MainMenu */ = {
 			isa = PBXGroup;
 			children = (
+				735FAF39172AD25B0071ED69 /* Main menu_circle_buttom.png */,
+				735FAF3A172AD25B0071ED69 /* Main menu_circle_buttom@2x.png */,
 				E4E8304717293DCB00460BEC /* Main menu_xListButton_clicked.png */,
 				E4E8304817293DCB00460BEC /* Main menu_xListButton.png */,
 				E4E8304917293DCB00460BEC /* Main menu_xSettingButton_clicked.png */,
@@ -12997,6 +13003,8 @@
 				E4E830A817293DCB00460BEC /* Main menu_slideStatus1@2x.png in Resources */,
 				E4E830A917293DCB00460BEC /* Main menu_slideBar@2x.png in Resources */,
 				E4E830AA17293DCB00460BEC /* Main menu_slideButton@2x.png in Resources */,
+				735FAF3B172AD25B0071ED69 /* Main menu_circle_buttom.png in Resources */,
+				735FAF3C172AD25B0071ED69 /* Main menu_circle_buttom@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
