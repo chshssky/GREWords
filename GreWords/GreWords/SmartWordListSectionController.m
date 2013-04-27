@@ -8,11 +8,10 @@
 
 #import "GCRetractableSectionController.h"
 #import "SmartWordListSectionController.h"
-#import "SmartWordListCell.h"
-#import "SmartWordListHeaderCell.h"
 #import "WordLayoutViewController.h"
 #import "WordHelper.h"
-#import "SmartWordListHeaderViewController.h"
+#import "SmartWordListHeaderCell.h"
+#import "SmartWordListContentCell.h"
 
 #define ScrollViewHeight 340
 
@@ -27,29 +26,23 @@
 
 
 - (UITableViewCell *)titleCell {
-    NSString* contentCellIdentifier = [NSStringFromClass([self class]) stringByAppendingString:@"title"];
-	
-    SmartWordListHeaderCell *cell=(SmartWordListHeaderCell *)[self.tableView dequeueReusableCellWithIdentifier:contentCellIdentifier];
-    if(cell==nil)
-    {
-        NSArray *nibs=[[NSBundle mainBundle] loadNibNamed:@"SmartWordListHeaderCell" owner:self options:nil];
-        cell = [nibs lastObject];
-    }
-    SmartWordListHeaderViewController *vc = [[SmartWordListHeaderViewController alloc] init];
-    vc.text = [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
-    [cell addSubview:vc.view];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SmartWordListStoryboard" bundle:[NSBundle mainBundle]];
+//    storyboard in
+    
+    NSLog(@"%@",self.tableView);
+    
+    SmartWordListHeaderCell *cell=(SmartWordListHeaderCell *)[self.tableView dequeueReusableCellWithIdentifier:@"smartwordheader"];
+
+    cell.wordLabel.text =  [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
+    //vc.text = [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
+    //[cell addSubview:vc.view];
 	return cell;
 }
 
 - (UITableViewCell *) contentCellForRow:(NSUInteger)row {
-	NSString* contentCellIdentifier = [NSStringFromClass([self class]) stringByAppendingString:@"content"];
-	
-	   SmartWordListCell *cell=(SmartWordListCell *)[self.tableView dequeueReusableCellWithIdentifier:contentCellIdentifier];
-        if(cell==nil)
-        {
-            NSArray *nibs=[[NSBundle mainBundle] loadNibNamed:@"SmartWordListCell" owner:self options:nil];
-            cell = [nibs lastObject];
-        }
+    
+    
+    SmartWordListContentCell *cell=(SmartWordListContentCell *)[self.tableView dequeueReusableCellWithIdentifier:@"smartwordcontent"];
     
     WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
     [vc displayWord:[[WordHelper instance] wordWithID:self.wordID] withOption:nil];

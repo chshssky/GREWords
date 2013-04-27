@@ -8,7 +8,7 @@
 
 #import "SmartWordListViewController.h"
 #import "WordLayoutViewController.h"
-#import "SmartWordListCell.h"
+#import "SmartWordListContentCell.h"
 #import "SmartWordListSectionController.h"
 #import "WordHelper.h"
 
@@ -18,30 +18,22 @@
 
 @implementation SmartWordListViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-        _array = [[WordHelper instance] wordsAlphabeticOrder];
-        
-        retractableControllers = [@[] mutableCopy];
-        
-        for(int i = 0; i < _array.count;i++)
-        {
-            SmartWordListSectionController* sectionController = [[SmartWordListSectionController alloc] initWithViewController:self];
-            sectionController.wordID = ((WordEntity*)_array[i]).wordID;
-            sectionController.sectionID = i;
-            [retractableControllers addObject:sectionController];
-        }
-        
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _array = [[WordHelper instance] wordsAlphabeticOrder];
+    
+    retractableControllers = [@[] mutableCopy];
+    
+    for(int i = 0; i < _array.count;i++)
+    {
+        SmartWordListSectionController* sectionController = [[SmartWordListSectionController alloc] initWithViewController:self];
+        sectionController.wordID = ((WordEntity*)_array[i]).wordID;
+        sectionController.sectionID = i;
+        [retractableControllers addObject:sectionController];
+    }
+
     // Do any additional setup after loading the view from its nib.
 }
 

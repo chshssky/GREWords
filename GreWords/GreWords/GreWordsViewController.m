@@ -103,7 +103,7 @@
 {
     NSLog(@"Select the index : %d",idx);
     if (idx == 0) {
-        SmartWordListViewController *vc = [[SmartWordListViewController alloc] init];
+        SmartWordListViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
         vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         [self presentModalViewController:vc animated:YES];
     } else if (idx == 1) {
