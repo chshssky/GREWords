@@ -124,7 +124,8 @@
     animGroup_black.duration = 0.5;
     [blackView.layer addAnimation:animGroup_black forKey:nil];
     
-    SmartWordListViewController *vc = [[SmartWordListViewController alloc] init];
+    SmartWordListViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
+    vc.type = SmartListType_Slide;
     vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentModalViewController:vc animated:YES];
 }
@@ -227,10 +228,7 @@
 - (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
     if (idx == 0) {
-        SmartWordListViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
-        vc.type = SmartListType_Slide;
-        vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-        [self presentModalViewController:vc animated:YES];
+        [self performSelector:@selector(listController) withObject:nil afterDelay:0.3];
     } else if (idx == 1) {
         [self performSelector:@selector(examController) withObject:nil afterDelay:0.3];
     } else if (idx == 2) {
