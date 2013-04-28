@@ -88,6 +88,13 @@ static NSDictionary* typeDict = nil;
     [vc displayWord:[[WordHelper instance] wordWithID:self.wordID] withOption:nil];
     CGRect frame = vc.view.frame;
     
+    NSArray* tobeRemove = [cell.contentView subviews];
+    for(UIView* v in tobeRemove)
+    {
+        [v removeFromSuperview];
+    }
+    
+    
     if(frame.size.height > ScrollViewHeight)
     {
         frame.size.height = ScrollViewHeight;
