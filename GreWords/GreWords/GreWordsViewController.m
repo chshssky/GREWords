@@ -156,7 +156,7 @@
     animGroup_black.duration = 0.5;
     [blackView.layer addAnimation:animGroup_black forKey:nil];
     
-    ExamViewController *vc = [[ExamViewController alloc] init];
+    WordDetailViewController *vc = [[WordDetailViewController alloc] init];
     vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentModalViewController:vc animated:YES];
 }
