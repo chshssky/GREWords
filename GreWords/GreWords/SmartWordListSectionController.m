@@ -8,6 +8,7 @@
 
 #import "GCRetractableSectionController.h"
 #import "SmartWordListSectionController.h"
+#import "WordSmallLayoutViewController.h"
 #import "WordLayoutViewController.h"
 #import "WordHelper.h"
 #import "SmartWordListHeaderCell.h"
@@ -84,7 +85,8 @@ static NSDictionary* typeDict = nil;
     
     SmartWordListContentCell *cell=(SmartWordListContentCell *)[self.tableView dequeueReusableCellWithIdentifier:@"smartwordcontent"];
     
-    WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
+    
+    WordSmallLayoutViewController *vc = [[WordSmallLayoutViewController alloc] init];
     [vc displayWord:[[WordHelper instance] wordWithID:self.wordID] withOption:nil];
     CGRect frame = vc.view.frame;
     

@@ -85,7 +85,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="learning list_cell_bg.png" id="J8f-Zi-e4b">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="38"/>
+                                                    <rect key="frame" x="0.0" y="-1" width="320" height="38"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jzi-g9-bKg">
@@ -136,6 +136,9 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="263"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                                    </accessibility>
                                                 </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="learning list_content_shadow_down.png" id="PO4-kd-WnF">
                                                     <rect key="frame" x="0.0" y="250" width="320" height="14"/>

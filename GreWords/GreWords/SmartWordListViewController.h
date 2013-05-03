@@ -14,6 +14,7 @@
     NSArray *_array;
     NSMutableArray* retractableControllers;
     UIImageView *topTexture;
+    UIImageView *downTexture;
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

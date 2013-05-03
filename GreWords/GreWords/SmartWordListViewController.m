@@ -36,11 +36,22 @@
         [retractableControllers addObject:sectionController];
     }
 
-    topTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0, -38, 320, 38)];
-    topTexture.image = [UIImage imageNamed:@"learning list_cell_bg.png"];
+    topTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -568.0f, 320.0f, 568.0f)];
+    topTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
     
     [self.tableView addSubview:topTexture];
     // Do any additional setup after loading the view from its nib.
+    
+//    
+//    EGORefreshTableHeaderView *refreshView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+//    refreshView.delegate = self;
+//    //将下拉刷新控件作为子控件添加到UITableView中
+//    [self.tableView addSubview:refreshView];
+//    
+//    LoadMoreTableFooterView *view = [[LoadMoreTableFooterView alloc] initWithFrame:CGRectMake(0.0f, self.tableView.contentSize.height, self.tableView.frame.size.width, self.tableView.frame.size.height)];
+//    view.delegate = self;
+//    [self.tableView addSubview:view];
+//    _loadMoreTableFooter = view;
 }
 
 - (void)didReceiveMemoryWarning

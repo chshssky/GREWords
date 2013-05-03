@@ -72,6 +72,11 @@
 		7380C76B1734128E00447D78 /* learning_wrongButton_page@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFA476117294531008F88A0 /* learning_wrongButton_page@2x.png */; };
 		7380C76C1734128E00447D78 /* learning_wrongButton_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FFA476217294531008F88A0 /* learning_wrongButton_up@2x.png */; };
 		7380C76F1734198F00447D78 /* FXLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7380C76E1734198D00447D78 /* FXLabel.m */; };
+		7380C779173428D700447D78 /* WordLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7380C778173428D700447D78 /* WordLayoutViewController.xib */; };
+		7380C78117342A3700447D78 /* WordSmallLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7380C77F17342A3200447D78 /* WordSmallLayoutViewController.m */; };
+		7380C78217342A3700447D78 /* WordSmallLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7380C78017342A3400447D78 /* WordSmallLayoutViewController.xib */; };
+		7380C785173439B700447D78 /* learning list_up_and_down_moreBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 7380C783173439B700447D78 /* learning list_up_and_down_moreBg.png */; };
+		7380C786173439B700447D78 /* learning list_up_and_down_moreBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7380C784173439B700447D78 /* learning list_up_and_down_moreBg@2x.png */; };
 		73C385341733F0FF0018BC54 /* STHeitiLight.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 73C385321733F0FF0018BC54 /* STHeitiLight.ttc */; };
 		73C385351733F0FF0018BC54 /* STHeitiMedium.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 73C385331733F0FF0018BC54 /* STHeitiMedium.ttc */; };
 		73D209AC1714367F00C718A6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D209AB1714367F00C718A6 /* CoreText.framework */; };
@@ -79,7 +84,6 @@
 		E414B6931714300400C29D3C /* WordEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B6921714300400C29D3C /* WordEntity.m */; };
 		E414B6961714301700C29D3C /* ConfigurationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B6941714301700C29D3C /* ConfigurationHelper.m */; };
 		E414B69C1714303F00C29D3C /* GreWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B6971714303F00C29D3C /* GreWordsViewController.m */; };
-		E414B69D1714303F00C29D3C /* WordLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E414B6981714303F00C29D3C /* WordLayoutViewController.xib */; };
 		E414B69E1714303F00C29D3C /* WordLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B69A1714303F00C29D3C /* WordLayoutViewController.m */; };
 		E418DA5F1713E5E8002C6743 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */; };
 		E449257F1716CF3400F0523A /* SmartWordListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E449257D1716CF3400F0523A /* SmartWordListViewController.m */; };
@@ -3318,6 +3322,12 @@
 		735FAF3A172AD25B0071ED69 /* Main menu_circle_buttom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Main menu_circle_buttom@2x.png"; path = "Resources/Main_menu/Main menu_circle_buttom@2x.png"; sourceTree = SOURCE_ROOT; };
 		7380C76D1734198A00447D78 /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
 		7380C76E1734198D00447D78 /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
+		7380C778173428D700447D78 /* WordLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordLayoutViewController.xib; sourceTree = "<group>"; };
+		7380C77E17342A3100447D78 /* WordSmallLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordSmallLayoutViewController.h; sourceTree = "<group>"; };
+		7380C77F17342A3200447D78 /* WordSmallLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordSmallLayoutViewController.m; sourceTree = "<group>"; };
+		7380C78017342A3400447D78 /* WordSmallLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordSmallLayoutViewController.xib; sourceTree = "<group>"; };
+		7380C783173439B700447D78 /* learning list_up_and_down_moreBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning list_up_and_down_moreBg.png"; sourceTree = SOURCE_ROOT; };
+		7380C784173439B700447D78 /* learning list_up_and_down_moreBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning list_up_and_down_moreBg@2x.png"; sourceTree = SOURCE_ROOT; };
 		73C385321733F0FF0018BC54 /* STHeitiLight.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = STHeitiLight.ttc; sourceTree = "<group>"; };
 		73C385331733F0FF0018BC54 /* STHeitiMedium.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = STHeitiMedium.ttc; sourceTree = "<group>"; };
 		73D209AB1714367F00C718A6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -3328,7 +3338,6 @@
 		E414B6941714301700C29D3C /* ConfigurationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationHelper.m; sourceTree = "<group>"; };
 		E414B6951714301700C29D3C /* ConfigurationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationHelper.h; sourceTree = "<group>"; };
 		E414B6971714303F00C29D3C /* GreWordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreWordsViewController.m; sourceTree = "<group>"; };
-		E414B6981714303F00C29D3C /* WordLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordLayoutViewController.xib; sourceTree = "<group>"; };
 		E414B6991714303F00C29D3C /* WordLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordLayoutViewController.h; sourceTree = "<group>"; };
 		E414B69A1714303F00C29D3C /* WordLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordLayoutViewController.m; sourceTree = "<group>"; };
 		E414B69B1714303F00C29D3C /* GreWordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreWordsViewController.h; sourceTree = "<group>"; };
@@ -6675,12 +6684,15 @@
 		3FA484C517197A9F003E88A6 /* WordDetail */ = {
 			isa = PBXGroup;
 			children = (
-				E414B6981714303F00C29D3C /* WordLayoutViewController.xib */,
+				7380C778173428D700447D78 /* WordLayoutViewController.xib */,
 				E414B6991714303F00C29D3C /* WordLayoutViewController.h */,
 				E414B69A1714303F00C29D3C /* WordLayoutViewController.m */,
+				7380C78017342A3400447D78 /* WordSmallLayoutViewController.xib */,
+				7380C77E17342A3100447D78 /* WordSmallLayoutViewController.h */,
+				7380C77F17342A3200447D78 /* WordSmallLayoutViewController.m */,
+				3FFA470A17294491008F88A0 /* WordDetailViewController.xib */,
 				3FFA470817294491008F88A0 /* WordDetailViewController.h */,
 				3FFA470917294491008F88A0 /* WordDetailViewController.m */,
-				3FFA470A17294491008F88A0 /* WordDetailViewController.xib */,
 				3FFA478217295ACB008F88A0 /* UILabel+Transparent.h */,
 				3FFA478317295ACC008F88A0 /* UILabel+Transparent.m */,
 			);
@@ -9960,6 +9972,8 @@
 		E4F7CEC0172BF85300707100 /* SlideList */ = {
 			isa = PBXGroup;
 			children = (
+				7380C783173439B700447D78 /* learning list_up_and_down_moreBg.png */,
+				7380C784173439B700447D78 /* learning list_up_and_down_moreBg@2x.png */,
 				E4F7CEC1172BF88200707100 /* learning list_bg.png */,
 				E4F7CEC2172BF88200707100 /* learning list_bg@2x.png */,
 				E4F7CEC3172BF88200707100 /* learning list_cell_bg.png */,
@@ -10065,7 +10079,6 @@
 				3FA4848717142BB3003E88A6 /* GreWords-Info.plist in Resources */,
 				3FA4849117142BF9003E88A6 /* InfoPlist.strings in Resources */,
 				3FA4849217142BF9003E88A6 /* MainStoryboard.storyboard in Resources */,
-				E414B69D1714303F00C29D3C /* WordLayoutViewController.xib in Resources */,
 				E44925991716DA0D00F0523A /* DownAccessory.png in Resources */,
 				E449259A1716DA0D00F0523A /* DownAccessory@2x.png in Resources */,
 				E449259B1716DA0D00F0523A /* DownAccessoryWhite.png in Resources */,
@@ -13209,6 +13222,10 @@
 				E4F7CED8172BF88200707100 /* learning list_line@2x.png in Resources */,
 				73C385341733F0FF0018BC54 /* STHeitiLight.ttc in Resources */,
 				73C385351733F0FF0018BC54 /* STHeitiMedium.ttc in Resources */,
+				7380C779173428D700447D78 /* WordLayoutViewController.xib in Resources */,
+				7380C78217342A3700447D78 /* WordSmallLayoutViewController.xib in Resources */,
+				7380C785173439B700447D78 /* learning list_up_and_down_moreBg.png in Resources */,
+				7380C786173439B700447D78 /* learning list_up_and_down_moreBg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13253,6 +13270,7 @@
 				E4F7CEBC172BDFC400707100 /* SmartWordListHeaderCell.m in Sources */,
 				E4F7CEBF172BE22300707100 /* SmartWordListContentCell.m in Sources */,
 				7380C76F1734198F00447D78 /* FXLabel.m in Sources */,
+				7380C78117342A3700447D78 /* WordSmallLayoutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
