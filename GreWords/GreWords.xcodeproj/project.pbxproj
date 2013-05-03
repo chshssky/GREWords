@@ -6609,9 +6609,8 @@
 		3FA4847C17142536003E88A6 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				73C385321733F0FF0018BC54 /* STHeitiLight.ttc */,
-				73C385331733F0FF0018BC54 /* STHeitiMedium.ttc */,
-				E4983ED6171A8DFD0055A0E7 /* voices */,
+				7380C7711734212300447D78 /* Font */,
+				E4983ED6171A8DFD0055A0E7 /* Voices */,
 				3FA484A417195740003E88A6 /* Images */,
 				E46CF2CC171184E000634ED7 /* words.plist */,
 			);
@@ -6764,6 +6763,15 @@
 			name = FXLabel;
 			sourceTree = "<group>";
 		};
+		7380C7711734212300447D78 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				73C385321733F0FF0018BC54 /* STHeitiLight.ttc */,
+				73C385331733F0FF0018BC54 /* STHeitiMedium.ttc */,
+			);
+			name = Font;
+			sourceTree = "<group>";
+		};
 		E449258B1716D9FD00F0523A /* SmartWordList */ = {
 			isa = PBXGroup;
 			children = (
@@ -6805,7 +6813,7 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		E4983ED6171A8DFD0055A0E7 /* voices */ = {
+		E4983ED6171A8DFD0055A0E7 /* Voices */ = {
 			isa = PBXGroup;
 			children = (
 				E4983ED7171A8DFE0055A0E7 /* abandon.mp3 */,
@@ -9875,6 +9883,7 @@
 				E4984ACF171A8E750055A0E7 /* zenith.mp3 */,
 				E4984AD0171A8E750055A0E7 /* zesty.mp3 */,
 			);
+			name = Voices;
 			path = voices;
 			sourceTree = "<group>";
 		};
