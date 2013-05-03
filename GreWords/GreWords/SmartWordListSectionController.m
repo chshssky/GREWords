@@ -102,9 +102,9 @@ static NSDictionary* typeDict = nil;
         scrollView.contentSize = vc.view.frame.size;
         [scrollView addSubview:vc.view];
         scrollView.clipsToBounds = YES;
+        [scrollView setScrollsToTop:NO];
         [cell.contentView addSubview:scrollView];
         //[cell sendSubviewToBack:scrollView];
-        
     }
     else
     {
