@@ -1,14 +1,14 @@
 //
-//  SmartWordListHeaderCell.m
+//  SmartWordListContentCell.m
 //  GreWords
 //
-//  Created by Song on 13-4-11.
+//  Created by Song on 13-4-27.
 //  Copyright (c) 2013年 Cui Hao. All rights reserved.
 //
 
-#import "SmartWordListHeaderCell.h"
+#import "SmartWordListContentCell.h"
 
-@implementation SmartWordListHeaderCell
+@implementation SmartWordListContentCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
