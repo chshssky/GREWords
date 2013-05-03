@@ -132,7 +132,7 @@
                                                     <rect key="frame" x="0.0" y="-4" width="320" height="263"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" id="MAr-i6-5jI">
+                                                <view contentMode="top" id="MAr-i6-5jI">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="254"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
