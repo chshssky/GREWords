@@ -181,32 +181,6 @@
         <image name="learning list_content_shadow_up.png" width="320" height="6"/>
         <image name="learning list_line.png" width="320" height="6"/>
     </resources>
-    <classes>
-        <class className="GreWordsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GreWordsViewController.h"/>
-        </class>
-        <class className="SmartWordListContentCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmartWordListContentCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="downShadow" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="upShadow" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="SmartWordListHeaderCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmartWordListHeaderCell.h"/>
-            <relationships>
-                <relationship kind="action" name="soundPressed:"/>
-                <relationship kind="outlet" name="wordLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SmartWordListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmartWordListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

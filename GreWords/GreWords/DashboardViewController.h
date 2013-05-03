@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PieChart.h"
+#import "FXLabel.h"
 
 
 
@@ -19,7 +20,7 @@
     UIImageView *circlePointView;
     UIImageView *textView;
     UIImageView *startTextView;
-    UILabel *wordNumberTest;
+    FXLabel *wordNumberTest;
 }
 
 @property(nonatomic) int nonFinishedNumber;

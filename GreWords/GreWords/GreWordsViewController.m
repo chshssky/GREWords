@@ -228,13 +228,13 @@
 - (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
     if (idx == 0) {
-        [self performSelector:@selector(listController) withObject:nil afterDelay:0.3];
+        [self performSelector:@selector(listController) withObject:nil afterDelay:0.2];
     } else if (idx == 1) {
-        [self performSelector:@selector(examController) withObject:nil afterDelay:0.3];
+        [self performSelector:@selector(examController) withObject:nil afterDelay:0.2];
     } else if (idx == 2) {
-        [self performSelector:@selector(historyController) withObject:nil afterDelay:0.3];
+        [self performSelector:@selector(historyController) withObject:nil afterDelay:0.2];
     } else if (idx == 3) {
-        [self performSelector:@selector(listController) withObject:nil afterDelay:0.3];
+        [self performSelector:@selector(listController) withObject:nil afterDelay:0.2];
     }
 }
 - (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
