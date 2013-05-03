@@ -138,7 +138,7 @@
     
     circleLightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_beard.png"]];
     circleLightView.center = self.centerPoint;
-    circleLightView.layer.anchorPoint = CGPointMake(0.5, 0.4);
+    circleLightView.layer.anchorPoint = CGPointMake(0.5, 0.415);
     circleLightView.gestureRecognizers = self.FimageView.gestureRecognizers;
     circleLightView.alpha = 0;
     
@@ -150,7 +150,7 @@
     [self.view addSubview:textView];
     
     startTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_startTask.png"]];
-    startTextView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+73);
+    startTextView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+80);
     startTextView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     startTextView.gestureRecognizers = self.FimageView.gestureRecognizers;
     startTextView.alpha = 0.6;
@@ -159,19 +159,19 @@
     wordNumberTest = [[FXLabel alloc] initWithFrame:CGRectMake(20, 10, 100, 65)];
     wordNumberTest.text =  [NSString stringWithFormat:@"%d",0];
     wordNumberTest.textColor = [UIColor colorWithRed:101/255.00 green:116/255.00 blue:68/255.00 alpha:1];
-    wordNumberTest.font = [UIFont fontWithName:@"STHeitiSC-Light" size:55];
+    wordNumberTest.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:55];
     wordNumberTest.backgroundColor = [UIColor clearColor];
     wordNumberTest.shadowColor = [UIColor grayColor];
     //wordNumberTest.shadowOffset = CGSizeMake(-1, -1);
     wordNumberTest.innerShadowColor = [UIColor colorWithWhite:0.0f alpha:0.8f];
     wordNumberTest.innerShadowOffset = CGSizeMake(0.0f, 0.8f);
-    wordNumberTest.center = CGPointMake(self.view.frame.size.width/2+15, self.view.frame.size.height/3+35);
+    wordNumberTest.center = CGPointMake(self.view.frame.size.width/2+15, self.view.frame.size.height/3+40);
     wordNumberTest.textAlignment = UITextAlignmentRight;
     [self.view addSubview:wordNumberTest];
 
     
     shadowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar.png"]];
-    shadowImageView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+190);
+    shadowImageView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+185);
     shadowImageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     shadowImageView.gestureRecognizers = self.FimageView.gestureRecognizers;
     //shadowImageView.alpha = 0.5;
@@ -188,7 +188,7 @@
     [self.view addSubview:shadowImageView];
     
     shadowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus2.png"]];
-    shadowImageView.center = CGPointMake(self.view.frame.size.width/2-59, self.view.frame.size.height/3+190);
+    shadowImageView.center = CGPointMake(self.view.frame.size.width/2-59, self.view.frame.size.height/3+185);
     shadowImageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     shadowImageView.gestureRecognizers = self.FimageView.gestureRecognizers;
     //shadowImageView.alpha = 0.5;
