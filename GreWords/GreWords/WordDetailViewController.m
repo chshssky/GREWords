@@ -10,6 +10,8 @@
 #import "WordLayoutViewController.h"
 #import "WordHelper.h"
 
+#define PI 3.14159265358979323846264338327950288
+
 @interface WordDetailViewController () <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
@@ -61,7 +63,26 @@
     NSLog(@"height:%f", self.WordParaphraseView.contentSize.height);
     NSLog(@"height2:%f", self.WordParaphraseView.contentSize.height - self.WordParaphraseView.frame.size.height);
     //NSLog(@"height3:%f", self.WordParaphraseView..height);
+    
+    for (int i = 0; i < 20; i ++) {
+        if ( i < 10) {
+            [self.RightUpImage setBounds:CGRectMake(187, 456 - i * 4, 76, 38 - i * 4)];
+        } else {
+            [self.RightDownImage setBounds:CGRectMake(188, 492, 76, (i - 10) * 4)];
+        }
+        
+    }
 
+}
+
+-(UIImageView *) makeRotation:(UIImageView *)image speedX:(float)X speedY:(float)Y
+{
+    if (Y < 0) {
+        image.transform = CGAffineTransformMakeRotation(atan(X/(-Y)));
+    }else if(Y > 0){
+        image.transform = CGAffineTransformMakeRotation(atanf(X/(-Y))-PI);
+    }
+    return image;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
