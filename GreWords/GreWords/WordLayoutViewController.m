@@ -48,7 +48,8 @@
 - (void)showMeanings:(NSDictionary *)wordMeaningDictionary
         numberOfThisMeaning:(int)i
         whetherOnlyOneMeaning:(BOOL)b
-        startHeight:(float)h;
+        startHeight:(float)h
+        withOptions:(NSDictionary*)options;
 @end
 
 @implementation WordLayoutViewController
@@ -104,7 +105,7 @@ float sumHeight = 5.0;//10.0;
     }else{
         for (int i=0; i<theDetail.count; i++) {
             sumHeight += 5.0;
-            [self showMeanings:theDetail[i] numberOfThisMeaning:i whetherOnlyOneMeaning:theDetail.count==0?YES:NO startHeight:sumHeight];
+            [self showMeanings:theDetail[i] numberOfThisMeaning:i whetherOnlyOneMeaning:theDetail.count==0?YES:NO startHeight:sumHeight withOptions:options];
         }
     }
     self.view.frame = CGRectMake(0, 0, 320, sumHeight);
@@ -116,6 +117,7 @@ float sumHeight = 5.0;//10.0;
         numberOfThisMeaning:(int)i
         whetherOnlyOneMeaning:(BOOL)b
         startHeight:(float)h
+        withOptions:(NSDictionary *)options
 {
     NSString *theUsage = [wordMeaningDictionary objectForKey:@"usage"];
     if (theUsage == nil) {
@@ -142,7 +144,7 @@ float sumHeight = 5.0;//10.0;
         NSRange range = [theUsage rangeOfString:@"："];
         if(range.location != NSNotFound)
         {
-            if ([[wordMeaningDictionary objectForKey:@"shouldShowChineseMeaning"] boolValue]) {
+            if ([[options objectForKey:@"shouldShowChineseMeaning"] boolValue]) {
                 label.text = [theUsage substringToIndex:range.location];
                 label.lineBreakMode = NSLineBreakByWordWrapping;
                 label.numberOfLines = 0;
@@ -151,7 +153,7 @@ float sumHeight = 5.0;//10.0;
                 sumHeight = label.frame.origin.y + label.frame.size.height;
             }
             ////////////////////
-            if ([[wordMeaningDictionary objectForKey:@"shouldShowEnglishMeaning"] boolValue]) {
+            if ([[options objectForKey:@"shouldShowEnglishMeaning"] boolValue]) {
                 label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
                 label.backgroundColor = [UIColor clearColor];
                 label.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
@@ -173,7 +175,7 @@ float sumHeight = 5.0;//10.0;
                 if( a > 0x4e00 && a < 0x9fff)
                     offset = i;
             }
-            if ([[wordMeaningDictionary objectForKey:@"shouldShowChineseMeaning"] boolValue]) {
+            if ([[options objectForKey:@"shouldShowChineseMeaning"] boolValue]) {
                 label.text = [theUsage substringToIndex:offset];
                 label.lineBreakMode = NSLineBreakByWordWrapping;
                 label.numberOfLines = 0;
@@ -182,7 +184,7 @@ float sumHeight = 5.0;//10.0;
                 sumHeight = label.frame.origin.y + label.frame.size.height;
             }
             ////////////////////
-            if ([[wordMeaningDictionary objectForKey:@"shouldShowEnglishMeaning"] boolValue]) {
+            if ([[options objectForKey:@"shouldShowEnglishMeaning"] boolValue]) {
                 label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
                 label.backgroundColor = [UIColor clearColor];
                 label.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
@@ -208,7 +210,7 @@ float sumHeight = 5.0;//10.0;
     if (theExample == nil) {
         NSLog(@"找不到这个单词的例句");
     }else{
-        if ([[wordMeaningDictionary objectForKey:@"shouldShowSampleSentence"] boolValue]) {
+        if ([[options objectForKey:@"shouldShowSampleSentence"] boolValue]) {
             ////////////////////
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(60, sumHeight, 65, 25)];
             label.backgroundColor = [UIColor clearColor];
@@ -236,7 +238,7 @@ float sumHeight = 5.0;//10.0;
     if (theHomoionym == nil) {
         NSLog(@"找不到这个单词的同义词");
     }else{
-        if ([[wordMeaningDictionary objectForKey:@"shouldShowSynonyms"] boolValue]) {
+        if ([[options objectForKey:@"shouldShowSynonyms"] boolValue]) {
             ////////////////////
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(60, sumHeight, 65, 25)];
             label.backgroundColor = [UIColor clearColor];
@@ -262,7 +264,7 @@ float sumHeight = 5.0;//10.0;
     if (theAntonym == nil) {
         NSLog(@"找不到这个单词的反义词");
     }else{
-        if ([[wordMeaningDictionary objectForKey:@"shouldShowAntonyms"] boolValue]) {
+        if ([[options objectForKey:@"shouldShowAntonyms"] boolValue]) {
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(60, sumHeight, 65, 25)];
             label.backgroundColor = [UIColor clearColor];
             label.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
