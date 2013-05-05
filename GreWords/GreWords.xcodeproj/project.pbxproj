@@ -99,6 +99,8 @@
 		7380C779173428D700447D78 /* WordLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7380C778173428D700447D78 /* WordLayoutViewController.xib */; };
 		7380C78117342A3700447D78 /* WordSmallLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7380C77F17342A3200447D78 /* WordSmallLayoutViewController.m */; };
 		7380C78217342A3700447D78 /* WordSmallLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7380C78017342A3400447D78 /* WordSmallLayoutViewController.xib */; };
+		73B8763F1736A0F700BD1860 /* Main menu_text_startTask_clicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 73B8763D1736A0F700BD1860 /* Main menu_text_startTask_clicked.png */; };
+		73B876401736A0F700BD1860 /* Main menu_text_startTask_clicked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73B8763E1736A0F700BD1860 /* Main menu_text_startTask_clicked@2x.png */; };
 		73C385341733F0FF0018BC54 /* STHeitiLight.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 73C385321733F0FF0018BC54 /* STHeitiLight.ttc */; };
 		73C385351733F0FF0018BC54 /* STHeitiMedium.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 73C385331733F0FF0018BC54 /* STHeitiMedium.ttc */; };
 		73D209AC1714367F00C718A6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D209AB1714367F00C718A6 /* CoreText.framework */; };
@@ -3341,7 +3343,6 @@
 		3FFA475617294531008F88A0 /* learning_time1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_time1@2x.png"; sourceTree = "<group>"; };
 		3FFA475717294531008F88A0 /* learning_time2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_time2@2x.png"; sourceTree = "<group>"; };
 		3FFA475817294531008F88A0 /* learning_time3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_time3@2x.png"; sourceTree = "<group>"; };
-		3FFA475A17294531008F88A0 /* learning_time_clicked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_time_clicked@2x.png"; sourceTree = "<group>"; };
 		3FFA475C17294531008F88A0 /* learning_upCover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_upCover@2x.png"; sourceTree = "<group>"; };
 		3FFA475D17294531008F88A0 /* learning_wrong_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_wrong_up@2x.png"; sourceTree = "<group>"; };
 		3FFA475E17294531008F88A0 /* learning_wrongButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_wrongButton@2x.png"; sourceTree = "<group>"; };
@@ -3387,6 +3388,8 @@
 		7380C77E17342A3100447D78 /* WordSmallLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordSmallLayoutViewController.h; sourceTree = "<group>"; };
 		7380C77F17342A3200447D78 /* WordSmallLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordSmallLayoutViewController.m; sourceTree = "<group>"; };
 		7380C78017342A3400447D78 /* WordSmallLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordSmallLayoutViewController.xib; sourceTree = "<group>"; };
+		73B8763D1736A0F700BD1860 /* Main menu_text_startTask_clicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Main menu_text_startTask_clicked.png"; path = "Resources/Main_menu/Main menu_text_startTask_clicked.png"; sourceTree = SOURCE_ROOT; };
+		73B8763E1736A0F700BD1860 /* Main menu_text_startTask_clicked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Main menu_text_startTask_clicked@2x.png"; path = "Resources/Main_menu/Main menu_text_startTask_clicked@2x.png"; sourceTree = SOURCE_ROOT; };
 		73C385321733F0FF0018BC54 /* STHeitiLight.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = STHeitiLight.ttc; sourceTree = "<group>"; };
 		73C385331733F0FF0018BC54 /* STHeitiMedium.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = STHeitiMedium.ttc; sourceTree = "<group>"; };
 		73D209AB1714367F00C718A6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -6858,7 +6861,6 @@
 				3FFA475617294531008F88A0 /* learning_time1@2x.png */,
 				3FFA475717294531008F88A0 /* learning_time2@2x.png */,
 				3FFA475817294531008F88A0 /* learning_time3@2x.png */,
-				3FFA475A17294531008F88A0 /* learning_time_clicked@2x.png */,
 				3FFA475C17294531008F88A0 /* learning_upCover@2x.png */,
 				3FFA475D17294531008F88A0 /* learning_wrong_up@2x.png */,
 				3FE2D3EA17368E6300F3845D /* learning_wrong_up_page.png */,
@@ -10020,6 +10022,8 @@
 		E4E8304617293DBC00460BEC /* MainMenu */ = {
 			isa = PBXGroup;
 			children = (
+				73B8763D1736A0F700BD1860 /* Main menu_text_startTask_clicked.png */,
+				73B8763E1736A0F700BD1860 /* Main menu_text_startTask_clicked@2x.png */,
 				735FAF39172AD25B0071ED69 /* Main menu_circle_buttom.png */,
 				735FAF3A172AD25B0071ED69 /* Main menu_circle_buttom@2x.png */,
 				E4E8304717293DCB00460BEC /* Main menu_xListButton_clicked.png */,
@@ -13347,10 +13351,6 @@
 				E460EB4717362B1B00581869 /* learning_rightButton.png in Resources */,
 				E460EB4817362B1B00581869 /* learning_sound.png in Resources */,
 				E460EB4917362B1B00581869 /* learning_tapCover.png in Resources */,
-				E460EB4F173651C100581869 /* learning_sound_clicked@2x.png in Resources */,
-				E460EB50173651C100581869 /* learning_sound@2x.png in Resources */,
-				E460EB53173651FC00581869 /* learning_sound_clicked.png in Resources */,
-				E460EB54173651FC00581869 /* learning_sound.png in Resources */,
 				3FE2D3EC17368E7300F3845D /* learning_wrong_up_page.png in Resources */,
 				3FE2D3ED17368E7300F3845D /* learning_wrong_up_page@2x.png in Resources */,
 				7312DB6817368C340082A49E /* learning list_bg.png in Resources */,
@@ -13379,6 +13379,8 @@
 				7312DB8517368E3B0082A49E /* learning_wrong_up_page@2x.png in Resources */,
 				7312DB8817368E430082A49E /* learning_right_up_page.png in Resources */,
 				7312DB8917368E430082A49E /* learning_right_up_page@2x.png in Resources */,
+				73B8763F1736A0F700BD1860 /* Main menu_text_startTask_clicked.png in Resources */,
+				73B876401736A0F700BD1860 /* Main menu_text_startTask_clicked@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
