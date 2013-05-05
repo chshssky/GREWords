@@ -66,14 +66,6 @@
     //NSLog(@"height3:%f", self.WordParaphraseView..height);
     
     //self.RightUpImage.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
-//    for (int i = 0; i < 20; i ++) {
-//        if ( i < 10) {
-//            [self.RightUpImage setBounds:CGRectMake(187, 456 - i * 4, 76, 38 - i * 4)];
-//        } else {
-//            [self.RightDownImage setBounds:CGRectMake(188, 492, 76, (i - 10) * 4)];
-//        }
-//        sleep(1);
-//    }
 
 }
 
@@ -121,21 +113,25 @@
     [super viewDidUnload];
 }
 
-- (IBAction)rightButtonPushed:(id)sender {
-    //self.RightUpImage.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
-    
-    [UIView animateWithDuration:2 animations:^()
-    {
-        self.RightUpImage.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
+- (void)RightAnimation
+{
+    [self.RightDownImage setBounds:CGRectMake(216, 456, 76, 38)];
+    [self.RightDownImage setBounds:CGRectMake(216, 493, 76, 0.001)];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+    [UIView animateWithDuration:0.5f animations:^(){
+        self.RightUpImage.transform = CGAffineTransformMakeScale(1.0f, 0.001f);
+        self.RightUpImage.center = CGPointMake(254, 493);
+    }completion:^(BOOL finished){
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+        [UIView animateWithDuration:0.5f animations:^(){
+            self.RightDownImage.transform = CGAffineTransformMakeScale(1.0f, 38000.0f);
+            self.RightDownImage.center = CGPointMake(254, 493 + 18);
+        }];
     }];
-    
-//    CGAffineTransform transform = CGAffineTransformScale(self.RightUpImage.transform,1.2,1.2);
-//    [UIView beginAnimations:@"scale" context:nil];
-//    [UIView setAnimationDuration:2];
-//    [UIView setAnimationDelegate:self];
-//    [self.RightUpImage setTransform:transform];
-//    [UIView commitAnimations];
+}
 
+- (IBAction)rightButtonPushed:(id)sender {
+    [self RightAnimation];
 }
 
 - (IBAction)wrongButtonPushed:(id)sender {
