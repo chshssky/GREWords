@@ -23,6 +23,8 @@ typedef enum
 
 @property (nonatomic) SmartListType type;
 
+@property (nonatomic) float scrollViewHeight;
+
 - (id) initWithViewController:(UIViewController*) givenViewController;
 
 @end
