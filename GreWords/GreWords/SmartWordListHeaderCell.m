@@ -20,6 +20,23 @@
     return self;
 }
 
+-(void)showUp
+{
+    self.upShadow.hidden = NO;
+    self.downShadow.hidden = YES;
+}
+-(void)showDown
+{
+    self.upShadow.hidden = YES;
+    self.downShadow.hidden = NO;
+}
+-(void)close
+{
+    self.upShadow.hidden = YES;
+    self.downShadow.hidden = YES;
+}
+
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];

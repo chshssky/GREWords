@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SmartWordListContentCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *upShadow;
-@property (weak, nonatomic) IBOutlet UIImageView *downShadow;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 
 @end

@@ -171,7 +171,7 @@
     if([self.tableView numberOfRowsInSection:self.sectionID] == 1)
         return;
     NSIndexPath* indexPathToDelete = [NSIndexPath indexPathForRow:1 inSection:self.sectionID];
-        [self.tableView deleteRowsAtIndexPaths:@[indexPathToDelete] withRowAnimation:UITableViewRowAnimationNone ];
+        [self.tableView deleteRowsAtIndexPaths:@[indexPathToDelete] withRowAnimation:UITableViewRowAnimationTop ];
     self.open = NO;
 }
 
@@ -184,7 +184,7 @@
 	NSUInteger section = indexPath.section;
 	NSUInteger contentCount = self.contentNumberOfRow;
 	
-	[self.tableView beginUpdates];
+	//[self.tableView beginUpdates];
 	
 	NSMutableArray* rowToInsert = [[NSMutableArray alloc] init];
 	for (NSUInteger i = 1; i < contentCount + 1; i++) {
@@ -195,9 +195,10 @@
 	if (self.open) [self.tableView insertRowsAtIndexPaths:rowToInsert withRowAnimation:self.rowAnimation];
 	else [self.tableView deleteRowsAtIndexPaths:rowToInsert withRowAnimation:self.rowAnimation];
 	
-	[self.tableView endUpdates];
+	//[self.tableView endUpdates];
 
 }
+
 
 
 - (void) didSelectTitleCell {

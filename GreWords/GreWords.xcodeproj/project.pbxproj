@@ -37,7 +37,6 @@
 		3FA484D617197E20003E88A6 /* ExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA484D417197E20003E88A6 /* ExamViewController.m */; };
 		3FA484D717197E20003E88A6 /* ExamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA484D517197E20003E88A6 /* ExamViewController.xib */; };
 		3FFA470B17294491008F88A0 /* WordDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFA470917294491008F88A0 /* WordDetailViewController.m */; };
-		3FFA478417295ACE008F88A0 /* UILabel+Transparent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FFA478317295ACC008F88A0 /* UILabel+Transparent.m */; };
 		7315DF5317147B1B00CF1556 /* TaskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7315DF5217147B1B00CF1556 /* TaskGenerator.m */; };
 		735FAF3B172AD25B0071ED69 /* Main menu_circle_buttom.png in Resources */ = {isa = PBXBuildFile; fileRef = 735FAF39172AD25B0071ED69 /* Main menu_circle_buttom.png */; };
 		735FAF3C172AD25B0071ED69 /* Main menu_circle_buttom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 735FAF3A172AD25B0071ED69 /* Main menu_circle_buttom@2x.png */; };
@@ -126,6 +125,10 @@
 		E460EB4717362B1B00581869 /* learning_rightButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E460EB2A17362B1800581869 /* learning_rightButton.png */; };
 		E460EB4817362B1B00581869 /* learning_sound.png in Resources */ = {isa = PBXBuildFile; fileRef = E460EB2B17362B1800581869 /* learning_sound.png */; };
 		E460EB4917362B1B00581869 /* learning_tapCover.png in Resources */ = {isa = PBXBuildFile; fileRef = E460EB2C17362B1B00581869 /* learning_tapCover.png */; };
+		E460EB4F173651C100581869 /* learning_sound_clicked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E460EB4D173651C000581869 /* learning_sound_clicked@2x.png */; };
+		E460EB50173651C100581869 /* learning_sound@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E460EB4E173651C100581869 /* learning_sound@2x.png */; };
+		E460EB53173651FC00581869 /* learning_sound_clicked.png in Resources */ = {isa = PBXBuildFile; fileRef = E460EB51173651FB00581869 /* learning_sound_clicked.png */; };
+		E460EB54173651FC00581869 /* learning_sound.png in Resources */ = {isa = PBXBuildFile; fileRef = E460EB52173651FC00581869 /* learning_sound.png */; };
 		E46CF2CD171184E000634ED7 /* words.plist in Resources */ = {isa = PBXBuildFile; fileRef = E46CF2CC171184E000634ED7 /* words.plist */; };
 		E46DCFB017144E4F0038C149 /* MyDataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = E46DCFAF17144E4F0038C149 /* MyDataStorage.m */; };
 		E4983ED0171A8CD90055A0E7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */; };
@@ -3341,8 +3344,6 @@
 		3FFA476017294531008F88A0 /* learning_wrongButton_first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_wrongButton_first@2x.png"; sourceTree = "<group>"; };
 		3FFA476117294531008F88A0 /* learning_wrongButton_page@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_wrongButton_page@2x.png"; sourceTree = "<group>"; };
 		3FFA476217294531008F88A0 /* learning_wrongButton_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_wrongButton_up@2x.png"; sourceTree = "<group>"; };
-		3FFA478217295ACB008F88A0 /* UILabel+Transparent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+Transparent.h"; sourceTree = "<group>"; };
-		3FFA478317295ACC008F88A0 /* UILabel+Transparent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+Transparent.m"; sourceTree = "<group>"; };
 		3FFA478517297316008F88A0 /* learning_backgournd_blank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_backgournd_blank@2x.png"; sourceTree = "<group>"; };
 		3FFA47871729845E008F88A0 /* learning_up_page@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_up_page@2x.png"; sourceTree = "<group>"; };
 		7315DF5117147B1B00CF1556 /* TaskGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskGenerator.h; path = ../TaskGenerator.h; sourceTree = "<group>"; };
@@ -3414,6 +3415,10 @@
 		E460EB2A17362B1800581869 /* learning_rightButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = learning_rightButton.png; sourceTree = "<group>"; };
 		E460EB2B17362B1800581869 /* learning_sound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = learning_sound.png; sourceTree = "<group>"; };
 		E460EB2C17362B1B00581869 /* learning_tapCover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = learning_tapCover.png; sourceTree = "<group>"; };
+		E460EB4D173651C000581869 /* learning_sound_clicked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_sound_clicked@2x.png"; sourceTree = SOURCE_ROOT; };
+		E460EB4E173651C100581869 /* learning_sound@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_sound@2x.png"; sourceTree = SOURCE_ROOT; };
+		E460EB51173651FB00581869 /* learning_sound_clicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = learning_sound_clicked.png; sourceTree = SOURCE_ROOT; };
+		E460EB52173651FC00581869 /* learning_sound.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = learning_sound.png; sourceTree = SOURCE_ROOT; };
 		E46CF2CC171184E000634ED7 /* words.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = words.plist; sourceTree = "<group>"; };
 		E46DCFAE17144E4F0038C149 /* MyDataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyDataStorage.h; sourceTree = "<group>"; };
 		E46DCFAF17144E4F0038C149 /* MyDataStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyDataStorage.m; sourceTree = "<group>"; };
@@ -6751,8 +6756,6 @@
 				3FFA470A17294491008F88A0 /* WordDetailViewController.xib */,
 				3FFA470817294491008F88A0 /* WordDetailViewController.h */,
 				3FFA470917294491008F88A0 /* WordDetailViewController.m */,
-				3FFA478217295ACB008F88A0 /* UILabel+Transparent.h */,
-				3FFA478317295ACC008F88A0 /* UILabel+Transparent.m */,
 			);
 			name = WordDetail;
 			sourceTree = "<group>";
@@ -10059,6 +10062,10 @@
 		E4F7CEC0172BF85300707100 /* SlideList */ = {
 			isa = PBXGroup;
 			children = (
+				E460EB4D173651C000581869 /* learning_sound_clicked@2x.png */,
+				E460EB4E173651C100581869 /* learning_sound@2x.png */,
+				E460EB51173651FB00581869 /* learning_sound_clicked.png */,
+				E460EB52173651FC00581869 /* learning_sound.png */,
 				7380C783173439B700447D78 /* learning list_up_and_down_moreBg.png */,
 				7380C784173439B700447D78 /* learning list_up_and_down_moreBg@2x.png */,
 				E4F7CEC1172BF88200707100 /* learning list_bg.png */,
@@ -13342,6 +13349,10 @@
 				E460EB4717362B1B00581869 /* learning_rightButton.png in Resources */,
 				E460EB4817362B1B00581869 /* learning_sound.png in Resources */,
 				E460EB4917362B1B00581869 /* learning_tapCover.png in Resources */,
+				E460EB4F173651C100581869 /* learning_sound_clicked@2x.png in Resources */,
+				E460EB50173651C100581869 /* learning_sound@2x.png in Resources */,
+				E460EB53173651FC00581869 /* learning_sound_clicked.png in Resources */,
+				E460EB54173651FC00581869 /* learning_sound.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13382,7 +13393,6 @@
 				E4E82F321726D10800460BEC /* PieChart.m in Sources */,
 				E4E82F331726D10800460BEC /* DashboardViewController.m in Sources */,
 				3FFA470B17294491008F88A0 /* WordDetailViewController.m in Sources */,
-				3FFA478417295ACE008F88A0 /* UILabel+Transparent.m in Sources */,
 				E4F7CEBC172BDFC400707100 /* SmartWordListHeaderCell.m in Sources */,
 				E4F7CEBF172BE22300707100 /* SmartWordListContentCell.m in Sources */,
 				7380C76F1734198F00447D78 /* FXLabel.m in Sources */,

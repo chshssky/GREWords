@@ -13,8 +13,7 @@
 #import "WordHelper.h"
 #import "SmartWordListHeaderCell.h"
 #import "SmartWordListContentCell.h"
-
-#define ScrollViewHeight 279
+#import <QuartzCore/QuartzCore.h>
 
 @implementation SmartWordListSectionController
 
@@ -36,9 +35,32 @@ static NSDictionary* typeDict = nil;
               };
         }
         _type = SmartListType_Slide;
-        
+        self.scrollViewHeight = 279;
     }
     return self;
+}
+
+
+- (void)showUpShadow
+{
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:self.sectionID];
+    
+    SmartWordListHeaderCell* headerCell = (SmartWordListHeaderCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+    [headerCell showUp];
+}
+- (void)showDownShadow
+{
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:self.sectionID];
+    
+    SmartWordListHeaderCell* headerCell = (SmartWordListHeaderCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+    [headerCell showDown];
+}
+- (void)closeShadow
+{
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:self.sectionID];
+    
+    SmartWordListHeaderCell* headerCell = (SmartWordListHeaderCell*)[self.tableView cellForRowAtIndexPath:indexPath];
+    [headerCell close];
 }
 
 - (NSUInteger)contentNumberOfRow {
@@ -75,9 +97,12 @@ static NSDictionary* typeDict = nil;
     SmartWordListHeaderCell *cell=(SmartWordListHeaderCell *)[self.tableView dequeueReusableCellWithIdentifier:([self configurationForTpye:self.type][@"identifer"])];
 
     cell.wordLabel.text =  [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
+    
+    [cell close];
     //vc.text = [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
     //[cell addSubview:vc.view];
-	return cell;
+
+    return cell;
 }
 
 - (UITableViewCell *) contentCellForRow:(NSUInteger)row {
@@ -97,9 +122,9 @@ static NSDictionary* typeDict = nil;
     }
     
     
-    if(frame.size.height > ScrollViewHeight)
+    if(frame.size.height >  self.scrollViewHeight)
     {
-        frame.size.height = ScrollViewHeight;
+        frame.size.height =  self.scrollViewHeight;
         UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:cell.contentView.frame];
         scrollView.contentSize = vc.view.frame.size;
         [scrollView addSubview:vc.view];
@@ -112,10 +137,13 @@ static NSDictionary* typeDict = nil;
     {
         [cell.contentView addSubview:vc.view];
     }
+    
+    //cell.contentView.layer;
+    
     //cell.contentView.frame = frame;
     //cell.frame  = frame;
     
-    //cell.clipsToBounds = YES;
+    //cell.clipsToBounds = NO;
 	return cell;
 }
 

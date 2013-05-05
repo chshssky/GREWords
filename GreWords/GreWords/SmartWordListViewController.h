@@ -14,6 +14,7 @@
     NSMutableArray* retractableControllers;
     UIImageView *topTexture;
     UIImageView *downTexture;
+    float lastTableViewHeight;
 }
 
 @property (retain, nonatomic) NSArray *array;
