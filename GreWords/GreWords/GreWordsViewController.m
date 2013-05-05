@@ -98,7 +98,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)listController
+- (void)transaction
 {
     UIImageView *blackView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default-568h.png"]];
     blackView.alpha = 0;
@@ -123,38 +123,22 @@
     animGroup_black.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     animGroup_black.duration = 0.5;
     [blackView.layer addAnimation:animGroup_black forKey:nil];
+}
+
+- (void)listController
+{
+    [self transaction];
     
     SmartWordListViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
     vc.type = SmartListType_Slide;
+    vc.array = @[[[WordHelper instance] wordWithID:1],[[WordHelper instance] wordWithID:2],[[WordHelper instance] wordWithID:3]];
     vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentModalViewController:vc animated:YES];
 }
 
 - (void)examController
 {
-    UIImageView *blackView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default-568h.png"]];
-    blackView.alpha = 0;
-    [self.view addSubview:blackView];
-    
-    CABasicAnimation *scaleAnim = [CABasicAnimation animationWithKeyPath:@"transform"];
-    scaleAnim.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
-    scaleAnim.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.95, 0.95, 1)];
-    scaleAnim.removedOnCompletion = YES;
-    CAAnimationGroup *animGroup = [CAAnimationGroup animation];
-    animGroup.animations = [NSArray arrayWithObjects:scaleAnim, nil];
-    animGroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    animGroup.duration = 0.5;
-    [self.view.layer addAnimation:animGroup forKey:nil];
-    
-    CABasicAnimation *opacityAnim_black = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    opacityAnim_black.fromValue = [NSNumber numberWithFloat:0];
-    opacityAnim_black.toValue = [NSNumber numberWithFloat:0.7];
-    opacityAnim_black.removedOnCompletion = YES;
-    CAAnimationGroup *animGroup_black = [CAAnimationGroup animation];
-    animGroup_black.animations = [NSArray arrayWithObjects:opacityAnim_black, nil];
-    animGroup_black.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    animGroup_black.duration = 0.5;
-    [blackView.layer addAnimation:animGroup_black forKey:nil];
+    [self transaction];
     
     WordDetailViewController *vc = [[WordDetailViewController alloc] init];
     vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
@@ -163,29 +147,7 @@
 
 - (void)historyController
 {
-    UIImageView *blackView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default-568h.png"]];
-    blackView.alpha = 0;
-    [self.view addSubview:blackView];
-    
-    CABasicAnimation *scaleAnim = [CABasicAnimation animationWithKeyPath:@"transform"];
-    scaleAnim.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
-    scaleAnim.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.95, 0.95, 1)];
-    scaleAnim.removedOnCompletion = YES;
-    CAAnimationGroup *animGroup = [CAAnimationGroup animation];
-    animGroup.animations = [NSArray arrayWithObjects:scaleAnim, nil];
-    animGroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    animGroup.duration = 0.5;
-    [self.view.layer addAnimation:animGroup forKey:nil];
-    
-    CABasicAnimation *opacityAnim_black = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    opacityAnim_black.fromValue = [NSNumber numberWithFloat:0];
-    opacityAnim_black.toValue = [NSNumber numberWithFloat:0.7];
-    opacityAnim_black.removedOnCompletion = YES;
-    CAAnimationGroup *animGroup_black = [CAAnimationGroup animation];
-    animGroup_black.animations = [NSArray arrayWithObjects:opacityAnim_black, nil];
-    animGroup_black.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    animGroup_black.duration = 0.5;
-    [blackView.layer addAnimation:animGroup_black forKey:nil];
+    [self transaction];
     
     HistoryStatisticsViewController *vc = [[HistoryStatisticsViewController alloc] init];
     vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
@@ -194,29 +156,7 @@
 
 - (void)settingController
 {
-    UIImageView *blackView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default-568h.png"]];
-    blackView.alpha = 0;
-    [self.view addSubview:blackView];
-    
-    CABasicAnimation *scaleAnim = [CABasicAnimation animationWithKeyPath:@"transform"];
-    scaleAnim.fromValue = [NSValue valueWithCATransform3D:CATransform3DIdentity];
-    scaleAnim.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.95, 0.95, 1)];
-    scaleAnim.removedOnCompletion = YES;
-    CAAnimationGroup *animGroup = [CAAnimationGroup animation];
-    animGroup.animations = [NSArray arrayWithObjects:scaleAnim, nil];
-    animGroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    animGroup.duration = 0.5;
-    [self.view.layer addAnimation:animGroup forKey:nil];
-    
-    CABasicAnimation *opacityAnim_black = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    opacityAnim_black.fromValue = [NSNumber numberWithFloat:0];
-    opacityAnim_black.toValue = [NSNumber numberWithFloat:0.7];
-    opacityAnim_black.removedOnCompletion = YES;
-    CAAnimationGroup *animGroup_black = [CAAnimationGroup animation];
-    animGroup_black.animations = [NSArray arrayWithObjects:opacityAnim_black, nil];
-    animGroup_black.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    animGroup_black.duration = 0.5;
-    [blackView.layer addAnimation:animGroup_black forKey:nil];
+    [self transaction];
     
     WordDetailViewController *vc = [[WordDetailViewController alloc] init];
     vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
@@ -228,13 +168,13 @@
 - (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
     if (idx == 0) {
-        [self performSelector:@selector(settingController) withObject:nil afterDelay:0.3];
+        [self performSelector:@selector(settingController) withObject:nil afterDelay:0.1];
     } else if (idx == 1) {
-        [self performSelector:@selector(examController) withObject:nil afterDelay:0.3];
+        [self performSelector:@selector(examController) withObject:nil afterDelay:0.1];
     } else if (idx == 2) {
-        [self performSelector:@selector(historyController) withObject:nil afterDelay:0.3];
+        [self performSelector:@selector(historyController) withObject:nil afterDelay:0.1];
     } else if (idx == 3) {
-        [self performSelector:@selector(listController) withObject:nil afterDelay:0.3];
+        [self performSelector:@selector(listController) withObject:nil afterDelay:0.1];
     }
 }
 - (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {

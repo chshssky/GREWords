@@ -11,10 +11,14 @@
 
 @interface SmartWordListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
-    NSArray *_array;
     NSMutableArray* retractableControllers;
     UIImageView *topTexture;
+    UIImageView *downTexture;
+    float lastTableViewHeight;
 }
+
+@property (retain, nonatomic) NSArray *array;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic) SmartListType type;

@@ -10,7 +10,7 @@
 #import "WordLayoutViewController.h"
 #import "WordHelper.h"
 
-#define PI 3.14159265358979323846264338327950288
+#define PI M_PI
 
 @interface WordDetailViewController () <UIScrollViewDelegate>
 
@@ -25,6 +25,7 @@
 @end
 
 @implementation WordDetailViewController
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

@@ -85,21 +85,21 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="learning list_cell_bg.png" id="J8f-Zi-e4b">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="38"/>
+                                                    <rect key="frame" x="0.0" y="-1" width="320" height="38"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Jzi-g9-bKg">
-                                                    <rect key="frame" x="25" y="3" width="203" height="21"/>
+                                                    <rect key="frame" x="25" y="7" width="203" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="0.40000000000000002" green="0.51372549020000002" blue="0.047058823530000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qIX-90-kBt">
-                                                    <rect key="frame" x="212" y="0.0" width="46" height="32"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="qIX-90-kBt">
+                                                    <rect key="frame" x="212" y="2" width="46" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                    <state key="normal" title="发音">
+                                                    <state key="normal" image="learning_time.png">
                                                         <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -111,13 +111,27 @@
                                                     </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="learning list_line.png" id="muV-VV-VX1">
-                                                    <rect key="frame" x="0.0" y="33" width="320" height="6"/>
+                                                    <rect key="frame" x="0.0" y="34" width="320" height="6"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="learning list_line.png" id="wYh-IJ-F1U">
+                                                    <rect key="frame" x="0.0" y="-4" width="320" height="6"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" image="learning list_content_shadow_down.png" id="PO4-kd-WnF">
+                                                    <rect key="frame" x="0.0" y="-10" width="320" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                </imageView>
+                                                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" image="learning list_content_shadow_up.png" id="yEf-d2-vyo">
+                                                    <rect key="frame" x="0.0" y="34" width="320" height="13"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
+                                            <outlet property="downShadow" destination="yEf-d2-vyo" id="DNE-nQ-L3X"/>
+                                            <outlet property="upShadow" destination="PO4-kd-WnF" id="JKk-fI-dB3"/>
                                             <outlet property="wordLabel" destination="Jzi-g9-bKg" id="Cp2-VK-Lmo"/>
                                         </connections>
                                     </tableViewCell>
@@ -128,30 +142,19 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="258"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" image="learning list_content.png" id="ccX-T5-UOy">
-                                                    <rect key="frame" x="0.0" y="-4" width="320" height="263"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                </imageView>
                                                 <view contentMode="top" id="MAr-i6-5jI">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="263"/>
+                                                    <rect key="frame" x="0.0" y="-2" width="320" height="263"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <accessibility key="accessibilityConfiguration">
+                                                        <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                                    </accessibility>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="learning list_content_shadow_down.png" id="PO4-kd-WnF">
-                                                    <rect key="frame" x="0.0" y="250" width="320" height="14"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="learning list_content_shadow_up.png" id="yEf-d2-vyo">
-                                                    <rect key="frame" x="0.0" y="-5" width="320" height="13"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
                                             <outlet property="contentView" destination="MAr-i6-5jI" id="wyL-Q1-EyL"/>
-                                            <outlet property="downShadow" destination="PO4-kd-WnF" id="LzP-rG-wcf"/>
-                                            <outlet property="upShadow" destination="yEf-d2-vyo" id="tPH-n8-z1V"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -169,44 +172,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kKD-y4-25g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="276" y="-70"/>
+            <point key="canvasLocation" x="272" y="-70"/>
         </scene>
     </scenes>
     <resources>
         <image name="Main menu_background@2x.png" width="640" height="1136"/>
         <image name="learning list_bg.png" width="320" height="568"/>
         <image name="learning list_cell_bg.png" width="320" height="38"/>
-        <image name="learning list_content.png" width="320" height="279"/>
         <image name="learning list_content_shadow_down.png" width="320" height="5"/>
         <image name="learning list_content_shadow_up.png" width="320" height="6"/>
         <image name="learning list_line.png" width="320" height="6"/>
+        <image name="learning_time.png" width="19" height="17"/>
     </resources>
-    <classes>
-        <class className="GreWordsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GreWordsViewController.h"/>
-        </class>
-        <class className="SmartWordListContentCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmartWordListContentCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="downShadow" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="upShadow" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="SmartWordListHeaderCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmartWordListHeaderCell.h"/>
-            <relationships>
-                <relationship kind="action" name="soundPressed:"/>
-                <relationship kind="outlet" name="wordLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SmartWordListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmartWordListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

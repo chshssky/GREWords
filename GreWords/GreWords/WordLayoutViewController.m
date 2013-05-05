@@ -101,6 +101,7 @@ float sumHeight = 5.0;//10.0;
         NSLog(@"找不到这个单词的内容");
     }else{
         for (int i=0; i<theDetail.count; i++) {
+            sumHeight += 5.0;
             [self showMeanings:theDetail[i] numberOfThisMeaning:i whetherOnlyOneMeaning:theDetail.count==0?YES:NO startHeight:sumHeight];
         }
     }
@@ -118,14 +119,14 @@ float sumHeight = 5.0;//10.0;
         NSLog(@"找不到这个单词的释义");
     }else{
         //////////////////
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, h, 65, 25)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, h, 80, 25)];
         label.backgroundColor = [UIColor clearColor];
-        label.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
-        label.textColor = [UIColor orangeColor];
+        label.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
+        label.textColor = [UIColor colorWithRed:209.0/255.0 green:134.0/255.0 blue:39/255.0 alpha:1];
         if (b == YES) {
-            label.text = @"[考法]";
+            label.text = @"【考法】";
         }else{
-            label.text = [NSString stringWithFormat:@"%@%@%@",@"[考法", [NSString stringWithFormat:@"%d",i+1], @"]  "];
+            label.text = [NSString stringWithFormat:@"%@%@%@",@"【考法", [NSString stringWithFormat:@"%d",i+1], @"】"];
         }
         label.lineBreakMode = NSLineBreakByWordWrapping;
         label.numberOfLines = 0;
@@ -134,7 +135,7 @@ float sumHeight = 5.0;//10.0;
         //////////////////
         label = [[UILabel alloc] initWithFrame:CGRectMake(85, h, 215, 25)];
         label.backgroundColor = [UIColor clearColor];
-        label.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
+        label.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
         NSRange range = [theUsage rangeOfString:@"："];
         if(range.location != NSNotFound)
         {
@@ -147,7 +148,7 @@ float sumHeight = 5.0;//10.0;
             ////////////////////
             label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
             label.backgroundColor = [UIColor clearColor];
-            label.font = [UIFont fontWithName:@"Helvetica" size:15];
+            label.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
             label.text = [theUsage substringFromIndex:range.location+1];
             label.lineBreakMode = NSLineBreakByWordWrapping;
             label.numberOfLines = 0;
@@ -174,7 +175,7 @@ float sumHeight = 5.0;//10.0;
             ////////////////////
             label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
             label.backgroundColor = [UIColor clearColor];
-            label.font = [UIFont fontWithName:@"Helvetica" size:15];
+            label.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
             label.text = [theUsage substringFromIndex:offset+1];
             label.lineBreakMode = NSLineBreakByWordWrapping;
             label.numberOfLines = 0;
@@ -184,15 +185,20 @@ float sumHeight = 5.0;//10.0;
             ///////////////////
             
         }
+        UIImageView *rectImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_meaning_rect.png"]];
+        rectImage.frame = CGRectMake(10, h, 300, sumHeight-h-10);
+        [self.view addSubview:rectImage];
+        [self.view sendSubviewToBack:rectImage];
     }
+    
     NSString *theExample = [wordMeaningDictionary objectForKey:@"example"];
     if (theExample == nil) {
         NSLog(@"找不到这个单词的例句");
     }else{
         ////////////////////
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(52, sumHeight, 65, 25)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(60, sumHeight, 65, 25)];
         label.backgroundColor = [UIColor clearColor];
-        label.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
+        label.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
         label.text = @"例";
         label.lineBreakMode = NSLineBreakByWordWrapping;
         label.numberOfLines = 0;
@@ -201,7 +207,7 @@ float sumHeight = 5.0;//10.0;
         ////////////////////
         label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
         label.backgroundColor = [UIColor clearColor];
-        label.font = [UIFont fontWithName:@"Helvetica" size:15];
+        label.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
         label.text = [theExample substringFromIndex:0];
         label.lineBreakMode = NSLineBreakByWordWrapping;
         label.numberOfLines = 0;
@@ -215,9 +221,9 @@ float sumHeight = 5.0;//10.0;
         NSLog(@"找不到这个单词的同义词");
     }else{
         ////////////////////
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(52, sumHeight, 65, 25)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(60, sumHeight, 65, 25)];
         label.backgroundColor = [UIColor clearColor];
-        label.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
+        label.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
         label.text = @"近";
         label.lineBreakMode = NSLineBreakByWordWrapping;
         label.numberOfLines = 0;
@@ -226,7 +232,7 @@ float sumHeight = 5.0;//10.0;
         ////////////////////
         label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
         label.backgroundColor = [UIColor clearColor];
-        label.font = [UIFont fontWithName:@"Helvetica" size:15];
+        label.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
         label.text = [theHomoionym substringFromIndex:0];
         label.lineBreakMode = NSLineBreakByWordWrapping;
         label.numberOfLines = 0;
@@ -238,9 +244,9 @@ float sumHeight = 5.0;//10.0;
     if (theAntonym == nil) {
         NSLog(@"找不到这个单词的反义词");
     }else{
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(52, sumHeight, 65, 25)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(60, sumHeight, 65, 25)];
         label.backgroundColor = [UIColor clearColor];
-        label.font = [UIFont fontWithName:@"Helvetica-Bold" size:15];
+        label.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
         label.text = @"反";
         label.lineBreakMode = NSLineBreakByWordWrapping;
         label.numberOfLines = 0;
@@ -249,7 +255,7 @@ float sumHeight = 5.0;//10.0;
         ////////////////////
         label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
         label.backgroundColor = [UIColor clearColor];
-        label.font = [UIFont fontWithName:@"Helvetica" size:16];
+        label.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
         label.text = [theAntonym substringFromIndex:0];
         label.lineBreakMode = NSLineBreakByWordWrapping;
         label.numberOfLines = 0;

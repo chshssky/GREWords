@@ -11,6 +11,7 @@
 #import "SmartWordListContentCell.h"
 #import "SmartWordListSectionController.h"
 #import "WordHelper.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface SmartWordListViewController ()
 
@@ -23,9 +24,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _array = [[WordHelper instance] wordsAlphabeticOrder];
     
     retractableControllers = [@[] mutableCopy];
+    lastTableViewHeight = -1;
     
     for(int i = 0; i < _array.count;i++)
     {
@@ -36,17 +37,49 @@
         [retractableControllers addObject:sectionController];
     }
 
-    topTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0, -38, 320, 38)];
-    topTexture.image = [UIImage imageNamed:@"learning list_cell_bg.png"];
+    topTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -570.0f, 320.0f, 568.0f)];
+    topTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
     
     [self.tableView addSubview:topTexture];
-    // Do any additional setup after loading the view from its nib.
+
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)addButtomTexture
+{
+    if(lastTableViewHeight == -1)
+    {
+        lastTableViewHeight = self.tableView.contentSize.height + 2;
+        
+        UIImageView *bottomLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning list_line.png"]];
+        
+        CGRect frame = bottomLine.frame;
+        frame.origin.y = -5;
+        bottomLine.frame = frame;
+        
+        downTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, lastTableViewHeight, 320.0f, 568.0f)];
+        downTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
+        [downTexture addSubview:bottomLine];
+        [self.tableView addSubview:downTexture];
+    }
+    else
+    {
+        lastTableViewHeight = self.tableView.contentSize.height + 1;
+        [UIView animateWithDuration:0.3f animations:^()
+        {
+            downTexture.frame = CGRectMake(0.0f, lastTableViewHeight, 320.0f, 568.0f);
+        }];
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self addButtomTexture];
 }
 
 - (void)viewDidUnload {
@@ -78,22 +111,40 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     GCRetractableSectionController* sectionController = [retractableControllers objectAtIndex:indexPath.section];
     
+    if(indexPath.row != 0)
+        return;
+    
+    //BOOL isOpen = sectionController.open;
+    
     [sectionController didSelectCellNoScrollAtRow:indexPath.row];
     
+    
+    [CATransaction begin];
     [self.tableView beginUpdates];
     //[sectionController closeOthers];
+//    [CATransaction setCompletionBlock: ^{
+//        // Code to be executed upon completion
+//        NSLog(@"wuwuwuw");
+//        [self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.1f];
+//    }];
     for(int i = 0; i < retractableControllers.count; i++)
     {
+        SmartWordListSectionController* aController = [retractableControllers objectAtIndex:i];
         if(i == indexPath.section)
+        {
             continue;
-        GCRetractableSectionController* aController = [retractableControllers objectAtIndex:i];
+        }
         [aController close];
+        
     }
     [self.tableView endUpdates];
+    [CATransaction commit];
     
     [sectionController scroll];
     
-    
+    [self addButtomTexture];
+    //[downTexture removeFromSuperview];
+    //downTexture = nil;
 }
 
 

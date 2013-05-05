@@ -10,7 +10,10 @@
 
 @interface SmartWordListHeaderCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *upShadow;
+@property (weak, nonatomic) IBOutlet UIImageView *downShadow;
 
 -(IBAction)soundPressed:(id)sender;
+
 
 @end

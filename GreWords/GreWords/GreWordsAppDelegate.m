@@ -29,6 +29,16 @@
     {
         [[ConfigurationHelper instance] initData];
     }
+    
+    for (NSString* fname in [UIFont familyNames])
+    {
+        //NSLog(@"%@",fname);
+        for (NSString* name in [UIFont fontNamesForFamilyName:fname])
+        {
+            //NSLog(@"    %@",name);
+        }
+    }
+    
     // Override point for customization after application launch.
     return YES;
 }
