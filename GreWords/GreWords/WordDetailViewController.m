@@ -21,6 +21,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *WrongButton;
 @property (weak, nonatomic) IBOutlet UIImageView *RightUpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *RightDownImage;
+@property (weak, nonatomic) IBOutlet UIImageView *WrongUpImage;
+@property (weak, nonatomic) IBOutlet UIImageView *WrongDownImage;
 
 @end
 
@@ -43,7 +45,21 @@
     //[self.UpImage setFrame:CGRectMake(0, 0, 320, 175.5)];
     // Do any additional setup after loading the view from its nib.
     WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
-    [vc displayWord:[[WordHelper instance] wordWithID:0] withOption:nil];    
+   /*
+key: shouldShowWord                default:[NSNumber numberWithBool:YES]
+key: shouldShowPhonetic            default:[NSNumber numberWithBool:YES]
+key: shouldShowMeaning             default:[NSNumber numberWithBool:YES]
+key: shouldShowSampleSentence      default:[NSNumber numberWithBool:YES]
+key: shouldShowSynonyms            default:[NSNumber numberWithBool:YES]
+key: shouldShowAntonyms            default:[NSNumber numberWithBool:YES]
+    this maybe nil to apply all default options
+    */
+
+    NSDictionary *option = @{@"shouldShowChineseMeaning":@YES, @"shouldShowEnglishMeaning":@YES};
+    
+    
+    [vc displayWord:[[WordHelper instance] wordWithID:0] withOption:option];
+    
 //    if(frame.size.height > ScrollViewHeight)
 //    {
 //        frame.size.height = ScrollViewHeight;
@@ -65,21 +81,14 @@
     NSLog(@"height2:%f", self.WordParaphraseView.contentSize.height - self.WordParaphraseView.frame.size.height);
     //NSLog(@"height3:%f", self.WordParaphraseView..height);
     
-    for (int i = 0; i < 20; i ++) {
-        if ( i < 10) {
-            [self.RightUpImage setBounds:CGRectMake(187, 456 - i * 4, 76, 38 - i * 4)];
-        } else {
-            [self.RightDownImage setBounds:CGRectMake(188, 492, 76, (i - 10) * 4)];
-        }
-        
-    }
+    //self.RightUpImage.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
 
 }
 
--(UIImageView *) makeRotation:(UIImageView *)image speedX:(float)X speedY:(float)Y
+-(UIImageView *) makeScale:(UIImageView *)image speedX:(float)X speedY:(float)Y
 {
     if (Y < 0) {
-        image.transform = CGAffineTransformMakeRotation(atan(X/(-Y)));
+        image.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
     }else if(Y > 0){
         image.transform = CGAffineTransformMakeRotation(atanf(X/(-Y))-PI);
     }
@@ -117,15 +126,51 @@
     [self setWrongButton:nil];
     [self setRightUpImage:nil];
     [self setRightDownImage:nil];
+    [self setWrongUpImage:nil];
+    [self setWrongDownImage:nil];
     [super viewDidUnload];
 }
 
+- (void)RightAnimation
+{
+    [self.RightDownImage setBounds:CGRectMake(216, 456, 76, 38)];
+    [self.RightDownImage setBounds:CGRectMake(216, 493, 76, 0.001)];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+    [UIView animateWithDuration:0.25f animations:^(){
+        self.RightUpImage.transform = CGAffineTransformMakeScale(1.0f, 0.001f);
+        self.RightUpImage.center = CGPointMake(216 + 38, 493);
+    }completion:^(BOOL finished){
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+        [UIView animateWithDuration:0.15f animations:^(){
+            self.RightDownImage.transform = CGAffineTransformMakeScale(1.0f, 38000.0f);
+            self.RightDownImage.center = CGPointMake(216 + 38, 493 + 18);
+        }];
+    }];
+}
+
+- (void)WrongAnimation
+{
+    [self.WrongUpImage setBounds:CGRectMake(29, 456, 76, 38)];
+    [self.WrongDownImage setBounds:CGRectMake(29, 493, 76, 0.001)];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+    [UIView animateWithDuration:0.25f animations:^(){
+        self.WrongUpImage.transform = CGAffineTransformMakeScale(1.0f, 0.001f);
+        self.WrongUpImage.center = CGPointMake(29 + 38, 493);
+    }completion:^(BOOL finished){
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+        [UIView animateWithDuration:0.15f animations:^(){
+            self.WrongDownImage.transform = CGAffineTransformMakeScale(1.0f, 38000.0f);
+            self.WrongDownImage.center = CGPointMake(29 + 38, 493 + 18);
+        }];
+    }];
+}
+
 - (IBAction)rightButtonPushed:(id)sender {
-    
+    [self RightAnimation];
 }
 
 - (IBAction)wrongButtonPushed:(id)sender {
-    
+    [self WrongAnimation];
 }
 
 - (IBAction)pronounceButtonPushed:(id)sender {

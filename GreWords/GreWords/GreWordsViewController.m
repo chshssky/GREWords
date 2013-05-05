@@ -149,7 +149,7 @@
 {
     [self transaction];
     
-    WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
+    HistoryStatisticsViewController *vc = [[HistoryStatisticsViewController alloc] init];
     vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentModalViewController:vc animated:YES];
 }
