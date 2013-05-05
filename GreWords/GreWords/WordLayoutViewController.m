@@ -109,7 +109,6 @@ float sumHeight = 5.0;//10.0;
         }
     }
     self.view.frame = CGRectMake(0, 0, 320, sumHeight);
-    NSLog(@"!!!!!!!!!%f",sumHeight);
     sumHeight = 5.0;
 }
 

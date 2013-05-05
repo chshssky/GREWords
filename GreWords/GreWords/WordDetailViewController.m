@@ -55,7 +55,10 @@ key: shouldShowAntonyms            default:[NSNumber numberWithBool:YES]
     this maybe nil to apply all default options
     */
 
-    NSDictionary *option = @{@"shouldShowChineseMeaning":@YES, @"shouldShowEnglishMeaning":@YES};
+    NSDictionary *option = @{@"shouldShowChineseMeaning":@YES,
+                             @"shouldShowEnglishMeaning":@YES,
+                             @"shouldShowSynonyms":@YES,
+                             @"shouldShowSampleSentence":@YES};
     
     
     [vc displayWord:[[WordHelper instance] wordWithID:0] withOption:option];
