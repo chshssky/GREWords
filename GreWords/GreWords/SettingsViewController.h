@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SettingTabViewDeckViewController.h"
 @interface SettingsViewController : UIViewController
+{
+    SettingTabViewDeckViewController *tabs;
+}
 @property (weak, nonatomic) IBOutlet UIButton *exitButton;
+@property (weak, nonatomic) IBOutlet UIView *tabViews;
 
 @end

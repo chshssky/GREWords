@@ -158,7 +158,7 @@
 {
     [self transaction];
     
-    WordDetailViewController *vc = [[WordDetailViewController alloc] init];
+    SettingsViewController *vc = [[SettingsViewController alloc] init];
     vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentModalViewController:vc animated:YES];
 }
