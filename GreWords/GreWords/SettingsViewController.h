@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SettingTabViewController.h"
+#import "SettingTabViewDeckViewController.h"
 @interface SettingsViewController : UIViewController
 {
-    NSArray *tabArr;
+    SettingTabViewDeckViewController *tabs;
 }
 @property (weak, nonatomic) IBOutlet UIButton *exitButton;
 @property (weak, nonatomic) IBOutlet UIView *tabViews;

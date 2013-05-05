@@ -14,4 +14,6 @@
 @protocol SettingTabViewDelegate
 
 - (void)SettingTabViewdidChangeState:(SettingTabViewController*) tabView;
+- (void)SettingTabView:(SettingTabViewController *)tabView movedTranslation:(CGPoint)translation;
+
 @end

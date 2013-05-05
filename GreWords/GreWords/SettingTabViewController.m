@@ -60,17 +60,26 @@
 
 }
 
+-(void)setYOffset:(float)yOffset
+{
+    CGRect frame = self.view.frame;
+    frame.origin.y += _yOffset;
+    self.view.frame = frame;
+}
+
 -(void) didPerformPanGesture:(UIPanGestureRecognizer*) recognizer
 {
     NSLog(@"Pan Pan Pan");
 //    CGPoint location = [recognizer locationInView: self.view];
     CGPoint translation = [recognizer translationInView: self.view];
+    
     if (recognizer.state == UIGestureRecognizerStateBegan)
     {
         lastTranslate = translation;
     }
     else if (recognizer.state == UIGestureRecognizerStateChanged)
     {
+        float originalY = self.view.frame.origin.y;
         CGRect frame = _originalFrame;
         float overHeight = 0;
         if(frame.origin.y + translation.y + (state == SettingTabViewStateUp ? 0 : HEIGHT) > _originalFrame.origin.y + HEIGHT)
@@ -95,6 +104,8 @@
         frame.origin.y += _yOffset;
         self.view.frame = frame;
         
+        
+        [self.delegate SettingTabView:self movedTranslation:CGPointMake(0, self.view.frame.origin.y - self.originalFrame.origin.y)];
     }
     else if (recognizer.state == UIGestureRecognizerStateEnded)
     {
