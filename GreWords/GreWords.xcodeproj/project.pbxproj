@@ -65,7 +65,6 @@
 		7312DB8517368E3B0082A49E /* learning_wrong_up_page@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7312DB8317368E3B0082A49E /* learning_wrong_up_page@2x.png */; };
 		7312DB8817368E430082A49E /* learning_right_up_page.png in Resources */ = {isa = PBXBuildFile; fileRef = 7312DB8617368E430082A49E /* learning_right_up_page.png */; };
 		7312DB8917368E430082A49E /* learning_right_up_page@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7312DB8717368E430082A49E /* learning_right_up_page@2x.png */; };
-		7315DF5317147B1B00CF1556 /* TaskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7315DF5217147B1B00CF1556 /* TaskGenerator.m */; };
 		735FAF3B172AD25B0071ED69 /* Main menu_circle_buttom.png in Resources */ = {isa = PBXBuildFile; fileRef = 735FAF39172AD25B0071ED69 /* Main menu_circle_buttom.png */; };
 		735FAF3C172AD25B0071ED69 /* Main menu_circle_buttom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 735FAF3A172AD25B0071ED69 /* Main menu_circle_buttom@2x.png */; };
 		7380C74F173411EE00447D78 /* WordDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FFA470A17294491008F88A0 /* WordDetailViewController.xib */; };
@@ -101,6 +100,7 @@
 		7380C78217342A3700447D78 /* WordSmallLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7380C78017342A3400447D78 /* WordSmallLayoutViewController.xib */; };
 		73B8763F1736A0F700BD1860 /* Main menu_text_startTask_clicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 73B8763D1736A0F700BD1860 /* Main menu_text_startTask_clicked.png */; };
 		73B876401736A0F700BD1860 /* Main menu_text_startTask_clicked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73B8763E1736A0F700BD1860 /* Main menu_text_startTask_clicked@2x.png */; };
+		73B876431736A20600BD1860 /* TaskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B876421736A20600BD1860 /* TaskGenerator.m */; };
 		73C385341733F0FF0018BC54 /* STHeitiLight.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 73C385321733F0FF0018BC54 /* STHeitiLight.ttc */; };
 		73C385351733F0FF0018BC54 /* STHeitiMedium.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 73C385331733F0FF0018BC54 /* STHeitiMedium.ttc */; };
 		73D209AC1714367F00C718A6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D209AB1714367F00C718A6 /* CoreText.framework */; };
@@ -3378,8 +3378,6 @@
 		7312DB8317368E3B0082A49E /* learning_wrong_up_page@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_wrong_up_page@2x.png"; sourceTree = "<group>"; };
 		7312DB8617368E430082A49E /* learning_right_up_page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = learning_right_up_page.png; sourceTree = "<group>"; };
 		7312DB8717368E430082A49E /* learning_right_up_page@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_right_up_page@2x.png"; sourceTree = "<group>"; };
-		7315DF5117147B1B00CF1556 /* TaskGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskGenerator.h; path = ../TaskGenerator.h; sourceTree = "<group>"; };
-		7315DF5217147B1B00CF1556 /* TaskGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskGenerator.m; path = ../TaskGenerator.m; sourceTree = "<group>"; };
 		735FAF39172AD25B0071ED69 /* Main menu_circle_buttom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Main menu_circle_buttom.png"; path = "Resources/Main_menu/Main menu_circle_buttom.png"; sourceTree = SOURCE_ROOT; };
 		735FAF3A172AD25B0071ED69 /* Main menu_circle_buttom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Main menu_circle_buttom@2x.png"; path = "Resources/Main_menu/Main menu_circle_buttom@2x.png"; sourceTree = SOURCE_ROOT; };
 		7380C76D1734198A00447D78 /* FXLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXLabel.h; sourceTree = "<group>"; };
@@ -3390,6 +3388,8 @@
 		7380C78017342A3400447D78 /* WordSmallLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordSmallLayoutViewController.xib; sourceTree = "<group>"; };
 		73B8763D1736A0F700BD1860 /* Main menu_text_startTask_clicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Main menu_text_startTask_clicked.png"; path = "Resources/Main_menu/Main menu_text_startTask_clicked.png"; sourceTree = SOURCE_ROOT; };
 		73B8763E1736A0F700BD1860 /* Main menu_text_startTask_clicked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Main menu_text_startTask_clicked@2x.png"; path = "Resources/Main_menu/Main menu_text_startTask_clicked@2x.png"; sourceTree = SOURCE_ROOT; };
+		73B876411736A20600BD1860 /* TaskGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskGenerator.h; sourceTree = "<group>"; };
+		73B876421736A20600BD1860 /* TaskGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskGenerator.m; sourceTree = "<group>"; };
 		73C385321733F0FF0018BC54 /* STHeitiLight.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = STHeitiLight.ttc; sourceTree = "<group>"; };
 		73C385331733F0FF0018BC54 /* STHeitiMedium.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = STHeitiMedium.ttc; sourceTree = "<group>"; };
 		73D209AB1714367F00C718A6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -6656,10 +6656,10 @@
 				E46DCFAF17144E4F0038C149 /* MyDataStorage.m */,
 				3FA48493171463FB003E88A6 /* HistoryManager.h */,
 				3FA48494171463FB003E88A6 /* HistoryManager.m */,
-				7315DF5117147B1B00CF1556 /* TaskGenerator.h */,
-				7315DF5217147B1B00CF1556 /* TaskGenerator.m */,
 				E4983ED3171A8D880055A0E7 /* WordSpeaker.h */,
 				E4983ED4171A8D880055A0E7 /* WordSpeaker.m */,
+				73B876411736A20600BD1860 /* TaskGenerator.h */,
+				73B876421736A20600BD1860 /* TaskGenerator.m */,
 			);
 			name = LogicalLayer;
 			sourceTree = "<group>";
@@ -13405,7 +13405,6 @@
 				E414B69E1714303F00C29D3C /* WordLayoutViewController.m in Sources */,
 				E46DCFB017144E4F0038C149 /* MyDataStorage.m in Sources */,
 				3FA48495171463FC003E88A6 /* HistoryManager.m in Sources */,
-				7315DF5317147B1B00CF1556 /* TaskGenerator.m in Sources */,
 				3FA4849817159F9C003E88A6 /* History.m in Sources */,
 				3FA4849B17159F9D003E88A6 /* Word.m in Sources */,
 				3FA4849E17159F9D003E88A6 /* Note.m in Sources */,
@@ -13425,6 +13424,7 @@
 				E4F7CEBF172BE22300707100 /* SmartWordListContentCell.m in Sources */,
 				7380C76F1734198F00447D78 /* FXLabel.m in Sources */,
 				7380C78117342A3700447D78 /* WordSmallLayoutViewController.m in Sources */,
+				73B876431736A20600BD1860 /* TaskGenerator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
