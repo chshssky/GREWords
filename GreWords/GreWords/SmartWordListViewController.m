@@ -37,7 +37,7 @@
         [retractableControllers addObject:sectionController];
     }
 
-    topTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -568.0f, 320.0f, 568.0f)];
+    topTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -570.0f, 320.0f, 568.0f)];
     topTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
     
     [self.tableView addSubview:topTexture];
@@ -52,17 +52,24 @@
 
 - (void)addButtomTexture
 {
-    return;
     if(lastTableViewHeight == -1)
     {
-        lastTableViewHeight = self.tableView.contentSize.height - 4 ;
+        lastTableViewHeight = self.tableView.contentSize.height + 2;
+        
+        UIImageView *bottomLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning list_line.png"]];
+        
+        CGRect frame = bottomLine.frame;
+        frame.origin.y = -5;
+        bottomLine.frame = frame;
+        
         downTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, lastTableViewHeight, 320.0f, 568.0f)];
         downTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
+        [downTexture addSubview:bottomLine];
         [self.tableView addSubview:downTexture];
     }
     else
     {
-        lastTableViewHeight = self.tableView.contentSize.height - 4 ;
+        lastTableViewHeight = self.tableView.contentSize.height + 1;
         [UIView animateWithDuration:0.3f animations:^()
         {
             downTexture.frame = CGRectMake(0.0f, lastTableViewHeight, 320.0f, 568.0f);
@@ -107,7 +114,7 @@
     if(indexPath.row != 0)
         return;
     
-    BOOL isOpen = sectionController.open;
+    //BOOL isOpen = sectionController.open;
     
     [sectionController didSelectCellNoScrollAtRow:indexPath.row];
     
@@ -123,33 +130,11 @@
     for(int i = 0; i < retractableControllers.count; i++)
     {
         SmartWordListSectionController* aController = [retractableControllers objectAtIndex:i];
-        [aController closeShadow];
-        if(!isOpen)
+        if(i == indexPath.section)
         {
-            if(i == indexPath.section)
-            {
-                [aController showDownShadow];
-                continue;
-            }
-            else if(i == indexPath.section + 1)
-            {
-                [aController showUpShadow];
-                [aController close];
-            }
-            else
-            {
-                [aController close];
-            }
+            continue;
         }
-        else
-        {
-            if(i == indexPath.section)
-            {
-                continue;
-            }
-            [aController close];
-        }
-            
+        [aController close];
         
     }
     [self.tableView endUpdates];

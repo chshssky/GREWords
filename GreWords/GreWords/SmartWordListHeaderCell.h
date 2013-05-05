@@ -15,8 +15,5 @@
 
 -(IBAction)soundPressed:(id)sender;
 
--(void)showUp;
--(void)showDown;
--(void)close;
 
 @end

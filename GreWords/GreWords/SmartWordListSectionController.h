@@ -27,7 +27,4 @@ typedef enum
 
 - (id) initWithViewController:(UIViewController*) givenViewController;
 
-- (void)showUpShadow;
-- (void)showDownShadow;
-- (void)closeShadow;
 @end

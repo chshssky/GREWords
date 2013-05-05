@@ -41,28 +41,6 @@ static NSDictionary* typeDict = nil;
 }
 
 
-- (void)showUpShadow
-{
-    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:self.sectionID];
-    
-    SmartWordListHeaderCell* headerCell = (SmartWordListHeaderCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-    [headerCell showUp];
-}
-- (void)showDownShadow
-{
-    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:self.sectionID];
-    
-    SmartWordListHeaderCell* headerCell = (SmartWordListHeaderCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-    [headerCell showDown];
-}
-- (void)closeShadow
-{
-    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:self.sectionID];
-    
-    SmartWordListHeaderCell* headerCell = (SmartWordListHeaderCell*)[self.tableView cellForRowAtIndexPath:indexPath];
-    [headerCell close];
-}
-
 - (NSUInteger)contentNumberOfRow {
     return 1;
 }
@@ -98,7 +76,6 @@ static NSDictionary* typeDict = nil;
 
     cell.wordLabel.text =  [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
     
-    [cell close];
     //vc.text = [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
     //[cell addSubview:vc.view];
 
