@@ -158,7 +158,7 @@
 {
     [self transaction];
     
-    WordDetailViewController *vc = [[WordDetailViewController alloc] init];
+    SettingsViewController *vc = [[SettingsViewController alloc] init];
     vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentModalViewController:vc animated:YES];
 }
@@ -168,7 +168,7 @@
 - (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
     if (idx == 0) {
-        [self performSelector:@selector(listController) withObject:nil afterDelay:0.1];
+        [self performSelector:@selector(settingController) withObject:nil afterDelay:0.1];
     } else if (idx == 1) {
         [self performSelector:@selector(examController) withObject:nil afterDelay:0.1];
     } else if (idx == 2) {

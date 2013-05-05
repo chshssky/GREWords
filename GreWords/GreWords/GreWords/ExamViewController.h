@@ -1,5 +1,5 @@
 //
-//  SettingsViewController.h
+//  ExamViewController.h
 //  GreWords
 //
 //  Created by 崔 昊 on 13-4-13.
@@ -7,12 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SettingTabViewController.h"
-@interface SettingsViewController : UIViewController
-{
-    NSArray *tabArr;
-}
+
+@interface ExamViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *exitButton;
-@property (weak, nonatomic) IBOutlet UIView *tabViews;
 
 @end
