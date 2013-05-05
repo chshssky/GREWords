@@ -187,7 +187,7 @@
     animGroup_black.duration = 0.5;
     [blackView.layer addAnimation:animGroup_black forKey:nil];
     
-    WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
+    HistoryStatisticsViewController *vc = [[HistoryStatisticsViewController alloc] init];
     vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentModalViewController:vc animated:YES];
 }
@@ -228,7 +228,7 @@
 - (void)AwesomeMenu:(AwesomeMenu *)menu didSelectIndex:(NSInteger)idx
 {
     if (idx == 0) {
-        [self performSelector:@selector(listController) withObject:nil afterDelay:0.3];
+        [self performSelector:@selector(settingController) withObject:nil afterDelay:0.3];
     } else if (idx == 1) {
         [self performSelector:@selector(examController) withObject:nil afterDelay:0.3];
     } else if (idx == 2) {

@@ -64,21 +64,22 @@
     NSLog(@"height2:%f", self.WordParaphraseView.contentSize.height - self.WordParaphraseView.frame.size.height);
     //NSLog(@"height3:%f", self.WordParaphraseView..height);
     
-    for (int i = 0; i < 20; i ++) {
-        if ( i < 10) {
-            [self.RightUpImage setBounds:CGRectMake(187, 456 - i * 4, 76, 38 - i * 4)];
-        } else {
-            [self.RightDownImage setBounds:CGRectMake(188, 492, 76, (i - 10) * 4)];
-        }
-        
-    }
+    //self.RightUpImage.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
+//    for (int i = 0; i < 20; i ++) {
+//        if ( i < 10) {
+//            [self.RightUpImage setBounds:CGRectMake(187, 456 - i * 4, 76, 38 - i * 4)];
+//        } else {
+//            [self.RightDownImage setBounds:CGRectMake(188, 492, 76, (i - 10) * 4)];
+//        }
+//        sleep(1);
+//    }
 
 }
 
--(UIImageView *) makeRotation:(UIImageView *)image speedX:(float)X speedY:(float)Y
+-(UIImageView *) makeScale:(UIImageView *)image speedX:(float)X speedY:(float)Y
 {
     if (Y < 0) {
-        image.transform = CGAffineTransformMakeRotation(atan(X/(-Y)));
+        image.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
     }else if(Y > 0){
         image.transform = CGAffineTransformMakeRotation(atanf(X/(-Y))-PI);
     }
@@ -120,7 +121,20 @@
 }
 
 - (IBAction)rightButtonPushed:(id)sender {
+    //self.RightUpImage.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
     
+    [UIView animateWithDuration:2 animations:^()
+    {
+        self.RightUpImage.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
+    }];
+    
+//    CGAffineTransform transform = CGAffineTransformScale(self.RightUpImage.transform,1.2,1.2);
+//    [UIView beginAnimations:@"scale" context:nil];
+//    [UIView setAnimationDuration:2];
+//    [UIView setAnimationDelegate:self];
+//    [self.RightUpImage setTransform:transform];
+//    [UIView commitAnimations];
+
 }
 
 - (IBAction)wrongButtonPushed:(id)sender {
