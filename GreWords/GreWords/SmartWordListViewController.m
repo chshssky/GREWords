@@ -23,7 +23,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _array = [[WordHelper instance] wordsAlphabeticOrder];
     
     retractableControllers = [@[] mutableCopy];
     
