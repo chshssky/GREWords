@@ -12,6 +12,7 @@
 @interface SettingTabViewDeckViewController : UIViewController<SettingTabViewDelegate>
 {
     NSArray *tabArr;
+    int touchIndex;
 }
 @property (weak, nonatomic) IBOutlet UIView *tabViews;
 
