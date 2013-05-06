@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *RightDownImage;
 @property (weak, nonatomic) IBOutlet UIImageView *WrongUpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *WrongDownImage;
+@property (nonatomic) int added_height;
 
 @end
 
@@ -40,67 +41,62 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)loadWord:(int)aWordID
 {
-    [super viewDidLoad];
-    //[self.UpImage setFrame:CGRectMake(0, 0, 320, 175.5)];
     // Do any additional setup after loading the view from its nib.
     WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
-   /*
-key: shouldShowWord                default:[NSNumber numberWithBool:YES]
-key: shouldShowPhonetic            default:[NSNumber numberWithBool:YES]
-key: shouldShowMeaning             default:[NSNumber numberWithBool:YES]
-key: shouldShowSampleSentence      default:[NSNumber numberWithBool:YES]
-key: shouldShowSynonyms            default:[NSNumber numberWithBool:YES]
-key: shouldShowAntonyms            default:[NSNumber numberWithBool:YES]
-    this maybe nil to apply all default options
-    */
-
+    /*
+     key: shouldShowWord                default:[NSNumber numberWithBool:YES]
+     key: shouldShowPhonetic            default:[NSNumber numberWithBool:YES]
+     key: shouldShowMeaning             default:[NSNumber numberWithBool:YES]
+     key: shouldShowSampleSentence      default:[NSNumber numberWithBool:YES]
+     key: shouldShowSynonyms            default:[NSNumber numberWithBool:YES]
+     key: shouldShowAntonyms            default:[NSNumber numberWithBool:YES]
+     this maybe nil to apply all default options
+     */
+    
+    self.added_height = 0;
+    
     NSDictionary *option = @{@"shouldShowChineseMeaning":@YES,
                              @"shouldShowEnglishMeaning":@YES,
                              @"shouldShowSynonyms":@YES,
                              @"shouldShowSampleSentence":@YES};
     
     
-    [vc displayWord:[[WordHelper instance] wordWithID:_wordID] withOption:option];
+    [vc displayWord:[[WordHelper instance] wordWithID:aWordID] withOption:option];
     
-    self.wordLabel.text = [[WordHelper instance] wordWithID:_wordID].data[@"word"];
+    self.wordLabel.text = [[WordHelper instance] wordWithID:aWordID].data[@"word"];
     
-//    if(frame.size.height > ScrollViewHeight)
-//    {
-//        frame.size.height = ScrollViewHeight;
-//        UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:frame];
-//        scrollView.contentSize = vc.view.frame.size;
-//        [scrollView addSubview:vc.view];
-//        [cell addSubview:scrollView];
-//
-//    }
-//    else
-//    {
-//        [cell addSubview:vc.view];
-//
-//    }
     self.WordParaphraseView.delegate = self;
     self.WordParaphraseView.contentSize = vc.view.frame.size;
-    [self.WordParaphraseView addSubview:vc.view];
-    NSLog(@"height:%f", self.WordParaphraseView.contentSize.height);
-    NSLog(@"height2:%f", self.WordParaphraseView.contentSize.height - self.WordParaphraseView.frame.size.height);
-    //NSLog(@"height3:%f", self.WordParaphraseView..height);
     
-    //self.RightUpImage.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
+    NSArray* subviews = [self.WordParaphraseView subviews];
+    for(UIView* v in subviews)
+    {
+        [v removeFromSuperview];
+    }
+    
+    if(self.WordParaphraseView.contentSize.height <= self.WordParaphraseView.frame.size.height)
+    {
+        self.added_height = self.WordParaphraseView.frame.size.height - self.WordParaphraseView.contentSize.height;
+        CGSize size = self.WordParaphraseView.contentSize;
+        size.height = self.WordParaphraseView.frame.size.height + 1;
+        self.WordParaphraseView.contentSize = size;
+        
+    }
+    
+    [self.WordParaphraseView addSubview:vc.view];
+    
+    [self AddShadows];
+    
+    [self.WordParaphraseView scrollsToTop];
+}
 
-    int i = self.WordParaphraseView.contentOffset.y;
-    int height = self.WordParaphraseView.contentSize.height - self.WordParaphraseView.frame.size.height;
-    if (i <= 10) {
-        [self.UpImage setAlpha:i * 0.1];
-    } else {
-        [self.UpImage setAlpha:1];
-    }
-    if (i >= height - 10) {
-        [self.DownImage setAlpha:(height - i) * 0.1];
-    } else {
-        [self.DownImage setAlpha:1];
-    }
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    [self loadWord:self.wordID];
 }
 
 -(UIImageView *) makeScale:(UIImageView *)image speedX:(float)X speedY:(float)Y
@@ -113,10 +109,10 @@ key: shouldShowAntonyms            default:[NSNumber numberWithBool:YES]
     return image;
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+- (void)AddShadows
 {
     int i = self.WordParaphraseView.contentOffset.y;
-    int height = self.WordParaphraseView.contentSize.height - self.WordParaphraseView.frame.size.height;
+    int height = self.WordParaphraseView.contentSize.height - self.WordParaphraseView.frame.size.height - self.added_height;
     if (i <= 10) {
         [self.UpImage setAlpha:i * 0.1];
     } else {
@@ -127,6 +123,11 @@ key: shouldShowAntonyms            default:[NSNumber numberWithBool:YES]
     } else {
         [self.DownImage setAlpha:1];
     }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [self AddShadows];
 }
 
 - (void)didReceiveMemoryWarning
@@ -186,6 +187,9 @@ key: shouldShowAntonyms            default:[NSNumber numberWithBool:YES]
 
 - (IBAction)rightButtonPushed:(id)sender {
     [self RightAnimation];
+    
+    self.wordID++;
+    [self loadWord:self.wordID];
 }
 
 - (IBAction)wrongButtonPushed:(id)sender {
