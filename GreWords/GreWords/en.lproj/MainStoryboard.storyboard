@@ -7,7 +7,7 @@
         <!--Setting Tab View Deck View Controller-->
         <scene sceneID="y2f-Q4-mT1">
             <objects>
-                <viewController storyboardIdentifier="settingDeck" id="kjb-Z2-nL6" customClass="SettingTabViewDeckViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingDeck" autoresizesArchivedViewToFullSize="NO" id="kjb-Z2-nL6" customClass="SettingTabViewDeckViewController" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="M8U-Cu-WEn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,7 +44,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" id="D6p-eE-bi8" userLabel="bottom tab">
-                                <rect key="frame" x="0.0" y="325" width="320" height="223"/>
+                                <rect key="frame" x="0.0" y="299" width="320" height="249"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -84,21 +84,21 @@
         <!--Setting Tab View Controller-->
         <scene sceneID="5qb-Kd-clJ">
             <objects>
-                <viewController storyboardIdentifier="settingTab" id="dlm-ca-hWI" customClass="SettingTabViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingTab" autoresizesArchivedViewToFullSize="NO" id="dlm-ca-hWI" customClass="SettingTabViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vyc-Hl-W0U">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Settings_taskCover.png" id="Gdd-LJ-KUh">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Settings_coverLight_noChoose.png" id="KWz-YA-77D">
                                 <rect key="frame" x="9" y="377" width="36" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" image="Settings_coverLight_noChoose_light.png" id="xTe-Pq-8aO">
-                                <rect key="frame" x="-1" y="366" width="58" height="52"/>
+                                <rect key="frame" x="0.0" y="368" width="58" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </imageView>
                         </subviews>
@@ -328,7 +328,6 @@
         <class className="SettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="exitPressed:"/>
                 <relationship kind="outlet" name="exitButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="tabViews" candidateClass="UIView"/>
             </relationships>
