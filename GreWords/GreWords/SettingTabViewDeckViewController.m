@@ -40,7 +40,7 @@
     
     SettingTabViewController *s1 = [[SettingTabViewController alloc] init];
     CGRect frame = s1.view.frame;
-    frame.origin.y = -190;
+    frame.origin.y = -216;
     s1.view.frame = frame;
     s1.describeImage.image = [UIImage imageNamed:@"Settings_dataCover.png"];
     SettingTabViewController *s2 = [[SettingTabViewController alloc] init];
@@ -58,7 +58,7 @@
     
     s1.movableHeight = 0;
     frame = s1.view.frame;
-    frame.origin.y = -146;
+    frame.origin.y = -170;
     s1.view.frame = frame;
     s4.stateImage.image = [UIImage imageNamed:@"Settings_coverLight_choose.png"];
     s4.stateImageLight.image = [UIImage imageNamed:@"Settings_coverLight_choose_light.png"];
@@ -154,7 +154,7 @@
     }
     {
         [self matchLight];
-        NSLog(@"selecting:%d",[self selectedIndex]);
+        //NSLog(@"selecting:%d",[self selectedIndex]);
         [self.delegate SettingTabViewdidChangeTo:[self selectedIndex]];
     }
 
@@ -233,7 +233,7 @@
             SettingTabViewController* vc = tabArr[i];
             vc.stateImageLight.alpha = 0.0;
         }
-        NSLog(@"selecting:%d",[self selectedIndex]);
+        //NSLog(@"selecting:%d",[self selectedIndex]);
         [self matchLight];
         [self.delegate SettingTabViewdidChangeTo:[self selectedIndex]];
     }

@@ -24,12 +24,19 @@
     return self;
 }
 
+
+- (void)SettingTabViewdidChangeTo:(int)index
+{
+    NSLog(@"Setting Now Select:%d",index);
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     tabs = [[SettingTabViewDeckViewController alloc] init];
-      
+    tabs.delegate = self;
+    
     [self.tabViews addSubview:tabs.view];
 
     // Do any additional setup after loading the view from its nib.
