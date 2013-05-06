@@ -21,11 +21,12 @@ typedef enum {
     SettingTabViewState state;
 }
 
+@property (weak, nonatomic) IBOutlet UIImageView *stateImage;
+@property (weak, nonatomic) IBOutlet UIImageView *stateImageLight;
 
 -(void)goDown;
 -(void)goUp;
 
--(void) didPerformTapGesture:(UIPanGestureRecognizer*) recognizer;
 -(void) didPerformPanGesture:(UIPanGestureRecognizer*) recognizer;
 -(SettingTabViewState)state;
 
@@ -33,6 +34,5 @@ typedef enum {
 @property (nonatomic) CGRect originalFrame;
 @property (nonatomic) float yOffset;
 @property (nonatomic) float movableHeight;
-@property (nonatomic,strong) id<SettingTabViewDelegate> delegate;
 
 @end

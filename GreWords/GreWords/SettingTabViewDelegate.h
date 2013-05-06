@@ -13,7 +13,6 @@
 
 @protocol SettingTabViewDelegate
 
-- (void)SettingTabViewdidChangeState:(SettingTabViewController*) tabView;
-- (void)SettingTabView:(SettingTabViewController *)tabView movedTranslation:(CGPoint)translation;
+- (void)SettingTabViewdidChangeTo:(int)index;
 
 @end

@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "SettingTabViewController.h"
-
-@interface SettingTabViewDeckViewController : UIViewController<SettingTabViewDelegate>
+#import "SettingTabViewDelegate.h"
+@interface SettingTabViewDeckViewController : UIViewController
 {
     NSArray *tabArr;
     int touchIndex;
 }
 @property (weak, nonatomic) IBOutlet UIView *tabViews;
+@property (retain, nonatomic)  id<SettingTabViewDelegate> delegate;
 
 @end
