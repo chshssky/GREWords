@@ -45,14 +45,21 @@
     
     
     
-    self.centerPoint = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+35);
+    self.centerPoint = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+20);
     
-    circlePointView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_buttom.png"]];
-    circlePointView.center = self.centerPoint;
-    circlePointView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    circlePointView.gestureRecognizers = self.FimageView.gestureRecognizers;
+    circleShadowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_shadow.png"]];
+    circleShadowView.center = self.centerPoint;
+    circleShadowView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    circleShadowView.gestureRecognizers = self.FimageView.gestureRecognizers;
     //circlePointView.alpha = 0.5f;
-    [self.view addSubview:circlePointView];
+    [self.view addSubview:circleShadowView];
+    
+    circleButtomView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_buttom.png"]];
+    circleButtomView.center = self.centerPoint;
+    circleButtomView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    circleButtomView.gestureRecognizers = self.FimageView.gestureRecognizers;
+    //circleButtomView.alpha = 0.5f;
+    [self.view addSubview:circleButtomView];
     
     
     
@@ -84,7 +91,7 @@
     [self.pieChartLeft setPieBackgroundColor:[UIColor colorWithWhite:0.95 alpha:0]];
     [self.pieChartLeft setPieCenter:_centerPoint];
     [self.pieChartLeft setUserInteractionEnabled:NO];
-    [self.pieChartLeft setPieRadius:117];
+    [self.pieChartLeft setPieRadius:110];
     //NSLog(@"%@",self.pieChartLeft);
     
     self.sliceColors =[NSArray arrayWithObjects:
@@ -113,17 +120,11 @@
     
     self.FimageView.transform = CGAffineTransformMakeRotation(_percent*2*M_PI);
     
-    
-    shadowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_out.png"]];
-    shadowImageView.center = self.centerPoint;
-    shadowImageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    shadowImageView.gestureRecognizers = self.FimageView.gestureRecognizers;
-    //shadowImageView.alpha = 0.5;
-    [self.view addSubview:shadowImageView];
+
     
     centerCircleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_center.png"]];
     centerCircleView.center = self.centerPoint;
-    centerCircleView.layer.anchorPoint = CGPointMake(0.554, 0.5);
+    centerCircleView.layer.anchorPoint = CGPointMake(0.551, 0.5);
     centerCircleView.gestureRecognizers = self.FimageView.gestureRecognizers;
     centerCircleView.transform = CGAffineTransformMakeRotation(M_PI/2.0);
     [self.view addSubview:centerCircleView];
@@ -138,80 +139,67 @@
     
     circleLightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_beard.png"]];
     circleLightView.center = self.centerPoint;
-    circleLightView.layer.anchorPoint = CGPointMake(0.5, 0.415);
+    circleLightView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     circleLightView.gestureRecognizers = self.FimageView.gestureRecognizers;
     circleLightView.alpha = 0;
+    [self.view addSubview:circleLightView];
     
     textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_newWord.png"]];
-    textView.center = CGPointMake(self.view.frame.size.width/2-15, self.view.frame.size.height/3-10);
+    textView.center = CGPointMake(self.view.frame.size.width/2-15, self.view.frame.size.height/3-25);
     textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     textView.gestureRecognizers = self.FimageView.gestureRecognizers;
     //shadowImageView.alpha = 0.5;
     [self.view addSubview:textView];
     
     startTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_startTask.png"]];
-    startTextView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+80);
+    startTextView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+65);
     startTextView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     startTextView.gestureRecognizers = self.FimageView.gestureRecognizers;
     startTextView.alpha = 0.6;
     [self.view addSubview:startTextView];
     
-    wordNumberTest = [[FXLabel alloc] initWithFrame:CGRectMake(20, 10, 100, 65)];
+    wordNumberTest = [[FXLabel alloc] initWithFrame:CGRectMake(20, 10, 120, 70)];
     wordNumberTest.text =  [NSString stringWithFormat:@"%d",0];
     wordNumberTest.textColor = [UIColor colorWithRed:101/255.00 green:116/255.00 blue:68/255.00 alpha:1];
-    wordNumberTest.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:55];
+    wordNumberTest.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:70];
     wordNumberTest.backgroundColor = [UIColor clearColor];
-    wordNumberTest.shadowColor = [UIColor grayColor];
-    //wordNumberTest.shadowOffset = CGSizeMake(-1, -1);
     wordNumberTest.innerShadowColor = [UIColor colorWithWhite:0.0f alpha:0.8f];
     wordNumberTest.innerShadowOffset = CGSizeMake(0.0f, 0.8f);
-    wordNumberTest.center = CGPointMake(self.view.frame.size.width/2+15, self.view.frame.size.height/3+40);
+    wordNumberTest.center = CGPointMake(self.view.frame.size.width/2+15, self.view.frame.size.height/3+25);
     wordNumberTest.textAlignment = UITextAlignmentRight;
     [self.view addSubview:wordNumberTest];
 
     
-    shadowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar.png"]];
-    shadowImageView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+185);
-    shadowImageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    shadowImageView.gestureRecognizers = self.FimageView.gestureRecognizers;
-    //shadowImageView.alpha = 0.5;
-    [self.view addSubview:shadowImageView];
+    slideBarView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar.png"]];
+    slideBarView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+170);
+    slideBarView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    slideBarView.gestureRecognizers = self.FimageView.gestureRecognizers;
+    //slideBarView.alpha = 0.5;
+    [self.view addSubview:slideBarView];
+
 
     
+    //slideBarStatusView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus1.png"]];
+    slideBarStatusView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus2.png"]];
+    //slideBarStatusView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus3.png"]];
+    //slideBarStatusView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus4.png"]];
     
+    slideBarStatusView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+170);
+    slideBarStatusView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    slideBarStatusView.gestureRecognizers = self.FimageView.gestureRecognizers;
+    //slideBarStatusView.alpha = 0.5;
+    [self.view addSubview:slideBarStatusView];
     
-//    shadowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus1.png"]];
-//    shadowImageView.center = CGPointMake(self.view.frame.size.width/2-88, self.view.frame.size.height/3+170);
-//    shadowImageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-//    shadowImageView.gestureRecognizers = self.FimageView.gestureRecognizers;
-//    //shadowImageView.alpha = 0.5;
-    [self.view addSubview:shadowImageView];
+    //slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text1.png"]];
+    slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text2.png"]];
+    //slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text3.png"]];
+    //slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text4.png"]];
     
-    shadowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus2.png"]];
-    shadowImageView.center = CGPointMake(self.view.frame.size.width/2-59, self.view.frame.size.height/3+185);
-    shadowImageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    shadowImageView.gestureRecognizers = self.FimageView.gestureRecognizers;
-    //shadowImageView.alpha = 0.5;
-    [self.view addSubview:shadowImageView];
-    
-//    shadowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus3.png"]];
-//    shadowImageView.center = CGPointMake(self.view.frame.size.width/2-29, self.view.frame.size.height/3+170);
-//    shadowImageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-//    shadowImageView.gestureRecognizers = self.FimageView.gestureRecognizers;
-//    //shadowImageView.alpha = 0.5;
-//    [self.view addSubview:shadowImageView];
-//    
-//    shadowImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus4.png"]];
-//    shadowImageView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+170);
-//    shadowImageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-//    shadowImageView.gestureRecognizers = self.FimageView.gestureRecognizers;
-//    //shadowImageView.alpha = 0.5;
-//    [self.view addSubview:shadowImageView];
-    
-    [self.view addSubview:circleLightView];
-//    UIImage *k = [self maskImage:self.FimageView  withMask:[UIImage imageNamed:@"mask2.png"]];
-//    self.FimageView = [[UIImageView alloc] initWithImage:k];
-//    [self.view addSubview:self.FimageView];
+    slideBarStatusTextView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+195);
+    slideBarStatusTextView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    slideBarStatusTextView.gestureRecognizers = self.FimageView.gestureRecognizers;
+    //slideBarStatusView.alpha = 0.5;
+    [self.view addSubview:slideBarStatusTextView];
     
 }
 

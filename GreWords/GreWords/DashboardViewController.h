@@ -14,10 +14,15 @@
 
 @interface DashboardViewController : UIViewController <PieChartDelegate, PieChartDataSource>
 {
-    UIImageView *shadowImageView;
+    UIImageView *slideBarView;
+    UIImageView *slideBarStatusView;
+    UIImageView *circleButtomView;
     UIImageView *centerCircleView;
+    UIImageView *circleShadowView;
     UIImageView *circleLightView;
     UIImageView *circlePointView;
+    UIImageView *slideBarStatusTextView;
+    
     UIImageView *textView;
     UIImageView *startTextView;
     FXLabel *wordNumberTest;
