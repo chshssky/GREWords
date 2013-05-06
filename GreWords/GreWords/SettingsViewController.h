@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SettingTabViewDeckViewController.h"
-@interface SettingsViewController : UIViewController
+#import "SettingTabViewDelegate.h"
+
+@interface SettingsViewController : UIViewController<SettingTabViewDelegate>
 {
     SettingTabViewDeckViewController *tabs;
 }

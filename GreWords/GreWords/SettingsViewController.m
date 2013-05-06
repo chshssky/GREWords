@@ -15,21 +15,18 @@
 
 @implementation SettingsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void)SettingTabViewdidChangeTo:(int)index
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    NSLog(@"Setting Now Select:%d",index);
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    tabs = [[SettingTabViewDeckViewController alloc] init];
-      
+    tabs = [self.storyboard instantiateViewControllerWithIdentifier:@"settingDeck"];
+    tabs.delegate = self;
+    
     [self.tabViews addSubview:tabs.view];
 
     // Do any additional setup after loading the view from its nib.
