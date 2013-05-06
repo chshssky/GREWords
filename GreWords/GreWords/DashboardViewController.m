@@ -201,6 +201,20 @@
     //slideBarStatusView.alpha = 0.5;
     [self.view addSubview:slideBarStatusTextView];
     
+    UIButton *bigButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    //bigButton.frame = iView.frame;
+    
+    [bigButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];
+    bigButton.center = self.centerPoint;
+    bigButton.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    bigButton.frame =  circlePointView.frame;
+    [self.view addSubview:bigButton];
+}
+
+
+- (void)buttonPressed
+{
+    [self.delegate bigButtonPressed];
 }
 
 - (void)handleF:(UILongPressGestureRecognizer *)recognizer
