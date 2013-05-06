@@ -176,6 +176,7 @@
     [self transaction];
     
     WordDetailViewController *vc = [[WordDetailViewController alloc] init];
+    vc.wordID = 100;
     vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentModalViewController:vc animated:YES];
 }
