@@ -86,6 +86,18 @@ key: shouldShowAntonyms            default:[NSNumber numberWithBool:YES]
     
     //self.RightUpImage.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
 
+    int i = self.WordParaphraseView.contentOffset.y;
+    int height = self.WordParaphraseView.contentSize.height - self.WordParaphraseView.frame.size.height;
+    if (i <= 10) {
+        [self.UpImage setAlpha:i * 0.1];
+    } else {
+        [self.UpImage setAlpha:1];
+    }
+    if (i >= height - 10) {
+        [self.DownImage setAlpha:(height - i) * 0.1];
+    } else {
+        [self.DownImage setAlpha:1];
+    }
 }
 
 -(UIImageView *) makeScale:(UIImageView *)image speedX:(float)X speedY:(float)Y
@@ -136,34 +148,34 @@ key: shouldShowAntonyms            default:[NSNumber numberWithBool:YES]
 
 - (void)RightAnimation
 {
-    [self.RightDownImage setBounds:CGRectMake(216, 456, 76, 38)];
-    [self.RightDownImage setBounds:CGRectMake(216, 493, 76, 0.001)];
+    [self.RightDownImage setBounds:CGRectMake(216, self.view.frame.size.height - 92, 76, 38)];
+    [self.RightDownImage setBounds:CGRectMake(216, self.view.frame.size.height - 92 + 37, 76, 0.001)];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
     [UIView animateWithDuration:0.25f animations:^(){
         self.RightUpImage.transform = CGAffineTransformMakeScale(1.0f, 0.001f);
-        self.RightUpImage.center = CGPointMake(216 + 38, 493);
+        self.RightUpImage.center = CGPointMake(216 + 38, self.view.frame.size.height - 92 + 37);
     }completion:^(BOOL finished){
         [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
         [UIView animateWithDuration:0.15f animations:^(){
             self.RightDownImage.transform = CGAffineTransformMakeScale(1.0f, 38000.0f);
-            self.RightDownImage.center = CGPointMake(216 + 38, 493 + 18);
+            self.RightDownImage.center = CGPointMake(216 + 38, self.view.frame.size.height - 92 + 37 + 18);
         }];
     }];
 }
 
 - (void)WrongAnimation
 {
-    [self.WrongUpImage setBounds:CGRectMake(29, 456, 76, 38)];
-    [self.WrongDownImage setBounds:CGRectMake(29, 493, 76, 0.001)];
+    [self.WrongUpImage setBounds:CGRectMake(29, self.view.frame.size.height - 92, 76, 38)];
+    [self.WrongDownImage setBounds:CGRectMake(29, self.view.frame.size.height - 92 + 37, 76, 0.001)];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
     [UIView animateWithDuration:0.25f animations:^(){
         self.WrongUpImage.transform = CGAffineTransformMakeScale(1.0f, 0.001f);
-        self.WrongUpImage.center = CGPointMake(29 + 38, 493);
+        self.WrongUpImage.center = CGPointMake(29 + 38, self.view.frame.size.height - 92 + 37);
     }completion:^(BOOL finished){
         [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
         [UIView animateWithDuration:0.15f animations:^(){
             self.WrongDownImage.transform = CGAffineTransformMakeScale(1.0f, 38000.0f);
-            self.WrongDownImage.center = CGPointMake(29 + 38, 493 + 18);
+            self.WrongDownImage.center = CGPointMake(29 + 38, self.view.frame.size.height - 92 + 37 + 18);
         }];
     }];
 }
