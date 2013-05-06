@@ -161,7 +161,7 @@
     wordNumberTest = [[FXLabel alloc] initWithFrame:CGRectMake(20, 10, 120, 70)];
     wordNumberTest.text =  [NSString stringWithFormat:@"%d",0];
     wordNumberTest.textColor = [UIColor colorWithRed:101/255.00 green:116/255.00 blue:68/255.00 alpha:1];
-    wordNumberTest.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:70];
+    wordNumberTest.font = [UIFont fontWithName:@"STHeitiTC-Medium" size:70];
     wordNumberTest.backgroundColor = [UIColor clearColor];
     wordNumberTest.innerShadowColor = [UIColor colorWithWhite:0.0f alpha:0.8f];
     wordNumberTest.innerShadowOffset = CGSizeMake(0.0f, 0.8f);
