@@ -15,16 +15,6 @@
 
 @implementation SettingsViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-
 - (void)SettingTabViewdidChangeTo:(int)index
 {
     NSLog(@"Setting Now Select:%d",index);
@@ -34,7 +24,7 @@
 {
     [super viewDidLoad];
     
-    tabs = [[SettingTabViewDeckViewController alloc] init];
+    tabs = [self.storyboard instantiateViewControllerWithIdentifier:@"settingDeck"];
     tabs.delegate = self;
     
     [self.tabViews addSubview:tabs.view];

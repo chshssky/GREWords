@@ -15,19 +15,10 @@
 
 @implementation SettingTabViewDeckViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     UIPanGestureRecognizer* panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(didPerformPanGesture:)];
     [self.view addGestureRecognizer:panGesture];
@@ -35,23 +26,21 @@
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(didPerformTapGesture:)];
     [self.view addGestureRecognizer:tapGesture];
-
     
-    
-    SettingTabViewController *s1 = [[SettingTabViewController alloc] init];
+    SettingTabViewController *s1 = [self.storyboard instantiateViewControllerWithIdentifier:@"settingTab"];
     CGRect frame = s1.view.frame;
     frame.origin.y = -216;
     s1.view.frame = frame;
     s1.describeImage.image = [UIImage imageNamed:@"Settings_dataCover.png"];
-    SettingTabViewController *s2 = [[SettingTabViewController alloc] init];
+    SettingTabViewController *s2 = [self.storyboard instantiateViewControllerWithIdentifier:@"settingTab"];
     frame.origin.y -= 35;
     s2.view.frame = frame;
     s2.describeImage.image = [UIImage imageNamed:@"Settings_viewCover.png"];
-    SettingTabViewController *s3 = [[SettingTabViewController alloc] init];
+    SettingTabViewController *s3 = [self.storyboard instantiateViewControllerWithIdentifier:@"settingTab"];
     frame.origin.y -= 35;
     s3.view.frame = frame;
     s3.describeImage.image = [UIImage imageNamed:@"Settings_reviewCover.png"];
-    SettingTabViewController *s4 = [[SettingTabViewController alloc] init];
+    SettingTabViewController *s4 = [self.storyboard instantiateViewControllerWithIdentifier:@"settingTab"];
     frame.origin.y -= 35;
     s4.view.frame = frame;
     s4.describeImage.image = [UIImage imageNamed:@"Settings_taskCover.png"];
@@ -85,7 +74,7 @@
     s2.originalFrame = s2.view.frame;
     s3.originalFrame = s3.view.frame;
     s4.originalFrame = s4.view.frame;
-
+    
     
     [self.tabViews addSubview:s1.view];
     [self.tabViews addSubview:s2.view];
@@ -94,8 +83,15 @@
     
     tabArr = @[s4,s3,s2,s1];
     [self open:0];
+
     // Do any additional setup after loading the view from its nib.
 }
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    
+}
+
 
 -(void)open:(int)index
 {

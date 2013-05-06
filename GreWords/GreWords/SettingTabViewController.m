@@ -14,19 +14,6 @@
 
 @implementation SettingTabViewController
 
-- (id)init
-{
-    self = [super initWithNibName:nil  bundle:nil];
-    if (self) {
-        // Custom initialization
-                
-        _originalFrame =  self.view.frame;
-        state = SettingTabViewStateUp;
-        self.movableHeight = 50;
-    }
-    return self;
-}
-
 
 -(void)setYOffset:(float)yOffset
 {
@@ -74,7 +61,7 @@
     }
     else if (recognizer.state == UIGestureRecognizerStateChanged)
     {
-        float originalY = self.view.frame.origin.y;
+        //float originalY = self.view.frame.origin.y;
         CGRect frame = _originalFrame;
         float overHeight = 0;
         if(frame.origin.y + translation.y + (state == SettingTabViewStateUp ? 0 : self.movableHeight) > _originalFrame.origin.y + self.movableHeight)
@@ -130,6 +117,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    _originalFrame =  self.view.frame;
+    state = SettingTabViewStateUp;
+    if(self.movableHeight == 0)
+        self.movableHeight = 50;
     // Do any additional setup after loading the view from its nib.
 }
 

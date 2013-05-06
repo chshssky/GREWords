@@ -158,7 +158,7 @@
 {
     [self transaction];
     
-    SettingsViewController *vc = [[SettingsViewController alloc] init];
+    SettingsViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"setting"];
     vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentModalViewController:vc animated:YES];
 }

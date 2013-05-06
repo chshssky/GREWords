@@ -14,7 +14,7 @@
     NSArray *tabArr;
     int touchIndex;
 }
-@property (weak, nonatomic) IBOutlet UIView *tabViews;
+@property (strong, nonatomic) IBOutlet UIView *tabViews;
 @property (retain, nonatomic)  id<SettingTabViewDelegate> delegate;
 
 @end
