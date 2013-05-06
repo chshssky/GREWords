@@ -154,8 +154,6 @@
 		7380C779173428D700447D78 /* WordLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7380C778173428D700447D78 /* WordLayoutViewController.xib */; };
 		7380C78117342A3700447D78 /* WordSmallLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7380C77F17342A3200447D78 /* WordSmallLayoutViewController.m */; };
 		7380C78217342A3700447D78 /* WordSmallLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7380C78017342A3400447D78 /* WordSmallLayoutViewController.xib */; };
-		73C385341733F0FF0018BC54 /* STHeitiLight.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 73C385321733F0FF0018BC54 /* STHeitiLight.ttc */; };
-		73C385351733F0FF0018BC54 /* STHeitiMedium.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 73C385331733F0FF0018BC54 /* STHeitiMedium.ttc */; };
 		73D209AC1714367F00C718A6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D209AB1714367F00C718A6 /* CoreText.framework */; };
 		E4134CDB1714225D00553AD2 /* WordHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E4134CDA1714225D00553AD2 /* WordHelper.m */; };
 		E414B6931714300400C29D3C /* WordEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B6921714300400C29D3C /* WordEntity.m */; };
@@ -3572,8 +3570,6 @@
 		7380C78017342A3400447D78 /* WordSmallLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordSmallLayoutViewController.xib; sourceTree = "<group>"; };
 		73B876411736A20600BD1860 /* TaskGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskGenerator.h; sourceTree = "<group>"; };
 		73B876421736A20600BD1860 /* TaskGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskGenerator.m; sourceTree = "<group>"; };
-		73C385321733F0FF0018BC54 /* STHeitiLight.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = STHeitiLight.ttc; sourceTree = "<group>"; };
-		73C385331733F0FF0018BC54 /* STHeitiMedium.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = STHeitiMedium.ttc; sourceTree = "<group>"; };
 		73D209AB1714367F00C718A6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		E4134CD91714225D00553AD2 /* WordHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordHelper.h; sourceTree = "<group>"; };
 		E4134CDA1714225D00553AD2 /* WordHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordHelper.m; sourceTree = "<group>"; };
@@ -7152,8 +7148,6 @@
 		7380C7711734212300447D78 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				73C385321733F0FF0018BC54 /* STHeitiLight.ttc */,
-				73C385331733F0FF0018BC54 /* STHeitiMedium.ttc */,
 			);
 			name = Font;
 			sourceTree = "<group>";
@@ -13667,8 +13661,6 @@
 				E49856C8171A8E780055A0E7 /* zealot.mp3 in Resources */,
 				E49856C9171A8E780055A0E7 /* zenith.mp3 in Resources */,
 				E49856CA171A8E780055A0E7 /* zesty.mp3 in Resources */,
-				73C385341733F0FF0018BC54 /* STHeitiLight.ttc in Resources */,
-				73C385351733F0FF0018BC54 /* STHeitiMedium.ttc in Resources */,
 				7380C779173428D700447D78 /* WordLayoutViewController.xib in Resources */,
 				7380C78217342A3700447D78 /* WordSmallLayoutViewController.xib in Resources */,
 				E460EB2D17362B1B00581869 /* learning_tapCover_clicked.png in Resources */,

@@ -23,25 +23,13 @@
 
 @implementation GreWordsViewController
 
-- (void)viewDidLoad
+- (void)initDashboard
 {
-    [super viewDidLoad];
-    
-    
-    
     dashboard = [[DashboardViewController alloc] init];
     dashboard.nonFinishedNumber = 100;
     dashboard.sumNumber = 300;
-    
+    dashboard.delegate = self;
     [self.view addSubview:dashboard.view];
-    
-//    for (int i=0; i<3073; i++) {
-//        [vc displayWord:[[WordHelper instance] wordWithID:i] withOption:nil];
-//    }
-    //[vc displayWord:[[WordHelper instance] wordWithID:3] withOption:nil];
-    
-	// Do any additional setup after loading the view, typically from a nib.
-    [self initAwesomeMenu];
 }
 
 - (void)initAwesomeMenu
@@ -92,11 +80,29 @@
     //[self.view makeKeyAndVisible];
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    
+    [self initDashboard];
+    
+    //    for (int i=0; i<3073; i++) {
+    //        [vc displayWord:[[WordHelper instance] wordWithID:i] withOption:nil];
+    //    }
+    //[vc displayWord:[[WordHelper instance] wordWithID:3] withOption:nil];
+    
+	// Do any additional setup after loading the view, typically from a nib.
+    [self initAwesomeMenu];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - menu items
 
 - (void)transaction
 {
@@ -182,6 +188,12 @@
 }
 - (void)AwesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu {
     NSLog(@"Menu is open!");
+}
+
+#pragma mark - DashBoardDelegate
+-(void)bigButtonPressed
+{
+    NSLog(@"Big Button Pressed");
 }
 
 @end

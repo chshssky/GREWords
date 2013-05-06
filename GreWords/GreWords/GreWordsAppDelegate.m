@@ -32,10 +32,10 @@
     
     for (NSString* fname in [UIFont familyNames])
     {
-        //NSLog(@"%@",fname);
+        NSLog(@"%@",fname);
         for (NSString* name in [UIFont fontNamesForFamilyName:fname])
         {
-            //NSLog(@"    %@",name);
+            NSLog(@"    %@",name);
         }
     }
     

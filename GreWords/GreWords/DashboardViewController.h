@@ -10,7 +10,11 @@
 #import "PieChart.h"
 #import "FXLabel.h"
 
+@protocol DashboardProtocal <NSObject>
 
+-(void)bigButtonPressed;
+
+@end
 
 @interface DashboardViewController : UIViewController <PieChartDelegate, PieChartDataSource>
 {
@@ -32,6 +36,7 @@
 @property(nonatomic) int sumNumber;
 
 @property (strong, nonatomic) PieChart *pieChartLeft;
+@property (retain,nonatomic) id<DashboardProtocal> delegate;
 
 @property(nonatomic, strong) NSMutableArray *slices;
 @property(nonatomic, strong) NSArray        *sliceColors;
