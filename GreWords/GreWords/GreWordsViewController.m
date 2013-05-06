@@ -23,6 +23,8 @@
 @property (nonatomic, strong) UIImageView *slideBarStatusView;
 @property (nonatomic, strong) UIImageView *slideBarStatusTextView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *titleView;
+
 @end
 
 @implementation GreWordsViewController
@@ -34,6 +36,7 @@
     dashboard.sumNumber = 300;
     dashboard.delegate = self;
     [self.view addSubview:dashboard.view];
+    
     
     self.slideBarView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar.png"]];
     self.slideBarView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+170);
@@ -58,6 +61,11 @@
     self.slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text2.png"]];
     //slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text3.png"]];
     //slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text4.png"]];
+    self.slideBarStatusTextView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+195);
+    self.slideBarStatusTextView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    self.slideBarStatusTextView.gestureRecognizers = self.view.gestureRecognizers;
+    //slideBarStatusView.alpha = 0.5;
+    [self.view addSubview:self.slideBarStatusTextView];
 
 }
 
@@ -225,16 +233,22 @@
 {
     NSLog(@"Big Button Pressed");
     
-    [UIView animateWithDuration:2 animations:^{
-        
+    [UIView animateWithDuration:1 animations:^{
+        self.titleView.transform = CGAffineTransformMakeTranslation(-150, -100);
+        self.slideBarView.transform = CGAffineTransformMakeTranslation(-300, 0);
+        self.slideBarStatusTextView.transform = CGAffineTransformMakeTranslation(-300, 0);
+        self.slideBarStatusView.transform = CGAffineTransformMakeTranslation(-300, 0);
+    } completion:^(BOOL finished) {
+        WordDetailViewController *vc = [[WordDetailViewController alloc] init];
+        vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self presentModalViewController:vc animated:YES];
+
     }];
-    
-    
-    
-    WordDetailViewController *vc = [[WordDetailViewController alloc] init];
-    vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-    [self presentModalViewController:vc animated:YES];
     
 }
 
+- (void)viewDidUnload {
+    [self setTitleView:nil];
+    [super viewDidUnload];
+}
 @end
