@@ -76,6 +76,8 @@ static NSDictionary* typeDict = nil;
 
     cell.wordLabel.text =  [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
     
+    cell.wordLabel.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
+    
     //vc.text = [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
     //[cell addSubview:vc.view];
 
