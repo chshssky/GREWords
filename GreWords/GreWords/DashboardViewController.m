@@ -170,36 +170,21 @@
     [self.view addSubview:wordNumberTest];
 
     
-    slideBarView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar.png"]];
-    slideBarView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+170);
-    slideBarView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    slideBarView.gestureRecognizers = self.FimageView.gestureRecognizers;
-    //slideBarView.alpha = 0.5;
-    [self.view addSubview:slideBarView];
-
-
-    
-    //slideBarStatusView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus1.png"]];
-    slideBarStatusView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus2.png"]];
-    //slideBarStatusView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus3.png"]];
-    //slideBarStatusView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus4.png"]];
-    
-    slideBarStatusView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+170);
-    slideBarStatusView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    slideBarStatusView.gestureRecognizers = self.FimageView.gestureRecognizers;
-    //slideBarStatusView.alpha = 0.5;
-    [self.view addSubview:slideBarStatusView];
-    
-    //slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text1.png"]];
-    slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text2.png"]];
-    //slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text3.png"]];
-    //slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text4.png"]];
-    
-    slideBarStatusTextView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+195);
-    slideBarStatusTextView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    slideBarStatusTextView.gestureRecognizers = self.FimageView.gestureRecognizers;
-    //slideBarStatusView.alpha = 0.5;
-    [self.view addSubview:slideBarStatusTextView];
+//    slideBarView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar.png"]];
+//    slideBarView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+170);
+//    slideBarView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+//    slideBarView.gestureRecognizers = self.FimageView.gestureRecognizers;
+//    //slideBarView.alpha = 0.5;
+//    [self.view addSubview:slideBarView];
+//
+//
+//    
+//        
+//    slideBarStatusTextView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+195);
+//    slideBarStatusTextView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+//    slideBarStatusTextView.gestureRecognizers = self.FimageView.gestureRecognizers;
+//    //slideBarStatusView.alpha = 0.5;
+//    [self.view addSubview:slideBarStatusTextView];
     
     UIButton *bigButton = [UIButton buttonWithType:UIButtonTypeCustom];
     //bigButton.frame = iView.frame;

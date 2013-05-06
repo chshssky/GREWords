@@ -18,14 +18,11 @@
 
 @interface DashboardViewController : UIViewController <PieChartDelegate, PieChartDataSource>
 {
-    UIImageView *slideBarView;
-    UIImageView *slideBarStatusView;
     UIImageView *circleButtomView;
     UIImageView *centerCircleView;
     UIImageView *circleShadowView;
     UIImageView *circleLightView;
     UIImageView *circlePointView;
-    UIImageView *slideBarStatusTextView;
     
     UIImageView *textView;
     UIImageView *startTextView;
