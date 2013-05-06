@@ -9,6 +9,7 @@
 #import "WordDetailViewController.h"
 #import "WordLayoutViewController.h"
 #import "WordHelper.h"
+#import "WordSpeaker.h"
 
 #define PI M_PI
 
@@ -61,7 +62,9 @@ key: shouldShowAntonyms            default:[NSNumber numberWithBool:YES]
                              @"shouldShowSampleSentence":@YES};
     
     
-    [vc displayWord:[[WordHelper instance] wordWithID:0] withOption:option];
+    [vc displayWord:[[WordHelper instance] wordWithID:_wordID] withOption:option];
+    
+    self.wordLabel.text = [[WordHelper instance] wordWithID:_wordID].data[@"word"];
     
 //    if(frame.size.height > ScrollViewHeight)
 //    {
@@ -143,6 +146,7 @@ key: shouldShowAntonyms            default:[NSNumber numberWithBool:YES]
     [self setRightDownImage:nil];
     [self setWrongUpImage:nil];
     [self setWrongDownImage:nil];
+    [self setWordLabel:nil];
     [super viewDidUnload];
 }
 
@@ -189,7 +193,7 @@ key: shouldShowAntonyms            default:[NSNumber numberWithBool:YES]
 }
 
 - (IBAction)pronounceButtonPushed:(id)sender {
-    
+    [[WordSpeaker instance] readWord:self.wordLabel.text];
 }
 
 
