@@ -238,12 +238,13 @@
         self.slideBarView.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.slideBarStatusTextView.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.slideBarStatusView.transform = CGAffineTransformMakeTranslation(-300, 0);
-    } completion:^(BOOL finished) {
+        
         WordDetailViewController *vc = [[WordDetailViewController alloc] init];
-        vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        [self presentModalViewController:vc animated:YES];
+        vc.view.alpha = 0;
+        [self.view addSubview:vc.view];
 
-    }];
+    } completion:^(BOOL finished) {
+            }];
     
 }
 

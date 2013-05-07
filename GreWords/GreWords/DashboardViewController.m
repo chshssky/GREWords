@@ -169,23 +169,6 @@
     wordNumberTest.textAlignment = UITextAlignmentRight;
     [self.view addSubview:wordNumberTest];
 
-    
-//    slideBarView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar.png"]];
-//    slideBarView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+170);
-//    slideBarView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-//    slideBarView.gestureRecognizers = self.FimageView.gestureRecognizers;
-//    //slideBarView.alpha = 0.5;
-//    [self.view addSubview:slideBarView];
-//
-//
-//    
-//        
-//    slideBarStatusTextView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+195);
-//    slideBarStatusTextView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-//    slideBarStatusTextView.gestureRecognizers = self.FimageView.gestureRecognizers;
-//    //slideBarStatusView.alpha = 0.5;
-//    [self.view addSubview:slideBarStatusTextView];
-    
     UIButton *bigButton = [UIButton buttonWithType:UIButtonTypeCustom];
     //bigButton.frame = iView.frame;
     
