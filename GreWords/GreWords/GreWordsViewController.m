@@ -238,14 +238,16 @@
         self.slideBarView.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.slideBarStatusTextView.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.slideBarStatusView.transform = CGAffineTransformMakeTranslation(-300, 0);
+        dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-125, -250));
         
-        WordDetailViewController *vc = [[WordDetailViewController alloc] init];
-        vc.view.alpha = 0;
-        [self.view addSubview:vc.view];
 
+        
+        
     } completion:^(BOOL finished) {
-            }];
-    
+        WordDetailViewController *vc = [[WordDetailViewController alloc] init];
+        vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self presentModalViewController:vc animated:YES];
+    }];
 }
 
 - (void)viewDidUnload {
