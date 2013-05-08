@@ -22,6 +22,7 @@
 @property (nonatomic, strong) UIImageView *slideBarView;
 @property (nonatomic, strong) UIImageView *slideBarStatusView;
 @property (nonatomic, strong) UIImageView *slideBarStatusTextView;
+@property (nonatomic, strong) AwesomeMenu *menu;
 
 @property (weak, nonatomic) IBOutlet UIImageView *titleView;
 
@@ -92,27 +93,27 @@
     NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, nil];
     NSLog(@"count: %d", menus.count);
     
-    AwesomeMenu *menu = [[AwesomeMenu alloc] initWithFrame:self.view.bounds menus:menus];
+    self.menu = [[AwesomeMenu alloc] initWithFrame:self.view.bounds menus:menus];
     UIImage *storyMenuItemImage = [UIImage imageNamed:@"Main menu_xButton.png"];
     UIImage *storyMenuItemImagePressed = [UIImage imageNamed:@"Main menu_xButton_clicked.png"];
     
 	// customize menu
-    menu.image = storyMenuItemImage;
-    menu.highlightedImage = storyMenuItemImagePressed;
-    menu.contentImage = nil;
-    menu.highlightedContentImage = nil;
-    menu.rotateAngle = -0.1;
-    menu.menuWholeAngle = M_PI / 2 + M_PI / 4;
-    menu.timeOffset = 0.015f;
-    menu.farRadius = 95.0f;
-    menu.endRadius = 80.0f;
-    menu.nearRadius = 70.0f;
+    self.menu.image = storyMenuItemImage;
+    self.menu.highlightedImage = storyMenuItemImagePressed;
+    self.menu.contentImage = nil;
+    self.menu.highlightedContentImage = nil;
+    self.menu.rotateAngle = -0.1;
+    self.menu.menuWholeAngle = M_PI / 2 + M_PI / 4;
+    self.menu.timeOffset = 0.015f;
+    self.menu.farRadius = 95.0f;
+    self.menu.endRadius = 80.0f;
+    self.menu.nearRadius = 70.0f;
     NSLog(@"size: %f, %f", self.view.bounds.size.height, self.view.bounds.size.width);
     
-    menu.startPoint = CGPointMake(40.0, self.view.bounds.size.height - 40.0);
+    self.menu.startPoint = CGPointMake(40.0, self.view.bounds.size.height - 40.0);
 	
-    menu.delegate = self;
-    [self.view addSubview:menu];
+    self.menu.delegate = self;
+    [self.view addSubview:self.menu];
     
     //[self.view makeKeyAndVisible];
 }
@@ -239,6 +240,7 @@
         self.slideBarStatusTextView.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.slideBarStatusView.transform = CGAffineTransformMakeTranslation(-300, 0);
         dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-125, -250));
+        self.menu.transform = CGAffineTransformMakeTranslation(-300, 0);
     } completion:^(BOOL finished) {
         WordDetailViewController *vc = [[WordDetailViewController alloc] init];
         vc.delegate = self;
@@ -256,6 +258,8 @@
         self.slideBarStatusTextView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(-0.001f, 0));
         self.slideBarStatusView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(-0.001f, 0));
         dashboard.view.transform = CGAffineTransformInvert(CGAffineTransformConcat(CGAffineTransformMakeScale(1.0f, 1.0f), CGAffineTransformMakeTranslation(-0.001f, -0.001f)));
+        self.menu.transform = CGAffineTransformMakeTranslation(-0.001f, 0);
+
     }];
 }
 

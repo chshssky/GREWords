@@ -73,7 +73,7 @@
 						<string key="NSFrameSize">{320, 169}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="122618330"/>
+						<reference key="NSNextKeyView" ref="1055052136"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<float key="IBUIAlpha">0.0</float>
 						<int key="IBUIContentMode">3</int>
@@ -293,10 +293,10 @@
 							<string key="NSResourceName">learning_wrongButton_page@2x.png</string>
 						</object>
 					</object>
-					<object class="IBUIButton" id="122618330">
+					<object class="IBUIButton" id="1055052136">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{6, 3}, {50, 48}}</string>
+						<string key="NSFrame">{{7, 4}, {50, 48}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="338799999"/>
@@ -480,7 +480,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">BackButtonPushed:</string>
-						<reference key="source" ref="122618330"/>
+						<reference key="source" ref="1055052136"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -512,7 +512,7 @@
 							<reference ref="547088246"/>
 							<reference ref="421516788"/>
 							<reference ref="164080497"/>
-							<reference ref="122618330"/>
+							<reference ref="1055052136"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -603,7 +603,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">397</int>
-						<reference key="object" ref="122618330"/>
+						<reference key="object" ref="1055052136"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
