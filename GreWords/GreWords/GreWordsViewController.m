@@ -17,7 +17,7 @@
 #import "WordDetailViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface GreWordsViewController ()
+@interface GreWordsViewController ()<WordDetailViewControllerProtocol>
 
 @property (nonatomic, strong) UIImageView *slideBarView;
 @property (nonatomic, strong) UIImageView *slideBarStatusView;
@@ -233,20 +233,29 @@
 {
     NSLog(@"Big Button Pressed");
     
-    [UIView animateWithDuration:1 animations:^{
+    [UIView animateWithDuration:0.5f animations:^{
         self.titleView.transform = CGAffineTransformMakeTranslation(-150, -100);
         self.slideBarView.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.slideBarStatusTextView.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.slideBarStatusView.transform = CGAffineTransformMakeTranslation(-300, 0);
         dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-125, -250));
-        
-
-        
-        
     } completion:^(BOOL finished) {
         WordDetailViewController *vc = [[WordDetailViewController alloc] init];
+        vc.delegate = self;
         vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentModalViewController:vc animated:YES];
+    }];
+}
+
+#pragma mark - WordDetailDelegate
+- (void)AnimationBack
+{
+    [UIView animateWithDuration:0.5f animations:^{
+        self.titleView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(-0.001f, -0.001f));
+        self.slideBarView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(-0.001f, 0));
+        self.slideBarStatusTextView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(-0.001f, 0));
+        self.slideBarStatusView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(-0.001f, 0));
+        dashboard.view.transform = CGAffineTransformInvert(CGAffineTransformConcat(CGAffineTransformMakeScale(1.0f, 1.0f), CGAffineTransformMakeTranslation(-0.001f, -0.001f)));
     }];
 }
 

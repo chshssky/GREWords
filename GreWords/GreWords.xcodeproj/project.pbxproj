@@ -3450,6 +3450,7 @@
 		3FA484D517197E20003E88A6 /* ExamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamViewController.xib; sourceTree = "<group>"; };
 		3FAD3577173803EB006DF87C /* Mainmenu_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Mainmenu_bg@2x.png"; path = "Resources/Settings/Mainmenu_bg@2x.png"; sourceTree = SOURCE_ROOT; };
 		3FAD3578173803EB006DF87C /* Mainmenu_title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Mainmenu_title@2x.png"; path = "Resources/Settings/Mainmenu_title@2x.png"; sourceTree = SOURCE_ROOT; };
+		3FAD357B173A2592006DF87C /* WordDetailViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordDetailViewControllerProtocol.h; sourceTree = "<group>"; };
 		3FE2D3EA17368E6300F3845D /* learning_wrong_up_page.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = learning_wrong_up_page.png; sourceTree = "<group>"; };
 		3FE2D3EB17368E6900F3845D /* learning_wrong_up_page@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_wrong_up_page@2x.png"; sourceTree = "<group>"; };
 		3FFA470817294491008F88A0 /* WordDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordDetailViewController.h; sourceTree = "<group>"; };
@@ -7030,6 +7031,7 @@
 				7380C77F17342A3200447D78 /* WordSmallLayoutViewController.m */,
 				3FFA470A17294491008F88A0 /* WordDetailViewController.xib */,
 				3FFA470817294491008F88A0 /* WordDetailViewController.h */,
+				3FAD357B173A2592006DF87C /* WordDetailViewControllerProtocol.h */,
 				3FFA470917294491008F88A0 /* WordDetailViewController.m */,
 			);
 			name = WordDetail;

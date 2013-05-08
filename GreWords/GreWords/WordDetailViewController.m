@@ -200,5 +200,9 @@
     [[WordSpeaker instance] readWord:self.wordLabel.text];
 }
 
+- (IBAction)BackButtonPushed:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+    [self.delegate AnimationBack];
+}
 
 @end

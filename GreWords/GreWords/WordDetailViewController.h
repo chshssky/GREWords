@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WordDetailViewControllerProtocol.h"
 
 @interface WordDetailViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIScrollView *WordParaphraseView;
 
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
+@property (strong, nonatomic) id<WordDetailViewControllerProtocol> delegate;
 
 @property (nonatomic) int wordID;
 @end
