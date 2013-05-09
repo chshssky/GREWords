@@ -73,14 +73,14 @@
     }
     
     self.pageControlView.pagingEnabled = YES;
-    self.pageControlView.contentSize = CGSizeMake(self.pageControlView.frame.size.width * 300,
+    self.pageControlView.contentSize = CGSizeMake(self.pageControlView.frame.size.width * 10,
                                                   self.pageControlView.frame.size.height);
     self.pageControlView.showsHorizontalScrollIndicator = NO;
     self.pageControlView.showsVerticalScrollIndicator = NO;
     self.pageControlView.scrollsToTop = NO;
     self.pageControlView.delegate = self;
     self.pageControlView.directionalLockEnabled = YES;
-    self.pageControlView.bounces = NO;
+    //self.pageControlView.bounces = NO;
     
     [self loadViewWithPage:0];
     [self loadViewWithPage:1];
@@ -167,6 +167,12 @@
 {
     //判断是哪个scrollview
     if (scrollView == self.pageControlView) {
+        if (!scrollView.zoomBouncing) {
+            NSLog(@"到底了！！！");
+        }
+        
+        
+        
         //禁制scrollview向右滑动///////////////////////////////////////////////////////////////////////
         CGPoint translation;  
         for (id gesture in scrollView.gestureRecognizers){
