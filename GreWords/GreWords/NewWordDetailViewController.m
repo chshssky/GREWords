@@ -19,7 +19,7 @@
 
 - (void)loadScrollViewWithPage:(int)page;
 - (void)scrollViewDidScroll:(UIScrollView *)sender;
-@property int tempPage;
+@property int currentPage;
 
 @end
 
@@ -39,20 +39,25 @@
     [super viewDidLoad];
     
     self.viewControlArray = [[NSMutableArray alloc] init];
-    for (unsigned i = 0; i < 10; i++) {
+
+    for (unsigned i = 0; i < 300; i++) {
 		[self.viewControlArray addObject:[NSNull null]];
     }
     
     self.pageControlView.pagingEnabled = YES;
-    self.pageControlView.contentSize = CGSizeMake(self.pageControlView.frame.size.width * 10,
+    self.pageControlView.contentSize = CGSizeMake(self.pageControlView.frame.size.width * 300,
                                                   self.pageControlView.frame.size.height);
     self.pageControlView.showsHorizontalScrollIndicator = NO;
     self.pageControlView.showsVerticalScrollIndicator = NO;
     self.pageControlView.scrollsToTop = NO;
     self.pageControlView.delegate = self;
+    self.pageControlView.directionalLockEnabled = YES;
+    self.pageControlView.bounces = NO;
     
     [self loadScrollViewWithPage:0];
     [self loadScrollViewWithPage:1];
+    
+    //显示单词内容和单词名称
     self.WordParaphraseView = [self.viewControlArray objectAtIndex:0];
     self.wordLabel.text = [[WordHelper instance] wordWithID:0].data[@"word"];
 }
@@ -99,10 +104,6 @@
     }
     
     [self.WordParaphraseView addSubview:vc.view];
-    
-    //[self AddShadows];
-    
-    [self.WordParaphraseView scrollsToTop];
 }
 
 - (void)AddShadows
@@ -121,21 +122,54 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    //判断是哪个scrollview
+    
+
+    
     if (scrollView == self.pageControlView) {
+        //NSArray *arr = scrollView.gestureRecognizers;
+        CGPoint translation;
+        id panGesture;
+        for (id gesture in scrollView.gestureRecognizers){
+            if ([[NSString stringWithFormat:@"%@",[gesture class]] isEqualToString:@"UIScrollViewPanGestureRecognizer"]){
+                //[gesture setEnabled:NO];
+                panGesture = gesture;
+                translation = [gesture translationInView:scrollView];
+                break;
+            }
+        }
+        
+        
+        NSLog(@"%f %f",translation.x,translation.y);
+        
+        if(translation.x > 0)
+        {
+            //[panGesture requireGestureRecognizerToFail:panGesture];
+            [scrollView setContentOffset:CGPointMake(self.pageControlView.frame.size.width*self.currentPage, scrollView.contentOffset.y) animated:NO];
+            return;
+        }
+//        //如果向右滑动scrollview，不滑动
+//        if (scrollView.contentOffset.x<=self.tempContentOffsetX) {
+//            [scrollView setContentOffset:CGPointMake(self.pageControlView.frame.size.width*self.currentPage, scrollView.contentOffset.y) animated:NO];
+//            return;
+//        }
+        
+        //找到下一个应该显示的page
         CGFloat pageWidth = self.pageControlView.frame.size.width;
         int page = floor((self.pageControlView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-        
+        self.currentPage = page;
         // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
-
-        [self loadScrollViewWithPage:page - 1];
+        
         [self loadScrollViewWithPage:page];
         [self loadScrollViewWithPage:page + 1];
         
-        self.WordParaphraseView = [self.viewControlArray objectAtIndex:page];
-        self.tempPage = page;
-
-        self.wordLabel.text = [[WordHelper instance] wordWithID:page].data[@"word"];
         
+        //显示单词内容
+        self.WordParaphraseView = [self.viewControlArray objectAtIndex:page];
+        
+        //显示单词名称
+        self.wordLabel.text = [[WordHelper instance] wordWithID:page].data[@"word"];
+      
         
     }else if (scrollView == self.WordParaphraseView){
         [self AddShadows];
@@ -162,11 +196,6 @@
 
 - (void)loadScrollViewWithPage:(int)page
 {
-    if (page < 0)
-        return;
-    if (page >= 10)
-        return;
-    
     // replace the placeholder if necessary
     self.WordParaphraseView = [self.viewControlArray objectAtIndex:page];
     
@@ -204,12 +233,12 @@
 
 - (void) scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    for (int i=0; i<self.tempPage; i++) {
-        if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
-            [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
-        }
-    }
-    for (int i=self.viewControlArray.count-1; i>self.tempPage; i--) {
+//    for (int i=0; i<self.currentPage; i++) {
+//        if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
+//            [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
+//        }
+//    }
+    for (int i=self.viewControlArray.count-1; i>self.currentPage; i--) {
         if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
         }
@@ -218,12 +247,12 @@
 
 - (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    for (int i=0; i<self.tempPage; i++) {
-        if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
-            [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
-        }
-    }
-    for (int i=self.viewControlArray.count-1; i>self.tempPage; i--) {
+//    for (int i=0; i<self.currentPage; i++) {
+//        if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
+//            [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
+//        }
+//    }
+    for (int i=self.viewControlArray.count-1; i>self.currentPage; i--) {
         if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
         }
@@ -232,12 +261,12 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    for (int i=0; i<self.tempPage; i++) {
-        if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
-            [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
-        }
-    }
-    for (int i=self.viewControlArray.count-1; i>self.tempPage; i--) {
+//    for (int i=0; i<self.currentPage; i++) {
+//        if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
+//            [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
+//        }
+//    }
+    for (int i=self.viewControlArray.count-1; i>self.currentPage; i--) {
         if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
         }
@@ -246,12 +275,12 @@
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
 {
-    for (int i=0; i<self.tempPage; i++) {
-        if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
-            [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
-        }
-    }
-    for (int i=self.viewControlArray.count-1; i>self.tempPage; i--) {
+//    for (int i=0; i<self.currentPage; i++) {
+//        if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
+//            [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
+//        }
+//    }
+    for (int i=self.viewControlArray.count-1; i>self.currentPage; i--) {
         if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
         }

@@ -10,6 +10,9 @@
 #import "NewWordDetailViewControllerProtocol.h"
 
 @interface NewWordDetailViewController : UIViewController <UIScrollViewDelegate>
+{
+    //UIScrollViewPagingSwipeGestureRecognizer *hehe;
+}
 @property (strong, nonatomic) UIScrollView *WordParaphraseView;
 
 @property (weak, nonatomic) IBOutlet UIScrollView *pageControlView;
