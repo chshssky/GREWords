@@ -11,6 +11,7 @@
 #import "WordHelper.h"
 #import "WordSpeaker.h"
 #import "WordTaskGenerator.h"
+#import "SmartWordListViewController.h"
 
 
 @interface NewWordDetailViewController () <UIScrollViewDelegate>
@@ -21,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wordSoundLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *soundImage;
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (nonatomic) int added_height;
 
 
@@ -28,6 +30,7 @@
 @property (nonatomic, retain) NSMutableArray *nameControlArray;
 @property (nonatomic, retain) NSMutableArray *phoneticControlArray;
 @property (strong, nonatomic) UIScrollView *WordParaphraseView;
+@property (strong, nonatomic) UIImageView *blackView;
 @property  NSString *WordName;
 @property  NSString *WordPhonetic;
 
@@ -78,7 +81,7 @@
     self.pageControlView.showsVerticalScrollIndicator = NO;
     self.pageControlView.scrollsToTop = NO;
     self.pageControlView.delegate = self;
-    self.pageControlView.directionalLockEnabled = YES;
+    self.pageControlView.directionalLockEnabled = NO;
     //self.pageControlView.bounces = NO;
     
     [self loadViewWithPage:0];
@@ -180,10 +183,10 @@
 {
     //判断是哪个scrollview
     if (scrollView == self.pageControlView) {
-        if (!scrollView.zoomBouncing) {
-            NSLog(@"到底了！！！");
-        }
-        
+//        if (!scrollView.zoomBouncing) {
+//            NSLog(@"到底了！！！");
+//        }
+//        
         
         
         //禁制scrollview向右滑动///////////////////////////////////////////////////////////////////////
@@ -290,6 +293,7 @@
     [self setPageControlView:nil];
     [self setWordPhonetic:nil];
     [self setSoundImage:nil];
+    [self setBackButton:nil];
     [super viewDidUnload];
 }
 
@@ -332,18 +336,37 @@
 #pragma mark - IIViewDeckControllerDelegate Methods
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController didCloseViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
 {
-    self.pageControlView.userInteractionEnabled = YES;
+    self.view.userInteractionEnabled = YES;
     self.viewDeckController.panningMode = IIViewDeckAllViewsPanning;
-    
 }
+
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController willOpenViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
 {
-    self.pageControlView.userInteractionEnabled = NO;
+    
+    self.view.userInteractionEnabled = NO;
 }
 
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController didOpenViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
 {
     self.viewDeckController.panningMode = IIViewDeckNavigationBarOrOpenCenterPanning;
+    
+}
+
+- (void)viewDeckController:(IIViewDeckController*)viewDeckController didChangeOffset:(CGFloat)offset orientation:(IIViewDeckOffsetOrientation)orientation panning:(BOOL)panning
+{
+    SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
+    if (_blackView == NULL) {
+        _blackView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default-568h.png"]];
+        [left.view addSubview:_blackView];
+    }
+    
+    _blackView.alpha = 1.0/276.0*(276.0-offset);
+    
+    NSLog(@"offset:%f",offset);
+    [left.view clipsToBounds];
+    [left.view setFrame:CGRectMake(5-5.0/276.0*offset, 5-5/276.0*offset, 300+20.0/276.0*offset, 538.25+10/276.0*offset)];
+    
+    
     
 }
 

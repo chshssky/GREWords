@@ -39,7 +39,6 @@
 
     topTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -570.0f, 320.0f, 568.0f)];
     topTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
-    
     [self.tableView addSubview:topTexture];
 
 }
@@ -63,6 +62,7 @@
         bottomLine.frame = frame;
         
         downTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, lastTableViewHeight, 320.0f, 568.0f)];
+        
         downTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
         [downTexture addSubview:bottomLine];
         [self.tableView addSubview:downTexture];
