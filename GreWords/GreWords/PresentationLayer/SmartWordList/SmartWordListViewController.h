@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SmartWordListSectionController.h"
 
+@class WordEntity;
 @interface SmartWordListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
 {
     NSMutableArray* retractableControllers;
@@ -22,5 +23,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic) SmartListType type;
+
+- (void)addWord:(WordEntity*)aWord;
 
 @end
