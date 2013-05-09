@@ -53,19 +53,15 @@
     [super viewDidLoad];
     self.day = 0;
     
+    int wordCount = [[WordHelper instance] wordCount];
     self.viewControlArray = [[NSMutableArray alloc] init];
-    for (unsigned i = 0; i < 3074; i++) {
-		[self.viewControlArray addObject:[NSNull null]];
-    }
-    
     self.nameControlArray = [[NSMutableArray alloc] init];
-    for (unsigned i = 0; i < 3074; i++) {
-		[self.nameControlArray addObject:[NSNull null]];
-    }
-    
     self.phoneticControlArray = [[NSMutableArray alloc] init];
-    for (unsigned i = 0; i < 3074; i++) {
-		[self.phoneticControlArray addObject:[NSNull null]];
+
+    for (unsigned i = 0; i < wordCount; i++) {
+		[self.viewControlArray addObject:[NSNull null]];
+        [self.nameControlArray addObject:[NSNull null]];
+        [self.phoneticControlArray addObject:[NSNull null]];
     }
     
     self.pageControlView.pagingEnabled = YES;
@@ -87,12 +83,6 @@
     self.wordSoundLabel.text = [self.phoneticControlArray objectAtIndex:0];
     
     self.viewDeckController.delegate = self;
-    
-    
-    //UIView *panningView = [[UIView alloc] initWithFrame:self.WordParaphraseView.frame];
-    //panningView.backgroundColor = [UIColor clearColor];
-    //panningView.userInteractionEnabled = NO;
-    //[self.view addSubview:panningView];
     
     
     self.viewDeckController.panningMode = IIViewDeckAllViewsPanning;
@@ -324,10 +314,18 @@
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController didCloseViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
 {
     self.pageControlView.userInteractionEnabled = YES;
+    self.viewDeckController.panningMode = IIViewDeckAllViewsPanning;
+    
 }
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController willOpenViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
 {
     self.pageControlView.userInteractionEnabled = NO;
+}
+
+- (void)viewDeckController:(IIViewDeckController*)viewDeckController didOpenViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
+{
+    self.viewDeckController.panningMode = IIViewDeckNavigationBarOrOpenCenterPanning;
+    
 }
 
 @end

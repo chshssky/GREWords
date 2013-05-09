@@ -164,6 +164,7 @@
 		E4024FF7173B793000D2EB7D /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4024FF2173B793000D2EB7D /* IISideController.m */; };
 		E4024FF8173B793000D2EB7D /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4024FF4173B793000D2EB7D /* IIViewDeckController.m */; };
 		E4024FF9173B793000D2EB7D /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4024FF6173B793000D2EB7D /* IIWrapController.m */; };
+		E4024FFF173B8DD800D2EB7D /* UIScrollView+AllowAllTouches.m in Sources */ = {isa = PBXBuildFile; fileRef = E4024FFD173B8DD800D2EB7D /* UIScrollView+AllowAllTouches.m */; };
 		E4134CDB1714225D00553AD2 /* WordHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E4134CDA1714225D00553AD2 /* WordHelper.m */; };
 		E414B6931714300400C29D3C /* WordEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B6921714300400C29D3C /* WordEntity.m */; };
 		E414B6961714301700C29D3C /* ConfigurationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B6941714301700C29D3C /* ConfigurationHelper.m */; };
@@ -3593,6 +3594,8 @@
 		E4024FF4173B793000D2EB7D /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
 		E4024FF5173B793000D2EB7D /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
 		E4024FF6173B793000D2EB7D /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
+		E4024FFD173B8DD800D2EB7D /* UIScrollView+AllowAllTouches.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+AllowAllTouches.m"; sourceTree = "<group>"; };
+		E4024FFE173B8DD800D2EB7D /* UIScrollView+AllowAllTouches.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+AllowAllTouches.h"; sourceTree = "<group>"; };
 		E4134CD91714225D00553AD2 /* WordHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordHelper.h; sourceTree = "<group>"; };
 		E4134CDA1714225D00553AD2 /* WordHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordHelper.m; sourceTree = "<group>"; };
 		E414B6911714300400C29D3C /* WordEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordEntity.h; sourceTree = "<group>"; };
@@ -7040,6 +7043,8 @@
 		3FA484C517197A9F003E88A6 /* WordDetail */ = {
 			isa = PBXGroup;
 			children = (
+				E4024FFD173B8DD800D2EB7D /* UIScrollView+AllowAllTouches.m */,
+				E4024FFE173B8DD800D2EB7D /* UIScrollView+AllowAllTouches.h */,
 				7380C778173428D700447D78 /* WordLayoutViewController.xib */,
 				E414B6991714303F00C29D3C /* WordLayoutViewController.h */,
 				E414B69A1714303F00C29D3C /* WordLayoutViewController.m */,
@@ -14006,6 +14011,7 @@
 				E4024FF7173B793000D2EB7D /* IISideController.m in Sources */,
 				E4024FF8173B793000D2EB7D /* IIViewDeckController.m in Sources */,
 				E4024FF9173B793000D2EB7D /* IIWrapController.m in Sources */,
+				E4024FFF173B8DD800D2EB7D /* UIScrollView+AllowAllTouches.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

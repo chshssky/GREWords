@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NewWordDetailViewControllerProtocol.h"
 #import "IIViewDeckController.h"
-//#import "UIScrollView+AllowAllTouches.h"
+#import "UIScrollView+AllowAllTouches.h"
 
 @interface NewWordDetailViewController : UIViewController <UIScrollViewDelegate,IIViewDeckControllerDelegate>
 
