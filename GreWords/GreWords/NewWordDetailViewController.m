@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *pageControlView;
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wordSoundLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *soundImage;
 @property (nonatomic) int added_height;
 
 
@@ -50,18 +51,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //给发音按钮添加事件
+    [self.PronounceButton addTarget:self action:@selector(soundButtonClicked:) forControlEvents:UIControlEventTouchDown];
+    [self.PronounceButton addTarget:self action:@selector(soundButtonReleased:) forControlEvents:UIControlEventTouchUpInside];
+    [self.PronounceButton addTarget:self action:@selector(soundButtonReleased:) forControlEvents:UIControlEventTouchCancel];
+    
     self.day = 0;
     
     self.viewControlArray = [[NSMutableArray alloc] init];
     for (unsigned i = 0; i < 3074; i++) {
 		[self.viewControlArray addObject:[NSNull null]];
     }
-    
     self.nameControlArray = [[NSMutableArray alloc] init];
     for (unsigned i = 0; i < 3074; i++) {
 		[self.nameControlArray addObject:[NSNull null]];
     }
-    
     self.phoneticControlArray = [[NSMutableArray alloc] init];
     for (unsigned i = 0; i < 3074; i++) {
 		[self.phoneticControlArray addObject:[NSNull null]];
@@ -246,8 +251,14 @@
     }
 }
 
-- (IBAction)pronounceButtonPushed:(id)sender {
+
+- (IBAction)soundButtonClicked:(id)sender {
     [[WordSpeaker instance] readWord:self.wordLabel.text];
+    [self.soundImage setImage:[UIImage imageNamed:@"learning_sound_clicked.png"]];
+}
+
+- (IBAction)soundButtonReleased:(id)sender {
+    [self.soundImage setImage:[UIImage imageNamed:@"learning_sound.png"]];
 }
 
 - (IBAction)BackButtonPushed:(id)sender {
@@ -257,8 +268,8 @@
 
 - (void)viewDidUnload {
     [self setPageControlView:nil];
-    
     [self setWordPhonetic:nil];
+    [self setSoundImage:nil];
     [super viewDidUnload];
 }
 
