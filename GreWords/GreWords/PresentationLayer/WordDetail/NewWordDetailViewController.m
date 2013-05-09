@@ -213,6 +213,7 @@
         self.currentPage = page;
         // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
         
+        
         [self loadViewWithPage:page];
         [self loadViewWithPage:page + 1];
         /////////////////////////////////////////////////////////////////////////////////////////////
@@ -276,6 +277,10 @@
 
 
 - (IBAction)soundButtonClicked:(id)sender {
+    
+//    SmartWordListViewController *vc = (SmartWordListViewController *)self.viewDeckController.leftController;
+//    [vc addWord:[[WordHelper instance] wordWithID:200]];
+    
     [[WordSpeaker instance] readWord:self.wordLabel.text];
     [self.soundImage setImage:[UIImage imageNamed:@"learning_sound_clicked.png"]];
 }
