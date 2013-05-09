@@ -63,7 +63,7 @@
     self.slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text2.png"]];
     //slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text3.png"]];
     //slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text4.png"]];
-    self.slideBarStatusTextView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+215);
+    self.slideBarStatusTextView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3 + 215);
     self.slideBarStatusTextView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     self.slideBarStatusTextView.gestureRecognizers = self.view.gestureRecognizers;
     //slideBarStatusView.alpha = 0.5;
