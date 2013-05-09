@@ -127,32 +127,22 @@
 
     
     if (scrollView == self.pageControlView) {
-        //NSArray *arr = scrollView.gestureRecognizers;
-        CGPoint translation;
-        id panGesture;
+        //禁制scrollview向右滑动
+        CGPoint translation;  
         for (id gesture in scrollView.gestureRecognizers){
             if ([[NSString stringWithFormat:@"%@",[gesture class]] isEqualToString:@"UIScrollViewPanGestureRecognizer"]){
-                //[gesture setEnabled:NO];
-                panGesture = gesture;
+                
                 translation = [gesture translationInView:scrollView];
                 break;
             }
         }
-        
-        
-        NSLog(@"%f %f",translation.x,translation.y);
-        
         if(translation.x > 0)
         {
             //[panGesture requireGestureRecognizerToFail:panGesture];
             [scrollView setContentOffset:CGPointMake(self.pageControlView.frame.size.width*self.currentPage, scrollView.contentOffset.y) animated:NO];
             return;
         }
-//        //如果向右滑动scrollview，不滑动
-//        if (scrollView.contentOffset.x<=self.tempContentOffsetX) {
-//            [scrollView setContentOffset:CGPointMake(self.pageControlView.frame.size.width*self.currentPage, scrollView.contentOffset.y) animated:NO];
-//            return;
-//        }
+        
         
         //找到下一个应该显示的page
         CGFloat pageWidth = self.pageControlView.frame.size.width;
