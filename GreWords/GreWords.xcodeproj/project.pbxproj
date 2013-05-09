@@ -156,6 +156,8 @@
 		7380C779173428D700447D78 /* WordLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7380C778173428D700447D78 /* WordLayoutViewController.xib */; };
 		7380C78117342A3700447D78 /* WordSmallLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7380C77F17342A3200447D78 /* WordSmallLayoutViewController.m */; };
 		7380C78217342A3700447D78 /* WordSmallLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7380C78017342A3400447D78 /* WordSmallLayoutViewController.xib */; };
+		73AAC039173A66DA005B223C /* NewWordDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73AAC037173A66DA005B223C /* NewWordDetailViewController.m */; };
+		73AAC03A173A66DA005B223C /* NewWordDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73AAC038173A66DA005B223C /* NewWordDetailViewController.xib */; };
 		73D209AC1714367F00C718A6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D209AB1714367F00C718A6 /* CoreText.framework */; };
 		E4134CDB1714225D00553AD2 /* WordHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E4134CDA1714225D00553AD2 /* WordHelper.m */; };
 		E414B6931714300400C29D3C /* WordEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B6921714300400C29D3C /* WordEntity.m */; };
@@ -3573,6 +3575,10 @@
 		7380C77E17342A3100447D78 /* WordSmallLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordSmallLayoutViewController.h; sourceTree = "<group>"; };
 		7380C77F17342A3200447D78 /* WordSmallLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordSmallLayoutViewController.m; sourceTree = "<group>"; };
 		7380C78017342A3400447D78 /* WordSmallLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordSmallLayoutViewController.xib; sourceTree = "<group>"; };
+		73AAC036173A66DA005B223C /* NewWordDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewWordDetailViewController.h; sourceTree = "<group>"; };
+		73AAC037173A66DA005B223C /* NewWordDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewWordDetailViewController.m; sourceTree = "<group>"; };
+		73AAC038173A66DA005B223C /* NewWordDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewWordDetailViewController.xib; sourceTree = "<group>"; };
+		73AAC03B173A6B51005B223C /* NewWordDetailViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewWordDetailViewControllerProtocol.h; sourceTree = "<group>"; };
 		73B876411736A20600BD1860 /* TaskGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskGenerator.h; sourceTree = "<group>"; };
 		73B876421736A20600BD1860 /* TaskGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskGenerator.m; sourceTree = "<group>"; };
 		73D209AB1714367F00C718A6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
@@ -7029,6 +7035,10 @@
 				7380C78017342A3400447D78 /* WordSmallLayoutViewController.xib */,
 				7380C77E17342A3100447D78 /* WordSmallLayoutViewController.h */,
 				7380C77F17342A3200447D78 /* WordSmallLayoutViewController.m */,
+				73AAC038173A66DA005B223C /* NewWordDetailViewController.xib */,
+				73AAC036173A66DA005B223C /* NewWordDetailViewController.h */,
+				73AAC03B173A6B51005B223C /* NewWordDetailViewControllerProtocol.h */,
+				73AAC037173A66DA005B223C /* NewWordDetailViewController.m */,
 				3FFA470A17294491008F88A0 /* WordDetailViewController.xib */,
 				3FFA470817294491008F88A0 /* WordDetailViewController.h */,
 				3FAD357B173A2592006DF87C /* WordDetailViewControllerProtocol.h */,
@@ -13911,6 +13921,7 @@
 				E446CC51173794A400BB9A7A /* Settings_viewCover@2x.png in Resources */,
 				3FAD3579173803EB006DF87C /* Mainmenu_bg@2x.png in Resources */,
 				3FAD357A173803EB006DF87C /* Mainmenu_title@2x.png in Resources */,
+				73AAC03A173A66DA005B223C /* NewWordDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13956,6 +13967,7 @@
 				7380C78117342A3700447D78 /* WordSmallLayoutViewController.m in Sources */,
 				E48027BD173678C300AC5CD6 /* SettingTabViewController.m in Sources */,
 				E48028BC1736A21F00AC5CD6 /* SettingTabViewDeckViewController.m in Sources */,
+				73AAC039173A66DA005B223C /* NewWordDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

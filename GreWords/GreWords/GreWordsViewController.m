@@ -14,10 +14,11 @@
 #import "HistoryStatisticsViewController.h"
 #import "SettingsViewController.h"
 #import "ExamViewController.h"
+#import "NewWordDetailViewController.h"
 #import "WordDetailViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface GreWordsViewController ()<WordDetailViewControllerProtocol>
+@interface GreWordsViewController ()<NewWordDetailViewControllerProtocol>
 
 @property (nonatomic, strong) UIImageView *slideBarView;
 @property (nonatomic, strong) UIImageView *slideBarStatusView;
@@ -242,7 +243,7 @@
         dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-125, -250));
         self.menu.transform = CGAffineTransformMakeTranslation(-300, 0);
     } completion:^(BOOL finished) {
-        WordDetailViewController *vc = [[WordDetailViewController alloc] init];
+        NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
         vc.delegate = self;
         vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentModalViewController:vc animated:YES];
