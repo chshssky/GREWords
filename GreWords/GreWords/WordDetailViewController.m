@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *RightDownImage;
 @property (weak, nonatomic) IBOutlet UIImageView *WrongUpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *WrongDownImage;
+@property (strong, nonatomic) UIButton *showMeaningButton;
 @property (nonatomic) int added_height;
 
 @end
@@ -86,10 +87,11 @@
     }
     
     [self.WordParaphraseView addSubview:vc.view];
-    
-    [self AddShadows];
-    
     [self.WordParaphraseView scrollsToTop];
+    
+    
+    [self DontShowMeaning];
+    
 }
 
 - (void)viewDidLoad
@@ -99,25 +101,38 @@
     [self loadWord:self.wordID];
 }
 
--(UIImageView *) makeScale:(UIImageView *)image speedX:(float)X speedY:(float)Y
+- (void)ShowMeaning
 {
-    if (Y < 0) {
-        image.transform = CGAffineTransformMakeScale(0.5f, 0.5f);
-    }else if(Y > 0){
-        image.transform = CGAffineTransformMakeRotation(atanf(X/(-Y))-PI);
-    }
-    return image;
+    [self AddShadows];
+    self.RightButton.enabled = true;
+    self.WrongButton.enabled = true;
+}
+
+- (void)DontShowMeaning
+{
+    [self AddShowButton];
+    [self.UpImage setAlpha:0];
+    [self.DownImage setAlpha:0];
+    self.RightButton.enabled = false;
+    self.WrongButton.enabled = false;
 }
 
 - (void)AddShadows
 {
     int i = self.WordParaphraseView.contentOffset.y;
     int height = self.WordParaphraseView.contentSize.height - self.WordParaphraseView.frame.size.height - self.added_height;
-    if (i <= 10) {
+    NSLog(@"OffSet:%d", i);
+    
+    if (0 < i <= 10) {
         [self.UpImage setAlpha:i * 0.1];
     } else {
         [self.UpImage setAlpha:1];
     }
+    
+    if (i == 1) {
+        [self.UpImage setAlpha:0];
+    }
+    
     if (i >= height - 10) {
         [self.DownImage setAlpha:(height - i) * 0.1];
     } else {
@@ -151,10 +166,19 @@
     [super viewDidUnload];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self WrongAnimation];
+    [self RightAnimation];
+}
+
 - (void)RightAnimation
 {
-    [self.RightDownImage setBounds:CGRectMake(216, self.view.frame.size.height - 92, 76, 38)];
+
+    [self.RightUpImage setBounds:CGRectMake(216, self.view.frame.size.height - 92, 76, 38)];
     [self.RightDownImage setBounds:CGRectMake(216, self.view.frame.size.height - 92 + 37, 76, 0.001)];
+    
+    
     [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
     [UIView animateWithDuration:0.25f animations:^(){
         self.RightUpImage.transform = CGAffineTransformMakeScale(1.0f, 0.001f);
@@ -166,12 +190,18 @@
             self.RightDownImage.center = CGPointMake(216 + 38, self.view.frame.size.height - 92 + 37 + 18);
         }];
     }];
+//    self.RightDownImage.transform = CGAffineTransformIdentity;
+//    self.RightUpImage.transform = CGAffineTransformIdentity;
+
 }
 
 - (void)WrongAnimation
 {
     [self.WrongUpImage setBounds:CGRectMake(29, self.view.frame.size.height - 92, 76, 38)];
     [self.WrongDownImage setBounds:CGRectMake(29, self.view.frame.size.height - 92 + 37, 76, 0.001)];
+    
+    
+    
     [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
     [UIView animateWithDuration:0.25f animations:^(){
         self.WrongUpImage.transform = CGAffineTransformMakeScale(1.0f, 0.001f);
@@ -183,17 +213,40 @@
             self.WrongDownImage.center = CGPointMake(29 + 38, self.view.frame.size.height - 92 + 37 + 18);
         }];
     }];
+    
+//    self.WrongDownImage.transform = CGAffineTransformIdentity;
+//    self.WrongUpImage.transform = CGAffineTransformIdentity;
+}
+
+- (void)AddShowButton
+{
+    self.showMeaningButton = [[UIButton alloc] init];
+    [self.showMeaningButton setImage:[UIImage imageNamed:@"learning_tapCover.png"] forState:UIControlStateNormal];
+    //self.showMeaningButton.backgroundColor = [UIColor blackColor];
+    [self.showMeaningButton addTarget:self action:@selector(showButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.showMeaningButton setCenter:self.WordParaphraseView.center];
+    
+    [self.showMeaningButton setFrame:self.WordParaphraseView.frame];
+    [self.view addSubview:self.showMeaningButton];
+}
+
+- (void)showButtonPressed
+{
+    [self.showMeaningButton removeFromSuperview];
+    self.showMeaningButton = nil;
+    [self ShowMeaning];
 }
 
 - (IBAction)rightButtonPushed:(id)sender {
-    [self RightAnimation];
-    
     self.wordID++;
+    [self viewWillAppear:YES];
     [self loadWord:self.wordID];
+    
 }
 
 - (IBAction)wrongButtonPushed:(id)sender {
-    [self WrongAnimation];
+    
 }
 
 - (IBAction)pronounceButtonPushed:(id)sender {
