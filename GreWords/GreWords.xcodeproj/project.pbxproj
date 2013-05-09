@@ -156,6 +156,8 @@
 		7380C779173428D700447D78 /* WordLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7380C778173428D700447D78 /* WordLayoutViewController.xib */; };
 		7380C78117342A3700447D78 /* WordSmallLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7380C77F17342A3200447D78 /* WordSmallLayoutViewController.m */; };
 		7380C78217342A3700447D78 /* WordSmallLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7380C78017342A3400447D78 /* WordSmallLayoutViewController.xib */; };
+		73AAB2FA173B6283004826EF /* WordTaskGenerator.h in Sources */ = {isa = PBXBuildFile; fileRef = 73B876411736A20600BD1860 /* WordTaskGenerator.h */; };
+		73AAB2FB173B6283004826EF /* WordTaskGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B876421736A20600BD1860 /* WordTaskGenerator.m */; };
 		73AAC039173A66DA005B223C /* NewWordDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73AAC037173A66DA005B223C /* NewWordDetailViewController.m */; };
 		73AAC03A173A66DA005B223C /* NewWordDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73AAC038173A66DA005B223C /* NewWordDetailViewController.xib */; };
 		73D209AC1714367F00C718A6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D209AB1714367F00C718A6 /* CoreText.framework */; };
@@ -3579,8 +3581,8 @@
 		73AAC037173A66DA005B223C /* NewWordDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewWordDetailViewController.m; sourceTree = "<group>"; };
 		73AAC038173A66DA005B223C /* NewWordDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewWordDetailViewController.xib; sourceTree = "<group>"; };
 		73AAC03B173A6B51005B223C /* NewWordDetailViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewWordDetailViewControllerProtocol.h; sourceTree = "<group>"; };
-		73B876411736A20600BD1860 /* TaskGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskGenerator.h; sourceTree = "<group>"; };
-		73B876421736A20600BD1860 /* TaskGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskGenerator.m; sourceTree = "<group>"; };
+		73B876411736A20600BD1860 /* WordTaskGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordTaskGenerator.h; sourceTree = "<group>"; };
+		73B876421736A20600BD1860 /* WordTaskGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordTaskGenerator.m; sourceTree = "<group>"; };
 		73D209AB1714367F00C718A6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		E4134CD91714225D00553AD2 /* WordHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordHelper.h; sourceTree = "<group>"; };
 		E4134CDA1714225D00553AD2 /* WordHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordHelper.m; sourceTree = "<group>"; };
@@ -6925,8 +6927,8 @@
 				3FA48494171463FB003E88A6 /* HistoryManager.m */,
 				E4983ED3171A8D880055A0E7 /* WordSpeaker.h */,
 				E4983ED4171A8D880055A0E7 /* WordSpeaker.m */,
-				73B876411736A20600BD1860 /* TaskGenerator.h */,
-				73B876421736A20600BD1860 /* TaskGenerator.m */,
+				73B876411736A20600BD1860 /* WordTaskGenerator.h */,
+				73B876421736A20600BD1860 /* WordTaskGenerator.m */,
 			);
 			name = LogicalLayer;
 			sourceTree = "<group>";
@@ -13932,6 +13934,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73AAB2FA173B6283004826EF /* WordTaskGenerator.h in Sources */,
+				73AAB2FB173B6283004826EF /* WordTaskGenerator.m in Sources */,
 				E418DA5F1713E5E8002C6743 /* Model.xcdatamodeld in Sources */,
 				3FA4846F17141F34003E88A6 /* BaseEvent.m in Sources */,
 				3FA48474171420A7003E88A6 /* NewWordEvent.m in Sources */,

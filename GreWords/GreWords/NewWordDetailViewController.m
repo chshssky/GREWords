@@ -10,15 +10,28 @@
 #import "WordLayoutViewController.h"
 #import "WordHelper.h"
 #import "WordSpeaker.h"
+#import "WordTaskGenerator.h"
 
 @interface NewWordDetailViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *DownImage;
 @property (weak, nonatomic) IBOutlet UIButton *PronounceButton;
+@property (weak, nonatomic) IBOutlet UIScrollView *pageControlView;
+@property (weak, nonatomic) IBOutlet UILabel *wordLabel;
+@property (weak, nonatomic) IBOutlet UILabel *wordSoundLabel;
 @property (nonatomic) int added_height;
 
-- (void)loadScrollViewWithPage:(int)page;
+
+@property (nonatomic, retain) NSMutableArray *viewControlArray;
+@property (nonatomic, retain) NSMutableArray *nameControlArray;
+@property (nonatomic, retain) NSMutableArray *phoneticControlArray;
+@property (strong, nonatomic) UIScrollView *WordParaphraseView;
+@property  NSString *WordName;
+@property  NSString *WordPhonetic;
+
+- (void)loadViewWithPage:(int)page;
 - (void)scrollViewDidScroll:(UIScrollView *)sender;
+
 @property int currentPage;
 
 @end
@@ -37,11 +50,21 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.day = 0;
     
     self.viewControlArray = [[NSMutableArray alloc] init];
-
-    for (unsigned i = 0; i < 300; i++) {
+    for (unsigned i = 0; i < 3074; i++) {
 		[self.viewControlArray addObject:[NSNull null]];
+    }
+    
+    self.nameControlArray = [[NSMutableArray alloc] init];
+    for (unsigned i = 0; i < 3074; i++) {
+		[self.nameControlArray addObject:[NSNull null]];
+    }
+    
+    self.phoneticControlArray = [[NSMutableArray alloc] init];
+    for (unsigned i = 0; i < 3074; i++) {
+		[self.phoneticControlArray addObject:[NSNull null]];
     }
     
     self.pageControlView.pagingEnabled = YES;
@@ -54,12 +77,13 @@
     self.pageControlView.directionalLockEnabled = YES;
     self.pageControlView.bounces = NO;
     
-    [self loadScrollViewWithPage:0];
-    [self loadScrollViewWithPage:1];
+    [self loadViewWithPage:0];
+    [self loadViewWithPage:1];
     
     //显示单词内容和单词名称
     self.WordParaphraseView = [self.viewControlArray objectAtIndex:0];
-    self.wordLabel.text = [[WordHelper instance] wordWithID:0].data[@"word"];
+    self.wordLabel.text = [self.nameControlArray objectAtIndex:0];
+    self.wordSoundLabel.text = [self.phoneticControlArray objectAtIndex:0];
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,7 +92,8 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)loadWord:(int)aWordID
+//加载单词内容进入数组
+- (void)loadWordView:(int)numberOfPage
 {
     // Do any additional setup after loading the view from its nib.
     WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
@@ -90,7 +115,7 @@
                              @"shouldShowSampleSentence":@YES};
     
     
-    [vc displayWord:[[WordHelper instance] wordWithID:aWordID] withOption:option];
+    [vc displayWord:[[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:numberOfPage] intValue]] withOption:option];
     
     //self.wordLabel.text = [[WordHelper instance] wordWithID:aWordID].data[@"word"];
     
@@ -106,6 +131,19 @@
     [self.WordParaphraseView addSubview:vc.view];
 }
 
+//加载单词名称进入数组
+- (void)loadWordName:(int)numberOfPage
+{
+    self.WordName = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:numberOfPage] intValue]].data[@"word"];
+}
+
+//加载单词音标进入数组
+- (void)loadWordPhonetic:(int)numberOfPage
+{
+    self.WordPhonetic = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:numberOfPage] intValue]].data[@"phonetic"];
+}
+
+//控制上阴影的动态显示
 - (void)AddShadows
 {
     int i = self.WordParaphraseView.contentOffset.y;
@@ -123,11 +161,8 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     //判断是哪个scrollview
-    
-
-    
     if (scrollView == self.pageControlView) {
-        //禁制scrollview向右滑动
+        //禁制scrollview向右滑动///////////////////////////////////////////////////////////////////////
         CGPoint translation;  
         for (id gesture in scrollView.gestureRecognizers){
             if ([[NSString stringWithFormat:@"%@",[gesture class]] isEqualToString:@"UIScrollViewPanGestureRecognizer"]){
@@ -138,27 +173,27 @@
         }
         if(translation.x > 0)
         {
-            //[panGesture requireGestureRecognizerToFail:panGesture];
             [scrollView setContentOffset:CGPointMake(self.pageControlView.frame.size.width*self.currentPage, scrollView.contentOffset.y) animated:NO];
             return;
         }
+        /////////////////////////////////////////////////////////////////////////////////////////////
         
         
-        //找到下一个应该显示的page
+        //找到下一个应该显示的page//////////////////////////////////////////////////////////////////////
         CGFloat pageWidth = self.pageControlView.frame.size.width;
         int page = floor((self.pageControlView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
         self.currentPage = page;
         // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
         
-        [self loadScrollViewWithPage:page];
-        [self loadScrollViewWithPage:page + 1];
+        [self loadViewWithPage:page];
+        [self loadViewWithPage:page + 1];
+        /////////////////////////////////////////////////////////////////////////////////////////////
         
         
-        //显示单词内容
+        //显示单词内容和单词名称
         self.WordParaphraseView = [self.viewControlArray objectAtIndex:page];
-        
-        //显示单词名称
-        self.wordLabel.text = [[WordHelper instance] wordWithID:page].data[@"word"];
+        self.wordLabel.text = [self.nameControlArray objectAtIndex:page];
+        self.wordSoundLabel.text = [self.phoneticControlArray objectAtIndex:page];
       
         
     }else if (scrollView == self.WordParaphraseView){
@@ -166,25 +201,7 @@
     }
 }
 
-
-
-
-
-- (IBAction)pronounceButtonPushed:(id)sender {
-    [[WordSpeaker instance] readWord:self.wordLabel.text];
-}
-- (IBAction)BackButtonPushed:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
-    [self.delegate AnimationBack];
-}
-
-- (void)viewDidUnload {
-    [self setPageControlView:nil];
-    
-    [super viewDidUnload];
-}
-
-- (void)loadScrollViewWithPage:(int)page
+- (void)loadViewWithPage:(int)page
 {
     // replace the placeholder if necessary
     self.WordParaphraseView = [self.viewControlArray objectAtIndex:page];
@@ -194,8 +211,20 @@
         self.WordParaphraseView = [[UIScrollView alloc] init];
         self.WordParaphraseView.showsHorizontalScrollIndicator = NO;
         self.WordParaphraseView.showsVerticalScrollIndicator = NO;
-        [self loadWord:page];
+        
+        //把单词内容页面加入数组
+        [self loadWordView:page];
         [self.viewControlArray replaceObjectAtIndex:page withObject:self.WordParaphraseView];
+        
+        //把单词名称加入数组
+        [self loadWordName:page];
+        [self.nameControlArray replaceObjectAtIndex:page withObject:self.WordName];
+        
+        //把单词音标加入数组
+        [self loadWordPhonetic:page];
+        [self.phoneticControlArray replaceObjectAtIndex:page withObject:self.WordPhonetic];
+        
+        
     }
     
     // add the controller's view to the scroll view
@@ -212,22 +241,29 @@
             CGSize size = self.WordParaphraseView.contentSize;
             size.height = self.WordParaphraseView.frame.size.height + 1;
             self.WordParaphraseView.contentSize = size;
-            
         }
-        
         [self.pageControlView addSubview:self.WordParaphraseView];
     }
 }
 
+- (IBAction)pronounceButtonPushed:(id)sender {
+    [[WordSpeaker instance] readWord:self.wordLabel.text];
+}
 
+- (IBAction)BackButtonPushed:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+    [self.delegate AnimationBack];
+}
+
+- (void)viewDidUnload {
+    [self setPageControlView:nil];
+    
+    [self setWordPhonetic:nil];
+    [super viewDidUnload];
+}
 
 - (void) scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-//    for (int i=0; i<self.currentPage; i++) {
-//        if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
-//            [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
-//        }
-//    }
     for (int i=self.viewControlArray.count-1; i>self.currentPage; i--) {
         if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
@@ -237,11 +273,6 @@
 
 - (void) scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-//    for (int i=0; i<self.currentPage; i++) {
-//        if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
-//            [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
-//        }
-//    }
     for (int i=self.viewControlArray.count-1; i>self.currentPage; i--) {
         if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
@@ -251,11 +282,6 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-//    for (int i=0; i<self.currentPage; i++) {
-//        if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
-//            [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
-//        }
-//    }
     for (int i=self.viewControlArray.count-1; i>self.currentPage; i--) {
         if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
@@ -265,11 +291,6 @@
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
 {
-//    for (int i=0; i<self.currentPage; i++) {
-//        if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
-//            [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
-//        }
-//    }
     for (int i=self.viewControlArray.count-1; i>self.currentPage; i--) {
         if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];

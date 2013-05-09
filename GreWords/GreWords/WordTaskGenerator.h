@@ -1,5 +1,5 @@
 //
-//  TaskGenerator.h
+//  WordTaskGenerator.h
 //  GreWords
 //
 //  Created by xsource on 13-4-10.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TaskGenerator : NSObject
-+ (TaskGenerator *)instance;
+@interface WordTaskGenerator : NSObject
++ (WordTaskGenerator *)instance;
 - (NSArray *)newWordTask_twoList:(int)day;
 - (NSArray *)newWordTask_threeList:(int)day;
 - (NSArray *)reviewTask_threeList:(int)day;

@@ -1,22 +1,22 @@
 //
-//  TaskGenerator.m
+//  WordTaskGenerator.m
 //  GreWords
 //
 //  Created by xsource on 13-4-10.
 //  Copyright (c) 2013年 Cui Hao. All rights reserved.
 //
 
-#import "TaskGenerator.h"
+#import "WordTaskGenerator.h"
 
-@implementation TaskGenerator
+@implementation WordTaskGenerator
 
-TaskGenerator* _taskGeneratorInstance = nil;
+WordTaskGenerator* _taskGeneratorInstance = nil;
 
-+ (TaskGenerator*)instance
++ (WordTaskGenerator*)instance
 {
     if(!_taskGeneratorInstance)
     {
-        _taskGeneratorInstance = [[TaskGenerator alloc] init];
+        _taskGeneratorInstance = [[WordTaskGenerator alloc] init];
     }
     return _taskGeneratorInstance;
 }
