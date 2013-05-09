@@ -12,6 +12,7 @@
 #import "WordSpeaker.h"
 #import "WordTaskGenerator.h"
 
+
 @interface NewWordDetailViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *DownImage;
@@ -84,6 +85,23 @@
     self.WordParaphraseView = [self.viewControlArray objectAtIndex:0];
     self.wordLabel.text = [self.nameControlArray objectAtIndex:0];
     self.wordSoundLabel.text = [self.phoneticControlArray objectAtIndex:0];
+    
+    self.viewDeckController.delegate = self;
+    
+    
+    //UIView *panningView = [[UIView alloc] initWithFrame:self.WordParaphraseView.frame];
+    //panningView.backgroundColor = [UIColor clearColor];
+    //panningView.userInteractionEnabled = NO;
+    //[self.view addSubview:panningView];
+    
+    
+    self.viewDeckController.panningMode = IIViewDeckAllViewsPanning;
+    //self.viewDeckController.panningView = panningView;
+    
+    
+    //NSLog(@"%@",self.viewDeckController.panningGestureDelegate);
+    
+    //self.viewDeckController.panningGestureDelegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -129,6 +147,9 @@
     }
     
     [self.WordParaphraseView addSubview:vc.view];
+    
+    self.viewDeckController.panningView = self.WordParaphraseView;
+    
 }
 
 //加载单词名称进入数组
@@ -163,7 +184,8 @@
     //判断是哪个scrollview
     if (scrollView == self.pageControlView) {
         //禁制scrollview向右滑动///////////////////////////////////////////////////////////////////////
-        CGPoint translation;  
+        CGPoint translation;
+        
         for (id gesture in scrollView.gestureRecognizers){
             if ([[NSString stringWithFormat:@"%@",[gesture class]] isEqualToString:@"UIScrollViewPanGestureRecognizer"]){
                 
@@ -296,6 +318,16 @@
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
         }
     }
+}
+
+#pragma mark - IIViewDeckControllerDelegate Methods
+- (void)viewDeckController:(IIViewDeckController*)viewDeckController didCloseViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
+{
+    self.pageControlView.userInteractionEnabled = YES;
+}
+- (void)viewDeckController:(IIViewDeckController*)viewDeckController willOpenViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
+{
+    self.pageControlView.userInteractionEnabled = NO;
 }
 
 @end

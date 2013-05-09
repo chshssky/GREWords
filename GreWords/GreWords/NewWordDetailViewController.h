@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "NewWordDetailViewControllerProtocol.h"
+#import "IIViewDeckController.h"
+//#import "UIScrollView+AllowAllTouches.h"
 
-@interface NewWordDetailViewController : UIViewController <UIScrollViewDelegate>
+@interface NewWordDetailViewController : UIViewController <UIScrollViewDelegate,IIViewDeckControllerDelegate>
 
 @property int day;
 

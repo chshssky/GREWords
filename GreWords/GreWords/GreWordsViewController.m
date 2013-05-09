@@ -18,6 +18,7 @@
 #import "WordDetailViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
+
 @interface GreWordsViewController ()<NewWordDetailViewControllerProtocol>
 
 @property (nonatomic, strong) UIImageView *slideBarView;
@@ -243,10 +244,23 @@
         dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-125, -250));
         self.menu.transform = CGAffineTransformMakeTranslation(-300, 0);
     } completion:^(BOOL finished) {
+        
+        
         NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
         vc.delegate = self;
-        vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        [self presentModalViewController:vc animated:YES];
+        
+        SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
+        leftController.type = SmartListType_Slide;
+        leftController.array = @[[[WordHelper instance] wordWithID:1],[[WordHelper instance] wordWithID:2],[[WordHelper instance] wordWithID:3]];
+        
+        IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:vc
+                                                                                        leftViewController:leftController
+                                                                                       rightViewController:nil];
+        
+        deckController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        
+        [self presentViewController:deckController animated:YES completion:nil];
+
     }];
 }
 

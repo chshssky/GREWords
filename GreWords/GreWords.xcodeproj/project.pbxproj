@@ -161,6 +161,9 @@
 		73AAC039173A66DA005B223C /* NewWordDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73AAC037173A66DA005B223C /* NewWordDetailViewController.m */; };
 		73AAC03A173A66DA005B223C /* NewWordDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73AAC038173A66DA005B223C /* NewWordDetailViewController.xib */; };
 		73D209AC1714367F00C718A6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D209AB1714367F00C718A6 /* CoreText.framework */; };
+		E4024FF7173B793000D2EB7D /* IISideController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4024FF2173B793000D2EB7D /* IISideController.m */; };
+		E4024FF8173B793000D2EB7D /* IIViewDeckController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4024FF4173B793000D2EB7D /* IIViewDeckController.m */; };
+		E4024FF9173B793000D2EB7D /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4024FF6173B793000D2EB7D /* IIWrapController.m */; };
 		E4134CDB1714225D00553AD2 /* WordHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E4134CDA1714225D00553AD2 /* WordHelper.m */; };
 		E414B6931714300400C29D3C /* WordEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B6921714300400C29D3C /* WordEntity.m */; };
 		E414B6961714301700C29D3C /* ConfigurationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E414B6941714301700C29D3C /* ConfigurationHelper.m */; };
@@ -3584,6 +3587,12 @@
 		73B876411736A20600BD1860 /* WordTaskGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordTaskGenerator.h; sourceTree = "<group>"; };
 		73B876421736A20600BD1860 /* WordTaskGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordTaskGenerator.m; sourceTree = "<group>"; };
 		73D209AB1714367F00C718A6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		E4024FF1173B793000D2EB7D /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
+		E4024FF2173B793000D2EB7D /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
+		E4024FF3173B793000D2EB7D /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
+		E4024FF4173B793000D2EB7D /* IIViewDeckController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIViewDeckController.m; sourceTree = "<group>"; };
+		E4024FF5173B793000D2EB7D /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
+		E4024FF6173B793000D2EB7D /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
 		E4134CD91714225D00553AD2 /* WordHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordHelper.h; sourceTree = "<group>"; };
 		E4134CDA1714225D00553AD2 /* WordHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordHelper.m; sourceTree = "<group>"; };
 		E414B6911714300400C29D3C /* WordEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordEntity.h; sourceTree = "<group>"; };
@@ -6901,7 +6910,7 @@
 		3F70EC901701CADB00327770 /* GreWords */ = {
 			isa = PBXGroup;
 			children = (
-				7380C7701734199800447D78 /* FXLabel */,
+				E4024FEF173B791F00D2EB7D /* libs */,
 				3FA4847C17142536003E88A6 /* Resource */,
 				3FA4847017141F53003E88A6 /* LogicalLayer */,
 				3FA4847D17142731003E88A6 /* PresetationLayer */,
@@ -7038,8 +7047,8 @@
 				7380C77E17342A3100447D78 /* WordSmallLayoutViewController.h */,
 				7380C77F17342A3200447D78 /* WordSmallLayoutViewController.m */,
 				73AAC038173A66DA005B223C /* NewWordDetailViewController.xib */,
-				73AAC036173A66DA005B223C /* NewWordDetailViewController.h */,
 				73AAC03B173A6B51005B223C /* NewWordDetailViewControllerProtocol.h */,
+				73AAC036173A66DA005B223C /* NewWordDetailViewController.h */,
 				73AAC037173A66DA005B223C /* NewWordDetailViewController.m */,
 				3FFA470A17294491008F88A0 /* WordDetailViewController.xib */,
 				3FFA470817294491008F88A0 /* WordDetailViewController.h */,
@@ -7168,6 +7177,28 @@
 			children = (
 			);
 			name = Font;
+			sourceTree = "<group>";
+		};
+		E4024FEF173B791F00D2EB7D /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				E4024FF0173B793000D2EB7D /* ViewDeck */,
+				7380C7701734199800447D78 /* FXLabel */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		E4024FF0173B793000D2EB7D /* ViewDeck */ = {
+			isa = PBXGroup;
+			children = (
+				E4024FF1173B793000D2EB7D /* IISideController.h */,
+				E4024FF2173B793000D2EB7D /* IISideController.m */,
+				E4024FF3173B793000D2EB7D /* IIViewDeckController.h */,
+				E4024FF4173B793000D2EB7D /* IIViewDeckController.m */,
+				E4024FF5173B793000D2EB7D /* IIWrapController.h */,
+				E4024FF6173B793000D2EB7D /* IIWrapController.m */,
+			);
+			path = ViewDeck;
 			sourceTree = "<group>";
 		};
 		E446CB59173794A200BB9A7A /* Settings */ = {
@@ -13972,6 +14003,9 @@
 				E48027BD173678C300AC5CD6 /* SettingTabViewController.m in Sources */,
 				E48028BC1736A21F00AC5CD6 /* SettingTabViewDeckViewController.m in Sources */,
 				73AAC039173A66DA005B223C /* NewWordDetailViewController.m in Sources */,
+				E4024FF7173B793000D2EB7D /* IISideController.m in Sources */,
+				E4024FF8173B793000D2EB7D /* IIViewDeckController.m in Sources */,
+				E4024FF9173B793000D2EB7D /* IIWrapController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
