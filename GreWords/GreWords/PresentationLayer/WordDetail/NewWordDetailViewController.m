@@ -356,11 +356,12 @@
 {
     SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
     if (_blackView == NULL) {
-        _blackView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Default-568h.png"]];
+        _blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, left.view.frame.size.width, left.view.frame.size.height)];
+        [_blackView setBackgroundColor:[UIColor blackColor]];
         [left.view addSubview:_blackView];
     }
     
-    _blackView.alpha = 1.0/276.0*(276.0-offset);
+    _blackView.alpha = 1.0/330.0*(300.0-offset);
     
     NSLog(@"offset:%f",offset);
     [left.view clipsToBounds];
