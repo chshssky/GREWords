@@ -12,6 +12,7 @@
 #import "WordSpeaker.h"
 #import "WordTaskGenerator.h"
 
+
 @interface NewWordDetailViewController () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *DownImage;
@@ -59,17 +60,15 @@
     
     self.day = 0;
     
+    int wordCount = [[WordHelper instance] wordCount];
     self.viewControlArray = [[NSMutableArray alloc] init];
-    for (unsigned i = 0; i < 3074; i++) {
-		[self.viewControlArray addObject:[NSNull null]];
-    }
     self.nameControlArray = [[NSMutableArray alloc] init];
-    for (unsigned i = 0; i < 3074; i++) {
-		[self.nameControlArray addObject:[NSNull null]];
-    }
     self.phoneticControlArray = [[NSMutableArray alloc] init];
-    for (unsigned i = 0; i < 3074; i++) {
-		[self.phoneticControlArray addObject:[NSNull null]];
+
+    for (unsigned i = 0; i < wordCount; i++) {
+		[self.viewControlArray addObject:[NSNull null]];
+        [self.nameControlArray addObject:[NSNull null]];
+        [self.phoneticControlArray addObject:[NSNull null]];
     }
     
     self.pageControlView.pagingEnabled = YES;
@@ -89,6 +88,17 @@
     self.WordParaphraseView = [self.viewControlArray objectAtIndex:0];
     self.wordLabel.text = [self.nameControlArray objectAtIndex:0];
     self.wordSoundLabel.text = [self.phoneticControlArray objectAtIndex:0];
+    
+    self.viewDeckController.delegate = self;
+    
+    
+    self.viewDeckController.panningMode = IIViewDeckAllViewsPanning;
+    //self.viewDeckController.panningView = panningView;
+    
+    
+    //NSLog(@"%@",self.viewDeckController.panningGestureDelegate);
+    
+    //self.viewDeckController.panningGestureDelegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -134,6 +144,9 @@
     }
     
     [self.WordParaphraseView addSubview:vc.view];
+    
+    self.viewDeckController.panningView = self.WordParaphraseView;
+    
 }
 
 //加载单词名称进入数组
@@ -174,7 +187,8 @@
         
         
         //禁制scrollview向右滑动///////////////////////////////////////////////////////////////////////
-        CGPoint translation;  
+        CGPoint translation;
+        
         for (id gesture in scrollView.gestureRecognizers){
             if ([[NSString stringWithFormat:@"%@",[gesture class]] isEqualToString:@"UIScrollViewPanGestureRecognizer"]){
                 
@@ -313,6 +327,24 @@
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
         }
     }
+}
+
+#pragma mark - IIViewDeckControllerDelegate Methods
+- (void)viewDeckController:(IIViewDeckController*)viewDeckController didCloseViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
+{
+    self.pageControlView.userInteractionEnabled = YES;
+    self.viewDeckController.panningMode = IIViewDeckAllViewsPanning;
+    
+}
+- (void)viewDeckController:(IIViewDeckController*)viewDeckController willOpenViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
+{
+    self.pageControlView.userInteractionEnabled = NO;
+}
+
+- (void)viewDeckController:(IIViewDeckController*)viewDeckController didOpenViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
+{
+    self.viewDeckController.panningMode = IIViewDeckNavigationBarOrOpenCenterPanning;
+    
 }
 
 @end
