@@ -6822,7 +6822,7 @@
 		E466F4BB173BD508001847D0 /* FXLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXLabel.m; sourceTree = "<group>"; };
 		E466F4BD173BD508001847D0 /* GCRetractableSectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCRetractableSectionController.h; sourceTree = "<group>"; };
 		E466F4BE173BD508001847D0 /* GCRetractableSectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCRetractableSectionController.m; sourceTree = "<group>"; };
-		E466F4BF173BD508001847D0 /* IAThreadSafeCoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IAThreadSafeCoreData.framework; sourceTree = "<group>"; };
+		E466F4BF173BD508001847D0 /* IAThreadSafeCoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IAThreadSafeCoreData.framework; path = GreWords/Libs/IAThreadSafeCoreData.framework; sourceTree = "<group>"; };
 		E466F4C1173BD508001847D0 /* IISideController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IISideController.h; sourceTree = "<group>"; };
 		E466F4C2173BD508001847D0 /* IISideController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IISideController.m; sourceTree = "<group>"; };
 		E466F4C3173BD508001847D0 /* IIViewDeckController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIViewDeckController.h; sourceTree = "<group>"; };
@@ -6830,7 +6830,6 @@
 		E466F4C5173BD508001847D0 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
 		E466F4C6173BD508001847D0 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
 		E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		E4983ED1171A8CF60055A0E7 /* IAThreadSafeCoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IAThreadSafeCoreData.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -6872,7 +6871,7 @@
 		3F70EC891701CADB00327770 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E4983ED1171A8CF60055A0E7 /* IAThreadSafeCoreData.framework */,
+				E466F4BF173BD508001847D0 /* IAThreadSafeCoreData.framework */,
 				E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */,
 				3FA484C31719590D003E88A6 /* QuartzCore.framework */,
 				73D209AB1714367F00C718A6 /* CoreText.framework */,
@@ -10475,7 +10474,6 @@
 				E466F4B4173BD508001847D0 /* AwesomeMenu */,
 				E466F4B9173BD508001847D0 /* FXLabel */,
 				E466F4BC173BD508001847D0 /* GCRetractableSectionController */,
-				E466F4BF173BD508001847D0 /* IAThreadSafeCoreData.framework */,
 				E466F4C0173BD508001847D0 /* ViewDeck */,
 			);
 			path = Libs;
