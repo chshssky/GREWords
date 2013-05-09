@@ -14,10 +14,11 @@
 #import "HistoryStatisticsViewController.h"
 #import "SettingsViewController.h"
 #import "ExamViewController.h"
+#import "NewWordDetailViewController.h"
 #import "WordDetailViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface GreWordsViewController ()<WordDetailViewControllerProtocol>
+@interface GreWordsViewController ()<NewWordDetailViewControllerProtocol>
 
 @property (nonatomic, strong) UIImageView *slideBarView;
 @property (nonatomic, strong) UIImageView *slideBarStatusView;
@@ -40,7 +41,7 @@
     
     
     self.slideBarView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar.png"]];
-    self.slideBarView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+170);
+    self.slideBarView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+190);
     self.slideBarView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     self.slideBarView.gestureRecognizers = self.view.gestureRecognizers;
     //slideBarView.alpha = 0.5;
@@ -52,7 +53,7 @@
     //slideBarStatusView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus3.png"]];
     //slideBarStatusView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus4.png"]];
     
-    self.slideBarStatusView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+170);
+    self.slideBarStatusView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+190);
     self.slideBarStatusView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     self.slideBarStatusView.gestureRecognizers = self.view.gestureRecognizers;
     //slideBarStatusView.alpha = 0.5;
@@ -62,7 +63,7 @@
     self.slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text2.png"]];
     //slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text3.png"]];
     //slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text4.png"]];
-    self.slideBarStatusTextView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+195);
+    self.slideBarStatusTextView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+215);
     self.slideBarStatusTextView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     self.slideBarStatusTextView.gestureRecognizers = self.view.gestureRecognizers;
     //slideBarStatusView.alpha = 0.5;
@@ -242,7 +243,7 @@
         dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-125, -250));
         self.menu.transform = CGAffineTransformMakeTranslation(-300, 0);
     } completion:^(BOOL finished) {
-        WordDetailViewController *vc = [[WordDetailViewController alloc] init];
+        NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
         vc.delegate = self;
         vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         [self presentModalViewController:vc animated:YES];
