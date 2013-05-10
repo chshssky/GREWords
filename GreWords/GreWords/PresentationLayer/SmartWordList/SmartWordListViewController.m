@@ -20,7 +20,7 @@
 @implementation SmartWordListViewController
 
 - (void)addWord:(WordEntity*)aWord
-{
+{    
     _array = [_array arrayByAddingObject:aWord];
     SmartWordListSectionController* sectionController = [[SmartWordListSectionController alloc] initWithViewController:self];
     sectionController.wordID = aWord.wordID;
@@ -28,11 +28,11 @@
     sectionController.type = self.type;
     [retractableControllers addObject:sectionController];
     
+//    NSArray *indexPath = @[[NSIndexPath indexPathForRow:0 inSection:_array.count - 1]];
+//    //[self.tableView beginUpdates];
+//    [self.tableView insertRowsAtIndexPaths:indexPath withRowAnimation:UITableViewRowAnimationBottom];
+//    //[self.tableView endUpdates];
     [self.tableView reloadData];
-    //NSArray *indexPath = @[[NSIndexPath indexPathForRow:0 inSection:sectionController.sectionID]];
-    //[self.tableView beginUpdates];
-    //[self.tableView insertRowsAtIndexPaths:indexPath withRowAnimation:UITableViewRowAnimationBottom];
-    //[self.tableView endUpdates];
     [self addButtomTexture];
 }
 

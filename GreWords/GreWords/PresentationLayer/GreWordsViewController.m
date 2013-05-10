@@ -178,7 +178,7 @@
     
     SmartWordListViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
     vc.type = SmartListType_Slide;
-    vc.array = @[[[WordHelper instance] wordWithID:1],[[WordHelper instance] wordWithID:2],[[WordHelper instance] wordWithID:3]];
+    vc.array = @[];
     vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentModalViewController:vc animated:YES];
 }
@@ -252,7 +252,7 @@
         
         SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
         leftController.type = SmartListType_Slide;
-        leftController.array = @[[[WordHelper instance] wordWithID:1],[[WordHelper instance] wordWithID:2],[[WordHelper instance] wordWithID:3]];
+        leftController.array = @[];
         
         IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:vc
                                                                                         leftViewController:leftController
