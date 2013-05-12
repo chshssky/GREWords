@@ -17,6 +17,7 @@
 #import "NewWordDetailViewController.h"
 #import "WordDetailViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "WholeSmartWordViewController.h"
 
 
 @interface GreWordsViewController ()<NewWordDetailViewControllerProtocol>
@@ -176,9 +177,7 @@
 {
     [self transaction];
     
-    SmartWordListViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
-    vc.type = SmartListType_Slide;
-    vc.array = @[];
+    WholeSmartWordViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"zncb"];
     vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentModalViewController:vc animated:YES];
 }
