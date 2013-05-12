@@ -22,6 +22,10 @@
 		E413E63C173BDA1F0009B55E /* SettingTabViewDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E413E639173BDA1F0009B55E /* SettingTabViewDeckViewController.m */; };
 		E418DA5F1713E5E8002C6743 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */; };
 		E41FF51B173F868F0078E738 /* WholeSmartWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41FF51A173F868F0078E738 /* WholeSmartWordViewController.m */; };
+		E41FF51F173FE6B50078E738 /* MHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41FF51D173FE6B50078E738 /* MHTabBarController.m */; };
+		E41FF523173FE7930078E738 /* MHTabBarActiveTab.png in Resources */ = {isa = PBXBuildFile; fileRef = E41FF520173FE7930078E738 /* MHTabBarActiveTab.png */; };
+		E41FF524173FE7930078E738 /* MHTabBarInactiveTab.png in Resources */ = {isa = PBXBuildFile; fileRef = E41FF521173FE7930078E738 /* MHTabBarInactiveTab.png */; };
+		E41FF525173FE7930078E738 /* MHTabBarIndicator.png in Resources */ = {isa = PBXBuildFile; fileRef = E41FF522173FE7930078E738 /* MHTabBarIndicator.png */; };
 		E4660000173BD509001847D0 /* sly.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E466F2C3173BD4F6001847D0 /* sly.mp3 */; };
 		E4660001173BD509001847D0 /* smarmy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E466F2C4173BD4F6001847D0 /* smarmy.mp3 */; };
 		E4660002173BD509001847D0 /* smart.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E466F2C5173BD4F6001847D0 /* smart.mp3 */; };
@@ -3420,6 +3424,11 @@
 		E418DA5E1713E5E8002C6743 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E41FF519173F868F0078E738 /* WholeSmartWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholeSmartWordViewController.h; sourceTree = "<group>"; };
 		E41FF51A173F868F0078E738 /* WholeSmartWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholeSmartWordViewController.m; sourceTree = "<group>"; };
+		E41FF51D173FE6B50078E738 /* MHTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHTabBarController.m; sourceTree = "<group>"; };
+		E41FF51E173FE6B50078E738 /* MHTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHTabBarController.h; sourceTree = "<group>"; };
+		E41FF520173FE7930078E738 /* MHTabBarActiveTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MHTabBarActiveTab.png; sourceTree = "<group>"; };
+		E41FF521173FE7930078E738 /* MHTabBarInactiveTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MHTabBarInactiveTab.png; sourceTree = "<group>"; };
+		E41FF522173FE7930078E738 /* MHTabBarIndicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MHTabBarIndicator.png; sourceTree = "<group>"; };
 		E466E758173BD4CB001847D0 /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
 		E466E759173BD4CB001847D0 /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
 		E466E75A173BD4CB001847D0 /* PieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieChart.h; sourceTree = "<group>"; };
@@ -6914,6 +6923,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		E41FF51C173FE6A30078E738 /* MHTabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				E41FF51D173FE6B50078E738 /* MHTabBarController.m */,
+				E41FF51E173FE6B50078E738 /* MHTabBarController.h */,
+			);
+			name = MHTabBarController;
+			sourceTree = "<group>";
+		};
 		E466E756173BD4CB001847D0 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -7084,6 +7102,9 @@
 		E466E7A7173BD4CB001847D0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E41FF520173FE7930078E738 /* MHTabBarActiveTab.png */,
+				E41FF521173FE7930078E738 /* MHTabBarInactiveTab.png */,
+				E41FF522173FE7930078E738 /* MHTabBarIndicator.png */,
 				E466E7A8173BD4CB001847D0 /* Defaults */,
 				E466E7AC173BD4CB001847D0 /* Learning */,
 				E466E7E7173BD4CC001847D0 /* MainMenu */,
@@ -10476,6 +10497,7 @@
 		E466F4B3173BD508001847D0 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				E41FF51C173FE6A30078E738 /* MHTabBarController */,
 				E466F4B4173BD508001847D0 /* AwesomeMenu */,
 				E466F4B9173BD508001847D0 /* FXLabel */,
 				E466F4BC173BD508001847D0 /* GCRetractableSectionController */,
@@ -13917,6 +13939,9 @@
 				E46601EA173BD509001847D0 /* zenith.mp3 in Resources */,
 				E46601EB173BD509001847D0 /* zesty.mp3 in Resources */,
 				E46601EC173BD509001847D0 /* words.plist in Resources */,
+				E41FF523173FE7930078E738 /* MHTabBarActiveTab.png in Resources */,
+				E41FF524173FE7930078E738 /* MHTabBarInactiveTab.png in Resources */,
+				E41FF525173FE7930078E738 /* MHTabBarIndicator.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -13969,6 +13994,7 @@
 				E413E63B173BDA1F0009B55E /* SettingTabViewController.m in Sources */,
 				E413E63C173BDA1F0009B55E /* SettingTabViewDeckViewController.m in Sources */,
 				E41FF51B173F868F0078E738 /* WholeSmartWordViewController.m in Sources */,
+				E41FF51F173FE6B50078E738 /* MHTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

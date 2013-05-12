@@ -10,6 +10,7 @@
 #import "SmartWordListViewController.h"
 #import "WordHelper.h"
 
+
 @interface WholeSmartWordViewController ()
 
 @end
@@ -45,14 +46,17 @@
     SmartWordListViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
     vc.type = SmartListType_Slide;
     vc.array = [[WordHelper instance] wordsAlphabeticOrder];
-    
+    CGRect frame = vc.view.frame;
+    frame.origin.y = 0;
+    vc.view.frame = frame;
     [self.pageScrollView addSubview:vc.view];
     
     SmartWordListViewController *vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
     vc2.type = SmartListType_Slide;
     vc2.array = @[[[WordHelper instance] wordWithID:101],[[WordHelper instance] wordWithID:102],[[WordHelper instance] wordWithID:103]];
-    CGRect frame = vc2.view.frame;
+    frame = vc2.view.frame;
     frame.origin.x += frame.size.width;
+    frame.origin.y = 0;
     vc2.view.frame = frame;
     [self.pageScrollView addSubview:vc2.view];
 
@@ -62,6 +66,7 @@
     vc3.array = @[[[WordHelper instance] wordWithID:201],[[WordHelper instance] wordWithID:202],[[WordHelper instance] wordWithID:203]];
     frame = vc3.view.frame;
     frame.origin.x += frame.size.width * 2;
+    frame.origin.y = 0;
     vc3.view.frame = frame;
     [self.pageScrollView addSubview:vc3.view];
     self.pageScrollView.contentSize = CGSizeMake(frame.size.width * 3, self.pageScrollView.frame.size.height);
@@ -72,6 +77,15 @@
     vc.scrollDelegate = self;
     vc2.scrollDelegate = self;
     vc3.scrollDelegate = self;
+    
+    
+    tabBarController = [self.storyboard instantiateViewControllerWithIdentifier:@"mhtab"];
+    tabBarController.view.frame = CGRectMake(0, 28, 320, 44);
+    
+	tabBarController.delegate = self;
+	tabBarController.viewControllerTitles = @[@"重难词汇",@"三千单词",@"词义归类"];
+    
+    [self.topView addSubview:tabBarController.view];
     
 	// Do any additional setup after loading the view.
 }
@@ -103,7 +117,7 @@
     
     frame.origin.y = _tabbarYBeforeScroll - contentOffsetY;
     if(frame.origin.y > 0)
-        frame.origin.y =0;
+        frame.origin.y = 0;
     if(frame.origin.y < -frame.size.height)
         frame.origin.y = -frame.size.height;
     
@@ -114,5 +128,12 @@
     frame.size.height = originalTableViewFrame.origin.y + originalTableViewFrame.size.height - frame.origin.y;
     self.pageScrollView.frame = frame;
 }
+
+#pragma mark - MHTabbarController delegate
+- (void)mh_tabBarController:(MHTabBarController *)tabBarController didSelectIndex:(NSUInteger)index
+{
+    NSLog(@"smart list tab select %d",index);
+}
+
 
 @end

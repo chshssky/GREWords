@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "SmartWordListViewController.h"
+#import "MHTabBarController.h"
 
-@interface WholeSmartWordViewController : UIViewController<SmartWordListScrollDelegate>
+@interface WholeSmartWordViewController : UIViewController<SmartWordListScrollDelegate,MHTabBarControllerDelegate>
 {
     CGFloat _tabbarYBeforeScroll;
     CGRect originalTableViewFrame;
     
     NSArray *smartlistArr;
+    
+    MHTabBarController *tabBarController;
 }
 
 @property (weak, nonatomic) IBOutlet UIScrollView *pageScrollView;
