@@ -162,5 +162,24 @@
     //downTexture = nil;
 }
 
+#pragma mark - scroll view delegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    if(self.tableView == scrollView)
+    {
+        _contentOffsetBeforeScroll = self.tableView.contentOffset.y;
+        [self.scrollDelegate smartWordListWillBeginDragging:self];
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView*)aScrollView
+{
+    if(self.tableView == aScrollView)
+    {
+        CGFloat contentOffsetY = self.tableView.contentOffset.y - _contentOffsetBeforeScroll;
+        
+        [self.scrollDelegate smartWordList:self didTranslationYSinceLast:contentOffsetY];
+    }
+}
 
 @end

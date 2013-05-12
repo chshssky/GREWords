@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SmartWordListViewController.h"
 
-@interface WholeSmartWordViewController : UIViewController
+@interface WholeSmartWordViewController : UIViewController<SmartWordListScrollDelegate>
 {
-    CGFloat _contentOffsetBeforeScroll;
     CGFloat _tabbarYBeforeScroll;
-    CGRect originalTableViewFrame,originalTabBarFrame;
+    CGRect originalTableViewFrame;
+    
+    NSArray *smartlistArr;
 }
 
 @property (weak, nonatomic) IBOutlet UIScrollView *pageScrollView;
+@property (weak, nonatomic) IBOutlet UIView *topView;
 
 @end
