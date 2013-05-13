@@ -11,7 +11,7 @@
 #import "IIViewDeckController.h"
 #import "UIScrollView+AllowAllTouches.h"
 
-@interface NewWordDetailViewController : UIViewController <UIScrollViewDelegate,IIViewDeckControllerDelegate>
+@interface NewWordDetailViewController : UIViewController <UIScrollViewDelegate,IIViewDeckControllerDelegate,UIGestureRecognizerDelegate>
 
 @property int day;
 

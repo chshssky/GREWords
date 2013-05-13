@@ -75,14 +75,13 @@
     }
     
     self.pageControlView.pagingEnabled = YES;
-    self.pageControlView.contentSize = CGSizeMake(self.pageControlView.frame.size.width * 10,
+    self.pageControlView.contentSize = CGSizeMake(self.pageControlView.frame.size.width * 300,
                                                   self.pageControlView.frame.size.height);
     self.pageControlView.showsHorizontalScrollIndicator = NO;
     self.pageControlView.showsVerticalScrollIndicator = NO;
     self.pageControlView.scrollsToTop = NO;
     self.pageControlView.delegate = self;
     self.pageControlView.directionalLockEnabled = NO;
-    //self.pageControlView.bounces = NO;
     
     [self loadViewWithPage:0];
     [self loadViewWithPage:1];
@@ -92,16 +91,29 @@
     self.wordLabel.text = [self.nameControlArray objectAtIndex:0];
     self.wordSoundLabel.text = [self.phoneticControlArray objectAtIndex:0];
     
+    
+    //添加抽屉
     self.viewDeckController.delegate = self;
-    
-    
     self.viewDeckController.panningMode = IIViewDeckAllViewsPanning;
-    //self.viewDeckController.panningView = panningView;
     
+    //添加便签手势
+    UISwipeGestureRecognizer* recognizer;
+    recognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeFrom:)];
+    recognizer.delegate = self;
+    recognizer.direction = UISwipeGestureRecognizerDirectionDown;
+    [self.view addGestureRecognizer:recognizer];
+}
+
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    if([[NSString stringWithFormat:@"%@",[otherGestureRecognizer class]] isEqualToString:@"UIScrollViewPanGestureRecognizer"])
+        return NO;
+    return YES;
+}
+
+- (void)handleSwipeFrom:(UISwipeGestureRecognizer*)recognizer {
     
-    //NSLog(@"%@",self.viewDeckController.panningGestureDelegate);
-    
-    //self.viewDeckController.panningGestureDelegate = self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -368,7 +380,6 @@
     
     _blackView.alpha = 1.0/330.0*(300.0-offset);
     
-    NSLog(@"offset:%f",offset);
     [left.view clipsToBounds];
     [left.view setFrame:CGRectMake(5-5.0/276.0*offset, 5-5/276.0*offset, 300+20.0/276.0*offset, 538.25+10/276.0*offset)];
     

@@ -122,7 +122,6 @@
 {
     int i = self.WordParaphraseView.contentOffset.y;
     int height = self.WordParaphraseView.contentSize.height - self.WordParaphraseView.frame.size.height - self.added_height;
-    NSLog(@"OffSet:%d", i);
     
     if (0 < i <= 10) {
         [self.UpImage setAlpha:i * 0.1];
