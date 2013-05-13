@@ -24,7 +24,7 @@
 
 #import "MHTabBarController.h"
 
-static const float TAB_BAR_HEIGHT = 44.0f;
+static const float TAB_BAR_HEIGHT = 40.0f;
 static const NSInteger TAG_OFFSET = 1000;
 
 @implementation MHTabBarController
@@ -46,24 +46,24 @@ static const NSInteger TAG_OFFSET = 1000;
 {
 	[button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
 
-	UIImage *image = [[UIImage imageNamed:@"MHTabBarActiveTab.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
+	UIImage *image = [[UIImage imageNamed:@"words list_yellow.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:0];
 	[button setBackgroundImage:image forState:UIControlStateNormal];
 	[button setBackgroundImage:image forState:UIControlStateHighlighted];
+    
+    [button setTitleColor:[UIColor colorWithRed:229/255.0f green:219/255.0f blue:205/255.0f alpha:1.0f] forState:UIControlStateNormal];
 	
-	[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-	[button setTitleShadowColor:[UIColor colorWithWhite:0.0f alpha:0.5f] forState:UIControlStateNormal];
 }
 
 - (void)deselectTabButton:(UIButton *)button
 {
 	[button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
 
-	UIImage *image = [[UIImage imageNamed:@"MHTabBarInactiveTab.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:0];
+	UIImage *image = [[UIImage imageNamed:@""] stretchableImageWithLeftCapWidth:1 topCapHeight:0];
 	[button setBackgroundImage:image forState:UIControlStateNormal];
 	[button setBackgroundImage:image forState:UIControlStateHighlighted];
+    
+    [button setTitleColor:[UIColor colorWithRed:229/255.0f green:219/255.0f blue:205/255.0f alpha:1.0f] forState:UIControlStateNormal];
 
-	[button setTitleColor:[UIColor colorWithRed:175/255.0f green:85/255.0f blue:58/255.0f alpha:1.0f] forState:UIControlStateNormal];
-	[button setTitleShadowColor:[UIColor whiteColor] forState:UIControlStateNormal];
 }
 
 - (void)removeTabButtons
@@ -83,7 +83,9 @@ static const NSInteger TAG_OFFSET = 1000;
 		[button setTitle:title forState:UIControlStateNormal];
 		[button addTarget:self action:@selector(tabButtonPressed:) forControlEvents:UIControlEventTouchDown];
 		button.titleLabel.font = [UIFont boldSystemFontOfSize:18];
-		button.titleLabel.shadowOffset = CGSizeMake(0, 1);
+		
+        [button setTitleShadowColor:[UIColor clearColor] forState:UIControlStateNormal];
+
 		[self deselectTabButton:button];
         if(index == 0)
             [self selectTabButton:button];
@@ -144,7 +146,16 @@ static const NSInteger TAG_OFFSET = 1000;
 	tabButtonsContainerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	[self.view addSubview:tabButtonsContainerView];
 
-	indicatorImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"MHTabBarIndicator.png"]];
+    
+    UIImageView *topLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"words list_topLine.png"]];
+    topLine.alpha = 0.8f;
+    CGRect frame = topLine.frame;
+    frame.origin.y = TAB_BAR_HEIGHT - 3.5;
+    topLine.frame = frame;
+    
+    [self.view addSubview:topLine];
+    
+	indicatorImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"words list_triangle.png"]];
 	[self.view addSubview:indicatorImageView];
 
     _selectedIndex = 0;
