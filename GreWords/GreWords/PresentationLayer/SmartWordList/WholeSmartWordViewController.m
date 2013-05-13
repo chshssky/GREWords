@@ -43,7 +43,7 @@
     [self.pageScrollView addSubview:vc.view];
     
     SmartWordListViewController *vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
-    vc2.type = SmartListType_Slide;
+    vc2.type = SmartListType_Full;
     vc2.array = [[WordHelper instance] wordsAlphabeticOrder];
     frame = vc2.view.frame;
     frame.origin.x += frame.size.width;
@@ -53,31 +53,62 @@
 
     
     SmartWordListViewController *vc3 = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
-    vc3.type = SmartListType_Full;
+    vc3.type = SmartListType_Slide;
     vc3.array = @[[[WordHelper instance] wordWithID:201],[[WordHelper instance] wordWithID:202],[[WordHelper instance] wordWithID:203]];
     frame = vc3.view.frame;
     frame.origin.x += frame.size.width * 2;
     frame.origin.y = 0;
     vc3.view.frame = frame;
     [self.pageScrollView addSubview:vc3.view];
-    self.pageScrollView.contentSize = CGSizeMake(frame.size.width * 3, self.pageScrollView.frame.size.height);
+    
+    SmartWordListViewController *vc4 = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
+    vc4.type = SmartListType_Slide;
+    vc4.array = @[[[WordHelper instance] wordWithID:301],[[WordHelper instance] wordWithID:302],[[WordHelper instance] wordWithID:303]];
+    frame = vc4.view.frame;
+    frame.origin.x += frame.size.width * 3;
+    frame.origin.y = 0;
+    vc4.view.frame = frame;
+    [self.pageScrollView addSubview:vc4.view];
+    self.pageScrollView.contentSize = CGSizeMake(frame.size.width * 4, self.pageScrollView.frame.size.height);
+
+    {
+        UIImageView *middleLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"words list_pageLine.png"]];
+        frame = middleLine.frame;
+        frame.origin.x = self.pageScrollView.frame.size.width - 3;
+        middleLine.frame = frame;
+        
+        [self.pageScrollView addSubview:middleLine];
+    }
+    {
+        UIImageView *middleLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"words list_pageLine.png"]];
+        frame = middleLine.frame;
+        frame.origin.x = self.pageScrollView.frame.size.width * 2 - 3;
+        middleLine.frame = frame;
+        
+        [self.pageScrollView addSubview:middleLine];
+    }
+    {
+        UIImageView *middleLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"words list_pageLine.png"]];
+        frame = middleLine.frame;
+        frame.origin.x = self.pageScrollView.frame.size.width * 3 - 3;
+        middleLine.frame = frame;
+        
+        [self.pageScrollView addSubview:middleLine];
+    }
 
     
-    //UIImageView *middleLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"words list_pageLine.png"]];
-    
-    
-    smartlistArr = @[vc,vc2,vc3];
+    smartlistArr = @[vc,vc2,vc3,vc4];
     
     vc.scrollDelegate = self;
     vc2.scrollDelegate = self;
     vc3.scrollDelegate = self;
-    
+    vc4.scrollDelegate = self;
     
     tabBarController = [self.storyboard instantiateViewControllerWithIdentifier:@"mhtab"];
     tabBarController.view.frame = CGRectMake(0, 48, 320, 44);
     
 	tabBarController.delegate = self;
-	tabBarController.viewControllerTitles = @[@"重难词汇",@"三千单词",@"词义归类"];
+	tabBarController.viewControllerTitles = @[@"重难词汇",@"三千单词",@"词义归类",@"便笺小记"];
     
     [self.topView addSubview:tabBarController.view];
     
