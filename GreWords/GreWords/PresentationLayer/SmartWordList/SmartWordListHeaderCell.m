@@ -35,4 +35,9 @@
     [[WordSpeaker instance] readWord:self.wordLabel.text];
 }
 
+-(IBAction)notePressed:(id)sender
+{
+    NSLog(@"notePressed");
+}
+
 @end

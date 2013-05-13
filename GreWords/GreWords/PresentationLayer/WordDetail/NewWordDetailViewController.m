@@ -130,6 +130,7 @@
     NSDictionary *option = @{@"shouldShowChineseMeaning":@YES,
                              @"shouldShowEnglishMeaning":@YES,
                              @"shouldShowSynonyms":@YES,
+                             @"shouldShowAntonyms":@YES,
                              @"shouldShowSampleSentence":@YES};
     
     
@@ -278,8 +279,8 @@
 
 - (IBAction)soundButtonClicked:(id)sender {
     
-//    SmartWordListViewController *vc = (SmartWordListViewController *)self.viewDeckController.leftController;
-//    [vc addWord:[[WordHelper instance] wordWithID:200]];
+    //SmartWordListViewController *vc = (SmartWordListViewController *)self.viewDeckController.leftController;
+    //[vc addWord:[[WordHelper instance] wordWithID:200]];
     
     [[WordSpeaker instance] readWord:self.wordLabel.text];
     [self.soundImage setImage:[UIImage imageNamed:@"learning_sound_clicked.png"]];

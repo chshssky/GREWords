@@ -35,7 +35,7 @@
     originalTableViewFrame = self.pageScrollView.frame;
     
     SmartWordListViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
-    vc.type = SmartListType_Slide;
+    vc.type = SmartListType_Full;
     vc.array = [[WordHelper instance] wordsAlphabeticOrder];
     CGRect frame = vc.view.frame;
     frame.origin.y = 0;
@@ -53,7 +53,7 @@
 
     
     SmartWordListViewController *vc3 = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
-    vc3.type = SmartListType_Slide;
+    vc3.type = SmartListType_Full;
     vc3.array = @[[[WordHelper instance] wordWithID:201],[[WordHelper instance] wordWithID:202],[[WordHelper instance] wordWithID:203]];
     frame = vc3.view.frame;
     frame.origin.x += frame.size.width * 2;
@@ -71,7 +71,7 @@
     
     
     tabBarController = [self.storyboard instantiateViewControllerWithIdentifier:@"mhtab"];
-    tabBarController.view.frame = CGRectMake(0, 42, 320, 44);
+    tabBarController.view.frame = CGRectMake(0, 48, 320, 44);
     
 	tabBarController.delegate = self;
 	tabBarController.viewControllerTitles = @[@"重难词汇",@"三千单词",@"词义归类"];
@@ -128,6 +128,9 @@
 - (void)mh_tabBarController:(MHTabBarController *)tabBarController didSelectIndex:(NSUInteger)index
 {
     NSLog(@"smart list tab select %d",index);
+    if(isDragging)
+        return;
+
     [self.pageScrollView scrollRectToVisible:CGRectMake(self.pageScrollView.frame.size.width * index, 0, self.pageScrollView.frame.size.width, self.pageScrollView.frame.size.height) animated:YES];
 }
 

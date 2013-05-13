@@ -30,12 +30,12 @@ static NSDictionary* typeDict = nil;
         if(!typeDict)
         {
             typeDict = @{
-              @"normal":@{@"height":@60,@"identifer":@"smartwordheader"},
+              @"normal":@{@"height":@38,@"identifer":@"smartwordheader"},
               @"slide":@{@"height":@38,@"identifer":@"smartwordheader_slide"}
               };
         }
         _type = SmartListType_Slide;
-        self.scrollViewHeight = 279;
+        self.scrollViewHeight = 270;
     }
     return self;
 }
@@ -89,16 +89,31 @@ static NSDictionary* typeDict = nil;
     
     SmartWordListContentCell *cell=(SmartWordListContentCell *)[self.tableView dequeueReusableCellWithIdentifier:@"smartwordcontent"];
     
-    
-    WordSmallLayoutViewController *vc = [[WordSmallLayoutViewController alloc] init];
-    [vc displayWord:[[WordHelper instance] wordWithID:self.wordID] withOption:nil];
-    CGRect frame = vc.view.frame;
-    
     NSArray* tobeRemove = [cell.contentView subviews];
     for(UIView* v in tobeRemove)
     {
         [v removeFromSuperview];
     }
+    
+    UIViewController *vc;
+    if(self.type == SmartListType_Slide)
+    {
+        vc = [[WordSmallLayoutViewController alloc] init];
+        WordSmallLayoutViewController *c = (WordSmallLayoutViewController*)vc;
+        [c displayWord:[[WordHelper instance] wordWithID:self.wordID] withOption:nil];
+    }
+    else if(self.type == SmartListType_Full)
+    {
+        vc = [[WordLayoutViewController alloc] init];
+        NSDictionary *option = @{@"shouldShowChineseMeaning":@YES,
+                                 @"shouldShowEnglishMeaning":@YES,
+                                 @"shouldShowSynonyms":@YES,
+                                 @"shouldShowAntonyms":@YES,
+                                 @"shouldShowSampleSentence":@YES};
+        WordLayoutViewController *c = (WordLayoutViewController*)vc;
+        [c displayWord:[[WordHelper instance] wordWithID:self.wordID] withOption:option];
+    }
+    CGRect frame = vc.view.frame;
     
     
     if(frame.size.height >  self.scrollViewHeight)

@@ -13,7 +13,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *upShadow;
 @property (weak, nonatomic) IBOutlet UIImageView *downShadow;
 
+@property (weak, nonatomic) IBOutlet UIButton *noteButton;
+
 -(IBAction)soundPressed:(id)sender;
+
+-(IBAction)notePressed:(id)sender;
 
 
 @end
