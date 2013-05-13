@@ -25,4 +25,6 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *pageScrollView;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 
+- (IBAction)exitPressed:(id)sender;
+
 @end

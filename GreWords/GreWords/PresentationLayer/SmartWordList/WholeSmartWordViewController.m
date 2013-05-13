@@ -71,7 +71,7 @@
     
     
     tabBarController = [self.storyboard instantiateViewControllerWithIdentifier:@"mhtab"];
-    tabBarController.view.frame = CGRectMake(0, 28, 320, 44);
+    tabBarController.view.frame = CGRectMake(0, 42, 320, 44);
     
 	tabBarController.delegate = self;
 	tabBarController.viewControllerTitles = @[@"重难词汇",@"三千单词",@"词义归类"];
@@ -91,6 +91,10 @@
     [self setPageScrollView:nil];
     [self setTopView:nil];
     [super viewDidUnload];
+}
+
+- (IBAction)exitPressed:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - Smart Word List View Scroll Delegate
