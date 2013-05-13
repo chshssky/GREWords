@@ -26,20 +26,11 @@
     return self;
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    NSLog(@"begin dragging:%@",scrollView);
-//    if(_scroller == scrollView)
-//    {
-//        _contentOffsetBeforeScroll = _scroller.contentOffset.y;
-//        _tabbarYBeforeScroll = self.topTabbarView.frame.origin.y;
-//    }
-}
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    isDragging = NO;
     
     originalTableViewFrame = self.pageScrollView.frame;
     
@@ -87,7 +78,7 @@
     
     [self.topView addSubview:tabBarController.view];
     
-	// Do any additional setup after loading the view.
+	
 }
 
 - (void)didReceiveMemoryWarning
@@ -133,7 +124,33 @@
 - (void)mh_tabBarController:(MHTabBarController *)tabBarController didSelectIndex:(NSUInteger)index
 {
     NSLog(@"smart list tab select %d",index);
+    [self.pageScrollView scrollRectToVisible:CGRectMake(self.pageScrollView.frame.size.width * index, 0, self.pageScrollView.frame.size.width, self.pageScrollView.frame.size.height) animated:YES];
 }
 
+#pragma mark - UIScrollView delegate
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    isDragging = YES;
+}
+
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    isDragging = NO;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    if(!isDragging)
+        return;
+    
+    int x = self.pageScrollView.contentOffset.x;
+    
+    x += self.pageScrollView.frame.size.width / 2.0;
+    
+    int page = x / (self.pageScrollView.frame.size.width);
+    
+    [tabBarController setSelectedIndex:page animated:YES];
+}
 
 @end
