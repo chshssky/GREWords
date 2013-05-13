@@ -13,8 +13,9 @@
 
 
 @interface UIImage (StackBlur) 
-	- (UIImage*) stackBlur:(NSUInteger)radius;
+	- (UIImage *) stackBlur:(NSUInteger)radius;
     - (UIImage *) normalize ;
+    - (UIImage *) boxblurImageWithBlur:(CGFloat)blur;
 
 @end
 
