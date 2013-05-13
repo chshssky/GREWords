@@ -36,7 +36,7 @@
     
     SmartWordListViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
     vc.type = SmartListType_Full;
-    vc.array = [[WordHelper instance] wordsAlphabeticOrder];
+    vc.array = [[WordHelper instance] wordsRatioOfMistake];
     CGRect frame = vc.view.frame;
     frame.origin.y = 0;
     vc.view.frame = frame;
@@ -44,7 +44,7 @@
     
     SmartWordListViewController *vc2 = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
     vc2.type = SmartListType_Slide;
-    vc2.array = @[[[WordHelper instance] wordWithID:101],[[WordHelper instance] wordWithID:102],[[WordHelper instance] wordWithID:103]];
+    vc2.array = [[WordHelper instance] wordsAlphabeticOrder];
     frame = vc2.view.frame;
     frame.origin.x += frame.size.width;
     frame.origin.y = 0;
@@ -62,6 +62,9 @@
     [self.pageScrollView addSubview:vc3.view];
     self.pageScrollView.contentSize = CGSizeMake(frame.size.width * 3, self.pageScrollView.frame.size.height);
 
+    
+    //UIImageView *middleLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"words list_pageLine.png"]];
+    
     
     smartlistArr = @[vc,vc2,vc3];
     
