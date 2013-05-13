@@ -82,7 +82,7 @@ static const NSInteger TAG_OFFSET = 1000;
 		button.tag = TAG_OFFSET + index;
 		[button setTitle:title forState:UIControlStateNormal];
 		[button addTarget:self action:@selector(tabButtonPressed:) forControlEvents:UIControlEventTouchDown];
-		button.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+		button.titleLabel.font = [UIFont boldSystemFontOfSize:14];
 		
         [button setTitleShadowColor:[UIColor clearColor] forState:UIControlStateNormal];
 
