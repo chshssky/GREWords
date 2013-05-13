@@ -78,6 +78,14 @@ static NSDictionary* typeDict = nil;
     
     cell.wordLabel.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
     
+    if([[WordHelper instance] wordWithID:self.wordID].note)
+    {
+        [cell.noteButton setImage:[UIImage imageNamed:@"words list_note.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [cell.noteButton setImage:[UIImage imageNamed:@"words list_no_note.png"] forState:UIControlStateNormal];
+    }
     //vc.text = [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
     //[cell addSubview:vc.view];
 

@@ -291,7 +291,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="258"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="learning list_bg.png" id="2Rv-3J-PL0">
+                                                <imageView userInteractionEnabled="NO" contentMode="center" image="learning list_bg.png" id="2Rv-3J-PL0">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
