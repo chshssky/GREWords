@@ -96,8 +96,7 @@
         self.pageControlView.contentSize = CGSizeMake(self.pageControlView.frame.size.width * 300,
                                                       360);
     }
-//    self.pageControlView.contentSize = CGSizeMake(self.pageControlView.frame.size.width * 300,
-//                                                  360);
+    
     self.pageControlView.showsHorizontalScrollIndicator = NO;
     self.pageControlView.showsVerticalScrollIndicator = NO;
     self.pageControlView.scrollsToTop = NO;
@@ -113,12 +112,6 @@
     self.wordSoundLabel.text = [self.phoneticControlArray objectAtIndex:0];
     self.WordParaphraseView.showsHorizontalScrollIndicator = YES;
     self.WordParaphraseView.showsHorizontalScrollIndicator = YES;
-//    //////////
-//    CGRect rect = self.WordParaphraseView.frame;
-//    self.WordParaphraseView.frame = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width, 360);
-    
-
-    NSLog(@"!!!!!!!!!!!!!!!!@%f,%f,%f,%f,%f,%f",self.pageControlView.frame.size.width,self.pageControlView.frame.size.height,self.view.frame.size.width,self.view.frame.size.height,self.WordParaphraseView.frame.size.width,self.WordParaphraseView.frame.size.height);
     
     //添加抽屉
     self.viewDeckController.delegate = self;
@@ -807,7 +800,6 @@ double radians(float degrees) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
         }
     }
-    NSLog(@"?????????????@%f,%f,%f,%f,%f,%f",self.pageControlView.frame.size.width,self.pageControlView.frame.size.height,self.view.frame.size.width,self.view.frame.size.height,self.WordParaphraseView.frame.size.width,self.WordParaphraseView.frame.size.height);
 }
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
