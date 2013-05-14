@@ -25,11 +25,12 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self initUserDefault];
-//    if([[ConfigurationHelper instance] isFirstTimeRun])
-//    {
-//        [[ConfigurationHelper instance] initData];
-//    }
-//    
+    
+    if([[ConfigurationHelper instance] isFirstTimeRun])
+    {
+        [[ConfigurationHelper instance] initData];
+    }
+
 //    for (NSString* fname in [UIFont familyNames])
 //    {
 //        NSLog(@"%@",fname);
