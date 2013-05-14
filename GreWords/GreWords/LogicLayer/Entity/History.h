@@ -2,7 +2,7 @@
 //  History.h
 //  GreWords
 //
-//  Created by 崔 昊 on 13-4-10.
+//  Created by 崔 昊 on 13-5-14.
 //  Copyright (c) 2013年 Cui Hao. All rights reserved.
 //
 
@@ -12,12 +12,12 @@
 
 @interface History : IAThreadSafeManagedObject
 
+@property (nonatomic, retain) NSNumber * duration;
 @property (nonatomic, retain) NSDate * endTime;
 @property (nonatomic, retain) NSString * event;
-@property (nonatomic, retain) NSString * info;
+@property (nonatomic, retain) NSData * info;
 @property (nonatomic, retain) NSDate * startTime;
 @property (nonatomic, retain) NSNumber * totalWordCount;
 @property (nonatomic, retain) NSNumber * wrongWordCount;
-@property (nonatomic, retain) NSNumber * duration;
 
 @end

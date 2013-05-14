@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F0852D9174288F00043EFBE /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0852D8174288F00043EFBE /* Note.m */; };
+		3F0852DC174288F00043EFBE /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0852DB174288F00043EFBE /* Word.m */; };
+		3F0852DF174288F10043EFBE /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F0852DE174288F10043EFBE /* History.m */; };
 		3F70EC8B1701CADB00327770 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F70EC8A1701CADB00327770 /* UIKit.framework */; };
 		3F70EC8D1701CADB00327770 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F70EC8C1701CADB00327770 /* Foundation.framework */; };
 		3F70EC8F1701CADB00327770 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F70EC8E1701CADB00327770 /* CoreGraphics.framework */; };
@@ -598,9 +601,6 @@
 		E466F4DB173BD508001847D0 /* WordSmallLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E466E785173BD4CB001847D0 /* WordSmallLayoutViewController.m */; };
 		E466F4DC173BD508001847D0 /* WordSmallLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E466E786173BD4CB001847D0 /* WordSmallLayoutViewController.xib */; };
 		E466F4DD173BD508001847D0 /* ConfigurationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = E466E789173BD4CB001847D0 /* ConfigurationHelper.m */; };
-		E466F4DE173BD508001847D0 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = E466E78C173BD4CB001847D0 /* History.m */; };
-		E466F4DF173BD508001847D0 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = E466E78E173BD4CB001847D0 /* Note.m */; };
-		E466F4E0173BD508001847D0 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = E466E790173BD4CB001847D0 /* Word.m */; };
 		E466F4E1173BD508001847D0 /* BaseEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = E466E793173BD4CB001847D0 /* BaseEvent.m */; };
 		E466F4E2173BD508001847D0 /* ExamEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = E466E795173BD4CB001847D0 /* ExamEvent.m */; };
 		E466F4E3173BD508001847D0 /* NewWordEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = E466E797173BD4CB001847D0 /* NewWordEvent.m */; };
@@ -3452,6 +3452,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F0852D7174288F00043EFBE /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		3F0852D8174288F00043EFBE /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		3F0852DA174288F00043EFBE /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
+		3F0852DB174288F00043EFBE /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
+		3F0852DD174288F10043EFBE /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
+		3F0852DE174288F10043EFBE /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
 		3F70EC871701CADB00327770 /* GreWords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreWords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F70EC8A1701CADB00327770 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3F70EC8C1701CADB00327770 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -3572,12 +3578,6 @@
 		E466E786173BD4CB001847D0 /* WordSmallLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordSmallLayoutViewController.xib; sourceTree = "<group>"; };
 		E466E788173BD4CB001847D0 /* ConfigurationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationHelper.h; sourceTree = "<group>"; };
 		E466E789173BD4CB001847D0 /* ConfigurationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationHelper.m; sourceTree = "<group>"; };
-		E466E78B173BD4CB001847D0 /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
-		E466E78C173BD4CB001847D0 /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
-		E466E78D173BD4CB001847D0 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
-		E466E78E173BD4CB001847D0 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
-		E466E78F173BD4CB001847D0 /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
-		E466E790173BD4CB001847D0 /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
 		E466E792173BD4CB001847D0 /* BaseEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEvent.h; sourceTree = "<group>"; };
 		E466E793173BD4CB001847D0 /* BaseEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseEvent.m; sourceTree = "<group>"; };
 		E466E794173BD4CB001847D0 /* ExamEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamEvent.h; sourceTree = "<group>"; };
@@ -7239,12 +7239,12 @@
 		E466E78A173BD4CB001847D0 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				E466E78B173BD4CB001847D0 /* History.h */,
-				E466E78C173BD4CB001847D0 /* History.m */,
-				E466E78D173BD4CB001847D0 /* Note.h */,
-				E466E78E173BD4CB001847D0 /* Note.m */,
-				E466E78F173BD4CB001847D0 /* Word.h */,
-				E466E790173BD4CB001847D0 /* Word.m */,
+				3F0852DD174288F10043EFBE /* History.h */,
+				3F0852DE174288F10043EFBE /* History.m */,
+				3F0852DA174288F00043EFBE /* Word.h */,
+				3F0852DB174288F00043EFBE /* Word.m */,
+				3F0852D7174288F00043EFBE /* Note.h */,
+				3F0852D8174288F00043EFBE /* Note.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -14198,9 +14198,6 @@
 				E466F4D9173BD508001847D0 /* WordLayoutViewController.m in Sources */,
 				E466F4DB173BD508001847D0 /* WordSmallLayoutViewController.m in Sources */,
 				E466F4DD173BD508001847D0 /* ConfigurationHelper.m in Sources */,
-				E466F4DE173BD508001847D0 /* History.m in Sources */,
-				E466F4DF173BD508001847D0 /* Note.m in Sources */,
-				E466F4E0173BD508001847D0 /* Word.m in Sources */,
 				E466F4E1173BD508001847D0 /* BaseEvent.m in Sources */,
 				E466F4E2173BD508001847D0 /* ExamEvent.m in Sources */,
 				E466F4E3173BD508001847D0 /* NewWordEvent.m in Sources */,
