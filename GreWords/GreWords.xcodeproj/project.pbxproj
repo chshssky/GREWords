@@ -70,8 +70,6 @@
 		E41FF5BE1740E08A0078E738 /* words list_bg_buttom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41FF5961740E08A0078E738 /* words list_bg_buttom@2x.png */; };
 		E43908C8174108A000E36078 /* UIImage+ColorImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E43908C5174108A000E36078 /* UIImage+ColorImage.m */; };
 		E43908C9174108A000E36078 /* UIImage+Opacity.m in Sources */ = {isa = PBXBuildFile; fileRef = E43908C7174108A000E36078 /* UIImage+Opacity.m */; };
-		E43908CC17410C4200E36078 /* words list_pageLine.png in Resources */ = {isa = PBXBuildFile; fileRef = E43908CA17410C4200E36078 /* words list_pageLine.png */; };
-		E43908CD17410C4200E36078 /* words list_pageLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E43908CB17410C4200E36078 /* words list_pageLine@2x.png */; };
 		E4660000173BD509001847D0 /* sly.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E466F2C3173BD4F6001847D0 /* sly.mp3 */; };
 		E4660001173BD509001847D0 /* smarmy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E466F2C4173BD4F6001847D0 /* smarmy.mp3 */; };
 		E4660002173BD509001847D0 /* smart.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E466F2C5173BD4F6001847D0 /* smart.mp3 */; };
@@ -3558,7 +3556,7 @@
 		E466E781173BD4CB001847D0 /* WordLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordLayoutViewController.h; sourceTree = "<group>"; };
 		E466E782173BD4CB001847D0 /* WordLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordLayoutViewController.m; sourceTree = "<group>"; };
 		E466E783173BD4CB001847D0 /* WordLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordLayoutViewController.xib; sourceTree = "<group>"; };
-		E466E784173BD4CB001847D0 /* WordSmallLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordSmallLayoutViewController.h; sourceTree = "<group>"; };
+		E466E784173BD4CB001847D0 /* WordSmallLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordSmallLayoutViewController.h; path = ../PresentationLayer/WordDetail/WordSmallLayoutViewController.h; sourceTree = "<group>"; };
 		E466E785173BD4CB001847D0 /* WordSmallLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordSmallLayoutViewController.m; sourceTree = "<group>"; };
 		E466E786173BD4CB001847D0 /* WordSmallLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordSmallLayoutViewController.xib; sourceTree = "<group>"; };
 		E466E788173BD4CB001847D0 /* ConfigurationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationHelper.h; sourceTree = "<group>"; };
@@ -7188,7 +7186,6 @@
 				E466E781173BD4CB001847D0 /* WordLayoutViewController.h */,
 				E466E782173BD4CB001847D0 /* WordLayoutViewController.m */,
 				E466E783173BD4CB001847D0 /* WordLayoutViewController.xib */,
-				E466E784173BD4CB001847D0 /* WordSmallLayoutViewController.h */,
 				E466E785173BD4CB001847D0 /* WordSmallLayoutViewController.m */,
 				E466E786173BD4CB001847D0 /* WordSmallLayoutViewController.xib */,
 			);
@@ -10645,6 +10642,7 @@
 		E466F4B0173BD508001847D0 /* Categorys */ = {
 			isa = PBXGroup;
 			children = (
+				E466E784173BD4CB001847D0 /* WordSmallLayoutViewController.h */,
 				E43908C4174108A000E36078 /* UIImage+ColorImage.h */,
 				E43908C5174108A000E36078 /* UIImage+ColorImage.m */,
 				E43908C6174108A000E36078 /* UIImage+Opacity.h */,

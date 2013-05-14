@@ -27,11 +27,13 @@
 @property (weak, nonatomic) IBOutlet UIImageView *soundImage;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (nonatomic) int added_height;
+@property (nonatomic) BOOL noteIsVisible;
 
 
 @property (strong, nonatomic) UIImageView *noteUp;
 @property (strong, nonatomic) UIImageView *noteDown;
-
+@property (strong, nonatomic) UIImageView *blackImageView;
+@property (strong, nonatomic) UIImageView *blurImageView;
 
 @property (nonatomic, retain) NSMutableArray *viewControlArray;
 @property (nonatomic, retain) NSMutableArray *nameControlArray;
@@ -69,6 +71,7 @@
     [self.PronounceButton addTarget:self action:@selector(soundButtonReleased:) forControlEvents:UIControlEventTouchCancel];
     
     self.day = 0;
+    self.noteIsVisible = NO;
     
     int wordCount = [[WordHelper instance] wordCount];
     self.viewControlArray = [[NSMutableArray alloc] init];
@@ -115,137 +118,267 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
-    if([[NSString stringWithFormat:@"%@",[otherGestureRecognizer class]] isEqualToString:@"UIScrollViewPanGestureRecognizer"])
-        return NO;
-    return YES;
+//    if (_noteIsVisible) {
+//        if([[NSString stringWithFormat:@"%@",[otherGestureRecognizer class]] isEqualToString:@"UISwipeGestureRecognizer"])
+//            return YES;
+//    } else {
+//        if([[NSString stringWithFormat:@"%@",[otherGestureRecognizer class]] isEqualToString:@"UIScrollViewPanGestureRecognizer"]) {
+//            return NO;
+//        }else{
+//            if([[NSString stringWithFormat:@"%@",[otherGestureRecognizer class]] isEqualToString:@"UIPanGestureRecognizer"])
+//                return YES;
+//            return NO;
+//        }
+//    }
+    NSLog(@"%@",[NSString stringWithFormat:@"%@",[otherGestureRecognizer class]]);
+    
+    if([[NSString stringWithFormat:@"%@",[otherGestureRecognizer class]] isEqualToString:@"UIPanGestureRecognizer"]) {
+        return YES;
+    }
+    
+    
+    
+    return NO;
 }
 
 - (void)handleSwipeDown:(UISwipeGestureRecognizer*)recognizer {
-    [self blurBackground];
+    _noteIsVisible = YES;
+    _backButton.userInteractionEnabled = NO;
+    _PronounceButton.userInteractionEnabled = NO;
+    _WordParaphraseView.userInteractionEnabled = NO;
+    _pageControlView.userInteractionEnabled = NO;
+    
+    [self addBlurBackground];
     [self addBlackToBackground];
-    [self downNoteImageAnimation];
-    [self upNoteImageAnimation];
+//    [self performSelector:@selector(addDownNoteImageAnimation) withObject:nil afterDelay:0.1];
+//    [self performSelector:@selector(addUpNoteImageAnimation) withObject:nil afterDelay:0.1];
+    [self addDownNoteImageAnimation];
+    [self addUpNoteImageAnimation];
     [self.view removeGestureRecognizer:recognizer];
+    
+    self.viewDeckController.panningMode = IIViewDeckNoPanning;
+    
+    UISwipeGestureRecognizer* upRecognizer;
+    upRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeUp:)];
+    upRecognizer.delegate = self;
+    upRecognizer.direction = UISwipeGestureRecognizerDirectionUp;
+    
+    [self.view addGestureRecognizer:upRecognizer];
+    
 }
 
 - (void)handleSwipeUp:(UISwipeGestureRecognizer*)recognizer {
-    NSLog(@"123123123");
+     _noteIsVisible = NO;
+    _backButton.userInteractionEnabled = YES;
+    _PronounceButton.userInteractionEnabled = YES;
+    _WordParaphraseView.userInteractionEnabled = YES;
+    _pageControlView.userInteractionEnabled = YES;
+
+    
+    [self removeBlurBackground];
+    [self removeBlackToBackground];
+    [self removeDownNoteImageAnimation];
+    [self removeUpNoteImageAnimation];
+    [self.view removeGestureRecognizer:recognizer];
+    
+    self.viewDeckController.panningMode = IIViewDeckAllViewsPanning;
+    
+    UISwipeGestureRecognizer* downRecognizer;
+    downRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeDown:)];
+    downRecognizer.delegate = self;
+    downRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
+    
+    [self.view addGestureRecognizer:downRecognizer];
 }
 
-- (void)upNoteImageAnimation
+- (void)removeBlurBackground
 {
-    if (self.noteUp == nil) {
-        self.noteUp = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_note.png"]];
-        [self.noteUp setCenter:CGPointMake(50, -150)];
-        self.noteUp.layer.anchorPoint = CGPointMake(0.08, 0.08);
-        [self.view addSubview:self.noteUp];
+    [_blurImageView removeFromSuperview];
+    _blurImageView = nil;
+}
+
+- (void)removeBlackToBackground
+{
+    [_blackImageView removeFromSuperview];
+    _blackImageView = nil;
+}
+
+- (void)removeDownNoteImageAnimation
+{
+    CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    [lineAnimation setValue:@"removeDownNoteImageAnimation" forKey:@"id"];
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, 50, self.view.frame.size.height/4);
+    CGPathAddLineToPoint(path, NULL, 50, -250);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.2f;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
+    lineAnimation.delegate = self;
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_noteUp.layer addAnimation:lineAnimation forKey:nil];
+}
+
+- (void)removeUpNoteImageAnimation
+{
+    CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    [lineAnimation setValue:@"removeUpNoteImageAnimation" forKey:@"id"];
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, 50, self.view.frame.size.height/4);
+    CGPathAddLineToPoint(path, NULL, 50, -250);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.2f;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
+    lineAnimation.delegate = self;
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_noteDown.layer addAnimation:lineAnimation forKey:nil];
+    
+    
+
+}
+
+- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag {
+    if([[theAnimation valueForKey:@"id"] isEqual:@"removeUpNoteImageAnimation"])
+    {
+        [_noteDown removeFromSuperview];
+        _noteDown = nil;
+        //NSLog(@"removeDown");
+    }
+    if([[theAnimation valueForKey:@"id"] isEqual:@"removeUpNoteImageAnimation"])
+    {
+        [_noteUp removeFromSuperview];
+        _noteUp = nil;
+        //NSLog(@"removeUp");
+    }
+}
+
+- (void)addUpNoteImageAnimation
+{
+    if (_noteUp == nil) {
+        _noteUp = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_note.png"]];
+        [_noteUp setCenter:CGPointMake(50, -250)];
+        _noteUp.layer.anchorPoint = CGPointMake(0.08, 0.08);
+        [self.view addSubview:_noteUp];
         NSLog(@"新建up");
     }
     
     CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, 50, -150);
+    CGPathMoveToPoint(path, NULL, 50, -250);
     CGPathAddLineToPoint(path, NULL, 50, self.view.frame.size.height/4);
     lineAnimation.path = path;
     CGPathRelease(path);
-    lineAnimation.duration = 0.3f;
+    lineAnimation.duration = 0.2f;
+    lineAnimation.delegate = self;
     lineAnimation.fillMode = kCAFillModeForwards;
     lineAnimation.removedOnCompletion = NO;
     lineAnimation.beginTime = CACurrentMediaTime();
     lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    [self.noteUp.layer addAnimation:lineAnimation forKey:nil];
+    [_noteUp.layer addAnimation:lineAnimation forKey:nil];
     
     CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
     rotateAnimation.delegate = self;
     rotateAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(radians(5) , 0, 0, 1.0)];
     rotateAnimation.duration = 0.15f;
-    rotateAnimation.beginTime = CACurrentMediaTime()+0.2f;
+    rotateAnimation.beginTime = CACurrentMediaTime()+0.1f;
     rotateAnimation.fillMode = kCAFillModeForwards;
     rotateAnimation.removedOnCompletion = NO;
     rotateAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    [self.noteUp.layer addAnimation:rotateAnimation forKey:nil];
+    [_noteUp.layer addAnimation:rotateAnimation forKey:nil];
     
     CABasicAnimation *rotateAnimation2 = [CABasicAnimation animationWithKeyPath:@"transform"];
     rotateAnimation2.delegate = self;
     rotateAnimation2.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(radians(0) , 0, 0, 1.0)];
     rotateAnimation2.duration = 0.2f;
-    rotateAnimation2.beginTime = CACurrentMediaTime()+0.45f;
+    rotateAnimation2.beginTime = CACurrentMediaTime()+0.35f;
     rotateAnimation2.fillMode = kCAFillModeForwards;
     rotateAnimation2.removedOnCompletion = NO;
     rotateAnimation2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-    [self.noteUp.layer addAnimation:rotateAnimation2 forKey:nil];
+    [_noteUp.layer addAnimation:rotateAnimation2 forKey:nil];
 }
 
-- (void)downNoteImageAnimation
+- (void)addDownNoteImageAnimation
 {
-    if (self.noteDown == nil) {
-        self.noteDown = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_note.png"]];
-        [self.noteDown setCenter:CGPointMake(50, -150)];
-        self.noteDown.layer.anchorPoint = CGPointMake(0.08, 0.08);
-        [self.view addSubview:self.noteDown];
+    if (_noteDown == nil) {
+        _noteDown = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_note.png"]];
+        [_noteDown setCenter:CGPointMake(50, -250)];
+        _noteDown.layer.anchorPoint = CGPointMake(0.08, 0.08);
+        [self.view addSubview:_noteDown];
         NSLog(@"新建down");
     }
     
     CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, 50, -150);
+    CGPathMoveToPoint(path, NULL, 50, -250);
     CGPathAddLineToPoint(path, NULL, 50, self.view.frame.size.height/4);
     lineAnimation.path = path;
     CGPathRelease(path);
-    lineAnimation.duration = 0.3f;
+    lineAnimation.duration = 0.2f;
+    lineAnimation.delegate = self;
     lineAnimation.fillMode = kCAFillModeForwards;
     lineAnimation.removedOnCompletion = NO;
     lineAnimation.beginTime = CACurrentMediaTime();
     lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    [self.noteDown.layer addAnimation:lineAnimation forKey:nil];
+    [_noteDown.layer addAnimation:lineAnimation forKey:nil];
     
     CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
     rotateAnimation.delegate = self;
     rotateAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(radians(5) , 0, 0, 1.0)];
     rotateAnimation.duration = 0.15f;
-    rotateAnimation.beginTime = CACurrentMediaTime()+0.2f;
+    rotateAnimation.beginTime = CACurrentMediaTime()+0.1f;
     rotateAnimation.fillMode = kCAFillModeForwards;
     rotateAnimation.removedOnCompletion = NO;
     rotateAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    [self.noteDown.layer addAnimation:rotateAnimation forKey:nil];
+    [_noteDown.layer addAnimation:rotateAnimation forKey:nil];
     
     CABasicAnimation *rotateAnimation2 = [CABasicAnimation animationWithKeyPath:@"transform"];
     rotateAnimation2.delegate = self;
     rotateAnimation2.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(radians(2.5) , 0, 0, 1.0)];
     rotateAnimation2.duration = 0.2f;
-    rotateAnimation2.beginTime = CACurrentMediaTime()+0.45f;
+    rotateAnimation2.beginTime = CACurrentMediaTime()+0.35f;
     rotateAnimation2.fillMode = kCAFillModeForwards;
     rotateAnimation2.removedOnCompletion = NO;
     rotateAnimation2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-    [self.noteDown.layer addAnimation:rotateAnimation2 forKey:nil];
+    [_noteDown.layer addAnimation:rotateAnimation2 forKey:nil];
 }
 
-- (void)blurBackground
+- (void)addBlurBackground
 {
-    UIImage *blurImage = [self getImageFromView:self.view];
-    blurImage = [blurImage stackBlur:3];
-    
-    UIImageView *bgImageView = [[UIImageView alloc] initWithImage:blurImage];
-    [bgImageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    
-    [self.view addSubview:bgImageView];
+    if (_blurImageView == nil) {
+        UIImage *blurImage = [self getImageFromView:self.view];
+        blurImage = [blurImage stackBlur:3];
+        
+        _blurImageView = [[UIImageView alloc] initWithImage:blurImage];
+        [_blurImageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        
+        [self.view addSubview:_blurImageView];
+    }
 }
 
 - (void)addBlackToBackground
 {
-    UIImage *blackImage = [UIImage imageWithColor:[UIColor blackColor]];
-    UIImageView *blackImageView = [[UIImageView alloc] initWithImage:blackImage];
-    [blackImageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    blackImageView.alpha = 0;
-    [self.view addSubview:blackImageView];
+    if (_blackImageView ==nil) {
+        UIImage *blackImage = [UIImage imageWithColor:[UIColor blackColor]];
+        _blackImageView = [[UIImageView alloc] initWithImage:blackImage];
+        [_blackImageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        _blackImageView.alpha = 0.2;
+        [self.view addSubview:_blackImageView];
+    }
     
-    CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    opacityAnimation.fromValue = [NSNumber numberWithFloat:0.0];
-    opacityAnimation.toValue = [NSNumber numberWithFloat:0.2];
-    opacityAnimation.removedOnCompletion = NO;
-    opacityAnimation.fillMode = kCAFillModeForwards;
-    opacityAnimation.duration = 0.3f;
-    [blackImageView.layer addAnimation:opacityAnimation forKey:nil];
+//    CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+//    opacityAnimation.fromValue = [NSNumber numberWithFloat:0.0];
+//    opacityAnimation.toValue = [NSNumber numberWithFloat:0.2];
+//    opacityAnimation.removedOnCompletion = NO;
+//    opacityAnimation.fillMode = kCAFillModeForwards;
+//    opacityAnimation.duration = 0.3f;
+//    [_blackImageView.layer addAnimation:opacityAnimation forKey:nil];
 }
 
 -(UIImage *)getImageFromView:(UIView *)theView
@@ -525,7 +658,7 @@ double radians(float degrees) {
         [left.view addSubview:_blackView];
     }
     
-    _blackView.alpha = 1.0/330.0*(300.0-offset);
+    _blackView.alpha = 1.0/500.0*(300.0-offset);
     
     [left.view clipsToBounds];
     [left.view setFrame:CGRectMake(5-5.0/276.0*offset, 5-5/276.0*offset, 300+20.0/276.0*offset, 538.25+10/276.0*offset)];
