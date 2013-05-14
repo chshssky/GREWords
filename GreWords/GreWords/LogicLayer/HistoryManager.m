@@ -42,6 +42,35 @@ HistoryManager* _historyManagerInstance = nil;
     return _context;
 }
 
+- (NSData *)toJSONData:(id)theData{
+    
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:theData
+                                                       options:NSJSONWritingPrettyPrinted
+                                                         error:&error];
+    
+    if ([jsonData length] > 0 && error == nil){
+        return jsonData;
+    }else{
+        return nil;
+    }
+}
+
+- (id)toArrayOrNSDictionary:(NSData *)jsonData{
+    NSError *error = nil;
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                    options:NSJSONReadingAllowFragments
+                                                      error:&error];
+    
+    if (jsonObject != nil && error == nil){
+        return jsonObject;
+    }else{
+        // 解析错误
+        return nil;
+    }
+    
+}
+
 - (void)addEvent:(BaseEvent *)aEvent
 {
     History *history = [NSEntityDescription insertNewObjectForEntityForName:@"History" inManagedObjectContext:self.context];
@@ -72,8 +101,10 @@ HistoryManager* _historyManagerInstance = nil;
         NSLog(@"BaseEvent is not a specific class");
     }
     
-    [history setInfo:[NSString stringWithFormat:@"%@", dict]];
+    NSData *data = [self toJSONData:dict];
+    [history setInfo:data];
     
+        
     NSError *error = nil;
     if (![self.context save:&error]) {
         NSLog(@"Save Event error %@, %@", error, [error userInfo]);
@@ -110,9 +141,9 @@ HistoryManager* _historyManagerInstance = nil;
     NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
     History *history = [fetchMatches lastObject];
     
-    //NSDictionary *info = [[NSDictionary alloc] init:[history info]];
+    NSDictionary *info = [self toArrayOrNSDictionary:history.info];
     
-    return 0;
+    return [[info objectForKey:@"stage"] integerValue];
 }
 
 - (float)currentStageProgress
@@ -128,7 +159,20 @@ HistoryManager* _historyManagerInstance = nil;
 
 - (NSArray *)errorRatioInExams
 {
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
     
+    request.predicate = [NSPredicate predicateWithFormat:@"event == exam"];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
+    [request setFetchLimit:1];
+    
+    NSError *fetchError = nil;
+    NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
+    NSMutableArray *results = [[NSMutableArray alloc] init];
+    
+    for (History *hist in fetchMatches) {
+        [results addObject:[NSNumber numberWithFloat:[hist.wrongWordCount floatValue]/[hist.totalWordCount floatValue]]];
+    }
+    return results;
 }
 
 - (NSArray *)dateAndDurationInStage:(int)stage
