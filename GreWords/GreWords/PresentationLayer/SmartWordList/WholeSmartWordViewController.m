@@ -53,8 +53,8 @@
 
     
     SmartWordListViewController *vc3 = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
-    vc3.type = SmartListType_Slide;
-    vc3.array = [[WordHelper instance] wordsAlphabeticOrder];
+    vc3.type = SmartListType_Homo;
+    vc3.array = [[WordHelper instance] wordsHomoionym];
     frame = vc3.view.frame;
     frame.origin.x += frame.size.width * 2;
     frame.origin.y = 0;
@@ -154,7 +154,7 @@
     
     frame = self.pageScrollView.frame;
     frame.origin.y = self.topView.frame.origin.y + self.topView.frame.size.height;
-    frame.size.height = originalTableViewFrame.origin.y + originalTableViewFrame.size.height - frame.origin.y;
+    //frame.size.height = originalTableViewFrame.origin.y + originalTableViewFrame.size.height - frame.origin.y;
     self.pageScrollView.frame = frame;
 }
 

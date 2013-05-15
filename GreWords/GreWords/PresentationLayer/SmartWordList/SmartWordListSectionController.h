@@ -21,6 +21,8 @@ typedef enum
 
 @property (nonatomic) int wordID;
 
+@property (nonatomic) NSString* homotitle;
+
 @property (nonatomic) SmartListType type;
 
 @property (nonatomic) float scrollViewHeight;

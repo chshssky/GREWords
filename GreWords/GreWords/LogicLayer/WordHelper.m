@@ -257,7 +257,7 @@ WordHelper* _wordHelperInstance = nil;
 
 -(NSArray*)wordsHomoionym
 {
-    return nil;
+    return homoArr;
 }
 
 -(NSArray*)wordsRatioOfMistake

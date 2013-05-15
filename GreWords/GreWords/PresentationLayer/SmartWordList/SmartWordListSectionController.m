@@ -31,6 +31,7 @@ static NSDictionary* typeDict = nil;
         {
             typeDict = @{
               @"normal":@{@"height":@38,@"identifer":@"smartwordheader"},
+              @"homo":@{@"height":@38,@"identifer":@"smartwordheader_homo"},
               @"slide":@{@"height":@38,@"identifer":@"smartwordheader_slide"}
               };
         }
@@ -53,6 +54,8 @@ static NSDictionary* typeDict = nil;
             break;
         case SmartListType_Full:
             return typeDict[@"normal"];
+        case SmartListType_Homo:
+            return typeDict[@"homo"];
         default:
             return typeDict[@"normal"];
             break;
@@ -74,18 +77,27 @@ static NSDictionary* typeDict = nil;
     
     SmartWordListHeaderCell *cell=(SmartWordListHeaderCell *)[self.tableView dequeueReusableCellWithIdentifier:([self configurationForTpye:self.type][@"identifer"])];
 
-    cell.wordLabel.text =  [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
-    
-    cell.wordLabel.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
-    
-    if([[WordHelper instance] wordWithID:self.wordID].note)
+    if(self.type == SmartListType_Homo)
     {
-        [cell.noteButton setImage:[UIImage imageNamed:@"words list_note.png"] forState:UIControlStateNormal];
+        cell.wordLabel.text =  self.homotitle;
     }
     else
     {
-        [cell.noteButton setImage:[UIImage imageNamed:@"words list_no_note.png"] forState:UIControlStateNormal];
+        cell.wordLabel.text =  [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
+        cell.wordLabel.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
+        
+        if([[WordHelper instance] wordWithID:self.wordID].note)
+        {
+            [cell.noteButton setImage:[UIImage imageNamed:@"words list_note.png"] forState:UIControlStateNormal];
+        }
+        else
+        {
+            [cell.noteButton setImage:[UIImage imageNamed:@"words list_no_note.png"] forState:UIControlStateNormal];
+        }
     }
+    
+    
+    
     //vc.text = [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
     //[cell addSubview:vc.view];
 
@@ -120,6 +132,17 @@ static NSDictionary* typeDict = nil;
                                  @"shouldShowSampleSentence":@YES};
         WordLayoutViewController *c = (WordLayoutViewController*)vc;
         [c displayWord:[[WordHelper instance] wordWithID:self.wordID] withOption:option];
+    }
+    else if(self.type == SmartListType_Homo)
+    {
+        vc = [[WordLayoutViewController alloc] init];
+        NSDictionary *option = @{@"shouldShowChineseMeaning":@YES,
+                                 @"shouldShowEnglishMeaning":@YES,
+                                 @"shouldShowSynonyms":@YES,
+                                 @"shouldShowAntonyms":@YES,
+                                 @"shouldShowSampleSentence":@YES};
+        WordLayoutViewController *c = (WordLayoutViewController*)vc;
+        [c displayWord:[[WordHelper instance] wordWithID:100] withOption:option];
     }
     CGRect frame = vc.view.frame;
     
