@@ -137,10 +137,12 @@
     //self.dashboardVC.delegate = self;
     [self.view addSubview:self.dashboardVC.view];
     if (self.view.frame.size.height == 548.0f) {
-        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-125, -250));
+        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-130, -250));
     } else {
-        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-125, -210));
+        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-130, -210));
     }
+    
+    [self.backButton.superview bringSubviewToFront:self.backButton];
 
     
 }
