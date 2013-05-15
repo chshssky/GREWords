@@ -126,6 +126,47 @@
     
 }
 
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidUnload {
+    [self setPageControlView:nil];
+    [self setWordPhonetic:nil];
+    [self setSoundImage:nil];
+    [self setBackButton:nil];
+    [super viewDidUnload];
+}
+
+
+
+#pragma mark - sound and back button Methods
+
+- (IBAction)soundButtonClicked:(id)sender {
+    
+    //SmartWordListViewController *vc = (SmartWordListViewController *)self.viewDeckController.leftController;
+    //[vc addWord:[[WordHelper instance] wordWithID:200]];
+    
+    [[WordSpeaker instance] readWord:self.wordLabel.text];
+    [self.soundImage setImage:[UIImage imageNamed:@"learning_sound_clicked.png"]];
+}
+
+- (IBAction)soundButtonReleased:(id)sender {
+    [self.soundImage setImage:[UIImage imageNamed:@"learning_sound.png"]];
+}
+
+- (IBAction)BackButtonPushed:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
+    [self.delegate AnimationBack];
+}
+
+
+
+
+
+#pragma mark - add or remove note Methods
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
@@ -209,8 +250,6 @@
     CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     [lineAnimation setValue:@"removeDownNoteImageAnimation" forKey:@"id"];
     CGMutablePathRef path = CGPathCreateMutable();
-//    CGPathMoveToPoint(path, NULL, 25, self.view.frame.size.height/4);
-//    CGPathAddLineToPoint(path, NULL, 25, -250);
     CGPathMoveToPoint(path, NULL, _noteDown.center.x, _noteDown.center.y);
     CGPathAddLineToPoint(path, NULL, _noteDown.center.x, -250);
     lineAnimation.path = path;
@@ -230,11 +269,8 @@
     CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     [lineAnimation setValue:@"removeUpNoteImageAnimation" forKey:@"id"];
     CGMutablePathRef path = CGPathCreateMutable();
-//    CGPathMoveToPoint(path, NULL, 55, self.view.frame.size.height/4);
-//    CGPathAddLineToPoint(path, NULL, 55, -250);
     CGPathMoveToPoint(path, NULL, _noteUp.center.x, _noteUp.center.y);
     CGPathAddLineToPoint(path, NULL, _noteUp.center.x, -250);
-    //NSLog(@"%f,%f,%f",_noteUp.frame.origin.y,_noteUp.center.y,self.view.frame.size.height/4);
 
     lineAnimation.path = path;
     CGPathRelease(path);
@@ -254,11 +290,8 @@
     CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     [lineAnimation setValue:@"removeNoteTextViewAnimation" forKey:@"id"];
     CGMutablePathRef path = CGPathCreateMutable();
-    //    CGPathMoveToPoint(path, NULL, 55, self.view.frame.size.height/4);
-    //    CGPathAddLineToPoint(path, NULL, 55, -250);
     CGPathMoveToPoint(path, NULL, _noteTextView.center.x, _noteTextView.center.y);
     CGPathAddLineToPoint(path, NULL, _noteTextView.center.x, -250);
-    //NSLog(@"%f,%f,%f",_noteUp.frame.origin.y,_noteUp.center.y,self.view.frame.size.height/4);
     
     lineAnimation.path = path;
     CGPathRelease(path);
@@ -277,19 +310,16 @@
     {
         [_noteDown removeFromSuperview];
         _noteDown = nil;
-        ////NSLog(@"removeDown");
     }
     if([[theAnimation valueForKey:@"id"] isEqual:@"removeUpNoteImageAnimation"])
     {
         [_noteUp removeFromSuperview];
         _noteUp = nil;
-        ////NSLog(@"removeUp");
     }
     if([[theAnimation valueForKey:@"id"] isEqual:@"removeNoteTextViewAnimation"])
     {
         [_noteTextView removeFromSuperview];
         _noteTextView = nil;
-        ////NSLog(@"removeUp");
     }
 }
 
@@ -300,7 +330,6 @@
         [_noteUp setCenter:CGPointMake(55, -250)];
         _noteUp.layer.anchorPoint = CGPointMake(0.08, 0.08);
         [self.view addSubview:_noteUp];
-        //NSLog(@"新建up");
     }
     
     CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
@@ -347,7 +376,6 @@
         [_noteDown setCenter:CGPointMake(25, -250)];
         _noteDown.layer.anchorPoint = CGPointMake(0.08, 0.08);
         [self.view addSubview:_noteDown];
-        //NSLog(@"新建down");
     }
     
     CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
@@ -411,14 +439,6 @@
         _blackImageView.alpha = 0.3;
         [self.view addSubview:_blackImageView];
     }
-    
-//    CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-//    opacityAnimation.fromValue = [NSNumber numberWithFloat:0.0];
-//    opacityAnimation.toValue = [NSNumber numberWithFloat:0.2];
-//    opacityAnimation.removedOnCompletion = NO;
-//    opacityAnimation.fillMode = kCAFillModeForwards;
-//    opacityAnimation.duration = 0.3f;
-//    [_blackImageView.layer addAnimation:opacityAnimation forKey:nil];
 }
 
 - (void)addNoteTextViewAnimation
@@ -488,7 +508,6 @@
     lineAnimation.fillMode = kCAFillModeForwards;
     lineAnimation.removedOnCompletion = NO;
     lineAnimation.beginTime = CACurrentMediaTime();
-    //lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     [_noteTextView.layer addAnimation:lineAnimation forKey:nil];
     
      _noteTextView.center = CGPointMake(57, self.view.frame.size.height/4-85);
@@ -504,7 +523,6 @@
     lineAnimation.fillMode = kCAFillModeForwards;
     lineAnimation.removedOnCompletion = NO;
     lineAnimation.beginTime = CACurrentMediaTime();
-    //lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     [_noteUp.layer addAnimation:lineAnimation forKey:nil];
     
      _noteUp.center = CGPointMake(55, self.view.frame.size.height/4-80);
@@ -520,7 +538,6 @@
     lineAnimation.fillMode = kCAFillModeForwards;
     lineAnimation.removedOnCompletion = NO;
     lineAnimation.beginTime = CACurrentMediaTime();
-    //lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     [_noteDown.layer addAnimation:lineAnimation forKey:nil];
     
     _noteDown.center = CGPointMake(25, self.view.frame.size.height/4-105);
@@ -561,10 +578,9 @@
     }
 }
 
-
+//获取当前屏幕图片
 -(UIImage *)getImageFromView:(UIView *)theView
 {
-    //UIGraphicsBeginImageContext(theView.bounds.size);
     UIGraphicsBeginImageContextWithOptions(theView.bounds.size, YES, theView.layer.contentsScale);
     [theView.layer renderInContext:UIGraphicsGetCurrentContext()];
     UIImage *image=UIGraphicsGetImageFromCurrentImageContext();
@@ -576,11 +592,10 @@ double radians(float degrees) {
     return ( degrees * 3.14159265 ) / 180.0;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
+
+
+#pragma mark - two scrollview and load detail Methods
 
 //加载单词内容进入数组
 - (void)loadWordView:(int)numberOfPage
@@ -637,72 +652,7 @@ double radians(float degrees) {
     self.WordPhonetic = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:numberOfPage] intValue]].data[@"phonetic"];
 }
 
-//控制上阴影的动态显示
-- (void)AddShadows
-{
-    int i = self.WordParaphraseView.contentOffset.y;
-    if (i <= 10) {
-        [self.UpImage setAlpha:i * 0.1];
-    } else {
-        [self.UpImage setAlpha:1];
-    }
-    if (i == 1)
-    {
-        [self.UpImage setAlpha:0];
-    }
-}
-
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    //判断是哪个scrollview
-    if (scrollView == self.pageControlView) {
-//        if (!scrollView.zoomBouncing) {
-//            //NSLog(@"到底了！！！");
-//        }
-//        
-        
-        
-        //禁制scrollview向右滑动///////////////////////////////////////////////////////////////////////
-        CGPoint translation;
-        
-        for (id gesture in scrollView.gestureRecognizers){
-            if ([[NSString stringWithFormat:@"%@",[gesture class]] isEqualToString:@"UIScrollViewPanGestureRecognizer"]){
-                
-                translation = [gesture translationInView:scrollView];
-                break;
-            }
-        }
-        if(translation.x > 0)
-        {
-            [scrollView setContentOffset:CGPointMake(self.pageControlView.frame.size.width*self.currentPage, scrollView.contentOffset.y) animated:NO];
-            return;
-        }
-        /////////////////////////////////////////////////////////////////////////////////////////////
-        
-        
-        //找到下一个应该显示的page//////////////////////////////////////////////////////////////////////
-        CGFloat pageWidth = self.pageControlView.frame.size.width;
-        int page = floor((self.pageControlView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-        self.currentPage = page;
-        // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
-        
-        
-        [self loadViewWithPage:page];
-        [self loadViewWithPage:page + 1];
-        /////////////////////////////////////////////////////////////////////////////////////////////
-        
-        
-        //显示单词内容和单词名称
-        self.WordParaphraseView = [self.viewControlArray objectAtIndex:page];
-        self.wordLabel.text = [self.nameControlArray objectAtIndex:page];
-        self.wordSoundLabel.text = [self.phoneticControlArray objectAtIndex:page];
-      
-        
-    }else if (scrollView == self.WordParaphraseView){
-        [self AddShadows];
-    }
-}
-
+//加载单词
 - (void)loadViewWithPage:(int)page
 {
     // replace the placeholder if necessary
@@ -748,31 +698,70 @@ double radians(float degrees) {
     }
 }
 
-
-- (IBAction)soundButtonClicked:(id)sender {
-    
-    //SmartWordListViewController *vc = (SmartWordListViewController *)self.viewDeckController.leftController;
-    //[vc addWord:[[WordHelper instance] wordWithID:200]];
-    
-    [[WordSpeaker instance] readWord:self.wordLabel.text];
-    [self.soundImage setImage:[UIImage imageNamed:@"learning_sound_clicked.png"]];
+//控制上阴影的动态显示
+- (void)AddShadows
+{
+    int i = self.WordParaphraseView.contentOffset.y;
+    if (i <= 10) {
+        [self.UpImage setAlpha:i * 0.1];
+    } else {
+        [self.UpImage setAlpha:1];
+    }
+    if (i == 1)
+    {
+        [self.UpImage setAlpha:0];
+    }
 }
 
-- (IBAction)soundButtonReleased:(id)sender {
-    [self.soundImage setImage:[UIImage imageNamed:@"learning_sound.png"]];
-}
-
-- (IBAction)BackButtonPushed:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
-    [self.delegate AnimationBack];
-}
-
-- (void)viewDidUnload {
-    [self setPageControlView:nil];
-    [self setWordPhonetic:nil];
-    [self setSoundImage:nil];
-    [self setBackButton:nil];
-    [super viewDidUnload];
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    //判断是哪个scrollview
+    if (scrollView == self.pageControlView) {
+        //        if (!scrollView.zoomBouncing) {
+        //            //NSLog(@"到底了！！！");
+        //        }
+        //
+        
+        
+        //禁制scrollview向右滑动///////////////////////////////////////////////////////////////////////
+        CGPoint translation;
+        
+        for (id gesture in scrollView.gestureRecognizers){
+            if ([[NSString stringWithFormat:@"%@",[gesture class]] isEqualToString:@"UIScrollViewPanGestureRecognizer"]){
+                
+                translation = [gesture translationInView:scrollView];
+                break;
+            }
+        }
+        if(translation.x > 0)
+        {
+            [scrollView setContentOffset:CGPointMake(self.pageControlView.frame.size.width*self.currentPage, scrollView.contentOffset.y) animated:NO];
+            return;
+        }
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        
+        
+        //找到下一个应该显示的page//////////////////////////////////////////////////////////////////////
+        CGFloat pageWidth = self.pageControlView.frame.size.width;
+        int page = floor((self.pageControlView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+        self.currentPage = page;
+        // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
+        
+        
+        [self loadViewWithPage:page];
+        [self loadViewWithPage:page + 1];
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        
+        
+        //显示单词内容和单词名称
+        self.WordParaphraseView = [self.viewControlArray objectAtIndex:page];
+        self.wordLabel.text = [self.nameControlArray objectAtIndex:page];
+        self.wordSoundLabel.text = [self.phoneticControlArray objectAtIndex:page];
+        
+        
+    }else if (scrollView == self.WordParaphraseView){
+        [self AddShadows];
+    }
 }
 
 - (void) scrollViewWillBeginDragging:(UIScrollView *)scrollView
@@ -790,6 +779,19 @@ double radians(float degrees) {
         if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
         }
+    }
+    
+    
+    NSLog(@"currentPage:%d",self.currentPage);
+    
+    
+    
+    SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
+    
+     WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:_currentPage] intValue]];
+    
+    if ([left.array indexOfObject:addWord] == NSNotFound) {
+        [left addWord:[[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:_currentPage] intValue]]]; 
     }
 }
 
@@ -810,6 +812,10 @@ double radians(float degrees) {
         }
     }
 }
+
+
+
+
 
 #pragma mark - IIViewDeckControllerDelegate Methods
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController didCloseViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
@@ -833,6 +839,7 @@ double radians(float degrees) {
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController didChangeOffset:(CGFloat)offset orientation:(IIViewDeckOffsetOrientation)orientation panning:(BOOL)panning
 {
     SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
+    
     if (_blackView == NULL) {
         _blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, left.view.frame.size.width, left.view.frame.size.height)];
         [_blackView setBackgroundColor:[UIColor blackColor]];
