@@ -26,10 +26,6 @@
 @property(nonatomic) float temp_percent;
 @property(nonatomic) float percent;
 
-
-
-
-
 @end
 
 @implementation DashboardViewController
@@ -177,6 +173,11 @@
     bigButton.layer.anchorPoint = CGPointMake(0.5, 0.5);
     bigButton.frame =  circlePointView.frame;
     [self.view addSubview:bigButton];
+}
+
+- (void)wordDetailIndicatorGen
+{
+    
 }
 
 

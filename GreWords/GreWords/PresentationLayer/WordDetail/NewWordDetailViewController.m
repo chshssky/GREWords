@@ -16,6 +16,7 @@
 #import "UIImage+ColorImage.h"
 #import "UIImage+StackBlur.h"
 #import "noCopyTextView.h"
+#import "DashboardViewController.h"
 
 
 @interface NewWordDetailViewController () <UIScrollViewDelegate,UITextViewDelegate>
@@ -42,6 +43,7 @@
 @property (nonatomic, retain) NSMutableArray *phoneticControlArray;
 @property (strong, nonatomic) UIScrollView *WordParaphraseView;
 @property (strong, nonatomic) UIImageView *blackView;
+@property (strong, nonatomic) UIImageView *leftImageView;
 @property  NSString *WordName;
 @property  NSString *WordPhonetic;
 
@@ -49,6 +51,8 @@
 - (void)scrollViewDidScroll:(UIScrollView *)sender;
 
 @property int currentPage;
+
+@property (strong, nonatomic) DashboardViewController *dashboardVC;
 
 @end
 
@@ -123,6 +127,23 @@
     downRecognizer.delegate = self;
     downRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:downRecognizer];
+    
+    
+    
+    //添加左上角的进度圆~
+    self.dashboardVC = [[DashboardViewController alloc] init];
+    self.dashboardVC.nonFinishedNumber = 100;
+    self.dashboardVC.sumNumber = 300;
+    //self.dashboardVC.delegate = self;
+    [self.view addSubview:self.dashboardVC.view];
+    if (self.view.frame.size.height == 548.0f) {
+        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-130, -250));
+    } else {
+        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-130, -210));
+    }
+    
+    [self.backButton.superview bringSubviewToFront:self.backButton];
+
     
 }
 
@@ -287,6 +308,8 @@
 
 - (void)removeNoteTextViewAnimation
 {
+    [[WordHelper instance] wordWithString:_wordLabel.text].note = _noteTextView.text;
+    
     CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     [lineAnimation setValue:@"removeNoteTextViewAnimation" forKey:@"id"];
     CGMutablePathRef path = CGPathCreateMutable();
@@ -303,6 +326,8 @@
     lineAnimation.delegate = self;
     lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     [_noteTextView.layer addAnimation:lineAnimation forKey:nil];
+    
+    
 }
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag {
@@ -327,14 +352,14 @@
 {
     if (_noteUp == nil) {
         _noteUp = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_noteUp.png"]];
-        [_noteUp setCenter:CGPointMake(55, -250)];
+        [_noteUp setCenter:CGPointMake(55, -200)];
         _noteUp.layer.anchorPoint = CGPointMake(0.08, 0.08);
         [self.view addSubview:_noteUp];
     }
     
     CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, 55, -250);
+    CGPathMoveToPoint(path, NULL, 55, -200);
     CGPathAddLineToPoint(path, NULL, 55, self.view.frame.size.height/4);
     lineAnimation.path = path;
     CGPathRelease(path);
@@ -373,14 +398,14 @@
 {
     if (_noteDown == nil) {
         _noteDown = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_noteDown.png"]];
-        [_noteDown setCenter:CGPointMake(25, -250)];
+        [_noteDown setCenter:CGPointMake(25, -200)];
         _noteDown.layer.anchorPoint = CGPointMake(0.08, 0.08);
         [self.view addSubview:_noteDown];
     }
     
     CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, 25, -250);
+    CGPathMoveToPoint(path, NULL, 25, -200);
     CGPathAddLineToPoint(path, NULL, 25, self.view.frame.size.height/4-25);
     lineAnimation.path = path;
     CGPathRelease(path);
@@ -444,10 +469,11 @@
 - (void)addNoteTextViewAnimation
 {
     if (_noteTextView == nil) {
-        _noteTextView = [[noCopyTextView alloc] initWithFrame:CGRectMake(57, -220, 258, 220)];
+        _noteTextView = [[noCopyTextView alloc] initWithFrame:CGRectMake(57, -170, 258, 220)];
         _noteTextView.delegate = self;
         _noteTextView.layer.anchorPoint = CGPointMake(0.08, 0);
         _noteTextView.editable = YES;
+        _noteTextView.text = [[WordHelper instance] wordWithString:_wordLabel.text].note ;
         [_noteTextView setFont:[UIFont fontWithName:@"STHeitiSC-Light" size:22]];
         [_noteTextView setBackgroundColor:[UIColor clearColor]];
         [self.view addSubview:_noteTextView];
@@ -456,7 +482,7 @@
     
     CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, 57, -220);
+    CGPathMoveToPoint(path, NULL, 57, -170);
     CGPathAddLineToPoint(path, NULL, 57, self.view.frame.size.height/4-5);
     lineAnimation.path = path;
     CGPathRelease(path);
@@ -640,6 +666,8 @@ double radians(float degrees) {
     
 }
 
+
+
 //加载单词名称进入数组
 - (void)loadWordName:(int)numberOfPage
 {
@@ -675,8 +703,6 @@ double radians(float degrees) {
         //把单词音标加入数组
         [self loadWordPhonetic:page];
         [self.phoneticControlArray replaceObjectAtIndex:page withObject:self.WordPhonetic];
-        
-        
     }
     
     // add the controller's view to the scroll view
@@ -695,6 +721,13 @@ double radians(float degrees) {
             self.WordParaphraseView.contentSize = size;
         }
         [self.pageControlView addSubview:self.WordParaphraseView];
+        
+        //把单词加入抽屉
+        SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
+        WordEntity *addWord = [[WordHelper instance] wordWithString:_wordLabel.text];
+        if ([left.array indexOfObject:addWord] == NSNotFound) {
+            [left addWord:addWord];
+        }
     }
 }
 
@@ -723,7 +756,7 @@ double radians(float degrees) {
         //
         
         
-        //禁制scrollview向右滑动///////////////////////////////////////////////////////////////////////
+        //禁止scrollview向右滑动///////////////////////////////////////////////////////////////////////
         CGPoint translation;
         
         for (id gesture in scrollView.gestureRecognizers){
@@ -748,7 +781,7 @@ double radians(float degrees) {
         // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
         
         
-        [self loadViewWithPage:page];
+        [self loadViewWithPage:page];  
         [self loadViewWithPage:page + 1];
         /////////////////////////////////////////////////////////////////////////////////////////////
         
@@ -779,19 +812,6 @@ double radians(float degrees) {
         if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
         }
-    }
-    
-    
-    NSLog(@"currentPage:%d",self.currentPage);
-    
-    
-    
-    SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
-    
-     WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:_currentPage] intValue]];
-    
-    if ([left.array indexOfObject:addWord] == NSNotFound) {
-        [left addWord:[[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:_currentPage] intValue]]]; 
     }
 }
 
@@ -827,7 +847,6 @@ double radians(float degrees) {
 
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController willOpenViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
 {
-    
     self.view.userInteractionEnabled = NO;
 }
 
@@ -840,6 +859,7 @@ double radians(float degrees) {
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController didChangeOffset:(CGFloat)offset orientation:(IIViewDeckOffsetOrientation)orientation panning:(BOOL)panning
 {
     SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
+    
     
     if (_blackView == NULL) {
         _blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, left.view.frame.size.width, left.view.frame.size.height)];

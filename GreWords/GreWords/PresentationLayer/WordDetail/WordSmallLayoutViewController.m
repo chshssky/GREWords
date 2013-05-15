@@ -100,7 +100,7 @@ whetherOnlyOneMeaning:(BOOL)b
         [label sizeToFit];
         [self.view addSubview:label];
         //////////////////
-        label = [[UILabel alloc] initWithFrame:CGRectMake(85, h, 215, 25)];
+        label = [[UILabel alloc] initWithFrame:CGRectMake(85, h, 185, 25)];
         label.backgroundColor = [UIColor clearColor];
         label.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
         NSRange range = [theUsage rangeOfString:@"："];
@@ -114,11 +114,11 @@ whetherOnlyOneMeaning:(BOOL)b
             _sumHeight = label.frame.origin.y + label.frame.size.height;
             
             UIImageView *rectImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_meaning_rect.png"]];
-            rectImage.frame = CGRectMake(10, h, 300, _sumHeight-h);
+            rectImage.frame = CGRectMake(10, h, 255, _sumHeight-h);
             [self.view addSubview:rectImage];
             [self.view sendSubviewToBack:rectImage];
             ////////////////////
-            label = [[UILabel alloc] initWithFrame:CGRectMake(85, _sumHeight, 215, 25)];
+            label = [[UILabel alloc] initWithFrame:CGRectMake(10, _sumHeight, 255, 25)];
             label.backgroundColor = [UIColor clearColor];
             label.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
             label.text = [theUsage substringFromIndex:range.location+1];
@@ -146,11 +146,11 @@ whetherOnlyOneMeaning:(BOOL)b
             _sumHeight = label.frame.origin.y + label.frame.size.height;
             
             UIImageView *rectImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_meaning_rect.png"]];
-            rectImage.frame = CGRectMake(10, h, 300, _sumHeight-h);
+            rectImage.frame = CGRectMake(10, h, 255, _sumHeight-h);
             [self.view addSubview:rectImage];
             [self.view sendSubviewToBack:rectImage];
             ////////////////////
-            label = [[UILabel alloc] initWithFrame:CGRectMake(85, _sumHeight, 215, 25)];
+            label = [[UILabel alloc] initWithFrame:CGRectMake(10, _sumHeight, 255, 25)];
             label.backgroundColor = [UIColor clearColor];
             label.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
             label.text = [theUsage substringFromIndex:offset+1];

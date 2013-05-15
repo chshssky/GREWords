@@ -41,7 +41,6 @@
     dashboard.delegate = self;
     [self.view addSubview:dashboard.view];
     
-    
     self.slideBarView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar.png"]];
     self.slideBarView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+190);
     self.slideBarView.layer.anchorPoint = CGPointMake(0.5, 0.5);
@@ -235,17 +234,22 @@
 -(void)bigButtonPressed
 {
     NSLog(@"Big Button Pressed");
-    
+    NSLog(@"before::::::x:%f, y:%f", dashboard.view.frame.origin.x, dashboard.view.frame.origin.y);
     [UIView animateWithDuration:0.5f animations:^{
         self.titleView.transform = CGAffineTransformMakeTranslation(-150, -100);
         self.slideBarView.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.slideBarStatusTextView.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.slideBarStatusView.transform = CGAffineTransformMakeTranslation(-300, 0);
-        dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-125, -250));
+        if (self.view.frame.size.height == 548.0f) {
+            dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-130, -250));
+        } else {
+            dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-130, -210));
+        }
         self.menu.transform = CGAffineTransformMakeTranslation(-300, 0);
     } completion:^(BOOL finished) {
         
-        
+        NSLog(@"x:%f, y:%f, width:%f, height:%f", dashboard.view.frame.origin.x, dashboard.view.frame.origin.y, dashboard.view.frame.size.width, dashboard.view.frame.size.height);
+
         NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
         vc.delegate = self;
         
@@ -268,12 +272,12 @@
 - (void)AnimationBack
 {
     [UIView animateWithDuration:0.5f animations:^{
-        self.titleView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(-0.001f, -0.001f));
-        self.slideBarView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(-0.001f, 0));
-        self.slideBarStatusTextView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(-0.001f, 0));
-        self.slideBarStatusView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(-0.001f, 0));
-        dashboard.view.transform = CGAffineTransformInvert(CGAffineTransformConcat(CGAffineTransformMakeScale(1.0f, 1.0f), CGAffineTransformMakeTranslation(-0.001f, -0.001f)));
-        self.menu.transform = CGAffineTransformMakeTranslation(-0.001f, 0);
+        self.titleView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
+        self.slideBarView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
+        self.slideBarStatusTextView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
+        self.slideBarStatusView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
+        dashboard.view.transform = CGAffineTransformInvert(CGAffineTransformConcat(CGAffineTransformMakeScale(1.0f, 1.0f), CGAffineTransformMakeTranslation(0, 0)));
+        self.menu.transform = CGAffineTransformMakeTranslation(0, 0);
 
     }];
 }

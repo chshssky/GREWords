@@ -37,4 +37,7 @@
 
 @property(nonatomic, strong) NSMutableArray *slices;
 @property(nonatomic, strong) NSArray        *sliceColors;
+
+- (void)wordDetailIndicatorGen;
+
 @end
