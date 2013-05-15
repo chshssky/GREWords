@@ -809,6 +809,7 @@ double radians(float degrees) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
         }
     }
+    
 }
 
 
@@ -847,7 +848,13 @@ double radians(float degrees) {
     _blackView.alpha = 1.0/500.0*(300.0-offset);
     
     [left.view clipsToBounds];
-    [left.view setFrame:CGRectMake(5-5.0/276.0*offset, 5-5/276.0*offset, 300+20.0/276.0*offset, 538.25+10/276.0*offset)];
+    if (iPhone5) {
+        [left.view setFrame:CGRectMake(5-5.0/276.0*offset, 5-5/276.0*offset, 300+20.0/276.0*offset, 538.25+10/276.0*offset)];
+    }
+    else
+    {
+        [left.view setFrame:CGRectMake(5-5.0/276.0*offset, 5-5/276.0*offset, 300+20.0/276.0*offset, 454.25+10/276.0*offset)];
+    }
 }
 
 @end

@@ -246,7 +246,9 @@
 }
 
 - (IBAction)wrongButtonPushed:(id)sender {
-    
+    self.wordID++;
+    [self viewWillAppear:YES];
+    [self loadWord:self.wordID];
 }
 
 - (IBAction)pronounceButtonPushed:(id)sender {
