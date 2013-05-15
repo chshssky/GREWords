@@ -153,11 +153,11 @@
                 <viewController storyboardIdentifier="SmartWordList" id="bdK-yc-oid" customClass="SmartWordListViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OsL-zB-Ef6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="learning list_bg.png" id="lH1-Jn-HE4">
+                            <imageView userInteractionEnabled="NO" contentMode="top" image="learning list_bg.png" id="lH1-Jn-HE4">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask"/>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="hEA-6j-P4t">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -320,6 +320,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="hEA-6j-P4t" id="UHm-sU-RoV"/>
                     </connections>

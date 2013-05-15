@@ -54,7 +54,7 @@
     
     SmartWordListViewController *vc3 = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
     vc3.type = SmartListType_Slide;
-    vc3.array = @[[[WordHelper instance] wordWithID:201],[[WordHelper instance] wordWithID:202],[[WordHelper instance] wordWithID:203]];
+    vc3.array = [[WordHelper instance] wordsAlphabeticOrder];
     frame = vc3.view.frame;
     frame.origin.x += frame.size.width * 2;
     frame.origin.y = 0;
