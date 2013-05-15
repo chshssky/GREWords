@@ -108,7 +108,7 @@ static NSDictionary* typeDict = nil;
     {
         vc = [[WordSmallLayoutViewController alloc] init];
         WordSmallLayoutViewController *c = (WordSmallLayoutViewController*)vc;
-        [c displayWord:[[WordHelper instance] wordWithID:self.wordID] withOption:nil];
+        [c displayWord:[[WordHelper instance] wordWithID:self.wordID]];
     }
     else if(self.type == SmartListType_Full)
     {

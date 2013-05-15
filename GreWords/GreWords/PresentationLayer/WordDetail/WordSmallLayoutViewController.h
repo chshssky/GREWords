@@ -10,7 +10,9 @@
 #import "WordEntity.h"
 
 @interface WordSmallLayoutViewController : UIViewController
-- (void)displayWord:(WordEntity*)word withOption:(NSDictionary*)options;
+
+
+- (void)displayWord:(WordEntity*)word;
 
 @property (nonatomic) float sumHeight;
 @end

@@ -45,7 +45,7 @@ whetherOnlyOneMeaning:(BOOL)b
     // Dispose of any resources that can be recreated.
 }
 
-- (void)displayWord:(WordEntity*)word withOption:(NSDictionary*)options
+- (void)displayWord:(WordEntity*)word
 {
     WordEntity *wordEntity = word;
     NSDictionary *wordDictionary = wordEntity.data;
