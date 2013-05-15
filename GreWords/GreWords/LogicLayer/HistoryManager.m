@@ -13,6 +13,7 @@
 #import "ReviewEvent.h"
 #import "ExamEvent.h"
 
+
 @interface HistoryManager ()
 
 @property (weak, nonatomic) NSManagedObjectContext *context;
@@ -85,18 +86,18 @@ HistoryManager* _historyManagerInstance = nil;
     if ([aEvent isKindOfClass:[NewWordEvent class]]) {
         NewWordEvent *newWordEvent = (NewWordEvent *)aEvent;
         // convert enum to NSNumber
-        [dict setObject:[NSNumber numberWithInt:[newWordEvent stage_now]] forKey:@"stage"];
-        [dict setObject:[NSNumber numberWithInt:[newWordEvent unit]] forKey:@"unit"];
-        [dict setObject:[NSNumber numberWithInt:[newWordEvent round]] forKey:@"round"];
-        [dict setObject:[NSNumber numberWithInt:[newWordEvent orderInUnit]] forKey:@"orderInUnit"];
+        [dict setObject:[NSNumber numberWithInt:[newWordEvent stage_now]] forKey:NEWWORDEVENT_STAGE_NOW];
+        [dict setObject:[NSNumber numberWithInt:[newWordEvent unit]] forKey:NEWWORDEVENT_UNIT];
+        [dict setObject:[NSNumber numberWithInt:[newWordEvent round]] forKey:NEWWORDEVENT_ROUNG];
+        [dict setObject:[NSNumber numberWithInt:[newWordEvent orderInUnit]] forKey:NEWWORDEVENT_ORDER_IN_UNIT];
     } else if ([aEvent isKindOfClass:[ReviewEvent class]]) {
         ReviewEvent *reviewEvent = (ReviewEvent *)aEvent;
-        [dict setObject:[NSNumber numberWithInt:[reviewEvent stage_now]] forKey:@"stage"];
-        [dict setObject:[NSNumber numberWithInt:[reviewEvent unit]] forKey:@"unit"];
-        [dict setObject:[NSNumber numberWithInt:[reviewEvent orderInUnit]] forKey:@"orderInUnit"];
+        [dict setObject:[NSNumber numberWithInt:[reviewEvent stage_now]] forKey:REVIEWEVENT_STAGE_NOW];
+        [dict setObject:[NSNumber numberWithInt:[reviewEvent unit]] forKey:REVIEWEVENT_UNIT];
+        [dict setObject:[NSNumber numberWithInt:[reviewEvent orderInUnit]] forKey:REVIEWEVENT_ORDER_IN_UNIT];
     } else if ([aEvent isKindOfClass:[ExamEvent class]]) {
         ExamEvent *examEvent = (ExamEvent *)aEvent;
-        [dict setObject:[NSNumber numberWithInt:[examEvent difficulty]] forKey:@"difficulty"];
+        [dict setObject:[NSNumber numberWithInt:[examEvent difficulty]] forKey:EXAMEVENT_DIFFICULTY];
     } else {
         NSLog(@"BaseEvent is not a specific class");
     }
@@ -144,7 +145,7 @@ HistoryManager* _historyManagerInstance = nil;
     
     NSDictionary *info = [self toArrayOrNSDictionary:history.info];
     
-    return [[info objectForKey:@"stage"] integerValue];
+    return [[info objectForKey:NEWWORDEVENT_STAGE_NOW] integerValue];
 }
 
 - (float)currentStageProgress
@@ -162,6 +163,7 @@ HistoryManager* _historyManagerInstance = nil;
     NSDictionary *info = [self toArrayOrNSDictionary:history.info];
     
     float progress = 0;
+    //!!!!!!!!!!!!!!!!
     //[[info objectForKey:@"unit"] floatValue] / ;
     
     return progress;
@@ -215,9 +217,9 @@ HistoryManager* _historyManagerInstance = nil;
     
     for (History *hist in fetchMatches) {
         NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
-        [dict setObject:hist.duration forKey:@"Duration"];
+        [dict setObject:hist.duration forKey:DATE_AND_DURATION_IN_STAGE_DURATION];
         //Date:
-        [dict setObject:hist.startTime  forKey:@"Date"];
+        [dict setObject:hist.startTime  forKey:DATE_AND_DURATION_IN_STAGE_DATE];
         [results addObject:dict];
     }
     return results;
