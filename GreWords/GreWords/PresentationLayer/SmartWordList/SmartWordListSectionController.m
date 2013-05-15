@@ -124,7 +124,7 @@ static NSDictionary* typeDict = nil;
     CGRect frame = vc.view.frame;
     
     
-    if(frame.size.height >  self.scrollViewHeight)
+    if(frame.size.height >  self.scrollViewHeight && self.type != SmartListType_Slide)
     {
         frame.size.height =  self.scrollViewHeight;
         UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:cell.contentView.frame];
@@ -138,6 +138,10 @@ static NSDictionary* typeDict = nil;
     else
     {
         [cell.contentView addSubview:vc.view];
+        if(self.type == SmartListType_Slide)
+        {
+            cell.frame  = cell.contentView.frame = frame;
+        }
     }
     
     //cell.contentView.layer;

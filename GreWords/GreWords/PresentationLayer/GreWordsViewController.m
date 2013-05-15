@@ -240,10 +240,10 @@
         self.slideBarView.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.slideBarStatusTextView.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.slideBarStatusView.transform = CGAffineTransformMakeTranslation(-300, 0);
-        if (self.view.frame.size.height == 548.0f) {
-            dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-130, -250));
+        if (iPhone5) {
+            dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -252));
         } else {
-            dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-130, -210));
+            dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -212));
         }
         self.menu.transform = CGAffineTransformMakeTranslation(-300, 0);
     } completion:^(BOOL finished) {

@@ -59,8 +59,6 @@
 
 @implementation NewWordDetailViewController
 
-#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -136,16 +134,17 @@
     self.dashboardVC.nonFinishedNumber = 100;
     self.dashboardVC.sumNumber = 300;
     //self.dashboardVC.delegate = self;
-    [self.view addSubview:self.dashboardVC.view];
-    if (self.view.frame.size.height == 548.0f) {
-        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-130, -250));
+    if (iPhone5) {
+        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -252));
     } else {
-        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-130, -210));
+        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -212));
     }
+    [self.view addSubview:self.dashboardVC.view];
+
     
     [self.backButton.superview bringSubviewToFront:self.backButton];
 
-    
+
 }
 
 - (void)didReceiveMemoryWarning

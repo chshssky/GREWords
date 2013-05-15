@@ -33,6 +33,7 @@
 //    [self.tableView insertRowsAtIndexPaths:indexPath withRowAnimation:UITableViewRowAnimationBottom];
 //    //[self.tableView endUpdates];
     [self.tableView reloadData];
+    //[self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.3];
     [self addButtomTexture];
 }
 
@@ -127,6 +128,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     GCRetractableSectionController* sectionController = [retractableControllers objectAtIndex:indexPath.section];
+    //[self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.3];
     
     if(indexPath.row != 0)
         return;
@@ -160,6 +162,10 @@
     [sectionController scroll];
     
     [self addButtomTexture];
+    [self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.3];
+    [self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.5];
+    
+    //[self addButtomTexture];
     //[downTexture removeFromSuperview];
     //downTexture = nil;
 }
