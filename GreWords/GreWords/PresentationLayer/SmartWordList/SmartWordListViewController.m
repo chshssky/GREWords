@@ -40,6 +40,8 @@
 {
     [super viewDidLoad];
     
+    isDragging = NO;
+    
     retractableControllers = [@[] mutableCopy];
     lastTableViewHeight = -1;
     
@@ -167,9 +169,15 @@
 {
     if(self.tableView == scrollView)
     {
+        isDragging = YES;
         _contentOffsetBeforeScroll = self.tableView.contentOffset.y;
         [self.scrollDelegate smartWordListWillBeginDragging:self];
     }
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    isDragging = NO;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView*)aScrollView
@@ -177,6 +185,11 @@
     if(self.tableView == aScrollView)
     {
         CGFloat contentOffsetY = self.tableView.contentOffset.y - _contentOffsetBeforeScroll;
+        if(self.tableView.contentSize.height <= self.tableView.frame.size.height)
+        {
+            if(!isDragging)
+                return;
+        }
         
         [self.scrollDelegate smartWordList:self didTranslationYSinceLast:contentOffsetY];
     }
