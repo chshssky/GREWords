@@ -665,6 +665,8 @@ double radians(float degrees) {
     
 }
 
+
+
 //加载单词名称进入数组
 - (void)loadWordName:(int)numberOfPage
 {
@@ -718,6 +720,13 @@ double radians(float degrees) {
             self.WordParaphraseView.contentSize = size;
         }
         [self.pageControlView addSubview:self.WordParaphraseView];
+        
+        //把单词加入抽屉
+        SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
+        WordEntity *addWord = [[WordHelper instance] wordWithString:_wordLabel.text];
+        if ([left.array indexOfObject:addWord] == NSNotFound) {
+            [left addWord:addWord];
+        }
     }
 }
 
@@ -772,12 +781,8 @@ double radians(float degrees) {
         
         
         [self loadViewWithPage:page];
+
         
-        SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
-        WordEntity *addWord = [[WordHelper instance] wordWithString:_wordLabel.text];
-        if ([left.array indexOfObject:addWord] == NSNotFound) {
-            [left addWord:addWord];
-        }
         NSLog(@"加载：%@",_wordLabel.text);
         
         [self loadViewWithPage:page + 1];
