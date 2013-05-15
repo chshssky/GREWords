@@ -284,7 +284,7 @@
                                             <outlet property="wordLabel" destination="Jzi-g9-bKg" id="Cp2-VK-Lmo"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="smartwordcontent" rowHeight="259" id="QKq-xT-gJd" customClass="SmartWordListContentCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="smartwordcontent" rowHeight="259" id="QKq-xT-gJd" customClass="SmartWordListContentCell">
                                         <rect key="frame" x="0.0" y="98" width="320" height="259"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -293,7 +293,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" image="learning list_bg.png" id="2Rv-3J-PL0">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
-                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <view clipsSubviews="YES" contentMode="top" id="MAr-i6-5jI">
                                                     <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>

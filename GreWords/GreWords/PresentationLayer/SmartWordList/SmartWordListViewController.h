@@ -27,6 +27,8 @@
     float lastTableViewHeight;
     
     CGFloat _contentOffsetBeforeScroll;
+    
+    BOOL isDragging;
 }
 
 @property (retain, nonatomic) NSArray *array;
