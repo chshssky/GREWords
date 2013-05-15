@@ -1,354 +1,356 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>善变的 不稳定的</key>
-	<string>Volatile (versatile 通用的) capricious whimsical fickle inconstant mercurial erratic labile protean metamorphous caprice vagary vagrancy whimsy upheaval 剧变</string>
-	<key>倾向 趋势</key>
-	<string>Predisposition proposition 建议 disposition leaning propensity tilt list tendency inclination proclivity(acclivity 上坡 declivity 下 坡) bent liability predilection penchant (trenchant 尖锐的 enchant 被迷惑) orientation affinity slant</string>
-	<key>吸引人的</key>
-	<string>Absorbing arresting involving
-intriguing gripping engrossing engaging riveting mesmerizing agog snappy</string>
-	<key>矛盾的</key>
-	<string>Paradoxical ambivalent contradictory belie counter dichotomy(dichotomous) incongruity contravene Apophasis 通过不说而说 Oxymoron 通过矛盾构成对立 Antithetical 对立的</string>
-	<key>灾难</key>
-	<string>Catastrophe(apocalypse 启示) calamity cataclysm debacle fiasco</string>
-	<key>憎恶的</key>
-	<string>Abhorred abominated despised detested distained execrated loathed</string>
-	<key>创新的</key>
-	<string>Ingenious(ingenuous 天真的) innovative renovate inventive</string>
-	<key>思考</key>
-	<string>Contemplate cogitate deliberate 仔细 考虑 meditate pore resolve ruminate weigh</string>
-	<key>即兴的</key>
-	<string>Offhand impromptu extemporary extemporaneous improvised unrehearsed</string>
-	<key>忍受</key>
-	<string>Brook abide endure stomach</string>
-	<key>证明为假</key>
-	<string>Debunk belie confound confute discredit falsify rebut refute</string>
-	<key>随机的</key>
-	<string>Haphazard aimless arbitrary desultory (断断续续的) erratic scattered stray</string>
-	<key>格言警句</key>
-	<string>Maxim aphorism epigram adage proverb dictum</string>
-	<key>一致的</key>
-	<string>Accordant concordant consensus assent unanimity unison</string>
-	<key>证实</key>
-	<string>Verify attest authenticate certify corroborate substantiate testify validate vindicate</string>
-	<key>成功的</key>
-	<string>Eminent celebrated distinguished famed notable prominent renowned illustrious distinct</string>
-	<key>责备</key>
-	<string>Impugn reprehend reprobate chide rebuke reprimand reproach reprove censure admonish berate deplore execrate 诅咒怒骂</string>
-	<key>过时的</key>
-	<string>Archaic dated obsoleted antiquated fossilized medieval moribund moth-eaten outworn prehistoric</string>
-	<key>复杂的</key>
-	<string>Convoluted knotty involved sophisticated twisted tangled labyrinthine byzantine thorny</string>
-	<key>避免 绕开</key>
-	<string>Eschew dodge elude evade shirk shun circumvent bypass sidestep skirt weasel</string>
-	<key>获得</key>
-	<string>Attain capture reap harvest garner procure</string>
-	<key>顽固的不妥协的</key>
-	<string>Intransigent stubborn obstinate headstrong refractory recalcitrant contumacious unmanageable unyielding unbending pertinacious tenacious intractable obdurate willful dogged mulish ossified</string>
-	<key>费力的</key>
-	<string>arduous burdensome grueling exacting laborious onerous taxing toilsome</string>
-	<key>群体的</key>
-	<string>Gregarious (segregate 隔离) congregate aggregate(egregious 惊人 的)</string>
-	<key>隐居的</key>
-	<string>Hermit recluse withdraw sequester seclude aloof solitude</string>
-	<key>土的 平凡的</key>
-	<string>Pedestrian dreary jejune monotonous tedious wearisome jaded bland humdrum stale stodgy insipid vapid prosaic mediocre undistinguished banal trite bromide cliche hackneyed timeworn threadbare platitude stereotype</string>
-	<key>反驳</key>
-	<string>Contradict disprove gainsay rebut refute</string>
-	<key>坚定的</key>
-	<string>Steadfast resolute constant adamant pertinacious</string>
-	<key>推测</key>
-	<string>Speculate assume conjecture presume suppose surmise</string>
-	<key>阻止 避免</key>
-	<string>Preclude exclude avert deter(defer 遵 从;推迟) forestall obviate</string>
-	<key>预示</key>
-	<string>Harbinger foregoer augur herald portend precursor prophetic prognosticate prophesy</string>
-	<key>尊敬的</key>
-	<string>Reverence deference deferential(deferrable 可推迟的) venerate</string>
-	<key>苛求的</key>
-	<string>Fastidious demanding exacting finical fussy persnickety picky meticulous painstaking punctilious scrupulou</string>
-	<key>保守的</key>
-	<string>Conservative hidebound reactionary die-hard</string>
-	<key>有偏见的</key>
-	<string>Biased inequitable prejudiced nonobjective one-sided partial partisan unjust jaundiced bigot 有偏见的人</string>
-	<key>多余的</key>
-	<string>Superfluous excessive extra redundant surplus plethora</string>
-	<key>公正的</key>
-	<string>Disinterested equal evenhanded impartial just nonpartisan dispassionate objective square unbiased unprejudiced</string>
-	<key>混乱</key>
-	<string>Turmoil agitation turbulence ferment clamor disorder tumult commotion havoc willy-nilly topsy-turvy hubbub (带连字符的类似生词考虑混乱)</string>
-	<key>开始</key>
-	<string>Outset onset commencement genesis inception</string>
-	<key>掩盖 使..不重要</key>
-	<string>Overshadow eclipse outrank outshine outstrip overbalance overweigh obscure</string>
-	<key>傲慢的</key>
-	<string>Pompous presumptuous assuming vainglorious arrogant(interrogate 审问) haughty hauteur superciliousoverbearing imperious 专横的 (impervious 不能渗透的) pontifical Bumptious</string>
-	<key>串通</key>
-	<string>Connive conspire(expire 到期) contrive intrigue machinate plot put up</string>
-	<key>视角</key>
-	<string>Perspective angle outlook slant standpoint</string>
-	<key>模仿</key>
-	<string>Mimic mock mime emulate simulate impersonate(personage 名人=celebrity personable=attractive impersonal=objective) imitate parrot</string>
-	<key>本能的</key>
-	<string>Automatic impulsive instinctive involuntary spontaneous</string>
-	<key>憎恨</key>
-	<string>Aversion repugnance(impugn 指责) antipathy</string>
-	<key>大方的 vs 挥霍的浪费的</key>
-	<dict>
-		<key>大方的</key>
-		<string>Generous liberal munificent openhanded</string>
-		<key>挥霍的浪费的</key>
-		<string>sumptuous extravagant lavish prodigal squandering dissolute profligate prodigal spendthrift dissipate improvident</string>
-	</dict>
-	<key>尘世的 vs 艳俗的</key>
-	<dict>
-		<key>尘世的</key>
-		<string>Temporal carnal 肉体的 earthbornearthbound fleshly material secular mundane sublunary terrestrial worldly heavenly</string>
-		<key>艳俗的</key>
-		<string>tawdry garish gaudy flamboyant meretricious flashy flaring</string>
-	</dict>
-	<key>节俭 vs 吝啬的</key>
-	<dict>
-		<key>节俭</key>
-		<string>Sparing economical provident thrift husband stinging</string>
-		<key>吝啬的</key>
-		<string>stingy miserly tightfisted closefisted parsimonious penurious miser niggard sluggard skinflint(吝啬鬼) hoard skimp</string>
-	</dict>
-	<key>支持 vs 同意</key>
-	<dict>
-		<key>支持</key>
-		<string>Bolster brace buttress sustain undergird underpin fortify uphold prop up shore up(削弱: undercut/undermine)</string>
-		<key>同意</key>
-		<string>Accede endorse acquiesce consent(dissent 不同意) subscribe concur (demur 反对)</string>
-	</dict>
-	<key>怀疑的 vs Cred-</key>
-	<dict>
-		<key>怀疑的</key>
-		<string>Discredit doubt skepticism paranoid(过分怀疑的) dubious suspicious leery</string>
-		<key>Cred-</key>
-		<string>Credence 信任 incredible discredit 怀 疑 credulous 轻信的 accredit 委托 credential 证明 credo=creed 信条</string>
-	</dict>
-	<key>易激动的 vs 平静的</key>
-	<dict>
-		<key>易激动的</key>
-		<string>Possessed agitated discomposed disturbed flustered perturbed tumultuous</string>
-		<key>平静的</key>
-		<string>Collected composed recollected undisturbed unperturbed unruffled tranquil unflappable sedate halcyon</string>
-	</dict>
-	<key>卑鄙 vs 正直</key>
-	<dict>
-		<key>卑鄙</key>
-		<string>Baseness deceit mendacity 谎言</string>
-		<key>正直</key>
-		<string>Righteousness rectitude incorruptibility integrity</string>
-	</dict>
-	<key>使无罪 vs 使有罪</key>
-	<dict>
-		<key>使无罪</key>
-		<string>Absolve acquit exonerate vindicate exculpate</string>
-		<key>使有罪</key>
-		<string>Criminate incriminate inculpate</string>
-	</dict>
-	<key>遗忘 vs 记起</key>
-	<dict>
-		<key>遗忘</key>
-		<string>oblivion</string>
-		<key>记起</key>
-		<string>nostalgia reminiscence</string>
-	</dict>
-	<key>恭维的 vs 贬低</key>
-	<dict>
-		<key>恭维的</key>
-		<string>Unctuous flattery adulatory gushing hagiographic obsequious</string>
-		<key>贬低</key>
-		<string>Disparage belittle distain denigrate deprecate 反对 depreciate derogate degrade</string>
-	</dict>
-	<key>热情的 vs 冷漠的</key>
-	<dict>
-		<key>热情的</key>
-		<string>Enthusiastic ebullient boiling exuberant effervescent vivacious effusive</string>
-		<key>不感兴趣的 冷漠的</key>
-		<string>Disregard apathy disinterestedness nonchalant torpor(torpid) unconcern indifferent half-hearted apathetic incurious insouciant nonchalant perfunctory unconcerned callous phlegmatic frigid</string>
-	</dict>
-	<key>仔细的 vs 轻率的</key>
-	<dict>
-		<key>仔细的</key>
-		<string>Cautious circumspect guarded heedful prudent wary chary minute discreet(discrete 分离 discretionary 自 由决定的)</string>
-		<key>轻率的</key>
-		<string>Reckless audacious bold brash brassy daredevil rash madcap temerarious headlong cursory slipshod</string>
-	</dict>
-	<key>假的 vs 骗子 vs 真的</key>
-	<dict>
-		<key>假的</key>
-		<string>Spurious apocryphal bogus counterfeit fake forged phony feigned sham hypocritical(hypercritical 吹毛求疵的)</string>
-		<key>骗子</key>
-		<string>Imposter quack charlatan mountebank 万能药: panacea cure-all elixir nostrum</string>
-		<key>真的</key>
-		<string>Unfeigned authentic bona fide verity genuine</string>
-	</dict>
-	<key>平息 vs 激怒的</key>
-	<dict>
-		<key>平息</key>
-		<string>Soothe defuse mollify (mollusk 软体 动物 emollient 柔软的) conciliate propitiate appease pacify placate placid calm settle subdue solace placebo 安慰剂</string>
-		<key>激怒的</key>
-		<string>Agitate gall inflame nettle provoke peeve pique irritate rile roil antagonize piquant 刺激的</string>
-	</dict>
-	<key>简朴的 vs 奢华的</key>
-	<dict>
-		<key>简朴的</key>
-		<string>Austere plain spartan stark unadorned spare</string>
-		<key>奢华的</key>
-		<string>Lavish luxurious plush(blush 脸红 flush 大量的) sumptuous pompous baroque affected bombastic flowery grandiloquent</string>
-	</dict>
-	<key>不重要的 vs 重要的</key>
-	<dict>
-		<key>不重要的</key>
-		<string>Trivial insubstantial negligible nominal trifling； Extraneous impertinent inapplicable irrelative immaterial peripheral tangent inconsequential trivial trifling</string>
-		<key>重要的</key>
-		<string>Consequential momentous weighty pivotal cardinal paramount tantamount(相等的)； Central to applicable apposite apropos germane pertinent relative relevant</string>
-	</dict>
-	<key>肥沃的 vs 贫困的</key>
-	<dict>
-		<key>肥沃的</key>
-		<string>Fecund productive prolific fertile</string>
-		<key>贫困的</key>
-		<string>Unproductive infertile barren sterile impoverished deleted drain exhausted(exhaustive 详尽的) enervate(衰弱的)</string>
-	</dict>
-	<key>不理会 vs 理会</key>
-	<dict>
-		<key>不理会</key>
-		<string>Shrug disregard ignore neglect slight heedless inattentive
-Snub (snob 势利的 snug 舒适的 smug 自鸣得意的)</string>
-		<key>理会 关注</key>
-		<string>Attend heed mind advert</string>
-	</dict>
-	<key>减轻 vs 加重</key>
-	<dict>
-		<key>减轻</key>
-		<string>Assuage moderate allay alleviate mitigate palliate temper</string>
-		<key>加重</key>
-		<string>Worsen aggravate exasperate exacerbate deteriorate exorbitant 过度的</string>
-	</dict>
-	<key>不高兴的 vs 高兴的</key>
-	<dict>
-		<key>不高兴的</key>
-		<string>Glum gloomy melancholy dejected morose saturnine sullen hangdog lachrymose</string>
-		<key>高兴的</key>
-		<string>Glee cheerful jovial jocund sanguine lighthearted rejoiced convivial</string>
-	</dict>
-	<key>话少的 vs 啰嗦的</key>
-	<dict>
-		<key>话少的 沉默的 简洁的</key>
-		<string>Laconic reserved reticent curt pithy succinct terse compendious(compendium 摘要 =synopsis)</string>
-		<key>啰嗦的</key>
-		<string>Circuitous circumlocutory diffuse prolix rambling verbose windy wordy garrulous loquacious glib expansive voluble</string>
-	</dict>
-	<key>有争议的 vs 无争议的</key>
-	<dict>
-		<key>有争议的</key>
-		<string>Untenable assailable controversial refutable</string>
-		<key>无争议的</key>
-		<string>Unassailable undeniable irrefutable indisputable unexceptionable (exceptionable=objectionable 惹人反 感的)</string>
-	</dict>
-	<key>难懂的 vs 易懂的</key>
-	<dict>
-		<key>难懂的 神秘的</key>
-		<string>Arcane enigmatic elusive inscrutable unfathomable(fathom 测深) occult esoteric hermetic(隔绝的) impenetrable recondite abstruse uncanny opaque cryptic</string>
-		<key>易懂的</key>
-		<string>Transparent translucent pellucid lucid elucidate comprehend understand intelligible accessible luminous illuminate enlighten</string>
-	</dict>
-	<key>故意的 vs 偶然的</key>
-	<dict>
-		<key>故意的</key>
-		<string>Calculated deliberate intended planned premeditated (meditate 策划,发呆 mediate=reconcile=intermediate 调解)</string>
-		<key>偶然的</key>
-		<string>Fortuitous incidental unintended unintentional unpremeditated unwitting backfire</string>
-	</dict>
-	<key>大量的 vs 少量的</key>
-	<dict>
-		<key>大量的</key>
-		<string>Rife abounding abundant awash flush fraught(担心的,大量的) replete swarming teeming thronging cornucopia myriad copious untold</string>
-		<key>少量的</key>
-		<string>Modicum deficient inadequate insufficient scanty scare sparse skimpy dearth pittance paucity shred</string>
-	</dict>
-	<key>减少 vs 增加</key>
-	<dict>
-		<key>减少</key>
-		<string>Diminish abate dwindle lessen lower decline</string>
-		<key>增加</key>
-		<string>Aggrandize amplify augment boost enlarge escalate expand balloon wax(wax and wane) bulge burgeon accelerate accumulate boom mount multiply mushroom proliferate snowball wax flourish prosper</string>
-	</dict>
-	<key>短暂的 vs 持久的</key>
-	<dict>
-		<key>短暂的</key>
-		<string>Transient ephemeral evanescent fleeting meteoric temporary</string>
-		<key>持久的</key>
-		<string>Enduring eternal everlasting immortal permanent perpetual abiding</string>
-	</dict>
-	<key>可感知的 vs 不可感知的</key>
-	<dict>
-		<key>可感知的</key>
-		<string>Perceptible appreciable apprehensible detectable discernible distinguishable palpable(palatable 好吃的) sensible</string>
-		<key>不可感知的</key>
-		<string>(Perceptible appreciable apprehensible detectable discernible distinguishable palpable(palatable 好吃的) sensible)+in/im/un</string>
-	</dict>
-	<key>没用的 vs 有效的</key>
-	<dict>
-		<key>无效的没用的</key>
-		<string>Counterproductive feckless hamstrung(hamstring v.) ineffective ineffectual inefficacious inefficient inexpedient</string>
-		<key>有效的</key>
-		<string>Effective effectual efficacious efficient expedient(应急的) telling</string>
-	</dict>
-	<key>抨击反驳 vs 赞颂</key>
-	<dict>
-		<key>抨击反驳</key>
-		<string>Diatribe jeremiad philippic rant censorious 挑剔的 tirade harangue 长篇演说</string>
-		<key>赞颂</key>
-		<string>Encomium eulogy panegyric tribute Commend approbate acclaim applaud compliment extol</string>
-	</dict>
-	<key>无情的 vs 仁慈的</key>
-	<dict>
-		<key>无情的</key>
-		<string>Relentless inexorable ironfisted merciless ruthless unrelenting unsparing</string>
-		<key>仁慈的</key>
-		<string>Relenting charitable clement merciful lenient</string>
-	</dict>
-	<key>In-不一定反义</key>
-	<string>Inflatable 膨胀的 Impassioned 慷慨激昂的 Invaluable 无价的</string>
-	<key>de vs dis</key>
-	<string>Depose 作证 dispose 趋势 Decompose 分解 discompose 使不安 Declaim 声称 disclaim 否定</string>
-	<key>Back-</key>
-	<string>Backfire 发生意外 backhanded 间接 的 backset 背景 backlash 反对 backslide 变坏</string>
-	<key>DICT-</key>
-	<string>Diction 措辞 dictate 听写 Valediction 告别辞 Malediction 诅咒 Benediction 祝福 Abdication 放弃</string>
-	<key>Gen-</key>
-	<string>Eugenic 优生优育的 progeny 后代 congenial 相似的 progenitor 祖先 engender 导致</string>
-	<key>Grat-</key>
-	<string>Gratitude 感恩 ingratitude 忘恩负义 grateful 感谢的 ingratiate 迎合 gratify 满足 gratuity 小费 gratis=gratuitous 免费的 ingrate 忘恩 负义 engrave 雕刻 ingrain 植入</string>
-	<key>PED- 脚</key>
-	<string>Expedite 加速 expedient 有利的 impede 削弱 centipede 百足虫 quadruped 四脚的 peddle 叫卖 pedestal 基座 pediatrician 小孩 pedagogy 教育 pedant 学究 encyclopedia 百科全书</string>
-	<key>Phony-</key>
-	<string>Phony 假的 euphony 悦耳的 cacophony 刺耳的 symphony 交响乐</string>
-	<key>MONO-</key>
-	<string>Monotonous 单调的 Monopoly 垄断 Monarch 君主 Monochromatic 单色的 Monologue 独自的</string>
-	<key>-Cur-</key>
-	<string>Incursion 入侵 discursive 离题 Excursion 远足 cursory 草率的 Precursor 预示</string>
-	<key>-lude</key>
-	<string>Preclude 序曲 preclude allude 间接提 到(=intimate) elude 避免 interlude 间 歇 seclude 隐退(=sequester secede 退 出) occlude 关闭 exclude</string>
-	<key>-locution</key>
-	<string>Elocution 演说术 interlocution 对话 circumlocution 绕圈 obloquy 摘要</string>
-	<key>-cumbent</key>
-	<string>Incumbent 在职的 procumbent 俯卧 的 recumbent 躺 succumb to 臣服</string>
-	<key>-hand</key>
-	<string>Offhand 即兴的 handy 灵巧的 Ham-handed = heavy-handed 笨拙的 Under-handed 秘密的</string>
-	<key>形近词</key>
-	<dict>
-		<key>组1</key>
-		<string>Penetrate 刺入 penetrating 尖锐的 perpetrate 犯罪 perpetrator 罪犯 perpetuate 不朽 perpetual 不朽的</string>
-		<key>组2</key>
-		<string>tepid 乏味的 torpid 乏味的 torrid 酷热的 turbid 浑浊的 turgid 浮夸的 turbulent 混乱的</string>
-	</dict>
-</dict>
-</plist>
+    <plist version="1.0">
+        <dict>
+            <key>善变的 不稳定的</key>
+            <string>volatile (versatile 通用的) capricious whimsical fickle inconstant mercurial erratic labile protean metamorphous caprice vagary vagrancy whimsy upheaval 剧变</string>
+            <key>倾向 趋势</key>
+            <string>predisposition proposition 建议 disposition leaning propensity tilt list tendency inclination proclivity(acclivity 上坡 declivity 下坡) bent liability predilection penchant (trenchant 尖锐的 enchant 被迷惑) orientation affinity slant</string>
+            <key>吸引人的</key>
+            <string>absorbing arresting involving
+                intriguing gripping engrossing engaging riveting mesmerizing agog snappy</string>
+            <key>矛盾的</key>
+            <string>paradoxical ambivalent contradictory belie counter dichotomy(dichotomous) incongruity contravene apophasis 通过不说而说 oxymoron 通过矛盾构成对立 antithetical 对立的</string>
+            <key>灾难</key>
+            <string>catastrophe(apocalypse 启示) calamity cataclysm debacle fiasco</string>
+            <key>憎恶的</key>
+            <string>abhorred abominated despised detested distained execrated loathed</string>
+            <key>创新的</key>
+            <string>ingenious(ingenuous 天真的) innovative renovate inventive</string>
+            <key>思考</key>
+            <string>contemplate cogitate deliberate 仔细 考虑 meditate pore resolve ruminate weigh</string>
+            <key>即兴的</key>
+            <string>offhand impromptu extemporary extemporaneous improvised unrehearsed</string>
+            <key>忍受</key>
+            <string>brook abide endure stomach</string>
+            <key>证明为假</key>
+            <string>debunk belie confound confute discredit falsify rebut refute</string>
+            <key>随机的</key>
+            <string>haphazard aimless arbitrary desultory (断断续续的) erratic scattered stray</string>
+            <key>格言警句</key>
+            <string>maxim aphorism epigram adage proverb dictum</string>
+            <key>一致的</key>
+            <string>accordant concordant consensus assent unanimity unison</string>
+            <key>证实</key>
+            <string>verify attest authenticate certify corroborate substantiate testify validate vindicate</string>
+            <key>成功的</key>
+            <string>eminent celebrated distinguished famed notable prominent renowned illustrious distinct</string>
+            <key>责备</key>
+            <string>impugn reprehend reprobate chide rebuke reprimand reproach reprove censure admonish berate deplore execrate 诅咒怒骂</string>
+            <key>过时的</key>
+            <string>archaic dated obsoleted antiquated fossilized medieval moribund moth-eaten outworn prehistoric</string>
+            <key>复杂的</key>
+            <string>convoluted knotty involved sophisticated twisted tangled labyrinthine byzantine thorny</string>
+            <key>避免 绕开</key>
+            <string>eschew dodge elude evade shirk shun circumvent bypass sidestep skirt weasel</string>
+            <key>获得</key>
+            <string>attain capture reap harvest garner procure</string>
+            <key>顽固的不妥协的</key>
+            <string>intransigent stubborn obstinate headstrong refractory recalcitrant contumacious unmanageable unyielding unbending pertinacious tenacious intractable obdurate willful dogged mulish ossified</string>
+            <key>费力的</key>
+            <string>arduous burdensome grueling exacting laborious onerous taxing toilsome</string>
+            <key>群体的</key>
+            <string>gregarious (segregate 隔离) congregate aggregate(egregious 惊人的)</string>
+            <key>隐居的</key>
+            <string>hermit recluse withdraw sequester seclude aloof solitude</string>
+            <key>土的 平凡的</key>
+            <string>pedestrian dreary jejune monotonous tedious wearisome jaded bland humdrum stale stodgy insipid vapid prosaic mediocre undistinguished banal trite bromide cliche hackneyed timeworn threadbare platitude stereotype</string>
+            <key>反驳</key>
+            <string>contradict disprove gainsay rebut refute</string>
+            <key>坚定的</key>
+            <string>steadfast resolute constant adamant pertinacious</string>
+            <key>推测</key>
+            <string>speculate assume conjecture presume suppose surmise</string>
+            <key>阻止 避免</key>
+            <string>preclude exclude avert deter(defer 遵从;推迟) forestall obviate</string>
+            <key>预示</key>
+            <string>harbinger foregoer augur herald portend precursor prophetic prognosticate prophesy</string>
+            <key>尊敬的</key>
+            <string>reverence deference deferential(deferrable 可推迟的) venerate</string>
+            <key>苛求的</key>
+            <string>fastidious demanding exacting finical fussy persnickety picky meticulous painstaking punctilious scrupulou</string>
+            <key>保守的</key>
+            <string>conservative hidebound reactionary die-hard</string>
+            <key>有偏见的</key>
+            <string>biased inequitable prejudiced nonobjective one-sided partial partisan unjust jaundiced bigot 有偏见的人</string>
+            <key>多余的</key>
+            <string>superfluous excessive extra redundant surplus plethora</string>
+            <key>公正的</key>
+            <string>disinterested equal evenhanded impartial just nonpartisan dispassionate objective square unbiased unprejudiced</string>
+            <key>混乱</key>
+            <string>turmoil agitation turbulence ferment clamor disorder tumult commotion havoc willy-nilly topsy-turvy hubbub (带连字符的类似生词考虑混乱)</string>
+            <key>开始</key>
+            <string>outset onset commencement genesis inception</string>
+            <key>掩盖 使..不重要</key>
+            <string>overshadow eclipse outrank outshine outstrip overbalance overweigh obscure</string>
+            <key>傲慢的</key>
+            <string>pompous presumptuous assuming vainglorious arrogant(interrogate 审问) haughty hauteur supercilious
+                overbearing imperious 专横的 (impervious 不能渗透的) pontifical bumptious</string>
+            <key>串通</key>
+            <string>connive conspire(expire 到期) contrive intrigue machinate plot put up</string>
+            <key>视角</key>
+            <string>perspective angle outlook slant standpoint</string>
+            <key>模仿</key>
+            <string>mimic mock mime emulate simulate impersonate(personage 名人=celebrity personable=attractive impersonal=objective) imitate parrot</string>
+            <key>本能的</key>
+            <string>automatic impulsive instinctive involuntary spontaneous</string>
+            <key>憎恨</key>
+            <string>aversion repugnance(impugn 指责) antipathy</string>
+            <key>大方的 vs 挥霍的浪费的</key>
+            <dict>
+                <key>大方的</key>
+                <string>generous liberal munificent openhanded</string>
+                <key>挥霍的浪费的</key>
+                <string>sumptuous extravagant lavish prodigal squandering dissolute profligate prodigal spendthrift dissipate improvident</string>
+            </dict>
+            <key>尘世的 vs 艳俗的</key>
+            <dict>
+                <key>尘世的</key>
+                <string>temporal carnal 肉体的 earthborn
+                    earthbound fleshly material secular mundane sublunary terrestrial worldly heavenly</string>
+                <key>艳俗的</key>
+                <string>tawdry garish gaudy flamboyant meretricious flashy flaring</string>
+            </dict>
+            <key>节俭 vs 吝啬的</key>
+            <dict>
+                <key>节俭</key>
+                <string>sparing economical provident thrift husband stinging</string>
+                <key>吝啬的</key>
+                <string>stingy miserly tightfisted closefisted parsimonious penurious miser niggard sluggard skinflint(吝啬鬼) hoard skimp</string>
+            </dict>
+            <key>支持 vs 同意</key>
+            <dict>
+                <key>支持</key>
+                <string>bolster brace buttress sustain undergird underpin fortify uphold prop up shore up (削弱: undercut/undermine)</string>
+                <key>同意</key>
+                <string>accede endorse acquiesce consent(dissent 不同意) subscribe concur (demur 反对)</string>
+            </dict>
+            <key>怀疑的 vs cred-</key>
+            <dict>
+                <key>怀疑的</key>
+                <string>discredit doubt skepticism paranoid(过分怀疑的) dubious suspicious leery</string>
+                <key>cred-</key>
+                <string>credence 信任 incredible discredit 怀疑 credulous 轻信的 accredit 委托 credential 证明 credo=creed 信条</string>
+            </dict>
+            <key>易激动的 vs 平静的</key>
+            <dict>
+                <key>易激动的</key>
+                <string>possessed agitated discomposed disturbed flustered perturbed tumultuous</string>
+                <key>平静的</key>
+                <string>collected composed recollected undisturbed unperturbed unruffled tranquil unflappable sedate halcyon</string>
+            </dict>
+            <key>卑鄙 vs 正直</key>
+            <dict>
+                <key>卑鄙</key>
+                <string>baseness deceit mendacity 谎言</string>
+                <key>正直</key>
+                <string>righteousness rectitude incorruptibility integrity</string>
+            </dict>
+            <key>使无罪 vs 使有罪</key>
+            <dict>
+                <key>使无罪</key>
+                <string>absolve acquit exonerate vindicate exculpate</string>
+                <key>使有罪</key>
+                <string>criminate incriminate inculpate</string>
+            </dict>
+            <key>遗忘 vs 记起</key>
+            <dict>
+                <key>遗忘</key>
+                <string>oblivion</string>
+                <key>记起</key>
+                <string>nostalgia reminiscence</string>
+            </dict>
+            <key>恭维的 vs 贬低</key>
+            <dict>
+                <key>恭维的</key>
+                <string>unctuous flattery adulatory gushing hagiographic obsequious</string>
+                <key>贬低</key>
+                <string>disparage belittle distain denigrate deprecate 反对 depreciate derogate degrade</string>
+            </dict>
+            <key>热情的 vs 冷漠的</key>
+            <dict>
+                <key>热情的</key>
+                <string>enthusiastic ebullient boiling exuberant effervescent vivacious effusive</string>
+                <key>不感兴趣的 冷漠的</key>
+                <string>disregard apathy disinterestedness nonchalant torpor(torpid) unconcern indifferent half-hearted apathetic incurious insouciant nonchalant perfunctory unconcerned callous phlegmatic frigid</string>
+            </dict>
+            <key>仔细的 vs 轻率的</key>
+            <dict>
+                <key>仔细的</key>
+                <string>cautious circumspect guarded heedful prudent wary chary minute discreet(discrete 分离 discretionary 自由决定的)</string>
+                <key>轻率的</key>
+                <string>reckless audacious bold brash brassy daredevil rash madcap temerarious headlong cursory slipshod</string>
+            </dict>
+            <key>假的 vs 骗子 vs 真的</key>
+            <dict>
+                <key>假的</key>
+                <string>spurious apocryphal bogus counterfeit fake forged phony feigned sham hypocritical(hypercritical 吹毛求疵的)</string>
+                <key>骗子</key>
+                <string>imposter quack charlatan mountebank 万能药: panacea cure-all elixir nostrum</string>
+                <key>真的</key>
+                <string>unfeigned authentic bona fide verity genuine</string>
+            </dict>
+            <key>平息 vs 激怒的</key>
+            <dict>
+                <key>平息</key>
+                <string>soothe defuse mollify (mollusk 软体动物 emollient 柔软的) conciliate propitiate appease pacify placate placid calm settle subdue solace placebo 安慰剂</string>
+                <key>激怒的</key>
+                <string>agitate gall inflame nettle provoke peeve pique irritate rile roil antagonize piquant 刺激的</string>
+            </dict>
+            <key>简朴的 vs 奢华的</key>
+            <dict>
+                <key>简朴的</key>
+                <string>austere plain spartan stark unadorned spare</string>
+                <key>奢华的</key>
+                <string>lavish luxurious plush(blush 脸红 flush 大量的) sumptuous pompous baroque affected bombastic flowery grandiloquent</string>
+            </dict>
+            <key>不重要的 vs 重要的</key>
+            <dict>
+                <key>不重要的</key>
+                <string>trivial insubstantial negligible nominal trifling; extraneous impertinent inapplicable irrelative immaterial peripheral tangent inconsequential trivial trifling</string>
+                <key>重要的</key>
+                <string>consequential momentous weighty pivotal cardinal paramount tantamount(相等的); central to applicable apposite apropos germane pertinent relative relevant</string>
+            </dict>
+            <key>肥沃的 vs 贫困的</key>
+            <dict>
+                <key>肥沃的</key>
+                <string>fecund productive prolific fertile</string>
+                <key>贫困的</key>
+                <string>unproductive infertile barren sterile impoverished deleted drain exhausted(exhaustive 详尽的) enervate(衰弱的)</string>
+            </dict>
+            <key>不理会 vs 理会</key>
+            <dict>
+                <key>不理会</key>
+                <string>shrug disregard ignore neglect slight heedless inattentive
+                    snub (snob 势利的 snug 舒适的 smug 自鸣得意的)</string>
+                <key>理会 关注</key>
+                <string>attend heed mind advert</string>
+            </dict>
+            <key>减轻 vs 加重</key>
+            <dict>
+                <key>减轻</key>
+                <string>assuage moderate allay alleviate mitigate palliate temper</string>
+                <key>加重</key>
+                <string>worsen aggravate exasperate exacerbate deteriorate exorbitant 过度的</string>
+            </dict>
+            <key>不高兴的 vs 高兴的</key>
+            <dict>
+                <key>不高兴的</key>
+                <string>glum gloomy melancholy dejected morose saturnine sullen hangdog lachrymose</string>
+                <key>高兴的</key>
+                <string>glee cheerful jovial jocund sanguine lighthearted rejoiced convivial</string>
+            </dict>
+            <key>话少的 vs 啰嗦的</key>
+            <dict>
+                <key>话少的 沉默的 简洁的</key>
+                <string>laconic reserved reticent curt pithy succinct terse compendious(compendium 摘要 =synopsis)</string>
+                <key>啰嗦的</key>
+                <string>circuitous circumlocutory diffuse prolix rambling verbose windy wordy garrulous loquacious glib expansive voluble</string>
+            </dict>
+            <key>有争议的 vs 无争议的</key>
+            <dict>
+                <key>有争议的</key>
+                <string>untenable assailable controversial refutable</string>
+                <key>无争议的</key>
+                <string>unassailable undeniable irrefutable indisputable unexceptionable (exceptionable=objectionable 惹人反感的)</string>
+            </dict>
+            <key>难懂的 vs 易懂的</key>
+            <dict>
+                <key>难懂的 神秘的</key>
+                <string>arcane enigmatic elusive inscrutable unfathomable(fathom 测深) occult esoteric hermetic(隔绝的) impenetrable recondite abstruse uncanny opaque cryptic</string>
+                <key>易懂的</key>
+                <string>transparent translucent pellucid lucid elucidate comprehend understand intelligible accessible luminous illuminate enlighten</string>
+            </dict>
+            <key>故意的 vs 偶然的</key>
+            <dict>
+                <key>故意的</key>
+                <string>calculated deliberate intended planned premeditated (meditate 策划,发呆 mediate=reconcile=intermediate 调解)</string>
+                <key>偶然的</key>
+                <string>fortuitous incidental unintended unintentional unpremeditated unwitting backfire</string>
+            </dict>
+            <key>大量的 vs 少量的</key>
+            <dict>
+                <key>大量的</key>
+                <string>rife abounding abundant awash flush fraught(担心的,大量的) replete swarming teeming thronging cornucopia myriad copious untold</string>
+                <key>少量的</key>
+                <string>modicum deficient inadequate insufficient scanty scare sparse skimpy dearth pittance paucity shred</string>
+            </dict>
+            <key>减少 vs 增加</key>
+            <dict>
+                <key>减少</key>
+                <string>diminish abate dwindle lessen lower decline</string>
+                <key>增加</key>
+                <string>aggrandize amplify augment boost enlarge escalate expand balloon wax(wax and wane) bulge burgeon accelerate accumulate boom mount multiply mushroom proliferate snowball wax flourish prosper</string>
+            </dict>
+            <key>短暂的 vs 持久的</key>
+            <dict>
+                <key>短暂的</key>
+                <string>transient ephemeral evanescent fleeting meteoric temporary</string>
+                <key>持久的</key>
+                <string>enduring eternal everlasting immortal permanent perpetual abiding</string>
+            </dict>
+            <key>可感知的 vs 不可感知的</key>
+            <dict>
+                <key>可感知的</key>
+                <string>perceptible appreciable apprehensible detectable discernible distinguishable palpable(palatable 好吃的) sensible</string>
+                <key>不可感知的</key>
+                <string>上面的词+in/im/un</string>
+            </dict>
+            <key>没用的 vs 有效的</key>
+            <dict>
+                <key>无效的没用的</key>
+                <string>counterproductive feckless hamstrung(hamstring v.) ineffective ineffectual inefficacious inefficient inexpedient</string>
+                <key>有效的</key>
+                <string>effective effectual efficacious efficient expedient(应急的) telling</string>
+            </dict>
+            <key>抨击反驳 vs 赞颂</key>
+            <dict>
+                <key>抨击反驳</key>
+                <string>diatribe jeremiad philippic rant censorious 挑剔的 tirade harangue 长篇演说</string>
+                <key>赞颂</key>
+                <string>encomium eulogy panegyric tribute commend approbate acclaim applaud compliment extol</string>
+            </dict>
+            <key>无情的 vs 仁慈的</key>
+            <dict>
+                <key>无情的</key>
+                <string>relentless inexorable ironfisted merciless ruthless unrelenting unsparing</string>
+                <key>仁慈的</key>
+                <string>relenting charitable clement merciful lenient</string>
+            </dict>
+            <key>in-不一定反义</key>
+            <string>inflatable 膨胀的 impassioned 慷慨激昂的 invaluable 无价的</string>
+            <key>de vs dis</key>
+            <string>depose 作证 dispose 趋势 decompose 分解 discompose 使不安 declaim 声称 disclaim 否定</string>
+            <key>back-</key>
+            <string>backfire 发生意外 backhanded 间接 的 backset 背景 backlash 反对 backslide 变坏</string>
+            <key>dict-</key>
+            <string>diction 措辞 dictate 听写 valediction 告别辞 malediction 诅咒 benediction 祝福 abdication 放弃</string>
+            <key>gen-</key>
+            <string>eugenic 优生优育的 progeny 后代 congenial 相似的 progenitor 祖先 engender 导致</string>
+            <key>grat-</key>
+            <string>gratitude 感恩 ingratitude 忘恩负义 grateful 感谢的 ingratiate 迎合 gratify 满足 gratuity 小费 gratis=gratuitous 免费的 ingrate 忘恩 负义 engrave 雕刻 ingrain 植入</string>
+            <key>ped- 脚</key>
+            <string>expedite 加速 expedient 有利的 impede 削弱 centipede 百足虫 quadruped 四脚的 peddle 叫卖 pedestal 基座 pediatrician 小孩 pedagogy 教育 pedant 学究 encyclopedia 百科全书</string>
+            <key>phony-</key>
+            <string>phony 假的 euphony 悦耳的 cacophony 刺耳的 symphony 交响乐</string>
+            <key>mono-</key>
+            <string>monotonous 单调的 monopoly 垄断 monarch 君主 monochromatic 单色的 monologue 独自的</string>
+            <key>-cur-</key>
+            <string>incursion 入侵 discursive 离题 excursion 远足 cursory 草率的 precursor 预示</string>
+            <key>-lude</key>
+            <string>preclude 序曲 preclude allude 间接提 到(=intimate) elude 避免 interlude 间 歇 seclude 隐退(=sequester secede 退 出) occlude 关闭 exclude</string>
+            <key>-locution</key>
+            <string>elocution 演说术 interlocution 对话 circumlocution 绕圈 obloquy 摘要</string>
+            <key>-cumbent</key>
+            <string>incumbent 在职的 procumbent 俯卧 的 recumbent 躺 succumb to 臣服</string>
+            <key>-hand</key>
+            <string>offhand 即兴的 handy 灵巧的 ham-handed = heavy-handed 笨拙的 under-handed 秘密的</string>
+            <key>形近词</key>
+            <dict>
+                <key>组1</key>
+                <string>penetrate 刺入 penetrating 尖锐的 perpetrate 犯罪 perpetrator 罪犯 perpetuate 不朽 perpetual 不朽的</string>
+                <key>组2</key>
+                <string>tepid 乏味的 torpid 乏味的 torrid 酷热的 turbid 浑浊的 turgid 浮夸的 turbulent 混乱的</string>
+            </dict>
+        </dict>
+    </plist>
