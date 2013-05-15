@@ -42,6 +42,7 @@
 @property (nonatomic, retain) NSMutableArray *nameControlArray;
 @property (nonatomic, retain) NSMutableArray *phoneticControlArray;
 @property (strong, nonatomic) UIScrollView *WordParaphraseView;
+@property (strong, nonatomic) UIScrollView *tempWordParaphraseView;
 @property (strong, nonatomic) UIImageView *blackView;
 @property (strong, nonatomic) UIImageView *leftImageView;
 @property  NSString *WordName;
@@ -722,6 +723,8 @@ double radians(float degrees) {
         }
         [self.pageControlView addSubview:self.WordParaphraseView];
         
+        self.tempWordParaphraseView = self.WordParaphraseView;
+        
         //把单词加入抽屉
         SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
         WordEntity *addWord = [[WordHelper instance] wordWithString:_wordLabel.text];
@@ -869,14 +872,14 @@ double radians(float degrees) {
     
     _blackView.alpha = 1.0/500.0*(300.0-offset);
     
-    [left.view clipsToBounds];
-    if (iPhone5) {
-        [left.view setFrame:CGRectMake(5-5.0/276.0*offset, 5-5/276.0*offset, 300+20.0/276.0*offset, 538.25+10/276.0*offset)];
-    }
-    else
-    {
-        [left.view setFrame:CGRectMake(5-5.0/276.0*offset, 5-5/276.0*offset, 300+20.0/276.0*offset, 454.25+10/276.0*offset)];
-    }
+//    [left.view clipsToBounds];
+//    if (iPhone5) {
+//        [left.view setFrame:CGRectMake(5-5.0/276.0*offset, 5-5/276.0*offset, 300+20.0/276.0*offset, 538.25+10/276.0*offset)];
+//    }
+//    else
+//    {
+//        [left.view setFrame:CGRectMake(5-5.0/276.0*offset, 5-5/276.0*offset, 300+20.0/276.0*offset, 454.25+10/276.0*offset)];
+//    }
 }
 
 @end
