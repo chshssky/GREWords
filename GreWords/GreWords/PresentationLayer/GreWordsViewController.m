@@ -39,6 +39,7 @@
     dashboard.nonFinishedNumber = 100;
     dashboard.sumNumber = 300;
     dashboard.delegate = self;
+    [dashboard mainViewGen];
     [self.view addSubview:dashboard.view];
     
     self.slideBarView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar.png"]];
