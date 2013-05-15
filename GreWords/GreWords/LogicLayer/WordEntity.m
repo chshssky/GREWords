@@ -36,6 +36,7 @@
         noteManagedObject = [NSEntityDescription
                              insertNewObjectForEntityForName:@"Note"
                              inManagedObjectContext:context];
+        wordManagedObject.word2note = noteManagedObject;
     }
     noteManagedObject.content = note;
     [[MyDataStorage instance] saveContext];
