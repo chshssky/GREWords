@@ -305,6 +305,8 @@
 
 - (void)removeNoteTextViewAnimation
 {
+    [[WordHelper instance] wordWithString:_wordLabel.text].note = _noteTextView.text;
+    
     CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     [lineAnimation setValue:@"removeNoteTextViewAnimation" forKey:@"id"];
     CGMutablePathRef path = CGPathCreateMutable();
@@ -321,6 +323,8 @@
     lineAnimation.delegate = self;
     lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     [_noteTextView.layer addAnimation:lineAnimation forKey:nil];
+    
+    
 }
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag {
@@ -345,14 +349,14 @@
 {
     if (_noteUp == nil) {
         _noteUp = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_noteUp.png"]];
-        [_noteUp setCenter:CGPointMake(55, -250)];
+        [_noteUp setCenter:CGPointMake(55, -200)];
         _noteUp.layer.anchorPoint = CGPointMake(0.08, 0.08);
         [self.view addSubview:_noteUp];
     }
     
     CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, 55, -250);
+    CGPathMoveToPoint(path, NULL, 55, -200);
     CGPathAddLineToPoint(path, NULL, 55, self.view.frame.size.height/4);
     lineAnimation.path = path;
     CGPathRelease(path);
@@ -391,14 +395,14 @@
 {
     if (_noteDown == nil) {
         _noteDown = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_noteDown.png"]];
-        [_noteDown setCenter:CGPointMake(25, -250)];
+        [_noteDown setCenter:CGPointMake(25, -200)];
         _noteDown.layer.anchorPoint = CGPointMake(0.08, 0.08);
         [self.view addSubview:_noteDown];
     }
     
     CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, 25, -250);
+    CGPathMoveToPoint(path, NULL, 25, -200);
     CGPathAddLineToPoint(path, NULL, 25, self.view.frame.size.height/4-25);
     lineAnimation.path = path;
     CGPathRelease(path);
@@ -462,10 +466,11 @@
 - (void)addNoteTextViewAnimation
 {
     if (_noteTextView == nil) {
-        _noteTextView = [[noCopyTextView alloc] initWithFrame:CGRectMake(57, -220, 258, 220)];
+        _noteTextView = [[noCopyTextView alloc] initWithFrame:CGRectMake(57, -170, 258, 220)];
         _noteTextView.delegate = self;
         _noteTextView.layer.anchorPoint = CGPointMake(0.08, 0);
         _noteTextView.editable = YES;
+        _noteTextView.text = [[WordHelper instance] wordWithString:_wordLabel.text].note ;
         [_noteTextView setFont:[UIFont fontWithName:@"STHeitiSC-Light" size:22]];
         [_noteTextView setBackgroundColor:[UIColor clearColor]];
         [self.view addSubview:_noteTextView];
@@ -474,7 +479,7 @@
     
     CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, 57, -220);
+    CGPathMoveToPoint(path, NULL, 57, -170);
     CGPathAddLineToPoint(path, NULL, 57, self.view.frame.size.height/4-5);
     lineAnimation.path = path;
     CGPathRelease(path);
@@ -693,8 +698,6 @@ double radians(float degrees) {
         //把单词音标加入数组
         [self loadWordPhonetic:page];
         [self.phoneticControlArray replaceObjectAtIndex:page withObject:self.WordPhonetic];
-        
-        
     }
     
     // add the controller's view to the scroll view
@@ -741,7 +744,7 @@ double radians(float degrees) {
         //
         
         
-        //禁制scrollview向右滑动///////////////////////////////////////////////////////////////////////
+        //禁止scrollview向右滑动///////////////////////////////////////////////////////////////////////
         CGPoint translation;
         
         for (id gesture in scrollView.gestureRecognizers){
@@ -767,6 +770,14 @@ double radians(float degrees) {
         
         
         [self loadViewWithPage:page];
+        
+        SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
+        WordEntity *addWord = [[WordHelper instance] wordWithString:_wordLabel.text];
+        if ([left.array indexOfObject:addWord] == NSNotFound) {
+            [left addWord:addWord];
+        }
+        NSLog(@"加载：%@",_wordLabel.text);
+        
         [self loadViewWithPage:page + 1];
         /////////////////////////////////////////////////////////////////////////////////////////////
         
@@ -797,19 +808,6 @@ double radians(float degrees) {
         if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
         }
-    }
-    
-    
-    NSLog(@"currentPage:%d",self.currentPage);
-    
-    
-    
-    SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
-    
-     WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:_currentPage] intValue]];
-    
-    if ([left.array indexOfObject:addWord] == NSNotFound) {
-        [left addWord:[[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:_currentPage] intValue]]]; 
     }
 }
 
