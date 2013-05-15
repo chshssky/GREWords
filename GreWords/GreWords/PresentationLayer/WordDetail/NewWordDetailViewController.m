@@ -42,6 +42,7 @@
 @property (nonatomic, retain) NSMutableArray *nameControlArray;
 @property (nonatomic, retain) NSMutableArray *phoneticControlArray;
 @property (strong, nonatomic) UIScrollView *WordParaphraseView;
+@property (strong, nonatomic) UIScrollView *tempWordParaphraseView;
 @property (strong, nonatomic) UIImageView *blackView;
 @property (strong, nonatomic) UIImageView *leftImageView;
 @property  NSString *WordName;
@@ -57,8 +58,6 @@
 @end
 
 @implementation NewWordDetailViewController
-
-#define iPhone5 ([UIScreen instancesRespondToSelector:@selector(currentMode)] ? CGSizeEqualToSize(CGSizeMake(640, 1136), [[UIScreen mainScreen] currentMode].size) : NO)
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -135,16 +134,16 @@
     self.dashboardVC.nonFinishedNumber = 100;
     self.dashboardVC.sumNumber = 300;
     //self.dashboardVC.delegate = self;
-    [self.view addSubview:self.dashboardVC.view];
-    if (self.view.frame.size.height == 548.0f) {
-        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-130, -250));
+    [self.dashboardVC wordDetailIndicatorGen];
+    if (iPhone5) {
+        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -252));
     } else {
-        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-130, -210));
+        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -212));
     }
-    
-    [self.backButton.superview bringSubviewToFront:self.backButton];
+    [self.view addSubview:self.dashboardVC.view];
 
     
+    [self.backButton.superview bringSubviewToFront:self.backButton];
 }
 
 - (void)didReceiveMemoryWarning
@@ -722,6 +721,8 @@ double radians(float degrees) {
         }
         [self.pageControlView addSubview:self.WordParaphraseView];
         
+        self.tempWordParaphraseView = self.WordParaphraseView;
+        
         //把单词加入抽屉
         SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
         WordEntity *addWord = [[WordHelper instance] wordWithString:_wordLabel.text];
@@ -869,14 +870,14 @@ double radians(float degrees) {
     
     _blackView.alpha = 1.0/500.0*(300.0-offset);
     
-    [left.view clipsToBounds];
-    if (iPhone5) {
-        [left.view setFrame:CGRectMake(5-5.0/276.0*offset, 5-5/276.0*offset, 300+20.0/276.0*offset, 538.25+10/276.0*offset)];
-    }
-    else
-    {
-        [left.view setFrame:CGRectMake(5-5.0/276.0*offset, 5-5/276.0*offset, 300+20.0/276.0*offset, 454.25+10/276.0*offset)];
-    }
+//    [left.view clipsToBounds];
+//    if (iPhone5) {
+//        [left.view setFrame:CGRectMake(5-5.0/276.0*offset, 5-5/276.0*offset, 300+20.0/276.0*offset, 538.25+10/276.0*offset)];
+//    }
+//    else
+//    {
+//        [left.view setFrame:CGRectMake(5-5.0/276.0*offset, 5-5/276.0*offset, 300+20.0/276.0*offset, 454.25+10/276.0*offset)];
+//    }
 }
 
 @end

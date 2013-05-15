@@ -35,10 +35,150 @@
 
 - (void)viewDidLoad
 {
-    
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+
+}
+
+- (void)mainViewGen
+{    
+    self.centerPoint = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+20);
+    
+    circleShadowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_shadow.png"]];
+    circleShadowView.center = self.centerPoint;
+    circleShadowView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    circleShadowView.gestureRecognizers = self.FimageView.gestureRecognizers;
+    //circlePointView.alpha = 0.5f;
+    [self.view addSubview:circleShadowView];
+    
+    circleButtomView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_buttom.png"]];
+    circleButtomView.center = self.centerPoint;
+    circleButtomView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    circleButtomView.gestureRecognizers = self.FimageView.gestureRecognizers;
+    //circleButtomView.alpha = 0.5f;
+    [self.view addSubview:circleButtomView];
+    
+    
+    
+    //self.nonFinishedNumber = 270;
+    //self.sumNumber = 300;
+    _percent = (float)_nonFinishedNumber/_sumNumber*(0.999-0.001)+0.001;
+    
+    self.slices = [NSMutableArray arrayWithCapacity:10];
+    
+    NSNumber *unfinished = [NSNumber numberWithInt:_nonFinishedNumber];
+    [_slices addObject:unfinished];
+    NSNumber *finished = [NSNumber numberWithInt:(_sumNumber - _nonFinishedNumber)];
+    [_slices addObject:finished];
+    
+    //    for(int i = 0; i < 5; i ++)
+    //    {
+    //        NSNumber *one = [NSNumber numberWithInt:rand()%60+20];
+    //        [_slices addObject:one];
+    //    }
+    
+    self.pieChartLeft = [[PieChart alloc] initWithFrame:CGRectMake(0, 0, 500, 500)];
+    [self.view addSubview:self.pieChartLeft];
+    
+    
+    [self.pieChartLeft setDataSource:self];
+    self.pieChartLeft.delegate = self;
+    [self.pieChartLeft setAnimationSpeed:1];
+    [self.pieChartLeft setShowPercentage:NO];
+    [self.pieChartLeft setPieBackgroundColor:[UIColor colorWithWhite:0.95 alpha:0]];
+    [self.pieChartLeft setPieCenter:_centerPoint];
+    [self.pieChartLeft setUserInteractionEnabled:NO];
+    [self.pieChartLeft setPieRadius:110];
+    //NSLog(@"%@",self.pieChartLeft);
+    
+    self.sliceColors =[NSArray arrayWithObjects:
+                       [UIColor colorWithRed:223/255.0 green:150/255.0 blue:57/255.0 alpha:1],
+                       [UIColor colorWithRed:223/255.0 green:150/255.0 blue:57/255.0 alpha:0],nil];
+    
+    
+    
+    //添加分针图片并消除锯齿
+    //    UIImage *f = [UIImage imageNamed:@"f.png"];
+    //    UIGraphicsBeginImageContextWithOptions(f.size, NO, f.scale);
+    //    [f drawInRect:CGRectMake(1, 1, f.size.width-2, f.size.height-2)];
+    //    UIImage *imageF = UIGraphicsGetImageFromCurrentImageContext();
+    //    UIGraphicsEndImageContext();
+    self.FimageView = [[UIImageView alloc] initWithImage:nil];
+    
+    self.FimageView.frame = CGRectMake(0, 0, 30, 170);
+    self.FimageView.center = self.centerPoint;
+    self.FimageView.layer.anchorPoint = CGPointMake(0.5, 1.0);
+    [self.view addSubview:self.FimageView];
+    
+    UILongPressGestureRecognizer *gestureRecognizerF = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleF:)];
+    gestureRecognizerF.minimumPressDuration=1.2;
+    [self.FimageView addGestureRecognizer:gestureRecognizerF];
+    self.FimageView.userInteractionEnabled = YES;
+    
+    self.FimageView.transform = CGAffineTransformMakeRotation(_percent*2*M_PI);
+    
+    
+    
+    centerCircleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_center.png"]];
+    centerCircleView.center = self.centerPoint;
+    centerCircleView.layer.anchorPoint = CGPointMake(0.551, 0.5);
+    centerCircleView.gestureRecognizers = self.FimageView.gestureRecognizers;
+    centerCircleView.transform = CGAffineTransformMakeRotation(M_PI/2.0);
+    [self.view addSubview:centerCircleView];
+    
+    circlePointView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_point.png"]];
+    circlePointView.center = self.centerPoint;
+    circlePointView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    circlePointView.gestureRecognizers = self.FimageView.gestureRecognizers;
+    //circlePointView.alpha = 0.5f;
+    [self.view addSubview:circlePointView];
+    
+    
+    circleLightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_beard.png"]];
+    circleLightView.center = self.centerPoint;
+    circleLightView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    circleLightView.gestureRecognizers = self.FimageView.gestureRecognizers;
+    circleLightView.alpha = 0;
+    [self.view addSubview:circleLightView];
+    
+    textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_newWord.png"]];
+    textView.center = CGPointMake(self.view.frame.size.width/2-15, self.view.frame.size.height/3-25);
+    textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    textView.gestureRecognizers = self.FimageView.gestureRecognizers;
+    //shadowImageView.alpha = 0.5;
+    [self.view addSubview:textView];
+    
+    startTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_startTask.png"]];
+    startTextView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+65);
+    startTextView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    startTextView.gestureRecognizers = self.FimageView.gestureRecognizers;
+    startTextView.alpha = 0.6;
+    [self.view addSubview:startTextView];
+    
+    wordNumberTest = [[FXLabel alloc] initWithFrame:CGRectMake(20, 10, 120, 70)];
+    wordNumberTest.text =  [NSString stringWithFormat:@"%d",0];
+    wordNumberTest.textColor = [UIColor colorWithRed:101/255.00 green:116/255.00 blue:68/255.00 alpha:1];
+    wordNumberTest.font = [UIFont fontWithName:@"STHeitiTC-Medium" size:70];
+    wordNumberTest.backgroundColor = [UIColor clearColor];
+    wordNumberTest.innerShadowColor = [UIColor colorWithWhite:0.0f alpha:0.8f];
+    wordNumberTest.innerShadowOffset = CGSizeMake(0.0f, 0.8f);
+    wordNumberTest.center = CGPointMake(self.view.frame.size.width/2+15, self.view.frame.size.height/3+25);
+    wordNumberTest.textAlignment = UITextAlignmentRight;
+    [self.view addSubview:wordNumberTest];
+    
+    UIButton *bigButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    //bigButton.frame = iView.frame;
+    
+    [bigButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];
+    bigButton.center = self.centerPoint;
+    bigButton.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    bigButton.frame =  circlePointView.frame;
+    [self.view addSubview:bigButton];
+}
+
+- (void)wordDetailIndicatorGen
+{
     
     
     self.centerPoint = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+20);
@@ -94,41 +234,26 @@
                        [UIColor colorWithRed:223/255.0 green:150/255.0 blue:57/255.0 alpha:1],
                        [UIColor colorWithRed:223/255.0 green:150/255.0 blue:57/255.0 alpha:0],nil];
     
-
+    
     
     //添加分针图片并消除锯齿
-//    UIImage *f = [UIImage imageNamed:@"f.png"];
-//    UIGraphicsBeginImageContextWithOptions(f.size, NO, f.scale);
-//    [f drawInRect:CGRectMake(1, 1, f.size.width-2, f.size.height-2)];
-//    UIImage *imageF = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-    self.FimageView = [[UIImageView alloc] initWithImage:nil];
+    //    UIImage *f = [UIImage imageNamed:@"f.png"];
+    //    UIGraphicsBeginImageContextWithOptions(f.size, NO, f.scale);
+    //    [f drawInRect:CGRectMake(1, 1, f.size.width-2, f.size.height-2)];
+    //    UIImage *imageF = UIGraphicsGetImageFromCurrentImageContext();
+    //    UIGraphicsEndImageContext();
     
-    self.FimageView.frame = CGRectMake(0, 0, 30, 170);
-    self.FimageView.center = self.centerPoint;
-    self.FimageView.layer.anchorPoint = CGPointMake(0.5, 1.0);
-    [self.view addSubview:self.FimageView];
     
-    UILongPressGestureRecognizer *gestureRecognizerF = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleF:)];
-    gestureRecognizerF.minimumPressDuration=1.2;
-    [self.FimageView addGestureRecognizer:gestureRecognizerF];
-    self.FimageView.userInteractionEnabled = YES;
-    
-    self.FimageView.transform = CGAffineTransformMakeRotation(_percent*2*M_PI);
-    
-
     
     centerCircleView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_center.png"]];
     centerCircleView.center = self.centerPoint;
     centerCircleView.layer.anchorPoint = CGPointMake(0.551, 0.5);
-    centerCircleView.gestureRecognizers = self.FimageView.gestureRecognizers;
     centerCircleView.transform = CGAffineTransformMakeRotation(M_PI/2.0);
     [self.view addSubview:centerCircleView];
     
     circlePointView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_point.png"]];
     circlePointView.center = self.centerPoint;
     circlePointView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    circlePointView.gestureRecognizers = self.FimageView.gestureRecognizers;
     //circlePointView.alpha = 0.5f;
     [self.view addSubview:circlePointView];
     
@@ -136,23 +261,20 @@
     circleLightView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_circle_beard.png"]];
     circleLightView.center = self.centerPoint;
     circleLightView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    circleLightView.gestureRecognizers = self.FimageView.gestureRecognizers;
     circleLightView.alpha = 0;
     [self.view addSubview:circleLightView];
     
-    textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_newWord.png"]];
-    textView.center = CGPointMake(self.view.frame.size.width/2-15, self.view.frame.size.height/3-25);
-    textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    textView.gestureRecognizers = self.FimageView.gestureRecognizers;
-    //shadowImageView.alpha = 0.5;
-    [self.view addSubview:textView];
+//    textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_newWord.png"]];
+//    textView.center = CGPointMake(self.view.frame.size.width/2-15, self.view.frame.size.height/3-25);
+//    textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+//    //shadowImageView.alpha = 0.5;
+//    [self.view addSubview:textView];
     
-    startTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_startTask.png"]];
-    startTextView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+65);
-    startTextView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    startTextView.gestureRecognizers = self.FimageView.gestureRecognizers;
-    startTextView.alpha = 0.6;
-    [self.view addSubview:startTextView];
+//    startTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_startTask.png"]];
+//    startTextView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+65);
+//    startTextView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+//    startTextView.alpha = 0.6;
+//    [self.view addSubview:startTextView];
     
     wordNumberTest = [[FXLabel alloc] initWithFrame:CGRectMake(20, 10, 120, 70)];
     wordNumberTest.text =  [NSString stringWithFormat:@"%d",0];
@@ -161,10 +283,10 @@
     wordNumberTest.backgroundColor = [UIColor clearColor];
     wordNumberTest.innerShadowColor = [UIColor colorWithWhite:0.0f alpha:0.8f];
     wordNumberTest.innerShadowOffset = CGSizeMake(0.0f, 0.8f);
-    wordNumberTest.center = CGPointMake(self.view.frame.size.width/2+15, self.view.frame.size.height/3+25);
+    wordNumberTest.center = CGPointMake(self.view.frame.size.width/2, (self.view.frame.size.height * 2)/5);
     wordNumberTest.textAlignment = UITextAlignmentRight;
     [self.view addSubview:wordNumberTest];
-
+    
     UIButton *bigButton = [UIButton buttonWithType:UIButtonTypeCustom];
     //bigButton.frame = iView.frame;
     
@@ -173,10 +295,7 @@
     bigButton.layer.anchorPoint = CGPointMake(0.5, 0.5);
     bigButton.frame =  circlePointView.frame;
     [self.view addSubview:bigButton];
-}
 
-- (void)wordDetailIndicatorGen
-{
     
 }
 
