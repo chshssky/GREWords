@@ -134,6 +134,7 @@ HistoryManager* _historyManagerInstance = nil;
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
     
+    request.predicate = [NSPredicate predicateWithFormat:@"event == newWord"];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
     [request setFetchLimit:1];
     
@@ -148,13 +149,39 @@ HistoryManager* _historyManagerInstance = nil;
 
 - (float)currentStageProgress
 {
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
     
-    return 0;
+    request.predicate = [NSPredicate predicateWithFormat:@"event == newWord"];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
+    [request setFetchLimit:1];
+    
+    NSError *fetchError = nil;
+    NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
+    History *history = [fetchMatches lastObject];
+    
+    NSDictionary *info = [self toArrayOrNSDictionary:history.info];
+    
+    float progress = 0;
+    //[[info objectForKey:@"unit"] floatValue] / ;
+    
+    return progress;
 }
 
 - (BOOL)isFinishedForDate:(NSDate *)date
 {
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
+    //!!!!!!!!!!!!!!!
+    request.predicate = [NSPredicate predicateWithFormat:@"(event == newWord || event = review) &&  date <= %@ && date >= %@", date, date];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
+    [request setFetchLimit:2];
     
+    NSError *fetchError = nil;
+    NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
+    if ([fetchMatches count] <= 0) {
+        return NO;
+    } else {
+        return YES;
+    }
 }
 
 - (NSArray *)errorRatioInExams
@@ -177,7 +204,23 @@ HistoryManager* _historyManagerInstance = nil;
 
 - (NSArray *)dateAndDurationInStage:(int)stage
 {
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
     
+    request.predicate = [NSPredicate predicateWithFormat:@"(event == newWord || event = review) && stage = %d", stage];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
+    
+    NSError *fetchError = nil;
+    NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
+    NSMutableArray *results = [[NSMutableArray alloc] init];
+    
+    for (History *hist in fetchMatches) {
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        [dict setObject:hist.duration forKey:@"Duration"];
+        //Date:
+        [dict setObject:hist.startTime  forKey:@"Date"];
+        [results addObject:dict];
+    }
+    return results;
 }
 
 @end
