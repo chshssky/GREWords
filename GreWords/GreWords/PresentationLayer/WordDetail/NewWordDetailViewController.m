@@ -16,6 +16,7 @@
 #import "UIImage+ColorImage.h"
 #import "UIImage+StackBlur.h"
 #import "noCopyTextView.h"
+#import "DashboardViewController.h"
 
 
 @interface NewWordDetailViewController () <UIScrollViewDelegate,UITextViewDelegate>
@@ -49,6 +50,8 @@
 - (void)scrollViewDidScroll:(UIScrollView *)sender;
 
 @property int currentPage;
+
+@property (strong, nonatomic) DashboardViewController *dashboardVC;
 
 @end
 
@@ -123,6 +126,21 @@
     downRecognizer.delegate = self;
     downRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:downRecognizer];
+    
+    
+    
+    //添加左上角的进度圆~
+    self.dashboardVC = [[DashboardViewController alloc] init];
+    self.dashboardVC.nonFinishedNumber = 100;
+    self.dashboardVC.sumNumber = 300;
+    //self.dashboardVC.delegate = self;
+    [self.view addSubview:self.dashboardVC.view];
+    if (self.view.frame.size.height == 548.0f) {
+        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-125, -250));
+    } else {
+        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-125, -210));
+    }
+
     
 }
 

@@ -248,7 +248,7 @@
         self.menu.transform = CGAffineTransformMakeTranslation(-300, 0);
     } completion:^(BOOL finished) {
         
-        NSLog(@"x:%f, y:%f", dashboard.view.frame.origin.x, dashboard.view.frame.origin.y);
+        NSLog(@"x:%f, y:%f, width:%f, height:%f", dashboard.view.frame.origin.x, dashboard.view.frame.origin.y, dashboard.view.frame.size.width, dashboard.view.frame.size.height);
 
         NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
         vc.delegate = self;
