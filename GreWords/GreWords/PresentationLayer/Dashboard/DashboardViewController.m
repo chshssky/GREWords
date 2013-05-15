@@ -222,7 +222,7 @@
     
     [self.pieChartLeft setDataSource:self];
     self.pieChartLeft.delegate = self;
-    [self.pieChartLeft setAnimationSpeed:1];
+    [self.pieChartLeft setAnimationSpeed:0.001];
     [self.pieChartLeft setShowPercentage:NO];
     [self.pieChartLeft setPieBackgroundColor:[UIColor colorWithWhite:0.95 alpha:0]];
     [self.pieChartLeft setPieCenter:_centerPoint];
