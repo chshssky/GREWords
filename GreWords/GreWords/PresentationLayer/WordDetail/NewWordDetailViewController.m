@@ -43,6 +43,7 @@
 @property (nonatomic, retain) NSMutableArray *phoneticControlArray;
 @property (strong, nonatomic) UIScrollView *WordParaphraseView;
 @property (strong, nonatomic) UIImageView *blackView;
+@property (strong, nonatomic) UIImageView *leftImageView;
 @property  NSString *WordName;
 @property  NSString *WordPhonetic;
 
@@ -778,11 +779,7 @@ double radians(float degrees) {
         // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
         
         
-        [self loadViewWithPage:page];
-
-        
-        NSLog(@"加载：%@",_wordLabel.text);
-        
+        [self loadViewWithPage:page];  
         [self loadViewWithPage:page + 1];
         /////////////////////////////////////////////////////////////////////////////////////////////
         
@@ -848,7 +845,6 @@ double radians(float degrees) {
 
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController willOpenViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
 {
-    
     self.view.userInteractionEnabled = NO;
 }
 
@@ -861,6 +857,7 @@ double radians(float degrees) {
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController didChangeOffset:(CGFloat)offset orientation:(IIViewDeckOffsetOrientation)orientation panning:(BOOL)panning
 {
     SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
+    
     
     if (_blackView == NULL) {
         _blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, left.view.frame.size.width, left.view.frame.size.height)];
