@@ -36,20 +36,29 @@
 @property (strong, nonatomic) UIImageView *blackImageView;
 @property (strong, nonatomic) UIImageView *blurImageView;
 @property (strong, nonatomic) UITextView *noteTextView;
+@property (strong, nonatomic) UISwipeGestureRecognizer* noteRecognizer;
 @property (nonatomic) int noteHeight;
+
+@property (strong, nonatomic) UIImageView *tapCoverImageView;
+@property (strong, nonatomic) UIImageView *downImageView;
+@property (strong, nonatomic) UIImageView *rightButtonImage;
+@property (strong, nonatomic) UIImageView *wrongButtonImage;
+@property (nonatomic) int changePage;
 
 @property (nonatomic, retain) NSMutableArray *viewControlArray;
 @property (nonatomic, retain) NSMutableArray *nameControlArray;
 @property (nonatomic, retain) NSMutableArray *phoneticControlArray;
 @property (strong, nonatomic) UIScrollView *WordParaphraseView;
-@property (strong, nonatomic) UIScrollView *tempWordParaphraseView;
 @property (strong, nonatomic) UIImageView *blackView;
 @property (strong, nonatomic) UIImageView *leftImageView;
-@property  NSString *WordName;
-@property  NSString *WordPhonetic;
+@property (nonatomic) NSString *WordName;
+@property (nonatomic) NSString *WordPhonetic;
 
-- (void)loadViewWithPage:(int)page;
-- (void)scrollViewDidScroll:(UIScrollView *)sender;
+
+@property (nonatomic) int indexOfWordIDToday;
+
+//- (void)loadViewWithPage:(int)index;
+//- (void)scrollViewDidScroll:(UIScrollView *)sender;
 
 @property int currentPage;
 
@@ -79,13 +88,14 @@
     [self.PronounceButton addTarget:self action:@selector(soundButtonReleased:) forControlEvents:UIControlEventTouchCancel];
     
     self.day = 0;
+    self.indexOfWordIDToday = 0;
+    self.changePage = 10;
     
-    int wordCount = [[WordHelper instance] wordCount];
     self.viewControlArray = [[NSMutableArray alloc] init];
     self.nameControlArray = [[NSMutableArray alloc] init];
     self.phoneticControlArray = [[NSMutableArray alloc] init];
 
-    for (unsigned i = 0; i < wordCount; i++) {
+    for (unsigned i = 0; i < (_changePage+2); i++) {
 		[self.viewControlArray addObject:[NSNull null]];
         [self.nameControlArray addObject:[NSNull null]];
         [self.phoneticControlArray addObject:[NSNull null]];
@@ -93,11 +103,16 @@
     
     self.pageControlView.pagingEnabled = YES;
     if (iPhone5) {
-        self.pageControlView.contentSize = CGSizeMake(self.pageControlView.frame.size.width * 300,
+        self.pageControlView.contentSize = CGSizeMake(self.pageControlView.frame.size.width * (_changePage+1),
                                                       self.pageControlView.frame.size.height);
+        //[self.WordParaphraseView setFrame:CGRectMake(frame.origin.x, frame.origin.y, 320.0, 360)];
+        //self.WordParaphraseView.contentSize = CGSizeMake(self.view.frame.size.width,
+        //                                              self.pageControlView.frame.size.height);
     }else{
-        self.pageControlView.contentSize = CGSizeMake(self.pageControlView.frame.size.width * 300,
+        self.pageControlView.contentSize = CGSizeMake(self.pageControlView.frame.size.width * (_changePage+1),
                                                       360);
+        //self.WordParaphraseView.contentSize = CGSizeMake(self.view.frame.size.width,
+        //                                                 360);
     }
     
     self.pageControlView.showsHorizontalScrollIndicator = NO;
@@ -105,6 +120,7 @@
     self.pageControlView.scrollsToTop = NO;
     self.pageControlView.delegate = self;
     self.pageControlView.directionalLockEnabled = NO;
+    self.pageControlView.bounces = NO;
     
     [self loadViewWithPage:0];
     [self loadViewWithPage:1];
@@ -121,11 +137,10 @@
     self.viewDeckController.panningMode = IIViewDeckAllViewsPanning;
     
     //添加便签手势
-    UISwipeGestureRecognizer* downRecognizer;
-    downRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeDown:)];
-    downRecognizer.delegate = self;
-    downRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
-    [self.view addGestureRecognizer:downRecognizer];
+    _noteRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeDown:)];
+    _noteRecognizer.delegate = self;
+    _noteRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
+    [self.view addGestureRecognizer:_noteRecognizer];
     
     
     
@@ -137,7 +152,7 @@
     if (iPhone5) {
         self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -252));
     } else {
-        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -212));
+        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-127, -211));
     }
     [self.view addSubview:self.dashboardVC.view];
 
@@ -214,12 +229,11 @@
     
     self.viewDeckController.panningMode = IIViewDeckNoPanning;
     
-    UISwipeGestureRecognizer* upRecognizer;
-    upRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeUp:)];
-    upRecognizer.delegate = self;
-    upRecognizer.direction = UISwipeGestureRecognizerDirectionUp;
+    _noteRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeUp:)];
+    _noteRecognizer.delegate = self;
+    _noteRecognizer.direction = UISwipeGestureRecognizerDirectionUp;
     
-    [self.view addGestureRecognizer:upRecognizer];
+    [self.view addGestureRecognizer:_noteRecognizer];
     
     
     
@@ -246,12 +260,11 @@
     
     self.viewDeckController.panningMode = IIViewDeckAllViewsPanning;
     
-    UISwipeGestureRecognizer* downRecognizer;
-    downRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeDown:)];
-    downRecognizer.delegate = self;
-    downRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
+    _noteRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeDown:)];
+    _noteRecognizer.delegate = self;
+    _noteRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
     
-    [self.view addGestureRecognizer:downRecognizer];
+    [self.view addGestureRecognizer:_noteRecognizer];
 }
 
 - (void)removeBlurBackground
@@ -624,7 +637,7 @@ double radians(float degrees) {
 #pragma mark - two scrollview and load detail Methods
 
 //加载单词内容进入数组
-- (void)loadWordView:(int)numberOfPage
+- (void)loadWordView:(int)index
 {
     // Do any additional setup after loading the view from its nib.
     WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
@@ -647,7 +660,7 @@ double radians(float degrees) {
                              @"shouldShowSampleSentence":@YES};
     
     
-    [vc displayWord:[[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:numberOfPage] intValue]] withOption:option];
+    [vc displayWord:[[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:index] intValue]] withOption:option];
     
     //self.wordLabel.text = [[WordHelper instance] wordWithID:aWordID].data[@"word"];
     
@@ -669,15 +682,15 @@ double radians(float degrees) {
 
 
 //加载单词名称进入数组
-- (void)loadWordName:(int)numberOfPage
+- (void)loadWordName:(int)index
 {
-    self.WordName = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:numberOfPage] intValue]].data[@"word"];
+    self.WordName = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:index] intValue]].data[@"word"];
 }
 
 //加载单词音标进入数组
-- (void)loadWordPhonetic:(int)numberOfPage
+- (void)loadWordPhonetic:(int)index
 {
-    self.WordPhonetic = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:numberOfPage] intValue]].data[@"phonetic"];
+    self.WordPhonetic = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:index] intValue]].data[@"phonetic"];
 }
 
 //加载单词
@@ -693,16 +706,18 @@ double radians(float degrees) {
         self.WordParaphraseView.showsVerticalScrollIndicator = NO;
         
         //把单词内容页面加入数组
-        [self loadWordView:page];
+        [self loadWordView:_indexOfWordIDToday];
         [self.viewControlArray replaceObjectAtIndex:page withObject:self.WordParaphraseView];
         
         //把单词名称加入数组
-        [self loadWordName:page];
+        [self loadWordName:_indexOfWordIDToday];
         [self.nameControlArray replaceObjectAtIndex:page withObject:self.WordName];
         
         //把单词音标加入数组
-        [self loadWordPhonetic:page];
+        [self loadWordPhonetic:_indexOfWordIDToday];
         [self.phoneticControlArray replaceObjectAtIndex:page withObject:self.WordPhonetic];
+        
+        _indexOfWordIDToday++;
     }
     
     // add the controller's view to the scroll view
@@ -721,8 +736,6 @@ double radians(float degrees) {
             self.WordParaphraseView.contentSize = size;
         }
         [self.pageControlView addSubview:self.WordParaphraseView];
-        
-        self.tempWordParaphraseView = self.WordParaphraseView;
         
         //把单词加入抽屉
         SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
@@ -752,12 +765,6 @@ double radians(float degrees) {
 {
     //判断是哪个scrollview
     if (scrollView == self.pageControlView) {
-        //        if (!scrollView.zoomBouncing) {
-        //            //NSLog(@"到底了！！！");
-        //        }
-        //
-        
-        
         //禁止scrollview向右滑动///////////////////////////////////////////////////////////////////////
         CGPoint translation;
         
@@ -775,15 +782,34 @@ double radians(float degrees) {
         }
         /////////////////////////////////////////////////////////////////////////////////////////////
         
+        //添加零件用以更换controller
+        if (scrollView.contentOffset.x >= _changePage*320-320)
+        {
+            if (_downImageView == nil) {
+                _downImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_downCoverWithButton.png"]];
+                _downImageView.center =CGPointMake(320.0/2, self.view.frame.size.height + 178.0/2);
+                [self.view addSubview:_downImageView];
+            }
+            if (_tapCoverImageView == nil) {
+                _tapCoverImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_tapCover.png"]];
+                _tapCoverImageView.autoresizesSubviews = NO;
+                [_tapCoverImageView setFrame:CGRectMake(self.pageControlView.frame.size.width*_changePage+8, 5, 304.0, 460.0)];
+                [self.pageControlView addSubview:_tapCoverImageView];
+            }
+            _downImageView.center =CGPointMake(320.0/2, self.view.frame.size.height + 178.0/2 - 178.0/320 * (scrollView.contentOffset.x - (_changePage*320-320)));
+        }
         
         //找到下一个应该显示的page//////////////////////////////////////////////////////////////////////
         CGFloat pageWidth = self.pageControlView.frame.size.width;
         int page = floor((self.pageControlView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
-        self.currentPage = page;
+        
+        //换页
+        if (_currentPage != page) {
+            _currentPage = page;
+        }
+        
         // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
-        
-        
-        [self loadViewWithPage:page];  
+        [self loadViewWithPage:page];
         [self loadViewWithPage:page + 1];
         /////////////////////////////////////////////////////////////////////////////////////////////
         
@@ -824,6 +850,11 @@ double radians(float degrees) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
         }
     }
+    if (scrollView.contentOffset.x >= _changePage*320) {
+        scrollView.userInteractionEnabled = NO;
+        [self.view removeGestureRecognizer:_noteRecognizer];
+        NSLog(@"崔昊看这里~~~~~~~~~~看这里呀看这里~~~~~~~~~~~~在这里更换controller！！！");
+    }
 }
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
@@ -834,6 +865,130 @@ double radians(float degrees) {
         }
     }
     
+}
+
+
+#pragma mark - add wordDetailViewController Methods
+
+- (void)addTapCoverImage:(int)page
+{
+    _tapCoverImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_tapCover.png"]];
+    _tapCoverImageView.autoresizesSubviews = NO;
+    [_tapCoverImageView setFrame:CGRectMake(self.pageControlView.frame.size.width*page+8, self.view.frame.size.height, 304.0, 460.0)];
+    [self.pageControlView addSubview:_tapCoverImageView];
+    
+}
+
+- (void)addDownImage:(int)page
+{
+    _downImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_downCover.png"]];
+    _downImageView.autoresizesSubviews = NO;
+    [_downImageView setFrame:CGRectMake(self.pageControlView.frame.size.width*page, self.view.frame.size.height, 320.0, 178.0)];
+    [self.pageControlView addSubview:_downImageView];
+    
+}
+
+- (void)addRightButtonImage:(int)page
+{
+    _rightButtonImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_rightButton_first.png"]];
+    _rightButtonImage.autoresizesSubviews = NO;
+    [_rightButtonImage setFrame:CGRectMake(self.pageControlView.frame.size.width*page + 30, self.view.frame.size.height, 93.0, 93.0)];
+    [self.pageControlView addSubview:_rightButtonImage];
+}
+
+-(void)addWrongButtonImage:(int)page
+{
+    _wrongButtonImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrongButton_first.png"]];
+    _wrongButtonImage.autoresizesSubviews = NO;
+    [_wrongButtonImage setFrame:CGRectMake(self.pageControlView.frame.size.width*page + 320 - 30-93, self.view.frame.size.height, 93.0, 93.0)];
+    [self.pageControlView addSubview:_wrongButtonImage];
+}
+
+- (void)addTapCoverImageAnimation
+{
+    if (_tapCoverImageView == nil) {
+        [self addTapCoverImage:_changePage];
+    }
+    
+    CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    //[lineAnimation setValue:@"removeDownNoteImageAnimation" forKey:@"id"];
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _tapCoverImageView.frame.origin.x + _tapCoverImageView.frame.size.width/2, self.view.frame.size.height+ _tapCoverImageView.frame.size.height/2);
+    CGPathAddLineToPoint(path, NULL, _tapCoverImageView.frame.origin.x + _tapCoverImageView.frame.size.width/2, self.view.frame.size.height - 355);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.3f;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
+    lineAnimation.delegate = self;
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    [_tapCoverImageView.layer addAnimation:lineAnimation forKey:nil];
+}
+
+- (void)addDownCoverImageAnimation
+{
+    if (_downImageView == nil) {
+        [self addDownImage:_changePage];
+    }
+    CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    [lineAnimation setValue:@"addDownCoverImageAnimation" forKey:@"id"];
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _downImageView.frame.origin.x + _downImageView.frame.size.width/2, self.view.frame.size.height+ _downImageView.frame.size.height/2);
+    CGPathAddLineToPoint(path, NULL, _downImageView.frame.origin.x + _downImageView.frame.size.width/2, self.view.frame.size.height - 178.0);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.3f;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
+    lineAnimation.delegate = self;
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    [_downImageView.layer addAnimation:lineAnimation forKey:nil];
+}
+
+- (void)addDownRightAndWrongButtonImageAnimation
+{
+    if (_rightButtonImage == nil && _wrongButtonImage == nil) {
+        [self addRightButtonImage:_changePage];
+        [self addWrongButtonImage:_changePage];
+    }
+    CAKeyframeAnimation *lineAnimation;
+    CGMutablePathRef path;
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    [lineAnimation setValue:@"addRightButtonAnimation" forKey:@"id"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _rightButtonImage.frame.origin.x + _rightButtonImage.frame.size.width/2, self.view.frame.size.height+ _rightButtonImage.frame.size.height/2);
+    CGPathAddLineToPoint(path, NULL, _rightButtonImage.frame.origin.x + _rightButtonImage.frame.size.width/2, self.view.frame.size.height - 150.0);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.3f;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
+    lineAnimation.delegate = self;
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    [_rightButtonImage.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    //[lineAnimation setValue:@"removeDownNoteImageAnimation" forKey:@"id"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _wrongButtonImage.frame.origin.x + _wrongButtonImage.frame.size.width/2, self.view.frame.size.height+ _rightButtonImage.frame.size.height/2);
+    CGPathAddLineToPoint(path, NULL, _wrongButtonImage.frame.origin.x + _wrongButtonImage.frame.size.width/2, self.view.frame.size.height - 150.0);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.3f;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
+    lineAnimation.delegate = self;
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
+    [_wrongButtonImage.layer addAnimation:lineAnimation forKey:nil];
 }
 
 

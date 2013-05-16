@@ -198,7 +198,7 @@ float sumHeight = 5.0;//10.0;
             
         }
         UIImageView *rectImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_meaning_rect.png"]];
-        rectImage.frame = CGRectMake(10, h, 300, sumHeight-h);
+        rectImage.frame = CGRectMake(12, h, 296, sumHeight-h);
         [self.view addSubview:rectImage];
         [self.view sendSubviewToBack:rectImage];
     }

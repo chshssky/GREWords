@@ -93,7 +93,6 @@
                                                     highlightedContentImage:nil];
     
     NSArray *menus = [NSArray arrayWithObjects:starMenuItem1, starMenuItem2, starMenuItem3, starMenuItem4, nil];
-    NSLog(@"count: %d", menus.count);
     
     self.menu = [[AwesomeMenu alloc] initWithFrame:self.view.bounds menus:menus];
     UIImage *storyMenuItemImage = [UIImage imageNamed:@"Main menu_xButton.png"];
@@ -110,7 +109,6 @@
     self.menu.farRadius = 95.0f;
     self.menu.endRadius = 80.0f;
     self.menu.nearRadius = 70.0f;
-    NSLog(@"size: %f, %f", self.view.bounds.size.height, self.view.bounds.size.width);
     
     self.menu.startPoint = CGPointMake(40.0, self.view.bounds.size.height - 40.0);
 	
@@ -247,8 +245,6 @@
         }
         self.menu.transform = CGAffineTransformMakeTranslation(-300, 0);
     } completion:^(BOOL finished) {
-        
-        NSLog(@"x:%f, y:%f, width:%f, height:%f", dashboard.view.frame.origin.x, dashboard.view.frame.origin.y, dashboard.view.frame.size.width, dashboard.view.frame.size.height);
 
         NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
         vc.delegate = self;
