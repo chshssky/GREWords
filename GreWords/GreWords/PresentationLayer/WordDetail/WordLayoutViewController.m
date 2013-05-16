@@ -54,7 +54,7 @@
 
 @implementation WordLayoutViewController
 
-float sumHeight = 5.0;//10.0;
+float sumHeight = 10.0;//10.0;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -108,6 +108,7 @@ float sumHeight = 5.0;//10.0;
             [self showMeanings:theDetail[i] numberOfThisMeaning:i whetherOnlyOneMeaning:theDetail.count==0?YES:NO startHeight:sumHeight withOptions:options];
         }
     }
+    sumHeight += 10.0;
     self.view.frame = CGRectMake(0, 0, 320, sumHeight);
     sumHeight = 5.0;
 }

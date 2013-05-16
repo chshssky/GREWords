@@ -95,6 +95,11 @@
     self.nameControlArray = [[NSMutableArray alloc] init];
     self.phoneticControlArray = [[NSMutableArray alloc] init];
 
+   
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
     for (unsigned i = 0; i < (_changePage+2); i++) {
 		[self.viewControlArray addObject:[NSNull null]];
         [self.nameControlArray addObject:[NSNull null]];
@@ -105,14 +110,9 @@
     if (iPhone5) {
         self.pageControlView.contentSize = CGSizeMake(self.pageControlView.frame.size.width * (_changePage+1),
                                                       self.pageControlView.frame.size.height);
-        //[self.WordParaphraseView setFrame:CGRectMake(frame.origin.x, frame.origin.y, 320.0, 360)];
-        //self.WordParaphraseView.contentSize = CGSizeMake(self.view.frame.size.width,
-        //                                              self.pageControlView.frame.size.height);
     }else{
         self.pageControlView.contentSize = CGSizeMake(self.pageControlView.frame.size.width * (_changePage+1),
                                                       360);
-        //self.WordParaphraseView.contentSize = CGSizeMake(self.view.frame.size.width,
-        //                                                 360);
     }
     
     self.pageControlView.showsHorizontalScrollIndicator = NO;
@@ -122,8 +122,11 @@
     self.pageControlView.directionalLockEnabled = NO;
     self.pageControlView.bounces = NO;
     
+    NSLog(@"a%f,%f",self.pageControlView.frame.size.height, self.WordParaphraseView.frame.size.height);
     [self loadViewWithPage:0];
+    NSLog(@"b%f,%f",self.pageControlView.frame.size.height, self.WordParaphraseView.frame.size.height);
     [self loadViewWithPage:1];
+    NSLog(@"c%f,%f",self.pageControlView.frame.size.height, self.WordParaphraseView.frame.size.height);
     
     //显示单词内容和单词名称
     self.WordParaphraseView = [self.viewControlArray objectAtIndex:0];
@@ -156,7 +159,7 @@
         self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-127, -211));
     }
     [self.view addSubview:self.dashboardVC.view];
-
+    
     
     [self.backButton.superview bringSubviewToFront:self.backButton];
 }
@@ -723,8 +726,11 @@ double radians(float degrees) {
     if (self.WordParaphraseView.superview == nil)
     {
         CGRect frame = self.pageControlView.frame;
+        
+        NSLog(@"%f",frame.size.height);
         frame.origin.x = frame.size.width * page;
         frame.origin.y = 0;
+        frame.size.height = frame.size.height-10;
         self.WordParaphraseView.frame = frame;
         
         if(self.WordParaphraseView.contentSize.height <= self.WordParaphraseView.frame.size.height)

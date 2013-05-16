@@ -17,6 +17,7 @@
 		3FA4849117142BF9003E88A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848D17142BF9003E88A6 /* InfoPlist.strings */; };
 		3FA4849217142BF9003E88A6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848F17142BF9003E88A6 /* MainStoryboard.storyboard */; };
 		3FA484C41719590D003E88A6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA484C31719590D003E88A6 /* QuartzCore.framework */; };
+		732B748D17449E1400612277 /* flipcard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4E21C561743C2C4001A7EEF /* flipcard.plist */; };
 		735ED82F174151430008F945 /* UIImage+StackBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 735ED82E174151430008F945 /* UIImage+StackBlur.m */; };
 		735ED83317415D170008F945 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735ED83217415D170008F945 /* CoreImage.framework */; };
 		735ED83517415D890008F945 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735ED83417415D880008F945 /* Accelerate.framework */; };
@@ -3448,7 +3449,6 @@
 		E466FFFE173BD509001847D0 /* slumber.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E466F2C1173BD4F6001847D0 /* slumber.mp3 */; };
 		E466FFFF173BD509001847D0 /* slur.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E466F2C2173BD4F6001847D0 /* slur.mp3 */; };
 		E4983ED0171A8CD90055A0E7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */; };
-		E4E21C571743C2C4001A7EEF /* flipcard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4E21C561743C2C4001A7EEF /* flipcard.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -10791,6 +10791,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				732B748D17449E1400612277 /* flipcard.plist in Resources */,
 				3FA4848717142BB3003E88A6 /* GreWords-Info.plist in Resources */,
 				3FA4849117142BF9003E88A6 /* InfoPlist.strings in Resources */,
 				3FA4849217142BF9003E88A6 /* MainStoryboard.storyboard in Resources */,
@@ -14176,7 +14177,6 @@
 				738B76C817423D6A00D66FC0 /* learning_noteUp@2x.png in Resources */,
 				738B76CB174247A000D66FC0 /* learning_note_finished.png in Resources */,
 				738B76CC174247A000D66FC0 /* learning_note_finished@2x.png in Resources */,
-				E4EE5C0C1743815A00C713ED /* flipcard.plist in Resources */,
 				73F309E4174430BE00DB551B /* learning_downCoverWithButton.png in Resources */,
 				73F309E5174430BE00DB551B /* learning_downCoverWithButton@2x.png in Resources */,
 			);
