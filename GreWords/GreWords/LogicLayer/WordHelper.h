@@ -12,6 +12,8 @@
 {
     NSMutableArray *wordList;
     NSMutableDictionary *wordIndexes;
+    
+    NSArray *homoArr;
 }
 
 +(WordHelper*) instance;

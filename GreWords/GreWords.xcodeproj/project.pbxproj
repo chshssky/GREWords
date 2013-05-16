@@ -3448,7 +3448,7 @@
 		E466FFFE173BD509001847D0 /* slumber.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E466F2C1173BD4F6001847D0 /* slumber.mp3 */; };
 		E466FFFF173BD509001847D0 /* slur.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E466F2C2173BD4F6001847D0 /* slur.mp3 */; };
 		E4983ED0171A8CD90055A0E7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */; };
-		E4EE5C0C1743815A00C713ED /* flipcard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4EE5C0B1743815A00C713ED /* flipcard.plist */; };
+		E4E21C571743C2C4001A7EEF /* flipcard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4E21C561743C2C4001A7EEF /* flipcard.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -6948,7 +6948,7 @@
 		E466F4C5173BD508001847D0 /* IIWrapController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IIWrapController.h; sourceTree = "<group>"; };
 		E466F4C6173BD508001847D0 /* IIWrapController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IIWrapController.m; sourceTree = "<group>"; };
 		E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		E4EE5C0B1743815A00C713ED /* flipcard.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = flipcard.plist; sourceTree = "<group>"; };
+		E4E21C561743C2C4001A7EEF /* flipcard.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = flipcard.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -7270,10 +7270,10 @@
 		E466E7A6173BD4CB001847D0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E4E21C561743C2C4001A7EEF /* flipcard.plist */,
 				E466E7A7173BD4CB001847D0 /* images */,
 				E466E8B4173BD4CC001847D0 /* voices */,
 				E466F4AF173BD508001847D0 /* words.plist */,
-				E4EE5C0B1743815A00C713ED /* flipcard.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";

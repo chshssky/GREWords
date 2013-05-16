@@ -20,7 +20,14 @@
 @implementation SmartWordListViewController
 
 - (void)addWord:(WordEntity*)aWord
-{    
+{
+    if(self.type == SmartListType_Homo)
+    {
+        NSLog(@"Homo List Don't support add word");
+        return;
+    }
+        
+    
     _array = [_array arrayByAddingObject:aWord];
     SmartWordListSectionController* sectionController = [[SmartWordListSectionController alloc] initWithViewController:self];
     sectionController.wordID = aWord.wordID;
@@ -49,7 +56,15 @@
     for(int i = 0; i < _array.count;i++)
     {
         SmartWordListSectionController* sectionController = [[SmartWordListSectionController alloc] initWithViewController:self];
-        sectionController.wordID = ((WordEntity*)_array[i]).wordID;
+        if(self.type == SmartListType_Homo)
+        {
+            sectionController.homotitle = ((NSDictionary*)_array[i])[@"key"];
+        }
+        else
+        {
+            sectionController.wordID = ((WordEntity*)_array[i]).wordID;
+        }
+        
         sectionController.sectionID = i;
         sectionController.type = self.type;
         [retractableControllers addObject:sectionController];

@@ -149,6 +149,7 @@
     self.dashboardVC.nonFinishedNumber = 100;
     self.dashboardVC.sumNumber = 300;
     //self.dashboardVC.delegate = self;
+    [self.dashboardVC wordDetailIndicatorGen];
     if (iPhone5) {
         self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -252));
     } else {
@@ -158,8 +159,6 @@
 
     
     [self.backButton.superview bringSubviewToFront:self.backButton];
-
-
 }
 
 - (void)didReceiveMemoryWarning
