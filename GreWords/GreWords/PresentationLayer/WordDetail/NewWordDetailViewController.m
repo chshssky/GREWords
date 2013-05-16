@@ -100,7 +100,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    for (unsigned i = 0; i < (_changePage+2); i++) {
+    for (unsigned i = 0; i < (_changePage+1); i++) {
 		[self.viewControlArray addObject:[NSNull null]];
         [self.nameControlArray addObject:[NSNull null]];
         [self.phoneticControlArray addObject:[NSNull null]];
@@ -122,11 +122,8 @@
     self.pageControlView.directionalLockEnabled = NO;
     self.pageControlView.bounces = NO;
     
-    NSLog(@"a%f,%f",self.pageControlView.frame.size.height, self.WordParaphraseView.frame.size.height);
     [self loadViewWithPage:0];
-    NSLog(@"b%f,%f",self.pageControlView.frame.size.height, self.WordParaphraseView.frame.size.height);
     [self loadViewWithPage:1];
-    NSLog(@"c%f,%f",self.pageControlView.frame.size.height, self.WordParaphraseView.frame.size.height);
     
     //显示单词内容和单词名称
     self.WordParaphraseView = [self.viewControlArray objectAtIndex:0];
@@ -798,10 +795,11 @@ double radians(float degrees) {
             if (_tapCoverImageView == nil) {
                 _tapCoverImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_tapCover.png"]];
                 _tapCoverImageView.autoresizesSubviews = NO;
-                [_tapCoverImageView setFrame:CGRectMake(self.pageControlView.frame.size.width*_changePage+8, 5, 304.0, 460.0)];
+                [_tapCoverImageView setFrame:CGRectMake(self.pageControlView.frame.size.width*_changePage+8, 0, 304.0, 460.0)];
                 [self.pageControlView addSubview:_tapCoverImageView];
             }
             _downImageView.center =CGPointMake(320.0/2, self.view.frame.size.height + 178.0/2 - 178.0/320 * (scrollView.contentOffset.x - (_changePage*320-320)));
+            return;
         }
         
         //找到下一个应该显示的page//////////////////////////////////////////////////////////////////////
