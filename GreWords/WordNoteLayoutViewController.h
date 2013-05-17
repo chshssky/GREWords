@@ -1,18 +1,19 @@
 //
-//  WordSmallLayoutViewController.h
+//  WordNoteLayoutViewController.h
 //  GreWords
 //
-//  Created by xsource on 13-5-4.
+//  Created by xsource on 13-5-17.
 //  Copyright (c) 2013年 Cui Hao. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "WordEntity.h"
 
-@interface WordSmallLayoutViewController : UIViewController
+@interface WordNoteLayoutViewController : UIViewController
 
-- (void)displayWord:(WordEntity*)word;
+- (void)displayNote:(WordEntity*)word;
 
 @property (nonatomic) float sumHeight;
+
 
 @end

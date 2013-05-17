@@ -28,6 +28,10 @@
 		738B76CB174247A000D66FC0 /* learning_note_finished.png in Resources */ = {isa = PBXBuildFile; fileRef = 738B76C9174247A000D66FC0 /* learning_note_finished.png */; };
 		738B76CC174247A000D66FC0 /* learning_note_finished@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 738B76CA174247A000D66FC0 /* learning_note_finished@2x.png */; };
 		738B76CF1742601600D66FC0 /* noCopyTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 738B76CE1742601600D66FC0 /* noCopyTextView.m */; };
+		73A80ECF174642D60066DA03 /* WordNoteLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A80ECD174642D60066DA03 /* WordNoteLayoutViewController.m */; };
+		73A80ED0174642D60066DA03 /* WordNoteLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A80ECE174642D60066DA03 /* WordNoteLayoutViewController.xib */; };
+		73A80ED9174643220066DA03 /* WordCardLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A80ED7174643220066DA03 /* WordCardLayoutViewController.m */; };
+		73A80EDA174643220066DA03 /* WordCardLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A80ED8174643220066DA03 /* WordCardLayoutViewController.xib */; };
 		73D209AC1714367F00C718A6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D209AB1714367F00C718A6 /* CoreText.framework */; };
 		73F309E4174430BE00DB551B /* learning_downCoverWithButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 73F309E2174430BE00DB551B /* learning_downCoverWithButton.png */; };
 		73F309E5174430BE00DB551B /* learning_downCoverWithButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73F309E3174430BE00DB551B /* learning_downCoverWithButton@2x.png */; };
@@ -3483,6 +3487,12 @@
 		738B76CA174247A000D66FC0 /* learning_note_finished@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_note_finished@2x.png"; sourceTree = "<group>"; };
 		738B76CD1742601600D66FC0 /* noCopyTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = noCopyTextView.h; path = ../PresentationLayer/WordDetail/noCopyTextView.h; sourceTree = "<group>"; };
 		738B76CE1742601600D66FC0 /* noCopyTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = noCopyTextView.m; path = ../PresentationLayer/WordDetail/noCopyTextView.m; sourceTree = "<group>"; };
+		73A80ECC174642D60066DA03 /* WordNoteLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordNoteLayoutViewController.h; path = ../../../WordNoteLayoutViewController.h; sourceTree = "<group>"; };
+		73A80ECD174642D60066DA03 /* WordNoteLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordNoteLayoutViewController.m; path = ../../../WordNoteLayoutViewController.m; sourceTree = "<group>"; };
+		73A80ECE174642D60066DA03 /* WordNoteLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WordNoteLayoutViewController.xib; path = ../../../WordNoteLayoutViewController.xib; sourceTree = "<group>"; };
+		73A80ED6174643220066DA03 /* WordCardLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordCardLayoutViewController.h; sourceTree = "<group>"; };
+		73A80ED7174643220066DA03 /* WordCardLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordCardLayoutViewController.m; sourceTree = "<group>"; };
+		73A80ED8174643220066DA03 /* WordCardLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordCardLayoutViewController.xib; sourceTree = "<group>"; };
 		73D209AB1714367F00C718A6 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		73F309E2174430BE00DB551B /* learning_downCoverWithButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = learning_downCoverWithButton.png; sourceTree = "<group>"; };
 		73F309E3174430BE00DB551B /* learning_downCoverWithButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_downCoverWithButton@2x.png"; sourceTree = "<group>"; };
@@ -7052,6 +7062,46 @@
 			name = noCopyTextView;
 			sourceTree = "<group>";
 		};
+		73A80EDB1746452E0066DA03 /* WordLayout */ = {
+			isa = PBXGroup;
+			children = (
+				E466E781173BD4CB001847D0 /* WordLayoutViewController.h */,
+				E466E782173BD4CB001847D0 /* WordLayoutViewController.m */,
+				E466E783173BD4CB001847D0 /* WordLayoutViewController.xib */,
+			);
+			name = WordLayout;
+			sourceTree = "<group>";
+		};
+		73A80EDC174645530066DA03 /* WordLeftLayout */ = {
+			isa = PBXGroup;
+			children = (
+				E466E784173BD4CB001847D0 /* WordSmallLayoutViewController.h */,
+				E466E785173BD4CB001847D0 /* WordSmallLayoutViewController.m */,
+				E466E786173BD4CB001847D0 /* WordSmallLayoutViewController.xib */,
+			);
+			name = WordLeftLayout;
+			sourceTree = "<group>";
+		};
+		73A80EDD174645720066DA03 /* WordNoteLayout */ = {
+			isa = PBXGroup;
+			children = (
+				73A80ECC174642D60066DA03 /* WordNoteLayoutViewController.h */,
+				73A80ECD174642D60066DA03 /* WordNoteLayoutViewController.m */,
+				73A80ECE174642D60066DA03 /* WordNoteLayoutViewController.xib */,
+			);
+			name = WordNoteLayout;
+			sourceTree = "<group>";
+		};
+		73A80EDE174645980066DA03 /* WordCardLayout */ = {
+			isa = PBXGroup;
+			children = (
+				73A80ED6174643220066DA03 /* WordCardLayoutViewController.h */,
+				73A80ED7174643220066DA03 /* WordCardLayoutViewController.m */,
+				73A80ED8174643220066DA03 /* WordCardLayoutViewController.xib */,
+			);
+			name = WordCardLayout;
+			sourceTree = "<group>";
+		};
 		E41FF51C173FE6A30078E738 /* MHTabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -7206,12 +7256,10 @@
 				E466E77E173BD4CB001847D0 /* WordDetailViewController.m */,
 				E466E77F173BD4CB001847D0 /* WordDetailViewController.xib */,
 				E466E780173BD4CB001847D0 /* WordDetailViewControllerProtocol.h */,
-				E466E781173BD4CB001847D0 /* WordLayoutViewController.h */,
-				E466E782173BD4CB001847D0 /* WordLayoutViewController.m */,
-				E466E783173BD4CB001847D0 /* WordLayoutViewController.xib */,
-				E466E785173BD4CB001847D0 /* WordSmallLayoutViewController.m */,
-				E466E786173BD4CB001847D0 /* WordSmallLayoutViewController.xib */,
-				E466E784173BD4CB001847D0 /* WordSmallLayoutViewController.h */,
+				73A80EDB1746452E0066DA03 /* WordLayout */,
+				73A80EDC174645530066DA03 /* WordLeftLayout */,
+				73A80EDD174645720066DA03 /* WordNoteLayout */,
+				73A80EDE174645980066DA03 /* WordCardLayout */,
 			);
 			path = WordDetail;
 			sourceTree = "<group>";
@@ -7271,9 +7319,9 @@
 			isa = PBXGroup;
 			children = (
 				E4E21C561743C2C4001A7EEF /* flipcard.plist */,
+				E466F4AF173BD508001847D0 /* words.plist */,
 				E466E7A7173BD4CB001847D0 /* images */,
 				E466E8B4173BD4CC001847D0 /* voices */,
-				E466F4AF173BD508001847D0 /* words.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -14179,6 +14227,8 @@
 				738B76CC174247A000D66FC0 /* learning_note_finished@2x.png in Resources */,
 				73F309E4174430BE00DB551B /* learning_downCoverWithButton.png in Resources */,
 				73F309E5174430BE00DB551B /* learning_downCoverWithButton@2x.png in Resources */,
+				73A80ED0174642D60066DA03 /* WordNoteLayoutViewController.xib in Resources */,
+				73A80EDA174643220066DA03 /* WordCardLayoutViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14233,6 +14283,8 @@
 				E43908C9174108A000E36078 /* UIImage+Opacity.m in Sources */,
 				735ED82F174151430008F945 /* UIImage+StackBlur.m in Sources */,
 				738B76CF1742601600D66FC0 /* noCopyTextView.m in Sources */,
+				73A80ECF174642D60066DA03 /* WordNoteLayoutViewController.m in Sources */,
+				73A80ED9174643220066DA03 /* WordCardLayoutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,9 @@
 #import "noCopyTextView.h"
 #import "DashboardViewController.h"
 
+#import "WordCardLayoutViewController.h"
+#import "WordNoteLayoutViewController.h"
+
 
 @interface NewWordDetailViewController () <UIScrollViewDelegate,UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
@@ -91,6 +94,7 @@
     self.indexOfWordIDToday = 0;
     self.changePage = 10;
     
+    self.dashboardVC = [[DashboardViewController alloc] init];
     self.viewControlArray = [[NSMutableArray alloc] init];
     self.nameControlArray = [[NSMutableArray alloc] init];
     self.phoneticControlArray = [[NSMutableArray alloc] init];
@@ -145,7 +149,6 @@
     
     
     //添加左上角的进度圆~
-    self.dashboardVC = [[DashboardViewController alloc] init];
     self.dashboardVC.nonFinishedNumber = 100;
     self.dashboardVC.sumNumber = 300;
     //self.dashboardVC.delegate = self;
@@ -153,7 +156,7 @@
     if (iPhone5) {
         self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -252));
     } else {
-        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-127, -211));
+        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -212));
     }
     [self.view addSubview:self.dashboardVC.view];
     
@@ -485,6 +488,7 @@
         _noteTextView.delegate = self;
         _noteTextView.layer.anchorPoint = CGPointMake(0.08, 0);
         _noteTextView.editable = YES;
+        //载入note
         _noteTextView.text = [[WordHelper instance] wordWithString:_wordLabel.text].note ;
         [_noteTextView setFont:[UIFont fontWithName:@"STHeitiSC-Light" size:22]];
         [_noteTextView setBackgroundColor:[UIColor clearColor]];
@@ -639,7 +643,11 @@ double radians(float degrees) {
 - (void)loadWordView:(int)index
 {
     // Do any additional setup after loading the view from its nib.
-    WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
+    //WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
+    //WordNoteLayoutViewController *vc = [[WordNoteLayoutViewController alloc] init];
+    WordCardLayoutViewController *vc = [[WordCardLayoutViewController alloc] init];
+    
+    
     /*
      key: shouldShowWord                default:[NSNumber numberWithBool:YES]
      key: shouldShowPhonetic            default:[NSNumber numberWithBool:YES]
@@ -652,16 +660,22 @@ double radians(float degrees) {
     
     self.added_height = 0;
     
-    NSDictionary *option = @{@"shouldShowChineseMeaning":@YES,
-                             @"shouldShowEnglishMeaning":@YES,
-                             @"shouldShowSynonyms":@YES,
-                             @"shouldShowAntonyms":@YES,
-                             @"shouldShowSampleSentence":@YES};
+//    NSDictionary *option = @{@"shouldShowChineseMeaning":@YES,
+//                             @"shouldShowEnglishMeaning":@YES,
+//                             @"shouldShowSynonyms":@YES,
+//                             @"shouldShowAntonyms":@YES,
+//                             @"shouldShowSampleSentence":@YES};
+//    
+//    
+//    [vc displayWord:[[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:index] intValue]] withOption:option];
     
-    
-    [vc displayWord:[[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:index] intValue]] withOption:option];
-    
-    //self.wordLabel.text = [[WordHelper instance] wordWithID:aWordID].data[@"word"];
+
+    //[vc displayNote:[[WordHelper instance] wordWithString:_wordLabel.text]];
+    //获取dictionary
+    NSString *flipcard = [[NSBundle mainBundle] pathForResource:@"flipcard" ofType:@"plist"];
+    NSArray *data = [[NSArray alloc] initWithContentsOfFile:flipcard];
+    NSDictionary *wordDictionary = [data objectAtIndex:80];
+    [vc displayCard:wordDictionary];
     
     self.WordParaphraseView.delegate = self;
     self.WordParaphraseView.contentSize = vc.view.frame.size;
