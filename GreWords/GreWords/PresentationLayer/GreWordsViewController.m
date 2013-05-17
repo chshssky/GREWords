@@ -282,6 +282,7 @@
 {
     WordDetailViewController *vc = [[WordDetailViewController alloc] init];
     vc.wordID = 100;
+    vc.delegate = self;
     [self presentViewController:vc animated:NO completion:nil];
     //[self performSelector:@selector(GoToReviewSelector) withObject:nil afterDelay:0];
 }

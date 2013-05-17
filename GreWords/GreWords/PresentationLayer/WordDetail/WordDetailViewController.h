@@ -12,6 +12,7 @@
 @interface WordDetailViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UIScrollView *WordParaphraseView;
+@property (weak, nonatomic) IBOutlet UILabel *wordPronounceLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
 @property (strong, nonatomic) id<WordDetailViewControllerProtocol> delegate;

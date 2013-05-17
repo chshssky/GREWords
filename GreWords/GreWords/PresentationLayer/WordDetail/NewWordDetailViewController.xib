@@ -176,7 +176,7 @@
 					</object>
 					<object class="IBUIButton" id="59622698">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">289</int>
 						<string key="NSFrame">{{268, 52}, {46, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
@@ -463,25 +463,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">NewWordDetailViewController</string>
 					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="BackButtonPushed:">id</string>
-						<string key="soundButtonClicked:">id</string>
-						<string key="soundButtonReleased:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="BackButtonPushed:">
-							<string key="name">BackButtonPushed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="soundButtonClicked:">
-							<string key="name">soundButtonClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="soundButtonReleased:">
-							<string key="name">soundButtonReleased:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="DownImage">UIImageView</string>
 						<string key="PronounceButton">UIButton</string>
