@@ -20,7 +20,7 @@
 #import "WholeSmartWordViewController.h"
 
 
-@interface GreWordsViewController ()<NewWordDetailViewControllerProtocol>
+@interface GreWordsViewController ()<NewWordDetailViewControllerProtocol, WordDetailViewControllerProtocol>
 
 @property (nonatomic, strong) UIImageView *slideBarView;
 @property (nonatomic, strong) UIImageView *slideBarStatusView;
@@ -275,9 +275,26 @@
         self.slideBarStatusView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
         dashboard.view.transform = CGAffineTransformInvert(CGAffineTransformConcat(CGAffineTransformMakeScale(1.0f, 1.0f), CGAffineTransformMakeTranslation(0, 0)));
         self.menu.transform = CGAffineTransformMakeTranslation(0, 0);
-
     }];
 }
+
+- (void)GoToReview
+{
+    WordDetailViewController *vc = [[WordDetailViewController alloc] init];
+    vc.wordID = 100;
+    vc.delegate = self;
+    [self presentViewController:vc animated:NO completion:nil];
+    //[self performSelector:@selector(GoToReviewSelector) withObject:nil afterDelay:0];
+}
+
+//- (void)GoToReviewSelector
+//{
+//    NSLog(@"Hello!~~~");
+//    WordDetailViewController *vc = [[WordDetailViewController alloc] init];
+//    vc.wordID = 100;
+//    [self presentViewController:vc animated:NO completion:nil];
+//}
+
 
 - (void)viewDidUnload {
     [self setTitleView:nil];

@@ -10,6 +10,7 @@
 #import "WordLayoutViewController.h"
 #import "WordHelper.h"
 #import "WordSpeaker.h"
+#import "DashboardViewController.h"
 
 #define PI M_PI
 
@@ -24,6 +25,11 @@
 @property (weak, nonatomic) IBOutlet UIImageView *RightDownImage;
 @property (weak, nonatomic) IBOutlet UIImageView *WrongUpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *WrongDownImage;
+
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+@property (strong, nonatomic) DashboardViewController *dashboardVC;
+
+
 @property (strong, nonatomic) UIButton *showMeaningButton;
 @property (nonatomic) int added_height;
 
@@ -100,6 +106,22 @@
     
     
     [self loadWord:self.wordID];
+    
+    //添加左上角的进度圆~
+    self.dashboardVC = [[DashboardViewController alloc] init];
+    self.dashboardVC.nonFinishedNumber = 100;
+    self.dashboardVC.sumNumber = 300;
+    //self.dashboardVC.delegate = self;
+    [self.dashboardVC wordDetailIndicatorGen];
+    if (iPhone5) {
+        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -252));
+    } else {
+        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-127, -211));
+    }
+    [self.view addSubview:self.dashboardVC.view];
+    
+    
+    [self.backButton.superview bringSubviewToFront:self.backButton];
 }
 
 - (void)ShowMeaning
@@ -163,6 +185,7 @@
     [self setWrongUpImage:nil];
     [self setWrongDownImage:nil];
     [self setWordLabel:nil];
+    [self setWordPronounceLabel:nil];
     [super viewDidUnload];
 }
 

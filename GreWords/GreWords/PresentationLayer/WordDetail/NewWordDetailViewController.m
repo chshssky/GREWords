@@ -17,6 +17,7 @@
 #import "UIImage+StackBlur.h"
 #import "noCopyTextView.h"
 #import "DashboardViewController.h"
+#import "WordDetailViewController.h"
 
 #import "WordCardLayoutViewController.h"
 #import "WordNoteLayoutViewController.h"
@@ -870,7 +871,16 @@ double radians(float degrees) {
     if (scrollView.contentOffset.x >= _changePage*320) {
         scrollView.userInteractionEnabled = NO;
         [self.view removeGestureRecognizer:_noteRecognizer];
+        
+//        WordDetailViewController *vc = [[WordDetailViewController alloc] init];
+//        vc.wordID = 100;
+//        [self presentViewController:vc animated:NO completion:nil];
+        [self dismissModalViewControllerAnimated:NO];
+        
+#warning 好有爱的项目组
         NSLog(@"崔昊看这里~~~~~~~~~~看这里呀看这里~~~~~~~~~~~~在这里更换controller！！！");
+        NSLog(@"好感动，我找了好久");
+        [self.delegate GoToReview];
     }
 }
 
@@ -881,7 +891,6 @@ double radians(float degrees) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
         }
     }
-    
 }
 
 

@@ -12,4 +12,6 @@
 @protocol NewWordDetailViewControllerProtocol <NSObject>
 
 - (void)AnimationBack;
+- (void)GoToReview;
+
 @end
