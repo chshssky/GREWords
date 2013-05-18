@@ -59,6 +59,7 @@
         if(self.type == SmartListType_Homo)
         {
             sectionController.homotitle = ((NSDictionary*)_array[i])[@"key"];
+             sectionController.homoDict = ((NSDictionary*)_array[i]);
         }
         else
         {

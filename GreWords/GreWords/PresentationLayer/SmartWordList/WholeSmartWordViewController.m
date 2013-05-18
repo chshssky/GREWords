@@ -62,7 +62,7 @@
     [self.pageScrollView addSubview:vc3.view];
     
     SmartWordListViewController *vc4 = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
-    vc4.type = SmartListType_Slide;
+    vc4.type = SmartListType_Note;
     vc4.array = [[WordHelper instance] wordsHasNote];
     frame = vc4.view.frame;
     frame.origin.x += frame.size.width * 3;

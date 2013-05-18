@@ -644,9 +644,9 @@ double radians(float degrees) {
 - (void)loadWordView:(int)index
 {
     // Do any additional setup after loading the view from its nib.
-    //WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
+    WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
     //WordNoteLayoutViewController *vc = [[WordNoteLayoutViewController alloc] init];
-    WordCardLayoutViewController *vc = [[WordCardLayoutViewController alloc] init];
+    //WordCardLayoutViewController *vc = [[WordCardLayoutViewController alloc] init];
     
     
     /*
@@ -661,22 +661,14 @@ double radians(float degrees) {
     
     self.added_height = 0;
     
-//    NSDictionary *option = @{@"shouldShowChineseMeaning":@YES,
-//                             @"shouldShowEnglishMeaning":@YES,
-//                             @"shouldShowSynonyms":@YES,
-//                             @"shouldShowAntonyms":@YES,
-//                             @"shouldShowSampleSentence":@YES};
-//    
-//    
-//    [vc displayWord:[[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:index] intValue]] withOption:option];
+    NSDictionary *option = @{@"shouldShowChineseMeaning":@YES,
+                             @"shouldShowEnglishMeaning":@YES,
+                             @"shouldShowSynonyms":@YES,
+                             @"shouldShowAntonyms":@YES,
+                             @"shouldShowSampleSentence":@YES};
     
-
-    //[vc displayNote:[[WordHelper instance] wordWithString:_wordLabel.text]];
-    //获取dictionary
-    NSString *flipcard = [[NSBundle mainBundle] pathForResource:@"flipcard" ofType:@"plist"];
-    NSArray *data = [[NSArray alloc] initWithContentsOfFile:flipcard];
-    NSDictionary *wordDictionary = [data objectAtIndex:80];
-    [vc displayCard:wordDictionary];
+    
+    [vc displayWord:[[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:index] intValue]] withOption:option];
     
     self.WordParaphraseView.delegate = self;
     self.WordParaphraseView.contentSize = vc.view.frame.size;
