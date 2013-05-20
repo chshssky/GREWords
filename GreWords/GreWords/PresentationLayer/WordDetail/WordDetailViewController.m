@@ -10,6 +10,7 @@
 #import "WordLayoutViewController.h"
 #import "WordHelper.h"
 #import "WordSpeaker.h"
+#import "WordTaskGenerator.h"
 #import "DashboardViewController.h"
 
 #define PI M_PI
@@ -25,6 +26,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *RightDownImage;
 @property (weak, nonatomic) IBOutlet UIImageView *WrongUpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *WrongDownImage;
+@property (weak, nonatomic) IBOutlet UILabel *pronounceLabel;
 
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (strong, nonatomic) DashboardViewController *dashboardVC;
@@ -32,6 +34,8 @@
 
 @property (strong, nonatomic) UIButton *showMeaningButton;
 @property (nonatomic) int added_height;
+
+@property (nonatomic) int day;
 
 @end
 
@@ -48,7 +52,7 @@
     return self;
 }
 
-- (void)loadWord:(int)aWordID
+- (void)loadWord:(int)index
 {
     // Do any additional setup after loading the view from its nib.
     WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
@@ -63,17 +67,18 @@
      */
     
     self.added_height = 0;
-    
     NSDictionary *option = @{@"shouldShowChineseMeaning":@YES,
                              @"shouldShowEnglishMeaning":@YES,
                              @"shouldShowSynonyms":@YES,
+                             @"shouldShowAntonyms":@YES,
                              @"shouldShowSampleSentence":@YES};
     
+    int wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:index] intValue];
     
-    [vc displayWord:[[WordHelper instance] wordWithID:aWordID] withOption:option];
+    [vc displayWord:[[WordHelper instance] wordWithID:wordID] withOption:option];
     
-    self.wordLabel.text = [[WordHelper instance] wordWithID:aWordID].data[@"word"];
-    
+    self.wordLabel.text = [[WordHelper instance] wordWithID:wordID].data[@"word"];
+    self.pronounceLabel.text = [[WordHelper instance] wordWithID:wordID].data[@"phonetic"];
     self.WordParaphraseView.delegate = self;
     self.WordParaphraseView.contentSize = vc.view.frame.size;
     
@@ -97,7 +102,7 @@
     
     
     [self DontShowMeaning];
-    
+    self.indexOfWordIDToday ++;
 }
 
 - (void)viewDidLoad
@@ -105,8 +110,8 @@
     [super viewDidLoad];
     
     
-    [self loadWord:self.wordID];
-    
+    [self loadWord:self.indexOfWordIDToday];
+
     //添加左上角的进度圆~
     self.dashboardVC = [[DashboardViewController alloc] init];
     self.dashboardVC.nonFinishedNumber = 100;
@@ -186,6 +191,7 @@
     [self setWrongDownImage:nil];
     [self setWordLabel:nil];
     [self setWordPronounceLabel:nil];
+    [self setPronounceLabel:nil];
     [super viewDidUnload];
 }
 
@@ -197,7 +203,6 @@
 
 - (void)RightAnimation
 {
-
     [self.RightUpImage setBounds:CGRectMake(216, self.view.frame.size.height - 92, 76, 38)];
     [self.RightDownImage setBounds:CGRectMake(216, self.view.frame.size.height - 92 + 37, 76, 0.001)];
     
@@ -244,14 +249,19 @@
 - (void)AddShowButton
 {
     self.showMeaningButton = [[UIButton alloc] init];
-    [self.showMeaningButton setImage:[UIImage imageNamed:@"learning_tapCover.png"] forState:UIControlStateNormal];
+    UIImage *image = [UIImage imageNamed:@"learning_tapCover.png"];
+    
+    NSLog(@"Image: frame: %f, %f", image.size.width, image.size.height);
+    [self.showMeaningButton setImage:image forState:UIControlStateNormal];
     //self.showMeaningButton.backgroundColor = [UIColor blackColor];
     [self.showMeaningButton addTarget:self action:@selector(showButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.showMeaningButton setCenter:self.WordParaphraseView.center];
+//    [self.showMeaningButton setCenter:self.WordParaphraseView.center];
     
-    [self.showMeaningButton setFrame:self.WordParaphraseView.frame];
+    [self.showMeaningButton setFrame:CGRectMake( 8, 100, image.size.width, image.size.height)];
     [self.view addSubview:self.showMeaningButton];
+    NSLog(@"Button: frame: %f, %f", self.showMeaningButton.frame.size.width, self.showMeaningButton.frame.size.height);
+
 }
 
 - (void)showButtonPressed
@@ -262,16 +272,22 @@
 }
 
 - (IBAction)rightButtonPushed:(id)sender {
-    self.wordID++;
     [self viewWillAppear:YES];
-    [self loadWord:self.wordID];
-    
+    NSLog(@"The index:%d", self.indexOfWordIDToday);
+    NSLog(@"The wordID:%d", [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]);
+    NSLog(@"The MaxID:%d", self.maxWordID);
+    if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue] > self.maxWordID) {
+        [self.delegate GoToNewWordWithWord:self.indexOfWordIDToday andThe:self.maxWordID];
+        [self dismissModalViewControllerAnimated:NO];
+    } else {
+        [self loadWord:self.indexOfWordIDToday];
+    }
 }
 
 - (IBAction)wrongButtonPushed:(id)sender {
-    self.wordID++;
     [self viewWillAppear:YES];
-    [self loadWord:self.wordID];
+    [self loadWord:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
+    
 }
 
 - (IBAction)pronounceButtonPushed:(id)sender {

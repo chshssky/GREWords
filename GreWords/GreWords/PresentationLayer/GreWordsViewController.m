@@ -27,6 +27,12 @@
 @property (nonatomic, strong) UIImageView *slideBarStatusTextView;
 @property (nonatomic, strong) AwesomeMenu *menu;
 
+
+@property (nonatomic) int indexOfWordIDToday;
+@property (nonatomic) int maxWordID;
+@property (nonatomic) int day;
+
+
 @property (weak, nonatomic) IBOutlet UIImageView *titleView;
 
 @end
@@ -185,7 +191,7 @@
     [self transaction];
     
     WordDetailViewController *vc = [[WordDetailViewController alloc] init];
-    vc.wordID = 100;
+    vc.indexOfWordIDToday = 100;
     vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentModalViewController:vc animated:YES];
 }
@@ -248,6 +254,11 @@
     } completion:^(BOOL finished) {
 
         NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
+        // change!!!!!!!
+        vc.maxWordID = 0;
+        vc.indexOfWordIDToday = 0;
+        
+        
         vc.delegate = self;
         
         SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
@@ -278,13 +289,31 @@
     }];
 }
 
-- (void)GoToReview
+- (void)GoToReviewWithWord:(int)wordIndex andThe:(int)maxWordNum
 {
     WordDetailViewController *vc = [[WordDetailViewController alloc] init];
-    vc.wordID = 100;
+    vc.indexOfWordIDToday = wordIndex;
+    vc.maxWordID = maxWordNum;
     vc.delegate = self;
     [self presentViewController:vc animated:NO completion:nil];
     //[self performSelector:@selector(GoToReviewSelector) withObject:nil afterDelay:0];
+}
+
+- (void)GoToNewWordWithWord:(int)wordIndex andThe:(int)maxWordNum
+{
+    self.indexOfWordIDToday = wordIndex;
+    self.maxWordID = maxWordNum;
+    [self performSelector:@selector(GotoNewWordSelector) withObject:nil afterDelay:0];
+}
+
+- (void)GotoNewWordSelector
+{
+    NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
+    vc.indexOfWordIDToday = self.indexOfWordIDToday;
+    vc.maxWordID = self.maxWordID;
+    vc.delegate = self;
+    [self presentViewController:vc animated:NO completion:nil];
+
 }
 
 //- (void)GoToReviewSelector

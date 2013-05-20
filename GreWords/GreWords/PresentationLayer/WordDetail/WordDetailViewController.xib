@@ -73,7 +73,7 @@
 						<string key="NSFrameSize">{320, 169}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="469158526"/>
+						<reference key="NSNextKeyView" ref="1057222410"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<float key="IBUIAlpha">0.0</float>
 						<int key="IBUIContentMode">3</int>
@@ -92,7 +92,6 @@
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="8447338"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
-						<float key="IBUIAlpha">0.0</float>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
@@ -106,7 +105,7 @@
 						<string key="NSFrame">{{225, 12}, {81, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="500815332"/>
+						<reference key="NSNextKeyView" ref="562107953"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -153,13 +152,13 @@
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
-					<object class="IBUILabel" id="500815332">
+					<object class="IBUILabel" id="562107953">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 41}, {256, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="860623444"/>
+						<reference key="NSNextKeyView" ref="890329438"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -293,7 +292,7 @@
 							<string key="NSResourceName">learning_wrongButton_page@2x.png</string>
 						</object>
 					</object>
-					<object class="IBUIButton" id="469158526">
+					<object class="IBUIButton" id="1057222410">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 7}, {59, 44}}</string>
@@ -314,7 +313,7 @@
 						<reference key="IBUIFontDescription" ref="709540932"/>
 						<reference key="IBUIFont" ref="20475415"/>
 					</object>
-					<object class="IBUILabel" id="860623444">
+					<object class="IBUILabel" id="890329438">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 75}, {256, 21}}</string>
@@ -469,7 +468,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">backButton</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="469158526"/>
+						<reference key="destination" ref="1057222410"/>
 					</object>
 					<int key="connectionID">400</int>
 				</object>
@@ -477,7 +476,7 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">wordLabel</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="500815332"/>
+						<reference key="destination" ref="562107953"/>
 					</object>
 					<int key="connectionID">404</int>
 				</object>
@@ -485,9 +484,17 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">wordPronounceLabel</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="860623444"/>
+						<reference key="destination" ref="890329438"/>
 					</object>
 					<int key="connectionID">405</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">pronounceLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="890329438"/>
+					</object>
+					<int key="connectionID">406</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -519,7 +526,7 @@
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">BackButtonPushed:</string>
-						<reference key="source" ref="469158526"/>
+						<reference key="source" ref="1057222410"/>
 						<reference key="destination" ref="372490531"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -544,15 +551,15 @@
 							<reference ref="832596471"/>
 							<reference ref="838637650"/>
 							<reference ref="184821574"/>
-							<reference ref="324383819"/>
 							<reference ref="263351268"/>
 							<reference ref="852386505"/>
 							<reference ref="8447338"/>
 							<reference ref="164080497"/>
 							<reference ref="547088246"/>
-							<reference ref="469158526"/>
-							<reference ref="500815332"/>
-							<reference ref="860623444"/>
+							<reference ref="1057222410"/>
+							<reference ref="562107953"/>
+							<reference ref="324383819"/>
+							<reference ref="890329438"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -637,17 +644,17 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">399</int>
-						<reference key="object" ref="469158526"/>
+						<reference key="object" ref="1057222410"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">402</int>
-						<reference key="object" ref="500815332"/>
+						<reference key="object" ref="562107953"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">403</int>
-						<reference key="object" ref="860623444"/>
+						<reference key="object" ref="890329438"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
@@ -680,7 +687,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">405</int>
+			<int key="maxID">406</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -723,6 +730,7 @@
 						<string key="WrongDownImage">UIImageView</string>
 						<string key="WrongUpImage">UIImageView</string>
 						<string key="backButton">UIButton</string>
+						<string key="pronounceLabel">UILabel</string>
 						<string key="wordLabel">UILabel</string>
 						<string key="wordPronounceLabel">UILabel</string>
 					</dictionary>
@@ -770,6 +778,10 @@
 						<object class="IBToOneOutletInfo" key="backButton">
 							<string key="name">backButton</string>
 							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="pronounceLabel">
+							<string key="name">pronounceLabel</string>
+							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="wordLabel">
 							<string key="name">wordLabel</string>

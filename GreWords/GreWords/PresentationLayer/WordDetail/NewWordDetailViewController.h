@@ -17,4 +17,8 @@
 
 @property (strong, nonatomic) id<NewWordDetailViewControllerProtocol> delegate;
 
+@property (nonatomic) int indexOfWordIDToday;
+@property (nonatomic) int maxWordID;
+
+
 @end

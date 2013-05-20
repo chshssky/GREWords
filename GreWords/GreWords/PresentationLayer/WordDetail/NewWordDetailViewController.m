@@ -55,9 +55,6 @@
 @property (nonatomic) NSString *WordName;
 @property (nonatomic) NSString *WordPhonetic;
 
-
-@property (nonatomic) int indexOfWordIDToday;
-
 //- (void)loadViewWithPage:(int)index;
 //- (void)scrollViewDidScroll:(UIScrollView *)sender;
 
@@ -89,7 +86,7 @@
     [self.PronounceButton addTarget:self action:@selector(soundButtonReleased:) forControlEvents:UIControlEventTouchCancel];
     
     self.day = 0;
-    self.indexOfWordIDToday = 0;
+
     self.changePage = 10;
     
     self.viewControlArray = [[NSMutableArray alloc] init];
@@ -659,9 +656,12 @@ double radians(float degrees) {
                              @"shouldShowAntonyms":@YES,
                              @"shouldShowSampleSentence":@YES};
     
+    int wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:index] intValue];
+    [vc displayWord:[[WordHelper instance] wordWithID:wordID] withOption:option];
     
-    [vc displayWord:[[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:index] intValue]] withOption:option];
-    
+    if (self.maxWordID < wordID) {
+        self.maxWordID = wordID;
+    }
     //self.wordLabel.text = [[WordHelper instance] wordWithID:aWordID].data[@"word"];
     
     self.WordParaphraseView.delegate = self;
@@ -797,6 +797,7 @@ double radians(float degrees) {
                 _tapCoverImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_tapCover.png"]];
                 _tapCoverImageView.autoresizesSubviews = NO;
                 [_tapCoverImageView setFrame:CGRectMake(self.pageControlView.frame.size.width*_changePage+8, 0, 304.0, 460.0)];
+                NSLog(@"%d,%f",((int)self.pageControlView.frame.size.width*_changePage+8)%320,self.pageControlView.frame.origin.y);
                 [self.pageControlView addSubview:_tapCoverImageView];
             }
             _downImageView.center =CGPointMake(320.0/2, self.view.frame.size.height + 178.0/2 - 178.0/320 * (scrollView.contentOffset.x - (_changePage*320-320)));
@@ -866,7 +867,7 @@ double radians(float degrees) {
 #warning 好有爱的项目组
         NSLog(@"崔昊看这里~~~~~~~~~~看这里呀看这里~~~~~~~~~~~~在这里更换controller！！！");
         NSLog(@"好感动，我找了好久");
-        [self.delegate GoToReview];
+        [self.delegate GoToReviewWithWord:self.indexOfWordIDToday andThe:self.maxWordID];
     }
 }
 
@@ -1001,6 +1002,7 @@ double radians(float degrees) {
     lineAnimation.delegate = self;
     lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     [_wrongButtonImage.layer addAnimation:lineAnimation forKey:nil];
+    
 }
 
 
@@ -1028,7 +1030,6 @@ double radians(float degrees) {
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController didChangeOffset:(CGFloat)offset orientation:(IIViewDeckOffsetOrientation)orientation panning:(BOOL)panning
 {
     SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
-    
     
     if (_blackView == NULL) {
         _blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, left.view.frame.size.width, left.view.frame.size.height)];
