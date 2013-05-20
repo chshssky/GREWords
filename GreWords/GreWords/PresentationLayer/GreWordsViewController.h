@@ -15,4 +15,7 @@
 {
     DashboardViewController *dashboard;
 }
+
+@property (assign, nonatomic) BOOL whetherAllowViewFrameChanged;
+
 @end

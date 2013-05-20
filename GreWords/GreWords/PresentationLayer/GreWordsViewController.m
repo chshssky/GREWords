@@ -134,6 +134,27 @@
     [self initDashboard];
     [self initslideBar];
     [self initAwesomeMenu];
+    
+    _whetherAllowViewFrameChanged = NO;
+}
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+    
+    if (self.whetherAllowViewFrameChanged)
+    {
+        self.view.autoresizesSubviews = YES;
+        
+        self.view.transform = CGAffineTransformMakeScale(0.95f, 0.95f);
+        
+        [UIView animateWithDuration:0.5f animations:^{
+            self.view.transform = CGAffineTransformMakeScale(1.f, 1.f);
+        }];
+        
+        self.whetherAllowViewFrameChanged = NO;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning

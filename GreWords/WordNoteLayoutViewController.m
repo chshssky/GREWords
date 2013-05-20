@@ -77,6 +77,7 @@
     [noteTextView setBackgroundColor:[UIColor clearColor]];
     [noteTextView setEditable:NO];
     noteTextView.text = word.note;
+    _sumHeight = noteTextView.frame.origin.y + noteTextView.frame.size.height + 8.0;
     
     [self.view addSubview:noteTextView];
     
