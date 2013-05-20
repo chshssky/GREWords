@@ -111,21 +111,19 @@
     
     
     [self loadWord:self.indexOfWordIDToday];
-
-    //添加左上角的进度圆~
-//    self.dashboardVC = [[DashboardViewController alloc] init];
     self.dashboardVC = [DashboardViewController instance];
-//    self.dashboardVC.nonFinishedNumber = 100;
-//    self.dashboardVC.sumNumber = 300;
-    //self.dashboardVC.delegate = self;
-    //[self.dashboardVC wordDetailIndicatorGen];
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    //添加左上角的进度圆~
+    [self.dashboardVC wordDetailIndicatorGen];
     if (iPhone5) {
         self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -252));
     } else {
-        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-127, -211));
+        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -212));
     }
     [self.view addSubview:self.dashboardVC.view];
-    
     
     [self.backButton.superview bringSubviewToFront:self.backButton];
 }
@@ -288,7 +286,6 @@
 - (IBAction)wrongButtonPushed:(id)sender {
     [self viewWillAppear:YES];
     [self loadWord:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
-    
 }
 
 - (IBAction)pronounceButtonPushed:(id)sender {

@@ -47,7 +47,6 @@
 @property (strong, nonatomic) UIImageView *downImageView;
 @property (strong, nonatomic) UIImageView *rightButtonImage;
 @property (strong, nonatomic) UIImageView *wrongButtonImage;
-@property (nonatomic) int changePage;
 
 @property (nonatomic, retain) NSMutableArray *viewControlArray;
 @property (nonatomic, retain) NSMutableArray *nameControlArray;
@@ -81,17 +80,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(aaa:) name:UIMenuControllerDidShowMenuNotification object:nil];
-
     
     self.dashboardVC = [DashboardViewController instance];
     self.viewControlArray = [[NSMutableArray alloc] init];
     self.nameControlArray = [[NSMutableArray alloc] init];
     self.phoneticControlArray = [[NSMutableArray alloc] init];
-
     
-    self.day = 0;
-    self.changePage = 10;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -104,7 +98,6 @@
         self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -212));
     }
     [self.view addSubview:self.dashboardVC.view];
-    
     
     //设置横向滑动的scroll view
     for (unsigned i = 0; i < (_changePage+1); i++) {
@@ -146,13 +139,14 @@
     _noteRecognizer.delegate = self;
     _noteRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:_noteRecognizer];
-
-    [self.backButton.superview bringSubviewToFront:self.backButton];
     
     //给发音按钮添加事件
     [self.PronounceButton addTarget:self action:@selector(soundButtonClicked:) forControlEvents:UIControlEventTouchDown];
     [self.PronounceButton addTarget:self action:@selector(soundButtonReleased:) forControlEvents:UIControlEventTouchUpInside];
     [self.PronounceButton addTarget:self action:@selector(soundButtonReleased:) forControlEvents:UIControlEventTouchCancel];
+    
+    
+    [self.backButton.superview bringSubviewToFront:self.backButton];
 }
 
 - (void)didReceiveMemoryWarning
@@ -174,10 +168,6 @@
 #pragma mark - sound and back button Methods
 
 - (IBAction)soundButtonClicked:(id)sender {
-    
-    //SmartWordListViewController *vc = (SmartWordListViewController *)self.viewDeckController.leftController;
-    //[vc addWord:[[WordHelper instance] wordWithID:200]];
-    
     [[WordSpeaker instance] readWord:self.wordLabel.text];
     [self.soundImage setImage:[UIImage imageNamed:@"learning_sound_clicked.png"]];
 }

@@ -13,12 +13,11 @@
 
 @interface NewWordDetailViewController : UIViewController <UIScrollViewDelegate,IIViewDeckControllerDelegate,UIGestureRecognizerDelegate>
 
-@property int day;
-
 @property (strong, nonatomic) id<NewWordDetailViewControllerProtocol> delegate;
 
 @property (nonatomic) int indexOfWordIDToday;
 @property (nonatomic) int maxWordID;
-
+@property (nonatomic) int changePage;
+@property (nonatomic) int day;
 
 @end

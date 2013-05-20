@@ -247,17 +247,16 @@
     } completion:^(BOOL finished) {
 
         NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
-        // change!!!!!!!
+        
         vc.maxWordID = 0;
         vc.indexOfWordIDToday = 0;
-        
-        
+        vc.day = 0;
+        vc.changePage = 10;
         vc.delegate = self;
         
         SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
         leftController.type = SmartListType_Slide;
         leftController.array = @[];
-        
         IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:vc
                                                                                         leftViewController:leftController
                                                                                        rightViewController:nil];
@@ -310,9 +309,9 @@
 
     vc.maxWordID = self.maxWordID;
     vc.indexOfWordIDToday = self.indexOfWordIDToday;
-    
-    
+    vc.day = 0;
     vc.delegate = self;
+    vc.changePage = 10;
     
     SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
     leftController.type = SmartListType_Slide;
@@ -325,14 +324,6 @@
     [self presentViewController:deckController animated:NO completion:nil];
 
 }
-
-//- (void)GoToReviewSelector
-//{
-//    NSLog(@"Hello!~~~");
-//    WordDetailViewController *vc = [[WordDetailViewController alloc] init];
-//    vc.wordID = 100;
-//    [self presentViewController:vc animated:NO completion:nil];
-//}
 
 - (void)viewDidUnload {
     [self setTitleView:nil];
