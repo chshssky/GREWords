@@ -9,6 +9,8 @@
 #import "WholeSmartWordViewController.h"
 #import "SmartWordListViewController.h"
 #import "WordHelper.h"
+#import "GreWordsViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 @interface WholeSmartWordViewController ()
@@ -128,6 +130,25 @@
 }
 
 - (IBAction)exitPressed:(id)sender {
+    GreWordsViewController *superController =  (GreWordsViewController *)[self presentingViewController];
+    
+    UIImageView *blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [blackView setBackgroundColor:[UIColor blackColor]];
+    blackView.alpha = 0;
+    [superController.view addSubview:blackView];
+    
+    
+    superController.whetherAllowViewFrameChanged = YES;
+    CABasicAnimation *opacityAnim_black = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    opacityAnim_black.fromValue = [NSNumber numberWithFloat:0.7];
+    opacityAnim_black.toValue = [NSNumber numberWithFloat:0];
+    opacityAnim_black.removedOnCompletion = YES;
+    CAAnimationGroup *animGroup_black = [CAAnimationGroup animation];
+    animGroup_black.animations = [NSArray arrayWithObjects:opacityAnim_black, nil];
+    animGroup_black.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    animGroup_black.duration = 0.5;
+    [blackView.layer addAnimation:animGroup_black forKey:nil];
+    
     [self dismissModalViewControllerAnimated:YES];
 }
 
@@ -161,10 +182,10 @@
 #pragma mark - MHTabbarController delegate
 - (void)mh_tabBarController:(MHTabBarController *)tabBarController didSelectIndex:(NSUInteger)index
 {
-    NSLog(@"smart list tab select %d",index);
-    if(isDragging)
+    if(isDragging){
         return;
-
+    }
+    
     [self.pageScrollView scrollRectToVisible:CGRectMake(self.pageScrollView.frame.size.width * index, 0, self.pageScrollView.frame.size.width, self.pageScrollView.frame.size.height) animated:YES];
 }
 
