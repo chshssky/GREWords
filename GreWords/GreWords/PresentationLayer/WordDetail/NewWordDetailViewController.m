@@ -859,7 +859,7 @@ double radians(float degrees) {
         
         [self dismissModalViewControllerAnimated:NO];
         
-        [self.delegate GoToReviewWithWord:self.indexOfWordIDToday andThe:self.maxWordID];
+        [self.delegate GoToReviewWithWord:self.indexOfWordIDToday - 1 andThe:self.maxWordID];
 
         
         

@@ -11,6 +11,7 @@
     </entity>
     <entity name="Note" representedClassName="Note" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createAt" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="note2word" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Word" inverseName="word2note" inverseEntity="Word" syncable="YES"/>
     </entity>
     <entity name="Word" representedClassName="Word" syncable="YES">
@@ -21,7 +22,7 @@
     </entity>
     <elements>
         <element name="History" positionX="252" positionY="63" width="128" height="150"/>
-        <element name="Note" positionX="358" positionY="189" width="128" height="73"/>
+        <element name="Note" positionX="358" positionY="189" width="128" height="90"/>
         <element name="Word" positionX="160" positionY="192" width="128" height="103"/>
     </elements>
 </model>
