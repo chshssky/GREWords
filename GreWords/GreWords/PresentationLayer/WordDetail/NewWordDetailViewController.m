@@ -802,9 +802,7 @@ double radians(float degrees) {
                 
                 [left addWord:addWord];
                 [self.dashboardVC minusData];
-                
             }
-            
         }
         
         // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
