@@ -89,8 +89,8 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     _centerCircleViewAnimationEnable = YES;
     
     self.sliceColors =[NSArray arrayWithObjects:
-                       [UIColor colorWithRed:223/255.0 green:150/255.0 blue:57/255.0 alpha:1],
-                       [UIColor colorWithRed:223/255.0 green:150/255.0 blue:57/255.0 alpha:0],nil];
+                       [UIColor colorWithRed:223/255.0 green:150/255.0 blue:57/255.0 alpha:0],
+                       [UIColor colorWithRed:223/255.0 green:150/255.0 blue:57/255.0 alpha:1],nil];
     
     
     
@@ -240,11 +240,9 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     
     FimageView.transform = CGAffineTransformMakeRotation(_percent*2*M_PI);
     centerCircleView.transform = CGAffineTransformMakeRotation(_percent*2*M_PI+M_PI/2);
-    NSLog(@"%f",_percent);
     
     
     _nonFinishedNumber = (_percent-0.001)/(0.999-0.001) * _sumNumber;
-    
     wordNumberTest.text =  [NSString stringWithFormat:@"%d", _nonFinishedNumber];
     
     if (_nonFinishedNumber >= _sumNumber) {
@@ -348,8 +346,8 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 
 - (void)pieChart:(PieChart*)pieChart isDoingAnimationAtPercent:(float)percent
 {
-    centerCircleView.transform = CGAffineTransformMakeRotation(M_PI/2+_percent/(1-_percent)*percent*M_PI*2);
-    FimageView.transform = CGAffineTransformMakeRotation(_percent/(1-_percent)*percent*M_PI*2);
+    centerCircleView.transform = CGAffineTransformMakeRotation(M_PI/2+(1-percent)*M_PI*2);
+    FimageView.transform = CGAffineTransformMakeRotation((1-percent)*M_PI*2);
     int wordNumber = round((1-percent)*_sumNumber);
     wordNumberTest.text = [NSString stringWithFormat:@"%d",wordNumber];
 }

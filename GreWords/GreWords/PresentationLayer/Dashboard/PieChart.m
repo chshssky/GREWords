@@ -59,7 +59,9 @@
     CABasicAnimation *arcAnimation = [CABasicAnimation animationWithKeyPath:key];
     NSNumber *currentAngle = [[self presentationLayer] valueForKey:key];
 
-    if(!currentAngle) currentAngle = from;
+    if(!currentAngle) currentAngle = [NSNumber numberWithFloat:M_PI/2*3+M_PI*2];
+    NSLog(@"%f",M_PI/2*3+M_PI*2);
+    NSLog(@"%@",from);
     [arcAnimation setFromValue:currentAngle];
     [arcAnimation setToValue:to];
     [arcAnimation setDelegate:delegate];
@@ -131,7 +133,6 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         
         _animationSpeed = 0.5;
         _startPieAngle = M_PI_2*3;
-        NSLog(@"%f",M_PI_2);
         _selectedSliceStroke = 3.0;
         
         self.pieRadius = MIN(frame.size.width/2, frame.size.height/2) - 10;
@@ -422,15 +423,20 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     NSArray *pieLayers = [parentLayer sublayers];
    
     __block float delegateEndAngle;
+    __block float a;
+    __block float b;
     
     [pieLayers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         
         NSNumber *presentationLayerStartAngle = [[obj presentationLayer] valueForKey:@"startAngle"];
         CGFloat interpolatedStartAngle = [presentationLayerStartAngle doubleValue];
+        a = interpolatedStartAngle;
         NSNumber *presentationLayerEndAngle = [[obj presentationLayer] valueForKey:@"endAngle"];
         CGFloat interpolatedEndAngle = [presentationLayerEndAngle doubleValue];
+        b = interpolatedEndAngle;
         
         delegateEndAngle = interpolatedEndAngle - interpolatedStartAngle;
+        //CGPathRef path = CGPathCreateArc(_pieCenter, _pieRadius, interpolatedEndAngle, interpolatedStartAngle);
         CGPathRef path = CGPathCreateArc(_pieCenter, _pieRadius, interpolatedStartAngle, interpolatedEndAngle);
         [obj setPath:path];
         CFRelease(path);
@@ -442,7 +448,10 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
             [labelLayer setPosition:CGPointMake(_pieCenter.x + (_labelRadius * cos(interpolatedMidAngle)), _pieCenter.y + (_labelRadius * sin(interpolatedMidAngle)))];
             [CATransaction setDisableActions:NO];
         }
+        
     }];
+    
+    //NSLog(@"%f,%f,%f",delegateEndAngle*360,a*360,b*360);
     
     float percent = delegateEndAngle / 2.0f / M_PI;
     [self.delegate pieChart:self isDoingAnimationAtPercent:percent];
