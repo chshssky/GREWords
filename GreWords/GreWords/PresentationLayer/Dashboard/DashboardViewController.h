@@ -23,14 +23,14 @@
     UIImageView *circleShadowView;
     UIImageView *circleLightView;
     UIImageView *circlePointView;
-    
-    UIImageView *textView;
-    UIImageView *startTextView;
     FXLabel *wordNumberTest;
+    UIImageView *FimageView;
+    UIImageView *startTextView;
+    UIImageView *textView;
 }
-
 @property(nonatomic) int nonFinishedNumber;
 @property(nonatomic) int sumNumber;
+@property(nonatomic) int minNumber;
 
 @property (strong, nonatomic) PieChart *pieChartLeft;
 @property (retain,nonatomic) id<DashboardProtocal> delegate;
@@ -40,5 +40,8 @@
 
 - (void)wordDetailIndicatorGen;
 - (void)mainViewGen;
+
+- (void)minusData;
++ (DashboardViewController*)instance;
 
 @end

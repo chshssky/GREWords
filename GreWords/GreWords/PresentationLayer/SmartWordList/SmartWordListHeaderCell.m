@@ -8,13 +8,40 @@
 
 #import "SmartWordListHeaderCell.h"
 #import "WordSpeaker.h"
+#import "NSNotificationCenter+Addition.h"
+#import "WordHelper.h"
 
 @implementation SmartWordListHeaderCell
+
+
+- (void)updateNoteIcon:(NSNotification *)notification
+{
+    WordEntity* word = (WordEntity*) notification.object;
+    if(_word != word)
+        return;
+    if(word.note)
+    {
+        [self.noteButton setImage:[UIImage imageNamed:@"words list_note.png"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.noteButton setImage:[UIImage imageNamed:@"words list_no_note.png"] forState:UIControlStateNormal];
+    }
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [NSNotificationCenter registerAddNoteForWordNotificationWithSelector:@selector(updateNoteIcon:) target:self];
+        [NSNotificationCenter registerRemoveNoteForWordNotificationWithSelector:@selector(updateNoteIcon:) target:self];
+    }
+    return self;
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    self.wordLabel.contentMode = UIViewContentModeScaleToFill;
     if (self) {
         // Initialization code
     }

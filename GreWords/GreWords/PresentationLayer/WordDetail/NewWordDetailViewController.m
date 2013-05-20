@@ -18,6 +18,8 @@
 #import "noCopyTextView.h"
 #import "DashboardViewController.h"
 #import "WordDetailViewController.h"
+#import "WordCardLayoutViewController.h"
+#import "WordNoteLayoutViewController.h"
 
 
 @interface NewWordDetailViewController () <UIScrollViewDelegate,UITextViewDelegate>
@@ -80,24 +82,39 @@
     [super viewDidLoad];
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(aaa:) name:UIMenuControllerDidShowMenuNotification object:nil];
     
-    //给发音按钮添加事件
-    [self.PronounceButton addTarget:self action:@selector(soundButtonClicked:) forControlEvents:UIControlEventTouchDown];
-    [self.PronounceButton addTarget:self action:@selector(soundButtonReleased:) forControlEvents:UIControlEventTouchUpInside];
-    [self.PronounceButton addTarget:self action:@selector(soundButtonReleased:) forControlEvents:UIControlEventTouchCancel];
     
     self.day = 0;
 
-    self.changePage = 10;
-    
+    self.changePage = 10;    
+    self.dashboardVC = [DashboardViewController instance];
+    //self.dashboardVC = [[DashboardViewController alloc] init];
     self.viewControlArray = [[NSMutableArray alloc] init];
     self.nameControlArray = [[NSMutableArray alloc] init];
     self.phoneticControlArray = [[NSMutableArray alloc] init];
-
-   
+    
+    
+    
+    self.day = 0;
+    self.indexOfWordIDToday = 0;
+    self.changePage = 10;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    //添加左上角的进度圆~
+//    self.dashboardVC.nonFinishedNumber = 100;
+//    self.dashboardVC.sumNumber = 300;
+    //self.dashboardVC.delegate = self;
+    [self.dashboardVC wordDetailIndicatorGen];
+    if (iPhone5) {
+        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -252));
+    } else {
+        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -212));
+    }
+    [self.view addSubview:self.dashboardVC.view];
+    
+    
+    //设置横向滑动的scroll view
     for (unsigned i = 0; i < (_changePage+1); i++) {
 		[self.viewControlArray addObject:[NSNull null]];
         [self.nameControlArray addObject:[NSNull null]];
@@ -112,7 +129,6 @@
         self.pageControlView.contentSize = CGSizeMake(self.pageControlView.frame.size.width * (_changePage+1),
                                                       360);
     }
-    
     self.pageControlView.showsHorizontalScrollIndicator = NO;
     self.pageControlView.showsVerticalScrollIndicator = NO;
     self.pageControlView.scrollsToTop = NO;
@@ -121,14 +137,13 @@
     self.pageControlView.bounces = NO;
     
     [self loadViewWithPage:0];
-    [self loadViewWithPage:1];
     
     //显示单词内容和单词名称
     self.WordParaphraseView = [self.viewControlArray objectAtIndex:0];
     self.wordLabel.text = [self.nameControlArray objectAtIndex:0];
     self.wordSoundLabel.text = [self.phoneticControlArray objectAtIndex:0];
-    self.WordParaphraseView.showsHorizontalScrollIndicator = YES;
-    self.WordParaphraseView.showsHorizontalScrollIndicator = YES;
+    self.WordParaphraseView.showsHorizontalScrollIndicator = NO;
+    self.WordParaphraseView.showsHorizontalScrollIndicator = NO;
     
     //添加抽屉
     self.viewDeckController.delegate = self;
@@ -139,24 +154,13 @@
     _noteRecognizer.delegate = self;
     _noteRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:_noteRecognizer];
-    
-    
-    
-    //添加左上角的进度圆~
-    self.dashboardVC = [[DashboardViewController alloc] init];
-    self.dashboardVC.nonFinishedNumber = 100;
-    self.dashboardVC.sumNumber = 300;
-    //self.dashboardVC.delegate = self;
-    [self.dashboardVC wordDetailIndicatorGen];
-    if (iPhone5) {
-        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -252));
-    } else {
-        self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-127, -211));
-    }
-    [self.view addSubview:self.dashboardVC.view];
-    
-    
+
     [self.backButton.superview bringSubviewToFront:self.backButton];
+    
+    //给发音按钮添加事件
+    [self.PronounceButton addTarget:self action:@selector(soundButtonClicked:) forControlEvents:UIControlEventTouchDown];
+    [self.PronounceButton addTarget:self action:@selector(soundButtonReleased:) forControlEvents:UIControlEventTouchUpInside];
+    [self.PronounceButton addTarget:self action:@selector(soundButtonReleased:) forControlEvents:UIControlEventTouchCancel];
 }
 
 - (void)didReceiveMemoryWarning
@@ -483,6 +487,7 @@
         _noteTextView.delegate = self;
         _noteTextView.layer.anchorPoint = CGPointMake(0.08, 0);
         _noteTextView.editable = YES;
+        //载入note
         _noteTextView.text = [[WordHelper instance] wordWithString:_wordLabel.text].note ;
         [_noteTextView setFont:[UIFont fontWithName:@"STHeitiSC-Light" size:22]];
         [_noteTextView setBackgroundColor:[UIColor clearColor]];
@@ -638,6 +643,10 @@ double radians(float degrees) {
 {
     // Do any additional setup after loading the view from its nib.
     WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
+    //WordNoteLayoutViewController *vc = [[WordNoteLayoutViewController alloc] init];
+    //WordCardLayoutViewController *vc = [[WordCardLayoutViewController alloc] init];
+    
+    
     /*
      key: shouldShowWord                default:[NSNumber numberWithBool:YES]
      key: shouldShowPhonetic            default:[NSNumber numberWithBool:YES]
@@ -663,6 +672,7 @@ double radians(float degrees) {
         self.maxWordID = wordID;
     }
     //self.wordLabel.text = [[WordHelper instance] wordWithID:aWordID].data[@"word"];
+
     
     self.WordParaphraseView.delegate = self;
     self.WordParaphraseView.contentSize = vc.view.frame.size;
@@ -724,8 +734,6 @@ double radians(float degrees) {
     if (self.WordParaphraseView.superview == nil)
     {
         CGRect frame = self.pageControlView.frame;
-        
-        NSLog(@"%f",frame.size.height);
         frame.origin.x = frame.size.width * page;
         frame.origin.y = 0;
         frame.size.height = frame.size.height-10;
@@ -739,13 +747,6 @@ double radians(float degrees) {
             self.WordParaphraseView.contentSize = size;
         }
         [self.pageControlView addSubview:self.WordParaphraseView];
-        
-        //把单词加入抽屉
-        SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
-        WordEntity *addWord = [[WordHelper instance] wordWithString:_wordLabel.text];
-        if ([left.array indexOfObject:addWord] == NSNotFound) {
-            [left addWord:addWord];
-        }
     }
 }
 
@@ -811,6 +812,17 @@ double radians(float degrees) {
         //换页
         if (_currentPage != page) {
             _currentPage = page;
+            
+            //把单词加入抽屉
+            SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
+            WordEntity *addWord = [[WordHelper instance] wordWithString:_wordLabel.text];
+            if ([left.array indexOfObject:addWord] == NSNotFound) {
+                
+                [left addWord:addWord];
+                [self.dashboardVC minusData];
+                
+            }
+            
         }
         
         // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
@@ -868,6 +880,7 @@ double radians(float degrees) {
         NSLog(@"崔昊看这里~~~~~~~~~~看这里呀看这里~~~~~~~~~~~~在这里更换controller！！！");
         NSLog(@"好感动，我找了好久");
         [self.delegate GoToReviewWithWord:self.indexOfWordIDToday andThe:self.maxWordID];
+
     }
 }
 

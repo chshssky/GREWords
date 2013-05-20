@@ -13,7 +13,8 @@ typedef enum
 {
     SmartListType_Slide,
     SmartListType_Full,
-    SmartListType_Homo
+    SmartListType_Homo,
+    SmartListType_Note
 }SmartListType;
 
 @interface SmartWordListSectionController : GCRetractableSectionController
@@ -22,6 +23,7 @@ typedef enum
 @property (nonatomic) int wordID;
 
 @property (nonatomic) NSString* homotitle;
+@property (nonatomic) NSDictionary* homoDict;
 
 @property (nonatomic) SmartListType type;
 

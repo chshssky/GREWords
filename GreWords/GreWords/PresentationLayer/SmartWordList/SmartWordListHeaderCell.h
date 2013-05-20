@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WordEntity.h"
 
 @interface SmartWordListHeaderCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
@@ -14,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *downShadow;
 
 @property (weak, nonatomic) IBOutlet UIButton *noteButton;
+@property (strong, nonatomic) WordEntity *word;
 
 -(IBAction)soundPressed:(id)sender;
 

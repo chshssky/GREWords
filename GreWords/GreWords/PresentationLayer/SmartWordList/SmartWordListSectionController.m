@@ -14,6 +14,8 @@
 #import "SmartWordListHeaderCell.h"
 #import "SmartWordListContentCell.h"
 #import <QuartzCore/QuartzCore.h>
+#import "WordCardLayoutViewController.h"
+#import "WordNoteLayoutViewController.h"
 
 @implementation SmartWordListSectionController
 
@@ -84,6 +86,7 @@ static NSDictionary* typeDict = nil;
     else
     {
         cell.wordLabel.text =  [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
+        cell.word = [[WordHelper instance] wordWithID:self.wordID];
         cell.wordLabel.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
         
         if([[WordHelper instance] wordWithID:self.wordID].note)
@@ -135,14 +138,19 @@ static NSDictionary* typeDict = nil;
     }
     else if(self.type == SmartListType_Homo)
     {
-        vc = [[WordLayoutViewController alloc] init];
-        NSDictionary *option = @{@"shouldShowChineseMeaning":@YES,
-                                 @"shouldShowEnglishMeaning":@YES,
-                                 @"shouldShowSynonyms":@YES,
-                                 @"shouldShowAntonyms":@YES,
-                                 @"shouldShowSampleSentence":@YES};
-        WordLayoutViewController *c = (WordLayoutViewController*)vc;
-        [c displayWord:[[WordHelper instance] wordWithID:100] withOption:option];
+        vc = [[WordCardLayoutViewController alloc] init];
+        
+        WordCardLayoutViewController *c = (WordCardLayoutViewController*)vc;
+       
+        [c displayCard:_homoDict] ;
+    }
+    else if(self.type == SmartListType_Note)
+    {
+        vc = [[WordNoteLayoutViewController alloc] init];
+        
+        WordNoteLayoutViewController *c = (WordNoteLayoutViewController*)vc;
+        
+        [c displayNote:[[WordHelper instance] wordWithID:self.wordID]];
     }
     CGRect frame = vc.view.frame;
     
