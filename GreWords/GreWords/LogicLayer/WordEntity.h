@@ -19,6 +19,7 @@
 
 @property (nonatomic,retain,readonly) NSDictionary *data;
 @property (nonatomic,retain) NSString *note;
+@property (nonatomic,retain,readonly) NSDate *noteCreateAt;
 @property (nonatomic,readonly) float ratioOfMistake;
 @property (nonatomic,retain,readonly) NSArray *currentMistkeStatus;
 @property (nonatomic,retain,readonly) NSDate *lastMistakeTime;
