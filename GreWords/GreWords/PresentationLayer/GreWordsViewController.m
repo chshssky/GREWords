@@ -187,6 +187,7 @@
     
     WordDetailViewController *vc = [[WordDetailViewController alloc] init];
     vc.indexOfWordIDToday = 100;
+    vc.delegate = self;
     vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentModalViewController:vc animated:YES];
 }
