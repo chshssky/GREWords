@@ -17,6 +17,8 @@
 - (void)updateNoteIcon:(NSNotification *)notification
 {
     WordEntity* word = (WordEntity*) notification.object;
+    if(_word != word)
+        return;
     if(word.note)
     {
         [self.noteButton setImage:[UIImage imageNamed:@"words list_note.png"] forState:UIControlStateNormal];
@@ -63,7 +65,6 @@
 -(IBAction)notePressed:(id)sender
 {
     NSLog(@"notePressed");
-    
 }
 
 @end

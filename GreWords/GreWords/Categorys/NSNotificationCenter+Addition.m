@@ -15,6 +15,7 @@
 @implementation NSNotificationCenter (Addition)
 + (void)postAddNoteForWordNotification:(WordEntity*)word
 {
+    NSLog(@"postAddNoteForWordNotification");
     [[NSNotificationCenter defaultCenter] postNotificationName:kAddNoteForWordNotification object:word userInfo:nil];
 }
 
@@ -28,6 +29,7 @@
 
 + (void)postRemoveNoteForWordNotification:(WordEntity*)word
 {
+    NSLog(@"postRemoveNoteForWordNotification");
     [[NSNotificationCenter defaultCenter] postNotificationName:kRemoveNoteForWordNotification object:word userInfo:nil];
 }
 

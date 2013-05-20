@@ -86,6 +86,7 @@ static NSDictionary* typeDict = nil;
     else
     {
         cell.wordLabel.text =  [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
+        cell.word = [[WordHelper instance] wordWithID:self.wordID];
         cell.wordLabel.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
         
         if([[WordHelper instance] wordWithID:self.wordID].note)

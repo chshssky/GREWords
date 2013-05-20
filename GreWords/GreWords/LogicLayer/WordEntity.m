@@ -36,16 +36,18 @@
         NSManagedObjectContext *context = [[MyDataStorage instance] managedObjectContext];
         [context deleteObject:noteManagedObject];
         wordManagedObject.word2note = nil;
+        noteManagedObject = nil;
         [[MyDataStorage instance] saveContext];
+        [NSNotificationCenter postRemoveNoteForWordNotification:self];
     }
-    [NSNotificationCenter postRemoveNoteForWordNotification:self];
 }
 
 -(void)setNote:(NSString *)note
 {
-    if([note isEqualToString:@""])
+    if([note isEqualToString:@""] || note == nil)
     {
         [self clearNote];
+        return;
     }
     if(!noteManagedObject)
     {
@@ -54,10 +56,11 @@
                              insertNewObjectForEntityForName:@"Note"
                              inManagedObjectContext:context];
         wordManagedObject.word2note = noteManagedObject;
+        noteManagedObject.content = note;
+        [NSNotificationCenter postAddNoteForWordNotification:self];
     }
     noteManagedObject.content = note;
     [[MyDataStorage instance] saveContext];
-    [NSNotificationCenter postAddNoteForWordNotification:self];
 }
 
 -(NSDate*)lastMistakeTime

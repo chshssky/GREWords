@@ -78,7 +78,7 @@
     if(self.type == SmartListType_Note)
     {
         [NSNotificationCenter registerAddNoteForWordNotificationWithSelector:@selector(addNoteItem:) target:self];
-        [NSNotificationCenter registerRemoveNoteForWordNotificationWithSelector:@selector(removeNoteItem::) target:self];
+        [NSNotificationCenter registerRemoveNoteForWordNotificationWithSelector:@selector(removeNoteItem:) target:self];
     }
 }
 
@@ -230,8 +230,21 @@
 {
     WordEntity* word = (WordEntity*) notification.object;
     _array = [@[word] arrayByAddingObjectsFromArray:_array];
-    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationTop];
+    
+    SmartWordListSectionController* sectionController = [[SmartWordListSectionController alloc] initWithViewController:self];
+    sectionController.wordID = word.wordID;
+    sectionController.sectionID = 0;
+    sectionController.type = self.type;
+    for(SmartWordListSectionController*  sc in retractableControllers)
+    {
+        sc.sectionID++;
+    }
+    [retractableControllers insertObject:sectionController atIndex:0];
+    
+    //NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    //[self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationTop];
+    [self.tableView reloadData];
+    [self addButtomTexture];
 }
 
 - (void)removeNoteItem:(NSNotification *)notification
@@ -244,7 +257,9 @@
     NSMutableArray *arr = [_array mutableCopy];
     [arr removeObject:word];
     _array = arr;
-    [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationTop];
-    
+    [retractableControllers removeObjectAtIndex:index];
+    //[self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationTop];
+    [self.tableView reloadData];
+    [self addButtomTexture];
 }
 @end
