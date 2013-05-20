@@ -39,6 +39,7 @@
 
 @property (nonatomic,retain) id<SmartWordListScrollDelegate> scrollDelegate;
 
+
 - (void)addWord:(WordEntity*)aWord;
 
 @end

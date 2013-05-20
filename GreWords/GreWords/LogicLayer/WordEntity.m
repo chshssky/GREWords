@@ -7,6 +7,7 @@
 //
 
 #import "WordEntity.h"
+#import "NSNotificationCenter+Addition.h"
 
 @implementation WordEntity
 
@@ -28,8 +29,24 @@
     return noteManagedObject.content;
 }
 
+-(void)clearNote
+{
+    if(noteManagedObject)
+    {
+        NSManagedObjectContext *context = [[MyDataStorage instance] managedObjectContext];
+        [context deleteObject:noteManagedObject];
+        wordManagedObject.word2note = nil;
+        [[MyDataStorage instance] saveContext];
+    }
+    [NSNotificationCenter postRemoveNoteForWordNotification:self];
+}
+
 -(void)setNote:(NSString *)note
 {
+    if([note isEqualToString:@""])
+    {
+        [self clearNote];
+    }
     if(!noteManagedObject)
     {
         NSManagedObjectContext *context = [[MyDataStorage instance] managedObjectContext];
@@ -40,6 +57,7 @@
     }
     noteManagedObject.content = note;
     [[MyDataStorage instance] saveContext];
+    [NSNotificationCenter postAddNoteForWordNotification:self];
 }
 
 -(NSDate*)lastMistakeTime

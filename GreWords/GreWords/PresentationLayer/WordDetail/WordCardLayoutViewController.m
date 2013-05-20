@@ -107,7 +107,9 @@
         }
     
     }
-    
+    CGRect frame = self.view.frame;
+    frame.size.height = self.sumHeight;
+    self.view.frame = frame;
 }
 
 @end

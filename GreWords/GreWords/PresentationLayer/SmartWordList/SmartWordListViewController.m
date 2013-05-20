@@ -12,12 +12,14 @@
 #import "SmartWordListSectionController.h"
 #import "WordHelper.h"
 #import <QuartzCore/QuartzCore.h>
+#import "NSNotificationCenter+Addition.h"
 
 @interface SmartWordListViewController ()
 
 @end
 
 @implementation SmartWordListViewController
+
 
 - (void)addWord:(WordEntity*)aWord
 {
@@ -65,7 +67,6 @@
         {
             sectionController.wordID = ((WordEntity*)_array[i]).wordID;
         }
-        
         sectionController.sectionID = i;
         sectionController.type = self.type;
         [retractableControllers addObject:sectionController];
@@ -74,7 +75,11 @@
     topTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -570.0f, 320.0f, 568.0f)];
     topTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
     [self.tableView addSubview:topTexture];
-
+    if(self.type == SmartListType_Note)
+    {
+        [NSNotificationCenter registerAddNoteForWordNotificationWithSelector:@selector(addNoteItem:) target:self];
+        [NSNotificationCenter registerRemoveNoteForWordNotificationWithSelector:@selector(removeNoteItem::) target:self];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -121,6 +126,8 @@
     [super viewDidUnload];
 }
 
+
+#pragma mark table view delegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return _array.count;
@@ -217,4 +224,27 @@
     }
 }
 
+#pragma mark - NSNotification Responder
+
+- (void)addNoteItem:(NSNotification *)notification
+{
+    WordEntity* word = (WordEntity*) notification.object;
+    _array = [@[word] arrayByAddingObjectsFromArray:_array];
+    NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationTop];
+}
+
+- (void)removeNoteItem:(NSNotification *)notification
+{
+    WordEntity* word = (WordEntity*) notification.object;
+    int index = [_array indexOfObject:word];
+    if(index == NSNotFound)
+        return;
+    NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
+    NSMutableArray *arr = [_array mutableCopy];
+    [arr removeObject:word];
+    _array = arr;
+    [self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationTop];
+    
+}
 @end
