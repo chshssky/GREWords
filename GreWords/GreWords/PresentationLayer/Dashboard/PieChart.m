@@ -26,6 +26,9 @@
 @synthesize startAngle = _startAngle;
 @synthesize endAngle = _endAngle;
 @synthesize isSelected = _isSelected;
+
+#define   qwe(degrees)  ((M_PI * degrees)/ 180)
+
 - (NSString*)description
 {
     return [NSString stringWithFormat:@"value:%f, percentage:%0.0f, start:%f, end:%f", _value, _percentage, _startAngle/M_PI*180, _endAngle/M_PI*180];
@@ -50,10 +53,12 @@
     }
     return self;
 }
+
 - (void)createArcAnimationForKey:(NSString *)key fromValue:(NSNumber *)from toValue:(NSNumber *)to Delegate:(id)delegate
 {
     CABasicAnimation *arcAnimation = [CABasicAnimation animationWithKeyPath:key];
     NSNumber *currentAngle = [[self presentationLayer] valueForKey:key];
+
     if(!currentAngle) currentAngle = from;
     [arcAnimation setFromValue:currentAngle];
     [arcAnimation setToValue:to];
@@ -126,6 +131,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         
         _animationSpeed = 0.5;
         _startPieAngle = M_PI_2*3;
+        NSLog(@"%f",M_PI_2);
         _selectedSliceStroke = 3.0;
         
         self.pieRadius = MIN(frame.size.width/2, frame.size.height/2) - 10;
@@ -421,12 +427,10 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         
         NSNumber *presentationLayerStartAngle = [[obj presentationLayer] valueForKey:@"startAngle"];
         CGFloat interpolatedStartAngle = [presentationLayerStartAngle doubleValue];
-        
         NSNumber *presentationLayerEndAngle = [[obj presentationLayer] valueForKey:@"endAngle"];
         CGFloat interpolatedEndAngle = [presentationLayerEndAngle doubleValue];
         
         delegateEndAngle = interpolatedEndAngle - interpolatedStartAngle;
-        
         CGPathRef path = CGPathCreateArc(_pieCenter, _pieRadius, interpolatedStartAngle, interpolatedEndAngle);
         [obj setPath:path];
         CFRelease(path);
@@ -439,8 +443,8 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
             [CATransaction setDisableActions:NO];
         }
     }];
+    
     float percent = delegateEndAngle / 2.0f / M_PI;
-
     [self.delegate pieChart:self isDoingAnimationAtPercent:percent];
 }
 
@@ -468,147 +472,147 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     }
 }
 
-#pragma mark - Touch Handing (Selection Notification)
+//#pragma mark - Touch Handing (Selection Notification)
+//
+//- (NSInteger)getCurrentSelectedOnTouch:(CGPoint)point
+//{
+//    __block NSUInteger selectedIndex = -1;
+//    
+//    CGAffineTransform transform = CGAffineTransformIdentity;
+//    
+//    CALayer *parentLayer = [_pieView layer];
+//    NSArray *pieLayers = [parentLayer sublayers];
+//    
+//    [pieLayers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//        SliceLayer *pieLayer = (SliceLayer *)obj;
+//        CGPathRef path = [pieLayer path];
+//        
+//        if (CGPathContainsPoint(path, &transform, point, 0)) {
+//            [pieLayer setLineWidth:_selectedSliceStroke];
+//            [pieLayer setStrokeColor:[UIColor whiteColor].CGColor];
+//            [pieLayer setLineJoin:kCALineJoinBevel];
+//            [pieLayer setZPosition:MAXFLOAT];
+//            selectedIndex = idx;
+//        } else {
+//            [pieLayer setZPosition:kDefaultSliceZOrder];
+//            [pieLayer setLineWidth:0.0];
+//        }
+//    }];
+//    return selectedIndex;
+//}
+//
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    [self touchesMoved:touches withEvent:event];
+//}
+//
+//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    UITouch *touch = [touches anyObject];
+//    CGPoint point = [touch locationInView:_pieView];
+//    [self getCurrentSelectedOnTouch:point];
+//}
+//
+//- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    UITouch *touch = [touches anyObject];
+//    CGPoint point = [touch locationInView:_pieView];
+//    NSInteger selectedIndex = [self getCurrentSelectedOnTouch:point];
+//    [self notifyDelegateOfSelectionChangeFrom:_selectedSliceIndex to:selectedIndex];
+//    [self touchesCancelled:touches withEvent:event];
+//}
+//
+//- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+//{
+//    CALayer *parentLayer = [_pieView layer];
+//    NSArray *pieLayers = [parentLayer sublayers];
+//    
+//    for (SliceLayer *pieLayer in pieLayers) {
+//        [pieLayer setZPosition:kDefaultSliceZOrder];
+//        [pieLayer setLineWidth:0.0];
+//    }
+//}
 
-- (NSInteger)getCurrentSelectedOnTouch:(CGPoint)point
-{
-    __block NSUInteger selectedIndex = -1;
-    
-    CGAffineTransform transform = CGAffineTransformIdentity;
-    
-    CALayer *parentLayer = [_pieView layer];
-    NSArray *pieLayers = [parentLayer sublayers];
-    
-    [pieLayers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        SliceLayer *pieLayer = (SliceLayer *)obj;
-        CGPathRef path = [pieLayer path];
-        
-        if (CGPathContainsPoint(path, &transform, point, 0)) {
-            [pieLayer setLineWidth:_selectedSliceStroke];
-            [pieLayer setStrokeColor:[UIColor whiteColor].CGColor];
-            [pieLayer setLineJoin:kCALineJoinBevel];
-            [pieLayer setZPosition:MAXFLOAT];
-            selectedIndex = idx;
-        } else {
-            [pieLayer setZPosition:kDefaultSliceZOrder];
-            [pieLayer setLineWidth:0.0];
-        }
-    }];
-    return selectedIndex;
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [self touchesMoved:touches withEvent:event];
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *touch = [touches anyObject];
-    CGPoint point = [touch locationInView:_pieView];
-    [self getCurrentSelectedOnTouch:point];
-}
-
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    UITouch *touch = [touches anyObject];
-    CGPoint point = [touch locationInView:_pieView];
-    NSInteger selectedIndex = [self getCurrentSelectedOnTouch:point];
-    [self notifyDelegateOfSelectionChangeFrom:_selectedSliceIndex to:selectedIndex];
-    [self touchesCancelled:touches withEvent:event];
-}
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    CALayer *parentLayer = [_pieView layer];
-    NSArray *pieLayers = [parentLayer sublayers];
-    
-    for (SliceLayer *pieLayer in pieLayers) {
-        [pieLayer setZPosition:kDefaultSliceZOrder];
-        [pieLayer setLineWidth:0.0];
-    }
-}
-
-#pragma mark - Selection Notification
-
-- (void)notifyDelegateOfSelectionChangeFrom:(NSUInteger)previousSelection to:(NSUInteger)newSelection
-{
-    if (previousSelection != newSelection)
-    {
-        if (previousSelection != -1 && [_delegate respondsToSelector:@selector(pieChart:willDeselectSliceAtIndex:)])
-        {
-            [_delegate pieChart:self willDeselectSliceAtIndex:previousSelection];
-        }
-        
-        _selectedSliceIndex = newSelection;
-        
-        if (newSelection != -1)
-        {
-            if([_delegate respondsToSelector:@selector(pieChart:willSelectSliceAtIndex:)])
-                [_delegate pieChart:self willSelectSliceAtIndex:newSelection];
-            if(previousSelection != -1 && [_delegate respondsToSelector:@selector(pieChart:didDeselectSliceAtIndex:)])
-                [_delegate pieChart:self didDeselectSliceAtIndex:previousSelection];
-            if([_delegate respondsToSelector:@selector(pieChart:didSelectSliceAtIndex:)])
-                [_delegate pieChart:self didSelectSliceAtIndex:newSelection];
-            [self setSliceSelectedAtIndex:newSelection];
-        }
-        
-        if(previousSelection != -1)
-        {
-            [self setSliceDeselectedAtIndex:previousSelection];
-            if([_delegate respondsToSelector:@selector(pieChart:didDeselectSliceAtIndex:)])
-                [_delegate pieChart:self didDeselectSliceAtIndex:previousSelection];
-        }
-    }
-    else if (newSelection != -1)
-    {
-        SliceLayer *layer = [_pieView.layer.sublayers objectAtIndex:newSelection];
-        if(_selectedSliceOffsetRadius > 0 && layer){
-            
-            if (layer.isSelected) {
-                if ([_delegate respondsToSelector:@selector(pieChart:willDeselectSliceAtIndex:)])
-                    [_delegate pieChart:self willDeselectSliceAtIndex:newSelection];
-                [self setSliceDeselectedAtIndex:newSelection];
-                if (newSelection != -1 && [_delegate respondsToSelector:@selector(pieChart:didDeselectSliceAtIndex:)])
-                    [_delegate pieChart:self didDeselectSliceAtIndex:newSelection];
-            }
-            else {
-                if ([_delegate respondsToSelector:@selector(pieChart:willSelectSliceAtIndex:)])
-                    [_delegate pieChart:self willSelectSliceAtIndex:newSelection];
-                [self setSliceSelectedAtIndex:newSelection];
-                if (newSelection != -1 && [_delegate respondsToSelector:@selector(pieChart:didSelectSliceAtIndex:)])
-                    [_delegate pieChart:self didSelectSliceAtIndex:newSelection];
-            }
-        }
-    }
-}
-
-#pragma mark - Selection Programmatically Without Notification
-
-- (void)setSliceSelectedAtIndex:(NSInteger)index
-{
-    if(_selectedSliceOffsetRadius <= 0)
-        return;
-    SliceLayer *layer = [_pieView.layer.sublayers objectAtIndex:index];
-    if (layer && !layer.isSelected) {
-        CGPoint currPos = layer.position;
-        double middleAngle = (layer.startAngle + layer.endAngle)/2.0;
-        CGPoint newPos = CGPointMake(currPos.x + _selectedSliceOffsetRadius*cos(middleAngle), currPos.y + _selectedSliceOffsetRadius*sin(middleAngle));
-        layer.position = newPos;
-        layer.isSelected = YES;
-    }
-}
-
-- (void)setSliceDeselectedAtIndex:(NSInteger)index
-{
-    if(_selectedSliceOffsetRadius <= 0)
-        return;
-    SliceLayer *layer = [_pieView.layer.sublayers objectAtIndex:index];
-    if (layer && layer.isSelected) {
-        layer.position = CGPointMake(0, 0);
-        layer.isSelected = NO;
-    }
-}
+//#pragma mark - Selection Notification
+//
+//- (void)notifyDelegateOfSelectionChangeFrom:(NSUInteger)previousSelection to:(NSUInteger)newSelection
+//{
+//    if (previousSelection != newSelection)
+//    {
+//        if (previousSelection != -1 && [_delegate respondsToSelector:@selector(pieChart:willDeselectSliceAtIndex:)])
+//        {
+//            [_delegate pieChart:self willDeselectSliceAtIndex:previousSelection];
+//        }
+//        
+//        _selectedSliceIndex = newSelection;
+//        
+//        if (newSelection != -1)
+//        {
+//            if([_delegate respondsToSelector:@selector(pieChart:willSelectSliceAtIndex:)])
+//                [_delegate pieChart:self willSelectSliceAtIndex:newSelection];
+//            if(previousSelection != -1 && [_delegate respondsToSelector:@selector(pieChart:didDeselectSliceAtIndex:)])
+//                [_delegate pieChart:self didDeselectSliceAtIndex:previousSelection];
+//            if([_delegate respondsToSelector:@selector(pieChart:didSelectSliceAtIndex:)])
+//                [_delegate pieChart:self didSelectSliceAtIndex:newSelection];
+//            [self setSliceSelectedAtIndex:newSelection];
+//        }
+//        
+//        if(previousSelection != -1)
+//        {
+//            [self setSliceDeselectedAtIndex:previousSelection];
+//            if([_delegate respondsToSelector:@selector(pieChart:didDeselectSliceAtIndex:)])
+//                [_delegate pieChart:self didDeselectSliceAtIndex:previousSelection];
+//        }
+//    }
+//    else if (newSelection != -1)
+//    {
+//        SliceLayer *layer = [_pieView.layer.sublayers objectAtIndex:newSelection];
+//        if(_selectedSliceOffsetRadius > 0 && layer){
+//            
+//            if (layer.isSelected) {
+//                if ([_delegate respondsToSelector:@selector(pieChart:willDeselectSliceAtIndex:)])
+//                    [_delegate pieChart:self willDeselectSliceAtIndex:newSelection];
+//                [self setSliceDeselectedAtIndex:newSelection];
+//                if (newSelection != -1 && [_delegate respondsToSelector:@selector(pieChart:didDeselectSliceAtIndex:)])
+//                    [_delegate pieChart:self didDeselectSliceAtIndex:newSelection];
+//            }
+//            else {
+//                if ([_delegate respondsToSelector:@selector(pieChart:willSelectSliceAtIndex:)])
+//                    [_delegate pieChart:self willSelectSliceAtIndex:newSelection];
+//                [self setSliceSelectedAtIndex:newSelection];
+//                if (newSelection != -1 && [_delegate respondsToSelector:@selector(pieChart:didSelectSliceAtIndex:)])
+//                    [_delegate pieChart:self didSelectSliceAtIndex:newSelection];
+//            }
+//        }
+//    }
+//}
+//
+//#pragma mark - Selection Programmatically Without Notification
+//
+//- (void)setSliceSelectedAtIndex:(NSInteger)index
+//{
+//    if(_selectedSliceOffsetRadius <= 0)
+//        return;
+//    SliceLayer *layer = [_pieView.layer.sublayers objectAtIndex:index];
+//    if (layer && !layer.isSelected) {
+//        CGPoint currPos = layer.position;
+//        double middleAngle = (layer.startAngle + layer.endAngle)/2.0;
+//        CGPoint newPos = CGPointMake(currPos.x + _selectedSliceOffsetRadius*cos(middleAngle), currPos.y + _selectedSliceOffsetRadius*sin(middleAngle));
+//        layer.position = newPos;
+//        layer.isSelected = YES;
+//    }
+//}
+//
+//- (void)setSliceDeselectedAtIndex:(NSInteger)index
+//{
+//    if(_selectedSliceOffsetRadius <= 0)
+//        return;
+//    SliceLayer *layer = [_pieView.layer.sublayers objectAtIndex:index];
+//    if (layer && layer.isSelected) {
+//        layer.position = CGPointMake(0, 0);
+//        layer.isSelected = NO;
+//    }
+//}
 
 #pragma mark - Pie Layer Creation Method
 
@@ -636,7 +640,7 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
     CGSize size = [@"0" sizeWithFont:self.labelFont];
     [CATransaction setDisableActions:YES];
     [textLayer setFrame:CGRectMake(0, 0, size.width, size.height)];
-    [textLayer setPosition:CGPointMake(_pieCenter.x + (_labelRadius * cos(0)), _pieCenter.y + (_labelRadius * sin(0)))];
+    [textLayer setPosition:CGPointMake(_pieCenter.x + (_labelRadius * cos(M_PI)), _pieCenter.y + (_labelRadius * sin(0)))];
     [CATransaction setDisableActions:NO];
     [pieLayer addSublayer:textLayer];
     return pieLayer;

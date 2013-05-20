@@ -108,11 +108,12 @@
     [self loadWord:self.wordID];
     
     //添加左上角的进度圆~
-    self.dashboardVC = [[DashboardViewController alloc] init];
-    self.dashboardVC.nonFinishedNumber = 100;
-    self.dashboardVC.sumNumber = 300;
+//    self.dashboardVC = [[DashboardViewController alloc] init];
+    self.dashboardVC = [DashboardViewController instance];
+//    self.dashboardVC.nonFinishedNumber = 100;
+//    self.dashboardVC.sumNumber = 300;
     //self.dashboardVC.delegate = self;
-    [self.dashboardVC wordDetailIndicatorGen];
+    //[self.dashboardVC wordDetailIndicatorGen];
     if (iPhone5) {
         self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -252));
     } else {

@@ -35,20 +35,22 @@
 
 - (void)initDashboard
 {
-    dashboard = [[DashboardViewController alloc] init];
-    dashboard.nonFinishedNumber = 100;
+    dashboard = [DashboardViewController instance];
+    dashboard.nonFinishedNumber = 200;
+    dashboard.minNumber = dashboard.nonFinishedNumber;
     dashboard.sumNumber = 300;
     dashboard.delegate = self;
-    [dashboard mainViewGen];
     [self.view addSubview:dashboard.view];
-    
+}
+
+- (void)initslideBar
+{
     self.slideBarView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar.png"]];
     self.slideBarView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+190);
     self.slideBarView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     self.slideBarView.gestureRecognizers = self.view.gestureRecognizers;
-    //slideBarView.alpha = 0.5;
     [self.view addSubview:self.slideBarView];
-
+    
     
     //slideBarStatusView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus1.png"]];
     self.slideBarStatusView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus2.png"]];
@@ -70,7 +72,6 @@
     self.slideBarStatusTextView.gestureRecognizers = self.view.gestureRecognizers;
     //slideBarStatusView.alpha = 0.5;
     [self.view addSubview:self.slideBarStatusTextView];
-
 }
 
 - (void)initAwesomeMenu
@@ -125,14 +126,8 @@
     
     
     [self initDashboard];
-    
-    //    for (int i=0; i<3073; i++) {
-    //        [vc displayWord:[[WordHelper instance] wordWithID:i] withOption:nil];
-    //    }
-    //[vc displayWord:[[WordHelper instance] wordWithID:3] withOption:nil];
-    
-	// Do any additional setup after loading the view, typically from a nib.
     [self initAwesomeMenu];
+    [self initslideBar];
 }
 
 - (void)didReceiveMemoryWarning
@@ -232,8 +227,6 @@
 #pragma mark - DashBoardDelegate
 -(void)bigButtonPressed
 {
-    NSLog(@"Big Button Pressed");
-    NSLog(@"before::::::x:%f, y:%f", dashboard.view.frame.origin.x, dashboard.view.frame.origin.y);
     [UIView animateWithDuration:0.5f animations:^{
         self.titleView.transform = CGAffineTransformMakeTranslation(-150, -100);
         self.slideBarView.transform = CGAffineTransformMakeTranslation(-300, 0);
@@ -268,14 +261,20 @@
 #pragma mark - WordDetailDelegate
 - (void)AnimationBack
 {
+    dashboard = [DashboardViewController instance];
+    dashboard.delegate = self;
+    [self.view insertSubview:dashboard.view atIndex:1];
+    [dashboard mainViewGen];
+    
     [UIView animateWithDuration:0.5f animations:^{
         self.titleView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
         self.slideBarView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
         self.slideBarStatusTextView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
         self.slideBarStatusView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
-        dashboard.view.transform = CGAffineTransformInvert(CGAffineTransformConcat(CGAffineTransformMakeScale(1.0f, 1.0f), CGAffineTransformMakeTranslation(0, 0)));
+        dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.0f,1.0f), CGAffineTransformMakeTranslation(0, 0));
         self.menu.transform = CGAffineTransformMakeTranslation(0, 0);
     }];
+    
 }
 
 - (void)GoToReview
@@ -284,17 +283,7 @@
     vc.wordID = 100;
     vc.delegate = self;
     [self presentViewController:vc animated:NO completion:nil];
-    //[self performSelector:@selector(GoToReviewSelector) withObject:nil afterDelay:0];
 }
-
-//- (void)GoToReviewSelector
-//{
-//    NSLog(@"Hello!~~~");
-//    WordDetailViewController *vc = [[WordDetailViewController alloc] init];
-//    vc.wordID = 100;
-//    [self presentViewController:vc animated:NO completion:nil];
-//}
-
 
 - (void)viewDidUnload {
     [self setTitleView:nil];
