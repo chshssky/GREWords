@@ -207,9 +207,7 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 }
 
 - (void)handleF:(UILongPressGestureRecognizer *)recognizer
-{
-    
-    
+{    
     self.pieChartLeft.delegate = nil;
     
     [self.pieChartLeft setAnimationSpeed:0.01];
@@ -247,7 +245,7 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     
     _nonFinishedNumber = (_percent-0.001)/(0.999-0.001) * _sumNumber;
     
-    wordNumberTest.text =  [NSString stringWithFormat:@"%d",_nonFinishedNumber];
+    wordNumberTest.text =  [NSString stringWithFormat:@"%d", _nonFinishedNumber];
     
     if (_nonFinishedNumber >= _sumNumber) {
         _nonFinishedNumber = _sumNumber;

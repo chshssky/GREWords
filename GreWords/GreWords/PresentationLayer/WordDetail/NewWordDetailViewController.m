@@ -800,6 +800,8 @@ double radians(float degrees) {
             WordEntity *addWord = [[WordHelper instance] wordWithString:_wordLabel.text];
             if ([left.array indexOfObject:addWord] == NSNotFound) {
                 
+                [self.delegate ChangeWordWithIndex:self.indexOfWordIDToday - 1 WithMax:self.maxWordID];
+                
                 [left addWord:addWord];
                 [self.dashboardVC minusData];
                 

@@ -42,7 +42,8 @@
 - (void)initDashboard
 {
     dashboard = [DashboardViewController instance];
-    dashboard.nonFinishedNumber = 200;
+    // Database: read from 
+    dashboard.nonFinishedNumber = 300;
     dashboard.minNumber = dashboard.nonFinishedNumber;
     dashboard.sumNumber = 300;
     dashboard.delegate = self;
@@ -134,6 +135,9 @@
     [self initDashboard];
     [self initslideBar];
     [self initAwesomeMenu];
+    
+    self.indexOfWordIDToday = 0;
+    self.maxWordID = 0;
     
     _whetherAllowViewFrameChanged = NO;
 }
@@ -270,10 +274,10 @@
 
         NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
         
-        vc.maxWordID = 0;
-        vc.indexOfWordIDToday = 0;
-        vc.day = 0;
-        vc.changePage = 10;
+        vc.maxWordID = self.maxWordID;
+        vc.indexOfWordIDToday = self.indexOfWordIDToday;
+        vc.day = self.day;
+        vc.changePage = 10 - (self.maxWordID % 10);
         vc.delegate = self;
         
         SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
@@ -309,11 +313,19 @@
     
 }
 
+- (void)ChangeWordWithIndex:(int)index WithMax:(int)max
+{
+    self.indexOfWordIDToday = index;
+    self.maxWordID = max;
+}
+
 - (void)GoToReviewWithWord:(int)wordIndex andThe:(int)maxWordNum
 {
     WordDetailViewController *vc = [[WordDetailViewController alloc] init];
     vc.indexOfWordIDToday = wordIndex;
+    self.indexOfWordIDToday = wordIndex;
     vc.maxWordID = maxWordNum;
+    self.maxWordID = maxWordNum;
     vc.delegate = self;
     [self presentViewController:vc animated:NO completion:nil];
 }
