@@ -13,5 +13,6 @@
 
 - (void)AnimationBack;
 - (void)GoToReviewWithWord:(int)wordIndex andThe:(int)maxWordNum;
+- (void)ChangeWordWithIndex:(int)index WithMax:(int)max;
 
 @end

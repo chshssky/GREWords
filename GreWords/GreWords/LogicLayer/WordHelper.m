@@ -245,7 +245,10 @@ WordHelper* _wordHelperInstance = nil;
 {
     NSPredicate *predicate =
     [NSPredicate predicateWithFormat:@"SELF.note != nil"];
-    return [wordList filteredArrayUsingPredicate:predicate];
+    NSArray *arr = [wordList filteredArrayUsingPredicate:predicate];
+    return [arr sortedArrayUsingComparator: ^(id obj1, id obj2) {
+        return [((WordEntity*)obj2).noteCreateAt compare: ((WordEntity*)obj1).noteCreateAt];
+    }];
 }
 
 -(NSArray*)wordsAlphabeticOrder

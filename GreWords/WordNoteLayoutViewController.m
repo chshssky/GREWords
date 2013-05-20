@@ -7,6 +7,7 @@
 //
 
 #import "WordNoteLayoutViewController.h"
+#import "NSDate-Utilities.h"
 
 @interface WordNoteLayoutViewController ()
 
@@ -61,7 +62,9 @@
     CGRect timeRect = CGRectMake(130, _sumHeight, 215, 25);
     UILabel *timeLabel = [[UILabel alloc] initWithFrame:timeRect];
     timeLabel.font = [UIFont fontWithName:@"STHeitiSC-Light" size:17];
-    timeLabel.text = @"记录于2013-04-15";
+    
+    NSDate *createAt = word.noteCreateAt;
+    timeLabel.text = [NSString stringWithFormat:@"%d-%d-%d",createAt.year,createAt.month,createAt.day];
     //timeLabel.text = word.note.time;
     timeLabel.lineBreakMode = NSLineBreakByWordWrapping;
     timeLabel.numberOfLines = 0;
