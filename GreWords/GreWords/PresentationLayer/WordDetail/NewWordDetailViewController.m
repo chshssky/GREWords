@@ -20,6 +20,7 @@
 #import "WordDetailViewController.h"
 #import "WordCardLayoutViewController.h"
 #import "WordNoteLayoutViewController.h"
+#import "WordDetailViewController.h"
 
 
 @interface NewWordDetailViewController () <UIScrollViewDelegate,UITextViewDelegate>
@@ -81,30 +82,21 @@
 {
     [super viewDidLoad];
     //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(aaa:) name:UIMenuControllerDidShowMenuNotification object:nil];
-    
-    
-    self.day = 0;
 
-    self.changePage = 10;    
+    
     self.dashboardVC = [DashboardViewController instance];
-    //self.dashboardVC = [[DashboardViewController alloc] init];
     self.viewControlArray = [[NSMutableArray alloc] init];
     self.nameControlArray = [[NSMutableArray alloc] init];
     self.phoneticControlArray = [[NSMutableArray alloc] init];
-    
-    
+
     
     self.day = 0;
-    self.indexOfWordIDToday = 0;
     self.changePage = 10;
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     //添加左上角的进度圆~
-//    self.dashboardVC.nonFinishedNumber = 100;
-//    self.dashboardVC.sumNumber = 300;
-    //self.dashboardVC.delegate = self;
     [self.dashboardVC wordDetailIndicatorGen];
     if (iPhone5) {
         self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -252));
@@ -874,12 +866,16 @@ double radians(float degrees) {
 //        WordDetailViewController *vc = [[WordDetailViewController alloc] init];
 //        vc.wordID = 100;
 //        [self presentViewController:vc animated:NO completion:nil];
+        
         [self dismissModalViewControllerAnimated:NO];
+        
+        [self.delegate GoToReviewWithWord:self.indexOfWordIDToday andThe:self.maxWordID];
+
+        
         
 #warning 好有爱的项目组
         NSLog(@"崔昊看这里~~~~~~~~~~看这里呀看这里~~~~~~~~~~~~在这里更换controller！！！");
         NSLog(@"好感动，我找了好久");
-        [self.delegate GoToReviewWithWord:self.indexOfWordIDToday andThe:self.maxWordID];
 
     }
 }

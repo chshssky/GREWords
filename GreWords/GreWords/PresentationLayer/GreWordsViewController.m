@@ -307,10 +307,22 @@
 - (void)GotoNewWordSelector
 {
     NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
-    vc.indexOfWordIDToday = self.indexOfWordIDToday;
+
     vc.maxWordID = self.maxWordID;
+    vc.indexOfWordIDToday = self.indexOfWordIDToday;
+    
+    
     vc.delegate = self;
-    [self presentViewController:vc animated:NO completion:nil];
+    
+    SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
+    leftController.type = SmartListType_Slide;
+    leftController.array = @[];
+    
+    IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:vc
+                                                                                    leftViewController:leftController
+                                                                                   rightViewController:nil];
+        
+    [self presentViewController:deckController animated:NO completion:nil];
 
 }
 
