@@ -14,5 +14,6 @@
 
 @dynamic content;
 @dynamic note2word;
+@dynamic createAt;
 
 @end

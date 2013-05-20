@@ -16,5 +16,6 @@
 
 @property (nonatomic, retain) NSString * content;
 @property (nonatomic, retain) Word *note2word;
+@property (nonatomic, retain) NSDate * createAt;
 
 @end
