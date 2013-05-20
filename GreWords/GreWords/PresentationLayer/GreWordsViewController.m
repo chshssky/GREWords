@@ -126,8 +126,8 @@
     
     
     [self initDashboard];
-    [self initAwesomeMenu];
     [self initslideBar];
+    [self initAwesomeMenu];
 }
 
 - (void)didReceiveMemoryWarning
