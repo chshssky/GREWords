@@ -60,16 +60,19 @@
         [NSNotificationCenter postAddNoteForWordNotification:self];
     }
     noteManagedObject.content = note;
+    noteManagedObject.createAt = [NSDate new];
     [[MyDataStorage instance] saveContext];
+}
+
+-(NSDate*)noteCreateAt
+{
+    return noteManagedObject.createAt;
 }
 
 -(NSDate*)lastMistakeTime
 {
     return wordManagedObject.lastMistakeTime;
 }
-
-
-
 
 -(NSMutableArray*)mistakeStringToArray
 {
