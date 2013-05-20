@@ -3474,8 +3474,6 @@
 		3FA4848817142BC0003E88A6 /* GreWordsAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreWordsAppDelegate.h; sourceTree = "<group>"; };
 		3FA4848917142BC0003E88A6 /* GreWordsAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreWordsAppDelegate.m; sourceTree = "<group>"; };
 		3FA4848B17142BD4003E88A6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		3FA4848E17142BF9003E88A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3FA4849017142BF9003E88A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		3FA484C31719590D003E88A6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		735ED82D174151430008F945 /* UIImage+StackBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+StackBlur.h"; sourceTree = "<group>"; };
 		735ED82E174151430008F945 /* UIImage+StackBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+StackBlur.m"; sourceTree = "<group>"; };
@@ -3551,6 +3549,8 @@
 		E423DEC8174A3EB00079CB60 /* NSNotificationCenter+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+Addition.m"; sourceTree = "<group>"; };
 		E423DECA174A77280079CB60 /* NSDate-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate-Utilities.h"; sourceTree = "<group>"; };
 		E423DECB174A77280079CB60 /* NSDate-Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate-Utilities.m"; sourceTree = "<group>"; };
+		E423DECD174A7BC80079CB60 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/MainStoryboard.storyboard"; sourceTree = "<group>"; };
+		E423DECE174A7BC90079CB60 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		E43908C4174108A000E36078 /* UIImage+ColorImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ColorImage.h"; sourceTree = "<group>"; };
 		E43908C5174108A000E36078 /* UIImage+ColorImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ColorImage.m"; sourceTree = "<group>"; };
 		E43908C6174108A000E36078 /* UIImage+Opacity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Opacity.h"; sourceTree = "<group>"; };
@@ -10833,6 +10833,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = 3F70EC7E1701CADB00327770;
 			productRefGroup = 3F70EC881701CADB00327770 /* Products */;
@@ -14306,7 +14307,7 @@
 		3FA4848D17142BF9003E88A6 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3FA4848E17142BF9003E88A6 /* en */,
+				E423DECE174A7BC90079CB60 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -14314,7 +14315,7 @@
 		3FA4848F17142BF9003E88A6 /* MainStoryboard.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				3FA4849017142BF9003E88A6 /* en */,
+				E423DECD174A7BC80079CB60 /* zh-Hans */,
 			);
 			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
