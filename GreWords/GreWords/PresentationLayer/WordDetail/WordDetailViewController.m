@@ -100,7 +100,8 @@
     [self.WordParaphraseView addSubview:vc.view];
     [self.WordParaphraseView scrollsToTop];
     
-    
+    [[WordSpeaker instance] readWord:self.wordLabel.text];
+
     [self DontShowMeaning];
     self.indexOfWordIDToday ++;
 }

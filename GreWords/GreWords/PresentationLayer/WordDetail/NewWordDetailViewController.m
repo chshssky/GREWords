@@ -85,7 +85,6 @@
     self.viewControlArray = [[NSMutableArray alloc] init];
     self.nameControlArray = [[NSMutableArray alloc] init];
     self.phoneticControlArray = [[NSMutableArray alloc] init];
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -147,6 +146,9 @@
     
     
     [self.backButton.superview bringSubviewToFront:self.backButton];
+    
+    [[WordSpeaker instance] readWord:self.wordLabel.text];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -854,13 +856,14 @@ double radians(float degrees) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
         }
     }
+    
+    [[WordSpeaker instance] readWord:self.wordLabel.text];
+
+    
+    
     if (scrollView.contentOffset.x >= _changePage*320) {
         scrollView.userInteractionEnabled = NO;
         [self.view removeGestureRecognizer:_noteRecognizer];
-        
-//        WordDetailViewController *vc = [[WordDetailViewController alloc] init];
-//        vc.wordID = 100;
-//        [self presentViewController:vc animated:NO completion:nil];
         
         [self dismissModalViewControllerAnimated:NO];
         
