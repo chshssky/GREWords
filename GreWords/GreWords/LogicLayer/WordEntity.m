@@ -44,6 +44,8 @@
 
 -(void)setNote:(NSString *)note
 {
+    if([note isEqualToString:self.note])
+        return;
     if([note isEqualToString:@""] || note == nil)
     {
         [self clearNote];

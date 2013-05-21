@@ -108,13 +108,23 @@
     }
     else
     {
-        lastTableViewHeight = self.tableView.contentSize.height + 1;
-        [UIView animateWithDuration:0.3f animations:^()
-        {
-            downTexture.frame = CGRectMake(0.0f, lastTableViewHeight, 320.0f, 568.0f);
-        }];
+        lastTableViewHeight = 0;
+        int sectionCount = [self numberOfSectionsInTableView:self.tableView];
+        NSIndexPath *lastIndex = [NSIndexPath indexPathForRow:[self tableView:self.tableView numberOfRowsInSection:sectionCount - 1] - 1  inSection:sectionCount - 1];
+        CGRect lastRect = [self.tableView rectForRowAtIndexPath:lastIndex];
+        
+        lastTableViewHeight = lastRect.origin.y + lastRect.size.height ;
+        
+        NSLog(@"height:%f",lastTableViewHeight);
+        
+        [UIView animateWithDuration:0.3 animations:^()
+         {
+             downTexture.frame = CGRectMake(0.0f, lastTableViewHeight, 320.0f, 568.0f);
+         }];
+
     }
 }
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -185,8 +195,8 @@
     [sectionController scroll];
     
     [self addButtomTexture];
-    [self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.3];
-    [self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.5];
+    //[self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.3];
+    //[self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.5];
     
     //[self addButtomTexture];
     //[downTexture removeFromSuperview];
@@ -214,7 +224,7 @@
     if(self.tableView == aScrollView)
     {
         CGFloat contentOffsetY = self.tableView.contentOffset.y - _contentOffsetBeforeScroll;
-        if(self.tableView.contentSize.height <= self.tableView.frame.size.height)
+        if(self.tableView.contentSize.height <= self.tableView.frame.size.height || self.tableView.contentOffset.x == 0)
         {
             if(!isDragging)
                 return;
