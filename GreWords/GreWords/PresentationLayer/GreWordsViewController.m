@@ -20,6 +20,8 @@
 #import "WholeSmartWordViewController.h"
 #import "WordTaskGenerator.h"
 
+#define TaskWordNumber 200
+
 
 @interface GreWordsViewController ()<NewWordDetailViewControllerProtocol, WordDetailViewControllerProtocol>
 
@@ -43,9 +45,9 @@
 {
     dashboard = [DashboardViewController instance];
     // Database: read from 
-    dashboard.nonFinishedNumber = 290;
+    dashboard.nonFinishedNumber = TaskWordNumber;
     dashboard.minNumber = dashboard.nonFinishedNumber;
-    dashboard.sumNumber = 300;
+    dashboard.sumNumber = TaskWordNumber;
     dashboard.delegate = self;
     [self.view addSubview:dashboard.view];
 }
@@ -271,11 +273,23 @@
         }
         self.menu.transform = CGAffineTransformMakeTranslation(-300, 0);
     } completion:^(BOOL finished) {
+        
+        //根据MaxWordID和现在所在单词的ID 来判断 该跳转到 NewWord 还是 Review
+        if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday ] integerValue] < self.maxWordID) {
+            WordDetailViewController *vc = [[WordDetailViewController alloc] init];
+            vc.indexOfWordIDToday = self.indexOfWordIDToday;
+            vc.maxWordID = self.maxWordID;
+            vc.delegate = self;
+            [self presentViewController:vc animated:NO completion:nil];
+            
+            
+        } else {
 
         NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
         
         vc.maxWordID = self.maxWordID;
         vc.indexOfWordIDToday = self.indexOfWordIDToday;
+        NSLog(@"BIGBUTTON: %d, %d", self.maxWordID, self.indexOfWordIDToday);
         vc.day = self.day;
         vc.changePage = 10 - (self.maxWordID % 10);
         vc.delegate = self;
@@ -283,6 +297,13 @@
         SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
         leftController.type = SmartListType_Slide;
         leftController.array = @[];
+        
+        for (int i = 0; i < self.maxWordID; i++) {
+            WordEntity *addWord = [[WordHelper instance] wordWithID:i];
+            [leftController addWord:addWord];
+        }
+        
+        
         IIViewDeckController* deckController =  [[IIViewDeckController alloc]
                                                  initWithCenterViewController:vc
                                                 leftViewController:leftController
@@ -291,23 +312,30 @@
         deckController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         
         [self presentViewController:deckController animated:YES completion:nil];
-
+        }
     }];
 }
 
 - (void)resetIndexOfWordList:(int)remainWords
 {
-    int theWordID = 300 - remainWords;
+    int theWordID = TaskWordNumber - remainWords;
     for (int index = 0; index < [[[WordTaskGenerator instance] newWordTask_twoList:self.day] count]; index++) {
         if (theWordID == [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:index] integerValue])
         {
             self.indexOfWordIDToday = index;
+            self.maxWordID = theWordID;
             return;
         }
     }
 }
 
 #pragma mark - WordDetailDelegate
+
+- (void)resetWordIndexto:(int)index
+{
+    self.indexOfWordIDToday = index;
+}
+
 - (void)AnimationBack
 {
     dashboard = [DashboardViewController instance];
@@ -329,6 +357,7 @@
 - (void)ChangeWordWithIndex:(int)index WithMax:(int)max
 {
     self.indexOfWordIDToday = index;
+    NSLog(@"%d,%d",self.indexOfWordIDToday,index);
     self.maxWordID = max;
 }
 
@@ -353,7 +382,7 @@
 - (void)GotoNewWordSelector
 {
     NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
-
+    
     vc.maxWordID = self.maxWordID;
     vc.indexOfWordIDToday = self.indexOfWordIDToday;
     vc.day = 0;
@@ -365,6 +394,11 @@
     SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
     leftController.type = SmartListType_Slide;
     leftController.array = @[];
+    
+    for (int i = 0; i <= self.maxWordID; i++) {
+        WordEntity *addWord = [[WordHelper instance] wordWithID:i];
+        [leftController addWord:addWord];
+    }
     
     IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:vc
                                                                                     leftViewController:leftController

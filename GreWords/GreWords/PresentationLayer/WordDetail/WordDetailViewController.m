@@ -295,6 +295,8 @@
 }
 
 - (IBAction)BackButtonPushed:(id)sender {
+    self.indexOfWordIDToday --;
+    [self.delegate resetWordIndexto:self.indexOfWordIDToday];
     [self dismissModalViewControllerAnimated:YES];
     [self.delegate AnimationBack];
 }

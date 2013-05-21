@@ -795,17 +795,18 @@ double radians(float degrees) {
         if (_currentPage != page) {
             //把单词加入抽屉
             SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
-            WordEntity *addWord = [[WordHelper instance] wordWithString:_wordLabel.text];
+            WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday - 2] intValue]];
             if ([left.array indexOfObject:addWord] == NSNotFound) {
                 
                 [self.delegate ChangeWordWithIndex:self.indexOfWordIDToday - 1 WithMax:self.maxWordID];
                 
                 [left addWord:addWord];
-                if (_currentPage < page) {
-                    [self.dashboardVC minusData];
-                }else{
-                    [self.dashboardVC plusData];
-                }
+            }
+            
+            if (_currentPage < page) {
+                [self.dashboardVC minusData];
+            }else{
+                [self.dashboardVC plusData];
             }
             
             _currentPage = page;
