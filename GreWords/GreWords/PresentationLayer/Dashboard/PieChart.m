@@ -60,8 +60,6 @@
     NSNumber *currentAngle = [[self presentationLayer] valueForKey:key];
 
     if(!currentAngle) currentAngle = [NSNumber numberWithFloat:M_PI/2*3+M_PI*2];
-    NSLog(@"%f",M_PI/2*3+M_PI*2);
-    NSLog(@"%@",from);
     [arcAnimation setFromValue:currentAngle];
     [arcAnimation setToValue:to];
     [arcAnimation setDelegate:delegate];
@@ -450,8 +448,6 @@ static CGPathRef CGPathCreateArc(CGPoint center, CGFloat radius, CGFloat startAn
         }
         
     }];
-    
-    //NSLog(@"%f,%f,%f",delegateEndAngle*360,a*360,b*360);
     
     float percent = delegateEndAngle / 2.0f / M_PI;
     [self.delegate pieChart:self isDoingAnimationAtPercent:percent];

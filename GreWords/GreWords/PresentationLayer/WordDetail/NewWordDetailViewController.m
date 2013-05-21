@@ -27,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *DownImage;
 @property (weak, nonatomic) IBOutlet UIButton *PronounceButton;
+@property (nonatomic) BOOL whetherWordIsRead;
+@property (nonatomic) BOOL whetherSetNo;
 @property (weak, nonatomic) IBOutlet UIScrollView *pageControlView;
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wordSoundLabel;
@@ -148,6 +150,8 @@
     [self.backButton.superview bringSubviewToFront:self.backButton];
     
     [[WordSpeaker instance] readWord:self.wordLabel.text];
+    _whetherWordIsRead = NO;
+    _whetherSetNo = NO;
 
 }
 
@@ -755,7 +759,6 @@ double radians(float degrees) {
     if (scrollView == self.pageControlView) {
         //禁止scrollview向右滑动///////////////////////////////////////////////////////////////////////
         CGPoint translation;
-        
         for (id gesture in scrollView.gestureRecognizers){
             if ([[NSString stringWithFormat:@"%@",[gesture class]] isEqualToString:@"UIScrollViewPanGestureRecognizer"]){
                 
@@ -765,6 +768,12 @@ double radians(float degrees) {
         }
         if(translation.x > 0)
         {
+            NSLog(@"%f",translation.x);
+            if (_whetherSetNo) {
+                _whetherSetNo = NO;
+            } else {
+                _whetherWordIsRead = YES;
+            }
             [scrollView setContentOffset:CGPointMake(self.pageControlView.frame.size.width*self.currentPage, scrollView.contentOffset.y) animated:NO];
             return;
         }
@@ -857,16 +866,19 @@ double radians(float degrees) {
         }
     }
     
-    [[WordSpeaker instance] readWord:self.wordLabel.text];
-
     
+    if (!_whetherWordIsRead) {
+        [[WordSpeaker instance] readWord:self.wordLabel.text];
+        _whetherSetNo = NO;
+    } else {
+        _whetherWordIsRead = NO;
+        _whetherSetNo = YES;
+    }
     
     if (scrollView.contentOffset.x >= _changePage*320) {
         scrollView.userInteractionEnabled = NO;
         [self.view removeGestureRecognizer:_noteRecognizer];
-        
         [self dismissModalViewControllerAnimated:NO];
-        
         [self.delegate GoToReviewWithWord:self.indexOfWordIDToday - 1 andThe:self.maxWordID];
 
         
