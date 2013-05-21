@@ -114,6 +114,7 @@
     
     [self.topView addSubview:tabBarController.view];
     
+    self.pageScrollView.clipsToBounds = YES;
 	
 }
 
@@ -175,7 +176,7 @@
     
     frame = self.pageScrollView.frame;
     frame.origin.y = self.topView.frame.origin.y + self.topView.frame.size.height;
-    //frame.size.height = originalTableViewFrame.origin.y + originalTableViewFrame.size.height - frame.origin.y;
+    frame.size.height = originalTableViewFrame.size.height +self.topView.frame.size.height;
     self.pageScrollView.frame = frame;
 }
 

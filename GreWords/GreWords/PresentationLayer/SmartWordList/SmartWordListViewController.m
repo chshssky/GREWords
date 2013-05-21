@@ -214,7 +214,7 @@
     if(self.tableView == aScrollView)
     {
         CGFloat contentOffsetY = self.tableView.contentOffset.y - _contentOffsetBeforeScroll;
-        if(self.tableView.contentSize.height <= self.tableView.frame.size.height)
+        if(self.tableView.contentSize.height <= self.tableView.frame.size.height || self.tableView.contentOffset.x == 0)
         {
             if(!isDragging)
                 return;
