@@ -793,8 +793,6 @@ double radians(float degrees) {
         
         //换页
         if (_currentPage != page) {
-            _currentPage = page;
-            
             //把单词加入抽屉
             SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
             WordEntity *addWord = [[WordHelper instance] wordWithString:_wordLabel.text];
@@ -803,8 +801,14 @@ double radians(float degrees) {
                 [self.delegate ChangeWordWithIndex:self.indexOfWordIDToday - 1 WithMax:self.maxWordID];
                 
                 [left addWord:addWord];
-                [self.dashboardVC minusData];
+                if (_currentPage < page) {
+                    [self.dashboardVC minusData];
+                }else{
+                    [self.dashboardVC plusData];
+                }
             }
+            
+            _currentPage = page;
         }
         
         // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)

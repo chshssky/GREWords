@@ -201,6 +201,17 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     [_pieChartLeft reloadData];
 }
 
+- (void)plusData
+{
+    _nonFinishedNumber+=1;
+    _minNumber = _nonFinishedNumber;
+    _percent = (float)_nonFinishedNumber/_sumNumber*(0.999-0.001)+0.001;
+    
+    [_slices replaceObjectAtIndex:0 withObject:[NSNumber numberWithFloat:_nonFinishedNumber]];
+    [_slices replaceObjectAtIndex:1 withObject:[NSNumber numberWithFloat:(_sumNumber - _nonFinishedNumber)]];
+    [_pieChartLeft reloadData];
+}
+
 - (void)buttonPressed
 {
     [self.delegate bigButtonPressed];

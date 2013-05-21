@@ -35,7 +35,7 @@
 
 - (void)wordDetailIndicatorGen;
 - (void)mainViewGen;
-
+- (void)plusData;
 - (void)minusData;
 + (DashboardViewController*)instance;
 

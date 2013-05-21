@@ -360,6 +360,8 @@
     vc.delegate = self;
     vc.changePage = 10;
     
+    [dashboard minusData];
+    
     SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
     leftController.type = SmartListType_Slide;
     leftController.array = @[];
@@ -369,6 +371,7 @@
                                                                                    rightViewController:nil];
         
     [self presentViewController:deckController animated:NO completion:nil];
+    
 
 }
 
