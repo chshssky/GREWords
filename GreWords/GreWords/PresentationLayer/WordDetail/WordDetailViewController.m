@@ -286,6 +286,8 @@
 - (IBAction)wrongButtonPushed:(id)sender {
     [self viewWillAppear:YES];
     [self loadWord:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
+    
+    
 }
 
 - (IBAction)pronounceButtonPushed:(id)sender {

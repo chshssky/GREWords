@@ -3464,6 +3464,7 @@
 		3F0852DB174288F00043EFBE /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
 		3F0852DD174288F10043EFBE /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
 		3F0852DE174288F10043EFBE /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
+		3F0852E0174BB5D90043EFBE /* DashboardProtocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardProtocal.h; sourceTree = "<group>"; };
 		3F70EC871701CADB00327770 /* GreWords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreWords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F70EC8A1701CADB00327770 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3F70EC8C1701CADB00327770 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -7188,6 +7189,7 @@
 				E466E759173BD4CB001847D0 /* DashboardViewController.m */,
 				E466E75A173BD4CB001847D0 /* PieChart.h */,
 				E466E75B173BD4CB001847D0 /* PieChart.m */,
+				3F0852E0174BB5D90043EFBE /* DashboardProtocal.h */,
 			);
 			path = Dashboard;
 			sourceTree = "<group>";
