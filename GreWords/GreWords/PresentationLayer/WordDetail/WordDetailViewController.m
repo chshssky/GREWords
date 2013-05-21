@@ -100,7 +100,8 @@
     [self.WordParaphraseView addSubview:vc.view];
     [self.WordParaphraseView scrollsToTop];
     
-    
+    [[WordSpeaker instance] readWord:self.wordLabel.text];
+
     [self DontShowMeaning];
     self.indexOfWordIDToday ++;
 }
@@ -295,6 +296,8 @@
 }
 
 - (IBAction)BackButtonPushed:(id)sender {
+    self.indexOfWordIDToday --;
+    [self.delegate resetWordIndexto:self.indexOfWordIDToday];
     [self dismissModalViewControllerAnimated:YES];
     [self.delegate AnimationBack];
 }
