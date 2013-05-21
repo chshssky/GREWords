@@ -100,7 +100,8 @@
     [self.WordParaphraseView addSubview:vc.view];
     [self.WordParaphraseView scrollsToTop];
     
-    
+    [[WordSpeaker instance] readWord:self.wordLabel.text];
+
     [self DontShowMeaning];
     self.indexOfWordIDToday ++;
 }
@@ -286,6 +287,8 @@
 - (IBAction)wrongButtonPushed:(id)sender {
     [self viewWillAppear:YES];
     [self loadWord:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
+    
+    
 }
 
 - (IBAction)pronounceButtonPushed:(id)sender {
@@ -293,6 +296,8 @@
 }
 
 - (IBAction)BackButtonPushed:(id)sender {
+    self.indexOfWordIDToday --;
+    [self.delegate resetWordIndexto:self.indexOfWordIDToday];
     [self dismissModalViewControllerAnimated:YES];
     [self.delegate AnimationBack];
 }

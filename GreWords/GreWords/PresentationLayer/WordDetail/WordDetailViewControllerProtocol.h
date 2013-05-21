@@ -12,5 +12,6 @@
 
 - (void)AnimationBack;
 - (void)GoToNewWordWithWord:(int)wordIndex andThe:(int)maxWordNum;
+- (void)resetWordIndexto:(int)index;
 
 @end

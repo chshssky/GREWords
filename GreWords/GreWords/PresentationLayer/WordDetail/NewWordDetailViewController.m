@@ -85,7 +85,6 @@
     self.viewControlArray = [[NSMutableArray alloc] init];
     self.nameControlArray = [[NSMutableArray alloc] init];
     self.phoneticControlArray = [[NSMutableArray alloc] init];
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -147,6 +146,9 @@
     
     
     [self.backButton.superview bringSubviewToFront:self.backButton];
+    
+    [[WordSpeaker instance] readWord:self.wordLabel.text];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -793,18 +795,23 @@ double radians(float degrees) {
         
         //换页
         if (_currentPage != page) {
-            _currentPage = page;
-            
             //把单词加入抽屉
             SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
-            WordEntity *addWord = [[WordHelper instance] wordWithString:_wordLabel.text];
+            WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday - 2] intValue]];
             if ([left.array indexOfObject:addWord] == NSNotFound) {
                 
                 [self.delegate ChangeWordWithIndex:self.indexOfWordIDToday - 1 WithMax:self.maxWordID];
                 
                 [left addWord:addWord];
-                [self.dashboardVC minusData];
             }
+            
+            if (_currentPage < page) {
+                [self.dashboardVC minusData];
+            }else{
+                [self.dashboardVC plusData];
+            }
+            
+            _currentPage = page;
         }
         
         // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
@@ -849,13 +856,14 @@ double radians(float degrees) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
         }
     }
+    
+    [[WordSpeaker instance] readWord:self.wordLabel.text];
+
+    
+    
     if (scrollView.contentOffset.x >= _changePage*320) {
         scrollView.userInteractionEnabled = NO;
         [self.view removeGestureRecognizer:_noteRecognizer];
-        
-//        WordDetailViewController *vc = [[WordDetailViewController alloc] init];
-//        vc.wordID = 100;
-//        [self presentViewController:vc animated:NO completion:nil];
         
         [self dismissModalViewControllerAnimated:NO];
         
@@ -863,9 +871,9 @@ double radians(float degrees) {
 
         
         
-#warning 好有爱的项目组
-        NSLog(@"崔昊看这里~~~~~~~~~~看这里呀看这里~~~~~~~~~~~~在这里更换controller！！！");
-        NSLog(@"好感动，我找了好久");
+//#warning 好有爱的项目组
+//        NSLog(@"崔昊看这里~~~~~~~~~~看这里呀看这里~~~~~~~~~~~~在这里更换controller！！！");
+//        NSLog(@"好感动，我找了好久");
 
     }
 }
