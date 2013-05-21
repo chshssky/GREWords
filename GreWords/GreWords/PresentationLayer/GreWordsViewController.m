@@ -43,9 +43,9 @@
 {
     dashboard = [DashboardViewController instance];
     // Database: read from 
-    dashboard.nonFinishedNumber = 290;
+    dashboard.nonFinishedNumber = 200 ;
     dashboard.minNumber = dashboard.nonFinishedNumber;
-    dashboard.sumNumber = 300;
+    dashboard.sumNumber = 200;
     dashboard.delegate = self;
     [self.view addSubview:dashboard.view];
 }
