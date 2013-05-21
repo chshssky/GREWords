@@ -245,6 +245,7 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     _nonFinishedNumber = (_percent-0.001)/(0.999-0.001) * _sumNumber;
     wordNumberTest.text =  [NSString stringWithFormat:@"%d", _nonFinishedNumber];
     
+    
     if (_nonFinishedNumber >= _sumNumber) {
         _nonFinishedNumber = _sumNumber;
     }
@@ -260,6 +261,13 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     if ( recognizer.state == UIGestureRecognizerStateEnded ) {
         [UIView animateWithDuration:0.5 animations:^(){
             circleLightView.alpha = 0;
+            
+            //
+            
+            [self.delegate resetIndexOfWordList:_nonFinishedNumber];
+            
+            
+            
         }];
     }
 }

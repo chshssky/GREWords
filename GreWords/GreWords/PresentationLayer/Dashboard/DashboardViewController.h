@@ -9,12 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PieChart.h"
 #import "FXLabel.h"
-
-@protocol DashboardProtocal <NSObject>
-
--(void)bigButtonPressed;
-
-@end
+#import "DashboardProtocal.h"
 
 @interface DashboardViewController : UIViewController <PieChartDelegate, PieChartDataSource>
 {

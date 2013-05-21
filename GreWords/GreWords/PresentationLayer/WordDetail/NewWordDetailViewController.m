@@ -863,9 +863,9 @@ double radians(float degrees) {
 
         
         
-#warning 好有爱的项目组
-        NSLog(@"崔昊看这里~~~~~~~~~~看这里呀看这里~~~~~~~~~~~~在这里更换controller！！！");
-        NSLog(@"好感动，我找了好久");
+//#warning 好有爱的项目组
+//        NSLog(@"崔昊看这里~~~~~~~~~~看这里呀看这里~~~~~~~~~~~~在这里更换controller！！！");
+//        NSLog(@"好感动，我找了好久");
 
     }
 }

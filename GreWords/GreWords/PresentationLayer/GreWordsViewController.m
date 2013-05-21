@@ -18,6 +18,7 @@
 #import "WordDetailViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "WholeSmartWordViewController.h"
+#import "WordTaskGenerator.h"
 
 
 @interface GreWordsViewController ()<NewWordDetailViewControllerProtocol, WordDetailViewControllerProtocol>
@@ -26,7 +27,6 @@
 @property (nonatomic, strong) UIImageView *slideBarStatusView;
 @property (nonatomic, strong) UIImageView *slideBarStatusTextView;
 @property (nonatomic, strong) AwesomeMenu *menu;
-
 
 @property (nonatomic) int indexOfWordIDToday;
 @property (nonatomic) int maxWordID;
@@ -283,15 +283,28 @@
         SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
         leftController.type = SmartListType_Slide;
         leftController.array = @[];
-        IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:vc
-                                                                                        leftViewController:leftController
-                                                                                       rightViewController:nil];
+        IIViewDeckController* deckController =  [[IIViewDeckController alloc]
+                                                 initWithCenterViewController:vc
+                                                leftViewController:leftController
+                                                rightViewController:nil];
         
         deckController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         
         [self presentViewController:deckController animated:YES completion:nil];
 
     }];
+}
+
+- (void)resetIndexOfWordList:(int)remainWords
+{
+    int theWordID = 300 - remainWords;
+    for (int index = 0; index < [[[WordTaskGenerator instance] newWordTask_twoList:self.day] count]; index++) {
+        if (theWordID == [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:index] integerValue])
+        {
+            self.indexOfWordIDToday = index;
+            return;
+        }
+    }
 }
 
 #pragma mark - WordDetailDelegate
