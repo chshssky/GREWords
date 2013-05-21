@@ -801,11 +801,12 @@ double radians(float degrees) {
                 [self.delegate ChangeWordWithIndex:self.indexOfWordIDToday - 1 WithMax:self.maxWordID];
                 
                 [left addWord:addWord];
-                if (_currentPage < page) {
-                    [self.dashboardVC minusData];
-                }else{
-                    [self.dashboardVC plusData];
-                }
+            }
+            
+            if (_currentPage < page) {
+                [self.dashboardVC minusData];
+            }else{
+                [self.dashboardVC plusData];
             }
             
             _currentPage = page;
