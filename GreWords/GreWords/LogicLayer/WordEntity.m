@@ -9,6 +9,8 @@
 #import "WordEntity.h"
 #import "NSNotificationCenter+Addition.h"
 
+#define MAX_HISTORY_MISTAKE_SIZE 7
+
 @implementation WordEntity
 
 -(id)initWithID:(int)wordID data:(NSDictionary*)data word:(Word*)wordManagedObj;
@@ -88,7 +90,7 @@
 
 -(NSString*)truncMistakeString:(NSMutableArray*)lastMistakes
 {
-    while(lastMistakes.count > 7)
+    while(lastMistakes.count > MAX_HISTORY_MISTAKE_SIZE)
     {
         [lastMistakes removeObjectAtIndex:0];
     }
@@ -123,13 +125,15 @@
 -(float)ratioOfMistake
 {
     NSMutableArray *lastMistakes = [self mistakeStringToArray];
+    if(lastMistakes == nil || lastMistakes.count == 0)
+        return 0;
     int mistakeCount = 0;
     for(NSString *str in lastMistakes)
     {
         if([str isEqualToString:@"W"])
             mistakeCount++;
     }
-    return mistakeCount / (float)lastMistakes.count;
+    return mistakeCount / (float)MAX_HISTORY_MISTAKE_SIZE;
 }
 
 -(NSArray*)currentMistkeStatus
