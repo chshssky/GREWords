@@ -22,10 +22,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *PronounceButton;
 @property (weak, nonatomic) IBOutlet UIButton *RightButton;
 @property (weak, nonatomic) IBOutlet UIButton *WrongButton;
-@property (weak, nonatomic) IBOutlet UIImageView *RightUpImage;
-@property (weak, nonatomic) IBOutlet UIImageView *RightDownImage;
-@property (weak, nonatomic) IBOutlet UIImageView *WrongUpImage;
-@property (weak, nonatomic) IBOutlet UIImageView *WrongDownImage;
+@property (strong, nonatomic) UIImageView *RightUpImageView;
+@property (strong, nonatomic) UIImageView *RightDownImageView;
+@property (strong, nonatomic) UIImageView *WrongUpImageView;
+@property (strong, nonatomic) UIImageView *WrongDownImageView;
 @property (weak, nonatomic) IBOutlet UILabel *pronounceLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *timeImage;
 
@@ -201,10 +201,6 @@
     [self setPronounceButton:nil];
     [self setRightButton:nil];
     [self setWrongButton:nil];
-    [self setRightUpImage:nil];
-    [self setRightDownImage:nil];
-    [self setWrongUpImage:nil];
-    [self setWrongDownImage:nil];
     [self setWordLabel:nil];
     [self setWordPronounceLabel:nil];
     [self setPronounceLabel:nil];
@@ -220,7 +216,13 @@
 
 - (void)RightAnimation
 {
-//    [self.RightUpImage setBounds:CGRectMake(216, self.view.frame.size.height - 92, 76, 38)];
+    self.RightUpImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_up_page.png"]];
+    [self.RightUpImageView setFrame:CGRectMake(217, self.view.frame.size.height-98, self.RightUpImageView.frame.size.width, self.RightUpImageView.frame.size.height)];
+    [self.view addSubview:self.RightUpImageView];
+    
+    
+    
+//    [self.RightUpImageView setBounds:CGRectMake(216, self.view.frame.size.height - 92, 76, 38)];
 //    [self.RightDownImage setBounds:CGRectMake(216, self.view.frame.size.height - 92 + 37, 76, 0.001)];
 //    
 //    
