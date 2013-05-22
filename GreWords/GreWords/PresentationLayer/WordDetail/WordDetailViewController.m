@@ -232,11 +232,11 @@
 {
     [self Show_InitRightImage];
     
-    //[self Show_RightAnimationWith:_RightUpImageView4 and:_RightDownImageView4 atTime:CACurrentMediaTime() withString:@"removeRightImage4"];
-    //[self Show_RightAnimationWith:_RightUpImageView3 and:_RightDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"removeRightImage3"];
-    [self Show_RightAnimationWith:_RightUpImageView2 and:_RightDownImageView2 atTime:CACurrentMediaTime() withString:@"removeRightImage2"];
-    [self Show_RightAnimationWith:_RightUpImageView1 and:_RightDownImageView1 atTime:CACurrentMediaTime()+0.12f withString:@"removeRightImage1"];
-    [self Show_RightAnimationWith:_RightUpImageView0 and:_RightDownImageView0 atTime:CACurrentMediaTime()+0.12f*2 withString:@"removeRightImage0"];
+    //[self Show_RightAnimationWith:_RightUpImageView4 and:_RightDownImageView4 atTime:CACurrentMediaTime() withString:@"Show_removeRightImage4"];
+    //[self Show_RightAnimationWith:_RightUpImageView3 and:_RightDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"Show_removeRightImage3"];
+    [self Show_RightAnimationWith:_RightUpImageView2 and:_RightDownImageView2 atTime:CACurrentMediaTime() withString:@"Show_removeRightImage2"];
+    [self Show_RightAnimationWith:_RightUpImageView1 and:_RightDownImageView1 atTime:CACurrentMediaTime()+0.12f withString:@"Show_removeRightImage1"];
+    [self Show_RightAnimationWith:_RightUpImageView0 and:_RightDownImageView0 atTime:CACurrentMediaTime()+0.12f*2 withString:@"Show_removeRightImage0"];
 
 }
 
@@ -357,11 +357,11 @@
 {
     [self Show_InitWrongImage];
     
-    //[self Show_WrongAnimationWith:_WrongUpImageView4 and:_WrongDownImageView4 atTime:CACurrentMediaTime() withString:@"removeWrongImage4"];
-    //[self Show_WrongAnimationWith:_WrongUpImageView3 and:_WrongDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"removeWrongImage3"];
-    [self Show_WrongAnimationWith:_WrongUpImageView2 and:_WrongDownImageView2 atTime:CACurrentMediaTime()+ 0.12f withString:@"removeWrongImage2"];
-    [self Show_WrongAnimationWith:_WrongUpImageView1 and:_WrongDownImageView1 atTime:CACurrentMediaTime()+0.12f*2 withString:@"removeWrongImage1"];
-    [self Show_WrongAnimationWith:_WrongUpImageView0 and:_WrongDownImageView0 atTime:CACurrentMediaTime()+0.12f*3 withString:@"removeWrongImage0"];
+    //[self Show_WrongAnimationWith:_WrongUpImageView4 and:_WrongDownImageView4 atTime:CACurrentMediaTime() withString:@"Show_removeWrongImage4"];
+    //[self Show_WrongAnimationWith:_WrongUpImageView3 and:_WrongDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"Show_removeWrongImage3"];
+    [self Show_WrongAnimationWith:_WrongUpImageView2 and:_WrongDownImageView2 atTime:CACurrentMediaTime()+ 0.12f withString:@"Show_removeWrongImage2"];
+    [self Show_WrongAnimationWith:_WrongUpImageView1 and:_WrongDownImageView1 atTime:CACurrentMediaTime()+0.12f*2 withString:@"Show_removeWrongImage1"];
+    [self Show_WrongAnimationWith:_WrongUpImageView0 and:_WrongDownImageView0 atTime:CACurrentMediaTime()+0.12f*3 withString:@"Show_removeWrongImage0"];
     
 }
 
@@ -480,12 +480,87 @@
 #pragma mark - dismiss rightButton Methods
 - (void)Dismiss_InitRightImage
 {
-    
+    if (_RightUpImageView0 == nil) {
+        _RightUpImageView0 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_up_page2.png"]];
+        [_RightUpImageView0 setFrame:CGRectMake(217, self.view.frame.size.height-80, _RightUpImageView0.frame.size.width, _RightUpImageView0.frame.size.height-1)];
+        _RightUpImageView0.alpha = 0;
+        _RightUpImageView0.layer.anchorPoint = CGPointMake(0.5, 1);
+        [self.view addSubview:_RightUpImageView0];
+    }
+    if (_RightDownImageView4 == nil)
+    {
+        _RightDownImageView4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_rightButton_page.png"]];
+        [_RightDownImageView4 setFrame:CGRectMake(217, self.view.frame.size.height-78, _RightDownImageView4.frame.size.width, _RightDownImageView4.frame.size.height-3)];
+        _RightDownImageView4.layer.anchorPoint = CGPointMake(0.5, 0);
+        [self.view addSubview:_RightDownImageView4];
+    }
+    if (_RightUpImageView1 == nil) {
+        _RightUpImageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_up_page2.png"]];
+        [_RightUpImageView1 setFrame:CGRectMake(217, self.view.frame.size.height-80, _RightUpImageView1.frame.size.width, _RightUpImageView1.frame.size.height-1)];
+        _RightUpImageView1.alpha = 0;
+        _RightUpImageView1.layer.anchorPoint = CGPointMake(0.5, 1);
+        [self.view addSubview:_RightUpImageView1];
+    }
+    if (_RightDownImageView3 == nil)
+    {
+        _RightDownImageView3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_rightButton_page.png"]];
+        [_RightDownImageView3 setFrame:CGRectMake(217, self.view.frame.size.height-78, _RightDownImageView3.frame.size.width, _RightDownImageView3.frame.size.height-3)];
+        _RightDownImageView3.layer.anchorPoint = CGPointMake(0.5, 0);
+        [self.view addSubview:_RightDownImageView3];
+    }
+    if (_RightUpImageView2 == nil) {
+        _RightUpImageView2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_up_page2.png"]];
+        [_RightUpImageView2 setFrame:CGRectMake(217, self.view.frame.size.height-80, _RightUpImageView2.frame.size.width, _RightUpImageView2.frame.size.height-1)];
+        _RightUpImageView2.alpha = 0;
+        _RightUpImageView2.layer.anchorPoint = CGPointMake(0.5, 1);
+        [self.view addSubview:_RightUpImageView2];
+    }
+    if (_RightDownImageView2 == nil)
+    {
+        _RightDownImageView2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_rightButton_page.png"]];
+        [_RightDownImageView2 setFrame:CGRectMake(217, self.view.frame.size.height-78, _RightDownImageView2.frame.size.width, _RightDownImageView2.frame.size.height-3)];
+        _RightDownImageView2.layer.anchorPoint = CGPointMake(0.5, 0);
+        [self.view addSubview:_RightDownImageView2];
+    }
+    if (_RightUpImageView3 == nil) {
+        _RightUpImageView3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_up_page2.png"]];
+        [_RightUpImageView3 setFrame:CGRectMake(217, self.view.frame.size.height-80, _RightUpImageView3.frame.size.width, _RightUpImageView3.frame.size.height-1)];
+        _RightUpImageView3.alpha = 0;
+        _RightUpImageView3.layer.anchorPoint = CGPointMake(0.5, 1);
+        [self.view addSubview:_RightUpImageView3];
+    }
+    if (_RightDownImageView1 == nil)
+    {
+        _RightDownImageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_rightButton_page.png"]];
+        [_RightDownImageView1 setFrame:CGRectMake(217, self.view.frame.size.height-78, _RightDownImageView1.frame.size.width, _RightDownImageView1.frame.size.height-3)];
+        _RightDownImageView1.layer.anchorPoint = CGPointMake(0.5, 0);
+        [self.view addSubview:_RightDownImageView1];
+    }
+    if (_RightUpImageView4 == nil) {
+        _RightUpImageView4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_up_page2.png"]];
+        [_RightUpImageView4 setFrame:CGRectMake(217, self.view.frame.size.height-80, _RightUpImageView4.frame.size.width, _RightUpImageView4.frame.size.height-1)];
+        _RightUpImageView4.alpha = 0;
+        _RightUpImageView4.layer.anchorPoint = CGPointMake(0.5, 1);
+        [self.view addSubview:_RightUpImageView4];
+    }
+    if (_RightDownImageView0 == nil)
+    {
+        _RightDownImageView0 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_down_page.png"]];
+        [_RightDownImageView0 setFrame:CGRectMake(217, self.view.frame.size.height-78, _RightDownImageView0.frame.size.width, _RightDownImageView0.frame.size.height-3)];
+        _RightDownImageView0.layer.anchorPoint = CGPointMake(0.5, 0);
+        [self.view addSubview:_RightDownImageView0];
+    }
 }
 
 - (void)Dismiss_RightAnimation
 {
+    [self Dismiss_InitRightImage];
     
+    //[self Dismiss_RightAnimationWith:_RightUpImageView4 and:_RightDownImageView4 atTime:CACurrentMediaTime() withString:@"Dismiss_removeRightImage4"];
+    //[self Dismiss_RightAnimationWith:_RightUpImageView3 and:_RightDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"Dismiss_removeRightImage3"];
+    [self Dismiss_RightAnimationWith:_RightUpImageView2 and:_RightDownImageView2 atTime:CACurrentMediaTime() withString:@"Dismiss_removeRightImage2"];
+    [self Dismiss_RightAnimationWith:_RightUpImageView1 and:_RightDownImageView1 atTime:CACurrentMediaTime()+0.12f withString:@"Dismiss_removeRightImage1"];
+    [self Dismiss_RightAnimationWith:_RightUpImageView0 and:_RightDownImageView0 atTime:CACurrentMediaTime()+0.12f*2 withString:@"Dismiss_removeRightImage0"];
 }
 
 - (void)Dismiss_RightAnimationWith:(UIImageView *)up and:(UIImageView *)down atTime:(CFTimeInterval) time withString:(NSString *)value
@@ -530,12 +605,87 @@
 #pragma mark - dismiss wrongButton Methods
 - (void)Dismiss_InitWrongImage
 {
-    
+    if (_WrongUpImageView0 == nil) {
+        _WrongUpImageView0 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_up_page2.png"]];
+        [_WrongUpImageView0 setFrame:CGRectMake(27, self.view.frame.size.height-80, _WrongUpImageView0.frame.size.width, _WrongUpImageView0.frame.size.height-1)];
+        _WrongUpImageView0.alpha = 0;
+        _WrongUpImageView0.layer.anchorPoint = CGPointMake(0.5, 1);
+        [self.view addSubview:_WrongUpImageView0];
+    }
+    if (_WrongDownImageView4 == nil)
+    {
+        _WrongDownImageView4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrongButton_page.png"]];
+        [_WrongDownImageView4 setFrame:CGRectMake(27, self.view.frame.size.height-78, _WrongDownImageView4.frame.size.width, _WrongDownImageView4.frame.size.height-3)];
+        _WrongDownImageView4.layer.anchorPoint = CGPointMake(0.5, 0);
+        [self.view addSubview:_WrongDownImageView4];
+    }
+    if (_WrongUpImageView1 == nil) {
+        _WrongUpImageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_up_page2.png"]];
+        [_WrongUpImageView1 setFrame:CGRectMake(27, self.view.frame.size.height-80, _WrongUpImageView1.frame.size.width, _WrongUpImageView1.frame.size.height-1)];
+        _WrongUpImageView1.alpha = 0;
+        _WrongUpImageView1.layer.anchorPoint = CGPointMake(0.5, 1);
+        [self.view addSubview:_WrongUpImageView1];
+    }
+    if (_WrongDownImageView3 == nil)
+    {
+        _WrongDownImageView3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrongButton_page.png"]];
+        [_WrongDownImageView3 setFrame:CGRectMake(27, self.view.frame.size.height-78, _WrongDownImageView3.frame.size.width, _WrongDownImageView3.frame.size.height-3)];
+        _WrongDownImageView3.layer.anchorPoint = CGPointMake(0.5, 0);
+        [self.view addSubview:_WrongDownImageView3];
+    }
+    if (_WrongUpImageView2 == nil) {
+        _WrongUpImageView2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_up_page2.png"]];
+        [_WrongUpImageView2 setFrame:CGRectMake(27, self.view.frame.size.height-80, _WrongUpImageView2.frame.size.width, _WrongUpImageView2.frame.size.height-1)];
+        _WrongUpImageView2.alpha = 0;
+        _WrongUpImageView2.layer.anchorPoint = CGPointMake(0.5, 1);
+        [self.view addSubview:_WrongUpImageView2];
+    }
+    if (_WrongDownImageView2 == nil)
+    {
+        _WrongDownImageView2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrongButton_page.png"]];
+        [_WrongDownImageView2 setFrame:CGRectMake(27, self.view.frame.size.height-78, _WrongDownImageView2.frame.size.width, _WrongDownImageView2.frame.size.height-3)];
+        _WrongDownImageView2.layer.anchorPoint = CGPointMake(0.5, 0);
+        [self.view addSubview:_WrongDownImageView2];
+    }
+    if (_WrongUpImageView3 == nil) {
+        _WrongUpImageView3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_up_page2.png"]];
+        [_WrongUpImageView3 setFrame:CGRectMake(27, self.view.frame.size.height-80, _WrongUpImageView3.frame.size.width, _WrongUpImageView3.frame.size.height-1)];
+        _WrongUpImageView3.alpha = 0;
+        _WrongUpImageView3.layer.anchorPoint = CGPointMake(0.5, 1);
+        [self.view addSubview:_WrongUpImageView3];
+    }
+    if (_WrongDownImageView1 == nil)
+    {
+        _WrongDownImageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrongButton_page.png"]];
+        [_WrongDownImageView1 setFrame:CGRectMake(27, self.view.frame.size.height-78, _WrongDownImageView1.frame.size.width, _WrongDownImageView1.frame.size.height-3)];
+        _WrongDownImageView1.layer.anchorPoint = CGPointMake(0.5, 0);
+        [self.view addSubview:_WrongDownImageView1];
+    }
+    if (_WrongUpImageView4 == nil) {
+        _WrongUpImageView4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_up_page2.png"]];
+        [_WrongUpImageView4 setFrame:CGRectMake(27, self.view.frame.size.height-80, _WrongUpImageView4.frame.size.width, _WrongUpImageView4.frame.size.height-1)];
+        _WrongUpImageView4.alpha = 0;
+        _WrongUpImageView4.layer.anchorPoint = CGPointMake(0.5, 1);
+        [self.view addSubview:_WrongUpImageView4];
+    }
+    if (_WrongDownImageView0 == nil)
+    {
+        _WrongDownImageView0 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_down_page.png"]];
+        [_WrongDownImageView0 setFrame:CGRectMake(27, self.view.frame.size.height-78, _WrongDownImageView0.frame.size.width, _WrongDownImageView0.frame.size.height-3)];
+        _WrongDownImageView0.layer.anchorPoint = CGPointMake(0.5, 0);
+        [self.view addSubview:_WrongDownImageView0];
+    }
 }
 
 - (void)Dismiss_WrongAnimation
 {
+    [self Dismiss_InitWrongImage];
     
+    //[self Dismiss_WrongAnimationWith:_WrongUpImageView4 and:_WrongDownImageView4 atTime:CACurrentMediaTime() withString:@"removeRightImage4"];
+    //[self Dismiss_RightAnimationWith:_WrongUpImageView3 and:_WrongDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"removeRightImage3"];
+    [self Dismiss_WrongAnimationWith:_WrongUpImageView2 and:_WrongDownImageView2 atTime:CACurrentMediaTime()+0.12f withString:@"Dismiss_removeWrongImage2"];
+    [self Dismiss_WrongAnimationWith:_WrongUpImageView1 and:_WrongDownImageView1 atTime:CACurrentMediaTime()+0.12f*2 withString:@"Dismiss_removeWrongImage1"];
+    [self Dismiss_WrongAnimationWith:_WrongUpImageView0 and:_WrongDownImageView0 atTime:CACurrentMediaTime()+0.12f*3 withString:@"Dismiss_removeWrongImage0"];
 }
 
 - (void)Dismiss_WrongAnimationWith:(UIImageView *)up and:(UIImageView *)down atTime:(CFTimeInterval) time withString:(NSString *)value
@@ -580,7 +730,7 @@
 #pragma mark - animation START and STOP Methods
 -(void)animationDidStart:(CAAnimation *)theAnimation
 {
-    if([[theAnimation valueForKey:@"id"] isEqual:@"removeRightImage0"])
+    if([[theAnimation valueForKey:@"id"] isEqual:@"Show_removeRightImage0"])
     {
         if (_RightUpImageView == nil) {
             _RightUpImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_up.png"]];
@@ -589,7 +739,8 @@
             [self.view addSubview:_RightUpImageView];
         }
     }
-    if ([[theAnimation valueForKey:@"id"] isEqual:@"removeWrongImage0"]) {
+    if ([[theAnimation valueForKey:@"id"] isEqual:@"Show_removeWrongImage0"])
+    {
         if (_WrongUpImageView == nil) {
             _WrongUpImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_up.png"]];
             [_WrongUpImageView setFrame:CGRectMake(49, self.view.frame.size.height-76, _WrongUpImageView.frame.size.width, _WrongUpImageView.frame.size.height-1)];
@@ -597,35 +748,49 @@
             [self.view addSubview:_WrongUpImageView];
         }
     }
+    if([[theAnimation valueForKey:@"id"] isEqual:@"Dismiss_removeRightImage2"])
+    {
+        if (_RightUpImageView != nil) {
+            [_RightUpImageView removeFromSuperview];
+            _RightUpImageView = nil;
+        }
+    }
+    if ([[theAnimation valueForKey:@"id"] isEqual:@"Dismiss_removeWrongImage2"])
+    {
+        if (_WrongUpImageView != nil) {
+            [_WrongUpImageView removeFromSuperview];
+            _WrongUpImageView = nil;
+        }
+    }
 }
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
 {
-    if([[theAnimation valueForKey:@"id"] isEqual:@"removeRightImage4"])
+    if([[theAnimation valueForKey:@"id"] isEqual:@"Show_removeRightImage4"])
     {
         [_RightDownImageView4 removeFromSuperview];
         _RightDownImageView4 = nil;
         [_RightUpImageView4 removeFromSuperview];
         _RightUpImageView4 = nil;
-    }else if([[theAnimation valueForKey:@"id"] isEqual:@"removeRightImage3"])
+    }else if([[theAnimation valueForKey:@"id"] isEqual:@"Show_removeRightImage3"])
     {
         [_RightDownImageView3 removeFromSuperview];
         _RightDownImageView3 = nil;
         [_RightUpImageView3 removeFromSuperview];
         _RightUpImageView3 = nil;
-    }else if([[theAnimation valueForKey:@"id"] isEqual:@"removeRightImage2"])
+    }else if([[theAnimation valueForKey:@"id"] isEqual:@"Show_removeRightImage2"])
     {
         [_RightDownImageView2 removeFromSuperview];
         _RightDownImageView2 = nil;
         [_RightUpImageView2 removeFromSuperview];
         _RightUpImageView2 = nil;
-    }else if([[theAnimation valueForKey:@"id"] isEqual:@"removeRightImage1"])
+    }else if([[theAnimation valueForKey:@"id"] isEqual:@"Show_removeRightImage1"])
     {
         [_RightDownImageView1 removeFromSuperview];
         _RightDownImageView1 = nil;
         [_RightUpImageView1 removeFromSuperview];
         _RightUpImageView1 = nil;
-    }else if([[theAnimation valueForKey:@"id"] isEqual:@"removeRightImage0"])
+    }else if([[theAnimation valueForKey:@"id"] isEqual:@"Show_removeRightImage0"])
     {
         [_RightDownImageView0 removeFromSuperview];
         _RightDownImageView0 = nil;
@@ -643,31 +808,31 @@
     }
     //////////////////////////////////////////////////////////////////////////////////////////////
     
-    if([[theAnimation valueForKey:@"id"] isEqual:@"removeWrongImage4"])
+    if([[theAnimation valueForKey:@"id"] isEqual:@"Show_removeWrongImage4"])
     {
         [_WrongDownImageView4 removeFromSuperview];
         _WrongDownImageView4 = nil;
         [_WrongUpImageView4 removeFromSuperview];
         _WrongUpImageView4 = nil;
-    }else if([[theAnimation valueForKey:@"id"] isEqual:@"removeWrongImage3"])
+    }else if([[theAnimation valueForKey:@"id"] isEqual:@"Show_removeWrongImage3"])
     {
         [_WrongDownImageView3 removeFromSuperview];
         _WrongDownImageView3 = nil;
         [_WrongUpImageView3 removeFromSuperview];
         _WrongUpImageView3 = nil;
-    }else if([[theAnimation valueForKey:@"id"] isEqual:@"removeWrongImage2"])
+    }else if([[theAnimation valueForKey:@"id"] isEqual:@"Show_removeWrongImage2"])
     {
         [_WrongDownImageView2 removeFromSuperview];
         _WrongDownImageView2 = nil;
         [_WrongUpImageView2 removeFromSuperview];
         _WrongUpImageView2 = nil;
-    }else if([[theAnimation valueForKey:@"id"] isEqual:@"removeWrongImage1"])
+    }else if([[theAnimation valueForKey:@"id"] isEqual:@"Show_removeWrongImage1"])
     {
         [_WrongDownImageView1 removeFromSuperview];
         _WrongDownImageView1 = nil;
         [_WrongUpImageView1 removeFromSuperview];
         _WrongUpImageView1 = nil;
-    }else if([[theAnimation valueForKey:@"id"] isEqual:@"removeWrongImage0"])
+    }else if([[theAnimation valueForKey:@"id"] isEqual:@"Show_removeWrongImage0"])
     {
         [_WrongDownImageView0 removeFromSuperview];
         _WrongDownImageView0 = nil;
@@ -680,9 +845,86 @@
             _WrongDownImageView.layer.anchorPoint = CGPointMake(0.5, 0);
             [self.view addSubview:_WrongDownImageView];
         }
-        
-        
         self.WrongButton.enabled = true;
+    }
+    
+    ////////////////////////////////////////////////////////
+    
+    if([[theAnimation valueForKey:@"id"] isEqual:@"Dismiss_removeRightImage4"])
+    {
+        [_RightDownImageView4 removeFromSuperview];
+        _RightDownImageView4 = nil;
+        [_RightUpImageView4 removeFromSuperview];
+        _RightUpImageView4 = nil;
+    }else if([[theAnimation valueForKey:@"id"] isEqual:@"Dismiss_removeRightImage3"])
+    {
+        [_RightDownImageView3 removeFromSuperview];
+        _RightDownImageView3 = nil;
+        [_RightUpImageView3 removeFromSuperview];
+        _RightUpImageView3 = nil;
+    }else if([[theAnimation valueForKey:@"id"] isEqual:@"Dismiss_removeRightImage2"])
+    {
+        [_RightDownImageView2 removeFromSuperview];
+        _RightDownImageView2 = nil;
+        [_RightUpImageView2 removeFromSuperview];
+        _RightUpImageView2 = nil;
+        
+    }else if([[theAnimation valueForKey:@"id"] isEqual:@"Dismiss_removeRightImage1"])
+    {
+        [_RightDownImageView1 removeFromSuperview];
+        _RightDownImageView1 = nil;
+        [_RightUpImageView1 removeFromSuperview];
+        _RightUpImageView1 = nil;
+    }else if([[theAnimation valueForKey:@"id"] isEqual:@"Dismiss_removeRightImage0"])
+    {
+        [_RightDownImageView0 removeFromSuperview];
+        _RightDownImageView0 = nil;
+        [_RightUpImageView0 removeFromSuperview];
+        _RightUpImageView0 = nil;
+        
+        if (_RightDownImageView != nil) {
+            [_RightDownImageView removeFromSuperview];
+            _RightDownImageView = nil;
+        }
+    }
+    
+    /////////////////////////////////////////////////////////////
+    
+    if([[theAnimation valueForKey:@"id"] isEqual:@"Dismiss_removeWrongImage4"])
+    {
+        [_WrongDownImageView4 removeFromSuperview];
+        _WrongDownImageView4 = nil;
+        [_WrongUpImageView4 removeFromSuperview];
+        _WrongUpImageView4 = nil;
+    }else if([[theAnimation valueForKey:@"id"] isEqual:@"Dismiss_removeWrongImage3"])
+    {
+        [_WrongDownImageView3 removeFromSuperview];
+        _WrongDownImageView3 = nil;
+        [_WrongUpImageView3 removeFromSuperview];
+        _WrongUpImageView3 = nil;
+    }else if([[theAnimation valueForKey:@"id"] isEqual:@"Dismiss_removeWrongImage2"])
+    {
+        [_WrongDownImageView2 removeFromSuperview];
+        _WrongDownImageView2 = nil;
+        [_WrongUpImageView2 removeFromSuperview];
+        _WrongUpImageView2 = nil;
+    }else if([[theAnimation valueForKey:@"id"] isEqual:@"Dismiss_removeWrongImage1"])
+    {
+        [_WrongDownImageView1 removeFromSuperview];
+        _WrongDownImageView1 = nil;
+        [_WrongUpImageView1 removeFromSuperview];
+        _WrongUpImageView1 = nil;
+    }else if([[theAnimation valueForKey:@"id"] isEqual:@"Dismiss_removeWrongImage0"])
+    {
+        [_WrongDownImageView0 removeFromSuperview];
+        _WrongDownImageView0 = nil;
+        [_WrongUpImageView0 removeFromSuperview];
+        _WrongUpImageView0 = nil;
+        
+        if (_WrongDownImageView != nil) {
+            [_WrongDownImageView removeFromSuperview];
+            _WrongDownImageView = nil;
+        }
     }
 }
 
@@ -718,7 +960,8 @@
     WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
     [word didRightOnDate:[NSDate new]];
     [self nextButtonPushed];
-
+    [self Dismiss_RightAnimation];
+    [self Dismiss_WrongAnimation];
 }
 
 - (IBAction)wrongButtonPushed:(id)sender {
@@ -727,7 +970,8 @@
     //NSLog(@"NowReviewWord: %@", word.data[@"word"]);
     [word didMakeAMistakeOnDate:[NSDate new]];
     [self nextButtonPushed];
-
+    [self Dismiss_RightAnimation];
+    [self Dismiss_WrongAnimation];
 }
 
 - (void)nextButtonPushed
