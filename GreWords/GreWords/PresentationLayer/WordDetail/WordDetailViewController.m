@@ -103,6 +103,7 @@
     [self.WordParaphraseView scrollsToTop];
     
     [[WordSpeaker instance] readWord:self.wordLabel.text];
+    [self.delegate resetWordIndexto:self.indexOfWordIDToday + 1];
 
     [self DontShowMeaning];
     self.indexOfWordIDToday ++;
@@ -130,6 +131,16 @@
     
     [self.backButton.superview bringSubviewToFront:self.backButton];
     [self.timeImage setImage:[UIImage imageNamed:nil]];
+    
+    
+//    UIImageView *a = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_downCoverWithButton.png"]];
+//    CGRect frame = a.frame;
+//    frame.size.height = 171.0f;
+//    [a setFrame:frame];
+//    a.alpha = 0.5;
+//    a.center =CGPointMake(320.0/2, self.view.frame.size.height - 171.0/2);
+//    [self.view addSubview:a];
+    
 }
 
 - (void)ShowMeaning
@@ -256,8 +267,8 @@
     
     [self.showMeaningButton addTarget:self action:@selector(showButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.showMeaningButton setFrame:CGRectMake( 8, 100, 304.0, 337.0)];
-    self.showMeaningButton.autoresizesSubviews = NO;
     [self.view addSubview:self.showMeaningButton];
+    [self.view insertSubview:self.showMeaningButton belowSubview:_DownImage];
 }
 
 - (void)showButtonPressed
@@ -270,6 +281,27 @@
 
 - (IBAction)rightButtonPushed:(id)sender {
     [self viewWillAppear:YES];
+    NSLog(@"Right~~:!!!!!%d", self.indexOfWordIDToday);
+    WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
+    [word didRightOnDate:[NSDate new]];
+    [self nextButtonPushed];
+
+}
+
+- (IBAction)wrongButtonPushed:(id)sender {
+    [self viewWillAppear:YES];
+    NSLog(@"Wrong:!!!!!%d", self.indexOfWordIDToday);
+    WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
+    [word didMadeAMistakeOnDate:[NSDate new]];
+    [self nextButtonPushed];
+
+}
+
+- (void)nextButtonPushed
+{
+    NSLog(@"The index:%d", self.indexOfWordIDToday);
+    NSLog(@"The wordID:%d", [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]);
+    NSLog(@"The MaxID:%d", self.maxWordID);
     if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue] > self.maxWordID) {
         if (_DownImage.alpha == 1) {
             [self.delegate GoToNewWordWithWord:self.indexOfWordIDToday andThe:self.maxWordID withDownImage:YES];
@@ -282,18 +314,12 @@
     }
 }
 
-- (IBAction)wrongButtonPushed:(id)sender {
-    [self viewWillAppear:YES];
-    [self loadWord:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
-}
-
 - (IBAction)pronounceButtonPushed:(id)sender {
     [[WordSpeaker instance] readWord:self.wordLabel.text];
 }
 
 - (IBAction)BackButtonPushed:(id)sender {
     self.indexOfWordIDToday --;
-    [self.delegate resetWordIndexto:self.indexOfWordIDToday];
     [self dismissModalViewControllerAnimated:YES];
     [self.delegate AnimationBack];
 }

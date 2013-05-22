@@ -128,7 +128,7 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Mainmenu_bg@2x.png" id="Sf2-zk-Iu3">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Main menu_bg.png" id="Sf2-zk-Iu3">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -442,8 +442,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Mainmenu_bg@2x.png" width="640" height="1136"/>
-        <image name="Mainmenu_title@2x.png" width="502" height="86"/>
+        <image name="Main menu_bg.png" width="320" height="568"/>
+        <image name="Mainmenu_title@2x.png" width="16" height="16"/>
         <image name="Settings_Backbutton.png" width="51" height="60"/>
         <image name="Settings_backButton_clicked.png" width="51" height="60"/>
         <image name="Settings_bg.png" width="320" height="568"/>
