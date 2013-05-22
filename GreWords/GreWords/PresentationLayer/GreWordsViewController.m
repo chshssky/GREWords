@@ -274,10 +274,11 @@
         self.menu.transform = CGAffineTransformMakeTranslation(-300, 0);
     } completion:^(BOOL finished) {
         
+        NSLog(@"MaxWordID: %d,VVVVVVVVSSSSSSSSSS WordID: %d", self.maxWordID, [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday ] integerValue]);
         //根据MaxWordID和现在所在单词的ID 来判断 该跳转到 NewWord 还是 Review
         if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday ] integerValue] < self.maxWordID) {
             WordDetailViewController *vc = [[WordDetailViewController alloc] init];
-            vc.indexOfWordIDToday = self.indexOfWordIDToday;
+            vc.indexOfWordIDToday = self.indexOfWordIDToday - 1;
             vc.maxWordID = self.maxWordID;
             vc.delegate = self;
             [self presentViewController:vc animated:NO completion:nil];
@@ -360,6 +361,7 @@
     NSLog(@"%d,%d",self.indexOfWordIDToday,index);
     self.maxWordID = max;
 }
+
 
 - (void)GoToReviewWithWord:(int)wordIndex andThe:(int)maxWordNum
 {
