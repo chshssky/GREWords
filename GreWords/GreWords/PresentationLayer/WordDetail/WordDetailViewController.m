@@ -292,8 +292,9 @@
 
 - (IBAction)wrongButtonPushed:(id)sender {
     [self viewWillAppear:YES];
-    NSLog(@"Wrong:!!!!!%d", self.indexOfWordIDToday);
+    //NSLog(@"Wrong:!!!!!%d", self.indexOfWordIDToday);
     WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
+    //NSLog(@"NowReviewWord: %@", word.data[@"word"]);
     [word didMakeAMistakeOnDate:[NSDate new]];
     [self nextButtonPushed];
 
@@ -301,9 +302,9 @@
 
 - (void)nextButtonPushed
 {
-    NSLog(@"The index:%d", self.indexOfWordIDToday);
-    NSLog(@"The wordID:%d", [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]);
-    NSLog(@"The MaxID:%d", self.maxWordID);
+    //NSLog(@"The index:%d", self.indexOfWordIDToday);
+    //NSLog(@"The wordID:%d", [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]);
+    //NSLog(@"The MaxID:%d", self.maxWordID);
     if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue] > self.maxWordID) {
         if (_DownImage.alpha == 1) {
             [self.delegate GoToNewWordWithWord:self.indexOfWordIDToday andThe:self.maxWordID withDownImage:YES];
@@ -321,9 +322,13 @@
 }
 
 - (IBAction)BackButtonPushed:(id)sender {
-    self.indexOfWordIDToday --;
     [self dismissModalViewControllerAnimated:YES];
     [self.delegate AnimationBack];
+    //NSLog(@"Index!!!!!!: %d", self.indexOfWordIDToday);
+    if ((self.indexOfWordIDToday % 10) == 0) {
+        [self.delegate setReviewEnable];
+    }
+    [self.delegate resetWordIndexto:self.indexOfWordIDToday - 1];
 }
 
 @end
