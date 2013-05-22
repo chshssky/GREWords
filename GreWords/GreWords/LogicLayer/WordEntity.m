@@ -100,7 +100,7 @@
     return result;
 }
 
--(void)didMadeAMistakeOnDate:(NSDate*)date
+-(void)didMakeAMistakeOnDate:(NSDate*)date
 {
     NSMutableArray *lastMistakes = [self mistakeStringToArray];
     [lastMistakes addObject:@"W"];

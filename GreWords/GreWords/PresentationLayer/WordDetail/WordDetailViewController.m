@@ -292,7 +292,7 @@
     [self viewWillAppear:YES];
     NSLog(@"Wrong:!!!!!%d", self.indexOfWordIDToday);
     WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
-    [word didMadeAMistakeOnDate:[NSDate new]];
+    [word didMakeAMistakeOnDate:[NSDate new]];
     [self nextButtonPushed];
 
 }
