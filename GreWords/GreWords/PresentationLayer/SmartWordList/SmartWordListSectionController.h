@@ -14,6 +14,7 @@ typedef enum
     SmartListType_Slide,
     SmartListType_Full,
     SmartListType_Homo,
+    SmartListType_Mistake,
     SmartListType_Note
 }SmartListType;
 
