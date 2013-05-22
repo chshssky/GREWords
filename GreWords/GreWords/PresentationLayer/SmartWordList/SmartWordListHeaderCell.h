@@ -11,8 +11,6 @@
 
 @interface SmartWordListHeaderCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *upShadow;
-@property (weak, nonatomic) IBOutlet UIImageView *downShadow;
 @property (weak, nonatomic) IBOutlet UIImageView *mistakeRatioIndicatorImageView;
 
 @property (weak, nonatomic) IBOutlet UIButton *noteButton;
