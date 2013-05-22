@@ -9,6 +9,7 @@
 #import "GreWordsAppDelegate.h"
 #import "MyDataStorage.h"
 #import "ConfigurationHelper.h"
+#import "Crittercism.h"
 
 @implementation GreWordsAppDelegate
 
@@ -24,6 +25,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Crittercism enableWithAppID:@"519c56bbc463c25c49000004"];
+    
     [self initUserDefault];
     
     if([[ConfigurationHelper instance] isFirstTimeRun])
