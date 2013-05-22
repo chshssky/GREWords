@@ -267,8 +267,8 @@
     
     [self.showMeaningButton addTarget:self action:@selector(showButtonPressed) forControlEvents:UIControlEventTouchUpInside];
     [self.showMeaningButton setFrame:CGRectMake( 8, 100, 304.0, 337.0)];
-    self.showMeaningButton.autoresizesSubviews = NO;
     [self.view addSubview:self.showMeaningButton];
+    [self.view insertSubview:self.showMeaningButton belowSubview:_DownImage];
 }
 
 - (void)showButtonPressed

@@ -438,7 +438,7 @@
     </scenes>
     <resources>
         <image name="Main menu_bg.png" width="320" height="568"/>
-        <image name="Mainmenu_title@2x.png" width="502" height="86"/>
+        <image name="Mainmenu_title@2x.png" width="16" height="16"/>
         <image name="Settings_Backbutton.png" width="51" height="60"/>
         <image name="Settings_backButton_clicked.png" width="51" height="60"/>
         <image name="Settings_bg.png" width="320" height="568"/>
@@ -458,69 +458,6 @@
         <image name="words list_note.png" width="19" height="19"/>
         <image name="words list_sound.png" width="19" height="17"/>
     </resources>
-    <classes>
-        <class className="GreWordsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GreWordsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="titleView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="MHTabBarController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MHTabBarController.h"/>
-        </class>
-        <class className="SettingTabViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingTabViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="describeImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="stateImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="stateImageLight" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="SettingTabViewDeckViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingTabViewDeckViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tabViews" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="SettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="exitButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tabViews" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="SmartWordListContentCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmartWordListContentCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="SmartWordListHeaderCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmartWordListHeaderCell.h"/>
-            <relationships>
-                <relationship kind="action" name="notePressed:"/>
-                <relationship kind="action" name="soundPressed:"/>
-                <relationship kind="outlet" name="downShadow" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="noteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="upShadow" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="wordLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SmartWordListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmartWordListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="WholeSmartWordViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WholeSmartWordViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="exitPressed:"/>
-                <relationship kind="outlet" name="pageScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
