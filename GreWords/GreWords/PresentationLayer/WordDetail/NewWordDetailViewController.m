@@ -830,7 +830,6 @@ double radians(float degrees) {
             }else{
                 [self.dashboardVC plusData];
             }
-            
             _currentPage = page;
         }
         
