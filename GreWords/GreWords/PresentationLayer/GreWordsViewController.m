@@ -34,6 +34,8 @@
 @property (nonatomic) int maxWordID;
 @property (nonatomic) int day;
 
+@property (nonatomic) BOOL reviewEnable;
+
 
 @property (weak, nonatomic) IBOutlet UIImageView *titleView;
 
@@ -140,6 +142,7 @@
     
     self.indexOfWordIDToday = 0;
     self.maxWordID = 0;
+    self.reviewEnable = NO;
     
     _whetherAllowViewFrameChanged = NO;
 }
@@ -274,11 +277,13 @@
         self.menu.transform = CGAffineTransformMakeTranslation(-300, 0);
     } completion:^(BOOL finished) {
         
-        NSLog(@"MaxWordID: %d,VVVVVVVVSSSSSSSSSS WordID: %d", self.maxWordID, [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday ] integerValue]);
+        //NSLog(@"MaxWordID: %d,VVVVVVVVSSSSSSSSSS WordID: %d", self.maxWordID, [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday ] integerValue]);
         //根据MaxWordID和现在所在单词的ID 来判断 该跳转到 NewWord 还是 Review
-        if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday ] integerValue] < self.maxWordID) {
+        if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday ] integerValue] < self.maxWordID || self.reviewEnable) {
+            
+            self.reviewEnable = NO;
             WordDetailViewController *vc = [[WordDetailViewController alloc] init];
-            vc.indexOfWordIDToday = self.indexOfWordIDToday - 1;
+            vc.indexOfWordIDToday = self.indexOfWordIDToday;
             vc.maxWordID = self.maxWordID;
             vc.delegate = self;
             [self presentViewController:vc animated:NO completion:nil];
@@ -290,7 +295,7 @@
         
         vc.maxWordID = self.maxWordID;
         vc.indexOfWordIDToday = self.indexOfWordIDToday;
-        NSLog(@"BIGBUTTON: %d, %d", self.maxWordID, self.indexOfWordIDToday);
+        //NSLog(@"BIGBUTTON: %d, %d", self.maxWordID, self.indexOfWordIDToday);
         vc.day = self.day;
         vc.changePage = 10 - (self.maxWordID % 10);
         vc.delegate = self;
@@ -360,6 +365,11 @@
     self.indexOfWordIDToday = index;
     NSLog(@"%d,%d",self.indexOfWordIDToday,index);
     self.maxWordID = max;
+}
+
+- (void)setReviewEnable
+{
+    self.reviewEnable = YES;
 }
 
 

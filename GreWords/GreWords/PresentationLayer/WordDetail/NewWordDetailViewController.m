@@ -820,7 +820,7 @@ double radians(float degrees) {
             WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday + _currentPage ] intValue]];
             if ([left.array indexOfObject:addWord] == NSNotFound) {
                 
-                [self.delegate ChangeWordWithIndex:self.indexOfWordIDToday + _currentPage WithMax:self.maxWordID];
+                [self.delegate ChangeWordWithIndex:self.indexOfWordIDToday + _currentPage + 1 WithMax:self.maxWordID];
                 
                 [left addWord:addWord];
             }
@@ -885,7 +885,7 @@ double radians(float degrees) {
             scrollView.userInteractionEnabled = NO;
             [self.view removeGestureRecognizer:_noteRecognizer];
             [self dismissModalViewControllerAnimated:NO];
-            [self.delegate GoToReviewWithWord:self.indexOfWordIDToday + _currentPage andThe:self.maxWordID];
+            [self.delegate GoToReviewWithWord:self.indexOfWordIDToday + _currentPage + 1 andThe:self.maxWordID];
             
             
             

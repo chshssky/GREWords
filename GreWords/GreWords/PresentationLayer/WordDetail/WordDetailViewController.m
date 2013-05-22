@@ -724,6 +724,7 @@
 - (IBAction)wrongButtonPushed:(id)sender {
     [self viewWillAppear:YES];
     WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
+    //NSLog(@"NowReviewWord: %@", word.data[@"word"]);
     [word didMakeAMistakeOnDate:[NSDate new]];
     [self nextButtonPushed];
 
@@ -748,9 +749,13 @@
 }
 
 - (IBAction)BackButtonPushed:(id)sender {
-    self.indexOfWordIDToday --;
     [self dismissModalViewControllerAnimated:YES];
     [self.delegate AnimationBack];
+    //NSLog(@"Index!!!!!!: %d", self.indexOfWordIDToday);
+    if ((self.indexOfWordIDToday % 10) == 0) {
+        [self.delegate setReviewEnable];
+    }
+    [self.delegate resetWordIndexto:self.indexOfWordIDToday - 1];
 }
 
 @end
