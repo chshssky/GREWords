@@ -821,7 +821,6 @@ double radians(float degrees) {
             if ([left.array indexOfObject:addWord] == NSNotFound) {
                 
                 [self.delegate ChangeWordWithIndex:self.indexOfWordIDToday + _currentPage + 1 WithMax:self.maxWordID];
-                
                 [left addWord:addWord];
             }
             
@@ -923,7 +922,7 @@ double radians(float degrees) {
     CGPathAddLineToPoint(path, NULL, 320.0/2, self.view.frame.size.height + 171.0/2);
     lineAnimation.path = path;
     CGPathRelease(path);
-    lineAnimation.duration = 0.7f;
+    lineAnimation.duration = 0.6f;
     lineAnimation.delegate = self;
     lineAnimation.fillMode = kCAFillModeForwards;
     lineAnimation.removedOnCompletion = NO;
@@ -952,7 +951,7 @@ double radians(float degrees) {
     CGPathAddLineToPoint(path, NULL, 320.0/2, self.view.frame.size.height + 171.0/2);
     lineAnimation.path = path;
     CGPathRelease(path);
-    lineAnimation.duration = 0.7f;
+    lineAnimation.duration = 0.6f;
     lineAnimation.delegate = self;
     lineAnimation.fillMode = kCAFillModeForwards;
     lineAnimation.removedOnCompletion = NO;

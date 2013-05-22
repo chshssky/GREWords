@@ -235,8 +235,8 @@
     //[self Show_RightAnimationWith:_RightUpImageView4 and:_RightDownImageView4 atTime:CACurrentMediaTime() withString:@"Show_removeRightImage4"];
     //[self Show_RightAnimationWith:_RightUpImageView3 and:_RightDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"Show_removeRightImage3"];
     [self Show_RightAnimationWith:_RightUpImageView2 and:_RightDownImageView2 atTime:CACurrentMediaTime() withString:@"Show_removeRightImage2"];
-    [self Show_RightAnimationWith:_RightUpImageView1 and:_RightDownImageView1 atTime:CACurrentMediaTime()+0.12f withString:@"Show_removeRightImage1"];
-    [self Show_RightAnimationWith:_RightUpImageView0 and:_RightDownImageView0 atTime:CACurrentMediaTime()+0.12f*2 withString:@"Show_removeRightImage0"];
+    [self Show_RightAnimationWith:_RightUpImageView1 and:_RightDownImageView1 atTime:CACurrentMediaTime()+0.13f withString:@"Show_removeRightImage1"];
+    [self Show_RightAnimationWith:_RightUpImageView0 and:_RightDownImageView0 atTime:CACurrentMediaTime()+0.13f*2 withString:@"Show_removeRightImage0"];
 
 }
 
@@ -359,9 +359,9 @@
     
     //[self Show_WrongAnimationWith:_WrongUpImageView4 and:_WrongDownImageView4 atTime:CACurrentMediaTime() withString:@"Show_removeWrongImage4"];
     //[self Show_WrongAnimationWith:_WrongUpImageView3 and:_WrongDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"Show_removeWrongImage3"];
-    [self Show_WrongAnimationWith:_WrongUpImageView2 and:_WrongDownImageView2 atTime:CACurrentMediaTime()+ 0.12f withString:@"Show_removeWrongImage2"];
-    [self Show_WrongAnimationWith:_WrongUpImageView1 and:_WrongDownImageView1 atTime:CACurrentMediaTime()+0.12f*2 withString:@"Show_removeWrongImage1"];
-    [self Show_WrongAnimationWith:_WrongUpImageView0 and:_WrongDownImageView0 atTime:CACurrentMediaTime()+0.12f*3 withString:@"Show_removeWrongImage0"];
+    [self Show_WrongAnimationWith:_WrongUpImageView2 and:_WrongDownImageView2 atTime:CACurrentMediaTime()+0.13f withString:@"Show_removeWrongImage2"];
+    [self Show_WrongAnimationWith:_WrongUpImageView1 and:_WrongDownImageView1 atTime:CACurrentMediaTime()+0.13f*2 withString:@"Show_removeWrongImage1"];
+    [self Show_WrongAnimationWith:_WrongUpImageView0 and:_WrongDownImageView0 atTime:CACurrentMediaTime()+0.13f*3 withString:@"Show_removeWrongImage0"];
     
 }
 
@@ -559,8 +559,8 @@
     //[self Dismiss_RightAnimationWith:_RightUpImageView4 and:_RightDownImageView4 atTime:CACurrentMediaTime() withString:@"Dismiss_removeRightImage4"];
     //[self Dismiss_RightAnimationWith:_RightUpImageView3 and:_RightDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"Dismiss_removeRightImage3"];
     [self Dismiss_RightAnimationWith:_RightUpImageView2 and:_RightDownImageView2 atTime:CACurrentMediaTime() withString:@"Dismiss_removeRightImage2"];
-    [self Dismiss_RightAnimationWith:_RightUpImageView1 and:_RightDownImageView1 atTime:CACurrentMediaTime()+0.12f withString:@"Dismiss_removeRightImage1"];
-    [self Dismiss_RightAnimationWith:_RightUpImageView0 and:_RightDownImageView0 atTime:CACurrentMediaTime()+0.12f*2 withString:@"Dismiss_removeRightImage0"];
+    [self Dismiss_RightAnimationWith:_RightUpImageView1 and:_RightDownImageView1 atTime:CACurrentMediaTime()+0.13f withString:@"Dismiss_removeRightImage1"];
+    [self Dismiss_RightAnimationWith:_RightUpImageView0 and:_RightDownImageView0 atTime:CACurrentMediaTime()+0.13f*2 withString:@"Dismiss_removeRightImage0"];
 }
 
 - (void)Dismiss_RightAnimationWith:(UIImageView *)up and:(UIImageView *)down atTime:(CFTimeInterval) time withString:(NSString *)value
@@ -683,9 +683,9 @@
     
     //[self Dismiss_WrongAnimationWith:_WrongUpImageView4 and:_WrongDownImageView4 atTime:CACurrentMediaTime() withString:@"removeRightImage4"];
     //[self Dismiss_RightAnimationWith:_WrongUpImageView3 and:_WrongDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"removeRightImage3"];
-    [self Dismiss_WrongAnimationWith:_WrongUpImageView2 and:_WrongDownImageView2 atTime:CACurrentMediaTime()+0.12f withString:@"Dismiss_removeWrongImage2"];
-    [self Dismiss_WrongAnimationWith:_WrongUpImageView1 and:_WrongDownImageView1 atTime:CACurrentMediaTime()+0.12f*2 withString:@"Dismiss_removeWrongImage1"];
-    [self Dismiss_WrongAnimationWith:_WrongUpImageView0 and:_WrongDownImageView0 atTime:CACurrentMediaTime()+0.12f*3 withString:@"Dismiss_removeWrongImage0"];
+    [self Dismiss_WrongAnimationWith:_WrongUpImageView2 and:_WrongDownImageView2 atTime:CACurrentMediaTime()+0.13f withString:@"Dismiss_removeWrongImage2"];
+    [self Dismiss_WrongAnimationWith:_WrongUpImageView1 and:_WrongDownImageView1 atTime:CACurrentMediaTime()+0.13f*2 withString:@"Dismiss_removeWrongImage1"];
+    [self Dismiss_WrongAnimationWith:_WrongUpImageView0 and:_WrongDownImageView0 atTime:CACurrentMediaTime()+0.13f*3 withString:@"Dismiss_removeWrongImage0"];
 }
 
 - (void)Dismiss_WrongAnimationWith:(UIImageView *)up and:(UIImageView *)down atTime:(CFTimeInterval) time withString:(NSString *)value
@@ -960,18 +960,13 @@
     WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
     [word didRightOnDate:[NSDate new]];
     [self nextButtonPushed];
-    [self Dismiss_RightAnimation];
-    [self Dismiss_WrongAnimation];
 }
 
 - (IBAction)wrongButtonPushed:(id)sender {
     [self viewWillAppear:YES];
     WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
-    //NSLog(@"NowReviewWord: %@", word.data[@"word"]);
     [word didMakeAMistakeOnDate:[NSDate new]];
     [self nextButtonPushed];
-    [self Dismiss_RightAnimation];
-    [self Dismiss_WrongAnimation];
 }
 
 - (void)nextButtonPushed
@@ -984,6 +979,8 @@
         }
         [self dismissModalViewControllerAnimated:NO];
     } else {
+        [self Dismiss_RightAnimation];
+        [self Dismiss_WrongAnimation];
         [self loadWord:self.indexOfWordIDToday];
     }
 }
