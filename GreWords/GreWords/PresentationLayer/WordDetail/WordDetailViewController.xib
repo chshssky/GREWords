@@ -90,7 +90,7 @@
 						<string key="NSFrame">{{0, 377}, {320, 171}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="256804373"/>
+						<reference key="NSNextKeyView" ref="141582279"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -179,7 +179,7 @@
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
-					<object class="IBUIImageView" id="256804373">
+					<object class="IBUIImageView" id="141582279">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">266</int>
 						<string key="NSFrame">{{18, 443}, {93, 90}}</string>
@@ -191,10 +191,10 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">learning_wrongButton.png</string>
+							<string key="NSResourceName">learning_wrongButton_first.png</string>
 						</object>
 					</object>
-					<object class="IBUIImageView" id="916051459">
+					<object class="IBUIImageView" id="252298356">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">266</int>
 						<string key="NSFrame">{{208, 443}, {93, 90}}</string>
@@ -205,7 +205,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">learning_rightButton.png</string>
+							<string key="NSResourceName">learning_rightButton_first.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="8447338">
@@ -489,8 +489,8 @@
 							<reference ref="890329438"/>
 							<reference ref="1057222410"/>
 							<reference ref="196056420"/>
-							<reference ref="256804373"/>
-							<reference ref="916051459"/>
+							<reference ref="141582279"/>
+							<reference ref="252298356"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -567,12 +567,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">408</int>
-						<reference key="object" ref="256804373"/>
+						<reference key="object" ref="141582279"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">409</int>
-						<reference key="object" ref="916051459"/>
+						<reference key="object" ref="252298356"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
@@ -610,17 +610,37 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">WordDetailViewController</string>
 					<string key="superclassName">UIViewController</string>
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="BackButtonPushed:">id</string>
+						<string key="pronounceButtonPushed:">id</string>
+						<string key="rightButtonPushed:">id</string>
+						<string key="wrongButtonPushed:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="BackButtonPushed:">
+							<string key="name">BackButtonPushed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="pronounceButtonPushed:">
+							<string key="name">pronounceButtonPushed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="rightButtonPushed:">
+							<string key="name">rightButtonPushed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="wrongButtonPushed:">
+							<string key="name">wrongButtonPushed:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="DownImage">UIImageView</string>
 						<string key="PronounceButton">UIButton</string>
 						<string key="RightButton">UIButton</string>
-						<string key="RightDownImage">UIImageView</string>
-						<string key="RightUpImage">UIImageView</string>
 						<string key="UpImage">UIImageView</string>
 						<string key="WordParaphraseView">UIScrollView</string>
 						<string key="WrongButton">UIButton</string>
-						<string key="WrongDownImage">UIImageView</string>
-						<string key="WrongUpImage">UIImageView</string>
 						<string key="backButton">UIButton</string>
 						<string key="pronounceLabel">UILabel</string>
 						<string key="timeImage">UIImageView</string>
@@ -640,14 +660,6 @@
 							<string key="name">RightButton</string>
 							<string key="candidateClassName">UIButton</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="RightDownImage">
-							<string key="name">RightDownImage</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="RightUpImage">
-							<string key="name">RightUpImage</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="UpImage">
 							<string key="name">UpImage</string>
 							<string key="candidateClassName">UIImageView</string>
@@ -659,14 +671,6 @@
 						<object class="IBToOneOutletInfo" key="WrongButton">
 							<string key="name">WrongButton</string>
 							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="WrongDownImage">
-							<string key="name">WrongDownImage</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="WrongUpImage">
-							<string key="name">WrongUpImage</string>
-							<string key="candidateClassName">UIImageView</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="backButton">
 							<string key="name">backButton</string>
@@ -703,10 +707,10 @@
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="learning_backgournd_blank.png">{320, 568}</string>
 			<string key="learning_downCover.png">{320, 178}</string>
-			<string key="learning_rightButton.png">{93, 93}</string>
+			<string key="learning_rightButton_first.png">{93, 93}</string>
 			<string key="learning_sound.png">{19, 17}</string>
 			<string key="learning_upCover.png">{320, 175}</string>
-			<string key="learning_wrongButton.png">{93, 93}</string>
+			<string key="learning_wrongButton_first.png">{93, 93}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>
