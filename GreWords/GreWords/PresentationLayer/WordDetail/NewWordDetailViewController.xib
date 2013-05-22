@@ -50,7 +50,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">learning_backgournd_blank@2x.png</string>
+							<string key="NSResourceName">learning_backgournd_blank.png</string>
 						</object>
 					</object>
 					<object class="IBUIScrollView" id="88760196">
@@ -80,13 +80,13 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">learning_upCover@2x.png</string>
+							<string key="NSResourceName">learning_upCover.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="1069963052">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{0, 494}, {320, 54}}</string>
+						<string key="NSFrame">{{0, 500}, {320, 48}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -94,7 +94,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">learning_downCover2@2x.png</string>
+							<string key="NSResourceName">learning_downCover2.png</string>
 						</object>
 					</object>
 					<object class="IBUILabel" id="981749814">
@@ -437,25 +437,6 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">NewWordDetailViewController</string>
 					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="BackButtonPushed:">id</string>
-						<string key="soundButtonClicked:">id</string>
-						<string key="soundButtonReleased:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="BackButtonPushed:">
-							<string key="name">BackButtonPushed:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="soundButtonClicked:">
-							<string key="name">soundButtonClicked:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="soundButtonReleased:">
-							<string key="name">soundButtonReleased:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="DownImage">UIImageView</string>
 						<string key="PronounceButton">UIButton</string>
@@ -512,10 +493,10 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="learning_backgournd_blank@2x.png">{640, 1136}</string>
-			<string key="learning_downCover2@2x.png">{640, 109}</string>
+			<string key="learning_backgournd_blank.png">{320, 568}</string>
+			<string key="learning_downCover2.png">{320, 54}</string>
 			<string key="learning_sound.png">{19, 17}</string>
-			<string key="learning_upCover@2x.png">{640, 351}</string>
+			<string key="learning_upCover.png">{320, 175}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>

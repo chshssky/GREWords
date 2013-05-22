@@ -130,6 +130,16 @@
     
     [self.backButton.superview bringSubviewToFront:self.backButton];
     [self.timeImage setImage:[UIImage imageNamed:nil]];
+    
+    
+//    UIImageView *a = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_downCoverWithButton.png"]];
+//    CGRect frame = a.frame;
+//    frame.size.height = 171.0f;
+//    [a setFrame:frame];
+//    a.alpha = 0.5;
+//    a.center =CGPointMake(320.0/2, self.view.frame.size.height - 171.0/2);
+//    [self.view addSubview:a];
+    
 }
 
 - (void)ShowMeaning

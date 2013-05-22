@@ -49,7 +49,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">learning_backgournd_blank@2x.png</string>
+							<string key="NSResourceName">learning_backgournd_blank.png</string>
 						</object>
 					</object>
 					<object class="IBUIScrollView" id="547088246">
@@ -78,7 +78,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">learning_upCover@2x.png</string>
+							<string key="NSResourceName">learning_upCover.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="324383819">
@@ -86,13 +86,13 @@
 						<int key="NSvFlags">266</int>
 						<string key="NSFrame">{{0, 377}, {320, 171}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView" ref="19464487"/>
+						<reference key="NSNextKeyView" ref="403285041"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">learning_downCover@2x.png</string>
+							<string key="NSResourceName">learning_downCover.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="338799999">
@@ -172,9 +172,9 @@
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
-					<object class="IBUIImageView" id="19464487">
+					<object class="IBUIImageView" id="403285041">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">266</int>
 						<string key="NSFrame">{{18, 443}, {93, 90}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSNextKeyView" ref="8447338"/>
@@ -186,9 +186,9 @@
 							<string key="NSResourceName">learning_wrongButton_first.png</string>
 						</object>
 					</object>
-					<object class="IBUIImageView" id="406429717">
+					<object class="IBUIImageView" id="762804796">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">266</int>
 						<string key="NSFrame">{{208, 443}, {93, 90}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -475,8 +475,8 @@
 							<reference ref="890329438"/>
 							<reference ref="1057222410"/>
 							<reference ref="196056420"/>
-							<reference ref="19464487"/>
-							<reference ref="406429717"/>
+							<reference ref="403285041"/>
+							<reference ref="762804796"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -553,12 +553,12 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">408</int>
-						<reference key="object" ref="19464487"/>
+						<reference key="object" ref="403285041"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">409</int>
-						<reference key="object" ref="406429717"/>
+						<reference key="object" ref="762804796"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
@@ -597,11 +597,11 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="learning_backgournd_blank@2x.png">{640, 1136}</string>
-			<string key="learning_downCover@2x.png">{640, 356}</string>
+			<string key="learning_backgournd_blank.png">{320, 568}</string>
+			<string key="learning_downCover.png">{320, 178}</string>
 			<string key="learning_rightButton_first.png">{93, 93}</string>
 			<string key="learning_sound.png">{19, 17}</string>
-			<string key="learning_upCover@2x.png">{640, 351}</string>
+			<string key="learning_upCover.png">{320, 175}</string>
 			<string key="learning_wrongButton_first.png">{93, 93}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
