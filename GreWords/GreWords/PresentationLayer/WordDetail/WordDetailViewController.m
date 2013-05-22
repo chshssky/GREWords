@@ -101,6 +101,7 @@
     [self.WordParaphraseView scrollsToTop];
     
     [[WordSpeaker instance] readWord:self.wordLabel.text];
+    [self.delegate resetWordIndexto:self.indexOfWordIDToday + 1];
 
     [self DontShowMeaning];
     self.indexOfWordIDToday ++;
@@ -273,6 +274,11 @@
 
 - (IBAction)rightButtonPushed:(id)sender {
     [self viewWillAppear:YES];
+    [self nextButtonPushed];
+}
+
+- (void)nextButtonPushed
+{
     NSLog(@"The index:%d", self.indexOfWordIDToday);
     NSLog(@"The wordID:%d", [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]);
     NSLog(@"The MaxID:%d", self.maxWordID);
@@ -286,9 +292,7 @@
 
 - (IBAction)wrongButtonPushed:(id)sender {
     [self viewWillAppear:YES];
-    [self loadWord:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
-    
-    
+    [self nextButtonPushed];
 }
 
 - (IBAction)pronounceButtonPushed:(id)sender {
@@ -297,7 +301,6 @@
 
 - (IBAction)BackButtonPushed:(id)sender {
     self.indexOfWordIDToday --;
-    [self.delegate resetWordIndexto:self.indexOfWordIDToday];
     [self dismissModalViewControllerAnimated:YES];
     [self.delegate AnimationBack];
 }

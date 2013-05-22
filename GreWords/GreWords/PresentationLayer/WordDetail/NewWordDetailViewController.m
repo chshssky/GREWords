@@ -152,6 +152,8 @@
     [[WordSpeaker instance] readWord:self.wordLabel.text];
     _whetherWordIsRead = NO;
     _whetherSetNo = NO;
+    
+    [self.delegate ChangeWordWithIndex:self.indexOfWordIDToday - 1 WithMax:self.maxWordID];
 
 }
 
@@ -184,6 +186,7 @@
 
 - (IBAction)BackButtonPushed:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
+    //[self.delegate ChangeWordWithIndex:self.indexOfWordIDToday - 2 WithMax:self.maxWordID];
     [self.delegate AnimationBack];
 }
 
@@ -215,7 +218,6 @@
     [self addUpNoteImageAnimation];
     [self addNoteTextViewAnimation];
     [self.view removeGestureRecognizer:recognizer];
-    
     self.viewDeckController.panningMode = IIViewDeckNoPanning;
     
     _noteRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeUp:)];
@@ -824,7 +826,7 @@ double radians(float degrees) {
         }
         
         // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
-        [self loadViewWithPage:page];
+        //[self loadViewWithPage:page];
         [self loadViewWithPage:page + 1];
         /////////////////////////////////////////////////////////////////////////////////////////////
         
