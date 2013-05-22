@@ -11,7 +11,7 @@
 @protocol WordDetailViewControllerProtocol <NSObject>
 
 - (void)AnimationBack;
-- (void)GoToNewWordWithWord:(int)wordIndex andThe:(int)maxWordNum;
+- (void)GoToNewWordWithWord:(int)wordIndex andThe:(int)maxWordNum withDownImage:(BOOL)whetherHaveDownImage;
 - (void)resetWordIndexto:(int)index;
 
 @end

@@ -20,4 +20,7 @@
 @property (nonatomic) int changePage;
 @property (nonatomic) int day;
 
+- (void)removeDownImageAnimation_withDownCover;
+- (void)removeDownImageAnimation_withNoDownCover;
+
 @end

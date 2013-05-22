@@ -45,9 +45,9 @@
 {
     dashboard = [DashboardViewController instance];
     // Database: read from 
-    dashboard.nonFinishedNumber = 200 ;
+    dashboard.nonFinishedNumber = TaskWordNumber;
     dashboard.minNumber = dashboard.nonFinishedNumber;
-    dashboard.sumNumber = 200;
+    dashboard.sumNumber = TaskWordNumber;
     dashboard.delegate = self;
     [self.view addSubview:dashboard.view];
 }
@@ -372,14 +372,14 @@
     [self presentViewController:vc animated:NO completion:nil];
 }
 
-- (void)GoToNewWordWithWord:(int)wordIndex andThe:(int)maxWordNum
+- (void)GoToNewWordWithWord:(int)wordIndex andThe:(int)maxWordNum withDownImage:(BOOL)whetherHaveDownImage
 {
     self.indexOfWordIDToday = wordIndex;
     self.maxWordID = maxWordNum;
-    [self performSelector:@selector(GotoNewWordSelector) withObject:nil afterDelay:0];
+    [self performSelector:@selector(GotoNewWordSelector:) withObject:nil afterDelay:0];
 }
 
-- (void)GotoNewWordSelector
+- (void)GotoNewWordSelector:(BOOL)whetherHaveDownImage
 {
     NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
     
@@ -406,7 +406,11 @@
         
     [self presentViewController:deckController animated:NO completion:nil];
     
-
+    if (whetherHaveDownImage == YES) {
+        [vc removeDownImageAnimation_withDownCover];
+    }else{
+        [vc removeDownImageAnimation_withNoDownCover];
+    }
 }
 
 - (void)viewDidUnload {
