@@ -37,7 +37,7 @@
     originalTableViewFrame = self.pageScrollView.frame;
     
     SmartWordListViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
-    vc.type = SmartListType_Full;
+    vc.type = SmartListType_Mistake;
     vc.array = [[WordHelper instance] wordsRatioOfMistake];
     CGRect frame = vc.view.frame;
     frame.origin.y = 0;

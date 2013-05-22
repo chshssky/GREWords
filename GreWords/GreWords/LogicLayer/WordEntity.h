@@ -25,7 +25,7 @@
 @property (nonatomic,retain,readonly) NSDate *lastMistakeTime;
 @property (nonatomic,readonly) int wordID;
 
--(void)didMadeAMistakeOnDate:(NSDate*)date;
+-(void)didMakeAMistakeOnDate:(NSDate*)date;
 -(void)didRightOnDate:(NSDate*)date;
 
 -(id)initWithID:(int)wordID data:(NSDictionary*)data word:(Word*)wordManagedObj;

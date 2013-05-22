@@ -283,7 +283,20 @@
 
 - (IBAction)rightButtonPushed:(id)sender {
     [self viewWillAppear:YES];
+    NSLog(@"Right~~:!!!!!%d", self.indexOfWordIDToday);
+    WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
+    [word didRightOnDate:[NSDate new]];
     [self nextButtonPushed];
+
+}
+
+- (IBAction)wrongButtonPushed:(id)sender {
+    [self viewWillAppear:YES];
+    NSLog(@"Wrong:!!!!!%d", self.indexOfWordIDToday);
+    WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
+    [word didMakeAMistakeOnDate:[NSDate new]];
+    [self nextButtonPushed];
+
 }
 
 - (void)nextButtonPushed
@@ -301,11 +314,6 @@
     } else {
         [self loadWord:self.indexOfWordIDToday];
     }
-}
-
-- (IBAction)wrongButtonPushed:(id)sender {
-    [self viewWillAppear:YES];
-    [self nextButtonPushed];
 }
 
 - (IBAction)pronounceButtonPushed:(id)sender {

@@ -59,9 +59,6 @@
 @property (nonatomic) NSString *WordName;
 @property (nonatomic) NSString *WordPhonetic;
 
-//- (void)loadViewWithPage:(int)index;
-//- (void)scrollViewDidScroll:(UIScrollView *)sender;
-
 @property int currentPage;
 
 @property (strong, nonatomic) DashboardViewController *dashboardVC;
@@ -153,7 +150,7 @@
     _whetherWordIsRead = NO;
     _whetherSetNo = NO;
     
-    [self.delegate ChangeWordWithIndex:self.indexOfWordIDToday - 1 WithMax:self.maxWordID];
+    [self.delegate ChangeWordWithIndex:self.indexOfWordIDToday + _currentPage WithMax:self.maxWordID];
 
 }
 
@@ -310,7 +307,8 @@
 
 - (void)removeNoteTextViewAnimation
 {
-    [[WordHelper instance] wordWithString:_wordLabel.text].note = _noteTextView.text;
+    int wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday + _currentPage] intValue];
+    [[WordHelper instance] wordWithID:wordID].note = _noteTextView.text;
     
     CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     [lineAnimation setValue:@"removeNoteTextViewAnimation" forKey:@"id"];
@@ -486,7 +484,10 @@
         _noteTextView.layer.anchorPoint = CGPointMake(0.08, 0);
         _noteTextView.editable = YES;
         //载入note
-        _noteTextView.text = [[WordHelper instance] wordWithString:_wordLabel.text].note ;
+        
+        int wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday + _currentPage] intValue];
+    
+        _noteTextView.text = [[WordHelper instance] wordWithID:wordID].note;
         [_noteTextView setFont:[UIFont fontWithName:@"STHeitiSC-Light" size:22]];
         [_noteTextView setBackgroundColor:[UIColor clearColor]];
         [self.view addSubview:_noteTextView];
@@ -714,18 +715,16 @@ double radians(float degrees) {
         self.WordParaphraseView.showsVerticalScrollIndicator = NO;
         
         //把单词内容页面加入数组
-        [self loadWordView:_indexOfWordIDToday];
+        [self loadWordView:_indexOfWordIDToday + page];
         [self.viewControlArray replaceObjectAtIndex:page withObject:self.WordParaphraseView];
         
         //把单词名称加入数组
-        [self loadWordName:_indexOfWordIDToday];
+        [self loadWordName:_indexOfWordIDToday + page];
         [self.nameControlArray replaceObjectAtIndex:page withObject:self.WordName];
         
         //把单词音标加入数组
-        [self loadWordPhonetic:_indexOfWordIDToday];
+        [self loadWordPhonetic:_indexOfWordIDToday + page];
         [self.phoneticControlArray replaceObjectAtIndex:page withObject:self.WordPhonetic];
-        
-        _indexOfWordIDToday++;
     }
     
     // add the controller's view to the scroll view
@@ -818,10 +817,10 @@ double radians(float degrees) {
         if (_currentPage != page) {
             //把单词加入抽屉
             SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
-            WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday - 2] intValue]];
+            WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday + _currentPage ] intValue]];
             if ([left.array indexOfObject:addWord] == NSNotFound) {
                 
-                [self.delegate ChangeWordWithIndex:self.indexOfWordIDToday - 1 WithMax:self.maxWordID];
+                [self.delegate ChangeWordWithIndex:self.indexOfWordIDToday + _currentPage WithMax:self.maxWordID];
                 
                 [left addWord:addWord];
             }
@@ -835,12 +834,8 @@ double radians(float degrees) {
             _currentPage = page;
         }
         
-        // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
-        //[self loadViewWithPage:page];
-        [self loadViewWithPage:page + 1];
-        /////////////////////////////////////////////////////////////////////////////////////////////
-        
-        
+        [self loadViewWithPage:page+1];
+        ///////////////////////////////////////////////////////////////////////////////
         //显示单词内容和单词名称
         self.WordParaphraseView = [self.viewControlArray objectAtIndex:page];
         self.wordLabel.text = [self.nameControlArray objectAtIndex:page];
@@ -891,7 +886,7 @@ double radians(float degrees) {
             scrollView.userInteractionEnabled = NO;
             [self.view removeGestureRecognizer:_noteRecognizer];
             [self dismissModalViewControllerAnimated:NO];
-            [self.delegate GoToReviewWithWord:self.indexOfWordIDToday - 1 andThe:self.maxWordID];
+            [self.delegate GoToReviewWithWord:self.indexOfWordIDToday + _currentPage andThe:self.maxWordID];
             
             
             

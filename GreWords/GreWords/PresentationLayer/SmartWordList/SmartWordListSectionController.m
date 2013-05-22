@@ -97,6 +97,11 @@ static NSDictionary* typeDict = nil;
         {
             [cell.noteButton setImage:[UIImage imageNamed:@"words list_no_note.png"] forState:UIControlStateNormal];
         }
+        
+        if(self.type == SmartListType_Mistake)
+        {
+            cell.mistakeRatioIndicatorImageView.hidden = NO;
+        }
     }
     
     

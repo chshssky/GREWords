@@ -17,7 +17,7 @@
 }
 
 +(WordHelper*) instance;
--(WordEntity*)wordWithString:(NSString*)string;
+//-(WordEntity*)wordWithString:(NSString*)string;
 -(WordEntity*)wordWithID:(int)wordID;
 
 //return array of wordID:int
