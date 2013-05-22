@@ -27,12 +27,14 @@
 @property (weak, nonatomic) IBOutlet UIImageView *WrongUpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *WrongDownImage;
 @property (weak, nonatomic) IBOutlet UILabel *pronounceLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *timeImage;
 
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (strong, nonatomic) DashboardViewController *dashboardVC;
 
 
 @property (strong, nonatomic) UIButton *showMeaningButton;
+@property (strong, nonatomic) UIImageView *showMeaningImageView;
 @property (nonatomic) int added_height;
 
 @property (nonatomic) int day;
@@ -128,6 +130,7 @@
     [self.view addSubview:self.dashboardVC.view];
     
     [self.backButton.superview bringSubviewToFront:self.backButton];
+    [self.timeImage setImage:[UIImage imageNamed:nil]];
 }
 
 - (void)ShowMeaning
@@ -141,7 +144,7 @@
 {
     [self AddShowButton];
     [self.UpImage setAlpha:0];
-    [self.DownImage setAlpha:0];
+    [self.DownImage setAlpha:1];
     self.RightButton.enabled = false;
     self.WrongButton.enabled = false;
 }
@@ -156,7 +159,6 @@
     } else {
         [self.UpImage setAlpha:1];
     }
-    
     if (i == 1) {
         [self.UpImage setAlpha:0];
     }
@@ -165,6 +167,9 @@
         [self.DownImage setAlpha:(height - i) * 0.1];
     } else {
         [self.DownImage setAlpha:1];
+    }
+    if (i == 9) {
+        [self.UpImage setAlpha:1];
     }
 }
 
@@ -193,6 +198,7 @@
     [self setWordLabel:nil];
     [self setWordPronounceLabel:nil];
     [self setPronounceLabel:nil];
+    [self setTimeImage:nil];
     [super viewDidUnload];
 }
 
@@ -204,69 +210,60 @@
 
 - (void)RightAnimation
 {
-    [self.RightUpImage setBounds:CGRectMake(216, self.view.frame.size.height - 92, 76, 38)];
-    [self.RightDownImage setBounds:CGRectMake(216, self.view.frame.size.height - 92 + 37, 76, 0.001)];
-    
-    
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
-    [UIView animateWithDuration:0.25f animations:^(){
-        self.RightUpImage.transform = CGAffineTransformMakeScale(1.0f, 0.001f);
-        self.RightUpImage.center = CGPointMake(216 + 38, self.view.frame.size.height - 92 + 37);
-    }completion:^(BOOL finished){
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-        [UIView animateWithDuration:0.15f animations:^(){
-            self.RightDownImage.transform = CGAffineTransformMakeScale(1.0f, 38000.0f);
-            self.RightDownImage.center = CGPointMake(216 + 38, self.view.frame.size.height - 92 + 37 + 18);
-        }];
-    }];
-//    self.RightDownImage.transform = CGAffineTransformIdentity;
-//    self.RightUpImage.transform = CGAffineTransformIdentity;
+//    [self.RightUpImage setBounds:CGRectMake(216, self.view.frame.size.height - 92, 76, 38)];
+//    [self.RightDownImage setBounds:CGRectMake(216, self.view.frame.size.height - 92 + 37, 76, 0.001)];
+//    
+//    
+//    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+//    [UIView animateWithDuration:0.25f animations:^(){
+//        self.RightUpImage.transform = CGAffineTransformMakeScale(1.0f, 0.001f);
+//        self.RightUpImage.center = CGPointMake(216 + 38, self.view.frame.size.height - 92 + 37);
+//    }completion:^(BOOL finished){
+//        [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+//        [UIView animateWithDuration:0.15f animations:^(){
+//            self.RightDownImage.transform = CGAffineTransformMakeScale(1.0f, 38000.0f);
+//            self.RightDownImage.center = CGPointMake(216 + 38, self.view.frame.size.height - 92 + 37 + 18);
+//        }];
+//    }];
 
 }
 
 - (void)WrongAnimation
 {
-    [self.WrongUpImage setBounds:CGRectMake(29, self.view.frame.size.height - 92, 76, 38)];
-    [self.WrongDownImage setBounds:CGRectMake(29, self.view.frame.size.height - 92 + 37, 76, 0.001)];
+//    [self.WrongUpImage setBounds:CGRectMake(29, self.view.frame.size.height - 92, 76, 38)];
+//    [self.WrongDownImage setBounds:CGRectMake(29, self.view.frame.size.height - 92 + 37, 76, 0.001)];
+//
+//    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+//    [UIView animateWithDuration:0.25f animations:^(){
+//        self.WrongUpImage.transform = CGAffineTransformMakeScale(1.0f, 0.001f);
+//        self.WrongUpImage.center = CGPointMake(29 + 38, self.view.frame.size.height - 92 + 37);
+//    }completion:^(BOOL finished){
+//        [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+//        [UIView animateWithDuration:0.15f animations:^(){
+//            self.WrongDownImage.transform = CGAffineTransformMakeScale(1.0f, 38000.0f);
+//            self.WrongDownImage.center = CGPointMake(29 + 38, self.view.frame.size.height - 92 + 37 + 18);
+//        }];
+//    }];
     
-    
-    
-    [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
-    [UIView animateWithDuration:0.25f animations:^(){
-        self.WrongUpImage.transform = CGAffineTransformMakeScale(1.0f, 0.001f);
-        self.WrongUpImage.center = CGPointMake(29 + 38, self.view.frame.size.height - 92 + 37);
-    }completion:^(BOOL finished){
-        [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
-        [UIView animateWithDuration:0.15f animations:^(){
-            self.WrongDownImage.transform = CGAffineTransformMakeScale(1.0f, 38000.0f);
-            self.WrongDownImage.center = CGPointMake(29 + 38, self.view.frame.size.height - 92 + 37 + 18);
-        }];
-    }];
-    
-//    self.WrongDownImage.transform = CGAffineTransformIdentity;
-//    self.WrongUpImage.transform = CGAffineTransformIdentity;
 }
 
 - (void)AddShowButton
 {
     self.showMeaningButton = [[UIButton alloc] init];
-    UIImage *image = [UIImage imageNamed:@"learning_tapCover.png"];
+    self.showMeaningImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_tapCover.png"]];
+    self.showMeaningImageView.autoresizesSubviews = NO;
+    [self.showMeaningImageView setFrame:CGRectMake( 8, 100, 304.0, 460.0)];
+    [self.view insertSubview:self.showMeaningImageView aboveSubview:self.WordParaphraseView];
     
-    NSLog(@"Image: frame: %f, %f", image.size.width, image.size.height);
-    [self.showMeaningButton setImage:image forState:UIControlStateNormal];
-    //self.showMeaningButton.backgroundColor = [UIColor blackColor];
     [self.showMeaningButton addTarget:self action:@selector(showButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-    
-//    [self.showMeaningButton setCenter:self.WordParaphraseView.center];
-    
-    [self.showMeaningButton setFrame:CGRectMake( 8, 100, image.size.width, image.size.height)];
+    [self.showMeaningButton setFrame:CGRectMake( 8, 100, 304.0, 337.0)];
+    self.showMeaningButton.autoresizesSubviews = NO;
     [self.view addSubview:self.showMeaningButton];
-    NSLog(@"Button: frame: %f, %f", self.showMeaningButton.frame.size.width, self.showMeaningButton.frame.size.height);
-
 }
 
 - (void)showButtonPressed
 {
+    [self.showMeaningImageView removeFromSuperview];
     [self.showMeaningButton removeFromSuperview];
     self.showMeaningButton = nil;
     [self ShowMeaning];
@@ -283,7 +280,11 @@
     NSLog(@"The wordID:%d", [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]);
     NSLog(@"The MaxID:%d", self.maxWordID);
     if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue] > self.maxWordID) {
-        [self.delegate GoToNewWordWithWord:self.indexOfWordIDToday andThe:self.maxWordID];
+        if (_DownImage.alpha == 1) {
+            [self.delegate GoToNewWordWithWord:self.indexOfWordIDToday andThe:self.maxWordID withDownImage:YES];
+        }else{
+            [self.delegate GoToNewWordWithWord:self.indexOfWordIDToday andThe:self.maxWordID withDownImage:NO];
+        }
         [self dismissModalViewControllerAnimated:NO];
     } else {
         [self loadWord:self.indexOfWordIDToday];

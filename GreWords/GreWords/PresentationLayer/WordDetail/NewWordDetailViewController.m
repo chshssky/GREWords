@@ -198,8 +198,6 @@
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
-    //NSLog(@"%@",[NSString stringWithFormat:@"%@",[otherGestureRecognizer class]]);
-    
     if([[NSString stringWithFormat:@"%@",[otherGestureRecognizer class]] isEqualToString:@"UIPanGestureRecognizer"]) {
         return YES;
     }
@@ -349,6 +347,16 @@
     {
         [_noteTextView removeFromSuperview];
         _noteTextView = nil;
+    }
+    if([[theAnimation valueForKey:@"id"] isEqual:@"removeDownImageAnimation_withDownImage"])
+    {
+        [_downImageView removeFromSuperview];
+        _downImageView = nil;
+    }
+    if([[theAnimation valueForKey:@"id"] isEqual:@"removeDownImageAnimation_withNoDownImage"])
+    {
+        [_downImageView removeFromSuperview];
+        _downImageView = nil;
     }
 }
 
@@ -763,7 +771,6 @@ double radians(float degrees) {
         CGPoint translation;
         for (id gesture in scrollView.gestureRecognizers){
             if ([[NSString stringWithFormat:@"%@",[gesture class]] isEqualToString:@"UIScrollViewPanGestureRecognizer"]){
-                
                 translation = [gesture translationInView:scrollView];
                 break;
             }
@@ -786,17 +793,20 @@ double radians(float degrees) {
         {
             if (_downImageView == nil) {
                 _downImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_downCoverWithButton.png"]];
-                _downImageView.center =CGPointMake(320.0/2, self.view.frame.size.height + 178.0/2);
+                CGRect frame = _downImageView.frame;
+                frame.size.height = 171.0f;
+                [_downImageView setFrame:frame];
+                _downImageView.center =CGPointMake(320.0/2, self.view.frame.size.height + 171.0/2);
                 [self.view addSubview:_downImageView];
             }
+            
             if (_tapCoverImageView == nil) {
                 _tapCoverImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_tapCover.png"]];
                 _tapCoverImageView.autoresizesSubviews = NO;
                 [_tapCoverImageView setFrame:CGRectMake(self.pageControlView.frame.size.width*_changePage+8, 0, 304.0, 460.0)];
-                NSLog(@"%d,%f",((int)self.pageControlView.frame.size.width*_changePage+8)%320,self.pageControlView.frame.origin.y);
                 [self.pageControlView addSubview:_tapCoverImageView];
             }
-            _downImageView.center =CGPointMake(320.0/2, self.view.frame.size.height + 178.0/2 - 178.0/320 * (scrollView.contentOffset.x - (_changePage*320-320)));
+            _downImageView.center =CGPointMake(320.0/2, self.view.frame.size.height + 171.0/2 - 171.0/320 * (scrollView.contentOffset.x - (_changePage*320-320)));
             return;
         }
         
@@ -868,27 +878,27 @@ double radians(float degrees) {
         }
     }
     
-    
-    if (!_whetherWordIsRead) {
-        [[WordSpeaker instance] readWord:self.wordLabel.text];
-        _whetherSetNo = NO;
-    } else {
-        _whetherWordIsRead = NO;
-        _whetherSetNo = YES;
-    }
-    
-    if (scrollView.contentOffset.x >= _changePage*320) {
-        scrollView.userInteractionEnabled = NO;
-        [self.view removeGestureRecognizer:_noteRecognizer];
-        [self dismissModalViewControllerAnimated:NO];
-        [self.delegate GoToReviewWithWord:self.indexOfWordIDToday - 1 andThe:self.maxWordID];
-
+    if (scrollView == self.pageControlView) {
+        if (!_whetherWordIsRead) {
+            [[WordSpeaker instance] readWord:self.wordLabel.text];
+            _whetherSetNo = NO;
+        } else {
+            _whetherWordIsRead = NO;
+            _whetherSetNo = YES;
+        }
         
-        
-//#warning 好有爱的项目组
-//        NSLog(@"崔昊看这里~~~~~~~~~~看这里呀看这里~~~~~~~~~~~~在这里更换controller！！！");
-//        NSLog(@"好感动，我找了好久");
-
+        if (scrollView.contentOffset.x >= _changePage*320) {
+            scrollView.userInteractionEnabled = NO;
+            [self.view removeGestureRecognizer:_noteRecognizer];
+            [self dismissModalViewControllerAnimated:NO];
+            [self.delegate GoToReviewWithWord:self.indexOfWordIDToday - 1 andThe:self.maxWordID];
+            
+            
+            
+            //#warning 好有爱的项目组
+            //        NSLog(@"崔昊看这里~~~~~~~~~~看这里呀看这里~~~~~~~~~~~~在这里更换controller！！！");
+            //        NSLog(@"好感动，我找了好久"); 
+        }
     }
 }
 
@@ -902,130 +912,63 @@ double radians(float degrees) {
 }
 
 
-#pragma mark - add wordDetailViewController Methods
-
-- (void)addTapCoverImage:(int)page
-{
-    _tapCoverImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_tapCover.png"]];
-    _tapCoverImageView.autoresizesSubviews = NO;
-    [_tapCoverImageView setFrame:CGRectMake(self.pageControlView.frame.size.width*page+8, self.view.frame.size.height, 304.0, 460.0)];
-    [self.pageControlView addSubview:_tapCoverImageView];
-    
-}
-
-- (void)addDownImage:(int)page
-{
-    _downImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_downCover.png"]];
-    _downImageView.autoresizesSubviews = NO;
-    [_downImageView setFrame:CGRectMake(self.pageControlView.frame.size.width*page, self.view.frame.size.height, 320.0, 178.0)];
-    [self.pageControlView addSubview:_downImageView];
-    
-}
-
-- (void)addRightButtonImage:(int)page
-{
-    _rightButtonImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_rightButton_first.png"]];
-    _rightButtonImage.autoresizesSubviews = NO;
-    [_rightButtonImage setFrame:CGRectMake(self.pageControlView.frame.size.width*page + 30, self.view.frame.size.height, 93.0, 93.0)];
-    [self.pageControlView addSubview:_rightButtonImage];
-}
-
--(void)addWrongButtonImage:(int)page
-{
-    _wrongButtonImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrongButton_first.png"]];
-    _wrongButtonImage.autoresizesSubviews = NO;
-    [_wrongButtonImage setFrame:CGRectMake(self.pageControlView.frame.size.width*page + 320 - 30-93, self.view.frame.size.height, 93.0, 93.0)];
-    [self.pageControlView addSubview:_wrongButtonImage];
-}
-
-- (void)addTapCoverImageAnimation
-{
-    if (_tapCoverImageView == nil) {
-        [self addTapCoverImage:_changePage];
-    }
-    
-    CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    //[lineAnimation setValue:@"removeDownNoteImageAnimation" forKey:@"id"];
-    CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, _tapCoverImageView.frame.origin.x + _tapCoverImageView.frame.size.width/2, self.view.frame.size.height+ _tapCoverImageView.frame.size.height/2);
-    CGPathAddLineToPoint(path, NULL, _tapCoverImageView.frame.origin.x + _tapCoverImageView.frame.size.width/2, self.view.frame.size.height - 355);
-    lineAnimation.path = path;
-    CGPathRelease(path);
-    lineAnimation.duration = 0.3f;
-    lineAnimation.fillMode = kCAFillModeForwards;
-    lineAnimation.removedOnCompletion = NO;
-    lineAnimation.beginTime = CACurrentMediaTime();
-    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
-    lineAnimation.delegate = self;
-    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-    [_tapCoverImageView.layer addAnimation:lineAnimation forKey:nil];
-}
-
-- (void)addDownCoverImageAnimation
+#pragma mark - remove wordDetailViewController Methods
+- (void)removeDownImageAnimation_withDownCover
 {
     if (_downImageView == nil) {
-        [self addDownImage:_changePage];
+        _downImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_downCoverWithButton2.png"]];
+        CGRect frame = _downImageView.frame;
+        frame.size.height = 171.0f;
+        [_downImageView setFrame:frame];
+        _downImageView.center =CGPointMake(320.0/2, self.view.frame.size.height - 171.0/2);
+        [self.view addSubview:_downImageView];
     }
     CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    [lineAnimation setValue:@"addDownCoverImageAnimation" forKey:@"id"];
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, _downImageView.frame.origin.x + _downImageView.frame.size.width/2, self.view.frame.size.height+ _downImageView.frame.size.height/2);
-    CGPathAddLineToPoint(path, NULL, _downImageView.frame.origin.x + _downImageView.frame.size.width/2, self.view.frame.size.height - 178.0);
+    CGPathMoveToPoint(path, NULL, 320.0/2, self.view.frame.size.height - 171.0/2);
+    CGPathAddLineToPoint(path, NULL, 320.0/2, self.view.frame.size.height + 171.0/2);
     lineAnimation.path = path;
     CGPathRelease(path);
-    lineAnimation.duration = 0.3f;
+    lineAnimation.duration = 0.7f;
+    lineAnimation.delegate = self;
     lineAnimation.fillMode = kCAFillModeForwards;
     lineAnimation.removedOnCompletion = NO;
     lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    
+    [lineAnimation setValue:@"removeDownImageAnimation_withDownImage" forKey:@"id"];
     [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
-    lineAnimation.delegate = self;
-    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     [_downImageView.layer addAnimation:lineAnimation forKey:nil];
 }
 
-- (void)addDownRightAndWrongButtonImageAnimation
+- (void)removeDownImageAnimation_withNoDownCover
 {
-    if (_rightButtonImage == nil && _wrongButtonImage == nil) {
-        [self addRightButtonImage:_changePage];
-        [self addWrongButtonImage:_changePage];
+    if (_downImageView == nil) {
+        _downImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_downCoverWithButton3.png"]];
+        CGRect frame = _downImageView.frame;
+        frame.size.height = 171.0f;
+        [_downImageView setFrame:frame];
+        _downImageView.center =CGPointMake(320.0/2, self.view.frame.size.height - 171.0/2);
+        [self.view addSubview:_downImageView];
     }
-    CAKeyframeAnimation *lineAnimation;
-    CGMutablePathRef path;
-    
-    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    [lineAnimation setValue:@"addRightButtonAnimation" forKey:@"id"];
-    path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, _rightButtonImage.frame.origin.x + _rightButtonImage.frame.size.width/2, self.view.frame.size.height+ _rightButtonImage.frame.size.height/2);
-    CGPathAddLineToPoint(path, NULL, _rightButtonImage.frame.origin.x + _rightButtonImage.frame.size.width/2, self.view.frame.size.height - 150.0);
+    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
+    CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, 320.0/2, self.view.frame.size.height - 171.0/2);
+    CGPathAddLineToPoint(path, NULL, 320.0/2, self.view.frame.size.height + 171.0/2);
     lineAnimation.path = path;
     CGPathRelease(path);
-    lineAnimation.duration = 0.3f;
+    lineAnimation.duration = 0.7f;
+    lineAnimation.delegate = self;
     lineAnimation.fillMode = kCAFillModeForwards;
     lineAnimation.removedOnCompletion = NO;
     lineAnimation.beginTime = CACurrentMediaTime();
-    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
-    lineAnimation.delegate = self;
-    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-    [_rightButtonImage.layer addAnimation:lineAnimation forKey:nil];
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     
-    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    //[lineAnimation setValue:@"removeDownNoteImageAnimation" forKey:@"id"];
-    path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, _wrongButtonImage.frame.origin.x + _wrongButtonImage.frame.size.width/2, self.view.frame.size.height+ _rightButtonImage.frame.size.height/2);
-    CGPathAddLineToPoint(path, NULL, _wrongButtonImage.frame.origin.x + _wrongButtonImage.frame.size.width/2, self.view.frame.size.height - 150.0);
-    lineAnimation.path = path;
-    CGPathRelease(path);
-    lineAnimation.duration = 0.3f;
-    lineAnimation.fillMode = kCAFillModeForwards;
-    lineAnimation.removedOnCompletion = NO;
-    lineAnimation.beginTime = CACurrentMediaTime();
+    [lineAnimation setValue:@"removeDownImageAnimation_withNoDownImage" forKey:@"id"];
     [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
-    lineAnimation.delegate = self;
-    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
-    [_wrongButtonImage.layer addAnimation:lineAnimation forKey:nil];
-    
+    [_downImageView.layer addAnimation:lineAnimation forKey:nil];
 }
-
 
 
 
@@ -1060,14 +1003,6 @@ double radians(float degrees) {
     
     _blackView.alpha = 1.0/500.0*(300.0-offset);
     
-//    [left.view clipsToBounds];
-//    if (iPhone5) {
-//        [left.view setFrame:CGRectMake(5-5.0/276.0*offset, 5-5/276.0*offset, 300+20.0/276.0*offset, 538.25+10/276.0*offset)];
-//    }
-//    else
-//    {
-//        [left.view setFrame:CGRectMake(5-5.0/276.0*offset, 5-5/276.0*offset, 300+20.0/276.0*offset, 454.25+10/276.0*offset)];
-//    }
 }
 
 @end
