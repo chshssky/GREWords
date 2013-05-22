@@ -58,6 +58,8 @@ static NSDictionary* typeDict = nil;
             return typeDict[@"normal"];
         case SmartListType_Homo:
             return typeDict[@"homo"];
+        case SmartListType_Mistake:
+            return typeDict[@"normal"];
         default:
             return typeDict[@"normal"];
             break;
@@ -98,9 +100,9 @@ static NSDictionary* typeDict = nil;
             [cell.noteButton setImage:[UIImage imageNamed:@"words list_no_note.png"] forState:UIControlStateNormal];
         }
         
-        if(self.type == SmartListType_Mistake)
+        if(self.type != SmartListType_Mistake)
         {
-            cell.mistakeRatioIndicatorImageView.hidden = NO;
+            cell.mistakeRatioIndicatorImageView.hidden = YES;
         }
     }
     
@@ -130,7 +132,7 @@ static NSDictionary* typeDict = nil;
         WordSmallLayoutViewController *c = (WordSmallLayoutViewController*)vc;
         [c displayWord:[[WordHelper instance] wordWithID:self.wordID]];
     }
-    else if(self.type == SmartListType_Full)
+    else if(self.type == SmartListType_Full || self.type == SmartListType_Mistake)
     {
         vc = [[WordLayoutViewController alloc] init];
         NSDictionary *option = @{@"shouldShowChineseMeaning":@YES,
