@@ -187,7 +187,6 @@ WordHelper* _wordHelperInstance = nil;
 -(void)loadWords
 {
     wordList = [@[] mutableCopy];
-    wordIndexes = [@{} mutableCopy];
     
     NSArray *arr;
     NSString *infoSouceFile = [[NSBundle mainBundle] pathForResource:@"words" ofType:@"plist"];
@@ -212,7 +211,6 @@ WordHelper* _wordHelperInstance = nil;
         Word* word = matching[wordList.count];
         NSAssert(wordList.count == [word.plistID integerValue],@"fail to count database counterpart");
         WordEntity *theWord = [[WordEntity alloc] initWithID:wordList.count data:dict word:word];
-        wordIndexes[text] = [NSNumber numberWithInt:wordList.count];
         [wordList addObject:theWord];
     }
 }
@@ -226,13 +224,6 @@ WordHelper* _wordHelperInstance = nil;
         [self loadFlipcard];
     }
     return self;
-}
-
-
--(WordEntity*)wordWithString:(NSString*)string
-{
-    int index = [wordIndexes[string] integerValue];
-    return wordList[index];
 }
 
 -(WordEntity*)wordWithID:(int)wordID
@@ -276,6 +267,11 @@ WordHelper* _wordHelperInstance = nil;
 -(int)wordCount
 {
     return wordList.count;
+}
+
+-(int)wordIDForWord:(WordEntity*)word
+{
+    return [wordList indexOfObject:word];
 }
 
 @end

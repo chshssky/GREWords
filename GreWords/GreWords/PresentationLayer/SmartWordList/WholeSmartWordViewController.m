@@ -11,7 +11,8 @@
 #import "WordHelper.h"
 #import "GreWordsViewController.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "NSNotificationCenter+Addition.h"
+#import "NoteViewController.h"
 
 @interface WholeSmartWordViewController ()
 
@@ -116,6 +117,8 @@
     
     self.pageScrollView.clipsToBounds = YES;
 	
+    
+    [NSNotificationCenter registerShowNoteForWordNotificationWithSelector:@selector(showNote:) target:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -215,5 +218,21 @@
     
     [tabBarController setSelectedIndex:page animated:YES];
 }
+
+
+#pragma mark - NSNotification Responder
+
+- (void)showNote:(NSNotification *)notification
+{
+    WordEntity* word = (WordEntity*) notification.object;
+    
+    NoteViewController *noteVC = [[NoteViewController alloc] init];
+
+    int wordID =  [[WordHelper instance] wordIDForWord:word];
+    [noteVC addNoteAt:self withWordID:wordID];
+    [noteVC.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.view addSubview:noteVC.view];
+}
+
 
 @end
