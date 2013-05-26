@@ -100,7 +100,7 @@
         frame.origin.y = -5;
         bottomLine.frame = frame;
         
-        downTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, lastTableViewHeight, 320.0f, 568.0f)];
+        downTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, lastTableViewHeight, 320.0f, 1136.0f)];
         
         downTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
         [downTexture addSubview:bottomLine];
@@ -119,7 +119,7 @@
         
         [UIView animateWithDuration:0.3 animations:^()
          {
-             downTexture.frame = CGRectMake(0.0f, lastTableViewHeight, 320.0f, 568.0f);
+             downTexture.frame = CGRectMake(0.0f, lastTableViewHeight, 320.0f, 1136.0f);
          }];
 
     }
