@@ -173,8 +173,6 @@
     [self AddShowButton];
     [self.UpImage setAlpha:0];
     [self.DownImage setAlpha:1];
-    self.RightButton.enabled = false;
-    self.WrongButton.enabled = false;
 }
 
 - (void)AddShadows
@@ -979,6 +977,8 @@
         }
         [self dismissModalViewControllerAnimated:NO];
     } else {
+        self.RightButton.enabled = false;
+        self.WrongButton.enabled = false;
         [self Dismiss_RightAnimation];
         [self Dismiss_WrongAnimation];
         [self loadWord:self.indexOfWordIDToday];
@@ -992,7 +992,6 @@
 - (IBAction)BackButtonPushed:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
     [self.delegate AnimationBack];
-    //NSLog(@"Index!!!!!!: %d", self.indexOfWordIDToday);
     if ((self.indexOfWordIDToday % 10) == 0) {
         [self.delegate setReviewEnable];
     }
