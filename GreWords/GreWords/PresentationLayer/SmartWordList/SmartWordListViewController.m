@@ -92,7 +92,7 @@
 {
     if(lastTableViewHeight == -1)
     {
-        lastTableViewHeight = self.tableView.contentSize.height + 2;
+        lastTableViewHeight = self.tableView.contentSize.height;
         
         UIImageView *bottomLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning list_line.png"]];
         
@@ -110,18 +110,20 @@
     {
         lastTableViewHeight = 0;
         int sectionCount = [self numberOfSectionsInTableView:self.tableView];
-        NSIndexPath *lastIndex = [NSIndexPath indexPathForRow:[self tableView:self.tableView numberOfRowsInSection:sectionCount - 1] - 1  inSection:sectionCount - 1];
-        CGRect lastRect = [self.tableView rectForRowAtIndexPath:lastIndex];
-        
-        lastTableViewHeight = lastRect.origin.y + lastRect.size.height ;
-        
-        NSLog(@"height:%f",lastTableViewHeight);
-        
-        [UIView animateWithDuration:0.3 animations:^()
-         {
-             downTexture.frame = CGRectMake(0.0f, lastTableViewHeight, 320.0f, 1136.0f);
-         }];
-
+        if(sectionCount > 0)
+        {
+            NSIndexPath *lastIndex = [NSIndexPath indexPathForRow:[self tableView:self.tableView numberOfRowsInSection:sectionCount - 1] - 1  inSection:sectionCount - 1];
+            CGRect lastRect = [self.tableView rectForRowAtIndexPath:lastIndex];
+            
+            lastTableViewHeight = lastRect.origin.y + lastRect.size.height ;
+            
+            NSLog(@"height:%f",lastTableViewHeight);
+            
+            [UIView animateWithDuration:0.3 animations:^()
+             {
+                 downTexture.frame = CGRectMake(0.0f, lastTableViewHeight, 320.0f, 1136.0f);
+             }];
+        }
     }
 }
 
@@ -263,7 +265,7 @@
     int index = [_array indexOfObject:word];
     if(index == NSNotFound)
         return;
-    NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
+    //NSIndexPath *path = [NSIndexPath indexPathForRow:index inSection:0];
     NSMutableArray *arr = [_array mutableCopy];
     [arr removeObject:word];
     _array = arr;
