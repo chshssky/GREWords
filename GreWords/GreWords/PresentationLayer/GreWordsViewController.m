@@ -304,17 +304,17 @@
         leftController.type = SmartListType_Slide;
         leftController.array = @[];
         
-        for (int i = 0; i < self.maxWordID; i++) {
-            WordEntity *addWord = [[WordHelper instance] wordWithID:i];
-            [leftController addWord:addWord];
-        }
-        
-        
+            for (int i = 0; i < self.maxWordID; i++) {
+                WordEntity *addWord = [[WordHelper instance] wordWithID:i];
+                [leftController addWord:addWord];
+            }
+
         IIViewDeckController* deckController =  [[IIViewDeckController alloc]
                                                  initWithCenterViewController:vc
                                                 leftViewController:leftController
                                                 rightViewController:nil];
         
+
         deckController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         
         [self presentViewController:deckController animated:YES completion:nil];
