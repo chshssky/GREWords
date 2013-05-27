@@ -159,6 +159,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <imageView key="tableFooterView" userInteractionEnabled="NO" contentMode="top" image="learning list_up_and_down_moreBg.png" id="aUi-ym-lHy">
+                                    <rect key="frame" x="0.0" y="395" width="320" height="86"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="smartwordheader_homo" rowHeight="38" id="4uj-fd-bEv" customClass="SmartWordListHeaderCell">
                                         <rect key="frame" x="0.0" y="22" width="320" height="38"/>
@@ -453,6 +457,7 @@
         <image name="learning list_content_shadow_up.png" width="320" height="6"/>
         <image name="learning list_line.png" width="320" height="6"/>
         <image name="learning list_sound.png" width="19" height="17"/>
+        <image name="learning list_up_and_down_moreBg.png" width="320" height="1136"/>
         <image name="words list_backButton.png" width="45" height="45"/>
         <image name="words list_bg_buttom.png" width="320" height="90"/>
         <image name="words list_button_click.png" width="45" height="45"/>
