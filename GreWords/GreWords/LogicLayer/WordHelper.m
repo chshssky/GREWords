@@ -257,7 +257,7 @@ WordHelper* _wordHelperInstance = nil;
 -(NSArray*)wordsRatioOfMistake
 {
     NSArray *temp = [wordList sortedArrayUsingComparator: ^(id obj1, id obj2) {
-        return [[NSNumber numberWithFloat:((WordEntity*)obj1).ratioOfMistake] compare: [NSNumber numberWithFloat:((WordEntity*)obj2).ratioOfMistake]];
+        return [[NSNumber numberWithFloat:((WordEntity*)obj2).ratioOfMistake] compare: [NSNumber numberWithFloat:((WordEntity*)obj1).ratioOfMistake]];
     }];
     temp = [temp filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.ratioOfMistake > 0.0"]];
     return temp;
