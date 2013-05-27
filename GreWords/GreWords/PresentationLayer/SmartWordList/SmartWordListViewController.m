@@ -152,6 +152,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if(section < 0)
+        return 0;
     GCRetractableSectionController* sectionController = [retractableControllers objectAtIndex:section];
     return sectionController.numberOfRow;
 }
