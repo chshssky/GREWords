@@ -72,7 +72,7 @@
         [retractableControllers addObject:sectionController];
     }
 
-    topTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -570.0f, 320.0f, 568.0f)];
+    topTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -1136.0f, 320.0f, 1136.0f)];
     topTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
     [self.tableView addSubview:topTexture];
     if(self.type == SmartListType_Note)
@@ -105,6 +105,7 @@
         downTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
         [downTexture addSubview:bottomLine];
         [self.tableView addSubview:downTexture];
+        [self addButtomTexture];
     }
     else
     {
@@ -123,6 +124,11 @@
              {
                  downTexture.frame = CGRectMake(0.0f, lastTableViewHeight, 320.0f, 1136.0f);
              }];
+            downTexture.hidden = NO;
+        }
+        else
+        {
+            downTexture.hidden = YES;
         }
     }
 }

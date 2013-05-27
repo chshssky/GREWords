@@ -181,6 +181,14 @@
     frame.origin.y = self.topView.frame.origin.y + self.topView.frame.size.height;
     frame.size.height = originalTableViewFrame.size.height +self.topView.frame.size.height;
     self.pageScrollView.frame = frame;
+    
+//    for(UIViewController *vc in smartlistArr)
+//    {
+//        frame = vc.view.frame;
+//        frame.size.height = originalTableViewFrame.size.height +self.topView.frame.size.height - self.topView.frame.origin.y;
+//        vc.view.frame = frame;
+//        NSLog(@"vv:%@,%@",vc,NSStringFromCGRect(frame));
+//    }
 }
 
 #pragma mark - MHTabbarController delegate
