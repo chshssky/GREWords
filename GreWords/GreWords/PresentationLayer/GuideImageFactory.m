@@ -32,8 +32,13 @@
                          @{
                              @"image3.5" : @"dashboard3.5.png",
                              @"image4" : @"dashboard4.png"
-                          }
-                     
+                          },
+                   @"newword":
+                        @{
+                            @"image3.5" : @"newword3.5.png",
+                            @"image4" : @"newword4.png"
+                        }
+                   
                  
                  
                 
@@ -48,7 +53,9 @@
         case GuideType_Dashboard:
             return @"dashboard";
             break;
-            
+        case GuideType_NewWord:
+            return @"newword";
+            break;
         default:
             break;
     }

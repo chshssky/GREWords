@@ -37,7 +37,8 @@
 
 typedef enum
 {
-    GuideType_Dashboard
+    GuideType_Dashboard,
+    GuideType_NewWord
 } GuideType;
 
 #endif

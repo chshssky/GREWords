@@ -451,6 +451,5 @@
     }
 }
 
-#pragma mark - Guide method
 
 @end
