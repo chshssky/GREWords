@@ -156,6 +156,7 @@
     {
         guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_NewWordFirst];
         [self.view addSubview:guideImageView];
+        self.viewDeckController.panningMode = IIViewDeckNoPanning;
     }
 
 }
@@ -467,12 +468,13 @@
     {
         guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_NewWordSecond];
         [self.view addSubview:guideImageView];
+        self.viewDeckController.panningMode = IIViewDeckAllViewsPanning;
+
     }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    [self addGuideSecond];
     for (int i=self.viewControlArray.count-1; i>self.currentPage; i--) {
         if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
@@ -487,6 +489,8 @@
             _whetherWordIsRead = NO;
             _whetherSetNo = YES;
         }
+        
+        [self addGuideSecond];
         
         if (scrollView.contentOffset.x >= _changePage*320) {
             scrollView.userInteractionEnabled = NO;
