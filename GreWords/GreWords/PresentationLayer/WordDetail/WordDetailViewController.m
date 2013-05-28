@@ -12,6 +12,10 @@
 #import "WordSpeaker.h"
 #import "WordTaskGenerator.h"
 #import "DashboardViewController.h"
+#import "NewWordEvent.h"
+#import "ReviewEvent.h"
+#import "ExamEvent.h"
+#import "HistoryManager.h"
 
 #define PI M_PI
 
@@ -140,6 +144,10 @@
 {
     [super viewDidLoad];
     [self loadWord:self.indexOfWordIDToday];
+    _RightButton.userInteractionEnabled = NO;
+    _WrongButton.userInteractionEnabled = NO;
+    _showMeaningButton.userInteractionEnabled = YES;
+
     self.dashboardVC = [DashboardViewController instance];
     _showMeaningButton.userInteractionEnabled = YES;
 }
@@ -973,6 +981,12 @@
 
 - (IBAction)rightButtonPushed:(id)sender {
     [self viewWillAppear:YES];
+    if (self.indexOfWordIDToday == [[[WordTaskGenerator instance] newWordTask_twoList:self.day] count])
+    {
+        [self newWordCompleted];
+        return;
+    }
+
     WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
     [word didRightOnDate:[NSDate new]];
     [self nextButtonPushed];
@@ -980,9 +994,36 @@
 
 - (IBAction)wrongButtonPushed:(id)sender {
     [self viewWillAppear:YES];
+    if (self.indexOfWordIDToday == [[[WordTaskGenerator instance] newWordTask_twoList:self.day] count])
+    {
+        [self newWordCompleted];
+        return;
+    }
+
     WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
     [word didMakeAMistakeOnDate:[NSDate new]];
     [self nextButtonPushed];
+    self.wrongWordCount ++;
+}
+
+- (void)newWordCompleted
+{
+    HistoryManager *historyManager = [HistoryManager instance];
+    
+    NewWordEvent *newWordEve = [[NewWordEvent alloc] init];
+    newWordEve.eventType = @"NewWordEvent";
+    newWordEve.wrongWordCount = self.wrongWordCount;
+    
+    [historyManager addEvent:newWordEve];
+    
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日完成" message:@"今天错误率： 用时：" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+    [alert setAlertViewStyle:UIAlertViewStyleDefault];
+    
+    [alert show];
+    [self dismissModalViewControllerAnimated:YES];
+    [self.delegate AnimationBack];
+
 }
 
 - (void)nextButtonPushed
