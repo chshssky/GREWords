@@ -3529,6 +3529,10 @@
 		E4CDB16B1754F66F004993D6 /* dashboardreview4.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB1671754F66F004993D6 /* dashboardreview4.png */; };
 		E4CDB16C1754F66F004993D6 /* dashboardreview4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB1681754F66F004993D6 /* dashboardreview4@2x.png */; };
 		E4CDB16D1754F66F004993D6 /* dashboardreview3.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB1691754F66F004993D6 /* dashboardreview3.5@2x.png */; };
+		E4CDB17217550576004993D6 /* list3.5.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB16E17550576004993D6 /* list3.5.png */; };
+		E4CDB17317550576004993D6 /* list4.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB16F17550576004993D6 /* list4.png */; };
+		E4CDB17417550576004993D6 /* list3.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB17017550576004993D6 /* list3.5@2x.png */; };
+		E4CDB17517550576004993D6 /* list4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB17117550576004993D6 /* list4@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -7116,6 +7120,10 @@
 		E4CDB1671754F66F004993D6 /* dashboardreview4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dashboardreview4.png; sourceTree = "<group>"; };
 		E4CDB1681754F66F004993D6 /* dashboardreview4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dashboardreview4@2x.png"; sourceTree = "<group>"; };
 		E4CDB1691754F66F004993D6 /* dashboardreview3.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dashboardreview3.5@2x.png"; sourceTree = "<group>"; };
+		E4CDB16E17550576004993D6 /* list3.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list3.5.png; sourceTree = "<group>"; };
+		E4CDB16F17550576004993D6 /* list4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list4.png; sourceTree = "<group>"; };
+		E4CDB17017550576004993D6 /* list3.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list3.5@2x.png"; sourceTree = "<group>"; };
+		E4CDB17117550576004993D6 /* list4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list4@2x.png"; sourceTree = "<group>"; };
 		E4E21C561743C2C4001A7EEF /* flipcard.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = flipcard.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -7313,6 +7321,10 @@
 		E404ADEA1754DA1800004FDC /* Guide */ = {
 			isa = PBXGroup;
 			children = (
+				E4CDB16E17550576004993D6 /* list3.5.png */,
+				E4CDB16F17550576004993D6 /* list4.png */,
+				E4CDB17017550576004993D6 /* list3.5@2x.png */,
+				E4CDB17117550576004993D6 /* list4@2x.png */,
 				E4CDB1661754F66F004993D6 /* dashboardreview3.5.png */,
 				E4CDB1671754F66F004993D6 /* dashboardreview4.png */,
 				E4CDB1681754F66F004993D6 /* dashboardreview4@2x.png */,
@@ -14578,6 +14590,10 @@
 				E4CDB16B1754F66F004993D6 /* dashboardreview4.png in Resources */,
 				E4CDB16C1754F66F004993D6 /* dashboardreview4@2x.png in Resources */,
 				E4CDB16D1754F66F004993D6 /* dashboardreview3.5@2x.png in Resources */,
+				E4CDB17217550576004993D6 /* list3.5.png in Resources */,
+				E4CDB17317550576004993D6 /* list4.png in Resources */,
+				E4CDB17417550576004993D6 /* list3.5@2x.png in Resources */,
+				E4CDB17517550576004993D6 /* list4@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

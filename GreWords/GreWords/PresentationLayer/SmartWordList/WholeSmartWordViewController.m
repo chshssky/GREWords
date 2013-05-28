@@ -13,9 +13,13 @@
 #import <QuartzCore/QuartzCore.h>
 #import "NSNotificationCenter+Addition.h"
 #import "NoteViewController.h"
+#import "ConfigurationHelper.h"
+#import "GuideImageFactory.h"
 
 @interface WholeSmartWordViewController ()
-
+{
+    UIImageView *guideImageView;
+}
 @end
 
 @implementation WholeSmartWordViewController
@@ -119,6 +123,13 @@
 	
     
     [NSNotificationCenter registerShowNoteForWordNotificationWithSelector:@selector(showNote:) target:self];
+    
+    if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_List])
+    {
+        guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_List];
+        [self.view addSubview:guideImageView];
+    }
+
 }
 
 - (void)didReceiveMemoryWarning
