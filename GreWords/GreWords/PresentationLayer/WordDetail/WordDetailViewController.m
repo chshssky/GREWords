@@ -16,11 +16,15 @@
 #import "ReviewEvent.h"
 #import "ExamEvent.h"
 #import "HistoryManager.h"
+#import "ConfigurationHelper.h"
+#import "GuideImageFactory.h"
 
 #define PI M_PI
 
 @interface WordDetailViewController () <UIScrollViewDelegate>
-
+{
+    UIImageView *guideImageView;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *DownImage;
 @property (weak, nonatomic) IBOutlet UIButton *PronounceButton;
@@ -166,6 +170,11 @@
     [self.backButton.superview bringSubviewToFront:self.backButton];
     [self.timeImage setImage:[UIImage imageNamed:nil]];
     
+    if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_ReviewFirst])
+    {
+        guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_ReviewFirst];
+        [self.view addSubview:guideImageView];
+    }
 }
 
 - (void)ShowMeaning
@@ -863,6 +872,14 @@
             [self.view addSubview:_WrongDownImageView];
         }
         _WrongButton.userInteractionEnabled = YES;
+        
+        
+        if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_ReviewSecond])
+        {
+            guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_ReviewSecond];
+            [self.view addSubview:guideImageView];
+        }
+        
     }
     
     ////////////////////////////////////////////////////////
