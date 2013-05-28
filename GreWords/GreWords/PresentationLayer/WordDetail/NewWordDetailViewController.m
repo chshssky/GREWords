@@ -480,6 +480,11 @@
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
         }
     }
+    if (![self.wordLabel.text isEqualToString:@"abandon"]) {
+        [self addGuideSecond];
+    }
+    
+
     
     if (scrollView == self.pageControlView) {
         if (!_whetherWordIsRead) {
@@ -490,7 +495,6 @@
             _whetherSetNo = YES;
         }
         
-        [self addGuideSecond];
         
         if (scrollView.contentOffset.x >= _changePage*320) {
             scrollView.userInteractionEnabled = NO;
