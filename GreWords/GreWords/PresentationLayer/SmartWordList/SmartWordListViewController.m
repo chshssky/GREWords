@@ -111,16 +111,23 @@
     {
         lastTableViewHeight = 0;
         int sectionCount = [self numberOfSectionsInTableView:self.tableView];
-        NSIndexPath *lastIndex = [NSIndexPath indexPathForRow:[self tableView:self.tableView numberOfRowsInSection:sectionCount - 1] - 1  inSection:sectionCount - 1];
-        CGRect lastRect = [self.tableView rectForRowAtIndexPath:lastIndex];
-        
-        lastTableViewHeight = lastRect.origin.y + lastRect.size.height;
-        
-        [UIView animateWithDuration:0.3 animations:^()
-         {
-             downTexture.frame = CGRectMake(0.0f, lastTableViewHeight, 320.0f, 1136.0f);
-         }];
-
+        if(sectionCount > 0)
+        {
+            NSIndexPath *lastIndex = [NSIndexPath indexPathForRow:[self tableView:self.tableView numberOfRowsInSection:sectionCount - 1] - 1  inSection:sectionCount - 1];
+            CGRect lastRect = [self.tableView rectForRowAtIndexPath:lastIndex];
+            
+            lastTableViewHeight = lastRect.origin.y + lastRect.size.height ;
+            
+            [UIView animateWithDuration:0.3 animations:^()
+             {
+                 downTexture.frame = CGRectMake(0.0f, lastTableViewHeight, 320.0f, 1136.0f);
+             }];
+            downTexture.hidden = NO;
+        }
+        else
+        {
+            downTexture.hidden = YES;
+        }
     }
 }
 
