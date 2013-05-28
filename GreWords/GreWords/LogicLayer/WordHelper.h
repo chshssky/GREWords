@@ -11,7 +11,6 @@
 @interface WordHelper : NSObject
 {
     NSMutableArray *wordList;
-    NSMutableDictionary *wordIndexes;
     
     NSArray *homoArr;
 }
@@ -19,6 +18,7 @@
 +(WordHelper*) instance;
 //-(WordEntity*)wordWithString:(NSString*)string;
 -(WordEntity*)wordWithID:(int)wordID;
+-(int)wordIDForWord:(WordEntity*)word;
 
 //return array of wordID:int
 -(NSArray*)wordsHasNote;

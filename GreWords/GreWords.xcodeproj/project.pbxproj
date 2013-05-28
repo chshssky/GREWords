@@ -57,6 +57,19 @@
 		73F2E647174CA3A300E5D88B /* Main menu_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 73F2E645174CA3A300E5D88B /* Main menu_bg.png */; };
 		73F309E4174430BE00DB551B /* learning_downCoverWithButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 73F309E2174430BE00DB551B /* learning_downCoverWithButton.png */; };
 		73F309E5174430BE00DB551B /* learning_downCoverWithButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73F309E3174430BE00DB551B /* learning_downCoverWithButton@2x.png */; };
+		E404ADBA1753975200004FDC /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E404ADB91753975200004FDC /* WelcomeViewController.m */; };
+		E404ADC2175397BB00004FDC /* Welcome1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADBC175397BB00004FDC /* Welcome1@2x.png */; };
+		E404ADC3175397BB00004FDC /* Welcome2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADBD175397BB00004FDC /* Welcome2@2x.png */; };
+		E404ADC4175397BB00004FDC /* Welcome3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADBE175397BB00004FDC /* Welcome3@2x.png */; };
+		E404ADC5175397BB00004FDC /* Welcome4_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADBF175397BB00004FDC /* Welcome4_bg@2x.png */; };
+		E404ADC6175397BB00004FDC /* Welcome4_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADC0175397BB00004FDC /* Welcome4_button@2x.png */; };
+		E404ADC7175397BB00004FDC /* Welcome4_buttonPressdown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADC1175397BB00004FDC /* Welcome4_buttonPressdown@2x.png */; };
+		E404ADCE1753984200004FDC /* Welcome1.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADC81753984200004FDC /* Welcome1.png */; };
+		E404ADCF1753984200004FDC /* Welcome2.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADC91753984200004FDC /* Welcome2.png */; };
+		E404ADD01753984200004FDC /* Welcome3.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADCA1753984200004FDC /* Welcome3.png */; };
+		E404ADD11753984200004FDC /* Welcome4_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADCB1753984200004FDC /* Welcome4_bg.png */; };
+		E404ADD21753984200004FDC /* Welcome4_button.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADCC1753984200004FDC /* Welcome4_button.png */; };
+		E404ADD31753984200004FDC /* Welcome4_buttonPressdown.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADCD1753984200004FDC /* Welcome4_buttonPressdown.png */; };
 		E413E63B173BDA1F0009B55E /* SettingTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E413E637173BDA1F0009B55E /* SettingTabViewController.m */; };
 		E413E63C173BDA1F0009B55E /* SettingTabViewDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E413E639173BDA1F0009B55E /* SettingTabViewDeckViewController.m */; };
 		E418DA5F1713E5E8002C6743 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */; };
@@ -3540,6 +3553,20 @@
 		73F2E645174CA3A300E5D88B /* Main menu_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main menu_bg.png"; sourceTree = "<group>"; };
 		73F309E2174430BE00DB551B /* learning_downCoverWithButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = learning_downCoverWithButton.png; sourceTree = "<group>"; };
 		73F309E3174430BE00DB551B /* learning_downCoverWithButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_downCoverWithButton@2x.png"; sourceTree = "<group>"; };
+		E404ADB81753975200004FDC /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WelcomeViewController.h; path = Welcome/WelcomeViewController.h; sourceTree = "<group>"; };
+		E404ADB91753975200004FDC /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WelcomeViewController.m; path = Welcome/WelcomeViewController.m; sourceTree = "<group>"; };
+		E404ADBC175397BB00004FDC /* Welcome1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Welcome1@2x.png"; sourceTree = "<group>"; };
+		E404ADBD175397BB00004FDC /* Welcome2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Welcome2@2x.png"; sourceTree = "<group>"; };
+		E404ADBE175397BB00004FDC /* Welcome3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Welcome3@2x.png"; sourceTree = "<group>"; };
+		E404ADBF175397BB00004FDC /* Welcome4_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Welcome4_bg@2x.png"; sourceTree = "<group>"; };
+		E404ADC0175397BB00004FDC /* Welcome4_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Welcome4_button@2x.png"; sourceTree = "<group>"; };
+		E404ADC1175397BB00004FDC /* Welcome4_buttonPressdown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Welcome4_buttonPressdown@2x.png"; sourceTree = "<group>"; };
+		E404ADC81753984200004FDC /* Welcome1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Welcome1.png; sourceTree = "<group>"; };
+		E404ADC91753984200004FDC /* Welcome2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Welcome2.png; sourceTree = "<group>"; };
+		E404ADCA1753984200004FDC /* Welcome3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Welcome3.png; sourceTree = "<group>"; };
+		E404ADCB1753984200004FDC /* Welcome4_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Welcome4_bg.png; sourceTree = "<group>"; };
+		E404ADCC1753984200004FDC /* Welcome4_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Welcome4_button.png; sourceTree = "<group>"; };
+		E404ADCD1753984200004FDC /* Welcome4_buttonPressdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Welcome4_buttonPressdown.png; sourceTree = "<group>"; };
 		E413E637173BDA1F0009B55E /* SettingTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTabViewController.m; sourceTree = "<group>"; };
 		E413E638173BDA1F0009B55E /* SettingTabViewDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTabViewDeckViewController.h; sourceTree = "<group>"; };
 		E413E639173BDA1F0009B55E /* SettingTabViewDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTabViewDeckViewController.m; sourceTree = "<group>"; };
@@ -7166,6 +7193,34 @@
 			name = WordCardLayout;
 			sourceTree = "<group>";
 		};
+		E404ADB71753972200004FDC /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				E404ADB81753975200004FDC /* WelcomeViewController.h */,
+				E404ADB91753975200004FDC /* WelcomeViewController.m */,
+			);
+			name = Welcome;
+			sourceTree = "<group>";
+		};
+		E404ADBB175397BB00004FDC /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				E404ADC81753984200004FDC /* Welcome1.png */,
+				E404ADC91753984200004FDC /* Welcome2.png */,
+				E404ADCA1753984200004FDC /* Welcome3.png */,
+				E404ADCB1753984200004FDC /* Welcome4_bg.png */,
+				E404ADCC1753984200004FDC /* Welcome4_button.png */,
+				E404ADCD1753984200004FDC /* Welcome4_buttonPressdown.png */,
+				E404ADBC175397BB00004FDC /* Welcome1@2x.png */,
+				E404ADBD175397BB00004FDC /* Welcome2@2x.png */,
+				E404ADBE175397BB00004FDC /* Welcome3@2x.png */,
+				E404ADBF175397BB00004FDC /* Welcome4_bg@2x.png */,
+				E404ADC0175397BB00004FDC /* Welcome4_button@2x.png */,
+				E404ADC1175397BB00004FDC /* Welcome4_buttonPressdown@2x.png */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
 		E41FF51C173FE6A30078E738 /* MHTabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -7227,6 +7282,7 @@
 		E466E756173BD4CB001847D0 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				E404ADB71753972200004FDC /* Welcome */,
 				E466E760173BD4CB001847D0 /* GreWordsViewController.h */,
 				E466E761173BD4CB001847D0 /* GreWordsViewController.m */,
 				7324846817524CA30058A6DD /* Note */,
@@ -7395,6 +7451,7 @@
 		E466E7A7173BD4CB001847D0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E404ADBB175397BB00004FDC /* Welcome */,
 				E41FF5261740DF750078E738 /* SmartList */,
 				E466E7A8173BD4CB001847D0 /* Defaults */,
 				E466E7AC173BD4CB001847D0 /* Learning */,
@@ -14344,6 +14401,18 @@
 				73E11B3F174D2717000E6035 /* learning_wrong_up_page2.png in Resources */,
 				73E11B40174D2717000E6035 /* learning_wrong_up_page2@2x.png in Resources */,
 				7324846D17524D860058A6DD /* NoteViewController.xib in Resources */,
+				E404ADC2175397BB00004FDC /* Welcome1@2x.png in Resources */,
+				E404ADC3175397BB00004FDC /* Welcome2@2x.png in Resources */,
+				E404ADC4175397BB00004FDC /* Welcome3@2x.png in Resources */,
+				E404ADC5175397BB00004FDC /* Welcome4_bg@2x.png in Resources */,
+				E404ADC6175397BB00004FDC /* Welcome4_button@2x.png in Resources */,
+				E404ADC7175397BB00004FDC /* Welcome4_buttonPressdown@2x.png in Resources */,
+				E404ADCE1753984200004FDC /* Welcome1.png in Resources */,
+				E404ADCF1753984200004FDC /* Welcome2.png in Resources */,
+				E404ADD01753984200004FDC /* Welcome3.png in Resources */,
+				E404ADD11753984200004FDC /* Welcome4_bg.png in Resources */,
+				E404ADD21753984200004FDC /* Welcome4_button.png in Resources */,
+				E404ADD31753984200004FDC /* Welcome4_buttonPressdown.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14403,6 +14472,7 @@
 				E423DEC9174A3EB00079CB60 /* NSNotificationCenter+Addition.m in Sources */,
 				E423DECC174A77280079CB60 /* NSDate-Utilities.m in Sources */,
 				7324846C17524D860058A6DD /* NoteViewController.m in Sources */,
+				E404ADBA1753975200004FDC /* WelcomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

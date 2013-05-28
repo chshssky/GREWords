@@ -187,7 +187,6 @@ WordHelper* _wordHelperInstance = nil;
 -(void)loadWords
 {
     wordList = [@[] mutableCopy];
-    wordIndexes = [@{} mutableCopy];
     
     NSArray *arr;
     NSString *infoSouceFile = [[NSBundle mainBundle] pathForResource:@"words" ofType:@"plist"];
@@ -212,7 +211,6 @@ WordHelper* _wordHelperInstance = nil;
         Word* word = matching[wordList.count];
         NSAssert(wordList.count == [word.plistID integerValue],@"fail to count database counterpart");
         WordEntity *theWord = [[WordEntity alloc] initWithID:wordList.count data:dict word:word];
-        wordIndexes[text] = [NSNumber numberWithInt:wordList.count];
         [wordList addObject:theWord];
     }
 }
@@ -226,13 +224,6 @@ WordHelper* _wordHelperInstance = nil;
         [self loadFlipcard];
     }
     return self;
-}
-
-
--(WordEntity*)wordWithString:(NSString*)string
-{
-    int index = [wordIndexes[string] integerValue];
-    return wordList[index];
 }
 
 -(WordEntity*)wordWithID:(int)wordID
@@ -266,7 +257,7 @@ WordHelper* _wordHelperInstance = nil;
 -(NSArray*)wordsRatioOfMistake
 {
     NSArray *temp = [wordList sortedArrayUsingComparator: ^(id obj1, id obj2) {
-        return [[NSNumber numberWithFloat:((WordEntity*)obj1).ratioOfMistake] compare: [NSNumber numberWithFloat:((WordEntity*)obj2).ratioOfMistake]];
+        return [[NSNumber numberWithFloat:((WordEntity*)obj2).ratioOfMistake] compare: [NSNumber numberWithFloat:((WordEntity*)obj1).ratioOfMistake]];
     }];
     temp = [temp filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"SELF.ratioOfMistake > 0.0"]];
     return temp;
@@ -276,6 +267,11 @@ WordHelper* _wordHelperInstance = nil;
 -(int)wordCount
 {
     return wordList.count;
+}
+
+-(int)wordIDForWord:(WordEntity*)word
+{
+    return [wordList indexOfObject:word];
 }
 
 @end

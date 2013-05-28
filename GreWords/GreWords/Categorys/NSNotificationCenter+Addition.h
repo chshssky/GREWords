@@ -15,4 +15,8 @@
 
 + (void)postRemoveNoteForWordNotification:(WordEntity*)word;
 + (void)registerRemoveNoteForWordNotificationWithSelector:(SEL)aSelector target:(id)aTarget;
+
++ (void)postShowNoteForWordNotification:(WordEntity*)word;
++ (void)registerShowNoteForWordNotificationWithSelector:(SEL)aSelector target:(id)aTarget;
+
 @end

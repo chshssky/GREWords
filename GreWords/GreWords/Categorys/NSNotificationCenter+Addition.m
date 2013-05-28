@@ -11,6 +11,7 @@
 
 #define kAddNoteForWordNotification @"kAddNoteForWordNotification"
 #define kRemoveNoteForWordNotification @"kRemoveNoteForWordNotification"
+#define kShowNoteForWordNotification @"kShowNoteForWordNotification"
 
 @implementation NSNotificationCenter (Addition)
 + (void)postAddNoteForWordNotification:(WordEntity*)word
@@ -38,6 +39,21 @@
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:aTarget selector:aSelector
                    name:kRemoveNoteForWordNotification
+                 object:nil];
+}
+
+
++ (void)postShowNoteForWordNotification:(WordEntity*)word;
+{
+    NSLog(@"postRemoveNoteForWordNotification");
+    [[NSNotificationCenter defaultCenter] postNotificationName:kShowNoteForWordNotification object:word userInfo:nil];
+}
+
++ (void)registerShowNoteForWordNotificationWithSelector:(SEL)aSelector target:(id)aTarget
+{
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:aTarget selector:aSelector
+                   name:kShowNoteForWordNotification
                  object:nil];
 }
 

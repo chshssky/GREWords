@@ -11,9 +11,7 @@
 @interface NewWordEvent : BaseEvent
 
 @property (nonatomic) enum Stage stage_now;
-@property (nonatomic) int unit;
-@property (nonatomic) int round;
-@property (nonatomic) int orderInUnit;
-
+@property (nonatomic) int indexOfWordToday;
+@property (nonatomic) int maxWordID;
 
 @end
