@@ -16,7 +16,8 @@ typedef enum
     GuideType_NewWordThird,
     GuideType_ReviewFirst,
     GuideType_ReviewSecond,
-    GuideType_DashboardReview
+    GuideType_DashboardReview,
+    GuideType_List
 } GuideType;
 
 @interface GuideImageFactory : NSObject

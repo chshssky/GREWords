@@ -62,8 +62,13 @@
                        @{
                            @"image3.5" : @"dashboardreview3.5.png",
                            @"image4" : @"dashboardreview4.png"
+                           },
+                   @"list":
+                       @{
+                           @"image3.5" : @"list3.5.png",
+                           @"image4" : @"list4.png"
                            }
-                 
+
                 
                  };
     }
@@ -93,6 +98,9 @@
             break;
         case GuideType_DashboardReview:
             return @"dashboardreview";
+            break;
+        case GuideType_List:
+            return @"list";
             break;
         default:
             break;
