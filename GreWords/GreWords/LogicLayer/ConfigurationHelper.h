@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GuideImageFactory.h"
 
 @interface ConfigurationHelper : NSObject
 

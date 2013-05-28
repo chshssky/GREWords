@@ -152,9 +152,9 @@
     
     [self.delegate ChangeWordWithIndex:self.indexOfWordIDToday + _currentPage WithMax:self.maxWordID];
     
-    if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_NewWord])
+    if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_NewWordFirst])
     {
-        guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_NewWord];
+        guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_NewWordFirst];
         [self.view addSubview:guideImageView];
     }
 

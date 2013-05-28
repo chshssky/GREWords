@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum
+{
+    GuideType_Dashboard,
+    GuideType_NewWordFirst,
+    GuideType_NewWordSecond,
+    GuideType_NewWordThird,
+    GuideType_ReviewFirst,
+    GuideType_ReviewSecond
+} GuideType;
 
 @interface GuideImageFactory : NSObject
 {

@@ -33,12 +33,32 @@
                              @"image3.5" : @"dashboard3.5.png",
                              @"image4" : @"dashboard4.png"
                           },
-                   @"newword":
+                   @"newwordfirst":
                         @{
-                            @"image3.5" : @"newword3.5.png",
-                            @"image4" : @"newword4.png"
-                        }
-                   
+                            @"image3.5" : @"newwordfirst3.5.png",
+                            @"image4" : @"newwordfirst4.png"
+                        },
+                   @"newwordsecond":
+                       @{
+                           @"image3.5" : @"newwordsecond3.5.png",
+                           @"image4" : @"newwordsecond4.png"
+                           },
+                   @"newwordthird":
+                       @{
+                           @"image3.5" : @"newwordthird3.5.png",
+                           @"image4" : @"newwordthird4.png"
+                           },
+                   @"reviewfirst":
+                       @{
+                           @"image3.5" : @"reviewfirst3.5.png",
+                           @"image4" : @"reviewfirst4.png"
+                           },
+                   @"reviewsecond":
+                       @{
+                           @"image3.5" : @"reviewsecond3.5.png",
+                           @"image4" : @"reviewsecond4.png"
+                           }
+
                  
                  
                 
@@ -53,8 +73,20 @@
         case GuideType_Dashboard:
             return @"dashboard";
             break;
-        case GuideType_NewWord:
-            return @"newword";
+        case GuideType_NewWordFirst:
+            return @"newwordfirst";
+            break;
+        case GuideType_NewWordSecond:
+            return @"newwordsecond";
+            break;
+        case GuideType_NewWordThird:
+            return @"newwordthird";
+            break;
+        case GuideType_ReviewFirst:
+            return @"reviewfirst";
+            break;
+        case GuideType_ReviewSecond:
+            return @"reviewsecond";
             break;
         default:
             break;
