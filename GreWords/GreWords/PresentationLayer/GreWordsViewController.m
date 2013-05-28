@@ -23,8 +23,8 @@
 #import "ReviewEvent.h"
 #import "ExamEvent.h"
 #import "HistoryManager.h"
-
-
+#import "ConfigurationHelper.h"
+#import "GuideImageFactory.h"
 
 #define TaskWordNumber 200
 
@@ -156,7 +156,29 @@
     [self initAwesomeMenu];
         
     _whetherAllowViewFrameChanged = NO;
+    
+    if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_Dashboard])
+    {
+        guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_Dashboard];
+        [self.view addSubview:guideImageView];
+    }
 }
+
+- (void)viewDidUnload {
+    [self setTitleView:nil];
+    [super viewDidUnload];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    
+}
+
 
 - (void)viewDidLayoutSubviews
 {
@@ -470,8 +492,5 @@
     }
 }
 
-- (void)viewDidUnload {
-    [self setTitleView:nil];
-    [super viewDidUnload];
-}
+
 @end

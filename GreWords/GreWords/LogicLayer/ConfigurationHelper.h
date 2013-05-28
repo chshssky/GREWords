@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "GuideImageFactory.h"
 
 @interface ConfigurationHelper : NSObject
 
+#pragma mark -- setting property
 @property (nonatomic) bool meaningVisibility;
 @property (nonatomic) bool sampleSentenceVisibility;
 @property (nonatomic) bool homoionymVisibility;
@@ -19,7 +20,14 @@
 @property (nonatomic,retain) NSDate* freshWordAlertTime;
 @property (nonatomic,retain) NSDate* reviewAlertTime;
 
+
+#pragma mark -- guide property
+
+-(bool)guideForTypeHasShown:(GuideType)type;
+-(void)setGuideForTypeHasShown:(GuideType)type value:(bool)value;
+
 +(ConfigurationHelper*)instance;
+
 -(void)resetAllData;
 -(void)initData;
 

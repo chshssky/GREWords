@@ -22,9 +22,13 @@
 #import "WordCardLayoutViewController.h"
 #import "WordNoteLayoutViewController.h"
 #import "WordDetailViewController.h"
-
+#import "GuideImageFactory.h"
+#import "ConfigurationHelper.h"
 
 @interface NewWordDetailViewController ()
+{
+    UIImageView *guideImageView;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *DownImage;
 @property (weak, nonatomic) IBOutlet UIButton *PronounceButton;
@@ -79,6 +83,7 @@
     self.viewControlArray = [[NSMutableArray alloc] init];
     self.nameControlArray = [[NSMutableArray alloc] init];
     self.phoneticControlArray = [[NSMutableArray alloc] init];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -146,6 +151,12 @@
     _whetherSetNo = NO;
     
     [self.delegate ChangeWordWithIndex:self.indexOfWordIDToday + _currentPage WithMax:self.maxWordID];
+    
+    if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_NewWordFirst])
+    {
+        guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_NewWordFirst];
+        [self.view addSubview:guideImageView];
+    }
 
 }
 

@@ -29,11 +29,6 @@
     
     [self initUserDefault];
     
-    if([[ConfigurationHelper instance] isFirstTimeRun])
-    {
-        [[ConfigurationHelper instance] initData];
-    }
-
 //    for (NSString* fname in [UIFont familyNames])
 //    {
 //        NSLog(@"%@",fname);
