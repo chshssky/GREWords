@@ -111,25 +111,16 @@
     {
         lastTableViewHeight = 0;
         int sectionCount = [self numberOfSectionsInTableView:self.tableView];
-        if(sectionCount > 0)
-        {
-            NSIndexPath *lastIndex = [NSIndexPath indexPathForRow:[self tableView:self.tableView numberOfRowsInSection:sectionCount - 1] - 1  inSection:sectionCount - 1];
-            CGRect lastRect = [self.tableView rectForRowAtIndexPath:lastIndex];
-            
-            lastTableViewHeight = lastRect.origin.y + lastRect.size.height ;
-            
-            NSLog(@"height:%f",lastTableViewHeight);
-            
-            [UIView animateWithDuration:0.3 animations:^()
-             {
-                 downTexture.frame = CGRectMake(0.0f, lastTableViewHeight, 320.0f, 1136.0f);
-             }];
-            downTexture.hidden = NO;
-        }
-        else
-        {
-            downTexture.hidden = YES;
-        }
+        NSIndexPath *lastIndex = [NSIndexPath indexPathForRow:[self tableView:self.tableView numberOfRowsInSection:sectionCount - 1] - 1  inSection:sectionCount - 1];
+        CGRect lastRect = [self.tableView rectForRowAtIndexPath:lastIndex];
+        
+        lastTableViewHeight = lastRect.origin.y + lastRect.size.height;
+        
+        [UIView animateWithDuration:0.3 animations:^()
+         {
+             downTexture.frame = CGRectMake(0.0f, lastTableViewHeight, 320.0f, 1136.0f);
+         }];
+
     }
 }
 
@@ -184,11 +175,6 @@
     [CATransaction begin];
     [self.tableView beginUpdates];
     //[sectionController closeOthers];
-//    [CATransaction setCompletionBlock: ^{
-//        // Code to be executed upon completion
-//        NSLog(@"wuwuwuw");
-//        [self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.1f];
-//    }];
     for(int i = 0; i < retractableControllers.count; i++)
     {
         SmartWordListSectionController* aController = [retractableControllers objectAtIndex:i];

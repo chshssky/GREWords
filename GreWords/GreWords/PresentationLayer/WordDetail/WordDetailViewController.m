@@ -143,10 +143,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
     [self loadWord:self.indexOfWordIDToday];
+    _RightButton.userInteractionEnabled = NO;
+    _WrongButton.userInteractionEnabled = NO;
+    _showMeaningButton.userInteractionEnabled = YES;
+
     self.dashboardVC = [DashboardViewController instance];
+    _showMeaningButton.userInteractionEnabled = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -233,6 +236,9 @@
 - (void)Show_RightAnimation
 {
     [self Show_InitRightImage];
+    _RightButton.userInteractionEnabled = NO;
+    _WrongButton.userInteractionEnabled = NO;
+    _showMeaningButton.userInteractionEnabled = NO;
     
     //[self Show_RightAnimationWith:_RightUpImageView4 and:_RightDownImageView4 atTime:CACurrentMediaTime() withString:@"Show_removeRightImage4"];
     //[self Show_RightAnimationWith:_RightUpImageView3 and:_RightDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"Show_removeRightImage3"];
@@ -358,6 +364,9 @@
 - (void)Show_WrongAnimation
 {
     [self Show_InitWrongImage];
+    _RightButton.userInteractionEnabled = NO;
+    _WrongButton.userInteractionEnabled = NO;
+    _showMeaningButton.userInteractionEnabled = NO;
     
     //[self Show_WrongAnimationWith:_WrongUpImageView4 and:_WrongDownImageView4 atTime:CACurrentMediaTime() withString:@"Show_removeWrongImage4"];
     //[self Show_WrongAnimationWith:_WrongUpImageView3 and:_WrongDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"Show_removeWrongImage3"];
@@ -557,6 +566,9 @@
 - (void)Dismiss_RightAnimation
 {
     [self Dismiss_InitRightImage];
+    _RightButton.userInteractionEnabled = NO;
+    _WrongButton.userInteractionEnabled = NO;
+    _showMeaningButton.userInteractionEnabled = NO;
     
     //[self Dismiss_RightAnimationWith:_RightUpImageView4 and:_RightDownImageView4 atTime:CACurrentMediaTime() withString:@"Dismiss_removeRightImage4"];
     //[self Dismiss_RightAnimationWith:_RightUpImageView3 and:_RightDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"Dismiss_removeRightImage3"];
@@ -682,6 +694,9 @@
 - (void)Dismiss_WrongAnimation
 {
     [self Dismiss_InitWrongImage];
+    _RightButton.userInteractionEnabled = NO;
+    _WrongButton.userInteractionEnabled = NO;
+    _showMeaningButton.userInteractionEnabled = NO;
     
     //[self Dismiss_WrongAnimationWith:_WrongUpImageView4 and:_WrongDownImageView4 atTime:CACurrentMediaTime() withString:@"removeRightImage4"];
     //[self Dismiss_RightAnimationWith:_WrongUpImageView3 and:_WrongDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"removeRightImage3"];
@@ -806,7 +821,7 @@
             [self.view addSubview:_RightDownImageView];
         }
         
-        self.RightButton.enabled = true;
+        _RightButton.userInteractionEnabled = YES;
     }
     //////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -847,7 +862,7 @@
             _WrongDownImageView.layer.anchorPoint = CGPointMake(0.5, 0);
             [self.view addSubview:_WrongDownImageView];
         }
-        self.WrongButton.enabled = true;
+        _WrongButton.userInteractionEnabled = YES;
     }
     
     ////////////////////////////////////////////////////////
@@ -888,6 +903,9 @@
             [_RightDownImageView removeFromSuperview];
             _RightDownImageView = nil;
         }
+        
+        _showMeaningButton.userInteractionEnabled = YES;
+        
     }
     
     /////////////////////////////////////////////////////////////
@@ -927,6 +945,9 @@
             [_WrongDownImageView removeFromSuperview];
             _WrongDownImageView = nil;
         }
+        
+        _showMeaningButton.userInteractionEnabled = YES;
+
     }
 }
 
@@ -946,6 +967,7 @@
     }else{
         [self.showMeaningButton setFrame:CGRectMake( 8, 100, 304.0, 250.0)];
     }
+    self.showMeaningButton.userInteractionEnabled = NO;
     [self.view addSubview:self.showMeaningButton];
 }
 
@@ -1007,15 +1029,13 @@
 - (void)nextButtonPushed
 {
     if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue] > self.maxWordID) {
-        if (_DownImage.alpha == 1) {
-            [self.delegate GoToNewWordWithWord:self.indexOfWordIDToday andThe:self.maxWordID withDownImage:YES];
-        }else{
+        if (_DownImage.alpha <= 0) {
             [self.delegate GoToNewWordWithWord:self.indexOfWordIDToday andThe:self.maxWordID withDownImage:NO];
+        }else{
+            [self.delegate GoToNewWordWithWord:self.indexOfWordIDToday andThe:self.maxWordID withDownImage:YES];
         }
         [self dismissModalViewControllerAnimated:NO];
     } else {
-        self.RightButton.enabled = false;
-        self.WrongButton.enabled = false;
         [self Dismiss_RightAnimation];
         [self Dismiss_WrongAnimation];
         [self loadWord:self.indexOfWordIDToday];

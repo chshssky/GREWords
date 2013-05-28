@@ -364,7 +364,6 @@
         }
         if(translation.x > 0)
         {
-            NSLog(@"%f",translation.x);
             if (_whetherSetNo) {
                 _whetherSetNo = NO;
             } else {

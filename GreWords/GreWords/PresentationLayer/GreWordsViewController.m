@@ -260,10 +260,10 @@
     }
 }
 - (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
-    NSLog(@"Menu was closed!");
+    //NSLog(@"Menu was closed!");
 }
 - (void)AwesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu {
-    NSLog(@"Menu is open!");
+    //NSLog(@"Menu is open!");
 }
 
 #pragma mark - DashBoardDelegate
@@ -281,8 +281,6 @@
         }
         self.menu.transform = CGAffineTransformMakeTranslation(-300, 0);
     } completion:^(BOOL finished) {
-        
-        //NSLog(@"MaxWordID: %d,VVVVVVVVSSSSSSSSSS WordID: %d", self.maxWordID, [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday ] integerValue]);
         //根据MaxWordID和现在所在单词的ID 来判断 该跳转到 NewWord 还是 Review
         if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday ] integerValue] < self.maxWordID || self.reviewEnable) {
             
@@ -301,7 +299,6 @@
         
         vc.maxWordID = self.maxWordID;
         vc.indexOfWordIDToday = self.indexOfWordIDToday;
-        //NSLog(@"BIGBUTTON: %d, %d", self.maxWordID, self.indexOfWordIDToday);
         vc.day = self.day;
         vc.changePage = 10 - (self.maxWordID % 10);
         vc.delegate = self;
@@ -369,7 +366,6 @@
 - (void)ChangeWordWithIndex:(int)index WithMax:(int)max
 {
     self.indexOfWordIDToday = index;
-    NSLog(@"%d,%d",self.indexOfWordIDToday,index);
     self.maxWordID = max;
 }
 
@@ -394,10 +390,10 @@
 {
     self.indexOfWordIDToday = wordIndex;
     self.maxWordID = maxWordNum;
-    [self performSelector:@selector(GotoNewWordSelector:) withObject:nil afterDelay:0];
+    [self performSelector:@selector(GotoNewWordSelector:) withObject:[NSNumber numberWithBool:whetherHaveDownImage] afterDelay:0];
 }
 
-- (void)GotoNewWordSelector:(BOOL)whetherHaveDownImage
+- (void)GotoNewWordSelector:(NSNumber *)whetherHaveDownImage
 {
     NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
     
@@ -424,7 +420,7 @@
         
     [self presentViewController:deckController animated:NO completion:nil];
     
-    if (whetherHaveDownImage == YES) {
+    if ([whetherHaveDownImage boolValue] == YES) {
         [vc removeDownImageAnimation_withDownCover];
     }else{
         [vc removeDownImageAnimation_withNoDownCover];

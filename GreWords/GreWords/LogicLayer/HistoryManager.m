@@ -99,7 +99,7 @@ HistoryManager* _historyManagerInstance = nil;
         ExamEvent *examEvent = (ExamEvent *)aEvent;
         [dict setObject:[NSNumber numberWithInt:[examEvent difficulty]] forKey:EXAMEVENT_DIFFICULTY];
     } else {
-        NSLog(@"BaseEvent is not a specific class");
+        //NSLog(@"BaseEvent is not a specific class");
     }
     
     NSData *data = [self toJSONData:dict];
