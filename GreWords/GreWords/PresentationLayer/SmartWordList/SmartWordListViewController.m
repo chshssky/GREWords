@@ -182,11 +182,6 @@
     [CATransaction begin];
     [self.tableView beginUpdates];
     //[sectionController closeOthers];
-//    [CATransaction setCompletionBlock: ^{
-//        // Code to be executed upon completion
-//        NSLog(@"wuwuwuw");
-//        [self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.1f];
-//    }];
     for(int i = 0; i < retractableControllers.count; i++)
     {
         SmartWordListSectionController* aController = [retractableControllers objectAtIndex:i];

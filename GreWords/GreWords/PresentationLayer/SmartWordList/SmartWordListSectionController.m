@@ -104,7 +104,6 @@ static NSDictionary* typeDict = nil;
         {
             cell.mistakeRatioIndicatorImageView.hidden = NO;
             int pointCount = [[WordHelper instance] wordWithID:self.wordID].ratioOfMistake * 100 / 20.0;
-            NSLog(@"%@ er: %f %d",[[WordHelper instance] wordWithID:self.wordID].data[@"word"],[[WordHelper instance] wordWithID:self.wordID].ratioOfMistake,pointCount);
             [cell.mistakeRatioIndicatorImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"words list_point%d.png",pointCount]]];
             
         }

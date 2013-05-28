@@ -19,5 +19,6 @@
 
 @property (nonatomic) int indexOfWordIDToday;
 @property (nonatomic) int maxWordID;
+@property (nonatomic) int wrongWordCount;
 
 @end

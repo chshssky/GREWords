@@ -88,7 +88,6 @@
             subTitleLabel.backgroundColor = [UIColor clearColor];
             [subTitleLabel sizeToFit];
             [self.view addSubview:subTitleLabel];
-            NSLog(@"%f",_sumHeight);
             
             _sumHeight = subTitleLabel.frame.origin.y + subTitleLabel.frame.size.height + 8.0;
             CGRect labelRect2 = CGRectMake(12, _sumHeight, 296, 25);
@@ -102,7 +101,6 @@
             [self.view addSubview:subContentLabel];
             
             _sumHeight = subContentLabel.frame.origin.y + subContentLabel.frame.size.height + 10.0;
-            NSLog(@"%f",_sumHeight);
             
         }
     

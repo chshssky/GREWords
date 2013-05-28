@@ -33,6 +33,7 @@
 @property (nonatomic) int indexOfWordIDToday;
 @property (nonatomic) int maxWordID;
 @property (nonatomic) int day;
+@property (nonatomic) int wrongWordCount;
 
 @property (nonatomic) BOOL reviewEnable;
 
@@ -47,7 +48,7 @@
 {
     dashboard = [DashboardViewController instance];
     // Database: read from 
-    dashboard.nonFinishedNumber = TaskWordNumber;
+    dashboard.nonFinishedNumber = TaskWordNumber - self.maxWordID;
     dashboard.minNumber = dashboard.nonFinishedNumber;
     dashboard.sumNumber = TaskWordNumber;
     dashboard.delegate = self;
@@ -134,16 +135,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    // 从数据库中读取现在的状态
     
+    
+    self.indexOfWordIDToday = 799;
+    self.maxWordID = 199;
+    self.reviewEnable = YES;
+    self.wrongWordCount = 0;
+
     
     [self initDashboard];
     [self initslideBar];
     [self initAwesomeMenu];
-    
-    self.indexOfWordIDToday = 0;
-    self.maxWordID = 0;
-    self.reviewEnable = NO;
-    
+        
     _whetherAllowViewFrameChanged = NO;
 }
 
@@ -255,10 +260,10 @@
     }
 }
 - (void)AwesomeMenuDidFinishAnimationClose:(AwesomeMenu *)menu {
-    NSLog(@"Menu was closed!");
+    //NSLog(@"Menu was closed!");
 }
 - (void)AwesomeMenuDidFinishAnimationOpen:(AwesomeMenu *)menu {
-    NSLog(@"Menu is open!");
+    //NSLog(@"Menu is open!");
 }
 
 #pragma mark - DashBoardDelegate
@@ -283,6 +288,7 @@
             WordDetailViewController *vc = [[WordDetailViewController alloc] init];
             vc.indexOfWordIDToday = self.indexOfWordIDToday;
             vc.maxWordID = self.maxWordID;
+            vc.wrongWordCount = self.wrongWordCount;
             vc.delegate = self;
             [self presentViewController:vc animated:NO completion:nil];
             
