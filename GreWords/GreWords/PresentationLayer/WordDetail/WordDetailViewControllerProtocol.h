@@ -14,5 +14,6 @@
 - (void)GoToNewWordWithWord:(int)wordIndex andThe:(int)maxWordNum withDownImage:(BOOL)whetherHaveDownImage;
 - (void)resetWordIndexto:(int)index;
 - (void)setReviewEnable;
+- (BOOL)getReviewEnable;
 
 @end

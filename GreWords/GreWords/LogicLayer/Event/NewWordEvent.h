@@ -13,5 +13,6 @@
 @property (nonatomic) enum Stage stage_now;
 @property (nonatomic) int indexOfWordToday;
 @property (nonatomic) int maxWordID;
+@property (nonatomic) BOOL reviewEnable;
 
 @end

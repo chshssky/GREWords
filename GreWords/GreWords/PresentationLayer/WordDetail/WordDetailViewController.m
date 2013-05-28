@@ -1025,13 +1025,6 @@
 
 - (void)newWordCompleted
 {
-    HistoryManager *historyManager = [HistoryManager instance];
-    
-    NewWordEvent *newWordEve = [[NewWordEvent alloc] init];
-    newWordEve.eventType = @"NewWordEvent";
-    newWordEve.wrongWordCount = self.wrongWordCount;
-    
-    //[historyManager addEvent:newWordEve];
     
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日完成" message:@"今天错误率： 用时：" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];

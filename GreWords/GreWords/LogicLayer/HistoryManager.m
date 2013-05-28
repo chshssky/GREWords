@@ -36,11 +36,7 @@ HistoryManager* _historyManagerInstance = nil;
 
 - (NSManagedObjectContext *)context
 {
-    if (!_context) {
-        MyDataStorage *myDateStorage;
-        _context = [myDateStorage managedObjectContext];
-    }
-    return _context;
+    return [[MyDataStorage instance] managedObjectContext];
 }
 
 - (NSData *)toJSONData:(id)theData{
@@ -87,6 +83,9 @@ HistoryManager* _historyManagerInstance = nil;
         NewWordEvent *newWordEvent = (NewWordEvent *)aEvent;
         // convert enum to NSNumber
         [dict setObject:[NSNumber numberWithInt:[newWordEvent stage_now]] forKey:NEWWORDEVENT_STAGE_NOW];
+        [dict setObject:[NSNumber numberWithInt:[newWordEvent maxWordID]] forKey:NEWWORDEVENT_MAX_ID];
+        [dict setObject:[NSNumber numberWithInt:[newWordEvent indexOfWordToday]] forKey:NEWWORDEVENT_INDEX];
+        [dict setObject:[NSNumber numberWithBool:[newWordEvent reviewEnable]] forKey:NEWWORDEVENT_REVIEW_ENABLE];
 //        [dict setObject:[NSNumber numberWithInt:[newWordEvent unit]] forKey:NEWWORDEVENT_UNIT];
 //        [dict setObject:[NSNumber numberWithInt:[newWordEvent round]] forKey:NEWWORDEVENT_ROUNG];
 //        [dict setObject:[NSNumber numberWithInt:[newWordEvent orderInUnit]] forKey:NEWWORDEVENT_ORDER_IN_UNIT];
@@ -99,17 +98,34 @@ HistoryManager* _historyManagerInstance = nil;
         ExamEvent *examEvent = (ExamEvent *)aEvent;
         [dict setObject:[NSNumber numberWithInt:[examEvent difficulty]] forKey:EXAMEVENT_DIFFICULTY];
     } else {
-        //NSLog(@"BaseEvent is not a specific class");
+        NSLog(@"Something Wrong : BaseEvent is not a specific class");
     }
     
-    NSData *data = [self toJSONData:dict];
-    [history setInfo:data];
+    NSString *jsonString = [[NSString alloc] initWithData:[self toJSONData:dict]
+                                                 encoding:NSUTF8StringEncoding];
+    [history setInfo:jsonString];
     
         
     NSError *error = nil;
     if (![self.context save:&error]) {
         NSLog(@"Save Event error %@, %@", error, [error userInfo]);
         abort();
+    }
+}
+
+- (void)updateEvent:(BaseEvent *)aEvent
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
+    request.predicate = [NSPredicate predicateWithFormat:@"event = %@ && endTime = %@", aEvent.eventType, @""];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
+    NSError *err = nil;
+    NSArray *matches = [self.context executeFetchRequest:request error:&err];
+    
+    History *history = [matches lastObject];
+    [history setEndTime:aEvent.endTime];
+    
+    if (![self.context save:&err]) {
+        NSLog(@"End Event Error");
     }
 }
 
@@ -143,7 +159,7 @@ HistoryManager* _historyManagerInstance = nil;
     NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
     History *history = [fetchMatches lastObject];
     
-    NSDictionary *info = [self toArrayOrNSDictionary:history.info];
+    NSDictionary *info = [self toArrayOrNSDictionary:[history.info dataUsingEncoding:NSASCIIStringEncoding]];
     
     return [[info objectForKey:NEWWORDEVENT_STAGE_NOW] integerValue];
 }
@@ -152,7 +168,7 @@ HistoryManager* _historyManagerInstance = nil;
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
     
-    request.predicate = [NSPredicate predicateWithFormat:@"event == newWord"];
+    request.predicate = [NSPredicate predicateWithFormat:@"event == 'newWordEvent'"];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
     [request setFetchLimit:1];
     
@@ -190,7 +206,7 @@ HistoryManager* _historyManagerInstance = nil;
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
     
-    request.predicate = [NSPredicate predicateWithFormat:@"event == exam"];
+    request.predicate = [NSPredicate predicateWithFormat:@"event == 'examEvent'"];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
     [request setFetchLimit:1];
     
@@ -208,7 +224,7 @@ HistoryManager* _historyManagerInstance = nil;
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
     
-    request.predicate = [NSPredicate predicateWithFormat:@"(event == newWord || event = review) && stage = %d", stage];
+    request.predicate = [NSPredicate predicateWithFormat:@"(event == 'newWordEvent' || event = 'reviewEvent') && stage = %d", stage];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
     
     NSError *fetchError = nil;

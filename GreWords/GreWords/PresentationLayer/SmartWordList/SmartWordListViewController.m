@@ -28,7 +28,7 @@
         NSLog(@"Homo List Don't support add word");
         return;
     }
-        
+    
     
     _array = [_array arrayByAddingObject:aWord];
     SmartWordListSectionController* sectionController = [[SmartWordListSectionController alloc] initWithViewController:self];
@@ -37,10 +37,10 @@
     sectionController.type = self.type;
     [retractableControllers addObject:sectionController];
     
-//    NSArray *indexPath = @[[NSIndexPath indexPathForRow:0 inSection:_array.count - 1]];
-//    //[self.tableView beginUpdates];
-//    [self.tableView insertRowsAtIndexPaths:indexPath withRowAnimation:UITableViewRowAnimationBottom];
-//    //[self.tableView endUpdates];
+    //    NSArray *indexPath = @[[NSIndexPath indexPathForRow:0 inSection:_array.count - 1]];
+    //    //[self.tableView beginUpdates];
+    //    [self.tableView insertRowsAtIndexPaths:indexPath withRowAnimation:UITableViewRowAnimationBottom];
+    //    //[self.tableView endUpdates];
     [self.tableView reloadData];
     //[self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.3];
     [self addButtomTexture];
@@ -61,7 +61,7 @@
         if(self.type == SmartListType_Homo)
         {
             sectionController.homotitle = ((NSDictionary*)_array[i])[@"key"];
-             sectionController.homoDict = ((NSDictionary*)_array[i]);
+            sectionController.homoDict = ((NSDictionary*)_array[i]);
         }
         else
         {
@@ -71,7 +71,7 @@
         sectionController.type = self.type;
         [retractableControllers addObject:sectionController];
     }
-
+    
     topTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -1136.0f, 320.0f, 1136.0f)];
     topTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
     [self.tableView addSubview:topTexture];
@@ -118,6 +118,8 @@
             
             lastTableViewHeight = lastRect.origin.y + lastRect.size.height ;
             
+            NSLog(@"height:%f",lastTableViewHeight);
+         
             [UIView animateWithDuration:0.3 animations:^()
              {
                  downTexture.frame = CGRectMake(0.0f, lastTableViewHeight, 320.0f, 1136.0f);
@@ -150,8 +152,6 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if(section < 0)
-        return 0;
     GCRetractableSectionController* sectionController = [retractableControllers objectAtIndex:section];
     return sectionController.numberOfRow;
 }
@@ -182,6 +182,11 @@
     [CATransaction begin];
     [self.tableView beginUpdates];
     //[sectionController closeOthers];
+    //    [CATransaction setCompletionBlock: ^{
+    //        // Code to be executed upon completion
+    //        NSLog(@"wuwuwuw");
+    //        [self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.1f];
+    //    }];
     for(int i = 0; i < retractableControllers.count; i++)
     {
         SmartWordListSectionController* aController = [retractableControllers objectAtIndex:i];

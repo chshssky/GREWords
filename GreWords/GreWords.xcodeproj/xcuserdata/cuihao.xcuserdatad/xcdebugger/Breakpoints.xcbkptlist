@@ -7,27 +7,14 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "GreWords/PresentationLayer/WordDetail/WordDetailViewController.m"
-         timestampString = "391421100.041195"
+         filePath = "GreWords/PresentationLayer/WordDetail/NewWordDetailViewController.m"
+         timestampString = "391443851.62734"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "961"
-         endingLineNumber = "961"
-         landmarkName = "-AddShowButton"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "GreWords/PresentationLayer/WordDetail/WordDetailViewController.m"
-         timestampString = "391421178.203865"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "989"
-         endingLineNumber = "989"
-         landmarkName = "-rightButtonPushed:"
-         landmarkType = "5">
+         startingLineNumber = "445"
+         endingLineNumber = "445"
+         landmarkName = "@implementation NewWordDetailViewController"
+         landmarkType = "3">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>
