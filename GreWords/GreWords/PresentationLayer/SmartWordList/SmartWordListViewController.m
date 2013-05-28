@@ -118,8 +118,6 @@
             
             lastTableViewHeight = lastRect.origin.y + lastRect.size.height ;
             
-            NSLog(@"height:%f",lastTableViewHeight);
-            
             [UIView animateWithDuration:0.3 animations:^()
              {
                  downTexture.frame = CGRectMake(0.0f, lastTableViewHeight, 320.0f, 1136.0f);
