@@ -233,8 +233,6 @@
     }
 }
 
-
-
 #pragma mark - two scrollview and load detail Methods
 
 //加载单词内容进入数组
