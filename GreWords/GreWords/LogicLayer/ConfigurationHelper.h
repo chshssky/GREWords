@@ -11,6 +11,7 @@
 
 @interface ConfigurationHelper : NSObject
 
+#pragma mark -- setting property
 @property (nonatomic) bool meaningVisibility;
 @property (nonatomic) bool sampleSentenceVisibility;
 @property (nonatomic) bool homoionymVisibility;
@@ -19,7 +20,14 @@
 @property (nonatomic,retain) NSDate* freshWordAlertTime;
 @property (nonatomic,retain) NSDate* reviewAlertTime;
 
+
+#pragma mark -- guide property
+
+@property (nonatomic) bool dashboardGuideHasShown;
+
+
 +(ConfigurationHelper*)instance;
+
 -(void)resetAllData;
 -(void)initData;
 

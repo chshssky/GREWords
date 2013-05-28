@@ -39,8 +39,21 @@ ConfigurationHelper* _configurationHelperInstance = nil;
     [ud synchronize];
 }
 
-#pragma mark bool getter and setters 
 
+#pragma mark - Guide bool values
+-(bool)dashboardGuideHasShown
+{
+    return [self boolPlistGetter:@"dashboardGuideHasShown"];
+}
+-(void)setDashboardGuideHasShown:(bool)value
+{
+    [self boolPlistSetter:value key:@"dashboardGuideHasShown"];
+}
+
+
+
+#pragma mark - Setting values
+#pragma mark bool values
 -(bool)meaningVisibility
 {
     return [self boolPlistGetter:@"meaningVisibility"];
@@ -77,7 +90,7 @@ ConfigurationHelper* _configurationHelperInstance = nil;
     [self boolPlistSetter:antonymVisiblity key:@"antonymVisiblity"];
 }
 
-#pragma mark NSDate setter and getter
+#pragma mark NSDate values
 
 -(NSDate*)freshWordAlertTime
 {
@@ -153,7 +166,7 @@ ConfigurationHelper* _configurationHelperInstance = nil;
 
 
 
-#pragma mark system function
+#pragma mark - system function
 
 -(void)resetAllData
 {
