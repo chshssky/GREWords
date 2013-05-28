@@ -18,14 +18,14 @@
         STAGE_3 = 2,
         STAGE_4 = 3
     };
+
 #define NEWWORDEVENT_STAGE_NOW @"stage"
-#define NEWWORDEVENT_UNIT @"unit"
-#define NEWWORDEVENT_ROUNG @"round"
-#define NEWWORDEVENT_ORDER_IN_UNIT @"orderInUnit"
+#define NEWWORDEVENT_MAX_ID @"maxID"
+#define NEWWORDEVENT_INDEX @"index"
+#define NEWWORDEVENT_REVIEW_ENABLE @"reviewEnable"
 
 #define REVIEWEVENT_STAGE_NOW @"stage"
-#define REVIEWEVENT_UNIT @"unit"
-#define REVIEWEVENT_ORDER_IN_UNIT @"orderInUnit"
+#define REVIEWEVENT_INDEX @"index"
 
 #define EXAMEVENT_DIFFICULTY @"difficulty"
 

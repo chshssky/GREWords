@@ -19,6 +19,12 @@
 #import <QuartzCore/QuartzCore.h>
 #import "WholeSmartWordViewController.h"
 #import "WordTaskGenerator.h"
+#import "NewWordEvent.h"
+#import "ReviewEvent.h"
+#import "ExamEvent.h"
+#import "HistoryManager.h"
+
+
 
 #define TaskWordNumber 200
 
@@ -139,9 +145,9 @@
     // 从数据库中读取现在的状态
     
     
-    self.indexOfWordIDToday = 799;
-    self.maxWordID = 199;
-    self.reviewEnable = YES;
+    self.indexOfWordIDToday = 0;
+    self.maxWordID = 0;
+    self.reviewEnable = NO;
     self.wrongWordCount = 0;
 
     
@@ -294,35 +300,68 @@
             
             
         } else {
-
-        NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
+            
+            
+            [self createNewWordEvent];
+            
+            NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
         
-        vc.maxWordID = self.maxWordID;
-        vc.indexOfWordIDToday = self.indexOfWordIDToday;
-        vc.day = self.day;
-        vc.changePage = 10 - (self.maxWordID % 10);
-        vc.delegate = self;
+            vc.maxWordID = self.maxWordID;
+            vc.indexOfWordIDToday = self.indexOfWordIDToday;
+            vc.day = self.day;
+            vc.changePage = 10 - (self.maxWordID % 10);
+            vc.delegate = self;
         
-        SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
-        leftController.type = SmartListType_Slide;
-        leftController.array = @[];
-        
+            SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
+            leftController.type = SmartListType_Slide;
+            leftController.array = @[];
+            
             for (int i = 0; i < self.maxWordID; i++) {
                 WordEntity *addWord = [[WordHelper instance] wordWithID:i];
                 [leftController addWord:addWord];
             }
 
-        IIViewDeckController* deckController =  [[IIViewDeckController alloc]
+            IIViewDeckController* deckController =  [[IIViewDeckController alloc]
                                                  initWithCenterViewController:vc
                                                 leftViewController:leftController
                                                 rightViewController:nil];
         
 
-        deckController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+            deckController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
         
-        [self presentViewController:deckController animated:YES completion:nil];
+            [self presentViewController:deckController animated:YES completion:nil];
         }
     }];
+}
+
+- (void)createNewWordEvent
+{
+    HistoryManager *historyManager = [HistoryManager instance];
+    
+    NewWordEvent *newWordEve = [[NewWordEvent alloc] init];
+    newWordEve.eventType = @"NewWordEvent";
+    newWordEve.wrongWordCount = self.wrongWordCount;
+    newWordEve.totalWordCount = 600;
+    newWordEve.startTime = [self getNowDate];
+    
+    newWordEve.reviewEnable = self.reviewEnable;
+    newWordEve.stage_now = STAGE_1;
+    newWordEve.indexOfWordToday = self.indexOfWordIDToday;
+    newWordEve.maxWordID = self.maxWordID;
+    
+    [historyManager addEvent:newWordEve];
+}
+
+- (NSDate *)getNowDate
+{
+    NSTimeZone *zone = [NSTimeZone defaultTimeZone];//获得当前应用程序默认的时区
+    NSInteger interval = [zone secondsFromGMTForDate:[NSDate date]];//以秒为单位返回当前应用程序与世界标准时间（格林威尼时间）的时差
+//    NSDate *localeDate = [[NSDate date] dateByAddingTimeInterval:interval];
+    NSDate *nowDate=[NSDate dateWithTimeIntervalSinceNow:interval];
+//    NSLog(@"interval===%i",interval);
+//    NSLog(@"localeDate==%@",localeDate);
+//    NSLog(@"nowDate==%@",nowDate);
+    return nowDate;
 }
 
 - (void)resetIndexOfWordList:(int)remainWords
@@ -374,6 +413,10 @@
     self.reviewEnable = YES;
 }
 
+- (BOOL)getReviewEnable
+{
+    return self.reviewEnable;
+}
 
 - (void)GoToReviewWithWord:(int)wordIndex andThe:(int)maxWordNum
 {

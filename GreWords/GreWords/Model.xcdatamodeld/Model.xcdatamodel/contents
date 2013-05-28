@@ -4,7 +4,7 @@
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="event" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="info" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="info" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="totalWordCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="wrongWordCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>

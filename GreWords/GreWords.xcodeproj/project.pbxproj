@@ -17,6 +17,9 @@
 		3FA4849117142BF9003E88A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848D17142BF9003E88A6 /* InfoPlist.strings */; };
 		3FA4849217142BF9003E88A6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848F17142BF9003E88A6 /* MainStoryboard.storyboard */; };
 		3FA484C41719590D003E88A6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA484C31719590D003E88A6 /* QuartzCore.framework */; };
+		3FB1CF311754A4E500017F88 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF301754A4E500017F88 /* History.m */; };
+		3FB1CF341754A4E500017F88 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF331754A4E500017F88 /* Note.m */; };
+		3FB1CF371754A4E600017F88 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF361754A4E600017F88 /* Word.m */; };
 		7324846C17524D860058A6DD /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7324846A17524D860058A6DD /* NoteViewController.m */; };
 		7324846D17524D860058A6DD /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7324846B17524D860058A6DD /* NoteViewController.xib */; };
 		732B748D17449E1400612277 /* flipcard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4E21C561743C2C4001A7EEF /* flipcard.plist */; };
@@ -3491,12 +3494,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3F0852D7174288F00043EFBE /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
-		3F0852D8174288F00043EFBE /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
-		3F0852DA174288F00043EFBE /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
-		3F0852DB174288F00043EFBE /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
-		3F0852DD174288F10043EFBE /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
-		3F0852DE174288F10043EFBE /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
 		3F0852E0174BB5D90043EFBE /* DashboardProtocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardProtocal.h; sourceTree = "<group>"; };
 		3F70EC871701CADB00327770 /* GreWords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreWords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F70EC8A1701CADB00327770 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -3509,6 +3506,12 @@
 		3FA4848917142BC0003E88A6 /* GreWordsAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreWordsAppDelegate.m; sourceTree = "<group>"; };
 		3FA4848B17142BD4003E88A6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3FA484C31719590D003E88A6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3FB1CF2F1754A4E500017F88 /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
+		3FB1CF301754A4E500017F88 /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
+		3FB1CF321754A4E500017F88 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		3FB1CF331754A4E500017F88 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		3FB1CF351754A4E600017F88 /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
+		3FB1CF361754A4E600017F88 /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
 		7324846917524D860058A6DD /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteViewController.h; path = PresentationLayer/Note/NoteViewController.h; sourceTree = "<group>"; };
 		7324846A17524D860058A6DD /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteViewController.m; path = PresentationLayer/Note/NoteViewController.m; sourceTree = "<group>"; };
 		7324846B17524D860058A6DD /* NoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteViewController.xib; path = PresentationLayer/Note/NoteViewController.xib; sourceTree = "<group>"; };
@@ -7412,12 +7415,12 @@
 		E466E78A173BD4CB001847D0 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				3F0852DD174288F10043EFBE /* History.h */,
-				3F0852DE174288F10043EFBE /* History.m */,
-				3F0852DA174288F00043EFBE /* Word.h */,
-				3F0852DB174288F00043EFBE /* Word.m */,
-				3F0852D7174288F00043EFBE /* Note.h */,
-				3F0852D8174288F00043EFBE /* Note.m */,
+				3FB1CF351754A4E600017F88 /* Word.h */,
+				3FB1CF361754A4E600017F88 /* Word.m */,
+				3FB1CF321754A4E500017F88 /* Note.h */,
+				3FB1CF331754A4E500017F88 /* Note.m */,
+				3FB1CF2F1754A4E500017F88 /* History.h */,
+				3FB1CF301754A4E500017F88 /* History.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -14473,6 +14476,9 @@
 				E423DECC174A77280079CB60 /* NSDate-Utilities.m in Sources */,
 				7324846C17524D860058A6DD /* NoteViewController.m in Sources */,
 				E404ADBA1753975200004FDC /* WelcomeViewController.m in Sources */,
+				3FB1CF311754A4E500017F88 /* History.m in Sources */,
+				3FB1CF341754A4E500017F88 /* Note.m in Sources */,
+				3FB1CF371754A4E600017F88 /* Word.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

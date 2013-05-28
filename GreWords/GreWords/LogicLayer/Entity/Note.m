@@ -2,7 +2,7 @@
 //  Note.m
 //  GreWords
 //
-//  Created by 崔 昊 on 13-5-14.
+//  Created by 崔 昊 on 13-5-28.
 //  Copyright (c) 2013年 Cui Hao. All rights reserved.
 //
 
@@ -13,7 +13,7 @@
 @implementation Note
 
 @dynamic content;
-@dynamic note2word;
 @dynamic createAt;
+@dynamic note2word;
 
 @end

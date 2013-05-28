@@ -449,9 +449,16 @@
         }
     }
 }
+#warning the New Fucktion~ 看这里 看这里 看这里
+
+- (void)seetherethere_bobo_a_i_shi_de_ru
+{
+    
+}
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    [self seetherethere_bobo_a_i_shi_de_ru];
     for (int i=self.viewControlArray.count-1; i>self.currentPage; i--) {
         if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
