@@ -139,9 +139,9 @@
     // 从数据库中读取现在的状态
     
     
-    self.indexOfWordIDToday = 799;
-    self.maxWordID = 199;
-    self.reviewEnable = YES;
+    self.indexOfWordIDToday = 0;
+    self.maxWordID = 0;
+    self.reviewEnable = NO;
     self.wrongWordCount = 0;
 
     
