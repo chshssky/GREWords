@@ -64,6 +64,7 @@
 
 -(IBAction)notePressed:(id)sender
 {
+    [NSNotificationCenter postShowNoteForWordNotification:self.word];
     //NSLog(@"notePressed");
 }
 
