@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import <IAThreadSafeCoreData/IAThreadSafeManagedObject.h>
 
-
-@interface History : NSManagedObject
+@interface History : IAThreadSafeManagedObject
 
 @property (nonatomic, retain) NSNumber * duration;
 @property (nonatomic, retain) NSDate * endTime;

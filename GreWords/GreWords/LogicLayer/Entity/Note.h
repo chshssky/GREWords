@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import <IAThreadSafeCoreData/IAThreadSafeManagedObject.h>
 
 @class Word;
 
-@interface Note : NSManagedObject
+@interface Note : IAThreadSafeManagedObject
 
 @property (nonatomic, retain) NSString * content;
 @property (nonatomic, retain) NSDate * createAt;

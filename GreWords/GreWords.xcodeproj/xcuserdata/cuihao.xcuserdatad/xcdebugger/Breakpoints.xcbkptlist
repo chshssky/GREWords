@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GreWords/PresentationLayer/WordDetail/NewWordDetailViewController.m"
-         timestampString = "391443851.62734"
+         timestampString = "391446293.954083"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "445"
-         endingLineNumber = "445"
+         startingLineNumber = "446"
+         endingLineNumber = "446"
          landmarkName = "@implementation NewWordDetailViewController"
          landmarkType = "3">
       </FileBreakpoint>
