@@ -13,7 +13,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "961"
          endingLineNumber = "961"
-         landmarkName = "-rightButtonPushed:"
+         landmarkName = "-AddShowButton"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -26,7 +26,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "989"
          endingLineNumber = "989"
-         landmarkName = "-newWordCompleted"
+         landmarkName = "-rightButtonPushed:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
