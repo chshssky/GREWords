@@ -87,21 +87,21 @@ float sumHeight = 10.0;//10.0;
     NSDictionary *wordDictionary = wordEntity.data;
     NSString *theWord = [wordDictionary objectForKey:@"word"];
     if (theWord == nil) {
-        NSLog(@"找不到这个单词的名称");
+        //NSLog(@"找不到这个单词的名称");
     }else{
         //do nothing...
     }
     
     NSString *thePhonetic = [wordDictionary objectForKey:@"phonetic"];
     if (thePhonetic == nil) {
-        NSLog(@"找不到这个单词的音标");
+        //NSLog(@"找不到这个单词的音标");
     }else{
         //do nothing...
     }
     
     NSArray *theDetail = [wordDictionary objectForKey:@"detail"];
     if (theDetail == nil) {
-        NSLog(@"找不到这个单词的内容");
+        //NSLog(@"找不到这个单词的内容");
     }else{
         for (int i=0; i<theDetail.count; i++) {
             sumHeight += 5.0;
@@ -121,7 +121,7 @@ float sumHeight = 10.0;//10.0;
 {
     NSString *theUsage = [wordMeaningDictionary objectForKey:@"usage"];
     if (theUsage == nil) {
-        NSLog(@"找不到这个单词的释义");
+        //NSLog(@"找不到这个单词的释义");
     }else{
         //////////////////
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, h, 80, 25)];
@@ -208,7 +208,7 @@ float sumHeight = 10.0;//10.0;
     
     NSString *theExample = [wordMeaningDictionary objectForKey:@"example"];
     if (theExample == nil) {
-        NSLog(@"找不到这个单词的例句");
+        //NSLog(@"找不到这个单词的例句");
     }else{
         if ([[options objectForKey:@"shouldShowSampleSentence"] boolValue]) {
             ////////////////////
@@ -236,7 +236,7 @@ float sumHeight = 10.0;//10.0;
     
     NSString *theHomoionym = [wordMeaningDictionary objectForKey:@"homoionym"];
     if (theHomoionym == nil) {
-        NSLog(@"找不到这个单词的同义词");
+        //NSLog(@"找不到这个单词的同义词");
     }else{
         if ([[options objectForKey:@"shouldShowSynonyms"] boolValue]) {
             ////////////////////
@@ -262,7 +262,7 @@ float sumHeight = 10.0;//10.0;
     }
     NSString *theAntonym = [wordMeaningDictionary objectForKey:@"antonym"];
     if (theAntonym == nil) {
-        NSLog(@"找不到这个单词的反义词");
+        //NSLog(@"找不到这个单词的反义词");
     }else{
         if ([[options objectForKey:@"shouldShowAntonyms"] boolValue]) {
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(60, sumHeight, 65, 25)];

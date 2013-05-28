@@ -156,13 +156,13 @@
 #pragma mark - Smart Word List View Scroll Delegate
 -(void)smartWordListWillBeginDragging:(SmartWordListViewController*)list
 {
-    NSLog(@"will begin draggin");
+    //NSLog(@"will begin draggin");
     _tabbarYBeforeScroll = self.topView.frame.origin.y;
 }
 
 -(void)smartWordList:(SmartWordListViewController*)list didTranslationYSinceLast:(CGFloat)traslation
 {
-    NSLog(@"didTranslationYSinceLast");
+    //NSLog(@"didTranslationYSinceLast");
     CGFloat contentOffsetY = traslation;
     CGRect frame = self.topView.frame;
     

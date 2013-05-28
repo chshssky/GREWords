@@ -58,13 +58,13 @@
 
 -(IBAction)soundPressed:(id)sender
 {
-    NSLog(@"soundPressed");
+    //NSLog(@"soundPressed");
     [[WordSpeaker instance] readWord:self.wordLabel.text];
 }
 
 -(IBAction)notePressed:(id)sender
 {
-    NSLog(@"notePressed");
+    //NSLog(@"notePressed");
 }
 
 @end
