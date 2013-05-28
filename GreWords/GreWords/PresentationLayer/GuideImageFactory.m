@@ -57,9 +57,12 @@
                        @{
                            @"image3.5" : @"reviewsecond3.5.png",
                            @"image4" : @"reviewsecond4.png"
+                           },
+                   @"dashboardreview":
+                       @{
+                           @"image3.5" : @"dashboardreview3.5.png",
+                           @"image4" : @"dashboardreview4.png"
                            }
-
-                 
                  
                 
                  };
@@ -87,6 +90,9 @@
             break;
         case GuideType_ReviewSecond:
             return @"reviewsecond";
+            break;
+        case GuideType_DashboardReview:
+            return @"dashboardreview";
             break;
         default:
             break;
