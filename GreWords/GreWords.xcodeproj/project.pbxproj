@@ -33,8 +33,6 @@
 		738B76CB174247A000D66FC0 /* learning_note_finished.png in Resources */ = {isa = PBXBuildFile; fileRef = 738B76C9174247A000D66FC0 /* learning_note_finished.png */; };
 		738B76CC174247A000D66FC0 /* learning_note_finished@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 738B76CA174247A000D66FC0 /* learning_note_finished@2x.png */; };
 		738B76CF1742601600D66FC0 /* noCopyTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 738B76CE1742601600D66FC0 /* noCopyTextView.m */; };
-		73A80ECF174642D60066DA03 /* WordNoteLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A80ECD174642D60066DA03 /* WordNoteLayoutViewController.m */; };
-		73A80ED0174642D60066DA03 /* WordNoteLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A80ECE174642D60066DA03 /* WordNoteLayoutViewController.xib */; };
 		73A80ED9174643220066DA03 /* WordCardLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A80ED7174643220066DA03 /* WordCardLayoutViewController.m */; };
 		73A80EDA174643220066DA03 /* WordCardLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A80ED8174643220066DA03 /* WordCardLayoutViewController.xib */; };
 		73D209AC1714367F00C718A6 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D209AB1714367F00C718A6 /* CoreText.framework */; };
@@ -3533,6 +3531,8 @@
 		E4CDB17317550576004993D6 /* list4.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB16F17550576004993D6 /* list4.png */; };
 		E4CDB17417550576004993D6 /* list3.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB17017550576004993D6 /* list3.5@2x.png */; };
 		E4CDB17517550576004993D6 /* list4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB17117550576004993D6 /* list4@2x.png */; };
+		E4CDB17917550BA4004993D6 /* WordNoteLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CDB17617550BA4004993D6 /* WordNoteLayoutViewController.m */; };
+		E4CDB17A17550BA4004993D6 /* WordNoteLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB17817550BA4004993D6 /* WordNoteLayoutViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -3569,9 +3569,6 @@
 		738B76CA174247A000D66FC0 /* learning_note_finished@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_note_finished@2x.png"; sourceTree = "<group>"; };
 		738B76CD1742601600D66FC0 /* noCopyTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = noCopyTextView.h; path = ../PresentationLayer/WordDetail/noCopyTextView.h; sourceTree = "<group>"; };
 		738B76CE1742601600D66FC0 /* noCopyTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = noCopyTextView.m; path = ../PresentationLayer/WordDetail/noCopyTextView.m; sourceTree = "<group>"; };
-		73A80ECC174642D60066DA03 /* WordNoteLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordNoteLayoutViewController.h; path = ../../../WordNoteLayoutViewController.h; sourceTree = "<group>"; };
-		73A80ECD174642D60066DA03 /* WordNoteLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordNoteLayoutViewController.m; path = ../../../WordNoteLayoutViewController.m; sourceTree = "<group>"; };
-		73A80ECE174642D60066DA03 /* WordNoteLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WordNoteLayoutViewController.xib; path = ../../../WordNoteLayoutViewController.xib; sourceTree = "<group>"; };
 		73A80ED6174643220066DA03 /* WordCardLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordCardLayoutViewController.h; sourceTree = "<group>"; };
 		73A80ED7174643220066DA03 /* WordCardLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordCardLayoutViewController.m; sourceTree = "<group>"; };
 		73A80ED8174643220066DA03 /* WordCardLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordCardLayoutViewController.xib; sourceTree = "<group>"; };
@@ -7124,6 +7121,9 @@
 		E4CDB16F17550576004993D6 /* list4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list4.png; sourceTree = "<group>"; };
 		E4CDB17017550576004993D6 /* list3.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list3.5@2x.png"; sourceTree = "<group>"; };
 		E4CDB17117550576004993D6 /* list4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list4@2x.png"; sourceTree = "<group>"; };
+		E4CDB17617550BA4004993D6 /* WordNoteLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordNoteLayoutViewController.m; sourceTree = "<group>"; };
+		E4CDB17717550BA4004993D6 /* WordNoteLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordNoteLayoutViewController.h; sourceTree = "<group>"; };
+		E4CDB17817550BA4004993D6 /* WordNoteLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordNoteLayoutViewController.xib; sourceTree = "<group>"; };
 		E4E21C561743C2C4001A7EEF /* flipcard.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = flipcard.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -7265,9 +7265,9 @@
 		73A80EDD174645720066DA03 /* WordNoteLayout */ = {
 			isa = PBXGroup;
 			children = (
-				73A80ECC174642D60066DA03 /* WordNoteLayoutViewController.h */,
-				73A80ECD174642D60066DA03 /* WordNoteLayoutViewController.m */,
-				73A80ECE174642D60066DA03 /* WordNoteLayoutViewController.xib */,
+				E4CDB17617550BA4004993D6 /* WordNoteLayoutViewController.m */,
+				E4CDB17717550BA4004993D6 /* WordNoteLayoutViewController.h */,
+				E4CDB17817550BA4004993D6 /* WordNoteLayoutViewController.xib */,
 			);
 			name = WordNoteLayout;
 			sourceTree = "<group>";
@@ -14519,7 +14519,6 @@
 				738B76CC174247A000D66FC0 /* learning_note_finished@2x.png in Resources */,
 				73F309E4174430BE00DB551B /* learning_downCoverWithButton.png in Resources */,
 				73F309E5174430BE00DB551B /* learning_downCoverWithButton@2x.png in Resources */,
-				73A80ED0174642D60066DA03 /* WordNoteLayoutViewController.xib in Resources */,
 				73A80EDA174643220066DA03 /* WordCardLayoutViewController.xib in Resources */,
 				73F2E63E174C765900E5D88B /* learning_downCoverWithButton2.png in Resources */,
 				73F2E63F174C765900E5D88B /* learning_downCoverWithButton2@2x.png in Resources */,
@@ -14594,6 +14593,7 @@
 				E4CDB17317550576004993D6 /* list4.png in Resources */,
 				E4CDB17417550576004993D6 /* list3.5@2x.png in Resources */,
 				E4CDB17517550576004993D6 /* list4@2x.png in Resources */,
+				E4CDB17A17550BA4004993D6 /* WordNoteLayoutViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14648,7 +14648,6 @@
 				E43908C9174108A000E36078 /* UIImage+Opacity.m in Sources */,
 				735ED82F174151430008F945 /* UIImage+StackBlur.m in Sources */,
 				738B76CF1742601600D66FC0 /* noCopyTextView.m in Sources */,
-				73A80ECF174642D60066DA03 /* WordNoteLayoutViewController.m in Sources */,
 				73A80ED9174643220066DA03 /* WordCardLayoutViewController.m in Sources */,
 				E423DEC9174A3EB00079CB60 /* NSNotificationCenter+Addition.m in Sources */,
 				E423DECC174A77280079CB60 /* NSDate-Utilities.m in Sources */,
@@ -14659,6 +14658,7 @@
 				3FB1CF371754A4E600017F88 /* Word.m in Sources */,
 				E404ADE61754A31F00004FDC /* SplashViewController.m in Sources */,
 				E404ADE91754D43700004FDC /* GuideImageFactory.m in Sources */,
+				E4CDB17917550BA4004993D6 /* WordNoteLayoutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
