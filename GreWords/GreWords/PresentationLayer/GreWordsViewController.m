@@ -388,10 +388,10 @@
 {
     self.indexOfWordIDToday = wordIndex;
     self.maxWordID = maxWordNum;
-    [self performSelector:@selector(GotoNewWordSelector:) withObject:nil afterDelay:0];
+    [self performSelector:@selector(GotoNewWordSelector:) withObject:[NSNumber numberWithBool:whetherHaveDownImage] afterDelay:0];
 }
 
-- (void)GotoNewWordSelector:(BOOL)whetherHaveDownImage
+- (void)GotoNewWordSelector:(NSNumber *)whetherHaveDownImage
 {
     NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
     
@@ -418,7 +418,7 @@
         
     [self presentViewController:deckController animated:NO completion:nil];
     
-    if (whetherHaveDownImage == YES) {
+    if ([whetherHaveDownImage boolValue] == YES) {
         [vc removeDownImageAnimation_withDownCover];
     }else{
         [vc removeDownImageAnimation_withNoDownCover];
