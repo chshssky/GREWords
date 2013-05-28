@@ -129,7 +129,7 @@
     }
                      completion:^(BOOL c)
     {
-        //[[ConfigurationHelper instance] setGuideForTypeHasShown:sender.view.tag value:YES];
+        [[ConfigurationHelper instance] setGuideForTypeHasShown:sender.view.tag value:YES];
         [sender.view removeFromSuperview];
     }];
 }

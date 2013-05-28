@@ -460,16 +460,19 @@
         }
     }
 }
-#warning the New Fucktion~ 看这里 看这里 看这里
 
-- (void)seetherethere_bobo_a_i_shi_de_ru
+- (void)addGuideSecond
 {
-    
+    if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_NewWordSecond])
+    {
+        guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_NewWordSecond];
+        [self.view addSubview:guideImageView];
+    }
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    [self seetherethere_bobo_a_i_shi_de_ru];
+    [self addGuideSecond];
     for (int i=self.viewControlArray.count-1; i>self.currentPage; i--) {
         if ((NSNull *)[self.viewControlArray objectAtIndex:i] != [NSNull null]) {
             [[self.viewControlArray objectAtIndex:i] setContentOffset:CGPointMake(0, self.UpImage.alpha*10) animated:YES];
@@ -587,6 +590,11 @@
 {
     self.viewDeckController.panningMode = IIViewDeckNavigationBarOrOpenCenterPanning;
     
+    if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_NewWordThird])
+    {
+        guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_NewWordThird];
+        [self.viewDeckController.view addSubview:guideImageView];
+    }
 }
 
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController didChangeOffset:(CGFloat)offset orientation:(IIViewDeckOffsetOrientation)orientation panning:(BOOL)panning
