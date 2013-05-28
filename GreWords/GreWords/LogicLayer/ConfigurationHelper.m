@@ -9,6 +9,7 @@
 #import "ConfigurationHelper.h"
 #import "MyDataStorage.h"
 #import "Word.h"
+#import "GuideImageFactory.h"
 
 @implementation ConfigurationHelper
 
@@ -41,16 +42,16 @@ ConfigurationHelper* _configurationHelperInstance = nil;
 
 
 #pragma mark - Guide bool values
--(bool)dashboardGuideHasShown
+
+-(bool)guideForTypeHasShown:(GuideType)type
 {
-    return [self boolPlistGetter:@"dashboardGuideHasShown"];
-}
--(void)setDashboardGuideHasShown:(bool)value
-{
-    [self boolPlistSetter:value key:@"dashboardGuideHasShown"];
+    return [self boolPlistGetter:[[GuideImageFactory instance] keyForType:type]];
 }
 
-
+-(void)setGuideForTypeHasShown:(GuideType)type value:(bool)value
+{
+    [self boolPlistSetter:value key:[[GuideImageFactory instance] keyForType:type]];
+}
 
 #pragma mark - Setting values
 #pragma mark bool values

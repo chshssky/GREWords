@@ -14,6 +14,8 @@
 @interface GreWordsViewController : UIViewController<DashboardProtocal,AwesomeMenuDelegate>
 {
     DashboardViewController *dashboard;
+    
+    UIImageView *guideImageView;
 }
 
 @property (assign, nonatomic) BOOL whetherAllowViewFrameChanged;

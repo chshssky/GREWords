@@ -79,6 +79,11 @@
 		E404ADE21754A14A00004FDC /* Welcome4_bg_960.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADDA1754A14A00004FDC /* Welcome4_bg_960.png */; };
 		E404ADE31754A14A00004FDC /* Welcome4_bg_960@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADDB1754A14A00004FDC /* Welcome4_bg_960@2x.png */; };
 		E404ADE61754A31F00004FDC /* SplashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E404ADE51754A31F00004FDC /* SplashViewController.m */; };
+		E404ADE91754D43700004FDC /* GuideImageFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = E404ADE81754D43600004FDC /* GuideImageFactory.m */; };
+		E404ADEF1754DA1800004FDC /* dashboard3.5.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADEB1754DA1800004FDC /* dashboard3.5.png */; };
+		E404ADF01754DA1800004FDC /* dashboard3.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADEC1754DA1800004FDC /* dashboard3.5@2x.png */; };
+		E404ADF11754DA1800004FDC /* dashboard4.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADED1754DA1800004FDC /* dashboard4.png */; };
+		E404ADF21754DA1800004FDC /* dashboard4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADEE1754DA1800004FDC /* dashboard4@2x.png */; };
 		E413E63B173BDA1F0009B55E /* SettingTabViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E413E637173BDA1F0009B55E /* SettingTabViewController.m */; };
 		E413E63C173BDA1F0009B55E /* SettingTabViewDeckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E413E639173BDA1F0009B55E /* SettingTabViewDeckViewController.m */; };
 		E418DA5F1713E5E8002C6743 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */; };
@@ -3586,6 +3591,12 @@
 		E404ADDB1754A14A00004FDC /* Welcome4_bg_960@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Welcome4_bg_960@2x.png"; sourceTree = "<group>"; };
 		E404ADE41754A31F00004FDC /* SplashViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplashViewController.h; sourceTree = "<group>"; };
 		E404ADE51754A31F00004FDC /* SplashViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SplashViewController.m; sourceTree = "<group>"; };
+		E404ADE71754D43600004FDC /* GuideImageFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuideImageFactory.h; sourceTree = "<group>"; };
+		E404ADE81754D43600004FDC /* GuideImageFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuideImageFactory.m; sourceTree = "<group>"; };
+		E404ADEB1754DA1800004FDC /* dashboard3.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dashboard3.5.png; sourceTree = "<group>"; };
+		E404ADEC1754DA1800004FDC /* dashboard3.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dashboard3.5@2x.png"; sourceTree = "<group>"; };
+		E404ADED1754DA1800004FDC /* dashboard4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dashboard4.png; sourceTree = "<group>"; };
+		E404ADEE1754DA1800004FDC /* dashboard4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dashboard4@2x.png"; sourceTree = "<group>"; };
 		E413E637173BDA1F0009B55E /* SettingTabViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTabViewController.m; sourceTree = "<group>"; };
 		E413E638173BDA1F0009B55E /* SettingTabViewDeckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTabViewDeckViewController.h; sourceTree = "<group>"; };
 		E413E639173BDA1F0009B55E /* SettingTabViewDeckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTabViewDeckViewController.m; sourceTree = "<group>"; };
@@ -7248,6 +7259,17 @@
 			path = Welcome;
 			sourceTree = "<group>";
 		};
+		E404ADEA1754DA1800004FDC /* Guide */ = {
+			isa = PBXGroup;
+			children = (
+				E404ADEB1754DA1800004FDC /* dashboard3.5.png */,
+				E404ADEC1754DA1800004FDC /* dashboard3.5@2x.png */,
+				E404ADED1754DA1800004FDC /* dashboard4.png */,
+				E404ADEE1754DA1800004FDC /* dashboard4@2x.png */,
+			);
+			path = Guide;
+			sourceTree = "<group>";
+		};
 		E41FF51C173FE6A30078E738 /* MHTabBarController */ = {
 			isa = PBXGroup;
 			children = (
@@ -7321,6 +7343,8 @@
 				E404ADB71753972200004FDC /* Welcome */,
 				E404ADE41754A31F00004FDC /* SplashViewController.h */,
 				E404ADE51754A31F00004FDC /* SplashViewController.m */,
+				E404ADE71754D43600004FDC /* GuideImageFactory.h */,
+				E404ADE81754D43600004FDC /* GuideImageFactory.m */,
 			);
 			path = PresentationLayer;
 			sourceTree = "<group>";
@@ -7480,6 +7504,7 @@
 		E466E7A7173BD4CB001847D0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E404ADEA1754DA1800004FDC /* Guide */,
 				E404ADBB175397BB00004FDC /* Welcome */,
 				E41FF5261740DF750078E738 /* SmartList */,
 				E466E7A8173BD4CB001847D0 /* Defaults */,
@@ -14450,6 +14475,10 @@
 				E404ADE11754A14A00004FDC /* Welcome3_960@2x.png in Resources */,
 				E404ADE21754A14A00004FDC /* Welcome4_bg_960.png in Resources */,
 				E404ADE31754A14A00004FDC /* Welcome4_bg_960@2x.png in Resources */,
+				E404ADEF1754DA1800004FDC /* dashboard3.5.png in Resources */,
+				E404ADF01754DA1800004FDC /* dashboard3.5@2x.png in Resources */,
+				E404ADF11754DA1800004FDC /* dashboard4.png in Resources */,
+				E404ADF21754DA1800004FDC /* dashboard4@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14511,6 +14540,7 @@
 				7324846C17524D860058A6DD /* NoteViewController.m in Sources */,
 				E404ADBA1753975200004FDC /* WelcomeViewController.m in Sources */,
 				E404ADE61754A31F00004FDC /* SplashViewController.m in Sources */,
+				E404ADE91754D43700004FDC /* GuideImageFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

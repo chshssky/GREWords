@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface ConfigurationHelper : NSObject
 
 #pragma mark -- setting property
@@ -23,8 +22,8 @@
 
 #pragma mark -- guide property
 
-@property (nonatomic) bool dashboardGuideHasShown;
-
+-(bool)guideForTypeHasShown:(GuideType)type;
+-(void)setGuideForTypeHasShown:(GuideType)type value:(bool)value;
 
 +(ConfigurationHelper*)instance;
 
