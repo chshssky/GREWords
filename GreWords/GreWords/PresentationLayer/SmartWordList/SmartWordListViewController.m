@@ -117,8 +117,6 @@
             CGRect lastRect = [self.tableView rectForRowAtIndexPath:lastIndex];
             
             lastTableViewHeight = lastRect.origin.y + lastRect.size.height ;
-            
-            NSLog(@"height:%f",lastTableViewHeight);
          
             [UIView animateWithDuration:0.3 animations:^()
              {
