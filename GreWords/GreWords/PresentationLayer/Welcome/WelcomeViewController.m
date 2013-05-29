@@ -46,20 +46,25 @@
 
 -(IBAction)goPressed:(id)sender
 {
-    NSLog(@"Go Pressed");
-    UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"mainScreen"];
-    
-//    CABasicAnimation *scaleAnim = [CABasicAnimation animationWithKeyPath:@"transform"];
-//    scaleAnim.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(2, 2, 1)];
-//    scaleAnim.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)];
-//    scaleAnim.removedOnCompletion = YES;
-//    CAAnimationGroup *animGroup = [CAAnimationGroup animation];
-//    animGroup.animations = [NSArray arrayWithObjects:scaleAnim, nil];
-//    animGroup.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-//    animGroup.duration = 0.5;
-//    [self.view.layer addAnimation:animGroup forKey:nil];
-    
-    [self presentModalViewController:vc animated:YES];
+    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
+    scaleAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(2, 2, 1)];
+    scaleAnimation.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)];
+    scaleAnimation.removedOnCompletion = NO;
+    scaleAnimation.fillMode = kCAFillModeForwards;
+    scaleAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    scaleAnimation.duration = 0.3;
+    scaleAnimation.delegate = self;
+    [scaleAnimation setValue:@"removeGuide" forKey:@"id"];
+    [self.view.layer addAnimation:scaleAnimation forKey:nil];
+}
+
+- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
+{
+    if([[theAnimation valueForKey:@"id"] isEqual:@"removeGuide"])
+    {
+        UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"mainScreen"];
+        [self presentModalViewController:vc animated:NO];
+    }
 }
 
 - (void)viewDidUnload {
