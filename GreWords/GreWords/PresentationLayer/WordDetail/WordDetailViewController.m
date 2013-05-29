@@ -142,6 +142,7 @@
 
     [self DontShowMeaning];
     [TaskStatus instance].indexOfWordIDToday ++;
+    NSLog(@"%WordIndex:%d", [TaskStatus instance].indexOfWordIDToday);
 }
 
 - (void)viewDidLoad

@@ -410,6 +410,7 @@
     WordDetailViewController *vc = [[WordDetailViewController alloc] init];
     vc.delegate = self;
     [self presentViewController:vc animated:NO completion:nil];
+    
 }
 
 - (void)GoToNewWordWithDownImage:(BOOL)whetherHaveDownImage
@@ -420,9 +421,11 @@
 - (void)GotoNewWordSelector:(NSNumber *)whetherHaveDownImage
 {
     NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
+    NSLog(@"now:%d", [TaskStatus instance].indexOfWordIDToday);
 
     vc.delegate = self;
     vc.changePage = 10;
+    vc.beginWordID = [TaskStatus instance].indexOfWordIDToday;
     
     [dashboard minusData];
     
