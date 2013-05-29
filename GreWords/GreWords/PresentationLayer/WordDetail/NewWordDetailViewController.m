@@ -213,9 +213,9 @@
 {
     if (_note == nil) {
         _note = [[NoteViewController alloc] init];
+        _note.delegate = self;
     }
-    int wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:self.beginWordID + _currentPage] intValue];
-    [_note addNoteAt:self withWordID:wordID];
+    [_note addNoteAt:self withWordID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:self.beginWordID + _currentPage] intValue]];
     [_note.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_note.view];
     
@@ -625,6 +625,21 @@
     
     _blackView.alpha = 1.0/500.0*(300.0-offset);
     
+}
+
+#pragma mark - NoteViewControllerProtocol Methods
+- (void)whenNoteAppeared
+{
+    [self.view removeGestureRecognizer:_noteRecognizer];
+    self.viewDeckController.panningMode = IIViewDeckNoPanning;
+}
+- (void)whenNoteDismissed
+{
+    _noteRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeDown:)];
+    _noteRecognizer.delegate = self;
+    _noteRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
+    [self.view addGestureRecognizer:_noteRecognizer];
+    self.viewDeckController.panningMode = IIViewDeckAllViewsPanning;
 }
 
 @end

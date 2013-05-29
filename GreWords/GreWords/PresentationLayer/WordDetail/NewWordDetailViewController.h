@@ -10,18 +10,14 @@
 #import "NewWordDetailViewControllerProtocol.h"
 #import "IIViewDeckController.h"
 #import "UIScrollView+AllowAllTouches.h"
+#import "NoteViewController.h"
 
-@interface NewWordDetailViewController : UIViewController <UIScrollViewDelegate,IIViewDeckControllerDelegate,UIGestureRecognizerDelegate>
+@interface NewWordDetailViewController : UIViewController <UIScrollViewDelegate,IIViewDeckControllerDelegate,UIGestureRecognizerDelegate, NoteViewControllerProtocol>
 
 @property (strong, nonatomic) id<NewWordDetailViewControllerProtocol> delegate;
 
-//@property (nonatomic) int indexOfWordIDToday;
-//@property (nonatomic) int maxWordID;
-//@property (nonatomic) int day;
-
 @property (nonatomic) int beginWordID;
 @property (nonatomic) int changePage;
-
 
 - (void)removeDownImageAnimation_withDownCover;
 - (void)removeDownImageAnimation_withNoDownCover;

@@ -461,8 +461,9 @@ double radians(float degrees) {
     [self addDownNoteImageAnimation];
     [self addUpNoteImageAnimation];
     [self addNoteTextViewAnimation:(int)wordID];
-    
     self.tempWordID = wordID;
+    [self.delegate whenNoteAppeared];
+    
 }
 
 -(void)removeNote
@@ -471,6 +472,7 @@ double radians(float degrees) {
     [self removeDownNoteImageAnimation];
     [self removeUpNoteImageAnimation];
     [self removeNoteTextViewAnimation:self.tempWordID];
+    [self.delegate whenNoteDismissed];
 }
 
 
