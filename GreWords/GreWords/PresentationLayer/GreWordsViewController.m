@@ -412,7 +412,7 @@
     [self presentViewController:vc animated:NO completion:nil];
 }
 
-- (void)GoToNewWordWithWordwithDownImage:(BOOL)whetherHaveDownImage
+- (void)GoToNewWordWithDownImage:(BOOL)whetherHaveDownImage
 {
     [self performSelector:@selector(GotoNewWordSelector:) withObject:[NSNumber numberWithBool:whetherHaveDownImage] afterDelay:0];
 }
