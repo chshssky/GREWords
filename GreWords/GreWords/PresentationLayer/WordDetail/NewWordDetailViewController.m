@@ -34,8 +34,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *DownImage;
 @property (weak, nonatomic) IBOutlet UIButton *PronounceButton;
-@property (nonatomic) BOOL whetherWordIsRead;
-@property (nonatomic) BOOL whetherSetNo;
 @property (weak, nonatomic) IBOutlet UIScrollView *pageControlView;
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wordSoundLabel;
@@ -152,8 +150,7 @@
     [self.backButton.superview bringSubviewToFront:self.backButton];
     
     [[WordSpeaker instance] readWord:self.wordLabel.text];
-    _whetherWordIsRead = NO;
-    _whetherSetNo = NO;
+
     
     //[self.delegate ChangeWordWithIndex:self.beginWordID + _currentPage WithMax:self.maxWordID];
     
@@ -291,7 +288,21 @@
     
 }
 
-
+- (void)nextWordAction
+{
+    [TaskStatus instance].indexOfWordIDToday = self.beginWordID + _currentPage;
+    [TaskStatus instance].maxWordID =   [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue];
+    //把单词加入抽屉
+    SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
+    WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:self.beginWordID + _currentPage - 1 ] intValue]];
+    if ([left.array indexOfObject:addWord] == NSNotFound) {
+        [left addWord:addWord];
+    }
+    [[WordSpeaker instance] readWord:self.wordLabel.text];
+    
+    NSLog(@"ENDDDDDDD %d :: %d", [TaskStatus instance].indexOfWordIDToday, [TaskStatus instance].maxWordID);
+    
+}
 
 //加载单词名称进入数组
 - (void)loadWordName:(int)index
@@ -379,11 +390,7 @@
         }
         if(translation.x > 0)
         {
-            if (_whetherSetNo) {
-                _whetherSetNo = NO;
-            } else {
-                _whetherWordIsRead = YES;
-            }
+
             [scrollView setContentOffset:CGPointMake(self.pageControlView.frame.size.width*self.currentPage, scrollView.contentOffset.y) animated:NO];
             return;
         }
@@ -423,8 +430,6 @@
                 [self.dashboardVC minusData];
             }else{
                 self.isNextWord = NO;
-//                [TaskStatus instance].indexOfWordIDToday = self.beginWordID + _currentPage;
-//                [TaskStatus instance].maxWordID =   [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue];
                 [self.dashboardVC plusData];
             }
             NSLog(@"The::::%d", [TaskStatus instance].indexOfWordIDToday);
@@ -483,33 +488,15 @@
     if (![self.wordLabel.text isEqualToString:@"abandon"]) {
         [self addGuideSecond];
     }
-    NSLog(@"isNExtWord:%d, isSideOpen:%d", self.isNextWord, self.isSideOpen);
-    if (self.isNextWord && !self.isSideOpen) {
-        [TaskStatus instance].indexOfWordIDToday = self.beginWordID + _currentPage;
-        [TaskStatus instance].maxWordID =   [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue];
-        //把单词加入抽屉
-        SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
-        WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:self.beginWordID + _currentPage - 1 ] intValue]];
-        if ([left.array indexOfObject:addWord] == NSNotFound) {
-            [left addWord:addWord];
-        }
-        [[WordSpeaker instance] readWord:self.wordLabel.text];
 
-        NSLog(@"ENDDDDDDD %d :: %d", [TaskStatus instance].indexOfWordIDToday, [TaskStatus instance].maxWordID);
+    if (self.isNextWord && !self.isSideOpen) {
+        [self nextWordAction];
         self.isNextWord = NO;
         self.isSideOpen = NO;
     }
 
     
-    if (scrollView == self.pageControlView) {
-        if (!_whetherWordIsRead) {
-            //[[WordSpeaker instance] readWord:self.wordLabel.text];
-            _whetherSetNo = NO;
-        } else {
-            _whetherWordIsRead = NO;
-            _whetherSetNo = YES;
-        }
-        
+    if (scrollView == self.pageControlView) {        
         
         if (scrollView.contentOffset.x >= _changePage*320) {
             scrollView.userInteractionEnabled = NO;
@@ -518,12 +505,6 @@
             
             [TaskStatus instance].indexOfWordIDToday = self.beginWordID + _currentPage + 1;
             [self.delegate GoToReviewWithWord];
-            
-            
-            
-            //#warning 好有爱的项目组
-            //        NSLog(@"崔昊看这里~~~~~~~~~~看这里呀看这里~~~~~~~~~~~~在这里更换controller！！！");
-            //        NSLog(@"好感动，我找了好久"); 
         }
     }
 }

@@ -17,8 +17,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
 @property (strong, nonatomic) id<WordDetailViewControllerProtocol> delegate;
 
-//@property (nonatomic) int indexOfWordIDToday;
-//@property (nonatomic) int maxWordID;
-//@property (nonatomic) int wrongWordCount;
-
 @end
