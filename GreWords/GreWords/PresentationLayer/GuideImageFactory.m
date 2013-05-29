@@ -67,7 +67,13 @@
                        @{
                            @"image3.5" : @"list3.5.png",
                            @"image4" : @"list4.png"
+                           },
+                   @"rollback":
+                       @{
+                           @"image3.5" : @"rollback3.5.png",
+                           @"image4" : @"rollback4.png"
                            }
+
 
                 
                  };
@@ -101,6 +107,9 @@
             break;
         case GuideType_List:
             return @"list";
+            break;
+        case GuideType_Rollback:
+            return @"rollback";
             break;
         default:
             break;
