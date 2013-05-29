@@ -125,6 +125,7 @@
     self.menu.nearRadius = 70.0f;
     
     self.menu.startPoint = CGPointMake(40.0, self.view.bounds.size.height - 40.0);
+    
 	
     self.menu.delegate = self;
     [self.view addSubview:self.menu];
