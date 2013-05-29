@@ -60,6 +60,9 @@
 @property (nonatomic) NSString *WordName;
 @property (nonatomic) NSString *WordPhonetic;
 
+@property (nonatomic) BOOL isSideOpen;
+@property (nonatomic) BOOL isNextWord;
+
 @property int currentPage;
 
 @property (strong, nonatomic) DashboardViewController *dashboardVC;
@@ -80,7 +83,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.isSideOpen = NO;
+    self.isNextWord = NO;
     self.dashboardVC = [DashboardViewController instance];
     self.viewControlArray = [[NSMutableArray alloc] init];
     self.nameControlArray = [[NSMutableArray alloc] init];
@@ -266,9 +270,9 @@
     int wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:index] intValue];
     [vc displayWord:[[WordHelper instance] wordWithID:wordID] withOption:option];
 #warning is the MaxWordID should be changed here???
-    if ([TaskStatus instance].maxWordID < wordID) {
-        [TaskStatus instance].maxWordID = wordID;
-    }
+//    if ([TaskStatus instance].maxWordID < wordID) {
+//        [TaskStatus instance].maxWordID = wordID;
+//    }
     //self.wordLabel.text = [[WordHelper instance] wordWithID:aWordID].data[@"word"];
 
     
@@ -413,23 +417,17 @@
         
         //换页
         if (_currentPage != page) {
-            //把单词加入抽屉
-            SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
-            WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:self.beginWordID + _currentPage ] intValue]];
-            if ([left.array indexOfObject:addWord] == NSNotFound) {
-                
-                
-                
-                [left addWord:addWord];
-            }
             
             if (_currentPage < page) {
-                [TaskStatus instance].indexOfWordIDToday = self.beginWordID + _currentPage + 1;
+                self.isNextWord = YES;
                 [self.dashboardVC minusData];
             }else{
-                [TaskStatus instance].indexOfWordIDToday = self.beginWordID + _currentPage;
+                self.isNextWord = NO;
+//                [TaskStatus instance].indexOfWordIDToday = self.beginWordID + _currentPage;
+//                [TaskStatus instance].maxWordID =   [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue];
                 [self.dashboardVC plusData];
             }
+            NSLog(@"The::::%d", [TaskStatus instance].indexOfWordIDToday);
             _currentPage = page;
         }
         
@@ -485,12 +483,27 @@
     if (![self.wordLabel.text isEqualToString:@"abandon"]) {
         [self addGuideSecond];
     }
-    
+    NSLog(@"isNExtWord:%d, isSideOpen:%d", self.isNextWord, self.isSideOpen);
+    if (self.isNextWord && !self.isSideOpen) {
+        [TaskStatus instance].indexOfWordIDToday = self.beginWordID + _currentPage;
+        [TaskStatus instance].maxWordID =   [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue];
+        //把单词加入抽屉
+        SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
+        WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:self.beginWordID + _currentPage - 1 ] intValue]];
+        if ([left.array indexOfObject:addWord] == NSNotFound) {
+            [left addWord:addWord];
+        }
+        [[WordSpeaker instance] readWord:self.wordLabel.text];
+
+        NSLog(@"ENDDDDDDD %d :: %d", [TaskStatus instance].indexOfWordIDToday, [TaskStatus instance].maxWordID);
+        self.isNextWord = NO;
+        self.isSideOpen = NO;
+    }
 
     
     if (scrollView == self.pageControlView) {
         if (!_whetherWordIsRead) {
-            [[WordSpeaker instance] readWord:self.wordLabel.text];
+            //[[WordSpeaker instance] readWord:self.wordLabel.text];
             _whetherSetNo = NO;
         } else {
             _whetherWordIsRead = NO;
@@ -589,6 +602,7 @@
 #pragma mark - IIViewDeckControllerDelegate Methods
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController didCloseViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
 {
+    self.isSideOpen = NO;
     self.view.userInteractionEnabled = YES;
     self.viewDeckController.panningMode = IIViewDeckAllViewsPanning;
 }
@@ -600,6 +614,7 @@
 
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController didOpenViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
 {
+    self.isSideOpen = YES;
     self.viewDeckController.panningMode = IIViewDeckNavigationBarOrOpenCenterPanning;
     
     if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_NewWordThird])
