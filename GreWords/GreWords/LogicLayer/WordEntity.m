@@ -81,6 +81,7 @@
 -(NSMutableArray*)mistakeStringToArray
 {
     NSMutableArray *lastMistakes = [[wordManagedObject.lastChecks componentsSeparatedByString:@","]  mutableCopy];
+    if(!lastMistakes) lastMistakes = [@[] mutableCopy];
     if([[lastMistakes lastObject] isEqualToString:@""])
     {
         [lastMistakes removeLastObject];

@@ -317,6 +317,7 @@
             NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
             vc.changePage = 10 - ([TaskStatus instance].maxWordID % 10);
             vc.delegate = self;
+            vc.beginWordID = [TaskStatus instance].indexOfWordIDToday;
         
             SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
             leftController.type = SmartListType_Slide;
@@ -411,6 +412,7 @@
     WordDetailViewController *vc = [[WordDetailViewController alloc] init];
     vc.delegate = self;
     [self presentViewController:vc animated:NO completion:nil];
+    
 }
 
 - (void)GoToNewWordWithDownImage:(BOOL)whetherHaveDownImage
@@ -424,6 +426,7 @@
 
     vc.delegate = self;
     vc.changePage = 10;
+    vc.beginWordID = [TaskStatus instance].indexOfWordIDToday;
     
     [dashboard minusData];
     

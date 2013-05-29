@@ -142,6 +142,7 @@
 
     [self DontShowMeaning];
     [TaskStatus instance].indexOfWordIDToday ++;
+    NSLog(@"%WordIndex:%d", [TaskStatus instance].indexOfWordIDToday);
 }
 
 - (void)viewDidLoad
@@ -1072,6 +1073,7 @@
         [self newWordCompleted];
         return;
     }
+    NSLog(@"TaskStatus: %d", [TaskStatus instance].indexOfWordIDToday - 1);
 
     WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday - 1] intValue]];
     [word didMakeAMistakeOnDate:[NSDate new]];
