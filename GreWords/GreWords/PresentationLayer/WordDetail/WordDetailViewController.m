@@ -209,6 +209,13 @@
             _WrongDownImageView.layer.anchorPoint = CGPointMake(0.5, 0);
             [self.view addSubview:_WrongDownImageView];
         }
+        
+        if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_ReviewSecond])
+        {
+            guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_ReviewSecond];
+            [self.view addSubview:guideImageView];
+        }
+        
     }
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
         [self AddShadows];
@@ -910,13 +917,11 @@
         _WrongButton.userInteractionEnabled = YES;
         _WordParaphraseView.userInteractionEnabled = YES;
         
-        
         if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_ReviewSecond])
         {
             guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_ReviewSecond];
             [self.view addSubview:guideImageView];
         }
-        
     }
     
     ////////////////////////////////////////////////////////
