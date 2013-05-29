@@ -20,6 +20,7 @@
 		3FB1CF311754A4E500017F88 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF301754A4E500017F88 /* History.m */; };
 		3FB1CF341754A4E500017F88 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF331754A4E500017F88 /* Note.m */; };
 		3FB1CF371754A4E600017F88 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF361754A4E600017F88 /* Word.m */; };
+		3FB1CF3A1755ECC100017F88 /* TaskStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF391755ECC100017F88 /* TaskStatus.m */; };
 		7324846C17524D860058A6DD /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7324846A17524D860058A6DD /* NoteViewController.m */; };
 		7324846D17524D860058A6DD /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7324846B17524D860058A6DD /* NoteViewController.xib */; };
 		732B748D17449E1400612277 /* flipcard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4E21C561743C2C4001A7EEF /* flipcard.plist */; };
@@ -3558,6 +3559,8 @@
 		3FB1CF331754A4E500017F88 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
 		3FB1CF351754A4E600017F88 /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
 		3FB1CF361754A4E600017F88 /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
+		3FB1CF381755ECC100017F88 /* TaskStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskStatus.h; sourceTree = "<group>"; };
+		3FB1CF391755ECC100017F88 /* TaskStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskStatus.m; sourceTree = "<group>"; };
 		7324846917524D860058A6DD /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteViewController.h; path = PresentationLayer/Note/NoteViewController.h; sourceTree = "<group>"; };
 		7324846A17524D860058A6DD /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteViewController.m; path = PresentationLayer/Note/NoteViewController.m; sourceTree = "<group>"; };
 		7324846B17524D860058A6DD /* NoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteViewController.xib; path = PresentationLayer/Note/NoteViewController.xib; sourceTree = "<group>"; };
@@ -7557,6 +7560,8 @@
 				E466E7A3173BD4CB001847D0 /* WordSpeaker.m */,
 				E466E7A4173BD4CB001847D0 /* WordTaskGenerator.h */,
 				E466E7A5173BD4CB001847D0 /* WordTaskGenerator.m */,
+				3FB1CF381755ECC100017F88 /* TaskStatus.h */,
+				3FB1CF391755ECC100017F88 /* TaskStatus.m */,
 			);
 			path = LogicLayer;
 			sourceTree = "<group>";
@@ -14675,6 +14680,7 @@
 				E404ADE61754A31F00004FDC /* SplashViewController.m in Sources */,
 				E404ADE91754D43700004FDC /* GuideImageFactory.m in Sources */,
 				E4CDB17917550BA4004993D6 /* WordNoteLayoutViewController.m in Sources */,
+				3FB1CF3A1755ECC100017F88 /* TaskStatus.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

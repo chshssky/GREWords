@@ -15,10 +15,13 @@
 
 @property (strong, nonatomic) id<NewWordDetailViewControllerProtocol> delegate;
 
-@property (nonatomic) int indexOfWordIDToday;
-@property (nonatomic) int maxWordID;
+//@property (nonatomic) int indexOfWordIDToday;
+//@property (nonatomic) int maxWordID;
+//@property (nonatomic) int day;
+
+@property (nonatomic) int beginWordID;
 @property (nonatomic) int changePage;
-@property (nonatomic) int day;
+
 
 - (void)removeDownImageAnimation_withDownCover;
 - (void)removeDownImageAnimation_withNoDownCover;

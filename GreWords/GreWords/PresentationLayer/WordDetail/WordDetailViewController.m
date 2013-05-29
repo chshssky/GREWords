@@ -18,6 +18,7 @@
 #import "HistoryManager.h"
 #import "ConfigurationHelper.h"
 #import "GuideImageFactory.h"
+#import "TaskStatus.h"
 
 #define PI M_PI
 
@@ -138,16 +139,15 @@
     [self.WordParaphraseView scrollsToTop];
     
     [[WordSpeaker instance] readWord:self.wordLabel.text];
-    [self.delegate resetWordIndexto:self.indexOfWordIDToday + 1];
 
     [self DontShowMeaning];
-    self.indexOfWordIDToday ++;
+    [TaskStatus instance].indexOfWordIDToday ++;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadWord:self.indexOfWordIDToday];
+    [self loadWord:[TaskStatus instance].indexOfWordIDToday];
     _RightButton.userInteractionEnabled = NO;
     _WrongButton.userInteractionEnabled = NO;
     _showMeaningButton.userInteractionEnabled = YES;
@@ -998,29 +998,29 @@
 
 - (IBAction)rightButtonPushed:(id)sender {
     [self viewWillAppear:YES];
-    if (self.indexOfWordIDToday == [[[WordTaskGenerator instance] newWordTask_twoList:self.day] count])
+    if ([TaskStatus instance].indexOfWordIDToday == [[[WordTaskGenerator instance] newWordTask_twoList:self.day] count])
     {
         [self newWordCompleted];
         return;
     }
 
-    WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
+    WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue]];
     [word didRightOnDate:[NSDate new]];
     [self nextButtonPushed];
 }
 
 - (IBAction)wrongButtonPushed:(id)sender {
     [self viewWillAppear:YES];
-    if (self.indexOfWordIDToday == [[[WordTaskGenerator instance] newWordTask_twoList:self.day] count])
+    if ([TaskStatus instance].indexOfWordIDToday == [[[WordTaskGenerator instance] newWordTask_twoList:self.day] count])
     {
         [self newWordCompleted];
         return;
     }
 
-    WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
+    WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday - 1] intValue]];
     [word didMakeAMistakeOnDate:[NSDate new]];
     [self nextButtonPushed];
-    self.wrongWordCount ++;
+    [TaskStatus instance].wrongWordCount ++;
 }
 
 - (void)newWordCompleted
@@ -1038,17 +1038,17 @@
 
 - (void)nextButtonPushed
 {
-    if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue] > self.maxWordID) {
+    if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue] > [TaskStatus instance].maxWordID) {
         if (_DownImage.alpha <= 0) {
-            [self.delegate GoToNewWordWithWord:self.indexOfWordIDToday andThe:self.maxWordID withDownImage:NO];
+            [self.delegate GoToNewWordWithDownImage:NO];
         }else{
-            [self.delegate GoToNewWordWithWord:self.indexOfWordIDToday andThe:self.maxWordID withDownImage:YES];
+            [self.delegate GoToNewWordWithDownImage:YES];
         }
         [self dismissModalViewControllerAnimated:NO];
     } else {
         [self Dismiss_RightAnimation];
         [self Dismiss_WrongAnimation];
-        [self loadWord:self.indexOfWordIDToday];
+        [self loadWord:[TaskStatus instance].indexOfWordIDToday];
     }
 }
 
@@ -1059,10 +1059,11 @@
 - (IBAction)BackButtonPushed:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
     [self.delegate AnimationBack];
-    if ((self.indexOfWordIDToday % 10) == 0) {
-        [self.delegate setReviewEnable];
+    if (([TaskStatus instance].indexOfWordIDToday % 10) == 0) {
+        [[TaskStatus instance] setReviewEnable];
     }
-    [self.delegate resetWordIndexto:self.indexOfWordIDToday - 1];
+    [TaskStatus instance].indexOfWordIDToday --;
+    //[self.delegate resetWordIndexto:[TaskStatus instance].indexOfWordIDToday - 1];
 }
 
 @end

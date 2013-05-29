@@ -24,11 +24,13 @@
 #import "WordDetailViewController.h"
 #import "GuideImageFactory.h"
 #import "ConfigurationHelper.h"
+#import "TaskStatus.h"
 
 @interface NewWordDetailViewController ()
 {
     UIImageView *guideImageView;
 }
+
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *DownImage;
 @property (weak, nonatomic) IBOutlet UIButton *PronounceButton;
@@ -83,7 +85,6 @@
     self.viewControlArray = [[NSMutableArray alloc] init];
     self.nameControlArray = [[NSMutableArray alloc] init];
     self.phoneticControlArray = [[NSMutableArray alloc] init];
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -150,7 +151,7 @@
     _whetherWordIsRead = NO;
     _whetherSetNo = NO;
     
-    [self.delegate ChangeWordWithIndex:self.indexOfWordIDToday + _currentPage WithMax:self.maxWordID];
+    //[self.delegate ChangeWordWithIndex:self.beginWordID + _currentPage WithMax:self.maxWordID];
     
     if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_NewWordFirst])
     {
@@ -190,7 +191,7 @@
 
 - (IBAction)BackButtonPushed:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
-    //[self.delegate ChangeWordWithIndex:self.indexOfWordIDToday - 2 WithMax:self.maxWordID];
+    //[self.delegate ChangeWordWithIndex:self.beginWordID - 2 WithMax:self.maxWordID];
     [self.delegate AnimationBack];
 }
 
@@ -213,7 +214,7 @@
     if (_note == nil) {
         _note = [[NoteViewController alloc] init];
     }
-    int wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday + _currentPage] intValue];
+    int wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:self.beginWordID + _currentPage] intValue];
     [_note addNoteAt:self withWordID:wordID];
     [_note.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_note.view];
@@ -262,11 +263,11 @@
                              @"shouldShowAntonyms":@YES,
                              @"shouldShowSampleSentence":@YES};
     
-    int wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:index] intValue];
+    int wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:index] intValue];
     [vc displayWord:[[WordHelper instance] wordWithID:wordID] withOption:option];
-    
-    if (self.maxWordID < wordID) {
-        self.maxWordID = wordID;
+#warning is the MaxWordID should be changed here???
+    if ([TaskStatus instance].maxWordID < wordID) {
+        [TaskStatus instance].maxWordID = wordID;
     }
     //self.wordLabel.text = [[WordHelper instance] wordWithID:aWordID].data[@"word"];
 
@@ -291,13 +292,13 @@
 //加载单词名称进入数组
 - (void)loadWordName:(int)index
 {
-    self.WordName = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:index] intValue]].data[@"word"];
+    self.WordName = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:index] intValue]].data[@"word"];
 }
 
 //加载单词音标进入数组
 - (void)loadWordPhonetic:(int)index
 {
-    self.WordPhonetic = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:index] intValue]].data[@"phonetic"];
+    self.WordPhonetic = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:index] intValue]].data[@"phonetic"];
 }
 
 //加载单词
@@ -313,15 +314,15 @@
         self.WordParaphraseView.showsVerticalScrollIndicator = NO;
         
         //把单词内容页面加入数组
-        [self loadWordView:_indexOfWordIDToday + page];
+        [self loadWordView:_beginWordID + page];
         [self.viewControlArray replaceObjectAtIndex:page withObject:self.WordParaphraseView];
         
         //把单词名称加入数组
-        [self loadWordName:_indexOfWordIDToday + page];
+        [self loadWordName:_beginWordID + page];
         [self.nameControlArray replaceObjectAtIndex:page withObject:self.WordName];
         
         //把单词音标加入数组
-        [self loadWordPhonetic:_indexOfWordIDToday + page];
+        [self loadWordPhonetic:_beginWordID + page];
         [self.phoneticControlArray replaceObjectAtIndex:page withObject:self.WordPhonetic];
     }
     
@@ -414,16 +415,19 @@
         if (_currentPage != page) {
             //把单词加入抽屉
             SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
-            WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday + _currentPage ] intValue]];
+            WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:self.beginWordID + _currentPage ] intValue]];
             if ([left.array indexOfObject:addWord] == NSNotFound) {
                 
-                [self.delegate ChangeWordWithIndex:self.indexOfWordIDToday + _currentPage + 1 WithMax:self.maxWordID];
+                
+                
                 [left addWord:addWord];
             }
             
             if (_currentPage < page) {
+                [TaskStatus instance].indexOfWordIDToday = self.beginWordID + _currentPage + 1;
                 [self.dashboardVC minusData];
             }else{
+                [TaskStatus instance].indexOfWordIDToday = self.beginWordID + _currentPage;
                 [self.dashboardVC plusData];
             }
             _currentPage = page;
@@ -498,7 +502,9 @@
             scrollView.userInteractionEnabled = NO;
             [self.view removeGestureRecognizer:_noteRecognizer];
             [self dismissModalViewControllerAnimated:NO];
-            [self.delegate GoToReviewWithWord:self.indexOfWordIDToday + _currentPage + 1 andThe:self.maxWordID];
+            
+            [TaskStatus instance].indexOfWordIDToday = self.beginWordID + _currentPage + 1;
+            [self.delegate GoToReviewWithWord];
             
             
             

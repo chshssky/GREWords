@@ -25,6 +25,7 @@
 #import "HistoryManager.h"
 #import "ConfigurationHelper.h"
 #import "GuideImageFactory.h"
+#import "TaskStatus.h"
 
 #define TaskWordNumber 200
 
@@ -35,13 +36,6 @@
 @property (nonatomic, strong) UIImageView *slideBarStatusView;
 @property (nonatomic, strong) UIImageView *slideBarStatusTextView;
 @property (nonatomic, strong) AwesomeMenu *menu;
-
-@property (nonatomic) int indexOfWordIDToday;
-@property (nonatomic) int maxWordID;
-@property (nonatomic) int day;
-@property (nonatomic) int wrongWordCount;
-
-@property (nonatomic) BOOL reviewEnable;
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *titleView;
@@ -54,7 +48,7 @@
 {
     dashboard = [DashboardViewController instance];
     // Database: read from 
-    dashboard.nonFinishedNumber = TaskWordNumber - self.maxWordID;
+    dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].maxWordID;
     dashboard.minNumber = dashboard.nonFinishedNumber;
     dashboard.sumNumber = TaskWordNumber;
     dashboard.delegate = self;
@@ -144,11 +138,8 @@
 
     // 从数据库中读取现在的状态
     
-    
-    self.indexOfWordIDToday = 0;
-    self.maxWordID = 0;
-    self.reviewEnable = NO;
-    self.wrongWordCount = 0;
+    //初始化TaskStatus状态
+    [[TaskStatus instance] beginNewWord];
 
     
     [self initDashboard];
@@ -247,12 +238,11 @@
 - (void)examController
 {
     [self transaction];
-    
-    WordDetailViewController *vc = [[WordDetailViewController alloc] init];
-    vc.indexOfWordIDToday = 100;
-    vc.delegate = self;
-    vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self presentModalViewController:vc animated:YES];
+//    
+//    WordDetailViewController *vc = [[WordDetailViewController alloc] init];
+//    vc.delegate = self;
+//    vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//    [self presentModalViewController:vc animated:YES];
 }
 
 - (void)historyController
@@ -310,13 +300,10 @@
         self.menu.transform = CGAffineTransformMakeTranslation(-300, 0);
     } completion:^(BOOL finished) {
         //根据MaxWordID和现在所在单词的ID 来判断 该跳转到 NewWord 还是 Review
-        if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday ] integerValue] < self.maxWordID || self.reviewEnable) {
+        if ([[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday ] integerValue] < [TaskStatus instance].maxWordID || [TaskStatus instance].reviewEnable) {
             
-            self.reviewEnable = NO;
+            [TaskStatus instance].reviewEnable = NO;
             WordDetailViewController *vc = [[WordDetailViewController alloc] init];
-            vc.indexOfWordIDToday = self.indexOfWordIDToday;
-            vc.maxWordID = self.maxWordID;
-            vc.wrongWordCount = self.wrongWordCount;
             vc.delegate = self;
             [self presentViewController:vc animated:NO completion:nil];
             
@@ -327,18 +314,14 @@
             [self createNewWordEvent];
             
             NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
-        
-            vc.maxWordID = self.maxWordID;
-            vc.indexOfWordIDToday = self.indexOfWordIDToday;
-            vc.day = self.day;
-            vc.changePage = 10 - (self.maxWordID % 10);
+            vc.changePage = 10 - ([TaskStatus instance].maxWordID % 10);
             vc.delegate = self;
         
             SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
             leftController.type = SmartListType_Slide;
             leftController.array = @[];
             
-            for (int i = 0; i < self.maxWordID; i++) {
+            for (int i = 0; i < [TaskStatus instance].maxWordID; i++) {
                 WordEntity *addWord = [[WordHelper instance] wordWithID:i];
                 [leftController addWord:addWord];
             }
@@ -362,14 +345,14 @@
     
     NewWordEvent *newWordEve = [[NewWordEvent alloc] init];
     newWordEve.eventType = @"NewWordEvent";
-    newWordEve.wrongWordCount = self.wrongWordCount;
+    newWordEve.wrongWordCount = [TaskStatus instance].wrongWordCount;
     newWordEve.totalWordCount = 600;
     newWordEve.startTime = [self getNowDate];
     
-    newWordEve.reviewEnable = self.reviewEnable;
-    newWordEve.stage_now = STAGE_1;
-    newWordEve.indexOfWordToday = self.indexOfWordIDToday;
-    newWordEve.maxWordID = self.maxWordID;
+    newWordEve.reviewEnable = [TaskStatus instance].reviewEnable;
+    newWordEve.stage_now = [TaskStatus instance].stage_now;
+    newWordEve.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+    newWordEve.maxWordID = [TaskStatus instance].maxWordID;
     
     [historyManager addEvent:newWordEve];
 }
@@ -389,22 +372,17 @@
 - (void)resetIndexOfWordList:(int)remainWords
 {
     int theWordID = TaskWordNumber - remainWords;
-    for (int index = 0; index < [[[WordTaskGenerator instance] newWordTask_twoList:self.day] count]; index++) {
-        if (theWordID == [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:index] integerValue])
+    for (int index = 0; index < [[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] count]; index++) {
+        if (theWordID == [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:index] integerValue])
         {
-            self.indexOfWordIDToday = index;
-            self.maxWordID = theWordID;
+            [TaskStatus instance].indexOfWordIDToday = index;
+            [TaskStatus instance].maxWordID = theWordID;
             return;
         }
     }
 }
 
 #pragma mark - WordDetailDelegate
-
-- (void)resetWordIndexto:(int)index
-{
-    self.indexOfWordIDToday = index;
-}
 
 - (void)AnimationBack
 {
@@ -424,47 +402,28 @@
     
 }
 
-- (void)ChangeWordWithIndex:(int)index WithMax:(int)max
-{
-    self.indexOfWordIDToday = index;
-    self.maxWordID = max;
-}
+//- (void)ChangeWordWithIndex:(int)index WithMax:(int)max
+//{
+//    self.indexOfWordIDToday = index;
+//    self.maxWordID = max;
+//}
 
-- (void)setReviewEnable
-{
-    self.reviewEnable = YES;
-}
-
-- (BOOL)getReviewEnable
-{
-    return self.reviewEnable;
-}
-
-- (void)GoToReviewWithWord:(int)wordIndex andThe:(int)maxWordNum
+- (void)GoToReviewWithWord
 {
     WordDetailViewController *vc = [[WordDetailViewController alloc] init];
-    vc.indexOfWordIDToday = wordIndex;
-    self.indexOfWordIDToday = wordIndex;
-    vc.maxWordID = maxWordNum;
-    self.maxWordID = maxWordNum;
     vc.delegate = self;
     [self presentViewController:vc animated:NO completion:nil];
 }
 
-- (void)GoToNewWordWithWord:(int)wordIndex andThe:(int)maxWordNum withDownImage:(BOOL)whetherHaveDownImage
+- (void)GoToNewWordWithWordwithDownImage:(BOOL)whetherHaveDownImage
 {
-    self.indexOfWordIDToday = wordIndex;
-    self.maxWordID = maxWordNum;
     [self performSelector:@selector(GotoNewWordSelector:) withObject:[NSNumber numberWithBool:whetherHaveDownImage] afterDelay:0];
 }
 
 - (void)GotoNewWordSelector:(NSNumber *)whetherHaveDownImage
 {
     NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
-    
-    vc.maxWordID = self.maxWordID;
-    vc.indexOfWordIDToday = self.indexOfWordIDToday;
-    vc.day = 0;
+
     vc.delegate = self;
     vc.changePage = 10;
     
@@ -474,7 +433,7 @@
     leftController.type = SmartListType_Slide;
     leftController.array = @[];
     
-    for (int i = 0; i <= self.maxWordID; i++) {
+    for (int i = 0; i <= [TaskStatus instance].maxWordID; i++) {
         WordEntity *addWord = [[WordHelper instance] wordWithID:i];
         [leftController addWord:addWord];
     }
@@ -491,6 +450,5 @@
         [vc removeDownImageAnimation_withNoDownCover];
     }
 }
-
 
 @end
