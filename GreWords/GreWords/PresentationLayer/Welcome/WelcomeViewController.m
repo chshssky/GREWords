@@ -52,7 +52,7 @@
     scaleAnimation.removedOnCompletion = NO;
     scaleAnimation.fillMode = kCAFillModeForwards;
     scaleAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    scaleAnimation.duration = 0.3;
+    scaleAnimation.duration = 0.2;
     scaleAnimation.delegate = self;
     [scaleAnimation setValue:@"removeGuide" forKey:@"id"];
     [self.view.layer addAnimation:scaleAnimation forKey:nil];
