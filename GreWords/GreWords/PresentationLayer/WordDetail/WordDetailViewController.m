@@ -151,9 +151,9 @@
     _RightButton.userInteractionEnabled = NO;
     _WrongButton.userInteractionEnabled = NO;
     _showMeaningButton.userInteractionEnabled = YES;
+    _WordParaphraseView.userInteractionEnabled = NO;
 
     self.dashboardVC = [DashboardViewController instance];
-    _showMeaningButton.userInteractionEnabled = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated
@@ -179,9 +179,42 @@
 
 - (void)ShowMeaning
 {
-    [self AddShadows];
-    [self Show_RightAnimation];
-    [self Show_WrongAnimation];
+    if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
+        [self AddShadows];
+        _showMeaningButton.userInteractionEnabled = NO;
+        _RightButton.userInteractionEnabled = YES;
+        _WrongButton.userInteractionEnabled = YES;
+        _WordParaphraseView.userInteractionEnabled = YES;
+        if (_RightUpImageView == nil) {
+            _RightUpImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_up.png"]];
+            [_RightUpImageView setFrame:CGRectMake(230, self.view.frame.size.height-72, _RightUpImageView.frame.size.width, _RightUpImageView.frame.size.height-1)];
+            _RightUpImageView.layer.anchorPoint = CGPointMake(0.5, 1);
+            [self.view addSubview:_RightUpImageView];
+        }
+        if (_WrongUpImageView == nil) {
+            _WrongUpImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_up.png"]];
+            [_WrongUpImageView setFrame:CGRectMake(49, self.view.frame.size.height-76, _WrongUpImageView.frame.size.width, _WrongUpImageView.frame.size.height-1)];
+            _WrongUpImageView.layer.anchorPoint = CGPointMake(0.5, 1);
+            [self.view addSubview:_WrongUpImageView];
+        }
+        if (_RightDownImageView == nil) {
+            _RightDownImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_down.png"]];
+            [_RightDownImageView setFrame:CGRectMake(217, self.view.frame.size.height-78, _RightDownImageView.frame.size.width, _RightDownImageView.frame.size.height-1)];
+            _RightDownImageView.layer.anchorPoint = CGPointMake(0.5, 0);
+            [self.view addSubview:_RightDownImageView];
+        }
+        if (_WrongDownImageView == nil) {
+            _WrongDownImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_down.png"]];
+            [_WrongDownImageView setFrame:CGRectMake(27, self.view.frame.size.height-78, _WrongDownImageView.frame.size.width, _WrongDownImageView.frame.size.height-1)];
+            _WrongDownImageView.layer.anchorPoint = CGPointMake(0.5, 0);
+            [self.view addSubview:_WrongDownImageView];
+        }
+    }
+    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+        [self AddShadows];
+        [self Show_RightAnimation];
+        [self Show_WrongAnimation];
+    }
 }
 
 - (void)DontShowMeaning
@@ -248,6 +281,7 @@
     _RightButton.userInteractionEnabled = NO;
     _WrongButton.userInteractionEnabled = NO;
     _showMeaningButton.userInteractionEnabled = NO;
+    _WordParaphraseView.userInteractionEnabled = YES;
     
     //[self Show_RightAnimationWith:_RightUpImageView4 and:_RightDownImageView4 atTime:CACurrentMediaTime() withString:@"Show_removeRightImage4"];
     //[self Show_RightAnimationWith:_RightUpImageView3 and:_RightDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"Show_removeRightImage3"];
@@ -376,6 +410,7 @@
     _RightButton.userInteractionEnabled = NO;
     _WrongButton.userInteractionEnabled = NO;
     _showMeaningButton.userInteractionEnabled = NO;
+    _WordParaphraseView.userInteractionEnabled = YES;
     
     //[self Show_WrongAnimationWith:_WrongUpImageView4 and:_WrongDownImageView4 atTime:CACurrentMediaTime() withString:@"Show_removeWrongImage4"];
     //[self Show_WrongAnimationWith:_WrongUpImageView3 and:_WrongDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"Show_removeWrongImage3"];
@@ -578,6 +613,7 @@
     _RightButton.userInteractionEnabled = NO;
     _WrongButton.userInteractionEnabled = NO;
     _showMeaningButton.userInteractionEnabled = NO;
+    _WordParaphraseView.userInteractionEnabled = NO;
     
     //[self Dismiss_RightAnimationWith:_RightUpImageView4 and:_RightDownImageView4 atTime:CACurrentMediaTime() withString:@"Dismiss_removeRightImage4"];
     //[self Dismiss_RightAnimationWith:_RightUpImageView3 and:_RightDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"Dismiss_removeRightImage3"];
@@ -706,6 +742,7 @@
     _RightButton.userInteractionEnabled = NO;
     _WrongButton.userInteractionEnabled = NO;
     _showMeaningButton.userInteractionEnabled = NO;
+    _WordParaphraseView.userInteractionEnabled = NO;
     
     //[self Dismiss_WrongAnimationWith:_WrongUpImageView4 and:_WrongDownImageView4 atTime:CACurrentMediaTime() withString:@"removeRightImage4"];
     //[self Dismiss_RightAnimationWith:_WrongUpImageView3 and:_WrongDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"removeRightImage3"];
@@ -864,7 +901,6 @@
         _WrongDownImageView0 = nil;
         [_WrongUpImageView0 removeFromSuperview];
         _WrongUpImageView0 = nil;
-        
         if (_WrongDownImageView == nil) {
             _WrongDownImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_down.png"]];
             [_WrongDownImageView setFrame:CGRectMake(27, self.view.frame.size.height-78, _WrongDownImageView.frame.size.width, _WrongDownImageView.frame.size.height-1)];
@@ -872,6 +908,7 @@
             [self.view addSubview:_WrongDownImageView];
         }
         _WrongButton.userInteractionEnabled = YES;
+        _WordParaphraseView.userInteractionEnabled = YES;
         
         
         if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_ReviewSecond])
@@ -922,6 +959,7 @@
         }
         
         _showMeaningButton.userInteractionEnabled = YES;
+        _WordParaphraseView.userInteractionEnabled = YES;
         
     }
     
@@ -964,6 +1002,7 @@
         }
         
         _showMeaningButton.userInteractionEnabled = YES;
+        _WordParaphraseView.userInteractionEnabled = NO;
 
     }
 }
@@ -978,7 +1017,9 @@
     [self.showMeaningImageView setFrame:CGRectMake( 8, 100, 304.0, 460.0)];
     [self.view insertSubview:self.showMeaningImageView aboveSubview:self.WordParaphraseView];
     
-    [self.showMeaningButton addTarget:self action:@selector(showButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+    [self.showMeaningButton addTarget:self action:@selector(showButtonTouchUpInside) forControlEvents:UIControlEventTouchUpInside];
+    [self.showMeaningButton addTarget:self action:@selector(showButtonTouchDown) forControlEvents:UIControlEventTouchDown];
+    [self.showMeaningButton addTarget:self action:@selector(showButtonTouchUpOutside) forControlEvents:UIControlEventTouchUpOutside];
     if (iPhone5) {
         [self.showMeaningButton setFrame:CGRectMake( 8, 100, 304.0, 337.0)];
     }else{
@@ -988,12 +1029,22 @@
     [self.view addSubview:self.showMeaningButton];
 }
 
-- (void)showButtonPressed
+- (void)showButtonTouchUpInside
 {
     [self.showMeaningImageView removeFromSuperview];
     [self.showMeaningButton removeFromSuperview];
     self.showMeaningButton = nil;
     [self ShowMeaning];
+}
+
+- (void)showButtonTouchDown
+{
+    [_showMeaningImageView setImage:[UIImage imageNamed:@"learning_tapCover2.png"]];
+}
+
+- (void)showButtonTouchUpOutside
+{
+    [_showMeaningImageView setImage:[UIImage imageNamed:@"learning_tapCover.png"]];
 }
 
 - (IBAction)rightButtonPushed:(id)sender {
@@ -1019,8 +1070,8 @@
 
     WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:self.indexOfWordIDToday] intValue]];
     [word didMakeAMistakeOnDate:[NSDate new]];
-    [self nextButtonPushed];
     self.wrongWordCount ++;
+    [self nextButtonPushed];
 }
 
 - (void)newWordCompleted
@@ -1046,9 +1097,34 @@
         }
         [self dismissModalViewControllerAnimated:NO];
     } else {
-        [self Dismiss_RightAnimation];
-        [self Dismiss_WrongAnimation];
-        [self loadWord:self.indexOfWordIDToday];
+        if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
+            [self loadWord:self.indexOfWordIDToday];
+            _showMeaningButton.userInteractionEnabled = YES;
+            _RightButton.userInteractionEnabled = NO;
+            _WrongButton.userInteractionEnabled = NO;
+            _WordParaphraseView.userInteractionEnabled = NO;
+            if (_RightUpImageView != nil) {
+                [_RightUpImageView removeFromSuperview];
+                _RightUpImageView = nil;
+            }
+            if (_WrongUpImageView != nil) {
+                [_WrongUpImageView removeFromSuperview];
+                _WrongUpImageView = nil;
+            }
+            if (_RightDownImageView != nil) {
+                [_RightDownImageView removeFromSuperview];
+                _RightDownImageView = nil;
+            }
+            if (_WrongDownImageView != nil) {
+                [_WrongDownImageView removeFromSuperview];
+                _WrongDownImageView = nil;
+            }
+        }
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+            [self loadWord:self.indexOfWordIDToday];
+            [self Dismiss_RightAnimation];
+            [self Dismiss_WrongAnimation];
+        }
     }
 }
 

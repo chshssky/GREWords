@@ -23,6 +23,8 @@
 		7324846C17524D860058A6DD /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7324846A17524D860058A6DD /* NoteViewController.m */; };
 		7324846D17524D860058A6DD /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7324846B17524D860058A6DD /* NoteViewController.xib */; };
 		732B748D17449E1400612277 /* flipcard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4E21C561743C2C4001A7EEF /* flipcard.plist */; };
+		7336C5B01755FA39007048A0 /* learning_tapCover2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7336C5AE1755FA39007048A0 /* learning_tapCover2.png */; };
+		7336C5B11755FA39007048A0 /* learning_tapCover2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7336C5AF1755FA39007048A0 /* learning_tapCover2@2x.png */; };
 		735ED82F174151430008F945 /* UIImage+StackBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = 735ED82E174151430008F945 /* UIImage+StackBlur.m */; };
 		735ED83317415D170008F945 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735ED83217415D170008F945 /* CoreImage.framework */; };
 		735ED83517415D890008F945 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735ED83417415D880008F945 /* Accelerate.framework */; };
@@ -3561,6 +3563,8 @@
 		7324846917524D860058A6DD /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteViewController.h; path = PresentationLayer/Note/NoteViewController.h; sourceTree = "<group>"; };
 		7324846A17524D860058A6DD /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteViewController.m; path = PresentationLayer/Note/NoteViewController.m; sourceTree = "<group>"; };
 		7324846B17524D860058A6DD /* NoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteViewController.xib; path = PresentationLayer/Note/NoteViewController.xib; sourceTree = "<group>"; };
+		7336C5AE1755FA39007048A0 /* learning_tapCover2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = learning_tapCover2.png; sourceTree = "<group>"; };
+		7336C5AF1755FA39007048A0 /* learning_tapCover2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_tapCover2@2x.png"; sourceTree = "<group>"; };
 		735ED82D174151430008F945 /* UIImage+StackBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+StackBlur.h"; sourceTree = "<group>"; };
 		735ED82E174151430008F945 /* UIImage+StackBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+StackBlur.m"; sourceTree = "<group>"; };
 		735ED83217415D170008F945 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
@@ -7628,6 +7632,8 @@
 		E466E7AC173BD4CB001847D0 /* Learning */ = {
 			isa = PBXGroup;
 			children = (
+				7336C5AE1755FA39007048A0 /* learning_tapCover2.png */,
+				7336C5AF1755FA39007048A0 /* learning_tapCover2@2x.png */,
 				73E11B3D174D2715000E6035 /* learning_wrong_up_page2.png */,
 				73E11B3E174D2716000E6035 /* learning_wrong_up_page2@2x.png */,
 				73E11B39174D26F7000E6035 /* learning_right_up_page2.png */,
@@ -14610,6 +14616,8 @@
 				E4CDB1801755CAC8004993D6 /* rollback4.png in Resources */,
 				E4CDB1811755CAC8004993D6 /* rollback3.5@2x.png in Resources */,
 				E4CDB1821755CAC8004993D6 /* rollback4@2x.png in Resources */,
+				7336C5B01755FA39007048A0 /* learning_tapCover2.png in Resources */,
+				7336C5B11755FA39007048A0 /* learning_tapCover2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
