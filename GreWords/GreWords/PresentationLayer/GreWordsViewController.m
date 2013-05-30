@@ -346,7 +346,7 @@
     HistoryManager *historyManager = [HistoryManager instance];
     
     NewWordEvent *newWordEve = [[NewWordEvent alloc] init];
-    newWordEve.eventType = @"NewWordEvent";
+    newWordEve.eventType = EVENT_TYPE_NEWWORD;
     newWordEve.wrongWordCount = [TaskStatus instance].wrongWordCount;
     newWordEve.totalWordCount = 600;
     newWordEve.startTime = [self getNowDate];

@@ -12,6 +12,9 @@
 #import "NewWordEvent.h"
 #import "ReviewEvent.h"
 #import "ExamEvent.h"
+#import "Entity/ExamStatus.h"
+#import "Entity/NewWordStatus.h"
+#import "Entity/ReviewStatus.h"
 
 
 @interface HistoryManager ()
@@ -65,7 +68,6 @@ HistoryManager* _historyManagerInstance = nil;
         // 解析错误
         return nil;
     }
-    
 }
 
 - (void)addEvent:(BaseEvent *)aEvent
@@ -79,31 +81,49 @@ HistoryManager* _historyManagerInstance = nil;
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     
-    if ([aEvent isKindOfClass:[NewWordEvent class]]) {
+    if ([aEvent isKindOfClass:[NewWordEvent class]] && [aEvent.eventType isEqualToString:EVENT_TYPE_NEWWORD]) {
         NewWordEvent *newWordEvent = (NewWordEvent *)aEvent;
+        
+        NewWordStatus *newWordStatus = [NSEntityDescription insertNewObjectForEntityForName:@"NewWordStatus" inManagedObjectContext:self.context];
+        newWordStatus.index = [NSNumber numberWithInt:newWordEvent.indexOfWordToday];
+        newWordStatus.maxWordID = [NSNumber numberWithInt:newWordEvent.maxWordID];
+        newWordStatus.stage = [NSNumber numberWithInt:newWordEvent.stage_now];
+        newWordStatus.reviewEnable = [NSNumber numberWithBool:newWordEvent.reviewEnable];
+        
         // convert enum to NSNumber
-        [dict setObject:[NSNumber numberWithInt:[newWordEvent stage_now]] forKey:NEWWORDEVENT_STAGE_NOW];
-        [dict setObject:[NSNumber numberWithInt:[newWordEvent maxWordID]] forKey:NEWWORDEVENT_MAX_ID];
-        [dict setObject:[NSNumber numberWithInt:[newWordEvent indexOfWordToday]] forKey:NEWWORDEVENT_INDEX];
-        [dict setObject:[NSNumber numberWithBool:[newWordEvent reviewEnable]] forKey:NEWWORDEVENT_REVIEW_ENABLE];
+        
+//        [dict setObject:[NSNumber numberWithInt:[newWordEvent stage_now]] forKey:NEWWORDEVENT_STAGE_NOW];
+//        [dict setObject:[NSNumber numberWithInt:[newWordEvent maxWordID]] forKey:NEWWORDEVENT_MAX_ID];
+//        [dict setObject:[NSNumber numberWithInt:[newWordEvent indexOfWordToday]] forKey:NEWWORDEVENT_INDEX];
+//        [dict setObject:[NSNumber numberWithBool:[newWordEvent reviewEnable]] forKey:NEWWORDEVENT_REVIEW_ENABLE];
 //        [dict setObject:[NSNumber numberWithInt:[newWordEvent unit]] forKey:NEWWORDEVENT_UNIT];
 //        [dict setObject:[NSNumber numberWithInt:[newWordEvent round]] forKey:NEWWORDEVENT_ROUNG];
 //        [dict setObject:[NSNumber numberWithInt:[newWordEvent orderInUnit]] forKey:NEWWORDEVENT_ORDER_IN_UNIT];
-    } else if ([aEvent isKindOfClass:[ReviewEvent class]]) {
+    } else if ([aEvent isKindOfClass:[ReviewEvent class]] && [aEvent.eventType isEqualToString:EVENT_TYPE_REVIEW]) {
         ReviewEvent *reviewEvent = (ReviewEvent *)aEvent;
-        [dict setObject:[NSNumber numberWithInt:[reviewEvent stage_now]] forKey:REVIEWEVENT_STAGE_NOW];
+        
+        ReviewStatus *reviewStatus = [NSEntityDescription insertNewObjectForEntityForName:@"ReviewStatus" inManagedObjectContext:self.context];
+        reviewStatus.index = [NSNumber numberWithInt:reviewEvent.indexOfWordToday];
+        reviewStatus.stage = [NSNumber numberWithInt:reviewEvent.stage_now];
+
+//        [dict setObject:[NSNumber numberWithInt:[reviewEvent stage_now]] forKey:REVIEWEVENT_STAGE_NOW];
 //        [dict setObject:[NSNumber numberWithInt:[reviewEvent unit]] forKey:REVIEWEVENT_UNIT];
 //        [dict setObject:[NSNumber numberWithInt:[reviewEvent orderInUnit]] forKey:REVIEWEVENT_ORDER_IN_UNIT];
-    } else if ([aEvent isKindOfClass:[ExamEvent class]]) {
+    } else if ([aEvent isKindOfClass:[ExamEvent class]] && [aEvent.eventType isEqualToString:EVENT_TYPE_EXAM]) {
         ExamEvent *examEvent = (ExamEvent *)aEvent;
-        [dict setObject:[NSNumber numberWithInt:[examEvent difficulty]] forKey:EXAMEVENT_DIFFICULTY];
+        
+        ExamStatus *examStatus = [NSEntityDescription insertNewObjectForEntityForName:@"ExamStatus" inManagedObjectContext:self.context];
+        
+        examStatus.difficulty = [NSNumber numberWithFloat:examEvent.difficulty];
+        
+//        [dict setObject:[NSNumber numberWithInt:[examEvent difficulty]] forKey:EXAMEVENT_DIFFICULTY];
     } else {
         NSLog(@"Something Wrong : BaseEvent is not a specific class");
     }
     
-    NSString *jsonString = [[NSString alloc] initWithData:[self toJSONData:dict]
-                                                 encoding:NSUTF8StringEncoding];
-    [history setInfo:jsonString];
+//    NSString *jsonString = [[NSString alloc] initWithData:[self toJSONData:dict]
+//                                                 encoding:NSUTF8StringEncoding];
+//    [history setInfo:jsonString];
     
         
     NSError *error = nil;
@@ -121,8 +141,44 @@ HistoryManager* _historyManagerInstance = nil;
     NSError *err = nil;
     NSArray *matches = [self.context executeFetchRequest:request error:&err];
     
+    NSLog(@"Fetch Event Results number: %d", [matches count]);
     History *history = [matches lastObject];
-    [history setEndTime:aEvent.endTime];
+    
+    NSLog(@"History Start Time: %@", history.startTime);
+    
+    if ([aEvent isKindOfClass:[NewWordEvent class]] && [aEvent.eventType isEqualToString:EVENT_TYPE_NEWWORD]) {
+        NewWordEvent *newWordEvent = (NewWordEvent *)aEvent;
+        
+        NewWordStatus *newWordStatus ;//= //[NSFetchRequest fetchRequestWithEntityName:@"NewWordStatus"];
+        newWordStatus.index = [NSNumber numberWithInt:newWordEvent.indexOfWordToday];
+        newWordStatus.maxWordID = [NSNumber numberWithInt:newWordEvent.maxWordID];
+        newWordStatus.stage = [NSNumber numberWithInt:newWordEvent.stage_now];
+        newWordStatus.reviewEnable = [NSNumber numberWithBool:newWordEvent.reviewEnable];
+        
+    } else if ([aEvent isKindOfClass:[ReviewEvent class]] && [aEvent.eventType isEqualToString:EVENT_TYPE_REVIEW]) {
+        ReviewEvent *reviewEvent = (ReviewEvent *)aEvent;
+        
+        ReviewStatus *reviewStatus = [NSEntityDescription insertNewObjectForEntityForName:@"ReviewStatus" inManagedObjectContext:self.context];
+        reviewStatus.index = [NSNumber numberWithInt:reviewEvent.indexOfWordToday];
+        reviewStatus.stage = [NSNumber numberWithInt:reviewEvent.stage_now];
+        
+
+    } else if ([aEvent isKindOfClass:[ExamEvent class]] && [aEvent.eventType isEqualToString:EVENT_TYPE_EXAM]) {
+        ExamEvent *examEvent = (ExamEvent *)aEvent;
+        
+        ExamStatus *examStatus = [NSEntityDescription insertNewObjectForEntityForName:@"ExamStatus" inManagedObjectContext:self.context];
+        
+        examStatus.difficulty = [NSNumber numberWithFloat:examEvent.difficulty];
+        
+        //        [dict setObject:[NSNumber numberWithInt:[examEvent difficulty]] forKey:EXAMEVENT_DIFFICULTY];
+    } else {
+        NSLog(@"Something Wrong : BaseEvent is not a specific class");
+    }
+
+    
+//    NSDictionary *info = [self toArrayOrNSDictionary:[history.info dataUsingEncoding:NSASCIIStringEncoding]];
+//    
+//    NSLog(@"HistoryManager: max:%@ Index:%@, enable:%@", [info objectForKey:NEWWORDEVENT_MAX_ID], [info objectForKey:NEWWORDEVENT_INDEX], [info objectForKey:NEWWORDEVENT_REVIEW_ENABLE]);
     
     if (![self.context save:&err]) {
         NSLog(@"End Event Error");
@@ -176,7 +232,7 @@ HistoryManager* _historyManagerInstance = nil;
     NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
     History *history = [fetchMatches lastObject];
     
-    NSDictionary *info = [self toArrayOrNSDictionary:history.info];
+    NSDictionary *info = [self toArrayOrNSDictionary:[history.info dataUsingEncoding:NSASCIIStringEncoding]];
     
     float progress = 0;
     //!!!!!!!!!!!!!!!!

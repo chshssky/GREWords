@@ -25,6 +25,8 @@
 #import "GuideImageFactory.h"
 #import "ConfigurationHelper.h"
 #import "TaskStatus.h"
+#import "HistoryManager.h"
+#import "NewWordEvent.h"
 
 @interface NewWordDetailViewController ()
 {
@@ -150,6 +152,7 @@
     [self.backButton.superview bringSubviewToFront:self.backButton];
     
     [[WordSpeaker instance] readWord:self.wordLabel.text];
+    //为了初始化maxID
     [TaskStatus instance].maxWordID = [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue];
     //[self.delegate ChangeWordWithIndex:self.beginWordID + _currentPage WithMax:self.maxWordID];
     
@@ -299,7 +302,14 @@
     }
     [[WordSpeaker instance] readWord:self.wordLabel.text];
     
-    NSLog(@"ENDDDDDDD %d :: %d", [TaskStatus instance].indexOfWordIDToday, [TaskStatus instance].maxWordID);
+    NewWordEvent *newWordEvent = [[NewWordEvent alloc] init];
+    //newWordEvent.;
+    
+    
+    //[[HistoryManager instance] updateEvent:newWordEvent];
+    
+    
+    NSLog(@"Now Word is Index: %d || MaxWordID %d", [TaskStatus instance].indexOfWordIDToday, [TaskStatus instance].maxWordID);
     
 }
 
