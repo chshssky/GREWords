@@ -20,6 +20,11 @@
 
 @implementation SmartWordListViewController
 
+- (UITableView*)currentTableView
+{
+    //return self.tableView;
+    return isSearching ? self.searchDisplayController.searchResultsTableView :self.tableView;
+}
 
 - (void)addWord:(WordEntity*)aWord
 {
@@ -35,12 +40,9 @@
     sectionController.wordID = aWord.wordID;
     sectionController.sectionID = _array.count - 1;
     sectionController.type = self.type;
+    sectionController.tableView = self.tableView;
     [retractableControllers addObject:sectionController];
     
-    //    NSArray *indexPath = @[[NSIndexPath indexPathForRow:0 inSection:_array.count - 1]];
-    //    //[self.tableView beginUpdates];
-    //    [self.tableView insertRowsAtIndexPaths:indexPath withRowAnimation:UITableViewRowAnimationBottom];
-    //    //[self.tableView endUpdates];
     [self.tableView reloadData];
     //[self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.3];
     [self addButtomTexture];
@@ -51,6 +53,7 @@
     [super viewDidLoad];
     
     isDragging = NO;
+    isSearching = NO;
     
     retractableControllers = [@[] mutableCopy];
     lastTableViewHeight = -1;
@@ -69,6 +72,7 @@
         }
         sectionController.sectionID = i;
         sectionController.type = self.type;
+        sectionController.tableView = self.tableView;
         [retractableControllers addObject:sectionController];
     }
     
@@ -145,28 +149,108 @@
 
 #pragma mark table view delegate
 
+
+//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+//    
+//    return index % 2;
+//}
+//
+//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+//{
+//    if(self.type == SmartListType_Full)
+//    {
+//        return @[@"A",@"B",@"C",@"D",@"E",@"F",@"G",
+//                 @"H",@"I",@"J",@"K",@"L",@"M",@"N",
+//                 @"O",@"P",@"Q",@"R",@"S",@"T",@"U",
+//                 @"V",@"W",@"X",@"Y",@"Z",@"#",@" ",
+//                 ];
+//    }
+//    else return nil;
+//}
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return _array.count;
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+	{
+        return [_filteredArray count];
+    }
+	else
+	{
+        return [_array count];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    GCRetractableSectionController* sectionController = [retractableControllers objectAtIndex:section];
+    NSMutableArray *arr = nil;
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+	{
+        arr = filteredRetractableControllers;
+    }
+	else
+	{
+        arr = retractableControllers;
+    }
+    
+    GCRetractableSectionController* sectionController = [arr objectAtIndex:section];
     return sectionController.numberOfRow;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    GCRetractableSectionController* sectionController = [retractableControllers objectAtIndex:indexPath.section];
+    NSMutableArray *arr = nil;
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+	{
+        arr = filteredRetractableControllers;
+    }
+	else
+	{
+        arr = retractableControllers;
+    }
+
+    GCRetractableSectionController* sectionController = [arr objectAtIndex:indexPath.section];
     return [sectionController heightForRow:indexPath.row];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    GCRetractableSectionController* sectionController = [retractableControllers objectAtIndex:indexPath.section];
+    
+//    for(UIView *view in [tableView subviews])
+//    {
+//        if([[[view class] description] isEqualToString:@"UITableViewIndex"])
+//        {
+//            //[view performSelector:@selector(setIndexColor:) withObject:[UIColor redColor]];
+//            CGRect frame = view.frame;
+//            frame.size.height = 160;
+//            view.frame = frame;
+//            NSLog(@"aaaa %@",[[view class] description]);
+//
+//        }
+//        
+//    }
+    NSMutableArray *arr = nil;
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+	{
+        arr = filteredRetractableControllers;
+    }
+	else
+	{
+        arr = retractableControllers;
+    }
+
+    GCRetractableSectionController* sectionController = [arr objectAtIndex:indexPath.section];
     return [sectionController cellForRow:indexPath.row];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    GCRetractableSectionController* sectionController = [retractableControllers objectAtIndex:indexPath.section];
+    NSMutableArray *arr = nil;
+    if (tableView == self.searchDisplayController.searchResultsTableView)
+	{
+        arr = filteredRetractableControllers;
+    }
+	else
+	{
+        arr = retractableControllers;
+    }
+    GCRetractableSectionController* sectionController = [arr objectAtIndex:indexPath.section];
     //[self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.3];
     
     if(indexPath.row != 0)
@@ -178,16 +262,11 @@
     
     
     [CATransaction begin];
-    [self.tableView beginUpdates];
-    //[sectionController closeOthers];
-    //    [CATransaction setCompletionBlock: ^{
-    //        // Code to be executed upon completion
-    //        NSLog(@"wuwuwuw");
-    //        [self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.1f];
-    //    }];
-    for(int i = 0; i < retractableControllers.count; i++)
+    [tableView beginUpdates];
+
+    for(int i = 0; i < arr.count; i++)
     {
-        SmartWordListSectionController* aController = [retractableControllers objectAtIndex:i];
+        SmartWordListSectionController* aController = [arr objectAtIndex:i];
         if(i == indexPath.section)
         {
             continue;
@@ -195,18 +274,12 @@
         [aController close];
         
     }
-    [self.tableView endUpdates];
+    [tableView endUpdates];
     [CATransaction commit];
     
     [sectionController scroll];
     
     [self addButtomTexture];
-    //[self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.3];
-    //[self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.5];
-    
-    //[self addButtomTexture];
-    //[downTexture removeFromSuperview];
-    //downTexture = nil;
 }
 
 #pragma mark - scroll view delegate
@@ -238,6 +311,59 @@
         
         [self.scrollDelegate smartWordList:self didTranslationYSinceLast:contentOffsetY];
     }
+}
+
+
+#pragma mark - UISearchDisplayController Delegate Methods
+- (void) searchBarCancelButtonClicked:(UISearchBar*)searchBar {
+    
+    isSearching = NO;
+}
+
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    NSLog(@"searching:%@",searchString);
+    if([searchString isEqualToString: @""])
+    {
+        isSearching = NO;
+    }
+    else
+    {
+        isSearching = YES;
+    }
+    [self filterContentForSearchText:searchString];
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+
+#pragma mark Content Filtering
+
+- (void)filterContentForSearchText:(NSString*)searchText
+{
+	// Filter the array using NSPredicate
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.wordText  contains[c] %@",searchText];
+    self.filteredArray = [[self.array filteredArrayUsingPredicate:predicate] mutableCopy];
+    
+    filteredRetractableControllers = [@[] mutableCopy];
+    for(int i = 0; i < _filteredArray.count;i++)
+    {
+        SmartWordListSectionController* sectionController = [[SmartWordListSectionController alloc] initWithViewController:self];
+        if(self.type == SmartListType_Homo)
+        {
+            sectionController.homotitle = ((NSDictionary*)_filteredArray[i])[@"key"];
+            sectionController.homoDict = ((NSDictionary*)_filteredArray[i]);
+        }
+        else
+        {
+            sectionController.wordID = ((WordEntity*)_filteredArray[i]).wordID;
+        }
+        sectionController.sectionID = i;
+        sectionController.type = self.type;
+        sectionController.tableView = self.searchDisplayController.searchResultsTableView;
+        [filteredRetractableControllers addObject:sectionController];
+    }
+
 }
 
 #pragma mark - NSNotification Responder

@@ -26,6 +26,11 @@
     return self;
 }
 
+-(NSString*)wordText
+{
+    return self.data[@"word"];
+}
+
 -(NSString*)note
 {
     return noteManagedObject.content;

@@ -24,6 +24,7 @@
 @property (nonatomic,retain,readonly) NSArray *currentMistkeStatus;
 @property (nonatomic,retain,readonly) NSDate *lastMistakeTime;
 @property (nonatomic,readonly) int wordID;
+@property (nonatomic,readonly) NSString *wordText;
 
 -(void)didMakeAMistakeOnDate:(NSDate*)date;
 -(void)didRightOnDate:(NSDate*)date;

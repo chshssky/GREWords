@@ -265,13 +265,21 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="tm8-c8-yOD">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <outlet property="delegate" destination="bdK-yc-oid" id="di6-OB-gKV"/>
+                                    </connections>
+                                </searchBar>
                                 <imageView key="tableFooterView" userInteractionEnabled="NO" contentMode="top" image="learning list_up_and_down_moreBg.png" id="aUi-ym-lHy">
-                                    <rect key="frame" x="0.0" y="395" width="320" height="86"/>
+                                    <rect key="frame" x="0.0" y="526" width="320" height="86"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="smartwordheader_homo" rowHeight="38" id="4uj-fd-bEv" customClass="SmartWordListHeaderCell">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="38"/>
+                                        <rect key="frame" x="0.0" y="66" width="320" height="38"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
@@ -304,7 +312,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="smartwordheader" rowHeight="38" id="fv8-Uv-ihf" customClass="SmartWordListHeaderCell">
-                                        <rect key="frame" x="0.0" y="60" width="320" height="38"/>
+                                        <rect key="frame" x="0.0" y="104" width="320" height="38"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
@@ -373,7 +381,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="smartwordheader_slide" rowHeight="38" id="G6E-oe-9Sj" customClass="SmartWordListHeaderCell">
-                                        <rect key="frame" x="0.0" y="98" width="320" height="38"/>
+                                        <rect key="frame" x="0.0" y="142" width="320" height="38"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="37"/>
@@ -429,7 +437,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="smartwordcontent" rowHeight="259" id="QKq-xT-gJd" customClass="SmartWordListContentCell">
-                                        <rect key="frame" x="0.0" y="136" width="320" height="259"/>
+                                        <rect key="frame" x="0.0" y="180" width="320" height="259"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="258"/>
@@ -466,10 +474,21 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="searchBar" destination="tm8-c8-yOD" id="UNU-8t-fU0"/>
+                        <outlet property="searchDisplayController" destination="hsY-GG-jUa" id="lXW-RL-6nh"/>
                         <outlet property="tableView" destination="hEA-6j-P4t" id="UHm-sU-RoV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kKD-y4-25g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="hsY-GG-jUa">
+                    <connections>
+                        <outlet property="delegate" destination="bdK-yc-oid" id="i1x-Pv-cxc"/>
+                        <outlet property="searchBar" destination="tm8-c8-yOD" id="e4X-zH-NrJ"/>
+                        <outlet property="searchContentsController" destination="bdK-yc-oid" id="uip-tz-nY9"/>
+                        <outlet property="searchResultsDataSource" destination="bdK-yc-oid" id="rO1-1X-Laq"/>
+                        <outlet property="searchResultsDelegate" destination="bdK-yc-oid" id="YYz-Sg-hlJ"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="327" y="-115"/>
         </scene>
