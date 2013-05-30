@@ -3509,11 +3509,11 @@
 		E4696E14174C8E8200C5F264 /* libCrittercism_v3_5_2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4696E13174C8E8200C5F264 /* libCrittercism_v3_5_2.a */; };
 		E4696E16174C8F6400C5F264 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4696E15174C8F6400C5F264 /* SystemConfiguration.framework */; };
 		E4983ED0171A8CD90055A0E7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */; };
-		E4CB2CDE17576CE200370700 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB2CDD17576CE200370700 /* CustomSearchBar.m */; };
 		E4CB2CE41757767F00370700 /* findIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE01757767F00370700 /* findIcon.png */; };
 		E4CB2CE51757767F00370700 /* findIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE11757767F00370700 /* findIcon@2x.png */; };
 		E4CB2CE61757767F00370700 /* UISearchBarBG.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE21757767F00370700 /* UISearchBarBG.png */; };
 		E4CB2CE71757767F00370700 /* UISearchBarBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE31757767F00370700 /* UISearchBarBG@2x.png */; };
+		E4CB2CE8175785F000370700 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB2CDD17576CE200370700 /* CustomSearchBar.m */; };
 		E4CDB1421754E3F0004993D6 /* newwordfirst3.5.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB13E1754E3F0004993D6 /* newwordfirst3.5.png */; };
 		E4CDB1431754E3F0004993D6 /* newwordfirst4.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB13F1754E3F0004993D6 /* newwordfirst4.png */; };
 		E4CDB1441754E3F0004993D6 /* newwordfirst3.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB1401754E3F0004993D6 /* newwordfirst3.5@2x.png */; };
@@ -14685,6 +14685,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4CB2CE8175785F000370700 /* CustomSearchBar.m in Sources */,
 				E418DA5F1713E5E8002C6743 /* Model.xcdatamodeld in Sources */,
 				3FA4848A17142BC0003E88A6 /* GreWordsAppDelegate.m in Sources */,
 				3FA4848C17142BD4003E88A6 /* main.m in Sources */,
