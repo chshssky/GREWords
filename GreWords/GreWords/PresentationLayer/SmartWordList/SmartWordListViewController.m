@@ -275,6 +275,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray *arr = nil;
+    if(self.type == SmartListType_Note)
+        return;
+        
     if (tableView == self.searchDisplayController.searchResultsTableView)
 	{
         arr = filteredRetractableControllers;
@@ -401,10 +404,10 @@
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
     NSLog(@"searching:%@",searchString);
-    if([searchString isEqualToString:@""])
-    {
-        [self removeOverlay];
-    }
+//    if([searchString isEqualToString:@""])
+//    {
+//        [self removeOverlay];
+//    }
     [self performSelector:@selector(configureNoResultLabel) withObject:nil afterDelay:0.1f];
     //[self configureNoResultLabel];
     [self filterContentForSearchText:searchString];
@@ -419,8 +422,40 @@
 - (void)filterContentForSearchText:(NSString*)searchText
 {
 	// Filter the array using NSPredicate
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.wordText  contains[c] %@",searchText];
-    self.filteredArray = [[self.array filteredArrayUsingPredicate:predicate] mutableCopy];
+    if(self.type == SmartListType_Homo)
+    {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.key  contains[c] %@",searchText];
+        self.filteredArray = [[self.array filteredArrayUsingPredicate:predicate] mutableCopy];
+    }
+    else if(self.type == SmartListType_Note)
+    {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.wordText contains[c] %@ or SELF.note contains[c] %@",searchText,searchText];
+        self.filteredArray = [[self.array filteredArrayUsingPredicate:predicate] mutableCopy];
+    }
+    else
+    {
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.wordText  contains[c] %@",searchText];
+        self.filteredArray = [[self.array filteredArrayUsingPredicate:predicate] mutableCopy];
+        
+        [self.filteredArray sortUsingComparator: ^(id obj1, id obj2) {
+            NSString *prefixObj1 = ((WordEntity*)obj1).wordText;
+            NSString *prefixObj2 = ((WordEntity*)obj2).wordText;
+            NSNumber *r1 = @0;
+            NSNumber *r2 = @0;
+            if([prefixObj1 hasPrefix:searchText])
+            {
+                r1 = @1;
+            }
+            if([prefixObj2 hasPrefix:searchText])
+            {
+                r2 = @1;
+            }
+            return [r2 compare:r1];
+        }];
+
+    }
+    
     
     filteredRetractableControllers = [@[] mutableCopy];
     for(int i = 0; i < _filteredArray.count;i++)
