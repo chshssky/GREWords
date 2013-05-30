@@ -207,7 +207,6 @@ WordHelper* _wordHelperInstance = nil;
     
     for(NSDictionary *dict in arr)
     {
-        NSString *text = dict[@"word"];
         Word* word = matching[wordList.count];
         NSAssert(wordList.count == [word.plistID integerValue],@"fail to count database counterpart");
         WordEntity *theWord = [[WordEntity alloc] initWithID:wordList.count data:dict word:word];

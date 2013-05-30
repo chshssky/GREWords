@@ -7379,8 +7379,8 @@
 		E41FF51C173FE6A30078E738 /* MHTabBarController */ = {
 			isa = PBXGroup;
 			children = (
-				E41FF51D173FE6B50078E738 /* MHTabBarController.m */,
 				E41FF51E173FE6B50078E738 /* MHTabBarController.h */,
+				E41FF51D173FE6B50078E738 /* MHTabBarController.m */,
 			);
 			name = MHTabBarController;
 			sourceTree = "<group>";
