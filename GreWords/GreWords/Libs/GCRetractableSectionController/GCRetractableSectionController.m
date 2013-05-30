@@ -28,12 +28,7 @@
 
 - (id) initWithViewController:(UIViewController*) givenViewController {
 	if ((self = [super init])) {
-        if (![givenViewController respondsToSelector:@selector(tableView)]) {
-            //The view controller MUST have a tableView proprety
-            [NSException raise:@"Wrong view controller" 
-                        format:@"The passed view controller to GCRetractableSectionController must respond to the tableView proprety"];
-        }
-        
+                
 		self.viewController = givenViewController;
 		open = NO;
         self.useOnlyWhiteImages = NO;
@@ -45,9 +40,6 @@
 #pragma mark -
 #pragma mark Getters
 
-- (UITableView*) tableView {
-	return [self.viewController performSelector:@selector(tableView)];
-}
 
 - (NSUInteger) numberOfRow {
     return (self.open) ? self.contentNumberOfRow + 1 : 1;

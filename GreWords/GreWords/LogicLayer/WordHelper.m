@@ -245,7 +245,7 @@ WordHelper* _wordHelperInstance = nil;
 -(NSArray*)wordsAlphabeticOrder
 {
     return [wordList sortedArrayUsingComparator: ^(id obj1, id obj2) {
-        return [((WordEntity*)obj1).data[@"word"] compare: ((WordEntity*)obj2).data[@"word"]];
+        return [((WordEntity*)obj1).wordText compare: ((WordEntity*)obj2).wordText];
     }];
 }
 

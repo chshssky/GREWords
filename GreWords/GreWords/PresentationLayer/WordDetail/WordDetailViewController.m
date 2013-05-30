@@ -115,7 +115,7 @@
     
     [vc displayWord:[[WordHelper instance] wordWithID:wordID] withOption:option];
     
-    self.wordLabel.text = [[WordHelper instance] wordWithID:wordID].data[@"word"];
+    self.wordLabel.text = [[WordHelper instance] wordWithID:wordID].wordText;
     self.pronounceLabel.text = [[WordHelper instance] wordWithID:wordID].data[@"phonetic"];
     self.WordParaphraseView.delegate = self;
     self.WordParaphraseView.contentSize = vc.view.frame.size;
