@@ -48,6 +48,17 @@
     [self addButtomTexture:self.tableView];
 }
 
+
+- (void)configureSearchResultTableView
+{
+    UIImageView *topTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -1136.0f, 320.0f, 1136.0f)];
+    topTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
+    [self.tableView addSubview:topTexture];
+    [self.searchDisplayController.searchResultsTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.searchDisplayController.searchResultsTableView setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning list_up_and_down_moreBg.png"]]];
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -81,18 +92,7 @@
     }
     
     
-    UIImageView *topTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -1136.0f, 320.0f, 1136.0f)];
-    topTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
-    [self.tableView addSubview:topTexture];
-    [self.searchDisplayController.searchResultsTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [self.searchDisplayController.searchResultsTableView setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning list_up_and_down_moreBg.png"]]];
-
-    
-    //[[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setImage:[UIImage imageNamed:@"words list_sound.png"]];
-    //[[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil]
-     //setBackButtonBackgroundImage:[UIImage imageNamed:@"learning list_cell_bg.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    
-    
+    [self configureSearchResultTableView];
     
     if(self.type == SmartListType_Note)
     {
@@ -362,6 +362,7 @@
     else
     {
         isSearching = YES;
+        [self configureSearchResultTableView];
     }
     [self filterContentForSearchText:searchString];
     // Return YES to cause the search result table view to be reloaded.
