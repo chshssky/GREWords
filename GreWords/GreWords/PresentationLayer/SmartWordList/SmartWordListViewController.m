@@ -55,6 +55,7 @@
     topTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
     [self.tableView addSubview:topTexture];
     [self.searchDisplayController.searchResultsTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.searchDisplayController.searchResultsTableView setBackgroundColor:[UIColor clearColor]];
     [self.searchDisplayController.searchResultsTableView setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning list_up_and_down_moreBg.png"]]];
 }
 
@@ -67,11 +68,19 @@
     isSearching = NO;
     
     retractableControllers = [@[] mutableCopy];
+    
+    if(self.type == SmartListType_Slide)
+    {
+        [self.searchBar removeFromSuperview];
+    }
+    else
+    {
+        // Hide the search bar until user scrolls up
+        CGRect newBounds = [[self tableView] bounds];
+        newBounds.origin.y = newBounds.origin.y + self.searchBar.bounds.size.height;
+        [[self tableView] setBounds:newBounds];
         
-    // Hide the search bar until user scrolls up
-    CGRect newBounds = [[self tableView] bounds];
-    newBounds.origin.y = newBounds.origin.y + self.searchBar.bounds.size.height;
-    [[self tableView] setBounds:newBounds];
+    }
     
     for(int i = 0; i < _array.count;i++)
     {
@@ -99,6 +108,8 @@
         [NSNotificationCenter registerAddNoteForWordNotificationWithSelector:@selector(addNoteItem:) target:self];
         [NSNotificationCenter registerRemoveNoteForWordNotificationWithSelector:@selector(removeNoteItem:) target:self];
     }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -347,23 +358,41 @@
 
 
 #pragma mark - UISearchDisplayController Delegate Methods
+
+- (void) searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
+{
+    isSearching = YES;
+    [self performSelector:@selector(removeOverlayAndMore) withObject:nil afterDelay:.01f];
+}
+
+- (void)removeOverlayAndMore
+{
+    [[self.view.subviews lastObject] removeFromSuperview];
+    [self configureSearchResultTableView];
+}
+
+- (void) searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
+{
+    isSearching = NO;
+}
+
 - (void) searchBarCancelButtonClicked:(UISearchBar*)searchBar {
     
-    isSearching = NO;
+    //isSearching = NO;
 }
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
     NSLog(@"searching:%@",searchString);
-    if([searchString isEqualToString: @""])
-    {
-        isSearching = NO;
-    }
-    else
-    {
-        isSearching = YES;
-        [self configureSearchResultTableView];
-    }
+//    if([searchString isEqualToString: @""])
+//    {
+//        isSearching = NO;
+//    }
+//    else
+//    {
+//        isSearching = YES;
+//        
+//    }
     [self filterContentForSearchText:searchString];
     // Return YES to cause the search result table view to be reloaded.
     return YES;
