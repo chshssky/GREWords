@@ -13,7 +13,6 @@
 #import "WordSpeaker.h"
 #import "WordTaskGenerator.h"
 #import "SmartWordListViewController.h"
-#import <QuartzCore/QuartzCore.h>
 #import "UIImage+ColorImage.h"
 #import "UIImage+StackBlur.h"
 #import "noCopyTextView.h"
@@ -205,7 +204,7 @@
     
     CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
     rotateAnimation.delegate = self;
-    rotateAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(radians(5) , 0, 0, 1.0)];
+    rotateAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(DEGREES_TO_RADIANS(5) , 0, 0, 1.0)];
     rotateAnimation.duration = 0.15f;
     rotateAnimation.beginTime = CACurrentMediaTime()+0.1f;
     rotateAnimation.fillMode = kCAFillModeForwards;
@@ -215,7 +214,7 @@
     
     CABasicAnimation *rotateAnimation2 = [CABasicAnimation animationWithKeyPath:@"transform"];
     rotateAnimation2.delegate = self;
-    rotateAnimation2.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(radians(0) , 0, 0, 1.0)];
+    rotateAnimation2.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(DEGREES_TO_RADIANS(0) , 0, 0, 1.0)];
     rotateAnimation2.duration = 0.2f;
     rotateAnimation2.beginTime = CACurrentMediaTime()+0.35f;
     rotateAnimation2.fillMode = kCAFillModeForwards;
@@ -251,7 +250,7 @@
     
     CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
     rotateAnimation.delegate = self;
-    rotateAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(radians(5) , 0, 0, 1.0)];
+    rotateAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(DEGREES_TO_RADIANS(5) , 0, 0, 1.0)];
     rotateAnimation.duration = 0.15f;
     rotateAnimation.beginTime = CACurrentMediaTime()+0.1f;
     rotateAnimation.fillMode = kCAFillModeForwards;
@@ -261,7 +260,7 @@
     
     CABasicAnimation *rotateAnimation2 = [CABasicAnimation animationWithKeyPath:@"transform"];
     rotateAnimation2.delegate = self;
-    rotateAnimation2.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(radians(2.5) , 0, 0, 1.0)];
+    rotateAnimation2.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(DEGREES_TO_RADIANS(2.5) , 0, 0, 1.0)];
     rotateAnimation2.duration = 0.2f;
     rotateAnimation2.beginTime = CACurrentMediaTime()+0.35f;
     rotateAnimation2.fillMode = kCAFillModeForwards;
@@ -331,7 +330,7 @@
     
     CABasicAnimation *rotateAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
     rotateAnimation.delegate = self;
-    rotateAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(radians(5) , 0, 0, 1.0)];
+    rotateAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(DEGREES_TO_RADIANS(5) , 0, 0, 1.0)];
     rotateAnimation.duration = 0.15f;
     rotateAnimation.beginTime = CACurrentMediaTime()+0.1f;
     rotateAnimation.fillMode = kCAFillModeForwards;
@@ -341,7 +340,7 @@
     
     CABasicAnimation *rotateAnimation2 = [CABasicAnimation animationWithKeyPath:@"transform"];
     rotateAnimation2.delegate = self;
-    rotateAnimation2.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(radians(0) , 0, 0, 1.0)];
+    rotateAnimation2.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(DEGREES_TO_RADIANS(0) , 0, 0, 1.0)];
     rotateAnimation2.duration = 0.2f;
     rotateAnimation2.beginTime = CACurrentMediaTime()+0.35f;
     rotateAnimation2.fillMode = kCAFillModeForwards;
@@ -449,11 +448,6 @@
     return image;
 }
 
-double radians(float degrees) {
-    return ( degrees * 3.14159265 ) / 180.0;
-}
-
-
 -(void)addNoteAt:(UIViewController *)buttomController withWordID:(int)wordID
 {
     [self addBlurBackground:buttomController];
@@ -463,7 +457,6 @@ double radians(float degrees) {
     [self addNoteTextViewAnimation:(int)wordID];
     self.tempWordID = wordID;
     [self.delegate whenNoteAppeared];
-    
 }
 
 -(void)removeNote

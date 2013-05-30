@@ -26,6 +26,8 @@
 #import "ConfigurationHelper.h"
 #import "GuideImageFactory.h"
 #import "TaskStatus.h"
+#import "TestSelectorViewController.h"
+#import "NSNotificationCenter+Addition.h"
 
 #define TaskWordNumber 200
 
@@ -35,6 +37,7 @@
 @property (nonatomic, strong) UIImageView *slideBarView;
 @property (nonatomic, strong) UIImageView *slideBarStatusView;
 @property (nonatomic, strong) UIImageView *slideBarStatusTextView;
+@property (nonatomic, strong) TestSelectorViewController *testSelectorController;
 @property (nonatomic, strong) AwesomeMenu *menu;
 
 
@@ -154,6 +157,8 @@
         guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_Dashboard];
         [self.view addSubview:guideImageView];
     }
+    
+    [NSNotificationCenter registerStartExamNotificationWithSelector:@selector(startExam:) target:self];
 }
 
 - (void)viewDidUnload {
@@ -238,12 +243,25 @@
 
 - (void)examController
 {
+    if (_testSelectorController == nil) {
+        _testSelectorController = [[TestSelectorViewController alloc] init];
+        
+        //_note.delegate = self;
+    }
+    [_testSelectorController addTestSelectorAt:self];
+    [_testSelectorController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.view addSubview:_testSelectorController.view];
+}
+
+- (void)startExam:(NSNotification *)notification
+{
+    NSDictionary* examInfo = (NSDictionary*) notification.object;
     [self transaction];
-//    
-//    WordDetailViewController *vc = [[WordDetailViewController alloc] init];
-//    vc.delegate = self;
-//    vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-//    [self presentModalViewController:vc animated:YES];
+    
+    if (_testSelectorController != nil) {
+        [_testSelectorController.view removeFromSuperview];
+        _testSelectorController = nil;
+    }
 }
 
 - (void)historyController
@@ -400,12 +418,6 @@
     }];
     
 }
-
-//- (void)ChangeWordWithIndex:(int)index WithMax:(int)max
-//{
-//    self.indexOfWordIDToday = index;
-//    self.maxWordID = max;
-//}
 
 - (void)GoToReviewWithWord
 {
