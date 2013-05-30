@@ -17,10 +17,13 @@
 		3FA4849117142BF9003E88A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848D17142BF9003E88A6 /* InfoPlist.strings */; };
 		3FA4849217142BF9003E88A6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848F17142BF9003E88A6 /* MainStoryboard.storyboard */; };
 		3FA484C41719590D003E88A6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA484C31719590D003E88A6 /* QuartzCore.framework */; };
-		3FB1CF311754A4E500017F88 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF301754A4E500017F88 /* History.m */; };
-		3FB1CF341754A4E500017F88 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF331754A4E500017F88 /* Note.m */; };
-		3FB1CF371754A4E600017F88 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF361754A4E600017F88 /* Word.m */; };
 		3FB1CF3A1755ECC100017F88 /* TaskStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF391755ECC100017F88 /* TaskStatus.m */; };
+		3FB1CF4F175772B100017F88 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF4E175772B100017F88 /* Word.m */; };
+		3FB1CF52175772B400017F88 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF51175772B300017F88 /* Note.m */; };
+		3FB1CF55175772B500017F88 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF54175772B500017F88 /* History.m */; };
+		3FB1CF58175772B700017F88 /* NewWordStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF57175772B700017F88 /* NewWordStatus.m */; };
+		3FB1CF5B175772B800017F88 /* ReviewStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF5A175772B800017F88 /* ReviewStatus.m */; };
+		3FB1CF5E175772B900017F88 /* ExamStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF5D175772B900017F88 /* ExamStatus.m */; };
 		7324846C17524D860058A6DD /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7324846A17524D860058A6DD /* NoteViewController.m */; };
 		7324846D17524D860058A6DD /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7324846B17524D860058A6DD /* NoteViewController.xib */; };
 		732B748D17449E1400612277 /* flipcard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4E21C561743C2C4001A7EEF /* flipcard.plist */; };
@@ -3560,14 +3563,20 @@
 		3FA4848917142BC0003E88A6 /* GreWordsAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreWordsAppDelegate.m; sourceTree = "<group>"; };
 		3FA4848B17142BD4003E88A6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3FA484C31719590D003E88A6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		3FB1CF2F1754A4E500017F88 /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
-		3FB1CF301754A4E500017F88 /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
-		3FB1CF321754A4E500017F88 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
-		3FB1CF331754A4E500017F88 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
-		3FB1CF351754A4E600017F88 /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
-		3FB1CF361754A4E600017F88 /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
 		3FB1CF381755ECC100017F88 /* TaskStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskStatus.h; sourceTree = "<group>"; };
 		3FB1CF391755ECC100017F88 /* TaskStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskStatus.m; sourceTree = "<group>"; };
+		3FB1CF4D175772B000017F88 /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
+		3FB1CF4E175772B100017F88 /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
+		3FB1CF50175772B300017F88 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		3FB1CF51175772B300017F88 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		3FB1CF53175772B500017F88 /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
+		3FB1CF54175772B500017F88 /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
+		3FB1CF56175772B700017F88 /* NewWordStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewWordStatus.h; sourceTree = "<group>"; };
+		3FB1CF57175772B700017F88 /* NewWordStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewWordStatus.m; sourceTree = "<group>"; };
+		3FB1CF59175772B800017F88 /* ReviewStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewStatus.h; sourceTree = "<group>"; };
+		3FB1CF5A175772B800017F88 /* ReviewStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewStatus.m; sourceTree = "<group>"; };
+		3FB1CF5C175772B900017F88 /* ExamStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamStatus.h; sourceTree = "<group>"; };
+		3FB1CF5D175772B900017F88 /* ExamStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamStatus.m; sourceTree = "<group>"; };
 		7324846917524D860058A6DD /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteViewController.h; path = PresentationLayer/Note/NoteViewController.h; sourceTree = "<group>"; };
 		7324846A17524D860058A6DD /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteViewController.m; path = PresentationLayer/Note/NoteViewController.m; sourceTree = "<group>"; };
 		7324846B17524D860058A6DD /* NoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteViewController.xib; path = PresentationLayer/Note/NoteViewController.xib; sourceTree = "<group>"; };
@@ -7584,12 +7593,18 @@
 		E466E78A173BD4CB001847D0 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				3FB1CF351754A4E600017F88 /* Word.h */,
-				3FB1CF361754A4E600017F88 /* Word.m */,
-				3FB1CF321754A4E500017F88 /* Note.h */,
-				3FB1CF331754A4E500017F88 /* Note.m */,
-				3FB1CF2F1754A4E500017F88 /* History.h */,
-				3FB1CF301754A4E500017F88 /* History.m */,
+				3FB1CF5C175772B900017F88 /* ExamStatus.h */,
+				3FB1CF5D175772B900017F88 /* ExamStatus.m */,
+				3FB1CF59175772B800017F88 /* ReviewStatus.h */,
+				3FB1CF5A175772B800017F88 /* ReviewStatus.m */,
+				3FB1CF56175772B700017F88 /* NewWordStatus.h */,
+				3FB1CF57175772B700017F88 /* NewWordStatus.m */,
+				3FB1CF53175772B500017F88 /* History.h */,
+				3FB1CF54175772B500017F88 /* History.m */,
+				3FB1CF50175772B300017F88 /* Note.h */,
+				3FB1CF51175772B300017F88 /* Note.m */,
+				3FB1CF4D175772B000017F88 /* Word.h */,
+				3FB1CF4E175772B100017F88 /* Word.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -14719,9 +14734,6 @@
 				E423DECC174A77280079CB60 /* NSDate-Utilities.m in Sources */,
 				7324846C17524D860058A6DD /* NoteViewController.m in Sources */,
 				E404ADBA1753975200004FDC /* WelcomeViewController.m in Sources */,
-				3FB1CF311754A4E500017F88 /* History.m in Sources */,
-				3FB1CF341754A4E500017F88 /* Note.m in Sources */,
-				3FB1CF371754A4E600017F88 /* Word.m in Sources */,
 				E404ADE61754A31F00004FDC /* SplashViewController.m in Sources */,
 				E404ADE91754D43700004FDC /* GuideImageFactory.m in Sources */,
 				E4CDB17917550BA4004993D6 /* WordNoteLayoutViewController.m in Sources */,
