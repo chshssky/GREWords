@@ -298,7 +298,7 @@
 //加载单词名称进入数组
 - (void)loadWordName:(int)index
 {
-    self.WordName = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:index] intValue]].data[@"word"];
+    self.WordName = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:index] intValue]].wordText;
 }
 
 //加载单词音标进入数组

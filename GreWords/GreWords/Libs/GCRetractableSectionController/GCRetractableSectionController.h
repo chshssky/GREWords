@@ -49,6 +49,7 @@
 
 //Reserved for subclasses
 @property (nonatomic, readonly) UIViewController *viewController;
-@property (nonatomic, readonly) UITableView *tableView;
+@property (nonatomic, retain) UITableView *tableView;
+
 
 @end

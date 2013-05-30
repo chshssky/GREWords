@@ -78,8 +78,8 @@ static NSDictionary* typeDict = nil;
 - (UITableViewCell *)titleCell {
 //    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"SmartWordListStoryboard" bundle:[NSBundle mainBundle]];
 //    storyboard in
-    
-    SmartWordListHeaderCell *cell=(SmartWordListHeaderCell *)[self.tableView dequeueReusableCellWithIdentifier:([self configurationForTpye:self.type][@"identifer"])];
+    UITableView* tableView = [self.viewController performSelector:@selector(tableView)];
+    SmartWordListHeaderCell *cell=(SmartWordListHeaderCell *)[tableView dequeueReusableCellWithIdentifier:([self configurationForTpye:self.type][@"identifer"])];
 
     if(self.type == SmartListType_Homo)
     {
@@ -87,7 +87,7 @@ static NSDictionary* typeDict = nil;
     }
     else
     {
-        cell.wordLabel.text =  [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
+        cell.wordLabel.text =  [[WordHelper instance] wordWithID:self.wordID].wordText;
         cell.word = [[WordHelper instance] wordWithID:self.wordID];
         cell.wordLabel.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
         
@@ -115,7 +115,7 @@ static NSDictionary* typeDict = nil;
     
     
     
-    //vc.text = [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
+    //vc.text = [[WordHelper instance] wordWithID:self.wordID].wordText;
     //[cell addSubview:vc.view];
 
     return cell;
@@ -123,8 +123,9 @@ static NSDictionary* typeDict = nil;
 
 - (UITableViewCell *) contentCellForRow:(NSUInteger)row {
     
+    UITableView* tableView = [self.viewController performSelector:@selector(tableView)];
     
-    SmartWordListContentCell *cell=(SmartWordListContentCell *)[self.tableView dequeueReusableCellWithIdentifier:@"smartwordcontent"];
+    SmartWordListContentCell *cell=(SmartWordListContentCell *)[tableView dequeueReusableCellWithIdentifier:@"smartwordcontent"];
     
     NSArray* tobeRemove = [cell.contentView subviews];
     for(UIView* v in tobeRemove)
