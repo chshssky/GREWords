@@ -3506,6 +3506,11 @@
 		E4696E14174C8E8200C5F264 /* libCrittercism_v3_5_2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4696E13174C8E8200C5F264 /* libCrittercism_v3_5_2.a */; };
 		E4696E16174C8F6400C5F264 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4696E15174C8F6400C5F264 /* SystemConfiguration.framework */; };
 		E4983ED0171A8CD90055A0E7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */; };
+		E4CB2CDE17576CE200370700 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB2CDD17576CE200370700 /* CustomSearchBar.m */; };
+		E4CB2CE41757767F00370700 /* findIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE01757767F00370700 /* findIcon.png */; };
+		E4CB2CE51757767F00370700 /* findIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE11757767F00370700 /* findIcon@2x.png */; };
+		E4CB2CE61757767F00370700 /* UISearchBarBG.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE21757767F00370700 /* UISearchBarBG.png */; };
+		E4CB2CE71757767F00370700 /* UISearchBarBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE31757767F00370700 /* UISearchBarBG@2x.png */; };
 		E4CDB1421754E3F0004993D6 /* newwordfirst3.5.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB13E1754E3F0004993D6 /* newwordfirst3.5.png */; };
 		E4CDB1431754E3F0004993D6 /* newwordfirst4.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB13F1754E3F0004993D6 /* newwordfirst4.png */; };
 		E4CDB1441754E3F0004993D6 /* newwordfirst3.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB1401754E3F0004993D6 /* newwordfirst3.5@2x.png */; };
@@ -7104,6 +7109,12 @@
 		E4696E13174C8E8200C5F264 /* libCrittercism_v3_5_2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v3_5_2.a; sourceTree = "<group>"; };
 		E4696E15174C8F6400C5F264 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E4CB2CDC17576CE200370700 /* CustomSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchBar.h; sourceTree = "<group>"; };
+		E4CB2CDD17576CE200370700 /* CustomSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBar.m; sourceTree = "<group>"; };
+		E4CB2CE01757767F00370700 /* findIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = findIcon.png; sourceTree = "<group>"; };
+		E4CB2CE11757767F00370700 /* findIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findIcon@2x.png"; sourceTree = "<group>"; };
+		E4CB2CE21757767F00370700 /* UISearchBarBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UISearchBarBG.png; sourceTree = "<group>"; };
+		E4CB2CE31757767F00370700 /* UISearchBarBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UISearchBarBG@2x.png"; sourceTree = "<group>"; };
 		E4CDB13E1754E3F0004993D6 /* newwordfirst3.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newwordfirst3.5.png; sourceTree = "<group>"; };
 		E4CDB13F1754E3F0004993D6 /* newwordfirst4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newwordfirst4.png; sourceTree = "<group>"; };
 		E4CDB1401754E3F0004993D6 /* newwordfirst3.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newwordfirst3.5@2x.png"; sourceTree = "<group>"; };
@@ -7612,6 +7623,7 @@
 		E466E7A7173BD4CB001847D0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4CB2CDF1757767F00370700 /* UISearchBar */,
 				E404ADEA1754DA1800004FDC /* Guide */,
 				E404ADBB175397BB00004FDC /* Welcome */,
 				E41FF5261740DF750078E738 /* SmartList */,
@@ -11041,6 +11053,7 @@
 		E466F4B3173BD508001847D0 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				E4CB2CDB17576CD100370700 /* CustomSearchBar */,
 				E4696E10174C8E8200C5F264 /* CrittercismSDK */,
 				738B76D0174263C700D66FC0 /* noCopyTextView */,
 				735ED8301741515A0008F945 /* ImageBlur */,
@@ -11103,6 +11116,26 @@
 				E4696E13174C8E8200C5F264 /* libCrittercism_v3_5_2.a */,
 			);
 			path = CrittercismSDK;
+			sourceTree = "<group>";
+		};
+		E4CB2CDB17576CD100370700 /* CustomSearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				E4CB2CDC17576CE200370700 /* CustomSearchBar.h */,
+				E4CB2CDD17576CE200370700 /* CustomSearchBar.m */,
+			);
+			name = CustomSearchBar;
+			sourceTree = "<group>";
+		};
+		E4CB2CDF1757767F00370700 /* UISearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				E4CB2CE01757767F00370700 /* findIcon.png */,
+				E4CB2CE11757767F00370700 /* findIcon@2x.png */,
+				E4CB2CE21757767F00370700 /* UISearchBarBG.png */,
+				E4CB2CE31757767F00370700 /* UISearchBarBG@2x.png */,
+			);
+			path = UISearchBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -14623,6 +14656,10 @@
 				E4CDB1821755CAC8004993D6 /* rollback4@2x.png in Resources */,
 				7336C5B01755FA39007048A0 /* learning_tapCover2.png in Resources */,
 				7336C5B11755FA39007048A0 /* learning_tapCover2@2x.png in Resources */,
+				E4CB2CE41757767F00370700 /* findIcon.png in Resources */,
+				E4CB2CE51757767F00370700 /* findIcon@2x.png in Resources */,
+				E4CB2CE61757767F00370700 /* UISearchBarBG.png in Resources */,
+				E4CB2CE71757767F00370700 /* UISearchBarBG@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14689,6 +14726,7 @@
 				E404ADE91754D43700004FDC /* GuideImageFactory.m in Sources */,
 				E4CDB17917550BA4004993D6 /* WordNoteLayoutViewController.m in Sources */,
 				3FB1CF3A1755ECC100017F88 /* TaskStatus.m in Sources */,
+				E4CB2CDE17576CE200370700 /* CustomSearchBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
