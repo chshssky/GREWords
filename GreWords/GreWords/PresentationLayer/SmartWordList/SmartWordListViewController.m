@@ -45,8 +45,19 @@
     
     [self.tableView reloadData];
     //[self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.3];
-    [self addButtomTexture];
+    [self addButtomTexture:self.tableView];
 }
+
+
+- (void)configureSearchResultTableView
+{
+    UIImageView *topTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -1136.0f, 320.0f, 1136.0f)];
+    topTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
+    [self.tableView addSubview:topTexture];
+    [self.searchDisplayController.searchResultsTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.searchDisplayController.searchResultsTableView setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning list_up_and_down_moreBg.png"]]];
+}
+
 
 - (void)viewDidLoad
 {
@@ -56,7 +67,11 @@
     isSearching = NO;
     
     retractableControllers = [@[] mutableCopy];
-    lastTableViewHeight = -1;
+        
+    // Hide the search bar until user scrolls up
+    CGRect newBounds = [[self tableView] bounds];
+    newBounds.origin.y = newBounds.origin.y + self.searchBar.bounds.size.height;
+    [[self tableView] setBounds:newBounds];
     
     for(int i = 0; i < _array.count;i++)
     {
@@ -76,9 +91,9 @@
         [retractableControllers addObject:sectionController];
     }
     
-    topTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -1136.0f, 320.0f, 1136.0f)];
-    topTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
-    [self.tableView addSubview:topTexture];
+    
+    [self configureSearchResultTableView];
+    
     if(self.type == SmartListType_Note)
     {
         [NSNotificationCenter registerAddNoteForWordNotificationWithSelector:@selector(addNoteItem:) target:self];
@@ -92,9 +107,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)addButtomTexture
+
+
+- (void)addButtomTexture:(UITableView*)aTableview
 {
-    if(lastTableViewHeight == -1)
+    UIImageView *downTexture = (UIImageView *)[aTableview viewWithTag:1024];
+    float lastTableViewHeight;
+    if(!downTexture)
     {
         lastTableViewHeight = self.tableView.contentSize.height;
         
@@ -108,20 +127,31 @@
         
         downTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
         [downTexture addSubview:bottomLine];
-        [self.tableView addSubview:downTexture];
-        [self addButtomTexture];
+        downTexture.tag = 1024;
+        [aTableview addSubview:downTexture];
+        
+        
     }
     else
     {
         lastTableViewHeight = 0;
-        int sectionCount = [self numberOfSectionsInTableView:self.tableView];
+        int sectionCount = [self numberOfSectionsInTableView:aTableview];
         if(sectionCount > 0)
         {
             NSIndexPath *lastIndex = [NSIndexPath indexPathForRow:[self tableView:self.tableView numberOfRowsInSection:sectionCount - 1] - 1  inSection:sectionCount - 1];
-            CGRect lastRect = [self.tableView rectForRowAtIndexPath:lastIndex];
+            CGRect lastRect;
+            @try {
+                lastRect = [aTableview rectForRowAtIndexPath:lastIndex];
+            }
+            @catch (NSException *exception) {
+                downTexture.hidden = YES;
+            }
+            @finally {
+                
+            }
             
             lastTableViewHeight = lastRect.origin.y + lastRect.size.height ;
-         
+            
             [UIView animateWithDuration:0.3 animations:^()
              {
                  downTexture.frame = CGRectMake(0.0f, lastTableViewHeight, 320.0f, 1136.0f);
@@ -132,13 +162,14 @@
         {
             downTexture.hidden = YES;
         }
+
     }
 }
 
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self addButtomTexture];
+    [self addButtomTexture:self.tableView];
 }
 
 - (void)viewDidUnload {
@@ -279,7 +310,8 @@
     
     [sectionController scroll];
     
-    [self addButtomTexture];
+    if(tableView == self.tableView)
+        [self addButtomTexture:tableView];
 }
 
 #pragma mark - scroll view delegate
@@ -330,6 +362,7 @@
     else
     {
         isSearching = YES;
+        [self configureSearchResultTableView];
     }
     [self filterContentForSearchText:searchString];
     // Return YES to cause the search result table view to be reloaded.
@@ -363,7 +396,7 @@
         sectionController.tableView = self.searchDisplayController.searchResultsTableView;
         [filteredRetractableControllers addObject:sectionController];
     }
-
+    
 }
 
 #pragma mark - NSNotification Responder
@@ -386,7 +419,7 @@
     //NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     //[self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationTop];
     [self.tableView reloadData];
-    [self addButtomTexture];
+    [self addButtomTexture:self.tableView];
 }
 
 - (void)removeNoteItem:(NSNotification *)notification
@@ -402,6 +435,6 @@
     [retractableControllers removeObjectAtIndex:index];
     //[self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationTop];
     [self.tableView reloadData];
-    [self addButtomTexture];
+    [self addButtomTexture:self.tableView];
 }
 @end

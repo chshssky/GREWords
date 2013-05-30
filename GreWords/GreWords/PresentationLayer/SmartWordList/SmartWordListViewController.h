@@ -23,9 +23,6 @@
 {
     NSMutableArray* retractableControllers;
     NSMutableArray* filteredRetractableControllers;
-    UIImageView *topTexture;
-    UIImageView *downTexture;
-    float lastTableViewHeight;
     
     CGFloat _contentOffsetBeforeScroll;
     

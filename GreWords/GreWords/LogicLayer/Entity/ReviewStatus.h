@@ -1,5 +1,5 @@
 //
-//  Note.h
+//  ReviewStatus.h
 //  GreWords
 //
 //  Created by 崔 昊 on 13-5-30.
@@ -10,12 +10,12 @@
 #import <CoreData/CoreData.h>
 #import <IAThreadSafeCoreData/IAThreadSafeManagedObject.h>
 
-@class Word;
+@class History;
 
-@interface Note : IAThreadSafeManagedObject
+@interface ReviewStatus : IAThreadSafeManagedObject
 
-@property (nonatomic, retain) NSString * content;
-@property (nonatomic, retain) NSDate * createAt;
-@property (nonatomic, retain) Word *note2word;
+@property (nonatomic, retain) NSNumber * index;
+@property (nonatomic, retain) NSNumber * stage;
+@property (nonatomic, retain) History *history;
 
 @end

@@ -17,10 +17,13 @@
 		3FA4849117142BF9003E88A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848D17142BF9003E88A6 /* InfoPlist.strings */; };
 		3FA4849217142BF9003E88A6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848F17142BF9003E88A6 /* MainStoryboard.storyboard */; };
 		3FA484C41719590D003E88A6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA484C31719590D003E88A6 /* QuartzCore.framework */; };
-		3FB1CF311754A4E500017F88 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF301754A4E500017F88 /* History.m */; };
-		3FB1CF341754A4E500017F88 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF331754A4E500017F88 /* Note.m */; };
-		3FB1CF371754A4E600017F88 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF361754A4E600017F88 /* Word.m */; };
 		3FB1CF3A1755ECC100017F88 /* TaskStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF391755ECC100017F88 /* TaskStatus.m */; };
+		3FB1CF4F175772B100017F88 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF4E175772B100017F88 /* Word.m */; };
+		3FB1CF52175772B400017F88 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF51175772B300017F88 /* Note.m */; };
+		3FB1CF55175772B500017F88 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF54175772B500017F88 /* History.m */; };
+		3FB1CF58175772B700017F88 /* NewWordStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF57175772B700017F88 /* NewWordStatus.m */; };
+		3FB1CF5B175772B800017F88 /* ReviewStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF5A175772B800017F88 /* ReviewStatus.m */; };
+		3FB1CF5E175772B900017F88 /* ExamStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF5D175772B900017F88 /* ExamStatus.m */; };
 		7324846C17524D860058A6DD /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7324846A17524D860058A6DD /* NoteViewController.m */; };
 		7324846D17524D860058A6DD /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7324846B17524D860058A6DD /* NoteViewController.xib */; };
 		732B748D17449E1400612277 /* flipcard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4E21C561743C2C4001A7EEF /* flipcard.plist */; };
@@ -3506,6 +3509,13 @@
 		E4696E14174C8E8200C5F264 /* libCrittercism_v3_5_2.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4696E13174C8E8200C5F264 /* libCrittercism_v3_5_2.a */; };
 		E4696E16174C8F6400C5F264 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4696E15174C8F6400C5F264 /* SystemConfiguration.framework */; };
 		E4983ED0171A8CD90055A0E7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */; };
+		E4CB2CE41757767F00370700 /* findIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE01757767F00370700 /* findIcon.png */; };
+		E4CB2CE51757767F00370700 /* findIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE11757767F00370700 /* findIcon@2x.png */; };
+		E4CB2CE61757767F00370700 /* UISearchBarBG.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE21757767F00370700 /* UISearchBarBG.png */; };
+		E4CB2CE71757767F00370700 /* UISearchBarBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE31757767F00370700 /* UISearchBarBG@2x.png */; };
+		E4CB2CE8175785F000370700 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB2CDD17576CE200370700 /* CustomSearchBar.m */; };
+		E4CB2CEB1757895F00370700 /* UISearchBarText.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE91757895F00370700 /* UISearchBarText.png */; };
+		E4CB2CEC1757895F00370700 /* UISearchBarText@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CEA1757895F00370700 /* UISearchBarText@2x.png */; };
 		E4CDB1421754E3F0004993D6 /* newwordfirst3.5.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB13E1754E3F0004993D6 /* newwordfirst3.5.png */; };
 		E4CDB1431754E3F0004993D6 /* newwordfirst4.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB13F1754E3F0004993D6 /* newwordfirst4.png */; };
 		E4CDB1441754E3F0004993D6 /* newwordfirst3.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB1401754E3F0004993D6 /* newwordfirst3.5@2x.png */; };
@@ -3555,14 +3565,20 @@
 		3FA4848917142BC0003E88A6 /* GreWordsAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreWordsAppDelegate.m; sourceTree = "<group>"; };
 		3FA4848B17142BD4003E88A6 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3FA484C31719590D003E88A6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		3FB1CF2F1754A4E500017F88 /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
-		3FB1CF301754A4E500017F88 /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
-		3FB1CF321754A4E500017F88 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
-		3FB1CF331754A4E500017F88 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
-		3FB1CF351754A4E600017F88 /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
-		3FB1CF361754A4E600017F88 /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
 		3FB1CF381755ECC100017F88 /* TaskStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskStatus.h; sourceTree = "<group>"; };
 		3FB1CF391755ECC100017F88 /* TaskStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskStatus.m; sourceTree = "<group>"; };
+		3FB1CF4D175772B000017F88 /* Word.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Word.h; sourceTree = "<group>"; };
+		3FB1CF4E175772B100017F88 /* Word.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Word.m; sourceTree = "<group>"; };
+		3FB1CF50175772B300017F88 /* Note.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Note.h; sourceTree = "<group>"; };
+		3FB1CF51175772B300017F88 /* Note.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Note.m; sourceTree = "<group>"; };
+		3FB1CF53175772B500017F88 /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
+		3FB1CF54175772B500017F88 /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
+		3FB1CF56175772B700017F88 /* NewWordStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewWordStatus.h; sourceTree = "<group>"; };
+		3FB1CF57175772B700017F88 /* NewWordStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewWordStatus.m; sourceTree = "<group>"; };
+		3FB1CF59175772B800017F88 /* ReviewStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewStatus.h; sourceTree = "<group>"; };
+		3FB1CF5A175772B800017F88 /* ReviewStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewStatus.m; sourceTree = "<group>"; };
+		3FB1CF5C175772B900017F88 /* ExamStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamStatus.h; sourceTree = "<group>"; };
+		3FB1CF5D175772B900017F88 /* ExamStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamStatus.m; sourceTree = "<group>"; };
 		7324846917524D860058A6DD /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteViewController.h; path = PresentationLayer/Note/NoteViewController.h; sourceTree = "<group>"; };
 		7324846A17524D860058A6DD /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteViewController.m; path = PresentationLayer/Note/NoteViewController.m; sourceTree = "<group>"; };
 		7324846B17524D860058A6DD /* NoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteViewController.xib; path = PresentationLayer/Note/NoteViewController.xib; sourceTree = "<group>"; };
@@ -7104,6 +7120,14 @@
 		E4696E13174C8E8200C5F264 /* libCrittercism_v3_5_2.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCrittercism_v3_5_2.a; sourceTree = "<group>"; };
 		E4696E15174C8F6400C5F264 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E4CB2CDC17576CE200370700 /* CustomSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomSearchBar.h; sourceTree = "<group>"; };
+		E4CB2CDD17576CE200370700 /* CustomSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomSearchBar.m; sourceTree = "<group>"; };
+		E4CB2CE01757767F00370700 /* findIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = findIcon.png; sourceTree = "<group>"; };
+		E4CB2CE11757767F00370700 /* findIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findIcon@2x.png"; sourceTree = "<group>"; };
+		E4CB2CE21757767F00370700 /* UISearchBarBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UISearchBarBG.png; sourceTree = "<group>"; };
+		E4CB2CE31757767F00370700 /* UISearchBarBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UISearchBarBG@2x.png"; sourceTree = "<group>"; };
+		E4CB2CE91757895F00370700 /* UISearchBarText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UISearchBarText.png; sourceTree = "<group>"; };
+		E4CB2CEA1757895F00370700 /* UISearchBarText@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UISearchBarText@2x.png"; sourceTree = "<group>"; };
 		E4CDB13E1754E3F0004993D6 /* newwordfirst3.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newwordfirst3.5.png; sourceTree = "<group>"; };
 		E4CDB13F1754E3F0004993D6 /* newwordfirst4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newwordfirst4.png; sourceTree = "<group>"; };
 		E4CDB1401754E3F0004993D6 /* newwordfirst3.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newwordfirst3.5@2x.png"; sourceTree = "<group>"; };
@@ -7573,12 +7597,18 @@
 		E466E78A173BD4CB001847D0 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				3FB1CF351754A4E600017F88 /* Word.h */,
-				3FB1CF361754A4E600017F88 /* Word.m */,
-				3FB1CF321754A4E500017F88 /* Note.h */,
-				3FB1CF331754A4E500017F88 /* Note.m */,
-				3FB1CF2F1754A4E500017F88 /* History.h */,
-				3FB1CF301754A4E500017F88 /* History.m */,
+				3FB1CF5C175772B900017F88 /* ExamStatus.h */,
+				3FB1CF5D175772B900017F88 /* ExamStatus.m */,
+				3FB1CF59175772B800017F88 /* ReviewStatus.h */,
+				3FB1CF5A175772B800017F88 /* ReviewStatus.m */,
+				3FB1CF56175772B700017F88 /* NewWordStatus.h */,
+				3FB1CF57175772B700017F88 /* NewWordStatus.m */,
+				3FB1CF53175772B500017F88 /* History.h */,
+				3FB1CF54175772B500017F88 /* History.m */,
+				3FB1CF50175772B300017F88 /* Note.h */,
+				3FB1CF51175772B300017F88 /* Note.m */,
+				3FB1CF4D175772B000017F88 /* Word.h */,
+				3FB1CF4E175772B100017F88 /* Word.m */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -7612,6 +7642,7 @@
 		E466E7A7173BD4CB001847D0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				E4CB2CDF1757767F00370700 /* UISearchBar */,
 				E404ADEA1754DA1800004FDC /* Guide */,
 				E404ADBB175397BB00004FDC /* Welcome */,
 				E41FF5261740DF750078E738 /* SmartList */,
@@ -11041,6 +11072,7 @@
 		E466F4B3173BD508001847D0 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				E4CB2CDB17576CD100370700 /* CustomSearchBar */,
 				E4696E10174C8E8200C5F264 /* CrittercismSDK */,
 				738B76D0174263C700D66FC0 /* noCopyTextView */,
 				735ED8301741515A0008F945 /* ImageBlur */,
@@ -11103,6 +11135,28 @@
 				E4696E13174C8E8200C5F264 /* libCrittercism_v3_5_2.a */,
 			);
 			path = CrittercismSDK;
+			sourceTree = "<group>";
+		};
+		E4CB2CDB17576CD100370700 /* CustomSearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				E4CB2CDC17576CE200370700 /* CustomSearchBar.h */,
+				E4CB2CDD17576CE200370700 /* CustomSearchBar.m */,
+			);
+			name = CustomSearchBar;
+			sourceTree = "<group>";
+		};
+		E4CB2CDF1757767F00370700 /* UISearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				E4CB2CE91757895F00370700 /* UISearchBarText.png */,
+				E4CB2CEA1757895F00370700 /* UISearchBarText@2x.png */,
+				E4CB2CE01757767F00370700 /* findIcon.png */,
+				E4CB2CE11757767F00370700 /* findIcon@2x.png */,
+				E4CB2CE21757767F00370700 /* UISearchBarBG.png */,
+				E4CB2CE31757767F00370700 /* UISearchBarBG@2x.png */,
+			);
+			path = UISearchBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -14623,6 +14677,12 @@
 				E4CDB1821755CAC8004993D6 /* rollback4@2x.png in Resources */,
 				7336C5B01755FA39007048A0 /* learning_tapCover2.png in Resources */,
 				7336C5B11755FA39007048A0 /* learning_tapCover2@2x.png in Resources */,
+				E4CB2CE41757767F00370700 /* findIcon.png in Resources */,
+				E4CB2CE51757767F00370700 /* findIcon@2x.png in Resources */,
+				E4CB2CE61757767F00370700 /* UISearchBarBG.png in Resources */,
+				E4CB2CE71757767F00370700 /* UISearchBarBG@2x.png in Resources */,
+				E4CB2CEB1757895F00370700 /* UISearchBarText.png in Resources */,
+				E4CB2CEC1757895F00370700 /* UISearchBarText@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14633,6 +14693,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4CB2CE8175785F000370700 /* CustomSearchBar.m in Sources */,
 				E418DA5F1713E5E8002C6743 /* Model.xcdatamodeld in Sources */,
 				3FA4848A17142BC0003E88A6 /* GreWordsAppDelegate.m in Sources */,
 				3FA4848C17142BD4003E88A6 /* main.m in Sources */,
@@ -14682,13 +14743,16 @@
 				E423DECC174A77280079CB60 /* NSDate-Utilities.m in Sources */,
 				7324846C17524D860058A6DD /* NoteViewController.m in Sources */,
 				E404ADBA1753975200004FDC /* WelcomeViewController.m in Sources */,
-				3FB1CF311754A4E500017F88 /* History.m in Sources */,
-				3FB1CF341754A4E500017F88 /* Note.m in Sources */,
-				3FB1CF371754A4E600017F88 /* Word.m in Sources */,
 				E404ADE61754A31F00004FDC /* SplashViewController.m in Sources */,
 				E404ADE91754D43700004FDC /* GuideImageFactory.m in Sources */,
 				E4CDB17917550BA4004993D6 /* WordNoteLayoutViewController.m in Sources */,
 				3FB1CF3A1755ECC100017F88 /* TaskStatus.m in Sources */,
+				3FB1CF4F175772B100017F88 /* Word.m in Sources */,
+				3FB1CF52175772B400017F88 /* Note.m in Sources */,
+				3FB1CF55175772B500017F88 /* History.m in Sources */,
+				3FB1CF58175772B700017F88 /* NewWordStatus.m in Sources */,
+				3FB1CF5B175772B800017F88 /* ReviewStatus.m in Sources */,
+				3FB1CF5E175772B900017F88 /* ExamStatus.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
