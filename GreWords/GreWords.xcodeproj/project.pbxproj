@@ -14738,7 +14738,12 @@
 				E404ADE91754D43700004FDC /* GuideImageFactory.m in Sources */,
 				E4CDB17917550BA4004993D6 /* WordNoteLayoutViewController.m in Sources */,
 				3FB1CF3A1755ECC100017F88 /* TaskStatus.m in Sources */,
-				E4CB2CDE17576CE200370700 /* CustomSearchBar.m in Sources */,
+				3FB1CF4F175772B100017F88 /* Word.m in Sources */,
+				3FB1CF52175772B400017F88 /* Note.m in Sources */,
+				3FB1CF55175772B500017F88 /* History.m in Sources */,
+				3FB1CF58175772B700017F88 /* NewWordStatus.m in Sources */,
+				3FB1CF5B175772B800017F88 /* ReviewStatus.m in Sources */,
+				3FB1CF5E175772B900017F88 /* ExamStatus.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
