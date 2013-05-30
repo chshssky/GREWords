@@ -150,8 +150,7 @@
     [self.backButton.superview bringSubviewToFront:self.backButton];
     
     [[WordSpeaker instance] readWord:self.wordLabel.text];
-
-    
+    [TaskStatus instance].maxWordID = [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue];
     //[self.delegate ChangeWordWithIndex:self.beginWordID + _currentPage WithMax:self.maxWordID];
     
     if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_NewWordFirst])
