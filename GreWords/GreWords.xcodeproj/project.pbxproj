@@ -3514,6 +3514,8 @@
 		E4CB2CE61757767F00370700 /* UISearchBarBG.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE21757767F00370700 /* UISearchBarBG.png */; };
 		E4CB2CE71757767F00370700 /* UISearchBarBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE31757767F00370700 /* UISearchBarBG@2x.png */; };
 		E4CB2CE8175785F000370700 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB2CDD17576CE200370700 /* CustomSearchBar.m */; };
+		E4CB2CEB1757895F00370700 /* UISearchBarText.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE91757895F00370700 /* UISearchBarText.png */; };
+		E4CB2CEC1757895F00370700 /* UISearchBarText@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CEA1757895F00370700 /* UISearchBarText@2x.png */; };
 		E4CDB1421754E3F0004993D6 /* newwordfirst3.5.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB13E1754E3F0004993D6 /* newwordfirst3.5.png */; };
 		E4CDB1431754E3F0004993D6 /* newwordfirst4.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB13F1754E3F0004993D6 /* newwordfirst4.png */; };
 		E4CDB1441754E3F0004993D6 /* newwordfirst3.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB1401754E3F0004993D6 /* newwordfirst3.5@2x.png */; };
@@ -7124,6 +7126,8 @@
 		E4CB2CE11757767F00370700 /* findIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findIcon@2x.png"; sourceTree = "<group>"; };
 		E4CB2CE21757767F00370700 /* UISearchBarBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UISearchBarBG.png; sourceTree = "<group>"; };
 		E4CB2CE31757767F00370700 /* UISearchBarBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UISearchBarBG@2x.png"; sourceTree = "<group>"; };
+		E4CB2CE91757895F00370700 /* UISearchBarText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UISearchBarText.png; sourceTree = "<group>"; };
+		E4CB2CEA1757895F00370700 /* UISearchBarText@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UISearchBarText@2x.png"; sourceTree = "<group>"; };
 		E4CDB13E1754E3F0004993D6 /* newwordfirst3.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newwordfirst3.5.png; sourceTree = "<group>"; };
 		E4CDB13F1754E3F0004993D6 /* newwordfirst4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newwordfirst4.png; sourceTree = "<group>"; };
 		E4CDB1401754E3F0004993D6 /* newwordfirst3.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newwordfirst3.5@2x.png"; sourceTree = "<group>"; };
@@ -11145,6 +11149,8 @@
 		E4CB2CDF1757767F00370700 /* UISearchBar */ = {
 			isa = PBXGroup;
 			children = (
+				E4CB2CE91757895F00370700 /* UISearchBarText.png */,
+				E4CB2CEA1757895F00370700 /* UISearchBarText@2x.png */,
 				E4CB2CE01757767F00370700 /* findIcon.png */,
 				E4CB2CE11757767F00370700 /* findIcon@2x.png */,
 				E4CB2CE21757767F00370700 /* UISearchBarBG.png */,
@@ -14675,6 +14681,8 @@
 				E4CB2CE51757767F00370700 /* findIcon@2x.png in Resources */,
 				E4CB2CE61757767F00370700 /* UISearchBarBG.png in Resources */,
 				E4CB2CE71757767F00370700 /* UISearchBarBG@2x.png in Resources */,
+				E4CB2CEB1757895F00370700 /* UISearchBarText.png in Resources */,
+				E4CB2CEC1757895F00370700 /* UISearchBarText@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
