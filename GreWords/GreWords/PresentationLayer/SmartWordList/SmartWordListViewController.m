@@ -55,6 +55,7 @@
     topTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
     [self.tableView addSubview:topTexture];
     [self.searchDisplayController.searchResultsTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.searchDisplayController.searchResultsTableView setBackgroundColor:[UIColor clearColor]];
     [self.searchDisplayController.searchResultsTableView setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning list_up_and_down_moreBg.png"]]];
 }
 
@@ -67,8 +68,7 @@
     isSearching = NO;
     
     retractableControllers = [@[] mutableCopy];
-        
-    // Hide the search bar until user scrolls up
+    
     CGRect newBounds = [[self tableView] bounds];
     newBounds.origin.y = newBounds.origin.y + self.searchBar.bounds.size.height;
     [[self tableView] setBounds:newBounds];
@@ -99,6 +99,8 @@
         [NSNotificationCenter registerAddNoteForWordNotificationWithSelector:@selector(addNoteItem:) target:self];
         [NSNotificationCenter registerRemoveNoteForWordNotificationWithSelector:@selector(removeNoteItem:) target:self];
     }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -273,6 +275,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray *arr = nil;
+    if(self.type == SmartListType_Note)
+        return;
+        
     if (tableView == self.searchDisplayController.searchResultsTableView)
 	{
         arr = filteredRetractableControllers;
@@ -317,10 +322,10 @@
 #pragma mark - scroll view delegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    if(self.tableView == scrollView)
+    if(self.tableView == scrollView || scrollView == self.searchDisplayController.searchResultsTableView)
     {
         isDragging = YES;
-        _contentOffsetBeforeScroll = self.tableView.contentOffset.y;
+        _contentOffsetBeforeScroll = scrollView.contentOffset.y;
         [self.scrollDelegate smartWordListWillBeginDragging:self];
     }
 }
@@ -332,10 +337,11 @@
 
 - (void)scrollViewDidScroll:(UIScrollView*)aScrollView
 {
-    if(self.tableView == aScrollView)
+    if(self.tableView == aScrollView || aScrollView == self.searchDisplayController.searchResultsTableView)
+        
     {
-        CGFloat contentOffsetY = self.tableView.contentOffset.y - _contentOffsetBeforeScroll;
-        if(self.tableView.contentSize.height <= self.tableView.frame.size.height || self.tableView.contentOffset.x == 0)
+        CGFloat contentOffsetY = aScrollView.contentOffset.y - _contentOffsetBeforeScroll;
+        if(aScrollView.contentSize.height <= aScrollView.frame.size.height || aScrollView.contentOffset.x == 0)
         {
             if(!isDragging)
                 return;
@@ -347,25 +353,66 @@
 
 
 #pragma mark - UISearchDisplayController Delegate Methods
+
+- (void) searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
+{
+    isSearching = YES;
+    [self configureSearchResultTableView];
+    [self performSelector:@selector(removeOverlay) withObject:nil afterDelay:.01f];
+    [self.scrollDelegate smartWordListWillStartSearch:self];
+}
+
+- (void)removeOverlay
+{
+//    for(UIView *v in self.view.subviews)
+//    {
+//        
+//    }
+    //[[self.view.subviews lastObject] removeFromSuperview];
+    UIControl *control = (UIControl *)[self.view.subviews lastObject];
+    control.alpha = 0.02f;
+    [control setBackgroundColor:[UIColor clearColor]];
+    
+}
+
+- (void) searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
+{
+    isSearching = NO;
+    [self.scrollDelegate smartWordListDidEndSearch:self];
+}
+
 - (void) searchBarCancelButtonClicked:(UISearchBar*)searchBar {
     
-    isSearching = NO;
+    //isSearching = NO;
 }
+
+- (void)configureNoResultLabel
+{
+    for (UIView* v in self.searchDisplayController.searchResultsTableView.subviews) {
+        if ([v isKindOfClass: [UILabel class]])
+        {
+            UILabel *label = (UILabel*)v;
+            label.textColor = [UIColor colorWithRed:209/255.0 green:134/255.0 blue:39/255.0 alpha:1.0];
+            //label.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+            //label.shadowOffset = CGSizeMake(0, 1);
+            break;
+        }
+    }
+}
+
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
     NSLog(@"searching:%@",searchString);
-    if([searchString isEqualToString: @""])
-    {
-        isSearching = NO;
-    }
-    else
-    {
-        isSearching = YES;
-        [self configureSearchResultTableView];
-    }
+//    if([searchString isEqualToString:@""])
+//    {
+//        [self removeOverlay];
+//    }
+    [self performSelector:@selector(configureNoResultLabel) withObject:nil afterDelay:0.1f];
+    //[self configureNoResultLabel];
     [self filterContentForSearchText:searchString];
-    // Return YES to cause the search result table view to be reloaded.
+    
+        // Return YES to cause the search result table view to be reloaded.
     return YES;
 }
 
@@ -375,8 +422,40 @@
 - (void)filterContentForSearchText:(NSString*)searchText
 {
 	// Filter the array using NSPredicate
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.wordText  contains[c] %@",searchText];
-    self.filteredArray = [[self.array filteredArrayUsingPredicate:predicate] mutableCopy];
+    if(self.type == SmartListType_Homo)
+    {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.key  contains[c] %@",searchText];
+        self.filteredArray = [[self.array filteredArrayUsingPredicate:predicate] mutableCopy];
+    }
+    else if(self.type == SmartListType_Note)
+    {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.wordText contains[c] %@ or SELF.note contains[c] %@",searchText,searchText];
+        self.filteredArray = [[self.array filteredArrayUsingPredicate:predicate] mutableCopy];
+    }
+    else
+    {
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.wordText  contains[c] %@",searchText];
+        self.filteredArray = [[self.array filteredArrayUsingPredicate:predicate] mutableCopy];
+        
+        [self.filteredArray sortUsingComparator: ^(id obj1, id obj2) {
+            NSString *prefixObj1 = ((WordEntity*)obj1).wordText;
+            NSString *prefixObj2 = ((WordEntity*)obj2).wordText;
+            NSNumber *r1 = @0;
+            NSNumber *r2 = @0;
+            if([prefixObj1 hasPrefix:searchText])
+            {
+                r1 = @1;
+            }
+            if([prefixObj2 hasPrefix:searchText])
+            {
+                r2 = @1;
+            }
+            return [r2 compare:r1];
+        }];
+
+    }
+    
     
     filteredRetractableControllers = [@[] mutableCopy];
     for(int i = 0; i < _filteredArray.count;i++)

@@ -38,6 +38,7 @@
     [super viewDidLoad];
     
     isDragging = NO;
+    isSearching = NO;
     
     originalTableViewFrame = self.pageScrollView.frame;
     
@@ -168,14 +169,57 @@
 }
 
 #pragma mark - Smart Word List View Scroll Delegate
+
+-(void)smartWordListWillStartSearch:(SmartWordListViewController*)list
+{
+    isSearching = YES;
+    [UIView animateWithDuration:0.2 animations:^()
+    {
+        CGRect frame = self.topView.frame;
+        frame.origin.y = - frame.size.height;
+        self.topView.frame = frame;
+        
+        frame = self.pageScrollView.frame;
+        frame.origin.y = 0;
+        frame.size.height = originalTableViewFrame.size.height +self.topView.frame.size.height;
+        self.pageScrollView.frame = frame;
+        
+        frame = list.view.frame;
+        frame.size.height = originalTableViewFrame.size.height + self.topView.frame.size.height;
+        list.view.frame = frame;
+        
+    }];
+}
+
+-(void)smartWordListDidEndSearch:(SmartWordListViewController*)list
+{
+    isSearching = NO;
+    [UIView animateWithDuration:0.2 animations:^()
+     {
+         CGRect frame = self.topView.frame;
+         frame.origin.y = 0;
+         self.topView.frame = frame;
+         
+         frame = self.pageScrollView.frame;
+         frame.origin.y = self.topView.frame.size.height;
+         frame.size.height = originalTableViewFrame.size.height;
+         self.pageScrollView.frame = frame;
+         
+     }];
+}
+
 -(void)smartWordListWillBeginDragging:(SmartWordListViewController*)list
 {
+    if(isSearching)
+        return;
     //NSLog(@"will begin draggin");
     _tabbarYBeforeScroll = self.topView.frame.origin.y;
 }
 
 -(void)smartWordList:(SmartWordListViewController*)list didTranslationYSinceLast:(CGFloat)traslation
 {
+    if(isSearching)
+        return;
     //NSLog(@"didTranslationYSinceLast");
     CGFloat contentOffsetY = traslation;
     CGRect frame = self.topView.frame;
