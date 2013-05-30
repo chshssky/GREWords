@@ -15,6 +15,8 @@
 -(void)smartWordListWillBeginDragging:(SmartWordListViewController*)list;
 -(void)smartWordList:(SmartWordListViewController*)list didTranslationYSinceLast:(CGFloat)traslation;
 
+-(void)smartWordListWillStartSearch:(SmartWordListViewController*)list;
+-(void)smartWordListDidEndSearch:(SmartWordListViewController*)list;
 @end
 
 

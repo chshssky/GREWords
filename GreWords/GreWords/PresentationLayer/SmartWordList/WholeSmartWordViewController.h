@@ -20,6 +20,7 @@
     MHTabBarController *tabBarController;
     
     BOOL isDragging;
+    BOOL isSearching;
 }
 
 @property (weak, nonatomic) IBOutlet UIScrollView *pageScrollView;

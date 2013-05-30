@@ -319,10 +319,10 @@
 #pragma mark - scroll view delegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    if(self.tableView == scrollView)
+    if(self.tableView == scrollView || scrollView == self.searchDisplayController.searchResultsTableView)
     {
         isDragging = YES;
-        _contentOffsetBeforeScroll = self.tableView.contentOffset.y;
+        _contentOffsetBeforeScroll = scrollView.contentOffset.y;
         [self.scrollDelegate smartWordListWillBeginDragging:self];
     }
 }
@@ -334,10 +334,11 @@
 
 - (void)scrollViewDidScroll:(UIScrollView*)aScrollView
 {
-    if(self.tableView == aScrollView)
+    if(self.tableView == aScrollView || aScrollView == self.searchDisplayController.searchResultsTableView)
+        
     {
-        CGFloat contentOffsetY = self.tableView.contentOffset.y - _contentOffsetBeforeScroll;
-        if(self.tableView.contentSize.height <= self.tableView.frame.size.height || self.tableView.contentOffset.x == 0)
+        CGFloat contentOffsetY = aScrollView.contentOffset.y - _contentOffsetBeforeScroll;
+        if(aScrollView.contentSize.height <= aScrollView.frame.size.height || aScrollView.contentOffset.x == 0)
         {
             if(!isDragging)
                 return;
@@ -355,6 +356,7 @@
     isSearching = YES;
     [self configureSearchResultTableView];
     [self performSelector:@selector(removeOverlay) withObject:nil afterDelay:.01f];
+    [self.scrollDelegate smartWordListWillStartSearch:self];
 }
 
 - (void)removeOverlay
@@ -373,6 +375,7 @@
 - (void) searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
 {
     isSearching = NO;
+    [self.scrollDelegate smartWordListDidEndSearch:self];
 }
 
 - (void) searchBarCancelButtonClicked:(UISearchBar*)searchBar {
