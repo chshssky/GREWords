@@ -87,7 +87,7 @@ static NSDictionary* typeDict = nil;
     }
     else
     {
-        cell.wordLabel.text =  [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
+        cell.wordLabel.text =  [[WordHelper instance] wordWithID:self.wordID].wordText;
         cell.word = [[WordHelper instance] wordWithID:self.wordID];
         cell.wordLabel.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
         
@@ -115,7 +115,7 @@ static NSDictionary* typeDict = nil;
     
     
     
-    //vc.text = [[WordHelper instance] wordWithID:self.wordID].data[@"word"];
+    //vc.text = [[WordHelper instance] wordWithID:self.wordID].wordText;
     //[cell addSubview:vc.view];
 
     return cell;
