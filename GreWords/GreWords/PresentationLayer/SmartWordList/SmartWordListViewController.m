@@ -69,18 +69,9 @@
     
     retractableControllers = [@[] mutableCopy];
     
-    if(self.type == SmartListType_Slide)
-    {
-        [self.searchBar removeFromSuperview];
-    }
-    else
-    {
-        // Hide the search bar until user scrolls up
-        CGRect newBounds = [[self tableView] bounds];
-        newBounds.origin.y = newBounds.origin.y + self.searchBar.bounds.size.height;
-        [[self tableView] setBounds:newBounds];
-        
-    }
+    CGRect newBounds = [[self tableView] bounds];
+    newBounds.origin.y = newBounds.origin.y + self.searchBar.bounds.size.height;
+    [[self tableView] setBounds:newBounds];
     
     for(int i = 0; i < _array.count;i++)
     {
@@ -362,13 +353,21 @@
 - (void) searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
 {
     isSearching = YES;
-    [self performSelector:@selector(removeOverlayAndMore) withObject:nil afterDelay:.01f];
+    [self configureSearchResultTableView];
+    [self performSelector:@selector(removeOverlay) withObject:nil afterDelay:.01f];
 }
 
-- (void)removeOverlayAndMore
+- (void)removeOverlay
 {
-    [[self.view.subviews lastObject] removeFromSuperview];
-    [self configureSearchResultTableView];
+//    for(UIView *v in self.view.subviews)
+//    {
+//        
+//    }
+    //[[self.view.subviews lastObject] removeFromSuperview];
+    UIControl *control = (UIControl *)[self.view.subviews lastObject];
+    control.alpha = 0.02f;
+    [control setBackgroundColor:[UIColor clearColor]];
+    
 }
 
 - (void) searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
@@ -381,20 +380,33 @@
     //isSearching = NO;
 }
 
+- (void)configureNoResultLabel
+{
+    for (UIView* v in self.searchDisplayController.searchResultsTableView.subviews) {
+        if ([v isKindOfClass: [UILabel class]])
+        {
+            UILabel *label = (UILabel*)v;
+            label.textColor = [UIColor colorWithRed:209/255.0 green:134/255.0 blue:39/255.0 alpha:1.0];
+            //label.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+            //label.shadowOffset = CGSizeMake(0, 1);
+            break;
+        }
+    }
+}
+
+
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
     NSLog(@"searching:%@",searchString);
-//    if([searchString isEqualToString: @""])
-//    {
-//        isSearching = NO;
-//    }
-//    else
-//    {
-//        isSearching = YES;
-//        
-//    }
+    if([searchString isEqualToString:@""])
+    {
+        [self removeOverlay];
+    }
+    [self performSelector:@selector(configureNoResultLabel) withObject:nil afterDelay:0.1f];
+    //[self configureNoResultLabel];
     [self filterContentForSearchText:searchString];
-    // Return YES to cause the search result table view to be reloaded.
+    
+        // Return YES to cause the search result table view to be reloaded.
     return YES;
 }
 
