@@ -14,6 +14,7 @@
 - (NSArray*)sectionTitles;
 - (void)didSelectedIndex:(int)index;
 
+
 @end
 
 @interface GreTableViewSearchIndexViewController : UIViewController
@@ -25,5 +26,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *sampleLabel;
 
 @property (retain,nonatomic) id<GreTableViewSearchIndexDelegate> delegate;
+
+- (BOOL)isTouching;
 
 @end

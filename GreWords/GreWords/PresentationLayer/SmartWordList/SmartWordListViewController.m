@@ -67,9 +67,10 @@
     searchIndex.delegate = self;
     CGRect frame = searchIndex.view.frame;
     frame.origin.x = 320 - frame.size.width - 2;
-    frame.size.height = 430;
+    frame.origin.y = (self.view.frame.size.height - frame.size.height) / 2;
+    //frame.size.height = 490;
     searchIndex.view.frame = frame;
-    
+    searchIndex.view.hidden = YES;
     [self.view addSubview:searchIndex.view];
 }
 
@@ -347,6 +348,28 @@
     }
 }
 
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    searchIndex.view.hidden = NO;
+    [UIView animateWithDuration:0.2 animations:^(){
+        searchIndex.view.alpha = 1.0;
+    }];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if([searchIndex isTouching])
+        return;
+    [UIView animateWithDuration:0.2f animations:^()
+    {
+        searchIndex.view.alpha = 0.0;
+    }
+                     completion:^(BOOL c)
+    {
+        searchIndex.view.hidden = YES;
+    }];
+}
+
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     isDragging = NO;
@@ -571,7 +594,7 @@
     if(!number)
         return;
     int section = [number intValue];
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section] atScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
 
 @end

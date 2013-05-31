@@ -33,6 +33,11 @@
 }
 
 
+- (BOOL)isTouching
+{
+    return pressing;
+}
+
 - (UILabel*)generateLabel:(NSString*)text
 {
     NSData *archivedData = [NSKeyedArchiver archivedDataWithRootObject: self.sampleLabel];
@@ -107,6 +112,9 @@
         [self setTileColorAtIndex:-1];
         indicator.view.hidden = YES;
         pressing = NO;
+        [UIView animateWithDuration:0.2 animations:^(){
+            self.view.alpha = 0.0;
+        }];
     }
     
     int index = (curPoint.y - CORNER) / averageHeight;
