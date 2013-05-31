@@ -142,6 +142,10 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="learning_backgournd_blank.png" id="Pgl-Jq-o5Z">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Main menu_bg.png" id="Sf2-zk-Iu3">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -154,6 +158,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundImage" destination="Sf2-zk-Iu3" id="lHv-hr-EpK"/>
                         <outlet property="titleView" destination="3NN-tp-1dU" id="iHv-Ss-Gnq"/>
                     </connections>
                 </viewController>
@@ -590,6 +595,7 @@
         <image name="learning list_line.png" width="320" height="6"/>
         <image name="learning list_sound.png" width="19" height="17"/>
         <image name="learning list_up_and_down_moreBg.png" width="320" height="1136"/>
+        <image name="learning_backgournd_blank.png" width="320" height="568"/>
         <image name="words list_backButton.png" width="45" height="45"/>
         <image name="words list_bg_buttom.png" width="320" height="90"/>
         <image name="words list_button_click.png" width="45" height="45"/>
@@ -604,6 +610,7 @@
         <class className="GreWordsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GreWordsViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="backgroundImage" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="titleView" candidateClass="UIImageView"/>
             </relationships>
         </class>

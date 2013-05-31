@@ -193,7 +193,7 @@
 }
 
 - (IBAction)BackButtonPushed:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissModalViewControllerAnimated:NO];
     [self.delegate AnimationBack];
 }
 

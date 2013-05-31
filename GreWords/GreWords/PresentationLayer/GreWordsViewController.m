@@ -42,6 +42,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *titleView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 
 @end
 
@@ -162,6 +163,7 @@
 
 - (void)viewDidUnload {
     [self setTitleView:nil];
+    [self setBackgroundImage:nil];
     [super viewDidUnload];
 }
 
@@ -312,6 +314,10 @@
         self.slideBarView.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.slideBarStatusTextView.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.slideBarStatusView.transform = CGAffineTransformMakeTranslation(-300, 0);
+        self.backgroundImage.alpha = 0;
+        dashboard.textView.alpha = 0;
+        dashboard.startTextView.alpha = 0;
+        dashboard.wordNumberTest.transform = CGAffineTransformMakeTranslation(-15, 0);
         if (iPhone5) {
             dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -252));
         } else {
@@ -401,7 +407,7 @@
 {
     dashboard = [DashboardViewController instance];
     dashboard.delegate = self;
-    [self.view insertSubview:dashboard.view atIndex:1];
+    [self.view insertSubview:dashboard.view atIndex:2];
     [dashboard mainViewGen];
     
     [UIView animateWithDuration:0.5f animations:^{
@@ -411,6 +417,10 @@
         self.slideBarStatusView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
         dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.0f,1.0f), CGAffineTransformMakeTranslation(0, 0));
         self.menu.transform = CGAffineTransformMakeTranslation(0, 0);
+        self.backgroundImage.alpha = 1.0f;
+        dashboard.textView.alpha = 1.0f;
+        dashboard.startTextView.alpha = 1.0f;
+        dashboard.wordNumberTest.transform = CGAffineTransformMakeTranslation(0, 0);
     }];
     
 }
