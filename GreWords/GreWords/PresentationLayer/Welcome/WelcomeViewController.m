@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface WelcomeViewController ()
+@property (nonatomic) UIViewController* vc;
 
 @end
 
@@ -46,25 +47,10 @@
 
 -(IBAction)goPressed:(id)sender
 {
-    CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
-    scaleAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(2, 2, 1)];
-    scaleAnimation.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1)];
-    scaleAnimation.removedOnCompletion = NO;
-    scaleAnimation.fillMode = kCAFillModeForwards;
-    scaleAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    scaleAnimation.duration = 0.2;
-    scaleAnimation.delegate = self;
-    [scaleAnimation setValue:@"removeGuide" forKey:@"id"];
-    [self.view.layer addAnimation:scaleAnimation forKey:nil];
-}
-
-- (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag
-{
-    if([[theAnimation valueForKey:@"id"] isEqual:@"removeGuide"])
-    {
-        UIViewController* vc = [self.storyboard instantiateViewControllerWithIdentifier:@"mainScreen"];
-        [self presentModalViewController:vc animated:NO];
-    }
+    _vc = [self.storyboard instantiateViewControllerWithIdentifier:@"mainScreen"];
+    _vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self presentModalViewController:_vc animated:YES];
+    
 }
 
 - (void)viewDidUnload {

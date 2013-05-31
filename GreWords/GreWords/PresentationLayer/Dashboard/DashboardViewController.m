@@ -198,6 +198,10 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     
     [_slices replaceObjectAtIndex:0 withObject:[NSNumber numberWithFloat:_nonFinishedNumber]];
     [_slices replaceObjectAtIndex:1 withObject:[NSNumber numberWithFloat:(_sumNumber - _nonFinishedNumber)]];
+    
+    //[_pieChartLeft performSelectorInBackground:@selector(reloadData) withObject:nil];
+    
+    //[_pieChartLeft performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
     [_pieChartLeft reloadData];
 }
 

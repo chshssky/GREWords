@@ -1008,7 +1008,18 @@
         
         _showMeaningButton.userInteractionEnabled = YES;
         _WordParaphraseView.userInteractionEnabled = NO;
-
+    }
+    
+    ////////////////////////////////
+    
+    if([[theAnimation valueForKey:@"id"] isEqual:@"removeDownImageAnimation_withDownCover"])
+    {
+        [self.delegate GoToNewWord];
+        [self dismissModalViewControllerAnimated:NO];
+    }else if ([[theAnimation valueForKey:@"id"] isEqual:@"removeDownImageAnimation_withNoDownCover"])
+    {
+        [self.delegate GoToNewWord];
+        [self dismissModalViewControllerAnimated:NO];
     }
 }
 
@@ -1082,8 +1093,6 @@
 
 - (void)newWordCompleted
 {
-    
-    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日完成" message:@"今天错误率： 用时：" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
     [alert setAlertViewStyle:UIAlertViewStyleDefault];
     
@@ -1093,15 +1102,215 @@
 
 }
 
+- (void)removeDownImageAnimation_withDownCover
+{
+    CAKeyframeAnimation *lineAnimation;
+    CGMutablePathRef path;
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _DownImage.center.x, _DownImage.center.y);
+    CGPathAddLineToPoint(path, NULL, _DownImage.center.x, _DownImage.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_DownImage.layer addAnimation:lineAnimation forKey:nil];
+    
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _RightButton.center.x, _RightButton.center.y);
+    CGPathAddLineToPoint(path, NULL, _RightButton.center.x, _RightButton.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_RightButton.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _WrongButton.center.x, _WrongButton.center.y);
+    CGPathAddLineToPoint(path, NULL, _WrongButton.center.x, _WrongButton.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_WrongButton.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _WrongUpImageView.center.x, _WrongUpImageView.center.y);
+    CGPathAddLineToPoint(path, NULL, _WrongUpImageView.center.x, _WrongUpImageView.center.y +171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_WrongUpImageView.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _RightUpImageView.center.x, _RightUpImageView.center.y);
+    CGPathAddLineToPoint(path, NULL, _RightUpImageView.center.x, _RightUpImageView.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_RightUpImageView.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _RightDownImageView.center.x, _RightDownImageView.center.y);
+    CGPathAddLineToPoint(path, NULL, _RightDownImageView.center.x, _RightDownImageView.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_RightDownImageView.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _WrongDownImageView.center.x, _WrongDownImageView.center.y);
+    CGPathAddLineToPoint(path, NULL, _WrongDownImageView.center.x, _WrongDownImageView.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [lineAnimation setValue:@"removeDownImageAnimation_withDownCover" forKey:@"id"];
+    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
+    [_WrongDownImageView.layer addAnimation:lineAnimation forKey:nil];
+}
+
+- (void)removeDownImageAnimation_withNoDownCover
+{
+    CAKeyframeAnimation *lineAnimation;
+    CGMutablePathRef path;  
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _RightButton.center.x, _RightButton.center.y);
+    CGPathAddLineToPoint(path, NULL, _RightButton.center.x, _RightButton.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_RightButton.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _WrongButton.center.x, _WrongButton.center.y);
+    CGPathAddLineToPoint(path, NULL, _WrongButton.center.x, _WrongButton.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_WrongButton.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _WrongUpImageView.center.x, _WrongUpImageView.center.y);
+    CGPathAddLineToPoint(path, NULL, _WrongUpImageView.center.x, _WrongUpImageView.center.y +171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_WrongUpImageView.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _RightUpImageView.center.x, _RightUpImageView.center.y);
+    CGPathAddLineToPoint(path, NULL, _RightUpImageView.center.x, _RightUpImageView.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_RightUpImageView.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _RightDownImageView.center.x, _RightDownImageView.center.y);
+    CGPathAddLineToPoint(path, NULL, _RightDownImageView.center.x, _RightDownImageView.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_RightDownImageView.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _WrongDownImageView.center.x, _WrongDownImageView.center.y);
+    CGPathAddLineToPoint(path, NULL, _WrongDownImageView.center.x, _WrongDownImageView.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [lineAnimation setValue:@"removeDownImageAnimation_withNoDownCover" forKey:@"id"];
+    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
+    [_WrongDownImageView.layer addAnimation:lineAnimation forKey:nil];
+}
+
+
 - (void)nextButtonPushed
 {
     if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue] > [TaskStatus instance].maxWordID) {
         if (_DownImage.alpha <= 0) {
-            [self.delegate GoToNewWordWithDownImage:NO];
+            [self removeDownImageAnimation_withNoDownCover];
         }else{
-            [self.delegate GoToNewWordWithDownImage:YES];
+            [self removeDownImageAnimation_withDownCover];
         }
-        [self dismissModalViewControllerAnimated:NO];
+        //[self dismissModalViewControllerAnimated:NO];
+        
     } else {
         if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
             [self loadWord:[TaskStatus instance].indexOfWordIDToday];

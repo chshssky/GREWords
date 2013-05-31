@@ -90,8 +90,7 @@
 }
 
 - (void)initAwesomeMenu
-{
-    
+{ 
     AwesomeMenuItem *starMenuItem1 = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Main menu_xSettingButton.png"]
                                                            highlightedImage:[UIImage imageNamed:@"Main menu_xSettingButton_clicked.png"]
                                                                ContentImage:nil
@@ -262,6 +261,8 @@
         [_testSelectorController.view removeFromSuperview];
         _testSelectorController = nil;
     }
+    
+    //start
 }
 
 - (void)historyController
@@ -325,10 +326,8 @@
             WordDetailViewController *vc = [[WordDetailViewController alloc] init];
             vc.delegate = self;
             [self presentViewController:vc animated:NO completion:nil];
-            
-            
+
         } else {
-            
             
             [self createNewWordEvent];
             
@@ -351,10 +350,7 @@
                                                 leftViewController:leftController
                                                 rightViewController:nil];
         
-
-            deckController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        
-            [self presentViewController:deckController animated:YES completion:nil];
+            [self presentViewController:deckController animated:NO completion:nil];
         }
     }];
 }
@@ -427,12 +423,12 @@
     
 }
 
-- (void)GoToNewWordWithDownImage:(BOOL)whetherHaveDownImage
+- (void)GoToNewWord
 {
-    [self performSelector:@selector(GotoNewWordSelector:) withObject:[NSNumber numberWithBool:whetherHaveDownImage] afterDelay:0];
+    [self performSelectorOnMainThread:@selector(GotoNewWordSelector) withObject:nil waitUntilDone:NO];
 }
 
-- (void)GotoNewWordSelector:(NSNumber *)whetherHaveDownImage
+- (void)GotoNewWordSelector
 {
     NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
 
@@ -454,14 +450,7 @@
     IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:vc
                                                                                     leftViewController:leftController
                                                                                    rightViewController:nil];
-        
     [self presentViewController:deckController animated:NO completion:nil];
-    
-    if ([whetherHaveDownImage boolValue] == YES) {
-        [vc removeDownImageAnimation_withDownCover];
-    }else{
-        [vc removeDownImageAnimation_withNoDownCover];
-    }
 }
 
 @end
