@@ -228,15 +228,7 @@ HistoryManager* _historyManagerInstance = nil;
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
     [request setFetchLimit:1];
     
-    NSError *fetchError = nil;
-    NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
-    History *history = [fetchMatches lastObject];
-    
-    NSDictionary *info = [self toArrayOrNSDictionary:[history.info dataUsingEncoding:NSASCIIStringEncoding]];
-    
     float progress = 0;
-    //!!!!!!!!!!!!!!!!
-    //[[info objectForKey:@"unit"] floatValue] / ;
     
     return progress;
 }

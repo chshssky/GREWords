@@ -194,7 +194,6 @@
 
 - (IBAction)BackButtonPushed:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
-    //[self.delegate ChangeWordWithIndex:self.beginWordID - 2 WithMax:self.maxWordID];
     [self.delegate AnimationBack];
 }
 
@@ -268,11 +267,6 @@
     
     int wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:index] intValue];
     [vc displayWord:[[WordHelper instance] wordWithID:wordID] withOption:option];
-#warning is the MaxWordID should be changed here???
-//    if ([TaskStatus instance].maxWordID < wordID) {
-//        [TaskStatus instance].maxWordID = wordID;
-//    }
-    //self.wordLabel.text = [[WordHelper instance] wordWithID:aWordID].wordText;
 
     
     self.WordParaphraseView.delegate = self;
@@ -301,16 +295,6 @@
         [left addWord:addWord];
     }
     [[WordSpeaker instance] readWord:self.wordLabel.text];
-    
-    NewWordEvent *newWordEvent = [[NewWordEvent alloc] init];
-    //newWordEvent.;
-    
-    
-    //[[HistoryManager instance] updateEvent:newWordEvent];
-    
-    
-    NSLog(@"Now Word is Index: %d || MaxWordID %d", [TaskStatus instance].indexOfWordIDToday, [TaskStatus instance].maxWordID);
-    
 }
 
 //加载单词名称进入数组
@@ -441,7 +425,6 @@
                 self.isNextWord = NO;
                 [self.dashboardVC plusData];
             }
-            NSLog(@"The::::%d", [TaskStatus instance].indexOfWordIDToday);
             _currentPage = page;
         }
         
