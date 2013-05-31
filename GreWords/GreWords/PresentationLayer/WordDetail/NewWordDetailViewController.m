@@ -303,10 +303,14 @@
     [[WordSpeaker instance] readWord:self.wordLabel.text];
     
     NewWordEvent *newWordEvent = [[NewWordEvent alloc] init];
-    //newWordEvent.;
+    
+    newWordEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+    newWordEvent.maxWordID = [TaskStatus instance].maxWordID;
+    newWordEvent.reviewEnable = [TaskStatus instance].reviewEnable;
+    newWordEvent.stage_now = [TaskStatus instance].stage_now;
     
     
-    //[[HistoryManager instance] updateEvent:newWordEvent];
+    [[HistoryManager instance] updateEvent:newWordEvent];
     
     
     NSLog(@"Now Word is Index: %d || MaxWordID %d", [TaskStatus instance].indexOfWordIDToday, [TaskStatus instance].maxWordID);

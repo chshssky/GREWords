@@ -24,6 +24,7 @@
 		3FB1CF58175772B700017F88 /* NewWordStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF57175772B700017F88 /* NewWordStatus.m */; };
 		3FB1CF5B175772B800017F88 /* ReviewStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF5A175772B800017F88 /* ReviewStatus.m */; };
 		3FB1CF5E175772B900017F88 /* ExamStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF5D175772B900017F88 /* ExamStatus.m */; };
+		3FB1CF5F1757A6DB00017F88 /* History.h in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF53175772B500017F88 /* History.h */; };
 		7324846C17524D860058A6DD /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7324846A17524D860058A6DD /* NoteViewController.m */; };
 		7324846D17524D860058A6DD /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7324846B17524D860058A6DD /* NoteViewController.xib */; };
 		732B748D17449E1400612277 /* flipcard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4E21C561743C2C4001A7EEF /* flipcard.plist */; };
@@ -14648,6 +14649,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FB1CF5F1757A6DB00017F88 /* History.h in Sources */,
 				E418DA5F1713E5E8002C6743 /* Model.xcdatamodeld in Sources */,
 				3FA4848A17142BC0003E88A6 /* GreWordsAppDelegate.m in Sources */,
 				3FA4848C17142BD4003E88A6 /* main.m in Sources */,

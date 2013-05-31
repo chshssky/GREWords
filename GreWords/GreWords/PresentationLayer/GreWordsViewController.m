@@ -140,7 +140,11 @@
     // 从数据库中读取现在的状态
     
     //初始化TaskStatus状态
-    [[TaskStatus instance] beginNewWord];
+    //[[TaskStatus instance] beginNewWord];
+    if ([[HistoryManager instance] readStatusIfNew])
+    {
+        [self createNewWordEvent];
+    }
 
     
     [self initDashboard];
@@ -311,8 +315,8 @@
             
         } else {
             
+            [[HistoryManager instance] readStatusIfNew];
             
-            [self createNewWordEvent];
             
             NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
             vc.changePage = 10 - ([TaskStatus instance].maxWordID % 10);
@@ -376,6 +380,17 @@
         {
             [TaskStatus instance].indexOfWordIDToday = index;
             [TaskStatus instance].maxWordID = theWordID;
+            
+            NewWordEvent *newWordEvent = [[NewWordEvent alloc] init];
+            
+            newWordEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+            newWordEvent.maxWordID = [TaskStatus instance].maxWordID;
+            newWordEvent.reviewEnable = [TaskStatus instance].reviewEnable;
+            newWordEvent.stage_now = [TaskStatus instance].stage_now;
+            
+            
+            [[HistoryManager instance] updateEvent:newWordEvent];
+            
             return;
         }
     }
