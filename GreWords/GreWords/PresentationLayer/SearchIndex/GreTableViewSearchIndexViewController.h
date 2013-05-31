@@ -21,7 +21,7 @@
     GreTableViewSearchIndexIndicatorViewController *indicator;
 }
 
-@property (weak, nonatomic) IBOutlet UIView *backgroundView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
 @property (strong, nonatomic) IBOutlet UILabel *sampleLabel;
 
 @property (retain,nonatomic) id<GreTableViewSearchIndexDelegate> delegate;

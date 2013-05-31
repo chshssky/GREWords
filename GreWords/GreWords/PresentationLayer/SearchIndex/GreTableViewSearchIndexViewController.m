@@ -16,6 +16,7 @@
     CGRect frame;
     CGFloat averageHeight;
     NSMutableArray *labelArr;
+    BOOL pressing;
 }
 
 @end
@@ -75,10 +76,10 @@
 {
     for(int i = 0; i < labelArr.count; i++)
     {
-        UIColor *color = [UIColor colorWithR:255 G:255 B:0];
+        UIColor *color = pressing ? [UIColor colorWithR:248 G:246 B:244] : [UIColor colorWithR:162 G:152 B:145];
         if(index == i)
         {
-            color = [UIColor redColor];
+            color = pressing ? [UIColor colorWithR:255 G:144 B:0] : [UIColor colorWithR:162 G:152 B:145];
         }
         UILabel *label = labelArr[i];
         [label setTextColor:color];
@@ -89,6 +90,24 @@
 - (void)panned:(UIPanGestureRecognizer*)panner
 {
     CGPoint curPoint = [panner locationInView:self.view];
+    
+    if(panner.state == UIGestureRecognizerStateBegan)
+    {
+        [self setBackgroundPressed:YES];
+        indicator.view.hidden = NO;
+        pressing = YES;
+    }
+    else if(panner.state == UIGestureRecognizerStateChanged)
+    {
+        
+    }
+    else
+    {
+        [self setBackgroundPressed:NO];
+        [self setTileColorAtIndex:-1];
+        indicator.view.hidden = YES;
+        pressing = NO;
+    }
     
     int index = (curPoint.y - CORNER) / averageHeight;
     if(index >= [self sectionTitles].count)
@@ -101,24 +120,8 @@
     indicator.indicatorLabel.text = [self sectionTitles][index];
     UILabel *label = labelArr[index];
     CGRect indicatorFrame = indicator.view.frame;
-    indicatorFrame.origin.y = label.frame.origin.y;
+    indicatorFrame.origin.y = label.frame.origin.y - 26;
     indicator.view.frame = indicatorFrame;
-    
-    if(panner.state == UIGestureRecognizerStateBegan)
-    {
-        self.backgroundView.hidden = NO;
-        indicator.view.hidden = NO;
-    }
-    else if(panner.state == UIGestureRecognizerStateChanged)
-    {
-        
-    }
-    else
-    {
-        self.backgroundView.hidden = YES;
-        [self setTileColorAtIndex:-1];
-        indicator.view.hidden = YES;
-    }
 }
 
 
@@ -133,12 +136,21 @@
 }
 
 
+- (void)setBackgroundPressed:(BOOL)pressed
+{
+    if(pressed)
+    {
+        self.backgroundView.image = [[UIImage imageNamed:@"words list_scrollBar_Pressdown.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 0, 10 , 0)];
+    }
+    else
+    {
+        self.backgroundView.image = [[UIImage imageNamed:@"words list_scrollBar.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 0, 10 , 0)];
+    }
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.backgroundView.layer.cornerRadius = CORNER;
-    self.backgroundView.layer.masksToBounds = YES;
-    self.backgroundView.hidden = YES;
     [self.sampleLabel removeFromSuperview];
     [self generateLayouts];
     
@@ -146,6 +158,9 @@
     [self.view addGestureRecognizer:panRecg];
     
     [self initIndicator];
+    
+    [self setBackgroundPressed:NO];
+    pressing = NO;
 }
 
 - (void)didReceiveMemoryWarning
