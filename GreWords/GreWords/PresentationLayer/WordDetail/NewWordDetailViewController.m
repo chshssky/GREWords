@@ -517,6 +517,15 @@
             [self dismissModalViewControllerAnimated:NO];
             
             [TaskStatus instance].indexOfWordIDToday = self.beginWordID + _currentPage + 1;
+            NewWordEvent *newWordEvent = [[NewWordEvent alloc] init];
+            
+            newWordEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+            newWordEvent.maxWordID = [TaskStatus instance].maxWordID;
+            newWordEvent.reviewEnable = [TaskStatus instance].reviewEnable;
+            newWordEvent.stage_now = [TaskStatus instance].stage_now;
+            
+            
+            [[HistoryManager instance] updateEvent:newWordEvent];
             [self.delegate GoToReviewWithWord];
         }
     }
