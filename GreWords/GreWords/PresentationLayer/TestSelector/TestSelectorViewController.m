@@ -93,7 +93,7 @@
     
     CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, _screenWidth/2, _screenHeight/2-_selectorController.view.frame.size.height);
+    CGPathMoveToPoint(path, NULL, _screenWidth/2, _screenHeight/2-_selectorController.view.frame.size.height-50.0f);
     CGPathAddLineToPoint(path, NULL, _screenWidth/2, _screenHeight/2);
     lineAnimation.path = path;
     CGPathRelease(path);
@@ -177,14 +177,15 @@
     CAKeyframeAnimation *lineAnimation2 = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     CGMutablePathRef path2 = CGPathCreateMutable();
     CGPathMoveToPoint(path2, NULL, _screenWidth/2, _screenHeight/2);
-    CGPathAddLineToPoint(path2, NULL, _screenWidth/2, _screenHeight/2 - _selectorController.view.frame.size.height);
+    CGPathAddLineToPoint(path2, NULL, _screenWidth/2, _screenHeight/2 - _selectorController.view.frame.size.height-50.0f);
     lineAnimation2.path = path2;
     CGPathRelease(path2);
-    lineAnimation2.duration = 0.15f;
+    lineAnimation2.duration = 0.2f;
     lineAnimation2.delegate = self;
     lineAnimation2.fillMode = kCAFillModeForwards;
     lineAnimation2.removedOnCompletion = NO;
     lineAnimation2.beginTime = CACurrentMediaTime()+0.2f;
+    [lineAnimation2 setValue:@"removeTestSelectorAnimation" forKey:@"id"];
     lineAnimation2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     [_selectorController.view.layer addAnimation:lineAnimation2 forKey:nil];
     
@@ -210,7 +211,6 @@
     rotateAnimation2.beginTime = CACurrentMediaTime()+0.18f;
     rotateAnimation2.fillMode = kCAFillModeForwards;
     rotateAnimation2.removedOnCompletion = NO;
-    [rotateAnimation2 setValue:@"removeTestSelectorAnimation" forKey:@"id"];
     rotateAnimation2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     [_selectorController.view.layer addAnimation:rotateAnimation2 forKey:nil];
 }

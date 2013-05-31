@@ -18,11 +18,12 @@
     UIImageView *circleShadowView;
     UIImageView *circleLightView;
     UIImageView *circlePointView;
-    FXLabel *wordNumberTest;
     UIImageView *FimageView;
-    UIImageView *startTextView;
-    UIImageView *textView;
 }
+@property (nonatomic, strong)UIImageView *startTextView;
+@property (nonatomic, strong)UIImageView *textView;
+@property (nonatomic, strong)FXLabel *wordNumberTest;
+
 @property(nonatomic) int nonFinishedNumber;
 @property(nonatomic) int sumNumber;
 @property(nonatomic) int minNumber;

@@ -137,27 +137,27 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     circleLightView.alpha = 0;
     [self.view addSubview:circleLightView];
     
-    textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_newWord.png"]];
-    textView.center = CGPointMake(self.centerPoint.x-15, self.centerPoint.y-45);
-    textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    [self.view addSubview:textView];
+    _textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_newWord.png"]];
+    _textView.center = CGPointMake(self.centerPoint.x-15, self.centerPoint.y-45);
+    _textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    [self.view addSubview:_textView];
     
-    startTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_startTask.png"]];
-    startTextView.center = CGPointMake(self.centerPoint.x, self.centerPoint.y+45);
-    startTextView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    startTextView.alpha = 0.6;
-    [self.view addSubview:startTextView];
+    _startTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_startTask.png"]];
+    _startTextView.center = CGPointMake(self.centerPoint.x, self.centerPoint.y+45);
+    _startTextView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    _startTextView.alpha = 0.6;
+    [self.view addSubview:_startTextView];
     
-    wordNumberTest = [[FXLabel alloc] initWithFrame:CGRectMake(20, 10, 120, 70)];
-    wordNumberTest.text =  [NSString stringWithFormat:@"%d",0];
-    wordNumberTest.textColor = [UIColor colorWithRed:101/255.00 green:116/255.00 blue:68/255.00 alpha:1];
-    wordNumberTest.font = [UIFont fontWithName:@"STHeitiTC-Medium" size:70];
-    wordNumberTest.backgroundColor = [UIColor clearColor];
-    wordNumberTest.innerShadowColor = [UIColor colorWithWhite:0.0f alpha:0.8f];
-    wordNumberTest.innerShadowOffset = CGSizeMake(0.0f, 0.8f);
-    wordNumberTest.center = CGPointMake(self.centerPoint.x+15, self.centerPoint.y+5);
-    wordNumberTest.textAlignment = UITextAlignmentRight;
-    [self.view addSubview:wordNumberTest];
+    _wordNumberTest = [[FXLabel alloc] initWithFrame:CGRectMake(20, 10, 120, 70)];
+    _wordNumberTest.text =  [NSString stringWithFormat:@"%d",0];
+    _wordNumberTest.textColor = [UIColor colorWithRed:101/255.00 green:116/255.00 blue:68/255.00 alpha:1];
+    _wordNumberTest.font = [UIFont fontWithName:@"STHeitiTC-Medium" size:70];
+    _wordNumberTest.backgroundColor = [UIColor clearColor];
+    _wordNumberTest.innerShadowColor = [UIColor colorWithWhite:0.0f alpha:0.8f];
+    _wordNumberTest.innerShadowOffset = CGSizeMake(0.0f, 0.8f);
+    _wordNumberTest.center = CGPointMake(self.centerPoint.x+15, self.centerPoint.y+5);
+    _wordNumberTest.textAlignment = UITextAlignmentRight;
+    [self.view addSubview:_wordNumberTest];
     
     UIButton *bigButton = [UIButton buttonWithType:UIButtonTypeCustom];
     
@@ -174,9 +174,8 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     self.pieChartLeft.delegate = self;
     [self.pieChartLeft setAnimationSpeed:1];
     FimageView.alpha = 1;
-    textView.alpha = 1;
-    startTextView.alpha = 1;
-    wordNumberTest.center = CGPointMake(self.centerPoint.x+15, self.centerPoint.y+5);
+    _textView.alpha = 1;
+    _startTextView.alpha = 1;
 }
 
 - (void)wordDetailIndicatorGen
@@ -185,9 +184,8 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     self.pieChartLeft.delegate = self;
     [self.pieChartLeft setAnimationSpeed:0.08];
     FimageView.alpha = 0;
-    textView.alpha = 0;
-    startTextView.alpha = 0;
-    wordNumberTest.center = CGPointMake(self.centerPoint.x, self.centerPoint.y+5);
+    _textView.alpha = 0;
+    _startTextView.alpha = 0;
 }
 
 - (void)minusData
@@ -254,7 +252,7 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     
     
     _nonFinishedNumber = (_percent-0.001)/(0.999-0.001) * _sumNumber;
-    wordNumberTest.text =  [NSString stringWithFormat:@"%d", _nonFinishedNumber];
+    _wordNumberTest.text =  [NSString stringWithFormat:@"%d", _nonFinishedNumber];
     
     
     if (_nonFinishedNumber >= _sumNumber) {
@@ -368,7 +366,7 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     centerCircleView.transform = CGAffineTransformMakeRotation(M_PI/2+(1-percent)*M_PI*2);
     FimageView.transform = CGAffineTransformMakeRotation((1-percent)*M_PI*2);
     int wordNumber = round((1-percent)*_sumNumber);
-    wordNumberTest.text = [NSString stringWithFormat:@"%d",wordNumber];
+    _wordNumberTest.text = [NSString stringWithFormat:@"%d",wordNumber];
 }
 
 
