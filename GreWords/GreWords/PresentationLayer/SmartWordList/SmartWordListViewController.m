@@ -14,6 +14,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "NSNotificationCenter+Addition.h"
 
+
 @interface SmartWordListViewController ()
 
 @end
@@ -45,7 +46,32 @@
     
     [self.tableView reloadData];
     //[self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.3];
-    [self addButtomTexture];
+    [self addButtomTexture:self.tableView];
+}
+
+
+- (void)configureSearchResultTableView
+{
+    UIImageView *topTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -1136.0f, 320.0f, 1136.0f)];
+    topTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
+    [self.tableView addSubview:topTexture];
+    [self.searchDisplayController.searchResultsTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [self.searchDisplayController.searchResultsTableView setBackgroundColor:[UIColor clearColor]];
+    [self.searchDisplayController.searchResultsTableView setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning list_up_and_down_moreBg.png"]]];
+}
+
+
+- (void)addSearchIndex
+{
+    searchIndex = [self.storyboard instantiateViewControllerWithIdentifier:@"searchIndex"];
+    searchIndex.delegate = self;
+    CGRect frame = searchIndex.view.frame;
+    frame.origin.x = 320 - frame.size.width - 2;
+    frame.origin.y = (self.view.frame.size.height - frame.size.height) / 2;
+    //frame.size.height = 490;
+    searchIndex.view.frame = frame;
+    searchIndex.view.hidden = YES;
+    [self.view addSubview:searchIndex.view];
 }
 
 - (void)viewDidLoad
@@ -56,7 +82,10 @@
     isSearching = NO;
     
     retractableControllers = [@[] mutableCopy];
-    lastTableViewHeight = -1;
+    
+    CGRect newBounds = [[self tableView] bounds];
+    newBounds.origin.y = newBounds.origin.y + self.searchBar.bounds.size.height;
+    [[self tableView] setBounds:newBounds];
     
     for(int i = 0; i < _array.count;i++)
     {
@@ -76,14 +105,20 @@
         [retractableControllers addObject:sectionController];
     }
     
-    topTexture = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, -1136.0f, 320.0f, 1136.0f)];
-    topTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
-    [self.tableView addSubview:topTexture];
+    
+    [self configureSearchResultTableView];
+    
     if(self.type == SmartListType_Note)
     {
         [NSNotificationCenter registerAddNoteForWordNotificationWithSelector:@selector(addNoteItem:) target:self];
         [NSNotificationCenter registerRemoveNoteForWordNotificationWithSelector:@selector(removeNoteItem:) target:self];
     }
+    
+    if(self.type == SmartListType_Full)
+    {
+        [self addSearchIndex];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -92,9 +127,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)addButtomTexture
+
+
+- (void)addButtomTexture:(UITableView*)aTableview
 {
-    if(lastTableViewHeight == -1)
+    UIImageView *downTexture = (UIImageView *)[aTableview viewWithTag:1024];
+    float lastTableViewHeight;
+    if(!downTexture)
     {
         lastTableViewHeight = self.tableView.contentSize.height;
         
@@ -108,20 +147,31 @@
         
         downTexture.image = [UIImage imageNamed:@"learning list_up_and_down_moreBg.png"];
         [downTexture addSubview:bottomLine];
-        [self.tableView addSubview:downTexture];
-        [self addButtomTexture];
+        downTexture.tag = 1024;
+        [aTableview addSubview:downTexture];
+        
+        
     }
     else
     {
         lastTableViewHeight = 0;
-        int sectionCount = [self numberOfSectionsInTableView:self.tableView];
+        int sectionCount = [self numberOfSectionsInTableView:aTableview];
         if(sectionCount > 0)
         {
             NSIndexPath *lastIndex = [NSIndexPath indexPathForRow:[self tableView:self.tableView numberOfRowsInSection:sectionCount - 1] - 1  inSection:sectionCount - 1];
-            CGRect lastRect = [self.tableView rectForRowAtIndexPath:lastIndex];
+            CGRect lastRect;
+            @try {
+                lastRect = [aTableview rectForRowAtIndexPath:lastIndex];
+            }
+            @catch (NSException *exception) {
+                downTexture.hidden = YES;
+            }
+            @finally {
+                
+            }
             
             lastTableViewHeight = lastRect.origin.y + lastRect.size.height ;
-         
+            
             [UIView animateWithDuration:0.3 animations:^()
              {
                  downTexture.frame = CGRectMake(0.0f, lastTableViewHeight, 320.0f, 1136.0f);
@@ -132,13 +182,14 @@
         {
             downTexture.hidden = YES;
         }
+
     }
 }
 
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self addButtomTexture];
+    [self addButtomTexture:self.tableView];
 }
 
 - (void)viewDidUnload {
@@ -242,6 +293,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray *arr = nil;
+    if(self.type == SmartListType_Note)
+        return;
+        
     if (tableView == self.searchDisplayController.searchResultsTableView)
 	{
         arr = filteredRetractableControllers;
@@ -279,18 +333,41 @@
     
     [sectionController scroll];
     
-    [self addButtomTexture];
+    if(tableView == self.tableView)
+        [self addButtomTexture:tableView];
 }
 
 #pragma mark - scroll view delegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
-    if(self.tableView == scrollView)
+    if(self.tableView == scrollView || scrollView == self.searchDisplayController.searchResultsTableView)
     {
         isDragging = YES;
-        _contentOffsetBeforeScroll = self.tableView.contentOffset.y;
+        _contentOffsetBeforeScroll = scrollView.contentOffset.y;
         [self.scrollDelegate smartWordListWillBeginDragging:self];
     }
+}
+
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    searchIndex.view.hidden = NO;
+    [UIView animateWithDuration:0.2 animations:^(){
+        searchIndex.view.alpha = 1.0;
+    }];
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    if([searchIndex isTouching])
+        return;
+    [UIView animateWithDuration:0.2f animations:^()
+    {
+        searchIndex.view.alpha = 0.0;
+    }
+                     completion:^(BOOL c)
+    {
+        searchIndex.view.hidden = YES;
+    }];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
@@ -300,39 +377,86 @@
 
 - (void)scrollViewDidScroll:(UIScrollView*)aScrollView
 {
-    if(self.tableView == aScrollView)
+    if(self.tableView == aScrollView || aScrollView == self.searchDisplayController.searchResultsTableView)
+        
     {
-        CGFloat contentOffsetY = self.tableView.contentOffset.y - _contentOffsetBeforeScroll;
-        if(self.tableView.contentSize.height <= self.tableView.frame.size.height || self.tableView.contentOffset.x == 0)
+        CGFloat contentOffsetY = aScrollView.contentOffset.y - _contentOffsetBeforeScroll;
+        if(aScrollView.contentSize.height <= aScrollView.frame.size.height || aScrollView.contentOffset.x == 0)
         {
             if(!isDragging)
                 return;
         }
         
         [self.scrollDelegate smartWordList:self didTranslationYSinceLast:contentOffsetY];
+        if(self.tableView == aScrollView)
+        {
+            [searchIndex setCurrentIndex:[self currentSectionIndex]];
+        }
     }
 }
 
 
 #pragma mark - UISearchDisplayController Delegate Methods
+
+- (void) searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller
+{
+    isSearching = YES;
+    [self configureSearchResultTableView];
+    [self performSelector:@selector(removeOverlay) withObject:nil afterDelay:.01f];
+    [self.scrollDelegate smartWordListWillStartSearch:self];
+}
+
+- (void)removeOverlay
+{
+//    for(UIView *v in self.view.subviews)
+//    {
+//        
+//    }
+    //[[self.view.subviews lastObject] removeFromSuperview];
+    UIControl *control = (UIControl *)[self.view.subviews lastObject];
+    control.alpha = 0.02f;
+    [control setBackgroundColor:[UIColor clearColor]];
+    
+}
+
+- (void) searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
+{
+    isSearching = NO;
+    [self.scrollDelegate smartWordListDidEndSearch:self];
+}
+
 - (void) searchBarCancelButtonClicked:(UISearchBar*)searchBar {
     
-    isSearching = NO;
+    //isSearching = NO;
 }
+
+- (void)configureNoResultLabel
+{
+    for (UIView* v in self.searchDisplayController.searchResultsTableView.subviews) {
+        if ([v isKindOfClass: [UILabel class]])
+        {
+            UILabel *label = (UILabel*)v;
+            label.textColor = [UIColor colorWithRed:209/255.0 green:134/255.0 blue:39/255.0 alpha:1.0];
+            //label.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
+            //label.shadowOffset = CGSizeMake(0, 1);
+            break;
+        }
+    }
+}
+
 
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
     NSLog(@"searching:%@",searchString);
-    if([searchString isEqualToString: @""])
-    {
-        isSearching = NO;
-    }
-    else
-    {
-        isSearching = YES;
-    }
+//    if([searchString isEqualToString:@""])
+//    {
+//        [self removeOverlay];
+//    }
+    [self performSelector:@selector(configureNoResultLabel) withObject:nil afterDelay:0.1f];
+    //[self configureNoResultLabel];
     [self filterContentForSearchText:searchString];
-    // Return YES to cause the search result table view to be reloaded.
+    
+        // Return YES to cause the search result table view to be reloaded.
     return YES;
 }
 
@@ -342,8 +466,40 @@
 - (void)filterContentForSearchText:(NSString*)searchText
 {
 	// Filter the array using NSPredicate
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.wordText  contains[c] %@",searchText];
-    self.filteredArray = [[self.array filteredArrayUsingPredicate:predicate] mutableCopy];
+    if(self.type == SmartListType_Homo)
+    {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.key  contains[c] %@",searchText];
+        self.filteredArray = [[self.array filteredArrayUsingPredicate:predicate] mutableCopy];
+    }
+    else if(self.type == SmartListType_Note)
+    {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.wordText contains[c] %@ or SELF.note contains[c] %@",searchText,searchText];
+        self.filteredArray = [[self.array filteredArrayUsingPredicate:predicate] mutableCopy];
+    }
+    else
+    {
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF.wordText  contains[c] %@",searchText];
+        self.filteredArray = [[self.array filteredArrayUsingPredicate:predicate] mutableCopy];
+        
+        [self.filteredArray sortUsingComparator: ^(id obj1, id obj2) {
+            NSString *prefixObj1 = ((WordEntity*)obj1).wordText;
+            NSString *prefixObj2 = ((WordEntity*)obj2).wordText;
+            NSNumber *r1 = @0;
+            NSNumber *r2 = @0;
+            if([prefixObj1 hasPrefix:searchText])
+            {
+                r1 = @1;
+            }
+            if([prefixObj2 hasPrefix:searchText])
+            {
+                r2 = @1;
+            }
+            return [r2 compare:r1];
+        }];
+
+    }
+    
     
     filteredRetractableControllers = [@[] mutableCopy];
     for(int i = 0; i < _filteredArray.count;i++)
@@ -363,7 +519,7 @@
         sectionController.tableView = self.searchDisplayController.searchResultsTableView;
         [filteredRetractableControllers addObject:sectionController];
     }
-
+    
 }
 
 #pragma mark - NSNotification Responder
@@ -386,7 +542,7 @@
     //NSIndexPath *path = [NSIndexPath indexPathForRow:0 inSection:0];
     //[self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationTop];
     [self.tableView reloadData];
-    [self addButtomTexture];
+    [self addButtomTexture:self.tableView];
 }
 
 - (void)removeNoteItem:(NSNotification *)notification
@@ -402,6 +558,71 @@
     [retractableControllers removeObjectAtIndex:index];
     //[self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationTop];
     [self.tableView reloadData];
-    [self addButtomTexture];
+    [self addButtomTexture:self.tableView];
 }
+
+
+#pragma mark - GreTableViewSearchIndexDelegate
+
+
+- (int)currentSectionIndex
+{
+    NSIndexPath *firstVisibleIndexPath = [[self.tableView indexPathsForVisibleRows] objectAtIndex:0];
+    WordEntity *word = self.array[firstVisibleIndexPath.section];
+    NSString *firstLetter = [[word.wordText substringToIndex:1] uppercaseString];
+    NSArray *arr = [self sectionTitles];
+    for(int i = 0; i < arr.count ; i++)
+    {
+        if([arr[i] isEqualToString:firstLetter])
+            return i;
+    }
+    return -1;
+}
+
+- (NSDictionary*)alphabetInfo
+{
+    static NSDictionary* info = nil;
+    if(info)
+        return info;
+    NSMutableDictionary *dict = [@{} mutableCopy];
+    for(int i = _array.count - 1; i >= 0; i--)
+    {
+        WordEntity *word = _array[i];
+        NSString *firstLetter = [[word.wordText substringToIndex:1] uppercaseString];
+        dict[firstLetter] = [NSNumber numberWithInt:i];
+    }
+    info = dict;
+    return info;
+}
+
+
+- (NSArray*)sectionTitles
+{
+    return @[@"A",@"B",@"C",@"D",@"E",@"F",@"G",
+             @"H",@"I",@"J",@"K",@"L",@"M",@"N",
+             @"O",@"P",@"Q",@"R",@"S",@"T",@"U",
+             @"V",@"W",@"X",@"Y",@"Z"
+             ];
+}
+
+- (void)didSelectedIndex:(int)index
+{
+    NSDictionary *info = [self alphabetInfo];
+    NSNumber *number = info[[self sectionTitles][index]];
+    if(!number)
+        return;
+    int section = [number intValue];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+}
+
+- (void)startTouch
+{
+    
+}
+
+- (void)endTouch
+{
+
+}
+
 @end

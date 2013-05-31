@@ -142,7 +142,6 @@
 
     [self DontShowMeaning];
     [TaskStatus instance].indexOfWordIDToday ++;
-    NSLog(@"%WordIndex:%d", [TaskStatus instance].indexOfWordIDToday);
 }
 
 - (void)viewDidLoad
@@ -291,8 +290,6 @@
     _showMeaningButton.userInteractionEnabled = NO;
     _WordParaphraseView.userInteractionEnabled = YES;
     
-    //[self Show_RightAnimationWith:_RightUpImageView4 and:_RightDownImageView4 atTime:CACurrentMediaTime() withString:@"Show_removeRightImage4"];
-    //[self Show_RightAnimationWith:_RightUpImageView3 and:_RightDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"Show_removeRightImage3"];
     [self Show_RightAnimationWith:_RightUpImageView2 and:_RightDownImageView2 atTime:CACurrentMediaTime() withString:@"Show_removeRightImage2"];
     [self Show_RightAnimationWith:_RightUpImageView1 and:_RightDownImageView1 atTime:CACurrentMediaTime()+0.13f withString:@"Show_removeRightImage1"];
     [self Show_RightAnimationWith:_RightUpImageView0 and:_RightDownImageView0 atTime:CACurrentMediaTime()+0.13f*2 withString:@"Show_removeRightImage0"];
@@ -308,26 +305,12 @@
         _RightUpImageView0.layer.anchorPoint = CGPointMake(0.5, 1);
         [self.view addSubview:_RightUpImageView0];
     }
-    if (_RightDownImageView4 == nil)
-    {
-        _RightDownImageView4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_down_page.png"]];
-        [_RightDownImageView4 setFrame:CGRectMake(217, self.view.frame.size.height-78, _RightDownImageView4.frame.size.width, _RightDownImageView4.frame.size.height-3)];
-        _RightDownImageView4.layer.anchorPoint = CGPointMake(0.5, 0);
-        [self.view addSubview:_RightDownImageView4];
-    }
     if (_RightUpImageView1 == nil) {
         _RightUpImageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_up_page.png"]];
         [_RightUpImageView1 setFrame:CGRectMake(217, self.view.frame.size.height-80, _RightUpImageView1.frame.size.width, _RightUpImageView1.frame.size.height-1)];
         _RightUpImageView1.alpha = 0;
         _RightUpImageView1.layer.anchorPoint = CGPointMake(0.5, 1);
         [self.view addSubview:_RightUpImageView1];
-    }
-    if (_RightDownImageView3 == nil)
-    {
-        _RightDownImageView3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_down_page.png"]];
-        [_RightDownImageView3 setFrame:CGRectMake(217, self.view.frame.size.height-78, _RightDownImageView3.frame.size.width, _RightDownImageView3.frame.size.height-3)];
-        _RightDownImageView3.layer.anchorPoint = CGPointMake(0.5, 0);
-        [self.view addSubview:_RightDownImageView3];
     }
     if (_RightUpImageView2 == nil) {
         _RightUpImageView2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_up_page.png"]];
@@ -343,26 +326,12 @@
         _RightDownImageView2.layer.anchorPoint = CGPointMake(0.5, 0);
         [self.view addSubview:_RightDownImageView2];
     }
-    if (_RightUpImageView3 == nil) {
-        _RightUpImageView3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_up_page.png"]];
-        [_RightUpImageView3 setFrame:CGRectMake(217, self.view.frame.size.height-80, _RightUpImageView3.frame.size.width, _RightUpImageView3.frame.size.height-1)];
-        _RightUpImageView3.alpha = 0;
-        _RightUpImageView3.layer.anchorPoint = CGPointMake(0.5, 1);
-        [self.view addSubview:_RightUpImageView3];
-    }
     if (_RightDownImageView1 == nil)
     {
         _RightDownImageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_down_page.png"]];
         [_RightDownImageView1 setFrame:CGRectMake(217, self.view.frame.size.height-78, _RightDownImageView1.frame.size.width, _RightDownImageView1.frame.size.height-3)];
         _RightDownImageView1.layer.anchorPoint = CGPointMake(0.5, 0);
         [self.view addSubview:_RightDownImageView1];
-    }
-    if (_RightUpImageView4 == nil) {
-        _RightUpImageView4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_up_page.png"]];
-        [_RightUpImageView4 setFrame:CGRectMake(217, self.view.frame.size.height-80, _RightUpImageView4.frame.size.width, _RightUpImageView4.frame.size.height-1)];
-        _RightUpImageView4.alpha = 0;
-        _RightUpImageView4.layer.anchorPoint = CGPointMake(0.5, 1);
-        [self.view addSubview:_RightUpImageView4];
     }
     if (_RightDownImageView0 == nil)
     {
@@ -420,8 +389,6 @@
     _showMeaningButton.userInteractionEnabled = NO;
     _WordParaphraseView.userInteractionEnabled = YES;
     
-    //[self Show_WrongAnimationWith:_WrongUpImageView4 and:_WrongDownImageView4 atTime:CACurrentMediaTime() withString:@"Show_removeWrongImage4"];
-    //[self Show_WrongAnimationWith:_WrongUpImageView3 and:_WrongDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"Show_removeWrongImage3"];
     [self Show_WrongAnimationWith:_WrongUpImageView2 and:_WrongDownImageView2 atTime:CACurrentMediaTime()+0.13f withString:@"Show_removeWrongImage2"];
     [self Show_WrongAnimationWith:_WrongUpImageView1 and:_WrongDownImageView1 atTime:CACurrentMediaTime()+0.13f*2 withString:@"Show_removeWrongImage1"];
     [self Show_WrongAnimationWith:_WrongUpImageView0 and:_WrongDownImageView0 atTime:CACurrentMediaTime()+0.13f*3 withString:@"Show_removeWrongImage0"];
@@ -437,26 +404,12 @@
         _WrongUpImageView0.layer.anchorPoint = CGPointMake(0.5, 1);
         [self.view addSubview:_WrongUpImageView0];
     }
-    if (_WrongDownImageView4 == nil)
-    {
-        _WrongDownImageView4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_down_page.png"]];
-        [_WrongDownImageView4 setFrame:CGRectMake(27, self.view.frame.size.height-77, _WrongDownImageView4.frame.size.width, _WrongDownImageView4.frame.size.height-3)];
-        _WrongDownImageView4.layer.anchorPoint = CGPointMake(0.5, 0);
-        [self.view addSubview:_WrongDownImageView4];
-    }
     if (_WrongUpImageView1 == nil) {
         _WrongUpImageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_up_page.png"]];
         [_WrongUpImageView1 setFrame:CGRectMake(27, self.view.frame.size.height-80, _WrongUpImageView1.frame.size.width, _WrongUpImageView1.frame.size.height-1)];
         _WrongUpImageView1.alpha = 0;
         _WrongUpImageView1.layer.anchorPoint = CGPointMake(0.5, 1);
         [self.view addSubview:_WrongUpImageView1];
-    }
-    if (_WrongDownImageView3 == nil)
-    {
-        _WrongDownImageView3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_down_page.png"]];
-        [_WrongDownImageView3 setFrame:CGRectMake(27, self.view.frame.size.height-77, _WrongDownImageView3.frame.size.width, _WrongDownImageView3.frame.size.height-3)];
-        _WrongDownImageView3.layer.anchorPoint = CGPointMake(0.5, 0);
-        [self.view addSubview:_WrongDownImageView3];
     }
     if (_WrongUpImageView2 == nil) {
         _WrongUpImageView2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_up_page.png"]];
@@ -472,26 +425,12 @@
         _WrongDownImageView2.layer.anchorPoint = CGPointMake(0.5, 0);
         [self.view addSubview:_WrongDownImageView2];
     }
-    if (_WrongUpImageView3 == nil) {
-        _WrongUpImageView3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_up_page.png"]];
-        [_WrongUpImageView3 setFrame:CGRectMake(27, self.view.frame.size.height-80, _WrongUpImageView3.frame.size.width, _WrongUpImageView3.frame.size.height-1)];
-        _WrongUpImageView3.alpha = 0;
-        _WrongUpImageView3.layer.anchorPoint = CGPointMake(0.5, 1);
-        [self.view addSubview:_WrongUpImageView3];
-    }
     if (_WrongDownImageView1 == nil)
     {
         _WrongDownImageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_down_page.png"]];
         [_WrongDownImageView1 setFrame:CGRectMake(27, self.view.frame.size.height-77, _WrongDownImageView1.frame.size.width, _WrongDownImageView1.frame.size.height-3)];
         _WrongDownImageView1.layer.anchorPoint = CGPointMake(0.5, 0);
         [self.view addSubview:_WrongDownImageView1];
-    }
-    if (_WrongUpImageView4 == nil) {
-        _WrongUpImageView4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_up_page.png"]];
-        [_WrongUpImageView4 setFrame:CGRectMake(27, self.view.frame.size.height-80, _WrongUpImageView4.frame.size.width, _WrongUpImageView4.frame.size.height-1)];
-        _WrongUpImageView4.alpha = 0;
-        _WrongUpImageView4.layer.anchorPoint = CGPointMake(0.5, 1);
-        [self.view addSubview:_WrongUpImageView4];
     }
     if (_WrongDownImageView0 == nil)
     {
@@ -550,26 +489,12 @@
         _RightUpImageView0.layer.anchorPoint = CGPointMake(0.5, 1);
         [self.view addSubview:_RightUpImageView0];
     }
-    if (_RightDownImageView4 == nil)
-    {
-        _RightDownImageView4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_rightButton_page.png"]];
-        [_RightDownImageView4 setFrame:CGRectMake(217, self.view.frame.size.height-78, _RightDownImageView4.frame.size.width, _RightDownImageView4.frame.size.height-3)];
-        _RightDownImageView4.layer.anchorPoint = CGPointMake(0.5, 0);
-        [self.view addSubview:_RightDownImageView4];
-    }
     if (_RightUpImageView1 == nil) {
         _RightUpImageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_up_page2.png"]];
         [_RightUpImageView1 setFrame:CGRectMake(217, self.view.frame.size.height-80, _RightUpImageView1.frame.size.width, _RightUpImageView1.frame.size.height-1)];
         _RightUpImageView1.alpha = 0;
         _RightUpImageView1.layer.anchorPoint = CGPointMake(0.5, 1);
         [self.view addSubview:_RightUpImageView1];
-    }
-    if (_RightDownImageView3 == nil)
-    {
-        _RightDownImageView3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_rightButton_page.png"]];
-        [_RightDownImageView3 setFrame:CGRectMake(217, self.view.frame.size.height-78, _RightDownImageView3.frame.size.width, _RightDownImageView3.frame.size.height-3)];
-        _RightDownImageView3.layer.anchorPoint = CGPointMake(0.5, 0);
-        [self.view addSubview:_RightDownImageView3];
     }
     if (_RightUpImageView2 == nil) {
         _RightUpImageView2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_up_page2.png"]];
@@ -585,26 +510,12 @@
         _RightDownImageView2.layer.anchorPoint = CGPointMake(0.5, 0);
         [self.view addSubview:_RightDownImageView2];
     }
-    if (_RightUpImageView3 == nil) {
-        _RightUpImageView3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_up_page2.png"]];
-        [_RightUpImageView3 setFrame:CGRectMake(217, self.view.frame.size.height-80, _RightUpImageView3.frame.size.width, _RightUpImageView3.frame.size.height-1)];
-        _RightUpImageView3.alpha = 0;
-        _RightUpImageView3.layer.anchorPoint = CGPointMake(0.5, 1);
-        [self.view addSubview:_RightUpImageView3];
-    }
     if (_RightDownImageView1 == nil)
     {
         _RightDownImageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_rightButton_page.png"]];
         [_RightDownImageView1 setFrame:CGRectMake(217, self.view.frame.size.height-78, _RightDownImageView1.frame.size.width, _RightDownImageView1.frame.size.height-3)];
         _RightDownImageView1.layer.anchorPoint = CGPointMake(0.5, 0);
         [self.view addSubview:_RightDownImageView1];
-    }
-    if (_RightUpImageView4 == nil) {
-        _RightUpImageView4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_right_up_page2.png"]];
-        [_RightUpImageView4 setFrame:CGRectMake(217, self.view.frame.size.height-80, _RightUpImageView4.frame.size.width, _RightUpImageView4.frame.size.height-1)];
-        _RightUpImageView4.alpha = 0;
-        _RightUpImageView4.layer.anchorPoint = CGPointMake(0.5, 1);
-        [self.view addSubview:_RightUpImageView4];
     }
     if (_RightDownImageView0 == nil)
     {
@@ -623,8 +534,6 @@
     _showMeaningButton.userInteractionEnabled = NO;
     _WordParaphraseView.userInteractionEnabled = NO;
     
-    //[self Dismiss_RightAnimationWith:_RightUpImageView4 and:_RightDownImageView4 atTime:CACurrentMediaTime() withString:@"Dismiss_removeRightImage4"];
-    //[self Dismiss_RightAnimationWith:_RightUpImageView3 and:_RightDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"Dismiss_removeRightImage3"];
     [self Dismiss_RightAnimationWith:_RightUpImageView2 and:_RightDownImageView2 atTime:CACurrentMediaTime() withString:@"Dismiss_removeRightImage2"];
     [self Dismiss_RightAnimationWith:_RightUpImageView1 and:_RightDownImageView1 atTime:CACurrentMediaTime()+0.13f withString:@"Dismiss_removeRightImage1"];
     [self Dismiss_RightAnimationWith:_RightUpImageView0 and:_RightDownImageView0 atTime:CACurrentMediaTime()+0.13f*2 withString:@"Dismiss_removeRightImage0"];
@@ -679,26 +588,12 @@
         _WrongUpImageView0.layer.anchorPoint = CGPointMake(0.5, 1);
         [self.view addSubview:_WrongUpImageView0];
     }
-    if (_WrongDownImageView4 == nil)
-    {
-        _WrongDownImageView4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrongButton_page.png"]];
-        [_WrongDownImageView4 setFrame:CGRectMake(27, self.view.frame.size.height-78, _WrongDownImageView4.frame.size.width, _WrongDownImageView4.frame.size.height-3)];
-        _WrongDownImageView4.layer.anchorPoint = CGPointMake(0.5, 0);
-        [self.view addSubview:_WrongDownImageView4];
-    }
     if (_WrongUpImageView1 == nil) {
         _WrongUpImageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_up_page2.png"]];
         [_WrongUpImageView1 setFrame:CGRectMake(27, self.view.frame.size.height-80, _WrongUpImageView1.frame.size.width, _WrongUpImageView1.frame.size.height-1)];
         _WrongUpImageView1.alpha = 0;
         _WrongUpImageView1.layer.anchorPoint = CGPointMake(0.5, 1);
         [self.view addSubview:_WrongUpImageView1];
-    }
-    if (_WrongDownImageView3 == nil)
-    {
-        _WrongDownImageView3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrongButton_page.png"]];
-        [_WrongDownImageView3 setFrame:CGRectMake(27, self.view.frame.size.height-78, _WrongDownImageView3.frame.size.width, _WrongDownImageView3.frame.size.height-3)];
-        _WrongDownImageView3.layer.anchorPoint = CGPointMake(0.5, 0);
-        [self.view addSubview:_WrongDownImageView3];
     }
     if (_WrongUpImageView2 == nil) {
         _WrongUpImageView2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_up_page2.png"]];
@@ -714,26 +609,12 @@
         _WrongDownImageView2.layer.anchorPoint = CGPointMake(0.5, 0);
         [self.view addSubview:_WrongDownImageView2];
     }
-    if (_WrongUpImageView3 == nil) {
-        _WrongUpImageView3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_up_page2.png"]];
-        [_WrongUpImageView3 setFrame:CGRectMake(27, self.view.frame.size.height-80, _WrongUpImageView3.frame.size.width, _WrongUpImageView3.frame.size.height-1)];
-        _WrongUpImageView3.alpha = 0;
-        _WrongUpImageView3.layer.anchorPoint = CGPointMake(0.5, 1);
-        [self.view addSubview:_WrongUpImageView3];
-    }
     if (_WrongDownImageView1 == nil)
     {
         _WrongDownImageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrongButton_page.png"]];
         [_WrongDownImageView1 setFrame:CGRectMake(27, self.view.frame.size.height-78, _WrongDownImageView1.frame.size.width, _WrongDownImageView1.frame.size.height-3)];
         _WrongDownImageView1.layer.anchorPoint = CGPointMake(0.5, 0);
         [self.view addSubview:_WrongDownImageView1];
-    }
-    if (_WrongUpImageView4 == nil) {
-        _WrongUpImageView4 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_up_page2.png"]];
-        [_WrongUpImageView4 setFrame:CGRectMake(27, self.view.frame.size.height-80, _WrongUpImageView4.frame.size.width, _WrongUpImageView4.frame.size.height-1)];
-        _WrongUpImageView4.alpha = 0;
-        _WrongUpImageView4.layer.anchorPoint = CGPointMake(0.5, 1);
-        [self.view addSubview:_WrongUpImageView4];
     }
     if (_WrongDownImageView0 == nil)
     {
@@ -1009,7 +890,18 @@
         
         _showMeaningButton.userInteractionEnabled = YES;
         _WordParaphraseView.userInteractionEnabled = NO;
-
+    }
+    
+    ////////////////////////////////
+    
+    if([[theAnimation valueForKey:@"id"] isEqual:@"removeDownImageAnimation_withDownCover"])
+    {
+        [self.delegate GoToNewWord];
+        [self dismissModalViewControllerAnimated:NO];
+    }else if ([[theAnimation valueForKey:@"id"] isEqual:@"removeDownImageAnimation_withNoDownCover"])
+    {
+        [self.delegate GoToNewWord];
+        [self dismissModalViewControllerAnimated:NO];
     }
 }
 
@@ -1083,8 +975,6 @@
 
 - (void)newWordCompleted
 {
-    
-    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日完成" message:@"今天错误率： 用时：" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
     [alert setAlertViewStyle:UIAlertViewStyleDefault];
     
@@ -1093,6 +983,205 @@
     [self.delegate AnimationBack];
 
 }
+
+- (void)removeDownImageAnimation_withDownCover
+{
+    CAKeyframeAnimation *lineAnimation;
+    CGMutablePathRef path;
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _DownImage.center.x, _DownImage.center.y);
+    CGPathAddLineToPoint(path, NULL, _DownImage.center.x, _DownImage.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_DownImage.layer addAnimation:lineAnimation forKey:nil];
+    
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _RightButton.center.x, _RightButton.center.y);
+    CGPathAddLineToPoint(path, NULL, _RightButton.center.x, _RightButton.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_RightButton.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _WrongButton.center.x, _WrongButton.center.y);
+    CGPathAddLineToPoint(path, NULL, _WrongButton.center.x, _WrongButton.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_WrongButton.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _WrongUpImageView.center.x, _WrongUpImageView.center.y);
+    CGPathAddLineToPoint(path, NULL, _WrongUpImageView.center.x, _WrongUpImageView.center.y +171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_WrongUpImageView.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _RightUpImageView.center.x, _RightUpImageView.center.y);
+    CGPathAddLineToPoint(path, NULL, _RightUpImageView.center.x, _RightUpImageView.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_RightUpImageView.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _RightDownImageView.center.x, _RightDownImageView.center.y);
+    CGPathAddLineToPoint(path, NULL, _RightDownImageView.center.x, _RightDownImageView.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_RightDownImageView.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _WrongDownImageView.center.x, _WrongDownImageView.center.y);
+    CGPathAddLineToPoint(path, NULL, _WrongDownImageView.center.x, _WrongDownImageView.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [lineAnimation setValue:@"removeDownImageAnimation_withDownCover" forKey:@"id"];
+    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
+    [_WrongDownImageView.layer addAnimation:lineAnimation forKey:nil];
+}
+
+- (void)removeDownImageAnimation_withNoDownCover
+{
+    CAKeyframeAnimation *lineAnimation;
+    CGMutablePathRef path;  
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _RightButton.center.x, _RightButton.center.y);
+    CGPathAddLineToPoint(path, NULL, _RightButton.center.x, _RightButton.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_RightButton.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _WrongButton.center.x, _WrongButton.center.y);
+    CGPathAddLineToPoint(path, NULL, _WrongButton.center.x, _WrongButton.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_WrongButton.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _WrongUpImageView.center.x, _WrongUpImageView.center.y);
+    CGPathAddLineToPoint(path, NULL, _WrongUpImageView.center.x, _WrongUpImageView.center.y +171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_WrongUpImageView.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _RightUpImageView.center.x, _RightUpImageView.center.y);
+    CGPathAddLineToPoint(path, NULL, _RightUpImageView.center.x, _RightUpImageView.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_RightUpImageView.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _RightDownImageView.center.x, _RightDownImageView.center.y);
+    CGPathAddLineToPoint(path, NULL, _RightDownImageView.center.x, _RightDownImageView.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [_RightDownImageView.layer addAnimation:lineAnimation forKey:nil];
+    
+    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, NULL, _WrongDownImageView.center.x, _WrongDownImageView.center.y);
+    CGPathAddLineToPoint(path, NULL, _WrongDownImageView.center.x, _WrongDownImageView.center.y + 171);
+    lineAnimation.path = path;
+    CGPathRelease(path);
+    lineAnimation.duration = 0.6f;
+    lineAnimation.delegate = self;
+    lineAnimation.fillMode = kCAFillModeForwards;
+    lineAnimation.removedOnCompletion = NO;
+    lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    [lineAnimation setValue:@"removeDownImageAnimation_withNoDownCover" forKey:@"id"];
+    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
+    [_WrongDownImageView.layer addAnimation:lineAnimation forKey:nil];
+}
+
 
 - (void)nextButtonPushed
 {
@@ -1110,11 +1199,12 @@
     
     if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue] > [TaskStatus instance].maxWordID) {
         if (_DownImage.alpha <= 0) {
-            [self.delegate GoToNewWordWithDownImage:NO];
+            [self removeDownImageAnimation_withNoDownCover];
         }else{
-            [self.delegate GoToNewWordWithDownImage:YES];
+            [self removeDownImageAnimation_withDownCover];
         }
-        [self dismissModalViewControllerAnimated:NO];
+        //[self dismissModalViewControllerAnimated:NO];
+        
     } else {
         if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
             [self loadWord:[TaskStatus instance].indexOfWordIDToday];

@@ -124,7 +124,7 @@
     self.pageControlView.directionalLockEnabled = NO;
     self.pageControlView.bounces = NO;
     
-    [self loadViewWithPage:0];
+    [self loadViewWithPage:[NSNumber numberWithInt:0]];
     
     //显示单词内容和单词名称
     self.WordParaphraseView = [self.viewControlArray objectAtIndex:0];
@@ -193,8 +193,7 @@
 }
 
 - (IBAction)BackButtonPushed:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
-    //[self.delegate ChangeWordWithIndex:self.beginWordID - 2 WithMax:self.maxWordID];
+    [self dismissModalViewControllerAnimated:NO];
     [self.delegate AnimationBack];
 }
 
@@ -268,11 +267,6 @@
     
     int wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:index] intValue];
     [vc displayWord:[[WordHelper instance] wordWithID:wordID] withOption:option];
-#warning is the MaxWordID should be changed here???
-//    if ([TaskStatus instance].maxWordID < wordID) {
-//        [TaskStatus instance].maxWordID = wordID;
-//    }
-    //self.wordLabel.text = [[WordHelper instance] wordWithID:aWordID].wordText;
 
     
     self.WordParaphraseView.delegate = self;
@@ -330,8 +324,9 @@
 }
 
 //加载单词
-- (void)loadViewWithPage:(int)page
+- (void)loadViewWithPage:(NSNumber *)pageNumber
 {
+    int page = [pageNumber intValue];
     // replace the placeholder if necessary
     self.WordParaphraseView = [self.viewControlArray objectAtIndex:page];
     
@@ -440,16 +435,17 @@
             
             if (_currentPage < page) {
                 self.isNextWord = YES;
-                [self.dashboardVC minusData];
+                [self.dashboardVC performSelectorOnMainThread:@selector(minusData) withObject:nil waitUntilDone:NO];
+                //[self.dashboardVC minusData];
             }else{
                 self.isNextWord = NO;
-                [self.dashboardVC plusData];
+                [self.dashboardVC performSelectorOnMainThread:@selector(plusData) withObject:nil waitUntilDone:NO];
+                //[self.dashboardVC plusData];
             }
-            NSLog(@"The::::%d", [TaskStatus instance].indexOfWordIDToday);
             _currentPage = page;
         }
-        
-        [self loadViewWithPage:page+1];
+        [self performSelectorOnMainThread:@selector(loadViewWithPage:) withObject:[NSNumber numberWithInt:page+1] waitUntilDone:NO];
+        //[self loadViewWithPage:page+1];
         ///////////////////////////////////////////////////////////////////////////////
         //显示单词内容和单词名称
         self.WordParaphraseView = [self.viewControlArray objectAtIndex:page];
@@ -539,67 +535,6 @@
         }
     }
 }
-
-
-#pragma mark - remove wordDetailViewController Methods
-- (void)removeDownImageAnimation_withDownCover
-{
-    if (_downImageView == nil) {
-        _downImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_downCoverWithButton2.png"]];
-        CGRect frame = _downImageView.frame;
-        frame.size.height = 171.0f;
-        [_downImageView setFrame:frame];
-        _downImageView.center =CGPointMake(320.0/2, self.view.frame.size.height - 171.0/2);
-        [self.view addSubview:_downImageView];
-    }
-    CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, 320.0/2, self.view.frame.size.height - 171.0/2);
-    CGPathAddLineToPoint(path, NULL, 320.0/2, self.view.frame.size.height + 171.0/2);
-    lineAnimation.path = path;
-    CGPathRelease(path);
-    lineAnimation.duration = 0.6f;
-    lineAnimation.delegate = self;
-    lineAnimation.fillMode = kCAFillModeForwards;
-    lineAnimation.removedOnCompletion = NO;
-    lineAnimation.beginTime = CACurrentMediaTime();
-    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    
-    [lineAnimation setValue:@"removeDownImageAnimation_withDownImage" forKey:@"id"];
-    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
-    [_downImageView.layer addAnimation:lineAnimation forKey:nil];
-}
-
-- (void)removeDownImageAnimation_withNoDownCover
-{
-    if (_downImageView == nil) {
-        _downImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_downCoverWithButton3.png"]];
-        CGRect frame = _downImageView.frame;
-        frame.size.height = 171.0f;
-        [_downImageView setFrame:frame];
-        _downImageView.center =CGPointMake(320.0/2, self.view.frame.size.height - 171.0/2);
-        [self.view addSubview:_downImageView];
-    }
-    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
-    CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    CGMutablePathRef path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, 320.0/2, self.view.frame.size.height - 171.0/2);
-    CGPathAddLineToPoint(path, NULL, 320.0/2, self.view.frame.size.height + 171.0/2);
-    lineAnimation.path = path;
-    CGPathRelease(path);
-    lineAnimation.duration = 0.6f;
-    lineAnimation.delegate = self;
-    lineAnimation.fillMode = kCAFillModeForwards;
-    lineAnimation.removedOnCompletion = NO;
-    lineAnimation.beginTime = CACurrentMediaTime();
-    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    
-    [lineAnimation setValue:@"removeDownImageAnimation_withNoDownImage" forKey:@"id"];
-    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
-    [_downImageView.layer addAnimation:lineAnimation forKey:nil];
-}
-
-
 
 
 #pragma mark - IIViewDeckControllerDelegate Methods

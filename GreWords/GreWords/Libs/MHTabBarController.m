@@ -141,7 +141,7 @@ static const NSInteger TAG_OFFSET = 1000;
 {
 	[super viewDidLoad];
 
-    CGRect rect = CGRectMake(0, 0, self.view.bounds.size.width, TAB_BAR_HEIGHT);
+    CGRect rect = CGRectMake(0, -0.5, self.view.bounds.size.width, TAB_BAR_HEIGHT);
 	tabButtonsContainerView = [[UIView alloc] initWithFrame:rect];
 	tabButtonsContainerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	[self.view addSubview:tabButtonsContainerView];
@@ -150,7 +150,7 @@ static const NSInteger TAG_OFFSET = 1000;
     UIImageView *topLine = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"words list_topLine.png"]];
     topLine.alpha = 0.8f;
     CGRect frame = topLine.frame;
-    frame.origin.y = TAB_BAR_HEIGHT - 3.5;
+    frame.origin.y = TAB_BAR_HEIGHT - 3;
     topLine.frame = frame;
     
     [self.view addSubview:topLine];

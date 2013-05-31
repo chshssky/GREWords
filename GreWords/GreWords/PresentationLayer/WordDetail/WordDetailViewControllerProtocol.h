@@ -11,6 +11,6 @@
 @protocol WordDetailViewControllerProtocol <NSObject>
 
 - (void)AnimationBack;
-- (void)GoToNewWordWithDownImage:(BOOL)whetherHaveDownImage;
+- (void)GoToNewWord;
 
 @end

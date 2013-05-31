@@ -19,4 +19,7 @@
 + (void)postShowNoteForWordNotification:(WordEntity*)word;
 + (void)registerShowNoteForWordNotificationWithSelector:(SEL)aSelector target:(id)aTarget;
 
++ (void)postStartExamNotification:(NSDictionary *)examInfo;
++ (void)registerStartExamNotificationWithSelector:(SEL)aSelector target:(id)aTarget;
+
 @end

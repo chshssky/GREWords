@@ -16,7 +16,6 @@ typedef enum {
 
 @interface SettingTabViewController : UIViewController<UIScrollViewDelegate>
 {
-    //CGRect originalFrame;
     CGPoint lastTranslate;
     SettingTabViewState state;
 }

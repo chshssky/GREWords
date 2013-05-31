@@ -12,6 +12,7 @@
 #define kAddNoteForWordNotification @"kAddNoteForWordNotification"
 #define kRemoveNoteForWordNotification @"kRemoveNoteForWordNotification"
 #define kShowNoteForWordNotification @"kShowNoteForWordNotification"
+#define kStartExamNotification @"kStartExamNotification"
 
 @implementation NSNotificationCenter (Addition)
 + (void)postAddNoteForWordNotification:(WordEntity*)word
@@ -54,6 +55,21 @@
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:aTarget selector:aSelector
                    name:kShowNoteForWordNotification
+                 object:nil];
+}
+
+
++ (void)postStartExamNotification:(NSDictionary *)examInfo
+{
+    NSLog(@"postStartExamNotification");
+    [[NSNotificationCenter defaultCenter] postNotificationName:kStartExamNotification object:examInfo userInfo:nil];
+}
+
++ (void)registerStartExamNotificationWithSelector:(SEL)aSelector target:(id)aTarget
+{
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:aTarget selector:aSelector
+                   name:kStartExamNotification
                  object:nil];
 }
 

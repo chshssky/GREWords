@@ -108,7 +108,7 @@ float sumHeight = 10.0;//10.0;
             [self showMeanings:theDetail[i] numberOfThisMeaning:i whetherOnlyOneMeaning:theDetail.count==0?YES:NO startHeight:sumHeight withOptions:options];
         }
     }
-    sumHeight += 10.0;
+    sumHeight += 20.0;
     self.view.frame = CGRectMake(0, 0, 320, sumHeight);
     sumHeight = 5.0;
 }
@@ -124,7 +124,7 @@ float sumHeight = 10.0;//10.0;
         //NSLog(@"找不到这个单词的释义");
     }else{
         //////////////////
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, h, 80, 25)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, h, 100, 35)];
         label.backgroundColor = [UIColor clearColor];
         label.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
         label.textColor = [UIColor colorWithRed:209.0/255.0 green:134.0/255.0 blue:39/255.0 alpha:1];
@@ -133,19 +133,26 @@ float sumHeight = 10.0;//10.0;
         }else{
             label.text = [NSString stringWithFormat:@"%@%@%@",@"【考法", [NSString stringWithFormat:@"%d",i+1], @"】"];
         }
+        
         label.lineBreakMode = NSLineBreakByWordWrapping;
         label.numberOfLines = 0;
-        [label sizeToFit]; 
+        [label sizeToFit];
         [self.view addSubview:label];
+        
+        
         //////////////////
-        label = [[UILabel alloc] initWithFrame:CGRectMake(85, h, 215, 25)];
+        
+        
+        label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 35)];
         label.backgroundColor = [UIColor clearColor];
         label.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
+        
         NSRange range = [theUsage rangeOfString:@"："];
         if(range.location != NSNotFound)
         {
             if ([[options objectForKey:@"shouldShowChineseMeaning"] boolValue]) {
                 label.text = [theUsage substringToIndex:range.location];
+                
                 label.lineBreakMode = NSLineBreakByWordWrapping;
                 label.numberOfLines = 0;
                 [label sizeToFit];
@@ -154,15 +161,16 @@ float sumHeight = 10.0;//10.0;
             }
             ////////////////////
             if ([[options objectForKey:@"shouldShowEnglishMeaning"] boolValue]) {
-                label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
-                label.backgroundColor = [UIColor clearColor];
-                label.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
-                label.text = [theUsage substringFromIndex:range.location+1];
-                label.lineBreakMode = NSLineBreakByWordWrapping;
-                label.numberOfLines = 0;
-                [label sizeToFit];
-                [self.view addSubview:label];
-                sumHeight = label.frame.origin.y + label.frame.size.height;
+                UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 35)];
+                textView.backgroundColor = [UIColor clearColor];
+                textView.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
+                textView.text = [theUsage substringFromIndex:range.location+1];
+                [textView sizeToFit];
+                [textView setEditable:NO];
+                [textView setFrame:CGRectMake(85, sumHeight, 215, textView.contentSize.height)];
+                
+                [self.view addSubview:textView];
+                sumHeight = textView.frame.origin.y + textView.contentSize.height;
             }
             ///////////////////
 
@@ -177,6 +185,7 @@ float sumHeight = 10.0;//10.0;
             }
             if ([[options objectForKey:@"shouldShowChineseMeaning"] boolValue]) {
                 label.text = [theUsage substringToIndex:offset];
+                
                 label.lineBreakMode = NSLineBreakByWordWrapping;
                 label.numberOfLines = 0;
                 [label sizeToFit];
@@ -185,51 +194,52 @@ float sumHeight = 10.0;//10.0;
             }
             ////////////////////
             if ([[options objectForKey:@"shouldShowEnglishMeaning"] boolValue]) {
-                label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
-                label.backgroundColor = [UIColor clearColor];
-                label.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
-                label.text = [theUsage substringFromIndex:offset+1];
-                label.lineBreakMode = NSLineBreakByWordWrapping;
-                label.numberOfLines = 0;
-                [label sizeToFit];
-                [self.view addSubview:label];
-                sumHeight = label.frame.origin.y + label.frame.size.height;
+                UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 35)];
+                textView.backgroundColor = [UIColor clearColor];
+                textView.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
+                textView.text = [theUsage substringFromIndex:offset+1];
+                [textView setEditable:NO];
+                [textView setFrame:CGRectMake(85, sumHeight, 215, textView.contentSize.height)];
+                [self.view addSubview:textView];
+                sumHeight = textView.frame.origin.y + textView.contentSize.height;
             }
             ///////////////////
             
         }
         UIImageView *rectImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_meaning_rect.png"]];
-        rectImage.frame = CGRectMake(12, h, 296, sumHeight-h);
+        rectImage.frame = CGRectMake(12, h, 296, sumHeight-h-10);
         [self.view addSubview:rectImage];
         [self.view sendSubviewToBack:rectImage];
     }
-    
-    sumHeight += 8.0;
     
     NSString *theExample = [wordMeaningDictionary objectForKey:@"example"];
     if (theExample == nil) {
         //NSLog(@"找不到这个单词的例句");
     }else{
         if ([[options objectForKey:@"shouldShowSampleSentence"] boolValue]) {
+            
             ////////////////////
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(60, sumHeight, 65, 25)];
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(55, sumHeight, 65, 35)];
             label.backgroundColor = [UIColor clearColor];
             label.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
             label.text = @"例";
+            
             label.lineBreakMode = NSLineBreakByWordWrapping;
             label.numberOfLines = 0;
             [label sizeToFit];
             [self.view addSubview:label];
+            
             ////////////////////
-            label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
-            label.backgroundColor = [UIColor clearColor];
-            label.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
-            label.text = [theExample substringFromIndex:0];
-            label.lineBreakMode = NSLineBreakByWordWrapping;
-            label.numberOfLines = 0;
-            [label sizeToFit];
-            [self.view addSubview:label];
-            sumHeight = label.frame.origin.y + label.frame.size.height + 8.0;
+            
+            UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(85, sumHeight - 7, 215, 35)];
+            textView.backgroundColor = [UIColor clearColor];
+            textView.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
+            textView.text = [theExample substringFromIndex:0];
+            [textView sizeToFit];
+            [textView setEditable:NO];
+            [textView setFrame:CGRectMake(85, sumHeight - 7, 215, textView.contentSize.height)];
+            [self.view addSubview:textView];
+            sumHeight = textView.frame.origin.y + textView.contentSize.height;
             ////////////////////
         }
     }
@@ -240,49 +250,56 @@ float sumHeight = 10.0;//10.0;
     }else{
         if ([[options objectForKey:@"shouldShowSynonyms"] boolValue]) {
             ////////////////////
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(60, sumHeight, 65, 25)];
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(55, sumHeight, 65, 35)];
             label.backgroundColor = [UIColor clearColor];
             label.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
             label.text = @"近";
+            
             label.lineBreakMode = NSLineBreakByWordWrapping;
             label.numberOfLines = 0;
             [label sizeToFit];
             [self.view addSubview:label];
+            
             ////////////////////
-            label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
-            label.backgroundColor = [UIColor clearColor];
-            label.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
-            label.text = [theHomoionym substringFromIndex:0];
-            label.lineBreakMode = NSLineBreakByWordWrapping;
-            label.numberOfLines = 0;
-            [label sizeToFit];
-            [self.view addSubview:label];
-            sumHeight = label.frame.origin.y + label.frame.size.height + 8.0;
+            
+            UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(85, sumHeight - 7, 215, 35)];
+            textView.backgroundColor = [UIColor clearColor];
+            textView.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
+            textView.text = [theHomoionym substringFromIndex:0];
+            [textView sizeToFit];
+            [textView setEditable:NO];
+            [textView setFrame:CGRectMake(85, sumHeight - 7, 215, textView.contentSize.height)];
+            [self.view addSubview:textView];
+            sumHeight = textView.frame.origin.y + textView.contentSize.height;
         }
     }
+    
     NSString *theAntonym = [wordMeaningDictionary objectForKey:@"antonym"];
     if (theAntonym == nil) {
         //NSLog(@"找不到这个单词的反义词");
     }else{
         if ([[options objectForKey:@"shouldShowAntonyms"] boolValue]) {
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(60, sumHeight, 65, 25)];
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(55, sumHeight, 65, 35)];
             label.backgroundColor = [UIColor clearColor];
             label.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
             label.text = @"反";
+            
             label.lineBreakMode = NSLineBreakByWordWrapping;
             label.numberOfLines = 0;
             [label sizeToFit];
             [self.view addSubview:label];
+            
             ////////////////////
-            label = [[UILabel alloc] initWithFrame:CGRectMake(85, sumHeight, 215, 25)];
-            label.backgroundColor = [UIColor clearColor];
-            label.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
-            label.text = [theAntonym substringFromIndex:0];
-            label.lineBreakMode = NSLineBreakByWordWrapping;
-            label.numberOfLines = 0;
-            [label sizeToFit];
-            [self.view addSubview:label];
-            sumHeight = label.frame.origin.y + label.frame.size.height + 5.0;
+            
+            UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(85, sumHeight - 7, 215, 35)];
+            textView.backgroundColor = [UIColor clearColor];
+            textView.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
+            textView.text = [theAntonym substringFromIndex:0];
+            [textView sizeToFit];
+            [textView setEditable:NO];
+            [textView setFrame:CGRectMake(85, sumHeight - 7, 215, textView.contentSize.height)];
+            [self.view addSubview:textView];
+            sumHeight = textView.frame.origin.y + textView.contentSize.height;
         }
     }
 }

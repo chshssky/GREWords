@@ -26,6 +26,8 @@
 #import "ConfigurationHelper.h"
 #import "GuideImageFactory.h"
 #import "TaskStatus.h"
+#import "TestSelectorViewController.h"
+#import "NSNotificationCenter+Addition.h"
 
 #define TaskWordNumber 200
 
@@ -35,10 +37,12 @@
 @property (nonatomic, strong) UIImageView *slideBarView;
 @property (nonatomic, strong) UIImageView *slideBarStatusView;
 @property (nonatomic, strong) UIImageView *slideBarStatusTextView;
+@property (nonatomic, strong) TestSelectorViewController *testSelectorController;
 @property (nonatomic, strong) AwesomeMenu *menu;
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *titleView;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 
 @end
 
@@ -87,8 +91,7 @@
 }
 
 - (void)initAwesomeMenu
-{
-    
+{ 
     AwesomeMenuItem *starMenuItem1 = [[AwesomeMenuItem alloc] initWithImage:[UIImage imageNamed:@"Main menu_xSettingButton.png"]
                                                            highlightedImage:[UIImage imageNamed:@"Main menu_xSettingButton_clicked.png"]
                                                                ContentImage:nil
@@ -158,10 +161,13 @@
         guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_Dashboard];
         [self.view addSubview:guideImageView];
     }
+    
+    [NSNotificationCenter registerStartExamNotificationWithSelector:@selector(startExam:) target:self];
 }
 
 - (void)viewDidUnload {
     [self setTitleView:nil];
+    [self setBackgroundImage:nil];
     [super viewDidUnload];
 }
 
@@ -242,12 +248,27 @@
 
 - (void)examController
 {
+    if (_testSelectorController == nil) {
+        _testSelectorController = [[TestSelectorViewController alloc] init];
+        
+        //_note.delegate = self;
+    }
+    [_testSelectorController addTestSelectorAt:self];
+    [_testSelectorController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.view addSubview:_testSelectorController.view];
+}
+
+- (void)startExam:(NSNotification *)notification
+{
+    NSDictionary* examInfo = (NSDictionary*) notification.object;
     [self transaction];
-//    
-//    WordDetailViewController *vc = [[WordDetailViewController alloc] init];
-//    vc.delegate = self;
-//    vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-//    [self presentModalViewController:vc animated:YES];
+    
+    if (_testSelectorController != nil) {
+        [_testSelectorController.view removeFromSuperview];
+        _testSelectorController = nil;
+    }
+    
+    //start
 }
 
 - (void)historyController
@@ -297,6 +318,10 @@
         self.slideBarView.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.slideBarStatusTextView.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.slideBarStatusView.transform = CGAffineTransformMakeTranslation(-300, 0);
+        self.backgroundImage.alpha = 0;
+        dashboard.textView.alpha = 0;
+        dashboard.startTextView.alpha = 0;
+        dashboard.wordNumberTest.transform = CGAffineTransformMakeTranslation(-15, 0);
         if (iPhone5) {
             dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -252));
         } else {
@@ -311,12 +336,10 @@
             WordDetailViewController *vc = [[WordDetailViewController alloc] init];
             vc.delegate = self;
             [self presentViewController:vc animated:NO completion:nil];
-            
-            
+
         } else {
             
             [[HistoryManager instance] readStatusIfNew];
-            
             
             NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
             vc.changePage = 10 - ([TaskStatus instance].maxWordID % 10);
@@ -337,10 +360,7 @@
                                                 leftViewController:leftController
                                                 rightViewController:nil];
         
-
-            deckController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        
-            [self presentViewController:deckController animated:YES completion:nil];
+            [self presentViewController:deckController animated:NO completion:nil];
         }
     }];
 }
@@ -402,7 +422,7 @@
 {
     dashboard = [DashboardViewController instance];
     dashboard.delegate = self;
-    [self.view insertSubview:dashboard.view atIndex:1];
+    [self.view insertSubview:dashboard.view atIndex:2];
     [dashboard mainViewGen];
     
     [UIView animateWithDuration:0.5f animations:^{
@@ -412,15 +432,13 @@
         self.slideBarStatusView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
         dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.0f,1.0f), CGAffineTransformMakeTranslation(0, 0));
         self.menu.transform = CGAffineTransformMakeTranslation(0, 0);
+        self.backgroundImage.alpha = 1.0f;
+        dashboard.textView.alpha = 1.0f;
+        dashboard.startTextView.alpha = 1.0f;
+        dashboard.wordNumberTest.transform = CGAffineTransformMakeTranslation(0, 0);
     }];
     
 }
-
-//- (void)ChangeWordWithIndex:(int)index WithMax:(int)max
-//{
-//    self.indexOfWordIDToday = index;
-//    self.maxWordID = max;
-//}
 
 - (void)GoToReviewWithWord
 {
@@ -430,12 +448,12 @@
     
 }
 
-- (void)GoToNewWordWithDownImage:(BOOL)whetherHaveDownImage
+- (void)GoToNewWord
 {
-    [self performSelector:@selector(GotoNewWordSelector:) withObject:[NSNumber numberWithBool:whetherHaveDownImage] afterDelay:0];
+    [self performSelectorOnMainThread:@selector(GotoNewWordSelector) withObject:nil waitUntilDone:NO];
 }
 
-- (void)GotoNewWordSelector:(NSNumber *)whetherHaveDownImage
+- (void)GotoNewWordSelector
 {
     NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
 
@@ -457,14 +475,7 @@
     IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:vc
                                                                                     leftViewController:leftController
                                                                                    rightViewController:nil];
-        
     [self presentViewController:deckController animated:NO completion:nil];
-    
-    if ([whetherHaveDownImage boolValue] == YES) {
-        [vc removeDownImageAnimation_withDownCover];
-    }else{
-        [vc removeDownImageAnimation_withNoDownCover];
-    }
 }
 
 @end

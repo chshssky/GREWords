@@ -316,8 +316,6 @@ HistoryManager* _historyManagerInstance = nil;
     History *history = [fetchMatches lastObject];
     
     float progress = 0;
-    //!!!!!!!!!!!!!!!!
-    //[[info objectForKey:@"unit"] floatValue] / ;
     
     return progress;
 }
