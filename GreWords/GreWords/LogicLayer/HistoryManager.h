@@ -19,7 +19,10 @@
 - (void)updateEvent:(BaseEvent *)aEvent;
 
 //Statistic Methods
+- (BOOL)readStatusIfNew;
 
+- (BOOL)isNewWordPaused;
+- (BOOL)isReviewPaused;
 - (int)currentStage;
 - (float)currentStageProgress;
 - (BOOL)isFinishedForDate:(NSDate *)date;

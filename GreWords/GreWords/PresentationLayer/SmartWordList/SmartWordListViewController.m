@@ -388,6 +388,10 @@
         }
         
         [self.scrollDelegate smartWordList:self didTranslationYSinceLast:contentOffsetY];
+        if(self.tableView == aScrollView)
+        {
+            [searchIndex setCurrentIndex:[self currentSectionIndex]];
+        }
     }
 }
 
@@ -561,6 +565,20 @@
 #pragma mark - GreTableViewSearchIndexDelegate
 
 
+- (int)currentSectionIndex
+{
+    NSIndexPath *firstVisibleIndexPath = [[self.tableView indexPathsForVisibleRows] objectAtIndex:0];
+    WordEntity *word = self.array[firstVisibleIndexPath.section];
+    NSString *firstLetter = [[word.wordText substringToIndex:1] uppercaseString];
+    NSArray *arr = [self sectionTitles];
+    for(int i = 0; i < arr.count ; i++)
+    {
+        if([arr[i] isEqualToString:firstLetter])
+            return i;
+    }
+    return -1;
+}
+
 - (NSDictionary*)alphabetInfo
 {
     static NSDictionary* info = nil;
@@ -595,6 +613,16 @@
         return;
     int section = [number intValue];
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+}
+
+- (void)startTouch
+{
+    
+}
+
+- (void)endTouch
+{
+
 }
 
 @end

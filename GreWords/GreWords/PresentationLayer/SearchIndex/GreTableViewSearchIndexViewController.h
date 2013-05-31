@@ -14,6 +14,8 @@
 - (NSArray*)sectionTitles;
 - (void)didSelectedIndex:(int)index;
 
+- (void)startTouch;
+- (void)endTouch;
 
 @end
 
@@ -28,5 +30,7 @@
 @property (retain,nonatomic) id<GreTableViewSearchIndexDelegate> delegate;
 
 - (BOOL)isTouching;
+
+- (void)setCurrentIndex:(int)index;
 
 @end

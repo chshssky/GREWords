@@ -14896,6 +14896,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FB1CF5F1757A6DB00017F88 /* History.h in Sources */,
 				E4CB2CE8175785F000370700 /* CustomSearchBar.m in Sources */,
 				E418DA5F1713E5E8002C6743 /* Model.xcdatamodeld in Sources */,
 				3FA4848A17142BC0003E88A6 /* GreWordsAppDelegate.m in Sources */,

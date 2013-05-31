@@ -77,6 +77,11 @@
 }
 
 
+- (void)setCurrentIndex:(int)index
+{
+    [self setTileColorAtIndex:index];
+}
+
 - (void)setTileColorAtIndex:(int)index
 {
     for(int i = 0; i < labelArr.count; i++)
@@ -84,7 +89,7 @@
         UIColor *color = pressing ? [UIColor colorWithR:248 G:246 B:244] : [UIColor colorWithR:162 G:152 B:145];
         if(index == i)
         {
-            color = pressing ? [UIColor colorWithR:255 G:144 B:0] : [UIColor colorWithR:162 G:152 B:145];
+            color = pressing ? [UIColor colorWithR:255 G:144 B:0] : [UIColor colorWithR:210 G:157 B:88];
         }
         UILabel *label = labelArr[i];
         [label setTextColor:color];
@@ -125,6 +130,8 @@
         [self setTileColorAtIndex:index];
         [self.delegate didSelectedIndex:index];
     }
+    if(curPoint.y < 0)
+        index = 0;
     indicator.indicatorLabel.text = [self sectionTitles][index];
     UILabel *label = labelArr[index];
     CGRect indicatorFrame = indicator.view.frame;

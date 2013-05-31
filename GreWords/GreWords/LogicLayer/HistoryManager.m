@@ -15,6 +15,7 @@
 #import "Entity/ExamStatus.h"
 #import "Entity/NewWordStatus.h"
 #import "Entity/ReviewStatus.h"
+#import "TaskStatus.h"
 
 
 @interface HistoryManager ()
@@ -74,14 +75,14 @@ HistoryManager* _historyManagerInstance = nil;
 {
     History *history = [NSEntityDescription insertNewObjectForEntityForName:@"History" inManagedObjectContext:self.context];
     [history setStartTime:aEvent.startTime];
-    [history setEvent:aEvent.eventType];
     [history setTotalWordCount:[NSNumber numberWithInt:aEvent.totalWordCount]];
     [history setWrongWordCount:[NSNumber numberWithInt:aEvent.wrongWordCount]];
     [history setDuration:[NSNumber numberWithDouble:aEvent.duration]];
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     
-    if ([aEvent isKindOfClass:[NewWordEvent class]] && [aEvent.eventType isEqualToString:EVENT_TYPE_NEWWORD]) {
+    if ([aEvent isKindOfClass:[NewWordEvent class]]) {
+        [history setEvent:EVENT_TYPE_NEWWORD];
         NewWordEvent *newWordEvent = (NewWordEvent *)aEvent;
         
         NewWordStatus *newWordStatus = [NSEntityDescription insertNewObjectForEntityForName:@"NewWordStatus" inManagedObjectContext:self.context];
@@ -89,6 +90,9 @@ HistoryManager* _historyManagerInstance = nil;
         newWordStatus.maxWordID = [NSNumber numberWithInt:newWordEvent.maxWordID];
         newWordStatus.stage = [NSNumber numberWithInt:newWordEvent.stage_now];
         newWordStatus.reviewEnable = [NSNumber numberWithBool:newWordEvent.reviewEnable];
+        
+        [history setNewWordStatus:newWordStatus];
+        NSLog(@"%@:%@:%@:%@", newWordStatus.index, newWordStatus.maxWordID, newWordStatus.stage, newWordStatus.reviewEnable);
         
         // convert enum to NSNumber
         
@@ -99,23 +103,27 @@ HistoryManager* _historyManagerInstance = nil;
 //        [dict setObject:[NSNumber numberWithInt:[newWordEvent unit]] forKey:NEWWORDEVENT_UNIT];
 //        [dict setObject:[NSNumber numberWithInt:[newWordEvent round]] forKey:NEWWORDEVENT_ROUNG];
 //        [dict setObject:[NSNumber numberWithInt:[newWordEvent orderInUnit]] forKey:NEWWORDEVENT_ORDER_IN_UNIT];
-    } else if ([aEvent isKindOfClass:[ReviewEvent class]] && [aEvent.eventType isEqualToString:EVENT_TYPE_REVIEW]) {
+    } else if ([aEvent isKindOfClass:[ReviewEvent class]]) {
+        [history setEvent:EVENT_TYPE_REVIEW];
         ReviewEvent *reviewEvent = (ReviewEvent *)aEvent;
         
         ReviewStatus *reviewStatus = [NSEntityDescription insertNewObjectForEntityForName:@"ReviewStatus" inManagedObjectContext:self.context];
         reviewStatus.index = [NSNumber numberWithInt:reviewEvent.indexOfWordToday];
         reviewStatus.stage = [NSNumber numberWithInt:reviewEvent.stage_now];
-
+        
+        [history setReviewStatus:reviewStatus];
 //        [dict setObject:[NSNumber numberWithInt:[reviewEvent stage_now]] forKey:REVIEWEVENT_STAGE_NOW];
 //        [dict setObject:[NSNumber numberWithInt:[reviewEvent unit]] forKey:REVIEWEVENT_UNIT];
 //        [dict setObject:[NSNumber numberWithInt:[reviewEvent orderInUnit]] forKey:REVIEWEVENT_ORDER_IN_UNIT];
-    } else if ([aEvent isKindOfClass:[ExamEvent class]] && [aEvent.eventType isEqualToString:EVENT_TYPE_EXAM]) {
+    } else if ([aEvent isKindOfClass:[ExamEvent class]]) {
+        [history setEvent:EVENT_TYPE_EXAM];
         ExamEvent *examEvent = (ExamEvent *)aEvent;
         
         ExamStatus *examStatus = [NSEntityDescription insertNewObjectForEntityForName:@"ExamStatus" inManagedObjectContext:self.context];
         
         examStatus.difficulty = [NSNumber numberWithFloat:examEvent.difficulty];
         
+        [history setExamStatus:examStatus];
 //        [dict setObject:[NSNumber numberWithInt:[examEvent difficulty]] forKey:EXAMEVENT_DIFFICULTY];
     } else {
         NSLog(@"Something Wrong : BaseEvent is not a specific class");
@@ -136,26 +144,30 @@ HistoryManager* _historyManagerInstance = nil;
 - (void)updateEvent:(BaseEvent *)aEvent
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
-    request.predicate = [NSPredicate predicateWithFormat:@"event = %@ && endTime = %@", aEvent.eventType, @""];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
+    request.predicate = [NSPredicate predicateWithFormat:@"event = %@ && endTime = nil", EVENT_TYPE_NEWWORD];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
     NSError *err = nil;
     NSArray *matches = [self.context executeFetchRequest:request error:&err];
     
     NSLog(@"Fetch Event Results number: %d", [matches count]);
     History *history = [matches lastObject];
     
-    NSLog(@"History Start Time: %@", history.startTime);
+    NSLog(@"History Start Time: %@ Wrong: %@", history.startTime, history.wrongWordCount);
     
-    if ([aEvent isKindOfClass:[NewWordEvent class]] && [aEvent.eventType isEqualToString:EVENT_TYPE_NEWWORD]) {
+    history.wrongWordCount = [NSNumber numberWithInt:aEvent.wrongWordCount];
+
+    
+    if ([aEvent isKindOfClass:[NewWordEvent class]]) {
         NewWordEvent *newWordEvent = (NewWordEvent *)aEvent;
+        NewWordStatus *newWordStatus = history.newWordStatus;//[history performSelector:@selector(examStatus)];//history.newWordStatus;
         
-        NewWordStatus *newWordStatus ;//= //[NSFetchRequest fetchRequestWithEntityName:@"NewWordStatus"];
+        NSLog(@"NewWordStatus before: index:%@, maxID:%@, stage:%@, reviewEnable:%@", newWordStatus.index, newWordStatus.maxWordID, newWordStatus.stage, newWordStatus.reviewEnable);
         newWordStatus.index = [NSNumber numberWithInt:newWordEvent.indexOfWordToday];
         newWordStatus.maxWordID = [NSNumber numberWithInt:newWordEvent.maxWordID];
         newWordStatus.stage = [NSNumber numberWithInt:newWordEvent.stage_now];
         newWordStatus.reviewEnable = [NSNumber numberWithBool:newWordEvent.reviewEnable];
-        
-    } else if ([aEvent isKindOfClass:[ReviewEvent class]] && [aEvent.eventType isEqualToString:EVENT_TYPE_REVIEW]) {
+            
+    } else if ([aEvent isKindOfClass:[ReviewEvent class]]) {
         ReviewEvent *reviewEvent = (ReviewEvent *)aEvent;
         
         ReviewStatus *reviewStatus = [NSEntityDescription insertNewObjectForEntityForName:@"ReviewStatus" inManagedObjectContext:self.context];
@@ -163,7 +175,7 @@ HistoryManager* _historyManagerInstance = nil;
         reviewStatus.stage = [NSNumber numberWithInt:reviewEvent.stage_now];
         
 
-    } else if ([aEvent isKindOfClass:[ExamEvent class]] && [aEvent.eventType isEqualToString:EVENT_TYPE_EXAM]) {
+    } else if ([aEvent isKindOfClass:[ExamEvent class]]) {
         ExamEvent *examEvent = (ExamEvent *)aEvent;
         
         ExamStatus *examStatus = [NSEntityDescription insertNewObjectForEntityForName:@"ExamStatus" inManagedObjectContext:self.context];
@@ -201,7 +213,80 @@ HistoryManager* _historyManagerInstance = nil;
     }
 }
 
+- (BOOL)readStatusIfNew
+{
+    TaskStatus *taskStatus = [TaskStatus instance];
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
+    request.predicate = [NSPredicate predicateWithFormat:@"endTime = nil"];
+    NSError *err = nil;
+    NSArray *matches = [self.context executeFetchRequest:request error:&err];
+
+    if ([matches count] == 0) {
+        taskStatus.indexOfWordIDToday = 0;
+        taskStatus.maxWordID = 0;
+        taskStatus.stage_now = 0;
+        taskStatus.reviewEnable = NO;
+        taskStatus.wrongWordCount = 0;
+        
+        return YES;
+    } else {
+        History *history = [matches lastObject];
+        if ([history.event isEqualToString:EVENT_TYPE_NEWWORD]) {
+            NewWordStatus *nwStatus = history.newWordStatus;
+            
+            taskStatus.indexOfWordIDToday = [nwStatus.index integerValue];
+            taskStatus.maxWordID = [nwStatus.maxWordID integerValue];
+            taskStatus.stage_now = [nwStatus.stage integerValue];
+            taskStatus.reviewEnable = [nwStatus.reviewEnable boolValue];
+            taskStatus.wrongWordCount = [history.wrongWordCount integerValue];
+
+        } else if ([history.event isEqualToString:EVENT_TYPE_REVIEW]) {
+            ReviewStatus *rStatus = history.reviewStatus;
+            
+            taskStatus.indexOfWordIDToday = [rStatus.index integerValue];
+            taskStatus.stage_now = [rStatus.stage integerValue];
+            
+        } else if ([history.event isEqualToString:EVENT_TYPE_EXAM]) {
+            ExamStatus *eStatus = history.examStatus;
+            
+            //eStatus.difficulty;
+        }
+        return NO;
+    }
+}
+
 //Statistic Methods
+
+- (BOOL)isNewWordPaused
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
+    request.predicate = [NSPredicate predicateWithFormat:@"event = %@ && endTime = nil", EVENT_TYPE_NEWWORD];
+    NSError *err = nil;
+    NSArray *matches = [self.context executeFetchRequest:request error:&err];
+    
+    if ([matches count] == 0) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
+- (BOOL)isReviewPaused
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
+    request.predicate = [NSPredicate predicateWithFormat:@"event = %@ && endTime = nil", EVENT_TYPE_REVIEW];
+ 
+    NSError *err = nil;
+    NSArray *matches = [self.context executeFetchRequest:request error:&err];
+    
+    if ([matches count] == 0) {
+        return NO;
+    } else {
+        return YES;
+    }
+}
+
 
 - (int)currentStage
 {
@@ -214,10 +299,8 @@ HistoryManager* _historyManagerInstance = nil;
     NSError *fetchError = nil;
     NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
     History *history = [fetchMatches lastObject];
-    
-    NSDictionary *info = [self toArrayOrNSDictionary:[history.info dataUsingEncoding:NSASCIIStringEncoding]];
-    
-    return [[info objectForKey:NEWWORDEVENT_STAGE_NOW] integerValue];
+        
+    return 0;//[[info objectForKey:NEWWORDEVENT_STAGE_NOW] integerValue];
 }
 
 - (float)currentStageProgress
@@ -227,6 +310,10 @@ HistoryManager* _historyManagerInstance = nil;
     request.predicate = [NSPredicate predicateWithFormat:@"event == 'newWordEvent'"];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
     [request setFetchLimit:1];
+    
+    NSError *fetchError = nil;
+    NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
+    History *history = [fetchMatches lastObject];
     
     float progress = 0;
     
