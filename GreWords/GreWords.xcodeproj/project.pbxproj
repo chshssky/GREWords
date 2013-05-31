@@ -3551,6 +3551,10 @@
 		E4CDB1801755CAC8004993D6 /* rollback4.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB17C1755CAC8004993D6 /* rollback4.png */; };
 		E4CDB1811755CAC8004993D6 /* rollback3.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB17D1755CAC8004993D6 /* rollback3.5@2x.png */; };
 		E4CDB1821755CAC8004993D6 /* rollback4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB17E1755CAC8004993D6 /* rollback4@2x.png */; };
+		E4D1B4C11758EA00000796DF /* GreTableViewSearchIndexIndicatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D1B4C01758EA00000796DF /* GreTableViewSearchIndexIndicatorViewController.m */; };
+		E4D1B4C41758EFE7000796DF /* UIColor+RGB.m in Sources */ = {isa = PBXBuildFile; fileRef = E4D1B4C31758EFE7000796DF /* UIColor+RGB.m */; };
+		E4D1B4C71758F1C7000796DF /* words list_scrollBar_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = E4D1B4C51758F1C7000796DF /* words list_scrollBar_circle.png */; };
+		E4D1B4C81758F1C7000796DF /* words list_scrollBar_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4D1B4C61758F1C7000796DF /* words list_scrollBar_circle@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -7166,6 +7170,12 @@
 		E4CDB17C1755CAC8004993D6 /* rollback4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rollback4.png; sourceTree = "<group>"; };
 		E4CDB17D1755CAC8004993D6 /* rollback3.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rollback3.5@2x.png"; sourceTree = "<group>"; };
 		E4CDB17E1755CAC8004993D6 /* rollback4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rollback4@2x.png"; sourceTree = "<group>"; };
+		E4D1B4BF1758EA00000796DF /* GreTableViewSearchIndexIndicatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GreTableViewSearchIndexIndicatorViewController.h; path = SearchIndex/GreTableViewSearchIndexIndicatorViewController.h; sourceTree = "<group>"; };
+		E4D1B4C01758EA00000796DF /* GreTableViewSearchIndexIndicatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GreTableViewSearchIndexIndicatorViewController.m; path = SearchIndex/GreTableViewSearchIndexIndicatorViewController.m; sourceTree = "<group>"; };
+		E4D1B4C21758EFE7000796DF /* UIColor+RGB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RGB.h"; sourceTree = "<group>"; };
+		E4D1B4C31758EFE7000796DF /* UIColor+RGB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGB.m"; sourceTree = "<group>"; };
+		E4D1B4C51758F1C7000796DF /* words list_scrollBar_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "words list_scrollBar_circle.png"; sourceTree = "<group>"; };
+		E4D1B4C61758F1C7000796DF /* words list_scrollBar_circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "words list_scrollBar_circle@2x.png"; sourceTree = "<group>"; };
 		E4E21C561743C2C4001A7EEF /* flipcard.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = flipcard.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -7415,6 +7425,8 @@
 		E41FF5261740DF750078E738 /* SmartList */ = {
 			isa = PBXGroup;
 			children = (
+				E4D1B4C51758F1C7000796DF /* words list_scrollBar_circle.png */,
+				E4D1B4C61758F1C7000796DF /* words list_scrollBar_circle@2x.png */,
 				E43908CA17410C4200E36078 /* words list_pageLine.png */,
 				E43908CB17410C4200E36078 /* words list_pageLine@2x.png */,
 				E41FF56F1740E0890078E738 /* words list_backButton.png */,
@@ -11069,6 +11081,8 @@
 				E466F4B2173BD508001847D0 /* UIScrollView+AllowAllTouches.m */,
 				E423DEC7174A3EB00079CB60 /* NSNotificationCenter+Addition.h */,
 				E423DEC8174A3EB00079CB60 /* NSNotificationCenter+Addition.m */,
+				E4D1B4C21758EFE7000796DF /* UIColor+RGB.h */,
+				E4D1B4C31758EFE7000796DF /* UIColor+RGB.m */,
 			);
 			path = Categorys;
 			sourceTree = "<group>";
@@ -11168,6 +11182,8 @@
 			children = (
 				E4CB2CEE1758D2BD00370700 /* GreTableViewSearchIndexViewController.h */,
 				E4CB2CEF1758D2BD00370700 /* GreTableViewSearchIndexViewController.m */,
+				E4D1B4BF1758EA00000796DF /* GreTableViewSearchIndexIndicatorViewController.h */,
+				E4D1B4C01758EA00000796DF /* GreTableViewSearchIndexIndicatorViewController.m */,
 			);
 			name = SearchIndex;
 			sourceTree = "<group>";
@@ -14696,6 +14712,8 @@
 				E4CB2CE71757767F00370700 /* UISearchBarBG@2x.png in Resources */,
 				E4CB2CEB1757895F00370700 /* UISearchBarText.png in Resources */,
 				E4CB2CEC1757895F00370700 /* UISearchBarText@2x.png in Resources */,
+				E4D1B4C71758F1C7000796DF /* words list_scrollBar_circle.png in Resources */,
+				E4D1B4C81758F1C7000796DF /* words list_scrollBar_circle@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14767,6 +14785,8 @@
 				3FB1CF5B175772B800017F88 /* ReviewStatus.m in Sources */,
 				3FB1CF5E175772B900017F88 /* ExamStatus.m in Sources */,
 				E4CB2CF01758D2BD00370700 /* GreTableViewSearchIndexViewController.m in Sources */,
+				E4D1B4C11758EA00000796DF /* GreTableViewSearchIndexIndicatorViewController.m in Sources */,
+				E4D1B4C41758EFE7000796DF /* UIColor+RGB.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

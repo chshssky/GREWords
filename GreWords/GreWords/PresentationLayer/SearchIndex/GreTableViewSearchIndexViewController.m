@@ -8,13 +8,14 @@
 
 #import "GreTableViewSearchIndexViewController.h"
 #import <QuartzCore/QuartzCore.h>
-
-#define CORNER 16
+#import "UIColor+RGB.h"
+#define CORNER 12
 
 @interface GreTableViewSearchIndexViewController ()
 {
     CGRect frame;
     CGFloat averageHeight;
+    NSMutableArray *labelArr;
 }
 
 @end
@@ -42,11 +43,6 @@
 
 - (NSArray*)sectionTitles
 {
-//    return @[@"A",@"B",@"C",@"D",@"E",@"F",@"G",
-//                              @"H",@"I",@"J",@"K",@"L",@"M",@"N",
-//                              @"O",@"P",@"Q",@"R",@"S",@"T",@"U",
-//                              @"V",@"W",@"X",@"Y",@"Z"
-//             ];
     return [self.delegate sectionTitles];
 }
 
@@ -59,6 +55,7 @@
     frame = self.view.frame;
     averageHeight = (frame.size.height - CORNER)/ (titles.count + 1);
     CGFloat currentHeight = CORNER;
+    labelArr = [@[] mutableCopy];
     for(NSString *title in titles)
     {
         UILabel *label = [self generateLabel:title];
@@ -68,29 +65,71 @@
         labelFrame.size.height = averageHeight;
         label.frame = labelFrame;
         [self.view addSubview:label];
+        [labelArr addObject:label];
     }
+    [self setTileColorAtIndex: -1];
 }
 
+
+- (void)setTileColorAtIndex:(int)index
+{
+    for(int i = 0; i < labelArr.count; i++)
+    {
+        UIColor *color = [UIColor colorWithR:255 G:255 B:0];
+        if(index == i)
+        {
+            color = [UIColor redColor];
+        }
+        UILabel *label = labelArr[i];
+        [label setTextColor:color];
+    }
+}
 
 
 - (void)panned:(UIPanGestureRecognizer*)panner
 {
     CGPoint curPoint = [panner locationInView:self.view];
     
-    if(panner.state == UIGestureRecognizerStateBegan || panner.state == UIGestureRecognizerStateChanged)
-    {
-        self.backgroundView.hidden = NO;
-    }
-    else
-    {
-        self.backgroundView.hidden = YES;
-    }
-    
     int index = (curPoint.y - CORNER) / averageHeight;
     if(index >= [self sectionTitles].count)
         index = [self sectionTitles].count - 1;
     if(index >= 0)
+    {
+        [self setTileColorAtIndex:index];
         [self.delegate didSelectedIndex:index];
+    }
+    indicator.indicatorLabel.text = [self sectionTitles][index];
+    UILabel *label = labelArr[index];
+    CGRect indicatorFrame = indicator.view.frame;
+    indicatorFrame.origin.y = label.frame.origin.y;
+    indicator.view.frame = indicatorFrame;
+    
+    if(panner.state == UIGestureRecognizerStateBegan)
+    {
+        self.backgroundView.hidden = NO;
+        indicator.view.hidden = NO;
+    }
+    else if(panner.state == UIGestureRecognizerStateChanged)
+    {
+        
+    }
+    else
+    {
+        self.backgroundView.hidden = YES;
+        [self setTileColorAtIndex:-1];
+        indicator.view.hidden = YES;
+    }
+}
+
+
+- (void)initIndicator
+{
+    indicator = [self.storyboard instantiateViewControllerWithIdentifier:@"searchIndexIndicator"];
+    CGRect indicatorFrame = indicator.view.frame;
+    indicatorFrame.origin.x = -90;
+    indicator.view.frame = indicatorFrame;
+    [self.view addSubview:indicator.view];
+    indicator.view.hidden = YES;
 }
 
 
@@ -106,6 +145,7 @@
     UIPanGestureRecognizer *panRecg = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panned:)];
     [self.view addGestureRecognizer:panRecg];
     
+    [self initIndicator];
 }
 
 - (void)didReceiveMemoryWarning

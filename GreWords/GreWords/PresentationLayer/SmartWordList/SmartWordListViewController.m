@@ -66,7 +66,6 @@
     searchIndex = [self.storyboard instantiateViewControllerWithIdentifier:@"searchIndex"];
     searchIndex.delegate = self;
     CGRect frame = searchIndex.view.frame;
-    frame.origin.y = self.searchBar.frame.size.height;
     frame.origin.x = 320 - frame.size.width - 2;
     frame.size.height = 430;
     searchIndex.view.frame = frame;

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GreTableViewSearchIndexIndicatorViewController.h"
 
 @protocol GreTableViewSearchIndexDelegate <NSObject>
 
@@ -16,6 +17,9 @@
 @end
 
 @interface GreTableViewSearchIndexViewController : UIViewController
+{
+    GreTableViewSearchIndexIndicatorViewController *indicator;
+}
 
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 @property (strong, nonatomic) IBOutlet UILabel *sampleLabel;

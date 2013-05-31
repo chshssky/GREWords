@@ -601,6 +601,46 @@
             </objects>
             <point key="canvasLocation" x="1631" y="-115"/>
         </scene>
+        <!--Gre Table View Search Index Indicator View Controller-->
+        <scene sceneID="1ri-56-Van">
+            <objects>
+                <viewController storyboardIdentifier="searchIndexIndicator" autoresizesArchivedViewToFullSize="NO" id="Nex-dk-Vbb" customClass="GreTableViewSearchIndexIndicatorViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Ah-vL-XB9">
+                        <rect key="frame" x="0.0" y="0.0" width="83" height="67"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" id="1Pi-ST-4Dr">
+                                <rect key="frame" x="0.0" y="0.0" width="83" height="67"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="words list_scrollBar_circle.png" id="8XP-bS-uhN">
+                                        <rect key="frame" x="0.0" y="0.0" width="83" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yLM-2q-QZb">
+                                        <rect key="frame" x="0.0" y="0.0" width="69" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                        <color key="textColor" red="0.36470588240000001" green="0.2901960784" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="backgroundVIew" destination="1Pi-ST-4Dr" id="NrC-ff-hVc"/>
+                        <outlet property="indicatorLabel" destination="yLM-2q-QZb" id="US7-g2-Qbq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d8o-3J-va4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="662" y="0.0"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Main menu_bg.png" width="320" height="568"/>
@@ -630,6 +670,7 @@
         <image name="words list_button_click.png" width="45" height="45"/>
         <image name="words list_note.png" width="19" height="19"/>
         <image name="words list_point5.png" width="52" height="6"/>
+        <image name="words list_scrollBar_circle.png" width="83" height="67"/>
         <image name="words list_sound.png" width="19" height="17"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
