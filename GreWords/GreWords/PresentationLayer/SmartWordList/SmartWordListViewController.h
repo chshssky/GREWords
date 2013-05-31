@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SmartWordListSectionController.h"
+#import "GreTableViewSearchIndexViewController.h"
 
 @class SmartWordListViewController;
 @protocol SmartWordListScrollDelegate <NSObject>
@@ -21,7 +22,7 @@
 
 
 @class WordEntity;
-@interface SmartWordListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface SmartWordListViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,GreTableViewSearchIndexDelegate>
 {
     NSMutableArray* retractableControllers;
     NSMutableArray* filteredRetractableControllers;
@@ -31,6 +32,8 @@
     BOOL isDragging;
     
     BOOL isSearching;
+    
+    GreTableViewSearchIndexViewController *searchIndex;
 }
 
 @property (retain, nonatomic) NSArray *array;
