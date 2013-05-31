@@ -14,6 +14,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "NSNotificationCenter+Addition.h"
 
+
 @interface SmartWordListViewController ()
 
 @end
@@ -60,6 +61,19 @@
 }
 
 
+- (void)addSearchIndex
+{
+    searchIndex = [self.storyboard instantiateViewControllerWithIdentifier:@"searchIndex"];
+    searchIndex.delegate = self;
+    CGRect frame = searchIndex.view.frame;
+    frame.origin.y = self.searchBar.frame.size.height;
+    frame.origin.x = 320 - frame.size.width - 2;
+    frame.size.height = 430;
+    searchIndex.view.frame = frame;
+    
+    [self.view addSubview:searchIndex.view];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -100,6 +114,10 @@
         [NSNotificationCenter registerRemoveNoteForWordNotificationWithSelector:@selector(removeNoteItem:) target:self];
     }
     
+    if(self.type == SmartListType_Full)
+    {
+        [self addSearchIndex];
+    }
     
 }
 
@@ -516,4 +534,45 @@
     [self.tableView reloadData];
     [self addButtomTexture:self.tableView];
 }
+
+
+#pragma mark - GreTableViewSearchIndexDelegate
+
+
+- (NSDictionary*)alphabetInfo
+{
+    static NSDictionary* info = nil;
+    if(info)
+        return info;
+    NSMutableDictionary *dict = [@{} mutableCopy];
+    for(int i = _array.count - 1; i >= 0; i--)
+    {
+        WordEntity *word = _array[i];
+        NSString *firstLetter = [[word.wordText substringToIndex:1] uppercaseString];
+        dict[firstLetter] = [NSNumber numberWithInt:i];
+    }
+    info = dict;
+    return info;
+}
+
+
+- (NSArray*)sectionTitles
+{
+    return @[@"A",@"B",@"C",@"D",@"E",@"F",@"G",
+             @"H",@"I",@"J",@"K",@"L",@"M",@"N",
+             @"O",@"P",@"Q",@"R",@"S",@"T",@"U",
+             @"V",@"W",@"X",@"Y",@"Z"
+             ];
+}
+
+- (void)didSelectedIndex:(int)index
+{
+    NSDictionary *info = [self alphabetInfo];
+    NSNumber *number = info[[self sectionTitles][index]];
+    if(!number)
+        return;
+    int section = [number intValue];
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+}
+
 @end

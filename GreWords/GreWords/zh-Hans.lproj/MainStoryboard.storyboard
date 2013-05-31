@@ -253,6 +253,42 @@
             </objects>
             <point key="canvasLocation" x="-90" y="705"/>
         </scene>
+        <!--Gre Table View Search Index View Controller-->
+        <scene sceneID="3EH-Zw-IOp">
+            <objects>
+                <viewController storyboardIdentifier="searchIndex" autoresizesArchivedViewToFullSize="NO" id="Sca-qQ-c1N" customClass="GreTableViewSearchIndexViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NO6-Kr-gz3">
+                        <rect key="frame" x="0.0" y="0.0" width="22" height="420"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view alpha="0.40000000000000002" contentMode="scaleToFill" id="PvK-zT-szj">
+                                <rect key="frame" x="0.0" y="0.0" width="22" height="420"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="A" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nsS-ZK-gpM">
+                                        <rect key="frame" x="0.0" y="27" width="22" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="PvK-zT-szj" id="B6O-O4-2q0"/>
+                        <outlet property="sampleLabel" destination="nsS-ZK-gpM" id="gNB-en-ZWF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tLf-iw-GNk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="782" y="-95"/>
+        </scene>
         <!--Smart Word List View Controller-->
         <scene sceneID="Icl-g9-r35">
             <objects>
@@ -490,7 +526,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="327" y="-115"/>
+            <point key="canvasLocation" x="903" y="-115"/>
         </scene>
         <!--Whole Smart Word View Controller-->
         <scene sceneID="SEy-b7-eFh">
@@ -544,7 +580,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="baF-1x-H5Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="713" y="-115"/>
+            <point key="canvasLocation" x="1289" y="-115"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="UPi-8r-3c6">
@@ -563,7 +599,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AGp-lk-xXD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1055" y="-115"/>
+            <point key="canvasLocation" x="1631" y="-115"/>
         </scene>
     </scenes>
     <resources>

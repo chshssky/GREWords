@@ -3516,6 +3516,7 @@
 		E4CB2CE8175785F000370700 /* CustomSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB2CDD17576CE200370700 /* CustomSearchBar.m */; };
 		E4CB2CEB1757895F00370700 /* UISearchBarText.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE91757895F00370700 /* UISearchBarText.png */; };
 		E4CB2CEC1757895F00370700 /* UISearchBarText@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CEA1757895F00370700 /* UISearchBarText@2x.png */; };
+		E4CB2CF01758D2BD00370700 /* GreTableViewSearchIndexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4CB2CEF1758D2BD00370700 /* GreTableViewSearchIndexViewController.m */; };
 		E4CDB1421754E3F0004993D6 /* newwordfirst3.5.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB13E1754E3F0004993D6 /* newwordfirst3.5.png */; };
 		E4CDB1431754E3F0004993D6 /* newwordfirst4.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB13F1754E3F0004993D6 /* newwordfirst4.png */; };
 		E4CDB1441754E3F0004993D6 /* newwordfirst3.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CDB1401754E3F0004993D6 /* newwordfirst3.5@2x.png */; };
@@ -7128,6 +7129,8 @@
 		E4CB2CE31757767F00370700 /* UISearchBarBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UISearchBarBG@2x.png"; sourceTree = "<group>"; };
 		E4CB2CE91757895F00370700 /* UISearchBarText.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UISearchBarText.png; sourceTree = "<group>"; };
 		E4CB2CEA1757895F00370700 /* UISearchBarText@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UISearchBarText@2x.png"; sourceTree = "<group>"; };
+		E4CB2CEE1758D2BD00370700 /* GreTableViewSearchIndexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GreTableViewSearchIndexViewController.h; path = SearchIndex/GreTableViewSearchIndexViewController.h; sourceTree = "<group>"; };
+		E4CB2CEF1758D2BD00370700 /* GreTableViewSearchIndexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GreTableViewSearchIndexViewController.m; path = SearchIndex/GreTableViewSearchIndexViewController.m; sourceTree = "<group>"; };
 		E4CDB13E1754E3F0004993D6 /* newwordfirst3.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newwordfirst3.5.png; sourceTree = "<group>"; };
 		E4CDB13F1754E3F0004993D6 /* newwordfirst4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newwordfirst4.png; sourceTree = "<group>"; };
 		E4CDB1401754E3F0004993D6 /* newwordfirst3.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newwordfirst3.5@2x.png"; sourceTree = "<group>"; };
@@ -7461,6 +7464,7 @@
 		E466E756173BD4CB001847D0 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				E4CB2CED1758D28800370700 /* SearchIndex */,
 				E466E760173BD4CB001847D0 /* GreWordsViewController.h */,
 				E466E761173BD4CB001847D0 /* GreWordsViewController.m */,
 				7324846817524CA30058A6DD /* Note */,
@@ -11159,6 +11163,15 @@
 			path = UISearchBar;
 			sourceTree = "<group>";
 		};
+		E4CB2CED1758D28800370700 /* SearchIndex */ = {
+			isa = PBXGroup;
+			children = (
+				E4CB2CEE1758D2BD00370700 /* GreTableViewSearchIndexViewController.h */,
+				E4CB2CEF1758D2BD00370700 /* GreTableViewSearchIndexViewController.m */,
+			);
+			name = SearchIndex;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -14753,6 +14766,7 @@
 				3FB1CF58175772B700017F88 /* NewWordStatus.m in Sources */,
 				3FB1CF5B175772B800017F88 /* ReviewStatus.m in Sources */,
 				3FB1CF5E175772B900017F88 /* ExamStatus.m in Sources */,
+				E4CB2CF01758D2BD00370700 /* GreTableViewSearchIndexViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
