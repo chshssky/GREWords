@@ -348,12 +348,15 @@
         
             SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
             leftController.type = SmartListType_Slide;
-            leftController.array = @[];
             
+            NSMutableArray *wordsArr = [[NSMutableArray alloc] init];
             for (int i = 0; i < [TaskStatus instance].maxWordID; i++) {
                 WordEntity *addWord = [[WordHelper instance] wordWithID:i];
-                [leftController addWord:addWord];
+                
+                [wordsArr addObject:addWord];
             }
+            leftController.array = wordsArr;
+
 
             IIViewDeckController* deckController =  [[IIViewDeckController alloc]
                                                  initWithCenterViewController:vc
@@ -465,12 +468,14 @@
     
     SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
     leftController.type = SmartListType_Slide;
-    leftController.array = @[];
-    
-    for (int i = 0; i <= [TaskStatus instance].maxWordID; i++) {
+    NSMutableArray *wordsArr = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [TaskStatus instance].maxWordID; i++) {
         WordEntity *addWord = [[WordHelper instance] wordWithID:i];
-        [leftController addWord:addWord];
+        
+        [wordsArr addObject:addWord];
     }
+    leftController.array = wordsArr;
+
     
     IIViewDeckController* deckController =  [[IIViewDeckController alloc] initWithCenterViewController:vc
                                                                                     leftViewController:leftController

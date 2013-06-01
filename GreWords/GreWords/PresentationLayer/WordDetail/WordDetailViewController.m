@@ -1189,15 +1189,17 @@
     if (([TaskStatus instance].indexOfWordIDToday % 10) == 9) {
         [[TaskStatus instance] setReviewEnable];
     }
-    newWordEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-    newWordEvent.maxWordID = [TaskStatus instance].maxWordID;
-    newWordEvent.reviewEnable = [TaskStatus instance].reviewEnable;
-    newWordEvent.stage_now = [TaskStatus instance].stage_now;
-    newWordEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
-    
-    [[HistoryManager instance] updateEvent:newWordEvent];
     
     if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue] > [TaskStatus instance].maxWordID) {
+        [[TaskStatus instance] setReviewEnable:NO];
+        newWordEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+        newWordEvent.maxWordID = [TaskStatus instance].maxWordID;
+        newWordEvent.reviewEnable = [TaskStatus instance].reviewEnable;
+        newWordEvent.stage_now = [TaskStatus instance].stage_now;
+        newWordEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
+        
+        [[HistoryManager instance] updateEvent:newWordEvent];
+
         if (_DownImage.alpha <= 0) {
             [self removeDownImageAnimation_withNoDownCover];
         }else{
@@ -1235,6 +1237,14 @@
             [self Dismiss_WrongAnimation];
         }
     }
+    newWordEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+    newWordEvent.maxWordID = [TaskStatus instance].maxWordID;
+    newWordEvent.reviewEnable = [TaskStatus instance].reviewEnable;
+    newWordEvent.stage_now = [TaskStatus instance].stage_now;
+    newWordEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
+    
+    [[HistoryManager instance] updateEvent:newWordEvent];
+
 }
 
 - (IBAction)pronounceButtonPushed:(id)sender {
