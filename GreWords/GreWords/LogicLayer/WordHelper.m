@@ -262,6 +262,11 @@ WordHelper* _wordHelperInstance = nil;
     return temp;
 }
 
+-(NSArray*)recitedWordsWithRatioOfMistakeFrom:(float)lowerBound to:(float)upperBound
+{
+    return [self wordsAlphabeticOrder];
+}
+
 
 -(int)wordCount
 {
