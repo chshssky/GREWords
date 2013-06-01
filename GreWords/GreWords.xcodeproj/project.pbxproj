@@ -24,6 +24,7 @@
 		3FB1CF58175772B700017F88 /* NewWordStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF57175772B700017F88 /* NewWordStatus.m */; };
 		3FB1CF5B175772B800017F88 /* ReviewStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF5A175772B800017F88 /* ReviewStatus.m */; };
 		3FB1CF5E175772B900017F88 /* ExamStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF5D175772B900017F88 /* ExamStatus.m */; };
+		3FB1CF5F1757A6DB00017F88 /* History.h in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF53175772B500017F88 /* History.h */; };
 		73191B061759059100E7E6CA /* learning list_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 73191B041759059100E7E6CA /* learning list_logo.png */; };
 		73191B071759059100E7E6CA /* learning list_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73191B051759059100E7E6CA /* learning list_logo@2x.png */; };
 		7324846C17524D860058A6DD /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7324846A17524D860058A6DD /* NoteViewController.m */; };
