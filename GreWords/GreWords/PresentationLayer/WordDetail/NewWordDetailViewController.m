@@ -295,6 +295,20 @@
         [left addWord:addWord];
     }
     [[WordSpeaker instance] readWord:self.wordLabel.text];
+    
+    NewWordEvent *newWordEvent = [[NewWordEvent alloc] init];
+    
+    newWordEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+    newWordEvent.maxWordID = [TaskStatus instance].maxWordID;
+    newWordEvent.reviewEnable = [TaskStatus instance].reviewEnable;
+    newWordEvent.stage_now = [TaskStatus instance].stage_now;
+    
+    
+    [[HistoryManager instance] updateEvent:newWordEvent];
+    
+    
+    NSLog(@"Now Word is Index: %d || MaxWordID %d", [TaskStatus instance].indexOfWordIDToday, [TaskStatus instance].maxWordID);
+    
 }
 
 //加载单词名称进入数组
@@ -499,6 +513,15 @@
             [self dismissModalViewControllerAnimated:NO];
             
             [TaskStatus instance].indexOfWordIDToday = self.beginWordID + _currentPage + 1;
+            NewWordEvent *newWordEvent = [[NewWordEvent alloc] init];
+            
+            newWordEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+            newWordEvent.maxWordID = [TaskStatus instance].maxWordID;
+            newWordEvent.reviewEnable = [TaskStatus instance].reviewEnable;
+            newWordEvent.stage_now = [TaskStatus instance].stage_now;
+            
+            
+            [[HistoryManager instance] updateEvent:newWordEvent];
             [self.delegate GoToReviewWithWord];
         }
     }
