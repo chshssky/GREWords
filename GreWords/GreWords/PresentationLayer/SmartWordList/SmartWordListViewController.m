@@ -66,7 +66,7 @@
     searchIndex = [self.storyboard instantiateViewControllerWithIdentifier:@"searchIndex"];
     searchIndex.delegate = self;
     CGRect frame = searchIndex.view.frame;
-    frame.origin.x = 320 - frame.size.width - 2;
+    frame.origin.x = 320 - frame.size.width - 4;
     frame.origin.y = (self.view.frame.size.height - frame.size.height) / 2;
     //frame.size.height = 490;
     searchIndex.view.frame = frame;
@@ -618,12 +618,12 @@
 
 - (void)startTouch
 {
-    
+    [self.scrollDelegate smartWordListSearchIndexStartTouch:self];
 }
 
 - (void)endTouch
 {
-
+    [self.scrollDelegate smartWordListSearchIndexEndTouch:self];
 }
 
 @end

@@ -19,12 +19,13 @@
 
 @end
 
-@interface GreTableViewSearchIndexViewController : UIViewController
+@interface GreTableViewSearchIndexViewController : UIViewController<UIGestureRecognizerDelegate>
 {
     GreTableViewSearchIndexIndicatorViewController *indicator;
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
+@property (weak, nonatomic) IBOutlet UIImageView *backroundVIewPressed;
 @property (strong, nonatomic) IBOutlet UILabel *sampleLabel;
 
 @property (retain,nonatomic) id<GreTableViewSearchIndexDelegate> delegate;
