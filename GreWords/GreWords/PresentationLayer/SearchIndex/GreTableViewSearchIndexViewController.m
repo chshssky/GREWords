@@ -86,10 +86,10 @@
 {
     for(int i = 0; i < labelArr.count; i++)
     {
-        UIColor *color = pressing ? [UIColor colorWithR:248 G:246 B:244] : [UIColor colorWithR:162 G:152 B:145];
+        UIColor *color = YES ? [UIColor colorWithR:248 G:246 B:244] : [UIColor colorWithR:162 G:152 B:145];
         if(index == i)
         {
-            color = pressing ? [UIColor colorWithR:255 G:144 B:0] : [UIColor colorWithR:210 G:157 B:88];
+            color = YES ? [UIColor colorWithR:255 G:144 B:0] : [UIColor colorWithR:210 G:157 B:88];
         }
         UILabel *label = labelArr[i];
         [label setTextColor:color];
@@ -104,6 +104,7 @@
     if(panner.state == UIGestureRecognizerStateBegan)
     {
         [self setBackgroundPressed:YES];
+        [self.delegate startTouch];
         indicator.view.hidden = NO;
         pressing = YES;
     }
@@ -115,6 +116,7 @@
     {
         [self setBackgroundPressed:NO];
         [self setTileColorAtIndex:-1];
+        [self.delegate endTouch];
         indicator.view.hidden = YES;
         pressing = NO;
         [UIView animateWithDuration:0.2 animations:^(){
@@ -125,13 +127,14 @@
     int index = (curPoint.y - CORNER) / averageHeight;
     if(index >= [self sectionTitles].count)
         index = [self sectionTitles].count - 1;
+    if(curPoint.y < 0)
+        index = 0;
     if(index >= 0)
     {
         [self setTileColorAtIndex:index];
         [self.delegate didSelectedIndex:index];
     }
-    if(curPoint.y < 0)
-        index = 0;
+    
     indicator.indicatorLabel.text = [self sectionTitles][index];
     UILabel *label = labelArr[index];
     CGRect indicatorFrame = indicator.view.frame;
@@ -144,22 +147,37 @@
 {
     indicator = [self.storyboard instantiateViewControllerWithIdentifier:@"searchIndexIndicator"];
     CGRect indicatorFrame = indicator.view.frame;
-    indicatorFrame.origin.x = -90;
+    indicatorFrame.origin.x = -110;
     indicator.view.frame = indicatorFrame;
     [self.view addSubview:indicator.view];
     indicator.view.hidden = YES;
 }
 
 
+- (void)initBackgroundViews
+{
+    self.backroundVIewPressed.image = [[UIImage imageNamed:@"words list_scrollBar_Pressdown.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 0, 10 , 0)];
+    self.backroundVIewPressed.alpha = 0;
+    self.backgroundView.image = [[UIImage imageNamed:@"words list_scrollBar.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 0, 10 , 0)];
+}
+
 - (void)setBackgroundPressed:(BOOL)pressed
 {
     if(pressed)
     {
-        self.backgroundView.image = [[UIImage imageNamed:@"words list_scrollBar_Pressdown.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 0, 10 , 0)];
+        [UIView animateWithDuration:0.2f animations:^()
+        {
+            self.backgroundView.alpha = 0;
+            self.backroundVIewPressed.alpha = 1;
+        }];
     }
     else
     {
-        self.backgroundView.image = [[UIImage imageNamed:@"words list_scrollBar.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 0, 10 , 0)];
+        [UIView animateWithDuration:0.2f animations:^()
+         {
+             self.backgroundView.alpha = 1;
+             self.backroundVIewPressed.alpha = 0;
+         }];
     }
 }
 
@@ -170,11 +188,12 @@
     [self generateLayouts];
     
     UIPanGestureRecognizer *panRecg = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panned:)];
+    panRecg.delegate = self;
     [self.view addGestureRecognizer:panRecg];
     
     [self initIndicator];
     
-    [self setBackgroundPressed:NO];
+    [self initBackgroundViews];
     pressing = NO;
 }
 
@@ -187,6 +206,9 @@
 - (void)viewDidUnload {
     [self setBackgroundView:nil];
     [self setSampleLabel:nil];
+    [self setBackroundVIewPressed:nil];
     [super viewDidUnload];
 }
+
+
 @end

@@ -18,6 +18,10 @@
 
 -(void)smartWordListWillStartSearch:(SmartWordListViewController*)list;
 -(void)smartWordListDidEndSearch:(SmartWordListViewController*)list;
+
+-(void)smartWordListSearchIndexStartTouch:(SmartWordListViewController *)list;
+-(void)smartWordListSearchIndexEndTouch:(SmartWordListViewController *)list;
+
 @end
 
 

@@ -1,6 +1,6 @@
 #import "CustomSearchBar.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "UIColor+RGB.h"
 @implementation CustomSearchBar
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
@@ -38,8 +38,7 @@
     [textfield setBackground:[UIImage imageNamed: @"UISearchBarText.png"]];  
     
     //textfield.layer.borderColor = [[UIColor clearColor] CGColor];
-    textfield.textColor = [UIColor colorWithRed:224/255.0 green:210/255.0 blue:193/255.0 alpha:1.0];
-    
+    textfield.textColor = [UIColor colorWithR:135 G:122 B:122];
     
 }
 
