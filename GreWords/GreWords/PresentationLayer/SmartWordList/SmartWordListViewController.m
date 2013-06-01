@@ -388,10 +388,11 @@
         }
         
         [self.scrollDelegate smartWordList:self didTranslationYSinceLast:contentOffsetY];
-        if(self.tableView == aScrollView)
-        {
-            [searchIndex setCurrentIndex:[self currentSectionIndex]];
-        }
+        
+    }
+    if(self.type == SmartListType_Full && self.tableView == aScrollView)
+    {
+        [searchIndex setCurrentIndex:[self currentSectionIndex]];
     }
 }
 
