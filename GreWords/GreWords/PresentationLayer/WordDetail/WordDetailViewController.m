@@ -633,8 +633,6 @@
     _showMeaningButton.userInteractionEnabled = NO;
     _WordParaphraseView.userInteractionEnabled = NO;
     
-    //[self Dismiss_WrongAnimationWith:_WrongUpImageView4 and:_WrongDownImageView4 atTime:CACurrentMediaTime() withString:@"removeRightImage4"];
-    //[self Dismiss_RightAnimationWith:_WrongUpImageView3 and:_WrongDownImageView3 atTime:CACurrentMediaTime()+0.13f withString:@"removeRightImage3"];
     [self Dismiss_WrongAnimationWith:_WrongUpImageView2 and:_WrongDownImageView2 atTime:CACurrentMediaTime()+0.13f withString:@"Dismiss_removeWrongImage2"];
     [self Dismiss_WrongAnimationWith:_WrongUpImageView1 and:_WrongDownImageView1 atTime:CACurrentMediaTime()+0.13f*2 withString:@"Dismiss_removeWrongImage1"];
     [self Dismiss_WrongAnimationWith:_WrongUpImageView0 and:_WrongDownImageView0 atTime:CACurrentMediaTime()+0.13f*3 withString:@"Dismiss_removeWrongImage0"];
@@ -756,7 +754,6 @@
             [self.view addSubview:_RightDownImageView];
         }
         
-        _RightButton.userInteractionEnabled = YES;
     }
     //////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -790,20 +787,23 @@
         _WrongDownImageView0 = nil;
         [_WrongUpImageView0 removeFromSuperview];
         _WrongUpImageView0 = nil;
+        
         if (_WrongDownImageView == nil) {
             _WrongDownImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_wrong_down.png"]];
             [_WrongDownImageView setFrame:CGRectMake(27, self.view.frame.size.height-78, _WrongDownImageView.frame.size.width, _WrongDownImageView.frame.size.height-1)];
             _WrongDownImageView.layer.anchorPoint = CGPointMake(0.5, 0);
             [self.view addSubview:_WrongDownImageView];
         }
-        _WrongButton.userInteractionEnabled = YES;
-        _WordParaphraseView.userInteractionEnabled = YES;
         
         if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_ReviewSecond])
         {
             guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_ReviewSecond];
             [self.view addSubview:guideImageView];
         }
+        
+        _RightButton.userInteractionEnabled = YES;
+        _WrongButton.userInteractionEnabled = YES;
+        _WordParaphraseView.userInteractionEnabled = YES;
     }
     
     ////////////////////////////////////////////////////////
@@ -844,10 +844,6 @@
             [_RightDownImageView removeFromSuperview];
             _RightDownImageView = nil;
         }
-        
-        _showMeaningButton.userInteractionEnabled = YES;
-        _WordParaphraseView.userInteractionEnabled = YES;
-        
     }
     
     /////////////////////////////////////////////////////////////
@@ -887,7 +883,6 @@
             [_WrongDownImageView removeFromSuperview];
             _WrongDownImageView = nil;
         }
-        
         _showMeaningButton.userInteractionEnabled = YES;
         _WordParaphraseView.userInteractionEnabled = NO;
     }

@@ -126,7 +126,7 @@
     self.pageControlView.directionalLockEnabled = NO;
     self.pageControlView.bounces = NO;
     
-    [self loadViewWithPage:[NSNumber numberWithInt:0]];
+    [self loadViewWithPage:0];
     
     //显示单词内容和单词名称
     self.WordParaphraseView = [self.viewControlArray objectAtIndex:0];
@@ -326,9 +326,9 @@
 }
 
 //加载单词
-- (void)loadViewWithPage:(NSNumber *)pageNumber
+- (void)loadViewWithPage:(int) page
 {
-    int page = [pageNumber intValue];
+    //int page = [pageNumber intValue];
     // replace the placeholder if necessary
     self.WordParaphraseView = [self.viewControlArray objectAtIndex:page];
     
@@ -380,8 +380,7 @@
     } else {
         [self.UpImage setAlpha:1];
     }
-    if (i == 1)
-    {
+    if (i == 1) {
         [self.UpImage setAlpha:0];
     }
 }
@@ -446,8 +445,8 @@
             }
             _currentPage = page;
         }
-        [self performSelectorOnMainThread:@selector(loadViewWithPage:) withObject:[NSNumber numberWithInt:page+1] waitUntilDone:NO];
-        //[self loadViewWithPage:page+1];
+        //[self performSelectorOnMainThread:@selector(loadViewWithPage:) withObject:[NSNumber numberWithInt:page+1] waitUntilDone:NO];
+        [self loadViewWithPage:page+1];
         ///////////////////////////////////////////////////////////////////////////////
         //显示单词内容和单词名称
         self.WordParaphraseView = [self.viewControlArray objectAtIndex:page];
@@ -550,17 +549,18 @@
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController willOpenViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
 {
     self.view.userInteractionEnabled = NO;
-    SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
-    if (left.array.count == 0) {
-        if (_leftLogo == nil) {
-            _leftLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning list_logo.png"]];
-            _leftLogo.center = CGPointMake(left.view.center.x - 20, left.view.center.y);
-            [left.view addSubview:_leftLogo];
-        }
-    }else{
-        [_leftLogo removeFromSuperview];
-        _leftLogo = nil;
-    }
+    
+//    SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
+//    if (left.array.count == 0) {
+//        if (_leftLogo == nil) {
+//            _leftLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning list_logo.png"]];
+//            _leftLogo.center = CGPointMake(left.view.center.x - 20, left.view.center.y);
+//            [left.view addSubview:_leftLogo];
+//        }
+//    }else{
+//        [_leftLogo removeFromSuperview];
+//        _leftLogo = nil;
+//    }
 }
 
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController didOpenViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
