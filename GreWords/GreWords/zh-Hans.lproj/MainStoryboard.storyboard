@@ -151,7 +151,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Main menu_title.png" id="3NN-tp-1dU">
-                                <rect key="frame" x="12" y="18" width="251" height="38"/>
+                                <rect key="frame" x="12" y="18" width="128" height="78"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -659,7 +659,7 @@
     </scenes>
     <resources>
         <image name="Main menu_bg.png" width="320" height="568"/>
-        <image name="Main menu_title.png" width="251" height="43"/>
+        <image name="Main menu_title.png" width="128" height="78"/>
         <image name="Settings_Backbutton.png" width="51" height="60"/>
         <image name="Settings_backButton_clicked.png" width="51" height="60"/>
         <image name="Settings_bg.png" width="320" height="568"/>
