@@ -66,7 +66,7 @@
     searchIndex = [self.storyboard instantiateViewControllerWithIdentifier:@"searchIndex"];
     searchIndex.delegate = self;
     CGRect frame = searchIndex.view.frame;
-    frame.origin.x = 320 - frame.size.width - 4;
+    frame.origin.x = 320 - frame.size.width - 7;
     frame.origin.y = (self.view.frame.size.height - frame.size.height) / 2;
     //frame.size.height = 490;
     searchIndex.view.frame = frame;
@@ -150,7 +150,7 @@
         downTexture.tag = 1024;
         [aTableview addSubview:downTexture];
         
-        
+        [self addButtomTexture:aTableview];
     }
     else
     {
@@ -335,6 +335,17 @@
     
     if(tableView == self.tableView)
         [self addButtomTexture:tableView];
+    else
+    {
+        int sections = [tableView.dataSource numberOfSectionsInTableView:tableView];
+        if(indexPath.section != sections - 1)
+           [self addButtomTexture:tableView];
+        else
+        {
+            UIView *view = [tableView viewWithTag:1024];
+            [view removeFromSuperview];
+        }
+    }
 }
 
 #pragma mark - scroll view delegate
