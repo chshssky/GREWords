@@ -29,7 +29,6 @@
 #import "TestSelectorViewController.h"
 #import "NSNotificationCenter+Addition.h"
 
-#define TaskWordNumber 200
 
 
 @interface GreWordsViewController ()<NewWordDetailViewControllerProtocol, WordDetailViewControllerProtocol>

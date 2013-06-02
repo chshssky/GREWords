@@ -1012,7 +1012,18 @@
     
     [[HistoryManager instance] endEvent:nwEvent];
     
+
+    //[self.delegate StartReview];
     [self createReviewEvent];
+    
+    
+    DashboardViewController *dashboard = [DashboardViewController instance];
+    // Database: read from
+    dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].indexOfWordIDToday;
+     
+    dashboard.minNumber = dashboard.nonFinishedNumber;
+    dashboard.sumNumber = TaskWordNumber;
+    [dashboard reloadData];
     [self dismissModalViewControllerAnimated:YES];
     [self.delegate AnimationBack];
 
@@ -1286,7 +1297,7 @@
         reviewEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
         
         [[HistoryManager instance] updateEvent:reviewEvent];
-
+        [[DashboardViewController instance] minusData];
     } else {
     NewWordEvent *newWordEvent = [[NewWordEvent alloc] init];
     if (([TaskStatus instance].indexOfWordIDToday % 10) == 9) {

@@ -38,6 +38,7 @@
 - (void)mainViewGen;
 - (void)plusData;
 - (void)minusData;
+- (void)reloadData;
 + (DashboardViewController*)instance;
 
 @end
