@@ -914,7 +914,7 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
     NSMutableArray *array = [[NSMutableArray alloc] initWithArray:arr];
     int i = [array count];
     while(--i > 0) {
-        int j = rand() % (i+1);
+        int j = arc4random() % (i+1);
         [array exchangeObjectAtIndex:i withObjectAtIndex:j];
     }
     
@@ -950,12 +950,12 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
         zeroStarArray = [self randomArrayWithArray:zeroStarArray];
     }
     
-    [newArray arrayByAddingObjectsFromArray:fiveStarArray];
-    [newArray arrayByAddingObjectsFromArray:fourStarArray];
-    [newArray arrayByAddingObjectsFromArray:threeStarArray];
-    [newArray arrayByAddingObjectsFromArray:twoStarArray];
-    [newArray arrayByAddingObjectsFromArray:oneStarArray];
     [newArray arrayByAddingObjectsFromArray:zeroStarArray];
+    [newArray arrayByAddingObjectsFromArray:oneStarArray];
+    [newArray arrayByAddingObjectsFromArray:twoStarArray];
+    [newArray arrayByAddingObjectsFromArray:threeStarArray];
+    [newArray arrayByAddingObjectsFromArray:fourStarArray];
+    [newArray arrayByAddingObjectsFromArray:fiveStarArray];
     
     return newArray;   
 }
