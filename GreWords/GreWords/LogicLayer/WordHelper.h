@@ -26,5 +26,8 @@
 -(NSArray*)wordsHomoionym;
 -(NSArray*)wordsRatioOfMistake;
 
+-(NSArray*)recitedWordsWithRatioOfMistakeFrom:(float)lowerBound to:(float)upperBound;
+
+
 -(int)wordCount;
 @end

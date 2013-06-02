@@ -7,6 +7,8 @@
 //
 
 #import "WordTaskGenerator.h"
+#import "WordHelper.h"
+#import <math.h>
 
 @implementation WordTaskGenerator
 
@@ -880,11 +882,82 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
     return task;
 }
 
-- (NSArray *)testTaskWithOptions:(NSDictionary *)dict
+- (NSArray *)testTaskWithOptions:(NSDictionary *)examInfo
 {
-    NSArray *task = [[NSArray alloc] init];
+    NSMutableArray *task = [[NSMutableArray alloc] init];
     
+    NSString *level = [examInfo objectForKey:@"level"];
+    
+    NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:[self getRandomArray]];
+    if (newArray.count < 30) {
+        return nil;
+    }
+    
+    if ([level isEqualToString: @"easy"]) {
+        for (int i=0; i<ceilf(newArray.count/3); i++) {
+            [task addObject:[newArray objectAtIndex:i]];
+        }
+    }else if ([level isEqualToString:@"medium"]) {
+        for (int i=ceilf(newArray.count/3); i<ceilf(newArray.count/3)*2; i++) {
+            [task addObject:[newArray objectAtIndex:i]];
+        }
+    }else if ([level isEqualToString:@"hard"]) {
+        for (int i=ceilf(newArray.count/3)*2; i<newArray.count; i++) {
+            [task addObject:[newArray objectAtIndex:i]];
+        }
+    }
     return task;
+}
+
+- (NSArray *) randomArrayWithArray:(NSArray *)arr
+{
+    NSMutableArray *array = [[NSMutableArray alloc] initWithArray:arr];
+    int i = [array count];
+    while(--i > 0) {
+        int j = rand() % (i+1);
+        [array exchangeObjectAtIndex:i withObjectAtIndex:j];
+    }
+    
+    return [NSArray arrayWithArray:array];
+}
+
+- (NSArray *)getRandomArray
+{
+    NSMutableArray *newArray = [[NSMutableArray alloc] init];
+    NSArray *fiveStarArray = [[WordHelper instance] recitedWordsWithRatioOfMistakeFrom:4.0/5.0 to:5.0/5.0];
+    NSArray *fourStarArray = [[WordHelper instance] recitedWordsWithRatioOfMistakeFrom:3.0/5.0 to:4.0/5.0];
+    NSArray *threeStarArray = [[WordHelper instance] recitedWordsWithRatioOfMistakeFrom:2.0/5.0 to:3.0/5.0];
+    NSArray *twoStarArray = [[WordHelper instance] recitedWordsWithRatioOfMistakeFrom:1.0/5.0 to:2.0/5.0];
+    NSArray *oneStarArray = [[WordHelper instance] recitedWordsWithRatioOfMistakeFrom:0.0/5.0 to:1.0/5.0];
+    NSArray *zeroStarArray = [[WordHelper instance] recitedWordsWithRatioOfMistakeFrom:0.0/5.0 to:0.0/5.0];
+    
+    if (fiveStarArray.count != 0) {
+        fiveStarArray = [self randomArrayWithArray:fiveStarArray];
+    }
+    if (fourStarArray.count != 0) {
+        fourStarArray = [self randomArrayWithArray:fourStarArray];
+    }
+    if (threeStarArray.count != 0) {
+        threeStarArray = [self randomArrayWithArray:threeStarArray];
+    }
+    if (twoStarArray.count != 0) {
+        twoStarArray = [self randomArrayWithArray:twoStarArray];
+    }
+    if (oneStarArray.count != 0) {
+        oneStarArray = [self randomArrayWithArray:oneStarArray];
+    }
+    if (zeroStarArray.count != 0) {
+        zeroStarArray = [self randomArrayWithArray:zeroStarArray];
+    }
+    
+    [newArray arrayByAddingObjectsFromArray:fiveStarArray];
+    [newArray arrayByAddingObjectsFromArray:fourStarArray];
+    [newArray arrayByAddingObjectsFromArray:threeStarArray];
+    [newArray arrayByAddingObjectsFromArray:twoStarArray];
+    [newArray arrayByAddingObjectsFromArray:oneStarArray];
+    [newArray arrayByAddingObjectsFromArray:zeroStarArray];
+    
+    return newArray;   
 }
 
 
