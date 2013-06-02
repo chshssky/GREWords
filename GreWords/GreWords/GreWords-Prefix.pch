@@ -19,6 +19,8 @@
         STAGE_4 = 3
     };
 
+#define TaskWordNumber 200
+
 #define NEWWORDEVENT_STAGE_NOW @"stage"
 #define NEWWORDEVENT_MAX_ID @"maxID"
 #define NEWWORDEVENT_INDEX @"index"

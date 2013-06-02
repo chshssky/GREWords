@@ -13,4 +13,6 @@
 - (void)AnimationBack;
 - (void)GoToNewWord;
 
+- (void)StartReview;
+
 @end

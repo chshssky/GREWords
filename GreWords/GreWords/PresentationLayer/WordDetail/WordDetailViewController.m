@@ -110,8 +110,12 @@
                              @"shouldShowSynonyms":@YES,
                              @"shouldShowAntonyms":@YES,
                              @"shouldShowSampleSentence":@YES};
-    
-    int wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:index] intValue];
+    int wordID;
+    if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
+        wordID = [[[[WordTaskGenerator instance] reviewTask_twoList:self.day] objectAtIndex:index] intValue];
+    } else {
+        wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:index] intValue];
+    }
     
     [vc displayWord:[[WordHelper instance] wordWithID:wordID] withOption:option];
     
@@ -942,30 +946,57 @@
 
 - (IBAction)rightButtonPushed:(id)sender {
     [self viewWillAppear:YES];
-    if ([TaskStatus instance].indexOfWordIDToday == [[[WordTaskGenerator instance] newWordTask_twoList:self.day] count])
-    {
-        [self newWordCompleted];
-        return;
-    }
+    WordEntity *word;
+    if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
+        if ([TaskStatus instance].indexOfWordIDToday == [[[WordTaskGenerator instance] reviewTask_twoList:self.day] count])
+        {
+            [self reviewCompleted];
+            return;
+        }
+        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue]];
+    } else {
+        if ([TaskStatus instance].indexOfWordIDToday == [[[WordTaskGenerator instance] newWordTask_twoList:self.day] count])
+        {
+            [self newWordCompleted];
+            return;
+        }
+        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue]];
 
-    WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue]];
+    }
     [word didRightOnDate:[NSDate new]];
     [self nextButtonPushed];
 }
 
 - (IBAction)wrongButtonPushed:(id)sender {
     [self viewWillAppear:YES];
-    if ([TaskStatus instance].indexOfWordIDToday == [[[WordTaskGenerator instance] newWordTask_twoList:self.day] count])
-    {
-        [self newWordCompleted];
-        return;
+    WordEntity *word;
+    if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
+        if ([TaskStatus instance].indexOfWordIDToday == [[[WordTaskGenerator instance] reviewTask_twoList:self.day] count])
+        {
+            [self reviewCompleted];
+            return;
+        }
+        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue]];
+    } else {
+        if ([TaskStatus instance].indexOfWordIDToday == [[[WordTaskGenerator instance] newWordTask_twoList:self.day] count])
+        {
+            [self newWordCompleted];
+            return;
+        }
+        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue]];
+        
     }
+    [word didMakeAMistakeOnDate:[NSDate new]];
+
     NSLog(@"TaskStatus: %d", [TaskStatus instance].indexOfWordIDToday - 1);
 
-    WordEntity *word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday - 1] intValue]];
-    [word didMakeAMistakeOnDate:[NSDate new]];
     [TaskStatus instance].wrongWordCount ++;
     [self nextButtonPushed];
+}
+
+- (void)reviewCompleted
+{
+    
 }
 
 - (void)newWordCompleted
@@ -974,10 +1005,60 @@
     [alert setAlertViewStyle:UIAlertViewStyleDefault];
     
     [alert show];
+    
+    NewWordEvent *nwEvent = [[NewWordEvent alloc] init];
+    
+    nwEvent.endTime = [self getNowDate];
+    
+    [[HistoryManager instance] endEvent:nwEvent];
+    
+
+    //[self.delegate StartReview];
+    [self createReviewEvent];
+    
+    
+    DashboardViewController *dashboard = [DashboardViewController instance];
+    // Database: read from
+    dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].indexOfWordIDToday;
+     
+    dashboard.minNumber = dashboard.nonFinishedNumber;
+    dashboard.sumNumber = TaskWordNumber;
+    [dashboard reloadData];
     [self dismissModalViewControllerAnimated:YES];
     [self.delegate AnimationBack];
 
 }
+
+- (void)createReviewEvent
+{
+    
+    [[TaskStatus instance] beginReview];
+    
+    HistoryManager *historyManager = [HistoryManager instance];
+    
+    ReviewEvent *rEvent = [[ReviewEvent alloc] init];
+    
+    rEvent.eventType = EVENT_TYPE_REVIEW;
+    rEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
+    rEvent.totalWordCount = 200;
+    rEvent.startTime = [self getNowDate];
+    
+    rEvent.stage_now = [TaskStatus instance].stage_now;
+    rEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+    
+    [historyManager addEvent:rEvent];
+}
+
+
+- (NSDate *)getNowDate
+{
+    NSTimeZone *zone = [NSTimeZone defaultTimeZone];//获得当前应用程序默认的时区
+    NSInteger interval = [zone secondsFromGMTForDate:[NSDate date]];//以秒为单位返回当前应用程序与世界标准时间（格林威尼时间）的时差
+    //    NSDate *localeDate = [[NSDate date] dateByAddingTimeInterval:interval];
+    NSDate *nowDate=[NSDate dateWithTimeIntervalSinceNow:interval];
+    return nowDate;
+}
+
 
 - (void)removeDownImageAnimation_withDownCover
 {
@@ -1180,6 +1261,44 @@
 
 - (void)nextButtonPushed
 {
+    if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
+        ReviewEvent *reviewEvent = [[ReviewEvent alloc] init];
+        
+            if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
+                [self loadWord:[TaskStatus instance].indexOfWordIDToday];
+                _showMeaningButton.userInteractionEnabled = YES;
+                _RightButton.userInteractionEnabled = NO;
+                _WrongButton.userInteractionEnabled = NO;
+                _WordParaphraseView.userInteractionEnabled = NO;
+                if (_RightUpImageView != nil) {
+                    [_RightUpImageView removeFromSuperview];
+                    _RightUpImageView = nil;
+                }
+                if (_WrongUpImageView != nil) {
+                    [_WrongUpImageView removeFromSuperview];
+                    _WrongUpImageView = nil;
+                }
+                if (_RightDownImageView != nil) {
+                    [_RightDownImageView removeFromSuperview];
+                    _RightDownImageView = nil;
+                }
+                if (_WrongDownImageView != nil) {
+                    [_WrongDownImageView removeFromSuperview];
+                    _WrongDownImageView = nil;
+                }
+            }
+            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+                [self loadWord:[TaskStatus instance].indexOfWordIDToday];
+                [self Dismiss_RightAnimation];
+                [self Dismiss_WrongAnimation];
+            }
+        reviewEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+        reviewEvent.stage_now = [TaskStatus instance].stage_now;
+        reviewEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
+        
+        [[HistoryManager instance] updateEvent:reviewEvent];
+        [[DashboardViewController instance] minusData];
+    } else {
     NewWordEvent *newWordEvent = [[NewWordEvent alloc] init];
     if (([TaskStatus instance].indexOfWordIDToday % 10) == 9) {
         [[TaskStatus instance] setReviewEnable];
@@ -1239,7 +1358,7 @@
     newWordEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
     
     [[HistoryManager instance] updateEvent:newWordEvent];
-
+    }
 }
 
 - (IBAction)pronounceButtonPushed:(id)sender {
@@ -1249,8 +1368,10 @@
 - (IBAction)BackButtonPushed:(id)sender {
     [self dismissModalViewControllerAnimated:YES];
     [self.delegate AnimationBack];
-    if (([TaskStatus instance].indexOfWordIDToday % 10) == 0) {
-        [[TaskStatus instance] setReviewEnable];
+    if ([TaskStatus instance].taskType == TASK_TYPE_NEWWORD) {
+        if (([TaskStatus instance].indexOfWordIDToday % 10) == 0) {
+            [[TaskStatus instance] setReviewEnable];
+        }
     }
     [TaskStatus instance].indexOfWordIDToday --;
     //[self.delegate resetWordIndexto:[TaskStatus instance].indexOfWordIDToday - 1];

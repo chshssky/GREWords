@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+enum TaskType {
+    TASK_TYPE_NEWWORD = 0,
+    TASK_TYPE_REVIEW = 1,
+    TASK_TYPE_EXAM = 2,
+};
+
 @interface TaskStatus : NSObject
 
 @property (nonatomic) int indexOfWordIDToday;
@@ -16,10 +22,12 @@
 @property (nonatomic) int maxWordID;
 @property (nonatomic) int wrongWordCount;
 @property (nonatomic) BOOL reviewEnable;
+@property (nonatomic) enum TaskType taskType;
 
 + (TaskStatus *)instance;
 
 - (void)beginNewWord;
+- (void)beginReview;
 
 - (void)setReviewEnable;
 - (BOOL)getReviewEnable;

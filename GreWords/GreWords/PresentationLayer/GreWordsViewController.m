@@ -29,7 +29,6 @@
 #import "TestSelectorViewController.h"
 #import "NSNotificationCenter+Addition.h"
 
-#define TaskWordNumber 200
 
 
 @interface GreWordsViewController ()<NewWordDetailViewControllerProtocol, WordDetailViewControllerProtocol>
@@ -51,8 +50,13 @@
 - (void)initDashboard
 {
     dashboard = [DashboardViewController instance];
-    // Database: read from 
-    dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].maxWordID;
+    // Database: read from
+    if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
+        dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].indexOfWordIDToday;
+        // change text ~ 
+    } else {
+        dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].maxWordID;
+    }
     dashboard.minNumber = dashboard.nonFinishedNumber;
     dashboard.sumNumber = TaskWordNumber;
     dashboard.delegate = self;
@@ -329,6 +333,14 @@
         }
         self.menu.transform = CGAffineTransformMakeTranslation(-300, 0);
     } completion:^(BOOL finished) {
+        if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
+            WordDetailViewController *vc = [[WordDetailViewController alloc] init];
+            vc.delegate = self;
+            [self presentViewController:vc animated:NO completion:nil];
+            
+        } else {
+        
+        
         //根据MaxWordID和现在所在单词的ID 来判断 该跳转到 NewWord 还是 Review
         if ([[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday ] integerValue] < [TaskStatus instance].maxWordID || [TaskStatus instance].reviewEnable) {
             
@@ -364,6 +376,7 @@
                                                 rightViewController:nil];
         
             [self presentViewController:deckController animated:NO completion:nil];
+        }
         }
     }];
 }
