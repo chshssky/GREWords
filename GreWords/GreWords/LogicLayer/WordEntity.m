@@ -128,6 +128,13 @@
     [[MyDataStorage instance] saveContext];
 }
 
+
+-(bool)hasRecited
+{
+    NSMutableArray *lastMistakes = [[wordManagedObject.lastChecks componentsSeparatedByString:@","]  mutableCopy];
+    return lastMistakes != nil;
+}
+
 -(float)ratioOfMistake
 {
     NSMutableArray *lastMistakes = [self mistakeStringToArray];

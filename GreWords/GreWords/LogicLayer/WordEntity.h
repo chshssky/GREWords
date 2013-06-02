@@ -26,6 +26,8 @@
 @property (nonatomic,readonly) int wordID;
 @property (nonatomic,readonly) NSString *wordText;
 
+@property (nonatomic,readonly) bool hasRecited;
+
 -(void)didMakeAMistakeOnDate:(NSDate*)date;
 -(void)didRightOnDate:(NSDate*)date;
 
