@@ -144,7 +144,7 @@ HistoryManager* _historyManagerInstance = nil;
 - (void)updateEvent:(BaseEvent *)aEvent
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
-    request.predicate = [NSPredicate predicateWithFormat:@"event = %@ && endTime = nil", EVENT_TYPE_NEWWORD];
+    request.predicate = [NSPredicate predicateWithFormat:@"endTime = nil"];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
     NSError *err = nil;
     NSArray *matches = [self.context executeFetchRequest:request error:&err];
@@ -200,17 +200,28 @@ HistoryManager* _historyManagerInstance = nil;
 - (void)endEvent:(BaseEvent *)aEvent
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
-    request.predicate = [NSPredicate predicateWithFormat:@"event = %@ && endTime = %@", aEvent.eventType, @""];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
+    request.predicate = [NSPredicate predicateWithFormat:@"endTime = nil"];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
     NSError *err = nil;
     NSArray *matches = [self.context executeFetchRequest:request error:&err];
     
+    NSLog(@"Fetch Event Results number: %d", [matches count]);
     History *history = [matches lastObject];
-    [history setEndTime:aEvent.endTime];
+    
+    NSLog(@"History Start Time: %@ Wrong: %@", history.startTime, history.wrongWordCount);
+    
+    //history.wrongWordCount = [NSNumber numberWithInt:aEvent.wrongWordCount];
+    
+    history.endTime = aEvent.endTime;
+    
+    //    NSDictionary *info = [self toArrayOrNSDictionary:[history.info dataUsingEncoding:NSASCIIStringEncoding]];
+    //
+    //    NSLog(@"HistoryManager: max:%@ Index:%@, enable:%@", [info objectForKey:NEWWORDEVENT_MAX_ID], [info objectForKey:NEWWORDEVENT_INDEX], [info objectForKey:NEWWORDEVENT_REVIEW_ENABLE]);
     
     if (![self.context save:&err]) {
-        NSLog(@"End Event error");
+        NSLog(@"End Event Error");
     }
+
 }
 
 - (BOOL)readStatusIfNew
@@ -223,11 +234,7 @@ HistoryManager* _historyManagerInstance = nil;
     NSArray *matches = [self.context executeFetchRequest:request error:&err];
 
     if ([matches count] == 0) {
-        taskStatus.indexOfWordIDToday = 0;
-        taskStatus.maxWordID = 0;
-        taskStatus.stage_now = 0;
-        taskStatus.reviewEnable = NO;
-        taskStatus.wrongWordCount = 0;
+        [taskStatus beginNewWord];
         
         return YES;
     } else {
@@ -235,6 +242,7 @@ HistoryManager* _historyManagerInstance = nil;
         if ([history.event isEqualToString:EVENT_TYPE_NEWWORD]) {
             NewWordStatus *nwStatus = history.newWordStatus;
             
+            taskStatus.taskType = TASK_TYPE_NEWWORD;
             taskStatus.indexOfWordIDToday = [nwStatus.index integerValue];
             taskStatus.maxWordID = [nwStatus.maxWordID integerValue];
             taskStatus.stage_now = [nwStatus.stage integerValue];
@@ -244,6 +252,7 @@ HistoryManager* _historyManagerInstance = nil;
         } else if ([history.event isEqualToString:EVENT_TYPE_REVIEW]) {
             ReviewStatus *rStatus = history.reviewStatus;
             
+            taskStatus.taskType = TASK_TYPE_REVIEW;
             taskStatus.indexOfWordIDToday = [rStatus.index integerValue];
             taskStatus.stage_now = [rStatus.stage integerValue];
             

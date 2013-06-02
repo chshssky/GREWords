@@ -157,6 +157,16 @@
     //为了初始化maxID
     [TaskStatus instance].maxWordID = [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue];
     //[self.delegate ChangeWordWithIndex:self.beginWordID + _currentPage WithMax:self.maxWordID];
+    NewWordEvent *newWordEvent = [[NewWordEvent alloc] init];
+    
+    newWordEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+    newWordEvent.maxWordID = [TaskStatus instance].maxWordID;
+    newWordEvent.reviewEnable = [TaskStatus instance].reviewEnable;
+    newWordEvent.stage_now = [TaskStatus instance].stage_now;
+    
+    
+    [[HistoryManager instance] updateEvent:newWordEvent];
+
     
     if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_NewWordFirst])
     {
