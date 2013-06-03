@@ -11,6 +11,8 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface HistoryStatisticsViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *greenCover;
+@property (weak, nonatomic) IBOutlet UIButton *progressButton;
 
 @end
 
@@ -39,6 +41,8 @@
 
 - (void)viewDidUnload {
     [self setExitButton:nil];
+    [self setGreenCover:nil];
+    [self setProgressButton:nil];
     [super viewDidUnload];
 }
 - (IBAction)exitPressed:(id)sender {
