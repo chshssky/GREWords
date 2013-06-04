@@ -336,7 +336,7 @@
 }
 
 //加载单词
-- (void)loadViewWithPage:(int) page
+- (void)loadViewWithPage:(int)page
 {
     //int page = [pageNumber intValue];
     // replace the placeholder if necessary
@@ -459,7 +459,7 @@
         [self loadViewWithPage:page+1];
         ///////////////////////////////////////////////////////////////////////////////
         //显示单词内容和单词名称
-        self.WordParaphraseView = [self.viewControlArray objectAtIndex:page];
+        //self.WordParaphraseView = [self.viewControlArray objectAtIndex:page];
         self.wordLabel.text = [self.nameControlArray objectAtIndex:page];
         self.wordSoundLabel.text = [self.phoneticControlArray objectAtIndex:page];
         

@@ -9,6 +9,7 @@
 #import "HistoryStatisticsViewController.h"
 #import "GreWordsViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "TestPageViewController.h"
 
 @interface HistoryStatisticsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *greenCover;
@@ -42,6 +43,13 @@
     [self initialFourPoint];
     [self initialLastPointWithPoint:_thridPoint];
     [self setGesture];
+    
+    //添加卡片，设置卡片数量
+    TestPageViewController *testPageViewController = [[TestPageViewController alloc] init];
+    testPageViewController.view.center = CGPointMake(self.view.center.x, self.view.center.y+57);
+    testPageViewController.upCardNumber = 10;
+    [self addChildViewController:testPageViewController];
+    [self.view addSubview:testPageViewController.view];
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,6 +65,8 @@
     [self setProgressText:nil];
     [super viewDidUnload];
 }
+
+#pragma mark - exitButton
 - (IBAction)exitPressed:(id)sender {
     GreWordsViewController *superController =  (GreWordsViewController *)[self presentingViewController];
     
@@ -80,6 +90,8 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+
+#pragma mark - progressBar
 - (void)initialFourPoint
 {
     _firstPoint.x = 77.0f;
@@ -213,6 +225,8 @@
         [self checkProgressButtonShouldMoveToWhichPoint];
     }
 }
+
+
 - (IBAction)progressButtonClicked:(id)sender {
     NSLog(@"progressButtonClicked");
 }
