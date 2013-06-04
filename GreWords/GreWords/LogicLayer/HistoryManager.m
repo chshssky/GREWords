@@ -168,9 +168,10 @@ HistoryManager* _historyManagerInstance = nil;
         newWordStatus.reviewEnable = [NSNumber numberWithBool:newWordEvent.reviewEnable];
             
     } else if ([aEvent isKindOfClass:[ReviewEvent class]]) {
-        ReviewEvent *reviewEvent = (ReviewEvent *)aEvent;
         
-        ReviewStatus *reviewStatus = [NSEntityDescription insertNewObjectForEntityForName:@"ReviewStatus" inManagedObjectContext:self.context];
+        ReviewEvent *reviewEvent = (ReviewEvent *)aEvent;
+        ReviewStatus *reviewStatus = history.reviewStatus;        
+
         reviewStatus.index = [NSNumber numberWithInt:reviewEvent.indexOfWordToday];
         reviewStatus.stage = [NSNumber numberWithInt:reviewEvent.stage_now];
         
@@ -178,11 +179,10 @@ HistoryManager* _historyManagerInstance = nil;
     } else if ([aEvent isKindOfClass:[ExamEvent class]]) {
         ExamEvent *examEvent = (ExamEvent *)aEvent;
         
-        ExamStatus *examStatus = [NSEntityDescription insertNewObjectForEntityForName:@"ExamStatus" inManagedObjectContext:self.context];
+        ExamStatus *examStatus = history.examStatus;
         
         examStatus.difficulty = [NSNumber numberWithFloat:examEvent.difficulty];
         
-        //        [dict setObject:[NSNumber numberWithInt:[examEvent difficulty]] forKey:EXAMEVENT_DIFFICULTY];
     } else {
         NSLog(@"Something Wrong : BaseEvent is not a specific class");
     }
