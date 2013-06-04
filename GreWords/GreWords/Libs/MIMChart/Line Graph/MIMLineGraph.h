@@ -43,6 +43,7 @@
 
 @property(nonatomic,assign)float minimumValue;
 @property(nonatomic,assign)float maxValue;
+@property(nonatomic,assign)float scaleY;
 
 @property(nonatomic,assign)BOOL animateLine;
 @property(nonatomic,assign)BOOL hideInfoWindow;

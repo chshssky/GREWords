@@ -475,7 +475,7 @@
     maxOfY = self.maxValue;
     
     _scalingY=[MIMProperties findScaleForYTile:_yValElements gridHeight:_gridHeight tileHeight:_tileHeight :numOfHLines Min:minOfY Max:maxOfY];
-    _scalingY = 1.0;
+    _scalingY = self.scaleY;
     pixelsPerTile=_tileHeight/_scalingY;
     _scalingX=[MIMProperties findScaleForXTile:_xValElements XValuesAreString:xIsString LongGraph:_isLongGraph TileWidth:_tileWidth TileWidthDefinedByUser:_tileWidthDefinedByUser];
     _contentWidth=[MIMProperties returnLongGraphContentWidth:_scalingX TotalItemsOnXAxis:itemCountOnXAxis];
@@ -594,8 +594,8 @@
     // Drawing code
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
-    CGContextSetAllowsAntialiasing(ctx, NO);
-    CGContextSetShouldAntialias(ctx, NO);
+    //CGContextSetAllowsAntialiasing(ctx, NO);
+    //CGContextSetShouldAntialias(ctx, NO);
     
     CGRect r=CGRectMake(0, 0, CGRectGetWidth(rect), CGRectGetHeight(rect));
     CGContextSetBlendMode(ctx,kCGBlendModeClear);

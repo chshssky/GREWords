@@ -25,6 +25,7 @@
 
 #import "XAxisBand.h"
 #import "XAxisLabel.h"
+#import "UIColor+RGB.h"
 
 @implementation XAxisBand
 @synthesize xElements,scalingFactor,style,lineChart,xIsString;
@@ -190,7 +191,9 @@
         if(!hideSticks)
         {
             CGContextSetBlendMode(ctx, kCGBlendModeNormal);
-            CGContextSetLineWidth(ctx, lineWidth);
+            CGContextSetLineWidth(ctx, 2);
+            lineColor = [UIColor colorWithR:149 G:143 B:135];
+            
             CGContextSetStrokeColorWithColor(ctx, lineColor.CGColor);
             for (int i=0; i<[xElements count]; i++) {
                 

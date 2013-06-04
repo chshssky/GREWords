@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "MIMLineGraph.h"
 
+
+typedef enum
+{
+    HistoryChartRecite,
+    HistoryChartReview
+} HistoryChartType;
+
 @interface LineChartViewController : UIViewController<LineGraphDelegate>
 {
     NSArray *yValuesArray;
@@ -24,5 +31,9 @@
     MIMLineGraph *mLineGraph;
 
 }
+@property (strong, nonatomic) IBOutlet UIView *chartContainer;
+@property (strong, nonatomic) IBOutlet UIImageView *backgroundVIew;
+
+@property (nonatomic) HistoryChartType type;
 
 @end

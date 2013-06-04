@@ -9,6 +9,7 @@
 #import "HistoryStatisticsViewController.h"
 #import "GreWordsViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "LineChartViewController.h"
 
 @interface HistoryStatisticsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *greenCover;
@@ -42,6 +43,12 @@
     [self initialFourPoint];
     [self initialLastPointWithPoint:_thridPoint];
     [self setGesture];
+    
+    
+    LineChartViewController *vc = [[LineChartViewController alloc] init];
+    vc.type = HistoryChartReview;
+    [self addChildViewController:vc];
+    [self.view addSubview:vc.view];
 }
 
 - (void)didReceiveMemoryWarning

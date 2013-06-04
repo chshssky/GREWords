@@ -96,6 +96,8 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
+    //return;
+    
     [self initVariables];
     
     if(pixelPerYTile!=0)

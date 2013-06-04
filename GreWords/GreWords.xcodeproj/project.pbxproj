@@ -188,8 +188,6 @@
 		E407AEEE175B9D7A0098F702 /* DoughtNutFragmentTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = E407AE87175B9D790098F702 /* DoughtNutFragmentTitle.m */; };
 		E407AEEF175B9D7A0098F702 /* MIMFragmentedDoughNut.m in Sources */ = {isa = PBXBuildFile; fileRef = E407AE8A175B9D790098F702 /* MIMFragmentedDoughNut.m */; };
 		E407AEF0175B9D7A0098F702 /* GaugeGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = E407AE8D175B9D790098F702 /* GaugeGraph.m */; };
-		E407AEF1175B9D7A0098F702 /* monotone_location_pin_marker.png in Resources */ = {isa = PBXBuildFile; fileRef = E407AE8F175B9D790098F702 /* monotone_location_pin_marker.png */; };
-		E407AEF2175B9D7A0098F702 /* monotone_position_marker.png in Resources */ = {isa = PBXBuildFile; fileRef = E407AE90175B9D790098F702 /* monotone_position_marker.png */; };
 		E407AEF3175B9D7A0098F702 /* LineInfoBox.m in Sources */ = {isa = PBXBuildFile; fileRef = E407AE94175B9D790098F702 /* LineInfoBox.m */; };
 		E407AEF6175B9D7A0098F702 /* LineScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E407AE98175B9D790098F702 /* LineScrollView.m */; };
 		E407AEF7175B9D7A0098F702 /* MIMLineGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = E407AE9A175B9D790098F702 /* MIMLineGraph.m */; };
@@ -3926,8 +3924,6 @@
 		E407AE8A175B9D790098F702 /* MIMFragmentedDoughNut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIMFragmentedDoughNut.m; sourceTree = "<group>"; };
 		E407AE8C175B9D790098F702 /* GaugeGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GaugeGraph.h; sourceTree = "<group>"; };
 		E407AE8D175B9D790098F702 /* GaugeGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GaugeGraph.m; sourceTree = "<group>"; };
-		E407AE8F175B9D790098F702 /* monotone_location_pin_marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monotone_location_pin_marker.png; sourceTree = "<group>"; };
-		E407AE90175B9D790098F702 /* monotone_position_marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monotone_position_marker.png; sourceTree = "<group>"; };
 		E407AE92175B9D790098F702 /* LineGraphDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineGraphDelegate.h; sourceTree = "<group>"; };
 		E407AE93175B9D790098F702 /* LineInfoBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineInfoBox.h; sourceTree = "<group>"; };
 		E407AE94175B9D790098F702 /* LineInfoBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineInfoBox.m; sourceTree = "<group>"; };
@@ -7876,7 +7872,6 @@
 				E407AE80175B9D790098F702 /* Colors */,
 				E407AE85175B9D790098F702 /* FragmentedPieChart */,
 				E407AE8B175B9D790098F702 /* GaugeMeter */,
-				E407AE8E175B9D790098F702 /* Images */,
 				E407AE91175B9D790098F702 /* Line Graph */,
 				E407AE9D175B9D790098F702 /* Pie Chart */,
 				E407AECF175B9D7A0098F702 /* Range Chart */,
@@ -7974,15 +7969,6 @@
 				E407AE8D175B9D790098F702 /* GaugeGraph.m */,
 			);
 			path = GaugeMeter;
-			sourceTree = "<group>";
-		};
-		E407AE8E175B9D790098F702 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				E407AE8F175B9D790098F702 /* monotone_location_pin_marker.png */,
-				E407AE90175B9D790098F702 /* monotone_position_marker.png */,
-			);
-			path = Images;
 			sourceTree = "<group>";
 		};
 		E407AE91175B9D790098F702 /* Line Graph */ = {
@@ -15413,8 +15399,6 @@
 				E4D1B4D01758F38B000796DF /* words list_scrollBar@2x.png in Resources */,
 				73191B061759059100E7E6CA /* learning list_logo.png in Resources */,
 				73191B071759059100E7E6CA /* learning list_logo@2x.png in Resources */,
-				E407AEF1175B9D7A0098F702 /* monotone_location_pin_marker.png in Resources */,
-				E407AEF2175B9D7A0098F702 /* monotone_position_marker.png in Resources */,
 				E407AEFB175B9D7A0098F702 /* BasicPieChartSample.png in Resources */,
 				E407AEFD175B9D7A0098F702 /* BevelPieChart.png in Resources */,
 				E407AEFF175B9D7A0098F702 /* BiTransPieCHartSample.png in Resources */,
@@ -15430,6 +15414,44 @@
 				E407AF15175B9D7A0098F702 /* sectioned_pie_chart.png in Resources */,
 				E407AF17175B9D7A0098F702 /* trophy.png in Resources */,
 				E407AF20175B9DDF0098F702 /* LineChartViewController.xib in Resources */,
+				73C66A9F175BA16D004B064D /* history backButton_clicked.png in Resources */,
+				73C66AA0175BA16D004B064D /* history backButton_clicked@2x.png in Resources */,
+				73C66AA1175BA16D004B064D /* history backButton.png in Resources */,
+				73C66AA2175BA16D004B064D /* history backButton@2x.png in Resources */,
+				73C66AA3175BA16D004B064D /* history background_green.png in Resources */,
+				73C66AA4175BA16D004B064D /* history background_green@2x.png in Resources */,
+				73C66AA5175BA16D004B064D /* history background_upCover.png in Resources */,
+				73C66AA6175BA16D004B064D /* history background_upCover@2x.png in Resources */,
+				73C66AA7175BA16D004B064D /* history background.png in Resources */,
+				73C66AA8175BA16D004B064D /* history background@2x.png in Resources */,
+				73C66AA9175BA16D004B064D /* history exam_cardBottom_mini.png in Resources */,
+				73C66AAA175BA16D004B064D /* history exam_cardBottom_mini@2x.png in Resources */,
+				73C66AAB175BA16D004B064D /* history exam_cardBottom.png in Resources */,
+				73C66AAC175BA16D004B064D /* history exam_cardBottom@2x.png in Resources */,
+				73C66AAD175BA16D004B064D /* history exam_upCardBottom_mini.png in Resources */,
+				73C66AAE175BA16D004B064D /* history exam_upCardBottom_mini@2x.png in Resources */,
+				73C66AAF175BA16D004B064D /* history exam_upCardBottom.png in Resources */,
+				73C66AB0175BA16D004B064D /* history exam_upCardBottom@2x.png in Resources */,
+				73C66AB1175BA16D004B064D /* history progressBar_button_Reduced.png in Resources */,
+				73C66AB2175BA16D004B064D /* history progressBar_button.png in Resources */,
+				73C66AB3175BA16D004B064D /* history recite_cardBottom_mini.png in Resources */,
+				73C66AB4175BA16D004B064D /* history recite_cardBottom_mini@2x.png in Resources */,
+				73C66AB5175BA16D004B064D /* history recite_cardBottom.png in Resources */,
+				73C66AB6175BA16D004B064D /* history recite_cardBottom@2x.png in Resources */,
+				73C66AB7175BA16D004B064D /* history review_cardBottom_mini.png in Resources */,
+				73C66AB8175BA16D004B064D /* history review_cardBottom_mini@2x.png in Resources */,
+				73C66AB9175BA16D004B064D /* history review_cardBottom.png in Resources */,
+				73C66ABA175BA16D004B064D /* history review_cardBottom@2x.png in Resources */,
+				7315CD9B175D8A1800B22F07 /* history progressBar_button_clicked.png in Resources */,
+				7315CD9C175D8A1800B22F07 /* history progressBar_button_clicked@2x.png in Resources */,
+				7315CDA5175D8B1F00B22F07 /* history_slideBar_text2.png in Resources */,
+				7315CDA6175D8B1F00B22F07 /* history_slideBar_text4.png in Resources */,
+				7315CDA7175D8B1F00B22F07 /* history_slideBar_text4@2x.png in Resources */,
+				7315CDA8175D8B1F00B22F07 /* history_slideBar_text1@2x.png in Resources */,
+				7315CDA9175D8B1F00B22F07 /* history_slideBar_text3@2x.png in Resources */,
+				7315CDAA175D8B1F00B22F07 /* history_slideBar_text1.png in Resources */,
+				7315CDAB175D8B1F00B22F07 /* history_slideBar_text3.png in Resources */,
+				7315CDAC175D8B1F00B22F07 /* history_slideBar_text2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
