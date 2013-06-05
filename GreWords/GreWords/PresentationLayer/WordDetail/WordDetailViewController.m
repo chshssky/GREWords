@@ -979,23 +979,24 @@
 
 - (void)reviewCompleted
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日完成" message:[NSString stringWithFormat:@"今天错误率：%d 用时：30min", [TaskStatus instance].wrongWordCount] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
-    [alert setAlertViewStyle:UIAlertViewStyleDefault];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日完成" message:[NSString stringWithFormat:@"今天错误率：%d 用时：30min", [TaskStatus instance].wrongWordCount] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+//    [alert setAlertViewStyle:UIAlertViewStyleDefault];
+    
+    
 }
 
 - (void)newWordCompleted
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日完成" message:[NSString stringWithFormat:@"今天错误率：%d 用时：30min", [TaskStatus instance].wrongWordCount] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
-    [alert setAlertViewStyle:UIAlertViewStyleDefault];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日完成" message:[NSString stringWithFormat:@"今天错误率：%d 用时：30min", [TaskStatus instance].wrongWordCount] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+//    [alert setAlertViewStyle:UIAlertViewStyleDefault];
+//    
+//    [alert show];
     
-    [alert show];
+    
     
     NewWordEvent *nwEvent = [[NewWordEvent alloc] init];
-    
     nwEvent.endTime = [self getNowDate];
-    
     [[HistoryManager instance] endEvent:nwEvent];
-    
 
     //[self.delegate StartReview];
     [self createReviewEvent];

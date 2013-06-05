@@ -21,12 +21,13 @@
 #import "GuideImageFactory.h"
 #import "TaskStatus.h"
 #import "GreWordsViewController.h"
+#import "ExamResultViewController.h"
 
 #import "ExamResultViewController.h"
 
 #define PI M_PI
 
-@interface ExamViewController () <UIScrollViewDelegate, ExamResultProtocol>
+@interface ExamViewController () <UIScrollViewDelegate>
 {
     UIImageView *guideImageView;
 }
@@ -83,6 +84,9 @@
 @property (nonatomic, strong) NSDate *startDate;
 
 @property (nonatomic, strong) NSTimer *timer;
+
+
+@property (nonatomic, strong) ExamResultViewController *examResultViewController;
 
 @end
 
@@ -176,7 +180,6 @@
 {
     [super viewDidLoad];
     
-    //[self t];
     [[TaskStatus instance] beginExam];
     [self loadWord:[TaskStatus instance].indexOfExam];
     _RightButton.userInteractionEnabled = NO;
@@ -979,8 +982,6 @@
     }
 }
 
-
-
 - (void)AddShowButton
 {
     self.showMeaningButton = [[UIButton alloc] init];
@@ -1051,25 +1052,20 @@
 
 - (void)examResultShow
 {
-    ExamResultViewController *examResultVC = [[ExamResultViewController alloc] init];
-    
-    examResultVC.totalCount.text = @"5";
-    examResultVC.wrongCount.text = @"3";
-    examResultVC.rightCount.text = @"2";
-    examResultVC.memoryRate.text = @"%40";
-    examResultVC.delegate = self;
-    
-    //examResultVC
-    [examResultVC.view setCenter:self.view.center];
-    
-    [self.view addSubview:examResultVC.view];
-
+    if (_examResultViewController == nil) {
+        _examResultViewController = [[ExamResultViewController alloc] init];
+        
+        //_note.delegate = self;
+    }
+    [_examResultViewController addExamResultCardAt:self];
+    [_examResultViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.view addSubview:_examResultViewController.view];
 }
 
-- (void)returnHome
-{
-    [self examCompleted];
-}
+//- (void)returnHome
+//{
+//    [self examCompleted];
+//}
 
 - (void)examCompleted
 {
