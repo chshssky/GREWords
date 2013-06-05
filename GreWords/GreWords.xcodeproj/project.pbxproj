@@ -28,8 +28,8 @@
 		3FE5F408175DE46D002EB59E /* test backButton_clicked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F402175DE464002EB59E /* test backButton_clicked@2x.png */; };
 		3FE5F409175DE46D002EB59E /* test backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F403175DE466002EB59E /* test backButton.png */; };
 		3FE5F40A175DE46D002EB59E /* test backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F404175DE468002EB59E /* test backButton@2x.png */; };
-		3FE5F40B175DE46D002EB59E /* test backTitle@2xpng.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F405175DE46A002EB59E /* test backTitle@2xpng.png */; };
-		3FE5F40C175DE46D002EB59E /* test backTitlepng.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F406175DE46B002EB59E /* test backTitlepng.png */; };
+		3FE5F40B175DE46D002EB59E /* test backTitle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F405175DE46A002EB59E /* test backTitle@2x.png */; };
+		3FE5F40C175DE46D002EB59E /* test backTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F406175DE46B002EB59E /* test backTitle.png */; };
 		3FE5F41A175E6FE8002EB59E /* ExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F418175E6FE8002EB59E /* ExamViewController.m */; };
 		3FE5F41B175E6FE8002EB59E /* ExamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F419175E6FE8002EB59E /* ExamViewController.xib */; };
 		3FE5F41F175F0CA8002EB59E /* ExamResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F41D175F0CA7002EB59E /* ExamResultViewController.m */; };
@@ -3756,8 +3756,8 @@
 		3FE5F402175DE464002EB59E /* test backButton_clicked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test backButton_clicked@2x.png"; sourceTree = "<group>"; };
 		3FE5F403175DE466002EB59E /* test backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test backButton.png"; sourceTree = "<group>"; };
 		3FE5F404175DE468002EB59E /* test backButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test backButton@2x.png"; sourceTree = "<group>"; };
-		3FE5F405175DE46A002EB59E /* test backTitle@2xpng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test backTitle@2xpng.png"; sourceTree = "<group>"; };
-		3FE5F406175DE46B002EB59E /* test backTitlepng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test backTitlepng.png"; sourceTree = "<group>"; };
+		3FE5F405175DE46A002EB59E /* test backTitle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test backTitle@2x.png"; sourceTree = "<group>"; };
+		3FE5F406175DE46B002EB59E /* test backTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test backTitle.png"; sourceTree = "<group>"; };
 		3FE5F417175E6FE8002EB59E /* ExamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamViewController.h; sourceTree = "<group>"; };
 		3FE5F418175E6FE8002EB59E /* ExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamViewController.m; sourceTree = "<group>"; };
 		3FE5F419175E6FE8002EB59E /* ExamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamViewController.xib; sourceTree = "<group>"; };
@@ -7798,8 +7798,8 @@
 				3FE5F402175DE464002EB59E /* test backButton_clicked@2x.png */,
 				3FE5F403175DE466002EB59E /* test backButton.png */,
 				3FE5F404175DE468002EB59E /* test backButton@2x.png */,
-				3FE5F405175DE46A002EB59E /* test backTitle@2xpng.png */,
-				3FE5F406175DE46B002EB59E /* test backTitlepng.png */,
+				3FE5F405175DE46A002EB59E /* test backTitle@2x.png */,
+				3FE5F406175DE46B002EB59E /* test backTitle.png */,
 				73D712D617579A9200D09CF0 /* test 10min.png */,
 				73D712D717579A9200D09CF0 /* test 10min@2x.png */,
 				73D712D817579A9200D09CF0 /* test 10min_choose.png */,
@@ -15524,8 +15524,8 @@
 				3FE5F408175DE46D002EB59E /* test backButton_clicked@2x.png in Resources */,
 				3FE5F409175DE46D002EB59E /* test backButton.png in Resources */,
 				3FE5F40A175DE46D002EB59E /* test backButton@2x.png in Resources */,
-				3FE5F40B175DE46D002EB59E /* test backTitle@2xpng.png in Resources */,
-				3FE5F40C175DE46D002EB59E /* test backTitlepng.png in Resources */,
+				3FE5F40B175DE46D002EB59E /* test backTitle@2x.png in Resources */,
+				3FE5F40C175DE46D002EB59E /* test backTitle.png in Resources */,
 				3FE5F41B175E6FE8002EB59E /* ExamViewController.xib in Resources */,
 				3FE5F420175F0CA8002EB59E /* ExamResultViewController.xib in Resources */,
 				3FE5F439175F3320002EB59E /* test result_background.png in Resources */,
