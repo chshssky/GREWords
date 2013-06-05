@@ -7,6 +7,7 @@
 //
 
 #import "TestPageCardViewController.h"
+#import "NSDate-Utilities.h"
 
 @interface TestPageCardViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
@@ -27,6 +28,30 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSDate *date = self.event.startTime;
+    
+    self.dateLabel.text = [NSString stringWithFormat:@"%d年%d月%d日 %02d:%02d",[date year],[date month],[date day],[date hour],[date minute]];
+    self.sumNumberLabel.text = [NSString stringWithFormat:@"%d",self.event.totalWordCount];
+    self.wrongNumberLabel.text = [NSString stringWithFormat:@"%d",self.event.wrongWordCount];
+    self.rightNumberLabel.text = [NSString stringWithFormat:@"%d",self.event.totalWordCount - self.event.wrongWordCount];
+    
+    switch (self.event.difficulty) {
+        case 0:
+            self.levelLabel.text = @"易";
+            break;
+        case 1:
+            self.levelLabel.text = @"中";
+            break;
+        case 2:
+            self.levelLabel.text = @"难";
+            break;
+        default:
+            break;
+    }
+    
+    self.timeLabel.text = [NSString stringWithFormat:@"%d分钟",(int)(self.event.duration / 60.0)];
+
     // Do any additional setup after loading the view from its nib.
 }
 

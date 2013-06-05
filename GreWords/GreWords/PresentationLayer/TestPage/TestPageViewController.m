@@ -11,6 +11,7 @@
 
 
 @interface TestPageViewController () <UIScrollViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UIScrollView *pageCardScrollView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImageView;
 @property (weak, nonatomic) IBOutlet UILabel *pageText;
@@ -36,7 +37,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.upCardArray = [[NSMutableArray alloc] init];
-    self.upCardNumber = 0;
     self.currentPage = 0;
 }
 
@@ -73,10 +73,10 @@
     }
     
     //设置横向滑动的scroll view
-    for (unsigned i = 0; i < _upCardNumber; i++) {
+    for (unsigned i = 0; i < self.data.count; i++) {
 		[_upCardArray addObject:[NSNull null]];
     }
-    _pageCardScrollView.contentSize = CGSizeMake(_pageCardScrollView.frame.size.width * _upCardNumber,
+    _pageCardScrollView.contentSize = CGSizeMake(_pageCardScrollView.frame.size.width * self.data.count,
                                                       _pageCardScrollView.frame.size.height);
     _pageCardScrollView.pagingEnabled = YES;
     _pageCardScrollView.showsHorizontalScrollIndicator = NO;
@@ -84,20 +84,27 @@
     _pageCardScrollView.scrollsToTop = NO;
     _pageCardScrollView.delegate = self;
     _pageCardScrollView.directionalLockEnabled = NO;
-    [self loadViewWithPage:0];
-    [self loadViewWithPage:1];
+    
+    if(self.data.count == 0)
+        return;
+    if(self.data.count == 1)
+    {
+        [self loadViewWithPage:0];
+    }
+    else if(self.data.count >= 2)
+    {
+        [self loadViewWithPage:0];
+        [self loadViewWithPage:1];
+    }
 }
 
 - (void)loadUpCardContentWithPage:(int)index
 {
     NSLog(@"loadUpCardContent");
- 
-//    @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-//    @property (weak, nonatomic) IBOutlet UILabel *sumNumberLabel;
-//    @property (weak, nonatomic) IBOutlet UILabel *rightNumberLabel;
-//    @property (weak, nonatomic) IBOutlet UILabel *wrongNumberLabel;
-//    @property (weak, nonatomic) IBOutlet UILabel *levelLabel;
-//    @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+    
+    ExamEvent *aEvent = self.data[index];
+    _upCard.event = aEvent;
+    
 }
 
 - (void)loadViewWithPage:(int)page
@@ -107,7 +114,7 @@
     if ((NSNull *)_upCard == [NSNull null])
     {
         _upCard = [[TestPageCardViewController alloc] init];
-        [self loadUpCardContentWithPage:0];
+        [self loadUpCardContentWithPage:page];
         [_upCardArray replaceObjectAtIndex:page withObject:_upCard];
     }
     
@@ -135,7 +142,7 @@
         [self setTextInPageText];
     }
     
-    if (_currentPage < _upCardNumber - 1) {
+    if (_currentPage < self.data.count - 1) {
         [self loadViewWithPage:page+1];
     }
 }
@@ -143,7 +150,7 @@
 - (void)setTextInPageText
 {
     NSString *currentString = [NSString stringWithFormat:@"%d",_currentPage+1];
-    NSString *sumString = [NSString stringWithFormat:@"%d",_upCardNumber];
+    NSString *sumString = [NSString stringWithFormat:@"%d",self.data.count];
     _pageText.text = [NSString stringWithFormat:@"%@%@%@%@%@",@"这是第",currentString,@"次测试, 一共有",sumString,@"次测试"];
     _pageText.textAlignment = NSTextAlignmentCenter;
     _pageText.textColor = [UIColor colorWithRed:135/255.0 green:168/255.0 blue:57.0/255.0 alpha:1];

@@ -14,6 +14,12 @@
 #import "BaseEvent.h"
 
 @interface HistoryStatisticsViewController ()
+{
+    LineChartViewController *reciteVC;
+    LineChartViewController *reviewVC;
+    TestPageViewController *testPageViewController;
+}
+
 @property (weak, nonatomic) IBOutlet UIImageView *greenCover;
 @property (weak, nonatomic) IBOutlet UIButton *progressButton;
 @property (weak, nonatomic) IBOutlet UIImageView *progressText;
@@ -38,6 +44,7 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -46,48 +53,131 @@
     [self initialLastPointWithPoint:_thridPoint];
     [self setGesture];
     
+    [self initData];
     
-    //添加卡片，设置卡片数量
-    TestPageViewController *testPageViewController = [[TestPageViewController alloc] init];
-    testPageViewController.view.center = CGPointMake(self.view.center.x, self.view.center.y+57);
-    testPageViewController.upCardNumber = 10;
-    [self addChildViewController:testPageViewController];
-    [self.view addSubview:testPageViewController.view];
-    
-    
-//    LineChartViewController *vc = [[LineChartViewController alloc] init];
-//    vc.type = HistoryChartReview;
-//    
-//    BaseEvent *r1 = [[BaseEvent alloc] init];
-//    r1.duration = 20 * 60;
-//    r1.startTime = [NSDate new];
-//    
-//    BaseEvent *r2 = [[BaseEvent alloc] init];
-//    r2.duration = 120 * 60;
-//    r2.startTime = [NSDate new];
-//    vc.data = @[r1,r2];
-//    
-//    BaseEvent *r3 = [[BaseEvent alloc] init];
-//    r3.duration = 60 * 60;
-//    r3.startTime = [NSDate new];
-//    vc.data = @[r1,r2,r3];
-//    [self addChildViewController:vc];
-//    [self.view addSubview:vc.view];
+    self.hitTestView.enabled = false;
+    self.scrollView.delegate = self;
 }
 
-- (void)didReceiveMemoryWarning
+
+- (void)viewWillAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self layoutViews];
 }
+
 
 - (void)viewDidUnload {
     [self setExitButton:nil];
     [self setGreenCover:nil];
     [self setProgressButton:nil];
     [self setProgressText:nil];
+    [self setScrollView:nil];
+    [self setHitTestView:nil];
     [super viewDidUnload];
 }
+
+#pragma mark Helpers
+
+- (void)initData
+{
+    {
+        reciteVC = [[LineChartViewController alloc] init];
+        reciteVC.type = HistoryChartRecite;
+        
+        BaseEvent *r1 = [[BaseEvent alloc] init];
+        r1.duration = 90 * 60;
+        r1.startTime = [NSDate new];
+        
+        BaseEvent *r2 = [[BaseEvent alloc] init];
+        r2.duration = 330 * 60;
+        r2.startTime = [NSDate new];
+        
+        BaseEvent *r3 = [[BaseEvent alloc] init];
+        r3.duration = 160 * 60;
+        r3.startTime = [NSDate new];
+        reciteVC.data = @[r1,r2,r3];
+        
+        
+        [self.scrollView addSubview:reciteVC.view];
+        
+    }
+    
+    
+    {
+        reviewVC = [[LineChartViewController alloc] init];
+        reviewVC.type = HistoryChartReview;
+        
+        BaseEvent *r1 = [[BaseEvent alloc] init];
+        r1.duration = 20 * 60;
+        r1.startTime = [NSDate new];
+        
+        BaseEvent *r2 = [[BaseEvent alloc] init];
+        r2.duration = 120 * 60;
+        r2.startTime = [NSDate new];
+        
+        BaseEvent *r3 = [[BaseEvent alloc] init];
+        r3.duration = 60 * 60;
+        r3.startTime = [NSDate new];
+        reviewVC.data = @[r1,r2,r3];
+        
+        
+        [self.scrollView addSubview:reviewVC.view];
+        
+    }
+    {
+        ExamEvent *test1 = [[ExamEvent alloc] init];
+        test1.startTime = [NSDate new];
+        test1.duration = 600;
+        test1.difficulty = 1;
+        test1.totalWordCount = 100;
+        test1.wrongWordCount = 20;
+        
+        
+        ExamEvent *test2 = [[ExamEvent alloc] init];
+        test2.startTime = [NSDate new];
+        test2.duration = 6000;
+        test2.difficulty = 2;
+        test2.totalWordCount = 20;
+        test2.wrongWordCount = 2;
+        
+        
+        
+        //添加卡片，设置卡片数量
+        testPageViewController = [[TestPageViewController alloc] init];
+        testPageViewController.view.center = CGPointMake(self.view.center.x, self.view.center.y+57);
+        
+        testPageViewController.data = @[test1,test2];
+        [self.scrollView addSubview:testPageViewController.view];
+    }
+}
+
+- (void)layoutViews
+{
+    
+    {
+        CGRect frame = reciteVC.view.frame;
+        frame.origin.x = (320 - frame.size.width) / 2.0;
+        reciteVC.view.frame = frame;
+    }
+    
+    {
+        CGRect frame = reviewVC.view.frame;
+        frame.origin.x = (320 - frame.size.width) / 2.0;
+        frame.origin.y = self.scrollView.frame.size.height;
+        reviewVC.view.frame = frame;
+    }
+    
+    {
+        CGRect frame = testPageViewController.view.frame;
+        //frame.origin.x = (320 - frame.size.width) / 2.0;
+        frame.origin.y = self.scrollView.frame.size.height * 2;
+        testPageViewController.view.frame = frame;
+    }
+    
+    [self.scrollView setContentSize:CGSizeMake(320, self.scrollView.frame.size.height * 3)];
+}
+
+
 
 #pragma mark - exitButton
 - (IBAction)exitPressed:(id)sender {
@@ -252,6 +342,21 @@
 
 - (IBAction)progressButtonClicked:(id)sender {
     NSLog(@"progressButtonClicked");
+}
+
+#pragma mark - UIScrollView delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    int y = self.scrollView.contentOffset.y;
+    int page = y / (self.scrollView.frame.size.height);    
+    if(page == 2)
+    {
+        self.hitTestView.enabled = YES;
+    }
+    else
+    {
+        self.hitTestView.enabled = NO;
+    }
 }
 
 

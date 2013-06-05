@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ExamEvent.h"
 @interface TestPageCardViewController : UIViewController
+
+@property (retain,nonatomic) ExamEvent *event;
+
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *sumNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rightNumberLabel;
