@@ -264,7 +264,11 @@
         _testSelectorController = nil;
     }
     
-    //start
+    ExamViewController *vc = [[ExamViewController alloc] init];
+    vc.examInfo = examInfo;
+    vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentModalViewController:vc animated:YES];
+
 }
 
 - (void)historyController

@@ -265,7 +265,7 @@ WordHelper* _wordHelperInstance = nil;
 -(NSArray*)recitedWordsWithRatioOfMistakeFrom:(float)lowerBound to:(float)upperBound
 {
     NSPredicate *predicate =
-    [NSPredicate predicateWithFormat:@"SELF.hasRecited && SELF.ratioOfMistake >= %f &&  SELF.ratioOfMistake <= %f",lowerBound,upperBound];
+    [NSPredicate predicateWithFormat:@"SELF.hasRecited == YES && SELF.ratioOfMistake >= %f &&  SELF.ratioOfMistake <= %f",lowerBound,upperBound];
     NSArray *arr = [wordList filteredArrayUsingPredicate:predicate];
     return arr;
 }

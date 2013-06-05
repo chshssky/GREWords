@@ -950,12 +950,12 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
         zeroStarArray = [self randomArrayWithArray:zeroStarArray];
     }
     
-    [newArray arrayByAddingObjectsFromArray:zeroStarArray];
-    [newArray arrayByAddingObjectsFromArray:oneStarArray];
-    [newArray arrayByAddingObjectsFromArray:twoStarArray];
-    [newArray arrayByAddingObjectsFromArray:threeStarArray];
-    [newArray arrayByAddingObjectsFromArray:fourStarArray];
-    [newArray arrayByAddingObjectsFromArray:fiveStarArray];
+    [newArray addObjectsFromArray:zeroStarArray];
+    [newArray addObjectsFromArray:oneStarArray];
+    [newArray addObjectsFromArray:twoStarArray];
+    [newArray addObjectsFromArray:threeStarArray];
+    [newArray addObjectsFromArray:fourStarArray];
+    [newArray addObjectsFromArray:fiveStarArray];
     
     return newArray;   
 }
