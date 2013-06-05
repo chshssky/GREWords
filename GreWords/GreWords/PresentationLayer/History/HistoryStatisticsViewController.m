@@ -54,6 +54,9 @@
     [self setGesture];
     
     [self initData];
+    
+    self.hitTestView.enabled = false;
+    self.scrollView.delegate = self;
 }
 
 
@@ -69,6 +72,7 @@
     [self setProgressButton:nil];
     [self setProgressText:nil];
     [self setScrollView:nil];
+    [self setHitTestView:nil];
     [super viewDidUnload];
 }
 
@@ -338,6 +342,21 @@
 
 - (IBAction)progressButtonClicked:(id)sender {
     NSLog(@"progressButtonClicked");
+}
+
+#pragma mark - UIScrollView delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    int y = self.scrollView.contentOffset.y;
+    int page = y / (self.scrollView.frame.size.height);    
+    if(page == 2)
+    {
+        self.hitTestView.enabled = YES;
+    }
+    else
+    {
+        self.hitTestView.enabled = NO;
+    }
 }
 
 

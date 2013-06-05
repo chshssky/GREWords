@@ -15,12 +15,14 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
+        
     }
     return self;
 }
 
 - (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event
 {
+    if(!self.enabled) return [super hitTest:point withEvent:event];
     if (iPhone5) {
         if (point.y <= 468.0 && point.y >= 181.0) {
             UIView* hitView = [self viewWithTag:1];
