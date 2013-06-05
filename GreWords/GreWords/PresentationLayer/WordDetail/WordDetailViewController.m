@@ -948,50 +948,33 @@
     [self viewWillAppear:YES];
     WordEntity *word;
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
-        if ([TaskStatus instance].indexOfWordIDToday == [[[WordTaskGenerator instance] reviewTask_twoList:self.day] count])
-        {
-            [self reviewCompleted];
-            return;
-        }
-        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue]];
+        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday - 1] intValue]];
     } else {
-        if ([TaskStatus instance].indexOfWordIDToday == [[[WordTaskGenerator instance] newWordTask_twoList:self.day] count])
-        {
-            [self newWordCompleted];
-            return;
-        }
-        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue]];
+        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday - 1] intValue]];
 
     }
     [word didRightOnDate:[NSDate new]];
+    
+    
     [self nextButtonPushed];
 }
 
 - (IBAction)wrongButtonPushed:(id)sender {
     [self viewWillAppear:YES];
+    [TaskStatus instance].wrongWordCount ++;
+
     WordEntity *word;
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
-        if ([TaskStatus instance].indexOfWordIDToday == [[[WordTaskGenerator instance] reviewTask_twoList:self.day] count])
-        {
-            [self reviewCompleted];
-            return;
-        }
-        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue]];
+        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday - 1] intValue]];
     } else {
-        if ([TaskStatus instance].indexOfWordIDToday == [[[WordTaskGenerator instance] newWordTask_twoList:self.day] count])
-        {
-            [self newWordCompleted];
-            return;
-        }
-        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue]];
+        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday - 1] intValue]];
         
     }
     [word didMakeAMistakeOnDate:[NSDate new]];
+    
 
-    NSLog(@"TaskStatus: %d", [TaskStatus instance].indexOfWordIDToday - 1);
-
-    [TaskStatus instance].wrongWordCount ++;
     [self nextButtonPushed];
+    
 }
 
 - (void)reviewCompleted
@@ -1001,7 +984,7 @@
 
 - (void)newWordCompleted
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日完成" message:@"今天错误率： 用时：" delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日完成" message:[NSString stringWithFormat:@"今天错误率：%d 用时：30min", [TaskStatus instance].wrongWordCount] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
     [alert setAlertViewStyle:UIAlertViewStyleDefault];
     
     [alert show];
@@ -1261,6 +1244,21 @@
 
 - (void)nextButtonPushed
 {
+    if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
+        if ([TaskStatus instance].indexOfWordIDToday == [[[WordTaskGenerator instance] reviewTask_twoList:self.day] count])
+        {
+            [self reviewCompleted];
+            return;
+        }
+        
+    } else {
+        if ([TaskStatus instance].indexOfWordIDToday == [[[WordTaskGenerator instance] newWordTask_twoList:self.day] count])
+        {
+            [self newWordCompleted];
+            return;
+        }
+    }
+    
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
         ReviewEvent *reviewEvent = [[ReviewEvent alloc] init];
         

@@ -24,10 +24,18 @@ enum TaskType {
 @property (nonatomic) BOOL reviewEnable;
 @property (nonatomic) enum TaskType taskType;
 
+@property (nonatomic) int indexOfExam;
+@property (nonatomic) int difficulty;
+@property (nonatomic) int duration;
+@property (nonatomic) int totalWordCount;
+
 + (TaskStatus *)instance;
 
 - (void)beginNewWord;
 - (void)beginReview;
+
+- (void)beginExam;
+- (void)endExam;
 
 - (void)setReviewEnable;
 - (BOOL)getReviewEnable;

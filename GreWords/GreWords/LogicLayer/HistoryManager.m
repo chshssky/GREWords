@@ -206,17 +206,23 @@ HistoryManager* _historyManagerInstance = nil;
     NSArray *matches = [self.context executeFetchRequest:request error:&err];
     
     NSLog(@"Fetch Event Results number: %d", [matches count]);
-    History *history = [matches lastObject];
     
-    NSLog(@"History Start Time: %@ Wrong: %@", history.startTime, history.wrongWordCount);
-    
-    //history.wrongWordCount = [NSNumber numberWithInt:aEvent.wrongWordCount];
-    
-    history.endTime = aEvent.endTime;
-    
-    //    NSDictionary *info = [self toArrayOrNSDictionary:[history.info dataUsingEncoding:NSASCIIStringEncoding]];
-    //
-    //    NSLog(@"HistoryManager: max:%@ Index:%@, enable:%@", [info objectForKey:NEWWORDEVENT_MAX_ID], [info objectForKey:NEWWORDEVENT_INDEX], [info objectForKey:NEWWORDEVENT_REVIEW_ENABLE]);
+    //History *history = [matches lastObject];
+        
+    for (History *history in matches) {
+        if ([history.event isEqualToString:EVENT_TYPE_EXAM] && [aEvent.eventType isEqualToString:EVENT_TYPE_EXAM]) {
+            history.endTime = aEvent.endTime;
+            NSLog(@"History End: %@", EVENT_TYPE_EXAM);
+        }
+        if ([history.event isEqualToString:EVENT_TYPE_NEWWORD] && [aEvent.eventType isEqualToString:EVENT_TYPE_NEWWORD]) {
+            history.endTime = aEvent.endTime;
+            NSLog(@"History End: %@", EVENT_TYPE_NEWWORD);
+        }
+        if ([history.event isEqualToString:EVENT_TYPE_REVIEW] && [aEvent.eventType isEqualToString:EVENT_TYPE_REVIEW]) {
+            history.endTime = aEvent.endTime;
+            NSLog(@"History End: %@", EVENT_TYPE_REVIEW);
+        }
+    }
     
     if (![self.context save:&err]) {
         NSLog(@"End Event Error");

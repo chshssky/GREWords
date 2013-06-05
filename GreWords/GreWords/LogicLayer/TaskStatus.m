@@ -21,6 +21,25 @@ TaskStatus* _taskStatusInstance = nil;
     return _taskStatusInstance;
 }
 
+- (void)beginExam
+{
+    self.indexOfExam = 0;
+    self.difficulty = 0;
+    self.duration = 0;
+    self.wrongWordCount = 0;
+    self.totalWordCount = 0;
+}
+
+- (void)endExam
+{
+    self.indexOfExam = 0;
+    self.difficulty = 0;
+    self.duration = 0;
+    self.wrongWordCount = 0;
+    self.totalWordCount = 0;
+}
+
+
 - (void)beginNewWord
 {
     self.taskType = TASK_TYPE_NEWWORD;

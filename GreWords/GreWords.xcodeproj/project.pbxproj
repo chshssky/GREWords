@@ -25,6 +25,26 @@
 		3FB1CF5B175772B800017F88 /* ReviewStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF5A175772B800017F88 /* ReviewStatus.m */; };
 		3FB1CF5E175772B900017F88 /* ExamStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF5D175772B900017F88 /* ExamStatus.m */; };
 		3FB1CF5F1757A6DB00017F88 /* History.h in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF53175772B500017F88 /* History.h */; };
+		3FE5F407175DE46D002EB59E /* test backButton_clicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F401175DE462002EB59E /* test backButton_clicked.png */; };
+		3FE5F408175DE46D002EB59E /* test backButton_clicked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F402175DE464002EB59E /* test backButton_clicked@2x.png */; };
+		3FE5F409175DE46D002EB59E /* test backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F403175DE466002EB59E /* test backButton.png */; };
+		3FE5F40A175DE46D002EB59E /* test backButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F404175DE468002EB59E /* test backButton@2x.png */; };
+		3FE5F40B175DE46D002EB59E /* test backTitle@2xpng.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F405175DE46A002EB59E /* test backTitle@2xpng.png */; };
+		3FE5F40C175DE46D002EB59E /* test backTitlepng.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F406175DE46B002EB59E /* test backTitlepng.png */; };
+		3FE5F41A175E6FE8002EB59E /* ExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F418175E6FE8002EB59E /* ExamViewController.m */; };
+		3FE5F41B175E6FE8002EB59E /* ExamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F419175E6FE8002EB59E /* ExamViewController.xib */; };
+		3FE5F41F175F0CA8002EB59E /* ExamResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE5F41D175F0CA7002EB59E /* ExamResultViewController.m */; };
+		3FE5F420175F0CA8002EB59E /* ExamResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F41E175F0CA7002EB59E /* ExamResultViewController.xib */; };
+		3FE5F439175F3320002EB59E /* test result_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F42F175F32FB002EB59E /* test result_background.png */; };
+		3FE5F43A175F3320002EB59E /* test result_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F430175F32FE002EB59E /* test result_background@2x.png */; };
+		3FE5F43B175F3320002EB59E /* test result_reExamButton_clicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F431175F3302002EB59E /* test result_reExamButton_clicked.png */; };
+		3FE5F43C175F3320002EB59E /* test result_reExamButton_clicked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F432175F3306002EB59E /* test result_reExamButton_clicked@2x.png */; };
+		3FE5F43D175F3320002EB59E /* test result_reExamButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F433175F3309002EB59E /* test result_reExamButton.png */; };
+		3FE5F43E175F3320002EB59E /* test result_reExamButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F434175F330D002EB59E /* test result_reExamButton@2x.png */; };
+		3FE5F43F175F3320002EB59E /* test result_retuanButton_clicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F435175F3310002EB59E /* test result_retuanButton_clicked.png */; };
+		3FE5F440175F3320002EB59E /* test result_retuanButton_clicked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F436175F3315002EB59E /* test result_retuanButton_clicked@2x.png */; };
+		3FE5F441175F3320002EB59E /* test result_retuanButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F437175F3318002EB59E /* test result_retuanButton.png */; };
+		3FE5F442175F3320002EB59E /* test result_retuanButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F438175F331C002EB59E /* test result_retuanButton@2x.png */; };
 		73191B061759059100E7E6CA /* learning list_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 73191B041759059100E7E6CA /* learning list_logo.png */; };
 		73191B071759059100E7E6CA /* learning list_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73191B051759059100E7E6CA /* learning list_logo@2x.png */; };
 		7324846C17524D860058A6DD /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7324846A17524D860058A6DD /* NoteViewController.m */; };
@@ -679,8 +699,6 @@
 		E46601F5173BD509001847D0 /* IIWrapController.m in Sources */ = {isa = PBXBuildFile; fileRef = E466F4C6173BD508001847D0 /* IIWrapController.m */; };
 		E466F4C7173BD508001847D0 /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E466E759173BD4CB001847D0 /* DashboardViewController.m */; };
 		E466F4C8173BD508001847D0 /* PieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E466E75B173BD4CB001847D0 /* PieChart.m */; };
-		E466F4C9173BD508001847D0 /* ExamViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E466E75E173BD4CB001847D0 /* ExamViewController.m */; };
-		E466F4CA173BD508001847D0 /* ExamViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E466E75F173BD4CB001847D0 /* ExamViewController.xib */; };
 		E466F4CB173BD508001847D0 /* GreWordsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E466E761173BD4CB001847D0 /* GreWordsViewController.m */; };
 		E466F4CC173BD508001847D0 /* HistoryStatisticsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E466E764173BD4CB001847D0 /* HistoryStatisticsViewController.m */; };
 		E466F4CD173BD508001847D0 /* HistoryStatisticsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E466E765173BD4CB001847D0 /* HistoryStatisticsViewController.xib */; };
@@ -3623,6 +3641,28 @@
 		3FB1CF5A175772B800017F88 /* ReviewStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewStatus.m; sourceTree = "<group>"; };
 		3FB1CF5C175772B900017F88 /* ExamStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamStatus.h; sourceTree = "<group>"; };
 		3FB1CF5D175772B900017F88 /* ExamStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamStatus.m; sourceTree = "<group>"; };
+		3FE5F401175DE462002EB59E /* test backButton_clicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test backButton_clicked.png"; sourceTree = "<group>"; };
+		3FE5F402175DE464002EB59E /* test backButton_clicked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test backButton_clicked@2x.png"; sourceTree = "<group>"; };
+		3FE5F403175DE466002EB59E /* test backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test backButton.png"; sourceTree = "<group>"; };
+		3FE5F404175DE468002EB59E /* test backButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test backButton@2x.png"; sourceTree = "<group>"; };
+		3FE5F405175DE46A002EB59E /* test backTitle@2xpng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test backTitle@2xpng.png"; sourceTree = "<group>"; };
+		3FE5F406175DE46B002EB59E /* test backTitlepng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test backTitlepng.png"; sourceTree = "<group>"; };
+		3FE5F417175E6FE8002EB59E /* ExamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamViewController.h; sourceTree = "<group>"; };
+		3FE5F418175E6FE8002EB59E /* ExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamViewController.m; sourceTree = "<group>"; };
+		3FE5F419175E6FE8002EB59E /* ExamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamViewController.xib; sourceTree = "<group>"; };
+		3FE5F41C175F0CA7002EB59E /* ExamResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamResultViewController.h; sourceTree = "<group>"; };
+		3FE5F41D175F0CA7002EB59E /* ExamResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamResultViewController.m; sourceTree = "<group>"; };
+		3FE5F41E175F0CA7002EB59E /* ExamResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamResultViewController.xib; sourceTree = "<group>"; };
+		3FE5F42F175F32FB002EB59E /* test result_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test result_background.png"; sourceTree = "<group>"; };
+		3FE5F430175F32FE002EB59E /* test result_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test result_background@2x.png"; sourceTree = "<group>"; };
+		3FE5F431175F3302002EB59E /* test result_reExamButton_clicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test result_reExamButton_clicked.png"; sourceTree = "<group>"; };
+		3FE5F432175F3306002EB59E /* test result_reExamButton_clicked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test result_reExamButton_clicked@2x.png"; sourceTree = "<group>"; };
+		3FE5F433175F3309002EB59E /* test result_reExamButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test result_reExamButton.png"; sourceTree = "<group>"; };
+		3FE5F434175F330D002EB59E /* test result_reExamButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test result_reExamButton@2x.png"; sourceTree = "<group>"; };
+		3FE5F435175F3310002EB59E /* test result_retuanButton_clicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test result_retuanButton_clicked.png"; sourceTree = "<group>"; };
+		3FE5F436175F3315002EB59E /* test result_retuanButton_clicked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test result_retuanButton_clicked@2x.png"; sourceTree = "<group>"; };
+		3FE5F437175F3318002EB59E /* test result_retuanButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test result_retuanButton.png"; sourceTree = "<group>"; };
+		3FE5F438175F331C002EB59E /* test result_retuanButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test result_retuanButton@2x.png"; sourceTree = "<group>"; };
 		73191B041759059100E7E6CA /* learning list_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning list_logo.png"; sourceTree = "<group>"; };
 		73191B051759059100E7E6CA /* learning list_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning list_logo@2x.png"; sourceTree = "<group>"; };
 		7324846917524D860058A6DD /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteViewController.h; path = PresentationLayer/Note/NoteViewController.h; sourceTree = "<group>"; };
@@ -3797,9 +3837,6 @@
 		E466E759173BD4CB001847D0 /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
 		E466E75A173BD4CB001847D0 /* PieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieChart.h; sourceTree = "<group>"; };
 		E466E75B173BD4CB001847D0 /* PieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PieChart.m; sourceTree = "<group>"; };
-		E466E75D173BD4CB001847D0 /* ExamViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamViewController.h; sourceTree = "<group>"; };
-		E466E75E173BD4CB001847D0 /* ExamViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamViewController.m; sourceTree = "<group>"; };
-		E466E75F173BD4CB001847D0 /* ExamViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamViewController.xib; sourceTree = "<group>"; };
 		E466E760173BD4CB001847D0 /* GreWordsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GreWordsViewController.h; sourceTree = "<group>"; };
 		E466E761173BD4CB001847D0 /* GreWordsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GreWordsViewController.m; sourceTree = "<group>"; };
 		E466E763173BD4CB001847D0 /* HistoryStatisticsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryStatisticsViewController.h; sourceTree = "<group>"; };
@@ -7416,6 +7453,22 @@
 		73D712D517579A9200D09CF0 /* Test */ = {
 			isa = PBXGroup;
 			children = (
+				3FE5F42F175F32FB002EB59E /* test result_background.png */,
+				3FE5F430175F32FE002EB59E /* test result_background@2x.png */,
+				3FE5F431175F3302002EB59E /* test result_reExamButton_clicked.png */,
+				3FE5F432175F3306002EB59E /* test result_reExamButton_clicked@2x.png */,
+				3FE5F433175F3309002EB59E /* test result_reExamButton.png */,
+				3FE5F434175F330D002EB59E /* test result_reExamButton@2x.png */,
+				3FE5F435175F3310002EB59E /* test result_retuanButton_clicked.png */,
+				3FE5F436175F3315002EB59E /* test result_retuanButton_clicked@2x.png */,
+				3FE5F437175F3318002EB59E /* test result_retuanButton.png */,
+				3FE5F438175F331C002EB59E /* test result_retuanButton@2x.png */,
+				3FE5F401175DE462002EB59E /* test backButton_clicked.png */,
+				3FE5F402175DE464002EB59E /* test backButton_clicked@2x.png */,
+				3FE5F403175DE466002EB59E /* test backButton.png */,
+				3FE5F404175DE468002EB59E /* test backButton@2x.png */,
+				3FE5F405175DE46A002EB59E /* test backTitle@2xpng.png */,
+				3FE5F406175DE46B002EB59E /* test backTitlepng.png */,
 				73D712D617579A9200D09CF0 /* test 10min.png */,
 				73D712D717579A9200D09CF0 /* test 10min@2x.png */,
 				73D712D817579A9200D09CF0 /* test 10min_choose.png */,
@@ -7643,9 +7696,12 @@
 		E466E75C173BD4CB001847D0 /* Exam */ = {
 			isa = PBXGroup;
 			children = (
-				E466E75D173BD4CB001847D0 /* ExamViewController.h */,
-				E466E75E173BD4CB001847D0 /* ExamViewController.m */,
-				E466E75F173BD4CB001847D0 /* ExamViewController.xib */,
+				3FE5F417175E6FE8002EB59E /* ExamViewController.h */,
+				3FE5F418175E6FE8002EB59E /* ExamViewController.m */,
+				3FE5F419175E6FE8002EB59E /* ExamViewController.xib */,
+				3FE5F41C175F0CA7002EB59E /* ExamResultViewController.h */,
+				3FE5F41D175F0CA7002EB59E /* ExamResultViewController.m */,
+				3FE5F41E175F0CA7002EB59E /* ExamResultViewController.xib */,
 			);
 			path = Exam;
 			sourceTree = "<group>";
@@ -11381,7 +11437,6 @@
 				3FA4848717142BB3003E88A6 /* GreWords-Info.plist in Resources */,
 				3FA4849117142BF9003E88A6 /* InfoPlist.strings in Resources */,
 				3FA4849217142BF9003E88A6 /* MainStoryboard.storyboard in Resources */,
-				E466F4CA173BD508001847D0 /* ExamViewController.xib in Resources */,
 				E466F4CD173BD508001847D0 /* HistoryStatisticsViewController.xib in Resources */,
 				E466F4D6173BD508001847D0 /* NewWordDetailViewController.xib in Resources */,
 				E466F4D8173BD508001847D0 /* WordDetailViewController.xib in Resources */,
@@ -14884,9 +14939,26 @@
 				E4D1B4CE1758F38B000796DF /* words list_scrollBar.png in Resources */,
 				E4D1B4CF1758F38B000796DF /* words list_scrollBar_Pressdown@2x.png in Resources */,
 				E4D1B4D01758F38B000796DF /* words list_scrollBar@2x.png in Resources */,
-				73F863391758BA0600E19759 /* words.plist in Resources */,
 				73191B061759059100E7E6CA /* learning list_logo.png in Resources */,
 				73191B071759059100E7E6CA /* learning list_logo@2x.png in Resources */,
+				3FE5F407175DE46D002EB59E /* test backButton_clicked.png in Resources */,
+				3FE5F408175DE46D002EB59E /* test backButton_clicked@2x.png in Resources */,
+				3FE5F409175DE46D002EB59E /* test backButton.png in Resources */,
+				3FE5F40A175DE46D002EB59E /* test backButton@2x.png in Resources */,
+				3FE5F40B175DE46D002EB59E /* test backTitle@2xpng.png in Resources */,
+				3FE5F40C175DE46D002EB59E /* test backTitlepng.png in Resources */,
+				3FE5F41B175E6FE8002EB59E /* ExamViewController.xib in Resources */,
+				3FE5F420175F0CA8002EB59E /* ExamResultViewController.xib in Resources */,
+				3FE5F439175F3320002EB59E /* test result_background.png in Resources */,
+				3FE5F43A175F3320002EB59E /* test result_background@2x.png in Resources */,
+				3FE5F43B175F3320002EB59E /* test result_reExamButton_clicked.png in Resources */,
+				3FE5F43C175F3320002EB59E /* test result_reExamButton_clicked@2x.png in Resources */,
+				3FE5F43D175F3320002EB59E /* test result_reExamButton.png in Resources */,
+				3FE5F43E175F3320002EB59E /* test result_reExamButton@2x.png in Resources */,
+				3FE5F43F175F3320002EB59E /* test result_retuanButton_clicked.png in Resources */,
+				3FE5F440175F3320002EB59E /* test result_retuanButton_clicked@2x.png in Resources */,
+				3FE5F441175F3320002EB59E /* test result_retuanButton.png in Resources */,
+				3FE5F442175F3320002EB59E /* test result_retuanButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -14904,7 +14976,6 @@
 				3FA4848C17142BD4003E88A6 /* main.m in Sources */,
 				E466F4C7173BD508001847D0 /* DashboardViewController.m in Sources */,
 				E466F4C8173BD508001847D0 /* PieChart.m in Sources */,
-				E466F4C9173BD508001847D0 /* ExamViewController.m in Sources */,
 				E466F4CB173BD508001847D0 /* GreWordsViewController.m in Sources */,
 				E466F4CC173BD508001847D0 /* HistoryStatisticsViewController.m in Sources */,
 				E466F4CE173BD508001847D0 /* SettingsViewController.m in Sources */,
@@ -14963,6 +15034,8 @@
 				E4CB2CF01758D2BD00370700 /* GreTableViewSearchIndexViewController.m in Sources */,
 				E4D1B4C11758EA00000796DF /* GreTableViewSearchIndexIndicatorViewController.m in Sources */,
 				E4D1B4C41758EFE7000796DF /* UIColor+RGB.m in Sources */,
+				3FE5F41A175E6FE8002EB59E /* ExamViewController.m in Sources */,
+				3FE5F41F175F0CA8002EB59E /* ExamResultViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
