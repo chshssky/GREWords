@@ -47,10 +47,27 @@
     [self setGesture];
     
     
+    ExamEvent *test1 = [[ExamEvent alloc] init];
+    test1.startTime = [NSDate new];
+    test1.duration = 600;
+    test1.difficulty = 1;
+    test1.totalWordCount = 100;
+    test1.wrongWordCount = 20;
+    
+    
+    ExamEvent *test2 = [[ExamEvent alloc] init];
+    test2.startTime = [NSDate new];
+    test2.duration = 6000;
+    test2.difficulty = 2;
+    test2.totalWordCount = 20;
+    test2.wrongWordCount = 2;
+    
+    
+    
     //添加卡片，设置卡片数量
     TestPageViewController *testPageViewController = [[TestPageViewController alloc] init];
     testPageViewController.view.center = CGPointMake(self.view.center.x, self.view.center.y+57);
-    testPageViewController.upCardNumber = 10;
+    testPageViewController.data = @[test1,test2];
     [self addChildViewController:testPageViewController];
     [self.view addSubview:testPageViewController.view];
     
