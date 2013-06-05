@@ -60,8 +60,6 @@
 @property (nonatomic) NSString *WordName;
 @property (nonatomic) NSString *WordPhonetic;
 
-@property (nonatomic, strong) UIImageView *leftLogo;
-
 @property (nonatomic) BOOL isSideOpen;
 @property (nonatomic) BOOL isNextWord;
 
@@ -559,18 +557,6 @@
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController willOpenViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
 {
     self.view.userInteractionEnabled = NO;
-    
-    SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
-    if (left.array.count == 0) {
-        if (_leftLogo == nil) {
-            _leftLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning list_logo.png"]];
-            _leftLogo.center = CGPointMake(left.view.center.x - 20, left.view.center.y);
-            [left.view addSubview:_leftLogo];
-        }
-    }else{
-        [_leftLogo removeFromSuperview];
-        _leftLogo = nil;
-    }
 }
 
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController didOpenViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
