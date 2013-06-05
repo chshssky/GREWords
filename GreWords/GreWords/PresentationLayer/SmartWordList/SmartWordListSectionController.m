@@ -38,7 +38,7 @@ static NSDictionary* typeDict = nil;
               };
         }
         _type = SmartListType_Slide;
-        self.scrollViewHeight = 270;
+        self.scrollViewHeight = iPhone5 ?  358  : 270;
     }
     return self;
 }
@@ -157,7 +157,7 @@ static NSDictionary* typeDict = nil;
         
         WordCardLayoutViewController *c = (WordCardLayoutViewController*)vc;
        
-        [c displayCard:_homoDict] ;
+        [c displayCard:_homoDict];
     }
     else if(self.type == SmartListType_Note)
     {
@@ -173,6 +173,7 @@ static NSDictionary* typeDict = nil;
     if(frame.size.height >  self.scrollViewHeight && self.type != SmartListType_Slide)
     {
         frame.size.height =  self.scrollViewHeight;
+        cell.frame  = cell.contentView.frame = frame;
         UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:cell.contentView.frame];
         scrollView.contentSize = vc.view.frame.size;
         [scrollView addSubview:vc.view];
@@ -183,11 +184,18 @@ static NSDictionary* typeDict = nil;
     }
     else
     {
-        [cell.contentView addSubview:vc.view];
-        if(self.type == SmartListType_Slide)
+        if(self.type == SmartListType_Slide || self.type == SmartListType_Homo)
         {
-            cell.frame  = cell.contentView.frame = frame;
+            
         }
+        else
+        {
+            frame.size.height =  self.scrollViewHeight;
+        }
+        
+        cell.frame  = cell.contentView.frame = frame;
+        [cell.contentView addSubview:vc.view];
+        
     }
     
     //cell.contentView.layer;
