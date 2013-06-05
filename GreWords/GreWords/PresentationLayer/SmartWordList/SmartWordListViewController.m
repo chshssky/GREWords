@@ -45,8 +45,18 @@
     [retractableControllers addObject:sectionController];
     
     [self.tableView reloadData];
-    //[self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.3];
+
     [self addButtomTexture:self.tableView];
+    
+    
+    int sectionCount = [self numberOfSectionsInTableView:self.tableView];
+    if(sectionCount > 0)
+    {
+        NSIndexPath *lastIndex = [NSIndexPath indexPathForRow:[self tableView:self.tableView numberOfRowsInSection:sectionCount - 1] - 1  inSection:sectionCount - 1];
+        
+    
+        [self.tableView scrollToRowAtIndexPath:lastIndex atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
 }
 
 
