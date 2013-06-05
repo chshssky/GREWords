@@ -4062,8 +4062,8 @@
 		E43908C7174108A000E36078 /* UIImage+Opacity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Opacity.m"; sourceTree = "<group>"; };
 		E43908CA17410C4200E36078 /* words list_pageLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "words list_pageLine.png"; sourceTree = "<group>"; };
 		E43908CB17410C4200E36078 /* words list_pageLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "words list_pageLine@2x.png"; sourceTree = "<group>"; };
-		E4412387175F212900B4288D /* iPhone_Icon_icon ios.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhone_Icon_icon ios.png"; sourceTree = "<group>"; };
-		E4412389175F212F00B4288D /* iPhoneRetina_Icon_icon ios.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iPhoneRetina_Icon_icon ios.png"; sourceTree = "<group>"; };
+		E4412387175F212900B4288D /* iPhone_Icon_icon ios.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPhone_Icon_icon ios.png"; path = "../../iPhone_Icon_icon ios.png"; sourceTree = "<group>"; };
+		E4412389175F212F00B4288D /* iPhoneRetina_Icon_icon ios.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPhoneRetina_Icon_icon ios.png"; path = "../../iPhoneRetina_Icon_icon ios.png"; sourceTree = "<group>"; };
 		E466E758173BD4CB001847D0 /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
 		E466E759173BD4CB001847D0 /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
 		E466E75A173BD4CB001847D0 /* PieChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PieChart.h; sourceTree = "<group>"; };
@@ -7559,8 +7559,6 @@
 		3F70EC7E1701CADB00327770 = {
 			isa = PBXGroup;
 			children = (
-				E4412389175F212F00B4288D /* iPhoneRetina_Icon_icon ios.png */,
-				E4412387175F212900B4288D /* iPhone_Icon_icon ios.png */,
 				3F70EC901701CADB00327770 /* GreWords */,
 				3F70EC891701CADB00327770 /* Frameworks */,
 				3F70EC881701CADB00327770 /* Products */,
@@ -8329,6 +8327,8 @@
 		E466E7A6173BD4CB001847D0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E4412389175F212F00B4288D /* iPhoneRetina_Icon_icon ios.png */,
+				E4412387175F212900B4288D /* iPhone_Icon_icon ios.png */,
 				E4E21C561743C2C4001A7EEF /* flipcard.plist */,
 				E466F4AF173BD508001847D0 /* words.plist */,
 				E466E7A7173BD4CB001847D0 /* images */,
