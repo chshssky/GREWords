@@ -52,6 +52,7 @@
 		738B76CF1742601600D66FC0 /* noCopyTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 738B76CE1742601600D66FC0 /* noCopyTextView.m */; };
 		73A80ED9174643220066DA03 /* WordCardLayoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A80ED7174643220066DA03 /* WordCardLayoutViewController.m */; };
 		73A80EDA174643220066DA03 /* WordCardLayoutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73A80ED8174643220066DA03 /* WordCardLayoutViewController.xib */; };
+		73B40BD9175F21CD0073FEC6 /* HistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 73B40BD8175F21CD0073FEC6 /* HistoryView.m */; };
 		73C66A9F175BA16D004B064D /* history backButton_clicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 73C66A83175BA16D004B064D /* history backButton_clicked.png */; };
 		73C66AA0175BA16D004B064D /* history backButton_clicked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73C66A84175BA16D004B064D /* history backButton_clicked@2x.png */; };
 		73C66AA1175BA16D004B064D /* history backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 73C66A85175BA16D004B064D /* history backButton.png */; };
@@ -3759,6 +3760,8 @@
 		73A80ED6174643220066DA03 /* WordCardLayoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordCardLayoutViewController.h; sourceTree = "<group>"; };
 		73A80ED7174643220066DA03 /* WordCardLayoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordCardLayoutViewController.m; sourceTree = "<group>"; };
 		73A80ED8174643220066DA03 /* WordCardLayoutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WordCardLayoutViewController.xib; sourceTree = "<group>"; };
+		73B40BD7175F21CD0073FEC6 /* HistoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryView.h; sourceTree = "<group>"; };
+		73B40BD8175F21CD0073FEC6 /* HistoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryView.m; sourceTree = "<group>"; };
 		73C66A83175BA16D004B064D /* history backButton_clicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "history backButton_clicked.png"; path = "History/history backButton_clicked.png"; sourceTree = "<group>"; };
 		73C66A84175BA16D004B064D /* history backButton_clicked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "history backButton_clicked@2x.png"; path = "History/history backButton_clicked@2x.png"; sourceTree = "<group>"; };
 		73C66A85175BA16D004B064D /* history backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "history backButton.png"; path = "History/history backButton.png"; sourceTree = "<group>"; };
@@ -7678,6 +7681,16 @@
 			name = WordCardLayout;
 			sourceTree = "<group>";
 		};
+		73B40BD6175F219C0073FEC6 /* LineChart */ = {
+			isa = PBXGroup;
+			children = (
+				E407AF1C175B9DDF0098F702 /* LineChartViewController.h */,
+				E407AF1D175B9DDF0098F702 /* LineChartViewController.m */,
+				E407AF1E175B9DDF0098F702 /* LineChartViewController.xib */,
+			);
+			name = LineChart;
+			sourceTree = "<group>";
+		};
 		73C66A4A175BA102004B064D /* History */ = {
 			isa = PBXGroup;
 			children = (
@@ -8140,7 +8153,6 @@
 		E466E756173BD4CB001847D0 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
-				E4FA4B71175F0CE5001A103D /* TestPage */,
 				E4CB2CED1758D28800370700 /* SearchIndex */,
 				E466E760173BD4CB001847D0 /* GreWordsViewController.h */,
 				E466E761173BD4CB001847D0 /* GreWordsViewController.m */,
@@ -8189,9 +8201,10 @@
 				E466E763173BD4CB001847D0 /* HistoryStatisticsViewController.h */,
 				E466E764173BD4CB001847D0 /* HistoryStatisticsViewController.m */,
 				E466E765173BD4CB001847D0 /* HistoryStatisticsViewController.xib */,
-				E407AF1C175B9DDF0098F702 /* LineChartViewController.h */,
-				E407AF1D175B9DDF0098F702 /* LineChartViewController.m */,
-				E407AF1E175B9DDF0098F702 /* LineChartViewController.xib */,
+				73B40BD7175F21CD0073FEC6 /* HistoryView.h */,
+				73B40BD8175F21CD0073FEC6 /* HistoryView.m */,
+				73B40BD6175F219C0073FEC6 /* LineChart */,
+				E4FA4B71175F0CE5001A103D /* TestPage */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -11856,12 +11869,13 @@
 		E4FA4B71175F0CE5001A103D /* TestPage */ = {
 			isa = PBXGroup;
 			children = (
-				E4FA4B72175F0CE5001A103D /* TestPageCard */,
 				E4FA4B76175F0CE5001A103D /* TestPageViewController.h */,
 				E4FA4B77175F0CE5001A103D /* TestPageViewController.m */,
 				E4FA4B78175F0CE5001A103D /* TestPageViewController.xib */,
+				E4FA4B72175F0CE5001A103D /* TestPageCard */,
 			);
-			path = TestPage;
+			name = TestPage;
+			path = ../TestPage;
 			sourceTree = "<group>";
 		};
 		E4FA4B72175F0CE5001A103D /* TestPageCard */ = {
@@ -15618,6 +15632,7 @@
 				E407AF1F175B9DDF0098F702 /* LineChartViewController.m in Sources */,
 				E4FA4B79175F0CE5001A103D /* TestPageCardViewController.m in Sources */,
 				E4FA4B7B175F0CE5001A103D /* TestPageViewController.m in Sources */,
+				73B40BD9175F21CD0073FEC6 /* HistoryView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
