@@ -47,6 +47,7 @@
     
     LineChartViewController *vc = [[LineChartViewController alloc] init];
     vc.type = HistoryChartReview;
+    //vc.data = [];
     [self addChildViewController:vc];
     [self.view addSubview:vc.view];
 }

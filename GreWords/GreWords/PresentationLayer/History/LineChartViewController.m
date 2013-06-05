@@ -7,6 +7,8 @@
 //
 
 #import "LineChartViewController.h"
+#import "BaseEvent.h"
+#import "NSDate-Utilities.h"
 
 @interface LineChartViewController ()
 
@@ -23,45 +25,41 @@
     return self;
 }
 
+- (void)initData
+{
+    NSMutableArray *yArr = [@[] mutableCopy];
+    NSMutableArray *xArr = [@[] mutableCopy];
+    for(BaseEvent *aEvent in self.data)
+    {
+        NSTimeInterval durtaion = aEvent.duration;
+        int value = durtaion / 60.0;
+        if(self.type == HistoryChartRecite)
+        {
+            if(value < 90) value = 90;
+            if(value > 330) value = 330;
+        }
+        else if(self.type == HistoryChartReview)
+        {
+            if(value < 20) value = 20;
+            if(value > 100) value = 100;
+        }
+        NSDate *date = aEvent.startTime;
+        NSString *str = [NSString stringWithFormat:@"%d",value];
+        [yArr addObject:str];
+        [xArr addObject:[NSString stringWithFormat:@"%d月%d",[date month],[date day]]];
+        
+    }
+    yValuesArray = yArr;
+    xValuesArray = xTitlesArray= xArr;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    horizontalLinesProperties=[[NSDictionary alloc] initWithObjectsAndKeys:@"hide",@YES, nil];
-//    verticalLinesProperties=[[NSDictionary alloc] initWithObjectsAndKeys:@"hide",@YES, nil];    
-    
-    
-    //yValuesArray=[[NSArray alloc]initWithObjects:@"90",@"100",@"200",@"300",@"300",@"150",@"100",@"90",@"300",@"330",@"300",@"90",nil];
-    
-    yValuesArray=[[NSArray alloc]initWithObjects:@"20",@"100",@"30",@"50",@"30",@"40",@"100",@"90",@"20",@"33",@"30",@"90",nil];
-    
-    xValuesArray=[[NSArray alloc]initWithObjects:@"Jan",
-                  @"Feb",
-                  @"Mar",
-                  @"Apr",
-                  @"May",
-                  @"Jun",
-                  @"Jul",
-                  @"Aug",
-                  @"Sep",
-                  @"Oct",
-                  @"Nov",
-                  @"Dec", nil];
-    
-    xTitlesArray=[[NSArray alloc]initWithObjects:@"12月12",
-                  @"12月12",
-                  @"Mar",
-                  @"Apr",
-                  @"May",
-                  @"Jun",
-                  @"Jul",
-                  @"Aug",
-                  @"Sep",
-                  @"Oct",
-                  @"Nov",
-                  @"Dec", nil];
     
     [self initBackground];
 
+    [self initData];
 }
 
 
@@ -88,6 +86,10 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    if(self.data == nil || self.data.count == 0)
+        return;
+        
+    
     CGRect rect = self.chartContainer.frame;
     rect.origin.x = -50;
     rect.origin.y = 0;

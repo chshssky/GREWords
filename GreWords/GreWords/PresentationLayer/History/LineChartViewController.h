@@ -35,5 +35,6 @@ typedef enum
 @property (strong, nonatomic) IBOutlet UIImageView *backgroundVIew;
 
 @property (nonatomic) HistoryChartType type;
+@property (nonatomic,retain)  NSArray *data;
 
 @end
