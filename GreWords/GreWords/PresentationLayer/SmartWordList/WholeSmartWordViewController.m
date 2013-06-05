@@ -131,6 +131,8 @@
         [self.view addSubview:guideImageView];
     }
 
+    
+    [self setTapToTop:0];
 }
 
 - (void)didReceiveMemoryWarning
@@ -166,6 +168,18 @@
     [blackView.layer addAnimation:animGroup_black forKey:nil];
     
     [self dismissModalViewControllerAnimated:YES];
+}
+
+
+- (void)setTapToTop:(int)index
+{
+    NSLog(@"Tap To Top:%d",index);
+    [self.pageScrollView setScrollsToTop:NO];
+    for(int i = 0; i < smartlistArr.count; i++)
+    {
+        SmartWordListViewController *vc = smartlistArr[i];
+        [vc.tableView setScrollsToTop:(i == index)];
+    }
 }
 
 #pragma mark - Smart Word List View Scroll Delegate
@@ -257,6 +271,8 @@
     }
     
     [self.pageScrollView scrollRectToVisible:CGRectMake(self.pageScrollView.frame.size.width * index, 0, self.pageScrollView.frame.size.width, self.pageScrollView.frame.size.height) animated:YES];
+    
+    [self setTapToTop:index];
 }
 
 #pragma mark - UIScrollView delegate
@@ -283,6 +299,7 @@
     int page = x / (self.pageScrollView.frame.size.width);
     
     [tabBarController setSelectedIndex:page animated:YES];
+    [self setTapToTop:page];
 }
 
 

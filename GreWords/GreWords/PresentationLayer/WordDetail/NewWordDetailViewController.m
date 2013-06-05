@@ -336,7 +336,7 @@
 }
 
 //加载单词
-- (void)loadViewWithPage:(int) page
+- (void)loadViewWithPage:(int)page
 {
     //int page = [pageNumber intValue];
     // replace the placeholder if necessary
@@ -459,7 +459,7 @@
         [self loadViewWithPage:page+1];
         ///////////////////////////////////////////////////////////////////////////////
         //显示单词内容和单词名称
-        self.WordParaphraseView = [self.viewControlArray objectAtIndex:page];
+        //self.WordParaphraseView = [self.viewControlArray objectAtIndex:page];
         self.wordLabel.text = [self.nameControlArray objectAtIndex:page];
         self.wordSoundLabel.text = [self.phoneticControlArray objectAtIndex:page];
         
@@ -560,17 +560,17 @@
 {
     self.view.userInteractionEnabled = NO;
     
-//    SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
-//    if (left.array.count == 0) {
-//        if (_leftLogo == nil) {
-//            _leftLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning list_logo.png"]];
-//            _leftLogo.center = CGPointMake(left.view.center.x - 20, left.view.center.y);
-//            [left.view addSubview:_leftLogo];
-//        }
-//    }else{
-//        [_leftLogo removeFromSuperview];
-//        _leftLogo = nil;
-//    }
+    SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
+    if (left.array.count == 0) {
+        if (_leftLogo == nil) {
+            _leftLogo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning list_logo.png"]];
+            _leftLogo.center = CGPointMake(left.view.center.x - 20, left.view.center.y);
+            [left.view addSubview:_leftLogo];
+        }
+    }else{
+        [_leftLogo removeFromSuperview];
+        _leftLogo = nil;
+    }
 }
 
 - (void)viewDeckController:(IIViewDeckController*)viewDeckController didOpenViewSide:(IIViewDeckSide)viewDeckSide animated:(BOOL)animated
