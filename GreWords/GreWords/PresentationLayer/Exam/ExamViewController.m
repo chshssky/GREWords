@@ -167,8 +167,8 @@
     
     self.timerLabel.text = [NSString stringWithFormat:@"%02d : %02d", (int)(timeInterval + 0.01)/ 60, (int)(timeInterval + 0.01) % 60];
     if ([[now laterDate:[self.startDate dateByAddingTimeInterval:[TaskStatus instance].duration]] isEqualToDate:now]) {
-//        NSLog(@"!!!");
-//        [self examResultShow];
+
+        [self examResultShow];
     }
 }
 
@@ -1073,7 +1073,6 @@
 
 - (void)examCompleted
 {
-    
     GreWordsViewController *superController =  (GreWordsViewController *)[self presentingViewController];
     
     UIImageView *blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
