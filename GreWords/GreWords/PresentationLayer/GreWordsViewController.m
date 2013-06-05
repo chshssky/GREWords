@@ -175,15 +175,7 @@
     [super viewDidUnload];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    
-}
 
-- (void)viewDidDisappear:(BOOL)animated
-{
-    
-}
 
 
 - (void)viewDidLayoutSubviews
@@ -441,6 +433,9 @@
     [self.view insertSubview:dashboard.view atIndex:2];
     [dashboard mainViewGen];
     
+    
+    dashboard.textView.alpha = 0.0f;
+    dashboard.startTextView.alpha = 0.0f;
     [UIView animateWithDuration:0.5f animations:^{
         self.titleView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
         self.slideBarView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));

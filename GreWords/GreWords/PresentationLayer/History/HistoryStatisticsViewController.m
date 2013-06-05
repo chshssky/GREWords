@@ -65,6 +65,8 @@
     [self setProgressText:nil];
     [super viewDidUnload];
 }
+
+#pragma mark - exitButton
 - (IBAction)exitPressed:(id)sender {
     GreWordsViewController *superController =  (GreWordsViewController *)[self presentingViewController];
     
@@ -88,6 +90,8 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+
+#pragma mark - progressBar
 - (void)initialFourPoint
 {
     _firstPoint.x = 77.0f;
@@ -221,6 +225,8 @@
         [self checkProgressButtonShouldMoveToWhichPoint];
     }
 }
+
+
 - (IBAction)progressButtonClicked:(id)sender {
     NSLog(@"progressButtonClicked");
 }
