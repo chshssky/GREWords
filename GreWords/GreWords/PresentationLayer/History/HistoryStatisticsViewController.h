@@ -11,4 +11,6 @@
 @interface HistoryStatisticsViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *exitButton;
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 @end
