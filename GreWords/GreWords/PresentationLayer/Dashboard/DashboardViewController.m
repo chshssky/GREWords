@@ -142,12 +142,6 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     _textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     [self.view addSubview:_textView];
     
-    _startTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_startTask.png"]];
-    _startTextView.center = CGPointMake(self.centerPoint.x, self.centerPoint.y+45);
-    _startTextView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    _startTextView.alpha = 0.6;
-    [self.view addSubview:_startTextView];
-    
     _wordNumberTest = [[FXLabel alloc] initWithFrame:CGRectMake(20, 10, 120, 70)];
     _wordNumberTest.text =  [NSString stringWithFormat:@"%d",0];
     _wordNumberTest.textColor = [UIColor colorWithRed:101/255.00 green:116/255.00 blue:68/255.00 alpha:1];
@@ -159,13 +153,15 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     _wordNumberTest.textAlignment = UITextAlignmentRight;
     [self.view addSubview:_wordNumberTest];
     
-    UIButton *bigButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    [bigButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];
-    bigButton.center = self.centerPoint;
-    bigButton.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    bigButton.frame =  circlePointView.frame;
-    [self.view addSubview:bigButton];
+    _bigButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_bigButton setImage:[UIImage imageNamed:@"Main menu_text_startTask.png"] forState:UIControlStateNormal];
+    [_bigButton setImage:[UIImage imageNamed:@"Main menu_text_startTask_clicked.png"] forState:UIControlStateHighlighted];
+    [_bigButton addTarget:self action:@selector(buttonPressed) forControlEvents:UIControlEventTouchUpInside];
+    _bigButton.center = self.centerPoint;
+    _bigButton.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    [_bigButton sizeToFit];
+    _bigButton.center = CGPointMake(self.centerPoint.x, self.centerPoint.y+45);
+    [self.view addSubview:_bigButton];
 }
 
 - (void)mainViewGen
@@ -175,7 +171,7 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     [self.pieChartLeft setAnimationSpeed:1];
     FimageView.alpha = 1;
     _textView.alpha = 1;
-    _startTextView.alpha = 1;
+    _bigButton.alpha = 1;
 }
 
 - (void)wordDetailIndicatorGen
@@ -185,7 +181,7 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     [self.pieChartLeft setAnimationSpeed:0.08];
     FimageView.alpha = 0;
     _textView.alpha = 0;
-    _startTextView.alpha = 0;
+    _bigButton.alpha = 0;
 }
 
 - (void)minusData

@@ -20,7 +20,7 @@
     UIImageView *circlePointView;
     UIImageView *FimageView;
 }
-@property (nonatomic, strong)UIImageView *startTextView;
+@property (nonatomic, strong)UIButton *bigButton;
 @property (nonatomic, strong)UIImageView *textView;
 @property (nonatomic, strong)FXLabel *wordNumberTest;
 

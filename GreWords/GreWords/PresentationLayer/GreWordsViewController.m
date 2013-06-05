@@ -316,7 +316,7 @@
         self.slideBarStatusView.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.backgroundImage.alpha = 0;
         dashboard.textView.alpha = 0;
-        dashboard.startTextView.alpha = 0;
+        dashboard.bigButton.alpha = 0;
         dashboard.wordNumberTest.transform = CGAffineTransformMakeTranslation(-15, 0);
         if (iPhone5) {
             dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -252));
@@ -435,7 +435,7 @@
     
     
     dashboard.textView.alpha = 0.0f;
-    dashboard.startTextView.alpha = 0.0f;
+    dashboard.bigButton.alpha = 0.0f;
     [UIView animateWithDuration:0.5f animations:^{
         self.titleView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
         self.slideBarView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
@@ -445,7 +445,7 @@
         self.menu.transform = CGAffineTransformMakeTranslation(0, 0);
         self.backgroundImage.alpha = 1.0f;
         dashboard.textView.alpha = 1.0f;
-        dashboard.startTextView.alpha = 1.0f;
+        dashboard.bigButton.alpha = 1.0f;
         dashboard.wordNumberTest.transform = CGAffineTransformMakeTranslation(0, 0);
     }];
     
