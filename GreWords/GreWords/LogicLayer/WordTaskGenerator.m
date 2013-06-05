@@ -889,6 +889,7 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
     NSString *level = [examInfo objectForKey:@"level"];
     
     NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:[self getRandomArray]];
+    
     if (newArray.count < 30) {
         return nil;
     }

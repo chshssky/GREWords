@@ -160,7 +160,7 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     _bigButton.center = self.centerPoint;
     _bigButton.layer.anchorPoint = CGPointMake(0.5, 0.5);
     [_bigButton sizeToFit];
-    _bigButton.center = CGPointMake(self.centerPoint.x, self.centerPoint.y+45);
+    _bigButton.center = CGPointMake(self.centerPoint.x, self.centerPoint.y);
     [self.view addSubview:_bigButton];
 }
 
