@@ -57,6 +57,8 @@
     
         [self.tableView scrollToRowAtIndexPath:lastIndex atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
+    
+    [self updateNoContentIndicator];
 }
 
 
@@ -139,6 +141,7 @@
         [self addSearchIndex];
     }
     
+    [self updateNoContentIndicator];
 }
 
 - (void)didReceiveMemoryWarning
@@ -217,6 +220,25 @@
     [super viewDidUnload];
 }
 
+- (void)updateNoContentIndicator
+{
+    if(self.array.count == 0)
+    {
+        noContentIndicator = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning list_logo.png"]];
+        
+        CGRect rect = noContentIndicator.frame;
+        rect.origin.x = self.type == SmartListType_Slide ? 5 : 50;
+        rect.origin.y = 100;
+        noContentIndicator.frame = rect;
+        
+        [self.tableView addSubview:noContentIndicator];
+
+    }
+    else
+    {
+        [noContentIndicator removeFromSuperview];
+    }
+}
 
 #pragma mark table view delegate
 
@@ -575,6 +597,7 @@
     //[self.tableView insertRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationTop];
     [self.tableView reloadData];
     [self addButtomTexture:self.tableView];
+    [self updateNoContentIndicator];
 }
 
 - (void)removeNoteItem:(NSNotification *)notification
@@ -591,6 +614,7 @@
     //[self.tableView deleteRowsAtIndexPaths:@[path] withRowAnimation:UITableViewRowAnimationTop];
     [self.tableView reloadData];
     [self addButtomTexture:self.tableView];
+    [self updateNoContentIndicator];
 }
 
 

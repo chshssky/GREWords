@@ -37,6 +37,8 @@
     
     BOOL isSearching;
     
+    UIImageView *noContentIndicator;
+    
     GreTableViewSearchIndexViewController *searchIndex;
 }
 
