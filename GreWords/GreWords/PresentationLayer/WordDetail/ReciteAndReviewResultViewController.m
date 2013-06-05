@@ -274,5 +274,18 @@
     [_cardController.view.layer addAnimation:rotateAnimation2 forKey:nil];
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    if([[NSString stringWithFormat:@"%@",[otherGestureRecognizer class]] isEqualToString:@"UIPanGestureRecognizer"]) {
+        return YES;
+    }
+    return NO;
+}
+
+- (void)handleSwipeUp:(UISwipeGestureRecognizer*)recognizer
+{
+    [self removeReciteAndReviewResultCard];
+}
+
 
 @end
