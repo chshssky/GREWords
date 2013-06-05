@@ -10,6 +10,8 @@
 #import "GreWordsViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "LineChartViewController.h"
+#import "TestPageViewController.h"
+#import "BaseEvent.h"
 
 @interface HistoryStatisticsViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *greenCover;
@@ -45,11 +47,32 @@
     [self setGesture];
     
     
-    LineChartViewController *vc = [[LineChartViewController alloc] init];
-    vc.type = HistoryChartReview;
-    //vc.data = [];
-    [self addChildViewController:vc];
-    [self.view addSubview:vc.view];
+    //添加卡片，设置卡片数量
+    TestPageViewController *testPageViewController = [[TestPageViewController alloc] init];
+    testPageViewController.view.center = CGPointMake(self.view.center.x, self.view.center.y+57);
+    testPageViewController.upCardNumber = 10;
+    [self addChildViewController:testPageViewController];
+    [self.view addSubview:testPageViewController.view];
+    
+    
+//    LineChartViewController *vc = [[LineChartViewController alloc] init];
+//    vc.type = HistoryChartReview;
+//    
+//    BaseEvent *r1 = [[BaseEvent alloc] init];
+//    r1.duration = 20 * 60;
+//    r1.startTime = [NSDate new];
+//    
+//    BaseEvent *r2 = [[BaseEvent alloc] init];
+//    r2.duration = 120 * 60;
+//    r2.startTime = [NSDate new];
+//    vc.data = @[r1,r2];
+//    
+//    BaseEvent *r3 = [[BaseEvent alloc] init];
+//    r3.duration = 60 * 60;
+//    r3.startTime = [NSDate new];
+//    vc.data = @[r1,r2,r3];
+//    [self addChildViewController:vc];
+//    [self.view addSubview:vc.view];
 }
 
 - (void)didReceiveMemoryWarning

@@ -41,7 +41,14 @@
         else if(self.type == HistoryChartReview)
         {
             if(value < 20) value = 20;
-            if(value > 100) value = 100;
+            if(iPhone5)
+            {
+                if(value > 100) value = 100;
+            }
+            else
+            {
+                if(value > 110) value = 110;
+            }
         }
         NSDate *date = aEvent.startTime;
         NSString *str = [NSString stringWithFormat:@"%d",value];
@@ -120,7 +127,7 @@
         }
         else
         {
-            mLineGraph.scaleY = 1.0;
+            mLineGraph.scaleY = 1.05;
         }
     }
     else
@@ -129,12 +136,12 @@
         mLineGraph.minimumValue = 20;
         if(iPhone5)
         {
-            mLineGraph.scaleY = 4.1;
+            mLineGraph.scaleY = 4.15;
         }
         else
         {
             mLineGraph.maxValue = 110;
-            mLineGraph.scaleY = 2.7;
+            mLineGraph.scaleY = 2.87;
         }
     }
     

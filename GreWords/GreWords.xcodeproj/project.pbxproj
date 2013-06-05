@@ -11,7 +11,6 @@
 		3F70EC8D1701CADB00327770 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F70EC8C1701CADB00327770 /* Foundation.framework */; };
 		3F70EC8F1701CADB00327770 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F70EC8E1701CADB00327770 /* CoreGraphics.framework */; };
 		3FA4846C171411D8003E88A6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA4846B171411D8003E88A6 /* CoreData.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		3FA4848717142BB3003E88A6 /* GreWords-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848517142BB3003E88A6 /* GreWords-Info.plist */; };
 		3FA4848A17142BC0003E88A6 /* GreWordsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA4848917142BC0003E88A6 /* GreWordsAppDelegate.m */; };
 		3FA4848C17142BD4003E88A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA4848B17142BD4003E88A6 /* main.m */; };
 		3FA4849117142BF9003E88A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848D17142BF9003E88A6 /* InfoPlist.strings */; };
@@ -35,11 +34,6 @@
 		7315CDC4175DD1A500B22F07 /* history_slideBar_text3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7315CDBC175DD1A400B22F07 /* history_slideBar_text3@2x.png */; };
 		7315CDC5175DD1A500B22F07 /* history_slideBar_text4.png in Resources */ = {isa = PBXBuildFile; fileRef = 7315CDBD175DD1A400B22F07 /* history_slideBar_text4.png */; };
 		7315CDC6175DD1A500B22F07 /* history_slideBar_text4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7315CDBE175DD1A400B22F07 /* history_slideBar_text4@2x.png */; };
-		7315CDCA175DD74300B22F07 /* TestPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7315CDC8175DD74300B22F07 /* TestPageViewController.m */; };
-		7315CDCB175DD74300B22F07 /* TestPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7315CDC9175DD74300B22F07 /* TestPageViewController.xib */; };
-		7315CDD0175DE30400B22F07 /* TestPageCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7315CDCE175DE30400B22F07 /* TestPageCardViewController.m */; };
-		7315CDD1175DE30400B22F07 /* TestPageCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7315CDCF175DE30400B22F07 /* TestPageCardViewController.xib */; };
-		7315CDD4175E2CEF00B22F07 /* MyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7315CDD3175E2CEE00B22F07 /* MyView.m */; };
 		73191B061759059100E7E6CA /* learning list_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 73191B041759059100E7E6CA /* learning list_logo.png */; };
 		73191B071759059100E7E6CA /* learning list_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73191B051759059100E7E6CA /* learning list_logo@2x.png */; };
 		7324846C17524D860058A6DD /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7324846A17524D860058A6DD /* NoteViewController.m */; };
@@ -3700,6 +3694,10 @@
 		E4D1B4CE1758F38B000796DF /* words list_scrollBar.png in Resources */ = {isa = PBXBuildFile; fileRef = E4D1B4CA1758F38B000796DF /* words list_scrollBar.png */; };
 		E4D1B4CF1758F38B000796DF /* words list_scrollBar_Pressdown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4D1B4CB1758F38B000796DF /* words list_scrollBar_Pressdown@2x.png */; };
 		E4D1B4D01758F38B000796DF /* words list_scrollBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4D1B4CC1758F38B000796DF /* words list_scrollBar@2x.png */; };
+		E4FA4B79175F0CE5001A103D /* TestPageCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FA4B74175F0CE5001A103D /* TestPageCardViewController.m */; };
+		E4FA4B7A175F0CE5001A103D /* TestPageCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4FA4B75175F0CE5001A103D /* TestPageCardViewController.xib */; };
+		E4FA4B7B175F0CE5001A103D /* TestPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FA4B77175F0CE5001A103D /* TestPageViewController.m */; };
+		E4FA4B7C175F0CE5001A103D /* TestPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4FA4B78175F0CE5001A103D /* TestPageViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -3739,14 +3737,6 @@
 		7315CDBC175DD1A400B22F07 /* history_slideBar_text3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "history_slideBar_text3@2x.png"; path = "History/history_slideBar_text3@2x.png"; sourceTree = "<group>"; };
 		7315CDBD175DD1A400B22F07 /* history_slideBar_text4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = history_slideBar_text4.png; path = History/history_slideBar_text4.png; sourceTree = "<group>"; };
 		7315CDBE175DD1A400B22F07 /* history_slideBar_text4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "history_slideBar_text4@2x.png"; path = "History/history_slideBar_text4@2x.png"; sourceTree = "<group>"; };
-		7315CDC7175DD74300B22F07 /* TestPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestPageViewController.h; path = TestPage/TestPageViewController.h; sourceTree = "<group>"; };
-		7315CDC8175DD74300B22F07 /* TestPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestPageViewController.m; path = TestPage/TestPageViewController.m; sourceTree = "<group>"; };
-		7315CDC9175DD74300B22F07 /* TestPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TestPageViewController.xib; path = TestPage/TestPageViewController.xib; sourceTree = "<group>"; };
-		7315CDCD175DE30400B22F07 /* TestPageCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestPageCardViewController.h; path = TestPage/TestPageCard/TestPageCardViewController.h; sourceTree = "<group>"; };
-		7315CDCE175DE30400B22F07 /* TestPageCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestPageCardViewController.m; path = TestPage/TestPageCard/TestPageCardViewController.m; sourceTree = "<group>"; };
-		7315CDCF175DE30400B22F07 /* TestPageCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TestPageCardViewController.xib; path = TestPage/TestPageCard/TestPageCardViewController.xib; sourceTree = "<group>"; };
-		7315CDD2175E2CEE00B22F07 /* MyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyView.h; sourceTree = "<group>"; };
-		7315CDD3175E2CEE00B22F07 /* MyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyView.m; sourceTree = "<group>"; };
 		73191B041759059100E7E6CA /* learning list_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning list_logo.png"; sourceTree = "<group>"; };
 		73191B051759059100E7E6CA /* learning list_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning list_logo@2x.png"; sourceTree = "<group>"; };
 		7324846917524D860058A6DD /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteViewController.h; path = PresentationLayer/Note/NoteViewController.h; sourceTree = "<group>"; };
@@ -7528,6 +7518,12 @@
 		E4D1B4CB1758F38B000796DF /* words list_scrollBar_Pressdown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "words list_scrollBar_Pressdown@2x.png"; sourceTree = "<group>"; };
 		E4D1B4CC1758F38B000796DF /* words list_scrollBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "words list_scrollBar@2x.png"; sourceTree = "<group>"; };
 		E4E21C561743C2C4001A7EEF /* flipcard.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = flipcard.plist; sourceTree = "<group>"; };
+		E4FA4B73175F0CE5001A103D /* TestPageCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPageCardViewController.h; sourceTree = "<group>"; };
+		E4FA4B74175F0CE5001A103D /* TestPageCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPageCardViewController.m; sourceTree = "<group>"; };
+		E4FA4B75175F0CE5001A103D /* TestPageCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestPageCardViewController.xib; sourceTree = "<group>"; };
+		E4FA4B76175F0CE5001A103D /* TestPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPageViewController.h; sourceTree = "<group>"; };
+		E4FA4B77175F0CE5001A103D /* TestPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPageViewController.m; sourceTree = "<group>"; };
+		E4FA4B78175F0CE5001A103D /* TestPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestPageViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -7614,28 +7610,6 @@
 				3FA4848617142BB3003E88A6 /* GreWords-Prefix.pch */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		7315CDAD175DCF4E00B22F07 /* TestPage */ = {
-			isa = PBXGroup;
-			children = (
-				7315CDC7175DD74300B22F07 /* TestPageViewController.h */,
-				7315CDC8175DD74300B22F07 /* TestPageViewController.m */,
-				7315CDC9175DD74300B22F07 /* TestPageViewController.xib */,
-				7315CDCC175DE2AE00B22F07 /* TestPageCard */,
-			);
-			name = TestPage;
-			path = ..;
-			sourceTree = "<group>";
-		};
-		7315CDCC175DE2AE00B22F07 /* TestPageCard */ = {
-			isa = PBXGroup;
-			children = (
-				7315CDCD175DE30400B22F07 /* TestPageCardViewController.h */,
-				7315CDCE175DE30400B22F07 /* TestPageCardViewController.m */,
-				7315CDCF175DE30400B22F07 /* TestPageCardViewController.xib */,
-			);
-			name = TestPageCard;
 			sourceTree = "<group>";
 		};
 		7324846817524CA30058A6DD /* Note */ = {
@@ -8160,6 +8134,7 @@
 		E466E756173BD4CB001847D0 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
+				E4FA4B71175F0CE5001A103D /* TestPage */,
 				E4CB2CED1758D28800370700 /* SearchIndex */,
 				E466E760173BD4CB001847D0 /* GreWordsViewController.h */,
 				E466E761173BD4CB001847D0 /* GreWordsViewController.m */,
@@ -11872,6 +11847,27 @@
 			name = SearchIndex;
 			sourceTree = "<group>";
 		};
+		E4FA4B71175F0CE5001A103D /* TestPage */ = {
+			isa = PBXGroup;
+			children = (
+				E4FA4B72175F0CE5001A103D /* TestPageCard */,
+				E4FA4B76175F0CE5001A103D /* TestPageViewController.h */,
+				E4FA4B77175F0CE5001A103D /* TestPageViewController.m */,
+				E4FA4B78175F0CE5001A103D /* TestPageViewController.xib */,
+			);
+			path = TestPage;
+			sourceTree = "<group>";
+		};
+		E4FA4B72175F0CE5001A103D /* TestPageCard */ = {
+			isa = PBXGroup;
+			children = (
+				E4FA4B73175F0CE5001A103D /* TestPageCardViewController.h */,
+				E4FA4B74175F0CE5001A103D /* TestPageCardViewController.m */,
+				E4FA4B75175F0CE5001A103D /* TestPageCardViewController.xib */,
+			);
+			path = TestPageCard;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -11926,7 +11922,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				732B748D17449E1400612277 /* flipcard.plist in Resources */,
-				3FA4848717142BB3003E88A6 /* GreWords-Info.plist in Resources */,
 				3FA4849117142BF9003E88A6 /* InfoPlist.strings in Resources */,
 				3FA4849217142BF9003E88A6 /* MainStoryboard.storyboard in Resources */,
 				E466F4CA173BD508001847D0 /* ExamViewController.xib in Resources */,
@@ -15487,8 +15482,8 @@
 				7315CDC4175DD1A500B22F07 /* history_slideBar_text3@2x.png in Resources */,
 				7315CDC5175DD1A500B22F07 /* history_slideBar_text4.png in Resources */,
 				7315CDC6175DD1A500B22F07 /* history_slideBar_text4@2x.png in Resources */,
-				7315CDCB175DD74300B22F07 /* TestPageViewController.xib in Resources */,
-				7315CDD1175DE30400B22F07 /* TestPageCardViewController.xib in Resources */,
+				E4FA4B7A175F0CE5001A103D /* TestPageCardViewController.xib in Resources */,
+				E4FA4B7C175F0CE5001A103D /* TestPageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15613,6 +15608,8 @@
 				E407AF1A175B9D7A0098F702 /* MIMWallGraph.m in Sources */,
 				E407AF1B175B9D7A0098F702 /* MultiWallLongGraph.m in Sources */,
 				E407AF1F175B9DDF0098F702 /* LineChartViewController.m in Sources */,
+				E4FA4B79175F0CE5001A103D /* TestPageCardViewController.m in Sources */,
+				E4FA4B7B175F0CE5001A103D /* TestPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
