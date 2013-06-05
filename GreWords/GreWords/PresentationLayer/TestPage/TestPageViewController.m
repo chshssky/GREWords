@@ -91,6 +91,7 @@
 - (void)loadUpCardContentWithPage:(int)index
 {
     NSLog(@"loadUpCardContent");
+ 
 //    @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 //    @property (weak, nonatomic) IBOutlet UILabel *sumNumberLabel;
 //    @property (weak, nonatomic) IBOutlet UILabel *rightNumberLabel;
