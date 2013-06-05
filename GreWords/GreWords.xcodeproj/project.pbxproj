@@ -65,8 +65,10 @@
 		73837DE8175F8EE00012FC7E /* ExamResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73837DE6175F8EE00012FC7E /* ExamResultViewController.xib */; };
 		73837DF1175F94130012FC7E /* ExamResultCardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73837DEF175F94120012FC7E /* ExamResultCardController.m */; };
 		73837DF2175F94130012FC7E /* ExamResultCardController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73837DF0175F94130012FC7E /* ExamResultCardController.xib */; };
-		73837DF6175F96C80012FC7E /* ReciteAndReviewResultCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73837DF4175F96C80012FC7E /* ReciteAndReviewResultCardViewController.m */; };
-		73837DF7175F96C80012FC7E /* ReciteAndReviewResultCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73837DF5175F96C80012FC7E /* ReciteAndReviewResultCardViewController.xib */; };
+		73837DF6175F96C80012FC7E /* ReciteAndReviewResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73837DF4175F96C80012FC7E /* ReciteAndReviewResultViewController.m */; };
+		73837DF7175F96C80012FC7E /* ReciteAndReviewResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73837DF5175F96C80012FC7E /* ReciteAndReviewResultViewController.xib */; };
+		73837DFB175F99EE0012FC7E /* ReciteAndReviewResultCardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73837DF9175F99ED0012FC7E /* ReciteAndReviewResultCardController.m */; };
+		73837DFC175F99EE0012FC7E /* ReciteAndReviewResultCardController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73837DFA175F99ED0012FC7E /* ReciteAndReviewResultCardController.xib */; };
 		738B76C517423D6A00D66FC0 /* learning_noteDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 738B76C117423D6A00D66FC0 /* learning_noteDown.png */; };
 		738B76C617423D6A00D66FC0 /* learning_noteDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 738B76C217423D6A00D66FC0 /* learning_noteDown@2x.png */; };
 		738B76C717423D6A00D66FC0 /* learning_noteUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 738B76C317423D6A00D66FC0 /* learning_noteUp.png */; };
@@ -3800,9 +3802,12 @@
 		73837DEE175F94120012FC7E /* ExamResultCardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExamResultCardController.h; sourceTree = "<group>"; };
 		73837DEF175F94120012FC7E /* ExamResultCardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExamResultCardController.m; sourceTree = "<group>"; };
 		73837DF0175F94130012FC7E /* ExamResultCardController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExamResultCardController.xib; sourceTree = "<group>"; };
-		73837DF3175F96C80012FC7E /* ReciteAndReviewResultCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReciteAndReviewResultCardViewController.h; sourceTree = "<group>"; };
-		73837DF4175F96C80012FC7E /* ReciteAndReviewResultCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReciteAndReviewResultCardViewController.m; sourceTree = "<group>"; };
-		73837DF5175F96C80012FC7E /* ReciteAndReviewResultCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReciteAndReviewResultCardViewController.xib; sourceTree = "<group>"; };
+		73837DF3175F96C80012FC7E /* ReciteAndReviewResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReciteAndReviewResultViewController.h; sourceTree = "<group>"; };
+		73837DF4175F96C80012FC7E /* ReciteAndReviewResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReciteAndReviewResultViewController.m; sourceTree = "<group>"; };
+		73837DF5175F96C80012FC7E /* ReciteAndReviewResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReciteAndReviewResultViewController.xib; sourceTree = "<group>"; };
+		73837DF8175F99ED0012FC7E /* ReciteAndReviewResultCardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReciteAndReviewResultCardController.h; sourceTree = "<group>"; };
+		73837DF9175F99ED0012FC7E /* ReciteAndReviewResultCardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReciteAndReviewResultCardController.m; sourceTree = "<group>"; };
+		73837DFA175F99ED0012FC7E /* ReciteAndReviewResultCardController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReciteAndReviewResultCardController.xib; sourceTree = "<group>"; };
 		738B76C117423D6A00D66FC0 /* learning_noteDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = learning_noteDown.png; sourceTree = "<group>"; };
 		738B76C217423D6A00D66FC0 /* learning_noteDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_noteDown@2x.png"; sourceTree = "<group>"; };
 		738B76C317423D6A00D66FC0 /* learning_noteUp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = learning_noteUp.png; sourceTree = "<group>"; };
@@ -8336,9 +8341,12 @@
 				E466E77E173BD4CB001847D0 /* WordDetailViewController.m */,
 				E466E77F173BD4CB001847D0 /* WordDetailViewController.xib */,
 				E466E780173BD4CB001847D0 /* WordDetailViewControllerProtocol.h */,
-				73837DF3175F96C80012FC7E /* ReciteAndReviewResultCardViewController.h */,
-				73837DF4175F96C80012FC7E /* ReciteAndReviewResultCardViewController.m */,
-				73837DF5175F96C80012FC7E /* ReciteAndReviewResultCardViewController.xib */,
+				73837DF3175F96C80012FC7E /* ReciteAndReviewResultViewController.h */,
+				73837DF4175F96C80012FC7E /* ReciteAndReviewResultViewController.m */,
+				73837DF5175F96C80012FC7E /* ReciteAndReviewResultViewController.xib */,
+				73837DF8175F99ED0012FC7E /* ReciteAndReviewResultCardController.h */,
+				73837DF9175F99ED0012FC7E /* ReciteAndReviewResultCardController.m */,
+				73837DFA175F99ED0012FC7E /* ReciteAndReviewResultCardController.xib */,
 				73A80EDB1746452E0066DA03 /* WordLayout */,
 				73A80EDC174645530066DA03 /* WordLeftLayout */,
 				73A80EDD174645720066DA03 /* WordNoteLayout */,
@@ -15616,7 +15624,8 @@
 				73B40BE5175F4BC70073FEC6 /* Main menu_text_reciteWord@2x.png in Resources */,
 				73837DE8175F8EE00012FC7E /* ExamResultViewController.xib in Resources */,
 				73837DF2175F94130012FC7E /* ExamResultCardController.xib in Resources */,
-				73837DF7175F96C80012FC7E /* ReciteAndReviewResultCardViewController.xib in Resources */,
+				73837DF7175F96C80012FC7E /* ReciteAndReviewResultViewController.xib in Resources */,
+				73837DFC175F99EE0012FC7E /* ReciteAndReviewResultCardController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15746,7 +15755,8 @@
 				73B40BD9175F21CD0073FEC6 /* HistoryView.m in Sources */,
 				73837DE7175F8EE00012FC7E /* ExamResultViewController.m in Sources */,
 				73837DF1175F94130012FC7E /* ExamResultCardController.m in Sources */,
-				73837DF6175F96C80012FC7E /* ReciteAndReviewResultCardViewController.m in Sources */,
+				73837DF6175F96C80012FC7E /* ReciteAndReviewResultViewController.m in Sources */,
+				73837DFB175F99EE0012FC7E /* ReciteAndReviewResultCardController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
