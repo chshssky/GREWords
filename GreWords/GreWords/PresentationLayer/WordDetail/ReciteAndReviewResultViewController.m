@@ -16,7 +16,6 @@
 @property (strong, nonatomic) UIImageView *blackImageView;
 @property (strong, nonatomic) UIImageView *blurImageView;
 
-@property (strong, nonatomic) UISwipeGestureRecognizer* cardRecognizer;
 @property (strong, nonatomic) ReciteAndReviewResultCardController *cardController;
 @property (nonatomic) float screenHeight;
 @property (nonatomic) float screenWidth;
@@ -37,12 +36,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    _cardRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeUp:)];
-    _cardRecognizer.delegate = self;
-    _cardRecognizer.direction = UISwipeGestureRecognizerDirectionUp;
-    
-    [self.view addGestureRecognizer:_cardRecognizer];
     if (iPhone5) {
         self.screenHeight = 568.0f;
         self.screenWidth = 320.0f;
@@ -272,19 +265,6 @@
     rotateAnimation2.removedOnCompletion = NO;
     rotateAnimation2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     [_cardController.view.layer addAnimation:rotateAnimation2 forKey:nil];
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
-{
-    if([[NSString stringWithFormat:@"%@",[otherGestureRecognizer class]] isEqualToString:@"UIPanGestureRecognizer"]) {
-        return YES;
-    }
-    return NO;
-}
-
-- (void)handleSwipeUp:(UISwipeGestureRecognizer*)recognizer
-{
-    [self removeReciteAndReviewResultCard];
 }
 
 
