@@ -1,18 +1,18 @@
 //
-//  ReciteAndReviewResultCardViewController.m
+//  ReciteAndReviewResultCardController.m
 //  GreWords
 //
-//  Created by xsource on 13-6-5.
+//  Created by xsource on 13-6-6.
 //  Copyright (c) 2013年 Cui Hao. All rights reserved.
 //
 
-#import "ReciteAndReviewResultCardViewController.h"
+#import "ReciteAndReviewResultCardController.h"
 
-@interface ReciteAndReviewResultCardViewController ()
+@interface ReciteAndReviewResultCardController ()
 
 @end
 
-@implementation ReciteAndReviewResultCardViewController
+@implementation ReciteAndReviewResultCardController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
