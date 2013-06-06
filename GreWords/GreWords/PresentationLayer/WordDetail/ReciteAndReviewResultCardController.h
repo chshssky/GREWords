@@ -7,7 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseEvent.h"
+#import "NewWordEvent.h"
+#import "ReviewEvent.h"
 
 @interface ReciteAndReviewResultCardController : UIViewController
+
+@property (retain,nonatomic) BaseEvent *event;
+@property (weak, nonatomic) IBOutlet UILabel *countLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *percentLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
+
+- (IBAction)homePressed:(id)sender;
 
 @end

@@ -989,7 +989,11 @@
         
         //_note.delegate = self;
     }
-    [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withOption:@"review"];
+    
+#warning review complete event set here
+    ReviewEvent *reviewEvent = [[ReviewEvent alloc] init];
+    
+    [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withEvent:reviewEvent];
     [_reciteAndReviewResultCardViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_reciteAndReviewResultCardViewController.view];
 }
@@ -1006,7 +1010,9 @@
         
         //_note.delegate = self;
     }
-    [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withOption:@"recite"];
+#warning NewWordEvent complete event set here
+    NewWordEvent *newwordEvent = [[NewWordEvent alloc] init];
+    [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withEvent:newwordEvent];
     [_reciteAndReviewResultCardViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_reciteAndReviewResultCardViewController.view];
     

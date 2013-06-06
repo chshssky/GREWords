@@ -52,11 +52,11 @@
 }
 
 
-- (void)addReciteAndReviewResultCardAt:(UIViewController *)buttomController withOption:(NSString *)option
+- (void)addReciteAndReviewResultCardAt:(UIViewController *)buttomController withEvent:(BaseEvent*)event;
 {
     [self addBlurBackground:buttomController];
     [self addBlackToBackground];
-    [self addReciteAndReviewResultCardAnimationWithOption:option];
+    [self addReciteAndReviewResultCardAnimationWithEvent:event];
 }
 
 - (void)removeReciteAndReviewResultCard
@@ -129,14 +129,11 @@
 }
 
 
-- (void)addReciteAndReviewResultCardAnimationWithOption:(NSString *)option
+- (void)addReciteAndReviewResultCardAnimationWithEvent:(BaseEvent*)event
 {
     if (_cardController == nil) {
-        if ([option isEqualToString:@"recite"]) {
-            _cardController = [[ReciteAndReviewResultCardController alloc] init];
-        }else {
-            _cardController = [[ReciteAndReviewResultCardController alloc] init];
-        }
+        _cardController = [[ReciteAndReviewResultCardController alloc] init];
+        _cardController.event = event;
     }
     
     _cardController.view.center = CGPointMake(_screenWidth/2, _screenHeight/2-_cardController.view.frame.size.height);

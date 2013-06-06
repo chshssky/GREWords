@@ -10,7 +10,7 @@
 @class BaseEvent;
 
 @interface ReciteAndReviewResultViewController : UIViewController
-- (void)addReciteAndReviewResultCardAt:(UIViewController *)buttomController withOption:(NSString *)option;
+- (void)addReciteAndReviewResultCardAt:(UIViewController *)buttomController withEvent:(BaseEvent*)evet;
 - (void)removeReciteAndReviewResultCard;
 
 @end
