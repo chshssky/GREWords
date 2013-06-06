@@ -10,14 +10,16 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage+ColorImage.h"
 #import "UIImage+StackBlur.h"
-#import "ReciteAndReviewResultCardController.h"
+#import "ReciteAndReviewResultViewController.h"
+#import "ReviewEvent.h"
+#import "NewWordEvent.h"
 
 @interface ReciteAndReviewResultViewController () <UIGestureRecognizerDelegate>
 @property (strong, nonatomic) UIImageView *blackImageView;
 @property (strong, nonatomic) UIImageView *blurImageView;
 
 @property (strong, nonatomic) UISwipeGestureRecognizer* cardRecognizer;
-@property (strong, nonatomic) ReciteAndReviewResultCardController *cardController;
+@property (strong, nonatomic) ReciteAndReviewResultViewController *cardController;
 @property (nonatomic) float screenHeight;
 @property (nonatomic) float screenWidth;
 @end
@@ -33,16 +35,27 @@
     return self;
 }
 
+
+- (void)configContent
+{
+    if([self.event isMemberOfClass: [NewWordEvent class]])
+    {
+        self.backgroundView.image = [UIImage imageNamed:@"learning_reciteResult.png"];
+    }
+    else
+    {
+        self.backgroundView.image = [UIImage imageNamed:@"learning_reviewResult.png"];
+    }
+    self.countLabel.text = [NSString stringWithFormat:@"%d个",self.event.totalWordCount];
+    self.timeLabel.text = [NSString stringWithFormat:@"%d分钟",(int)(self.event.duration / 60.0)];
+    self.percentLabel.text = [NSString stringWithFormat:@"%.02f",(float)100- (self.event.wrongWordCount * 100.0 / self.event.totalWordCount)];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    _cardRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeUp:)];
-    _cardRecognizer.delegate = self;
-    _cardRecognizer.direction = UISwipeGestureRecognizerDirectionUp;
-    
-    [self.view addGestureRecognizer:_cardRecognizer];
     if (iPhone5) {
         self.screenHeight = 568.0f;
         self.screenWidth = 320.0f;
@@ -50,6 +63,7 @@
         self.screenHeight = 480.0f;
         self.screenWidth = 320.0f;
     }
+    [self configContent];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,11 +73,11 @@
 }
 
 
-- (void)addReciteAndReviewResultCardAt:(UIViewController *)buttomController withOption:(NSString *)option
+- (void)addReciteAndReviewResultCardAt:(UIViewController *)buttomController
 {
     [self addBlurBackground:buttomController];
     [self addBlackToBackground];
-    [self addReciteAndReviewResultCardAnimationWithOption:option];
+    [self addReciteAndReviewResultCardAnimation];
 }
 
 - (void)removeReciteAndReviewResultCard
@@ -136,14 +150,10 @@
 }
 
 
-- (void)addReciteAndReviewResultCardAnimationWithOption:(NSString *)option
+- (void)addReciteAndReviewResultCardAnimation
 {
     if (_cardController == nil) {
-        if ([option isEqualToString:@"recite"]) {
-            _cardController = [[ReciteAndReviewResultCardController alloc] init];
-        }else {
-            _cardController = [[ReciteAndReviewResultCardController alloc] init];
-        }
+        _cardController = [[ReciteAndReviewResultViewController alloc] init];
     }
     
     _cardController.view.center = CGPointMake(_screenWidth/2, _screenHeight/2-_cardController.view.frame.size.height);
@@ -275,4 +285,13 @@
 }
 
 
+- (void)viewDidUnload {
+    [self setBackgroundView:nil];
+    [self setPercentLabel:nil];
+    [self setCountLabel:nil];
+    [self setTimeLabel:nil];
+    [super viewDidUnload];
+}
+- (IBAction)homePressed:(id)sender {
+}
 @end
