@@ -35,4 +35,23 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload
+{
+    [self setScoreLabel:nil];
+    [self setDifficultLabel:nil];
+    [self setTimeLabel:nil];
+    [self setTotalWordCountLabel:nil];
+    [self setRememberCountLabel:nil];
+    [self setForgetCountLabel:nil];
+    [super viewDidUnload];
+}
+- (IBAction)homePressed:(id)sender
+{
+    
+}
+
+- (IBAction)reexamPressed:(id)sender
+{
+    
+}
 @end

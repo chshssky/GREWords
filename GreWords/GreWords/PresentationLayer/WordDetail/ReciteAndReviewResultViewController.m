@@ -10,13 +10,15 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage+ColorImage.h"
 #import "UIImage+StackBlur.h"
-#import "ReciteAndReviewResultCardController.h"
+#import "ReciteAndReviewResultViewController.h"
+#import "ReviewEvent.h"
+#import "NewWordEvent.h"
 
 @interface ReciteAndReviewResultViewController () <UIGestureRecognizerDelegate>
 @property (strong, nonatomic) UIImageView *blackImageView;
 @property (strong, nonatomic) UIImageView *blurImageView;
 
-@property (strong, nonatomic) ReciteAndReviewResultCardController *cardController;
+@property (strong, nonatomic) ReciteAndReviewResultViewController *cardController;
 @property (nonatomic) float screenHeight;
 @property (nonatomic) float screenWidth;
 @end
@@ -32,10 +34,27 @@
     return self;
 }
 
+
+- (void)configContent
+{
+    if([self.event isMemberOfClass: [NewWordEvent class]])
+    {
+        self.backgroundView.image = [UIImage imageNamed:@"learning_reciteResult.png"];
+    }
+    else
+    {
+        self.backgroundView.image = [UIImage imageNamed:@"learning_reviewResult.png"];
+    }
+    self.countLabel.text = [NSString stringWithFormat:@"%d个",self.event.totalWordCount];
+    self.timeLabel.text = [NSString stringWithFormat:@"%d分钟",(int)(self.event.duration / 60.0)];
+    self.percentLabel.text = [NSString stringWithFormat:@"%.02f",(float)100- (self.event.wrongWordCount * 100.0 / self.event.totalWordCount)];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
     if (iPhone5) {
         self.screenHeight = 568.0f;
         self.screenWidth = 320.0f;
@@ -45,6 +64,12 @@
     }
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self configContent];
+}
+
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -52,11 +77,11 @@
 }
 
 
-- (void)addReciteAndReviewResultCardAt:(UIViewController *)buttomController withOption:(NSString *)option
+- (void)addReciteAndReviewResultCardAt:(UIViewController *)buttomController
 {
     [self addBlurBackground:buttomController];
     [self addBlackToBackground];
-    [self addReciteAndReviewResultCardAnimationWithOption:option];
+    [self addReciteAndReviewResultCardAnimation];
 }
 
 - (void)removeReciteAndReviewResultCard
@@ -92,7 +117,7 @@
     if (_blackImageView ==nil) {
         UIImage *blackImage = [UIImage imageWithColor:[UIColor blackColor]];
         _blackImageView = [[UIImageView alloc] initWithImage:blackImage];
-        [_blackImageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        [_blackImageView setFrame:CGRectMake(0, 0, 320 , 568 )];
         _blackImageView.alpha = 0.3;
         [self.view addSubview:_blackImageView];
     }
@@ -129,15 +154,9 @@
 }
 
 
-- (void)addReciteAndReviewResultCardAnimationWithOption:(NSString *)option
+- (void)addReciteAndReviewResultCardAnimation
 {
-    if (_cardController == nil) {
-        if ([option isEqualToString:@"recite"]) {
-            _cardController = [[ReciteAndReviewResultCardController alloc] init];
-        }else {
-            _cardController = [[ReciteAndReviewResultCardController alloc] init];
-        }
-    }
+    _cardController = self;
     
     _cardController.view.center = CGPointMake(_screenWidth/2, _screenHeight/2-_cardController.view.frame.size.height);
     [self.view addSubview:_cardController.view];
@@ -268,4 +287,13 @@
 }
 
 
+- (void)viewDidUnload {
+    [self setBackgroundView:nil];
+    [self setPercentLabel:nil];
+    [self setCountLabel:nil];
+    [self setTimeLabel:nil];
+    [super viewDidUnload];
+}
+- (IBAction)homePressed:(id)sender {
+}
 @end

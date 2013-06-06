@@ -10,4 +10,12 @@
 
 @interface ExamResultCardController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (weak, nonatomic) IBOutlet UILabel *difficultLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalWordCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *rememberCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *forgetCountLabel;
+- (IBAction)homePressed:(id)sender;
+- (IBAction)reexamPressed:(id)sender;
 @end

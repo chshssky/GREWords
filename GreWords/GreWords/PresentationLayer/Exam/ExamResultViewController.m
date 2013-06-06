@@ -37,12 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    _cardRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeUp:)];
-    _cardRecognizer.delegate = self;
-    _cardRecognizer.direction = UISwipeGestureRecognizerDirectionUp;
-    
-    [self.view addGestureRecognizer:_cardRecognizer];
+
     if (iPhone5) {
         self.screenHeight = 568.0f;
         self.screenWidth = 320.0f;
@@ -237,7 +232,7 @@
     lineAnimation2.fillMode = kCAFillModeForwards;
     lineAnimation2.removedOnCompletion = NO;
     lineAnimation2.beginTime = CACurrentMediaTime()+0.2f;
-    [lineAnimation2 setValue:@"removeTestSelectorAnimation" forKey:@"id"];
+    [lineAnimation2 setValue:@"removeExamResultCardAnimation" forKey:@"id"];
     lineAnimation2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     [_cardController.view.layer addAnimation:lineAnimation2 forKey:nil];
     
@@ -266,7 +261,5 @@
     rotateAnimation2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     [_cardController.view.layer addAnimation:rotateAnimation2 forKey:nil];
 }
-
-
 
 @end
