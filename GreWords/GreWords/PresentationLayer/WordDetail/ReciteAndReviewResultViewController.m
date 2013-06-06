@@ -18,7 +18,6 @@
 @property (strong, nonatomic) UIImageView *blackImageView;
 @property (strong, nonatomic) UIImageView *blurImageView;
 
-@property (strong, nonatomic) UISwipeGestureRecognizer* cardRecognizer;
 @property (strong, nonatomic) ReciteAndReviewResultViewController *cardController;
 @property (nonatomic) float screenHeight;
 @property (nonatomic) float screenWidth;
@@ -63,8 +62,13 @@
         self.screenHeight = 480.0f;
         self.screenWidth = 320.0f;
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
     [self configContent];
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -113,7 +117,7 @@
     if (_blackImageView ==nil) {
         UIImage *blackImage = [UIImage imageWithColor:[UIColor blackColor]];
         _blackImageView = [[UIImageView alloc] initWithImage:blackImage];
-        [_blackImageView setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        [_blackImageView setFrame:CGRectMake(0, 0, 320 , 568 )];
         _blackImageView.alpha = 0.3;
         [self.view addSubview:_blackImageView];
     }
@@ -152,9 +156,7 @@
 
 - (void)addReciteAndReviewResultCardAnimation
 {
-    if (_cardController == nil) {
-        _cardController = [[ReciteAndReviewResultViewController alloc] init];
-    }
+    _cardController = self;
     
     _cardController.view.center = CGPointMake(_screenWidth/2, _screenHeight/2-_cardController.view.frame.size.height);
     [self.view addSubview:_cardController.view];
