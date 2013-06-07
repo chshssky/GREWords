@@ -16,5 +16,6 @@
 @property (nonatomic) NSTimeInterval duration;
 @property (nonatomic) int totalWordCount;
 @property (nonatomic) int wrongWordCount;
+@property (nonatomic) int dayOfSchedule;
 
 @end

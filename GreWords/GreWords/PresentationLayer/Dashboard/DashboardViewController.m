@@ -25,8 +25,6 @@
 @property(nonatomic) float percent;
 @property(nonatomic) BOOL centerCircleViewAnimationEnable;
 
-
-
 @end
 
 @implementation DashboardViewController

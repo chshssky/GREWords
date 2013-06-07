@@ -2,17 +2,16 @@
 //  Word.h
 //  GreWords
 //
-//  Created by 崔 昊 on 13-5-30.
+//  Created by 崔 昊 on 13-6-5.
 //  Copyright (c) 2013年 Cui Hao. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import <IAThreadSafeCoreData/IAThreadSafeManagedObject.h>
 
 @class Note;
 
-@interface Word : IAThreadSafeManagedObject
+@interface Word : NSManagedObject
 
 @property (nonatomic, retain) NSString * lastChecks;
 @property (nonatomic, retain) NSDate * lastMistakeTime;

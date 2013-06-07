@@ -145,13 +145,9 @@
     [super viewDidLoad];
 
     // 从数据库中读取现在的状态
-    
     //初始化TaskStatus状态
-    //[[TaskStatus instance] beginNewWord];
-    if ([[HistoryManager instance] readStatusIfNew])
-    {
-        [self createNewWordEvent];
-    }
+
+    [[HistoryManager instance] readStatusIfNew];
 
     
     [self initDashboard];
@@ -264,11 +260,24 @@
         _testSelectorController = nil;
     }
     
-    ExamViewController *vc = [[ExamViewController alloc] init];
-    vc.examInfo = examInfo;
-    vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self presentModalViewController:vc animated:YES];
+    NSArray *arr = [[WordTaskGenerator instance] testTaskWithOptions:examInfo];
+    
+    if (arr == nil) {
+        
+        //  SHOW NO WORD FOR TEST
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"求Button text API" message:[NSString stringWithFormat:@"您学习的词数太少了，请多学一些"] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+        
+        [alert show];
 
+        
+    } else {
+        ExamViewController *vc = [[ExamViewController alloc] init];
+        vc.examInfo = examInfo;
+        vc.examArr = arr;
+        vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        [self presentModalViewController:vc animated:YES];
+     }
 }
 
 - (void)historyController
@@ -335,8 +344,6 @@
             [self presentViewController:vc animated:NO completion:nil];
             
         } else {
-        
-        
         //根据MaxWordID和现在所在单词的ID 来判断 该跳转到 NewWord 还是 Review
         if ([[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday ] integerValue] < [TaskStatus instance].maxWordID || [TaskStatus instance].reviewEnable) {
             
@@ -346,9 +353,11 @@
             [self presentViewController:vc animated:NO completion:nil];
 
         } else {
-            
-            [[HistoryManager instance] readStatusIfNew];
-            
+            if ([[HistoryManager instance] readStatusIfNew])
+            {
+                [self createNewWordEvent];
+            }
+                    
             NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
             vc.changePage = 10 - ([TaskStatus instance].maxWordID % 10);
             vc.delegate = self;
@@ -391,6 +400,7 @@
     newWordEve.stage_now = [TaskStatus instance].stage_now;
     newWordEve.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
     newWordEve.maxWordID = [TaskStatus instance].maxWordID;
+    newWordEve.dayOfSchedule = [TaskStatus instance].day;
     
     [historyManager addEvent:newWordEve];
 }

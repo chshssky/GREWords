@@ -8,6 +8,9 @@
 
 #import "TaskStatus.h"
 
+#import "HistoryManager.h"
+
+
 @implementation TaskStatus
 
 TaskStatus* _taskStatusInstance = nil;
@@ -44,11 +47,13 @@ TaskStatus* _taskStatusInstance = nil;
 {
     self.taskType = TASK_TYPE_NEWWORD;
     
-    self.indexOfWordIDToday = 796;
-    self.maxWordID = 199;
+    self.indexOfWordIDToday = 0;
+    self.maxWordID = 0;
     self.stage_now = 0;
-    self.reviewEnable = YES;
-    self.wrongWordCount = 100;
+    self.reviewEnable = NO;
+    self.wrongWordCount = 0;
+    
+    self.day = [[HistoryManager instance] getANewDay];
 }
 
 - (void)beginReview

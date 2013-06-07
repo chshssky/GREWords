@@ -981,6 +981,21 @@
 
 - (void)reviewCompleted
 {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日复习完成" message:[NSString stringWithFormat:@"今天错误率：%d 用时：30min", [TaskStatus instance].wrongWordCount] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+    [alert setAlertViewStyle:UIAlertViewStyleDefault];
+    
+    [alert show];
+    
+    ReviewEvent *rEvent = [[ReviewEvent alloc] init];
+    
+    rEvent.endTime = [self getNowDate];
+    
+    [[HistoryManager instance] endEvent:rEvent];
+    
+    //[self createNewWord];
+    
+#warning  return to Main menu
+    //!!!!!!!!!!!!!!!!!return
 //    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日完成" message:[NSString stringWithFormat:@"今天错误率：%d 用时：30min", [TaskStatus instance].wrongWordCount] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
 //    [alert setAlertViewStyle:UIAlertViewStyleDefault];
     
@@ -998,8 +1013,23 @@
     [self.view addSubview:_reciteAndReviewResultCardViewController.view];
 }
 
+//- (void)createNewWord
+//{
+//    NewWordEvent *nwEvent = [[NewWordEvent alloc] init];
+//    
+//#warning hljlkjlkasjdf;lkasjd
+//}
+
 - (void)newWordCompleted
 {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日新词完成" message:[NSString stringWithFormat:@"今天错误率：%d 用时：30min", [TaskStatus instance].wrongWordCount] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+    [alert setAlertViewStyle:UIAlertViewStyleDefault];
+    
+    [alert show];
+    
+    NewWordEvent *nwEvent = [[NewWordEvent alloc] init];
+    
+    nwEvent.endTime = [self getNowDate];
 //    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日完成" message:[NSString stringWithFormat:@"今天错误率：%d 用时：30min", [TaskStatus instance].wrongWordCount] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
 //    [alert setAlertViewStyle:UIAlertViewStyleDefault];
 //    
@@ -1054,6 +1084,7 @@
     
     rEvent.stage_now = [TaskStatus instance].stage_now;
     rEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+    rEvent.dayOfSchedule = [TaskStatus instance].day;
     
     [historyManager addEvent:rEvent];
 }
