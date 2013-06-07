@@ -9,7 +9,7 @@
 #import "SettingsViewController.h"
 #import "GreWordsViewController.h"
 #import <QuartzCore/QuartzCore.h>
-//#import "SettingContentViewController.m"
+#import "SettingsContentViewController.h"
 
 @interface SettingsViewController ()
 
@@ -21,7 +21,7 @@
 {
     [super viewDidLoad];
  
-    UIViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"settingcontent"];
+    SettingsContentViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"settingcontent"];
     [self addChildViewController:vc];
     [self.scrollView addSubview:vc.view];
     [self.scrollView setContentSize:vc.view.frame.size];
