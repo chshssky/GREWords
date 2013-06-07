@@ -32,7 +32,7 @@
 {
     UIImageView *guideImageView;
 }
-
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *DownImage;
 @property (weak, nonatomic) IBOutlet UIButton *PronounceButton;
@@ -93,6 +93,9 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    if (!iPhone5) {
+        [_backgroundImage setImage:[UIImage imageNamed:@"learning_backgournd_blank_mini.png"]];
+    }
     //添加左上角的进度圆~
     [self.dashboardVC wordDetailIndicatorGen];
     if (iPhone5) {
@@ -186,6 +189,7 @@
     [self setWordPhonetic:nil];
     [self setSoundImage:nil];
     [self setBackButton:nil];
+    [self setBackgroundImage:nil];
     [super viewDidUnload];
 }
 
