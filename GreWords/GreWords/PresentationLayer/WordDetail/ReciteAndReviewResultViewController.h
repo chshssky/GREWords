@@ -7,10 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+
+#import "ReciteAndReviewResultCardController.h"
 @class BaseEvent;
 
 @interface ReciteAndReviewResultViewController : UIViewController
+
+@property (nonatomic, strong) id<CardProtocal> delegate;
+
 - (void)addReciteAndReviewResultCardAt:(UIViewController *)buttomController withEvent:(BaseEvent*)evet;
 - (void)removeReciteAndReviewResultCard;
+
 
 @end

@@ -41,6 +41,7 @@
 - (IBAction)homePressed:(id)sender
 {
     NSLog(@"Home pressed");
+    [self.delegate returnHome];
 }
 
 - (void)viewDidLoad

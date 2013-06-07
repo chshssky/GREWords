@@ -35,6 +35,8 @@
 @property(nonatomic, strong) NSArray        *sliceColors;
 
 - (void)wordDetailIndicatorGen;
+- (void)changeTextViewToReview;
+- (void)changeTextViewToNewWord;
 - (void)mainViewGen;
 - (void)plusData;
 - (void)minusData;

@@ -89,7 +89,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "1044"
          endingLineNumber = "1044"
-         landmarkName = "-returnHome"
+         landmarkName = "-wrongButtonPushed:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -103,6 +103,32 @@
          startingLineNumber = "52"
          endingLineNumber = "52"
          landmarkName = "-homePressed:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "GreWords/PresentationLayer/WordDetail/WordDetailViewController.m"
+         timestampString = "392306958.975098"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1043"
+         endingLineNumber = "1043"
+         landmarkName = "-newWordCompleted"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "GreWords/PresentationLayer/GreWordsViewController.m"
+         timestampString = "392306995.246499"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "400"
+         endingLineNumber = "400"
+         landmarkName = "-createNewWordEvent"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

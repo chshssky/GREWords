@@ -8,6 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+#import "ExamEvent.h"
+#import "ReviewEvent.h"
+#import "NewWordEvent.h"
+
 enum TaskType {
     TASK_TYPE_NEWWORD = 0,
     TASK_TYPE_REVIEW = 1,
@@ -16,13 +20,18 @@ enum TaskType {
 
 @interface TaskStatus : NSObject
 
+@property (nonatomic) enum TaskType taskType;
+
+@property (nonatomic, strong) NewWordEvent *nwEvent;
+@property (nonatomic, strong) ReviewEvent *rEvent;
+@property (nonatomic, strong) ExamEvent *eEvent;
+
 @property (nonatomic) int indexOfWordIDToday;
 @property (nonatomic) int stage_now;
 @property (nonatomic) int day;
 @property (nonatomic) int maxWordID;
 @property (nonatomic) int wrongWordCount;
 @property (nonatomic) BOOL reviewEnable;
-@property (nonatomic) enum TaskType taskType;
 
 @property (nonatomic) int indexOfExam;
 @property (nonatomic) int difficulty;
