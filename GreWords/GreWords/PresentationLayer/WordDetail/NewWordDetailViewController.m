@@ -363,7 +363,6 @@
         [self.phoneticControlArray replaceObjectAtIndex:page withObject:self.WordPhonetic];
     }
     
-    NSLog(@"!!!!!!!!!!!!!!!!!%f",self.WordParaphraseView.frame.origin.x);
     // add the controller's view to the scroll view
     if (self.WordParaphraseView.superview == nil)
     {
