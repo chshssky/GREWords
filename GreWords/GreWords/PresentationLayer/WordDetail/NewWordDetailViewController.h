@@ -11,6 +11,7 @@
 #import "IIViewDeckController.h"
 #import "UIScrollView+AllowAllTouches.h"
 #import "NoteViewController.h"
+#import "ReciteAndReviewResultCardController.h"
 
 @interface NewWordDetailViewController : UIViewController <UIScrollViewDelegate,IIViewDeckControllerDelegate,UIGestureRecognizerDelegate, NoteViewControllerProtocol>
 
@@ -19,7 +20,11 @@
 @property (nonatomic) int beginWordID;
 @property (nonatomic) int changePage;
 
+@property (nonatomic, strong) NewWordEvent *nwEvent;
+
+
 - (void)removeDownImageAnimation_withDownCover;
 - (void)removeDownImageAnimation_withNoDownCover;
+
 
 @end

@@ -11,6 +11,12 @@
 #import "NewWordEvent.h"
 #import "ReviewEvent.h"
 
+@protocol CardProtocal <NSObject>
+
+- (void)returnHome;
+
+@end
+
 @interface ReciteAndReviewResultCardController : UIViewController
 
 @property (retain,nonatomic) BaseEvent *event;
@@ -18,6 +24,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *percentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
+
+@property (strong, nonatomic) id<CardProtocal> delegate;
 
 - (IBAction)homePressed:(id)sender;
 

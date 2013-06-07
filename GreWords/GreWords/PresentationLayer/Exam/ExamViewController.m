@@ -166,6 +166,7 @@
     NSTimeInterval timeInterval;
     NSDate *now = [self getNowDate];
     timeInterval = [now timeIntervalSinceDate:self.startDate];
+    timeInterval = [TaskStatus instance].duration - timeInterval;
     
     self.timerLabel.text = [NSString stringWithFormat:@"%02d : %02d", (int)(timeInterval + 0.01)/ 60, (int)(timeInterval + 0.01) % 60];
     if ([[now laterDate:[self.startDate dateByAddingTimeInterval:[TaskStatus instance].duration]] isEqualToDate:now]) {
