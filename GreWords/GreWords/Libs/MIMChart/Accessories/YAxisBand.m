@@ -96,7 +96,7 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-    //return;
+    return;
     
     [self initVariables];
     

@@ -21,12 +21,13 @@
 #import "GuideImageFactory.h"
 #import "TaskStatus.h"
 #import "GreWordsViewController.h"
+#import "ExamResultViewController.h"
 
 #import "ExamResultViewController.h"
 
 #define PI M_PI
 
-@interface ExamViewController () <UIScrollViewDelegate, ExamResultProtocol>
+@interface ExamViewController () <UIScrollViewDelegate>
 {
     UIImageView *guideImageView;
 }
@@ -81,6 +82,9 @@
 @property (nonatomic, strong) NSDate *startDate;
 
 @property (nonatomic, strong) NSTimer *timer;
+
+
+@property (nonatomic, strong) ExamResultViewController *examResultViewController;
 
 @end
 
@@ -164,11 +168,9 @@
     timeInterval = [now timeIntervalSinceDate:self.startDate];
     
     self.timerLabel.text = [NSString stringWithFormat:@"%02d : %02d", (int)(timeInterval + 0.01)/ 60, (int)(timeInterval + 0.01) % 60];
-    NSLog(@"Now: %@ 结束时间：%@", now, [self.startDate dateByAddingTimeInterval:[TaskStatus instance].duration]);
-    NSLog(@"%d", [TaskStatus instance].duration);
     if ([[now laterDate:[self.startDate dateByAddingTimeInterval:[TaskStatus instance].duration]] isEqualToDate:now]) {
-//        NSLog(@"!!!");
-//        [self examResultShow];
+
+        [self examResultShow];
     }
 }
 
@@ -176,7 +178,6 @@
 {
     [super viewDidLoad];
     
-    //[self t];
     [[TaskStatus instance] beginExam];
     [self loadWord:[TaskStatus instance].indexOfExam];
     _RightButton.userInteractionEnabled = NO;
@@ -225,6 +226,34 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [self.timer fire];
+    if (self.examArr == nil) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"无法测试" message:[NSString stringWithFormat:@"由于您的智能词表里的词数少于30，无法测试"] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+        
+        [alert show];
+    
+
+        GreWordsViewController *superController =  (GreWordsViewController *)[self presentingViewController];
+        
+        UIImageView *blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        [blackView setBackgroundColor:[UIColor blackColor]];
+        blackView.alpha = 0;
+        [superController.view addSubview:blackView];
+        
+        
+        superController.whetherAllowViewFrameChanged = YES;
+        CABasicAnimation *opacityAnim_black = [CABasicAnimation animationWithKeyPath:@"opacity"];
+        opacityAnim_black.fromValue = [NSNumber numberWithFloat:0.7];
+        opacityAnim_black.toValue = [NSNumber numberWithFloat:0];
+        opacityAnim_black.removedOnCompletion = YES;
+        CAAnimationGroup *animGroup_black = [CAAnimationGroup animation];
+        animGroup_black.animations = [NSArray arrayWithObjects:opacityAnim_black, nil];
+        animGroup_black.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        animGroup_black.duration = 0.5;
+        [blackView.layer addAnimation:animGroup_black forKey:nil];
+        
+        [self dismissModalViewControllerAnimated:YES];
+    }
 }
 
 - (void)ShowMeaning
@@ -950,8 +979,6 @@
     }
 }
 
-
-
 - (void)AddShowButton
 {
     self.showMeaningButton = [[UIButton alloc] init];
@@ -1016,37 +1043,29 @@
     
     [word didMakeAMistakeOnDate:[NSDate new]];
     
-    NSLog(@"TaskStatus: %d", [TaskStatus instance].indexOfExam - 1);
-    
     [TaskStatus instance].wrongWordCount ++;
     [self nextButtonPushed];
 }
 
 - (void)examResultShow
 {
-    ExamResultViewController *examResultVC = [[ExamResultViewController alloc] init];
-    
-    examResultVC.totalCount.text = @"5";
-    examResultVC.wrongCount.text = @"3";
-    examResultVC.rightCount.text = @"2";
-    examResultVC.memoryRate.text = @"%40";
-    examResultVC.delegate = self;
-    
-    //examResultVC
-    [examResultVC.view setCenter:self.view.center];
-    
-    [self.view addSubview:examResultVC.view];
-
+    if (_examResultViewController == nil) {
+        _examResultViewController = [[ExamResultViewController alloc] init];
+        
+        //_note.delegate = self;
+    }
+    [_examResultViewController addExamResultCardAt:self];
+    [_examResultViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.view addSubview:_examResultViewController.view];
 }
 
-- (void)returnHome
-{
-    [self examCompleted];
-}
+//- (void)returnHome
+//{
+//    [self examCompleted];
+//}
 
 - (void)examCompleted
 {
-    
     GreWordsViewController *superController =  (GreWordsViewController *)[self presentingViewController];
     
     UIImageView *blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];

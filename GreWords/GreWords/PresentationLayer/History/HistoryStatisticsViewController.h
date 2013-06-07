@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HistoryView.h"
 
-@interface HistoryStatisticsViewController : UIViewController
+@interface HistoryStatisticsViewController : UIViewController<UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIButton *exitButton;
+
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (strong, nonatomic) IBOutlet HistoryView *hitTestView;
 
 @end

@@ -19,6 +19,7 @@
 #import "ConfigurationHelper.h"
 #import "GuideImageFactory.h"
 #import "TaskStatus.h"
+#import "ReciteAndReviewResultViewController.h"
 
 #define PI M_PI
 
@@ -75,6 +76,7 @@
 
 @property (nonatomic) int day;
 
+@property (nonatomic, strong) ReciteAndReviewResultViewController *reciteAndReviewResultCardViewController;
 @end
 
 @implementation WordDetailViewController
@@ -994,7 +996,21 @@
     
 #warning  return to Main menu
     //!!!!!!!!!!!!!!!!!return
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日完成" message:[NSString stringWithFormat:@"今天错误率：%d 用时：30min", [TaskStatus instance].wrongWordCount] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+//    [alert setAlertViewStyle:UIAlertViewStyleDefault];
     
+    if (_reciteAndReviewResultCardViewController == nil) {
+        _reciteAndReviewResultCardViewController = [[ReciteAndReviewResultViewController alloc] init];
+        
+        //_note.delegate = self;
+    }
+    
+#warning review complete event set here
+    ReviewEvent *reviewEvent = [[ReviewEvent alloc] init];
+    
+    [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withEvent:reviewEvent];
+    [_reciteAndReviewResultCardViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.view addSubview:_reciteAndReviewResultCardViewController.view];
 }
 
 //- (void)createNewWord
@@ -1014,23 +1030,41 @@
     NewWordEvent *nwEvent = [[NewWordEvent alloc] init];
     
     nwEvent.endTime = [self getNowDate];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日完成" message:[NSString stringWithFormat:@"今天错误率：%d 用时：30min", [TaskStatus instance].wrongWordCount] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+//    [alert setAlertViewStyle:UIAlertViewStyleDefault];
+//    
+//    [alert show];
     
-    [[HistoryManager instance] endEvent:nwEvent];
+    if (_reciteAndReviewResultCardViewController == nil) {
+        _reciteAndReviewResultCardViewController = [[ReciteAndReviewResultViewController alloc] init];
+        
+        //_note.delegate = self;
+    }
+#warning NewWordEvent complete event set here
+    NewWordEvent *newwordEvent = [[NewWordEvent alloc] init];
+    [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withEvent:newwordEvent];
+    [_reciteAndReviewResultCardViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [self.view addSubview:_reciteAndReviewResultCardViewController.view];
     
-
-    //[self.delegate StartReview];
-    [self createReviewEvent];
     
     
-    DashboardViewController *dashboard = [DashboardViewController instance];
-    // Database: read from
-    dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].indexOfWordIDToday;
-     
-    dashboard.minNumber = dashboard.nonFinishedNumber;
-    dashboard.sumNumber = TaskWordNumber;
-    [dashboard reloadData];
-    [self dismissModalViewControllerAnimated:YES];
-    [self.delegate AnimationBack];
+//    NewWordEvent *nwEvent = [[NewWordEvent alloc] init];
+//    nwEvent.endTime = [self getNowDate];
+//    [[HistoryManager instance] endEvent:nwEvent];
+//
+//    //[self.delegate StartReview];
+//    [self createReviewEvent];
+//    
+//    
+//    DashboardViewController *dashboard = [DashboardViewController instance];
+//    // Database: read from
+//    dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].indexOfWordIDToday;
+//     
+//    dashboard.minNumber = dashboard.nonFinishedNumber;
+//    dashboard.sumNumber = TaskWordNumber;
+//    [dashboard reloadData];
+//    [self dismissModalViewControllerAnimated:YES];
+//    [self.delegate AnimationBack];
 
 }
 

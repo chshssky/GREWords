@@ -1,29 +1,27 @@
 //
-//  ExamResultViewController.m
+//  ReciteAndReviewResultCardViewController.m
 //  GreWords
 //
 //  Created by xsource on 13-6-5.
 //  Copyright (c) 2013年 Cui Hao. All rights reserved.
 //
 
-#import "ExamResultViewController.h"
+#import "ReciteAndReviewResultViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage+ColorImage.h"
 #import "UIImage+StackBlur.h"
-#import "ExamResultCardController.h"
+#import "ReciteAndReviewResultCardController.h"
 
-@interface ExamResultViewController ()<UIGestureRecognizerDelegate>
+@interface ReciteAndReviewResultViewController () <UIGestureRecognizerDelegate>
 @property (strong, nonatomic) UIImageView *blackImageView;
 @property (strong, nonatomic) UIImageView *blurImageView;
 
-@property (strong, nonatomic) UISwipeGestureRecognizer* cardRecognizer;
-@property (strong, nonatomic) ExamResultCardController *cardController;
+@property (strong, nonatomic) ReciteAndReviewResultCardController *cardController;
 @property (nonatomic) float screenHeight;
 @property (nonatomic) float screenWidth;
-
 @end
 
-@implementation ExamResultViewController
+@implementation ReciteAndReviewResultViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,7 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    // Do any additional setup after loading the view from its nib.
     if (iPhone5) {
         self.screenHeight = 568.0f;
         self.screenWidth = 320.0f;
@@ -53,23 +51,25 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)addExamResultCardAt:(UIViewController *)buttomController
+
+- (void)addReciteAndReviewResultCardAt:(UIViewController *)buttomController withEvent:(BaseEvent*)event;
 {
     [self addBlurBackground:buttomController];
     [self addBlackToBackground];
-    [self addExamResultCardAnimation];
+    [self addReciteAndReviewResultCardAnimationWithEvent:event];
 }
 
-- (void)removeExamResultCard
+- (void)removeReciteAndReviewResultCard
 {
-    [self removeExamResultCardAnimation];
+    [self removeReciteAndReviewResultCardAnimation];
 }
+
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag {
-    if([[theAnimation valueForKey:@"id"] isEqual:@"removeExamResultCardAnimation"])
+    if([[theAnimation valueForKey:@"id"] isEqual:@"removeReciteAndReviewResultCardAnimation"])
     {
         [self removeBlackToBackground];
         [self removeBlurBackground];
-        [self removeExamResultCardController];
+        [self removeReciteAndReviewResultCardController];
         [self.view removeFromSuperview];
     }
 }
@@ -120,7 +120,7 @@
     _blackImageView = nil;
 }
 
-- (void)removeExamResultCardController
+- (void)removeReciteAndReviewResultCardController
 {
     if (_cardController != nil) {
         [_cardController.view removeFromSuperview];
@@ -128,10 +128,12 @@
     }
 }
 
-- (void)addExamResultCardAnimation
+
+- (void)addReciteAndReviewResultCardAnimationWithEvent:(BaseEvent*)event
 {
     if (_cardController == nil) {
-        _cardController = [[ExamResultCardController alloc] init];
+        _cardController = [[ReciteAndReviewResultCardController alloc] init];
+        _cardController.event = event;
     }
     
     _cardController.view.center = CGPointMake(_screenWidth/2, _screenHeight/2-_cardController.view.frame.size.height);
@@ -205,7 +207,7 @@
     _cardController.view.center = CGPointMake(_screenWidth/2, _screenHeight/2 - 20.0f);
 }
 
-- (void)removeExamResultCardAnimation
+- (void)removeReciteAndReviewResultCardAnimation
 {
     CAKeyframeAnimation *lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     CGMutablePathRef path = CGPathCreateMutable();
@@ -232,7 +234,7 @@
     lineAnimation2.fillMode = kCAFillModeForwards;
     lineAnimation2.removedOnCompletion = NO;
     lineAnimation2.beginTime = CACurrentMediaTime()+0.2f;
-    [lineAnimation2 setValue:@"removeExamResultCardAnimation" forKey:@"id"];
+    [lineAnimation2 setValue:@"removeTestSelectorAnimation" forKey:@"id"];
     lineAnimation2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     [_cardController.view.layer addAnimation:lineAnimation2 forKey:nil];
     
@@ -261,5 +263,6 @@
     rotateAnimation2.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     [_cardController.view.layer addAnimation:rotateAnimation2 forKey:nil];
 }
+
 
 @end

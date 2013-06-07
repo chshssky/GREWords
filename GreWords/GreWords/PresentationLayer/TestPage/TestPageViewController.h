@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExamEvent.h"
 
 @interface TestPageViewController : UIViewController
-@property (nonatomic) int upCardNumber;
+
+@property (nonatomic,retain) NSArray* data;
+
 @end

@@ -73,7 +73,6 @@
 						<string key="NSFrameSize">{320, 169}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="11864119"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<float key="IBUIAlpha">0.0</float>
 						<int key="IBUIContentMode">3</int>
@@ -158,7 +157,7 @@
 						<string key="NSFrame">{{20, 41}, {256, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="318200766"/>
+						<reference key="NSNextKeyView" ref="678921952"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -266,16 +265,16 @@
 					<object class="IBUIImageView" id="678921952">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{201, 8}, {66, 29}}</string>
+						<string key="NSFrame">{{204, 8}, {66, 29}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="907120094"/>
+						<reference key="NSNextKeyView" ref="318200766"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">test backTitlepng.png</string>
+							<string key="NSResourceName">test backTitle.png</string>
 						</object>
 					</object>
 					<object class="IBUIButton" id="123132122">
@@ -305,7 +304,6 @@
 						<string key="NSFrame">{{21, 10}, {91, 26}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="678921952"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -334,7 +332,6 @@
 				<string key="NSFrame">{{0, 20}, {320, 548}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="734434673"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MQA</bytes>
@@ -726,7 +723,7 @@
 			<string key="learning_upCover.png">{320, 175}</string>
 			<string key="learning_wrongButton_first.png">{93, 93}</string>
 			<string key="test backButton.png">{45, 46}</string>
-			<string key="test backTitlepng.png">{66, 29}</string>
+			<string key="test backTitle.png">{66, 29}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>

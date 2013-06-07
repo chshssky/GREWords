@@ -15,9 +15,9 @@
 @interface TestSelectorViewController () <UIGestureRecognizerDelegate>
 @property (strong, nonatomic) UIImageView *blackImageView;
 @property (strong, nonatomic) UIImageView *blurImageView;
-@property (strong, nonatomic) UIImageView *testSelectorBackgroundView;
+//@property (strong, nonatomic) UIImageView *testSelectorBackgroundView;
 
-@property (strong, nonatomic) UISwipeGestureRecognizer* noteRecognizer;
+@property (strong, nonatomic) UISwipeGestureRecognizer* selectorRecognizer;
 @property (strong, nonatomic) SelectorController *selectorController;
 @property (nonatomic) float screenHeight;
 @property (nonatomic) float screenWidth;
@@ -39,11 +39,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    _noteRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeUp:)];
-    _noteRecognizer.delegate = self;
-    _noteRecognizer.direction = UISwipeGestureRecognizerDirectionUp;
+    _selectorRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeUp:)];
+    _selectorRecognizer.delegate = self;
+    _selectorRecognizer.direction = UISwipeGestureRecognizerDirectionUp;
     
-    [self.view addGestureRecognizer:_noteRecognizer];
+    [self.view addGestureRecognizer:_selectorRecognizer];
     if (iPhone5) {
         self.screenHeight = 568.0f;
         self.screenWidth = 320.0f;

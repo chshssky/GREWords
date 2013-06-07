@@ -104,7 +104,7 @@
     rect.size.height += 71;
     if(!iPhone5)
     {
-        rect.size.height += 9;
+        rect.size.height -= 5;
     }
     
     UIView *view = [[UIView alloc] initWithFrame:rect];
@@ -127,7 +127,7 @@
         }
         else
         {
-            mLineGraph.scaleY = 1.05;
+            mLineGraph.scaleY = 1.00;
         }
     }
     else
@@ -141,7 +141,7 @@
         else
         {
             mLineGraph.maxValue = 110;
-            mLineGraph.scaleY = 2.87;
+            mLineGraph.scaleY = 2.7;
         }
     }
     

@@ -10,4 +10,6 @@
 
 @interface HistoryView : UIView
 
+@property (nonatomic) BOOL enabled;
+
 @end
