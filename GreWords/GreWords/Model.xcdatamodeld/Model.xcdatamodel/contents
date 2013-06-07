@@ -5,6 +5,7 @@
         <relationship name="history" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="History" inverseName="examStatus" inverseEntity="History" syncable="YES"/>
     </entity>
     <entity name="History" representedClassName="History" syncable="YES">
+        <attribute name="dayOfSchedule" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="event" optional="YES" attributeType="String" syncable="YES"/>
@@ -39,11 +40,11 @@
         <relationship name="word2note" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="note2word" inverseEntity="Note" syncable="YES"/>
     </entity>
     <elements>
-        <element name="History" positionX="358" positionY="-79" width="128" height="178"/>
-        <element name="Note" positionX="385" positionY="243" width="128" height="90"/>
-        <element name="Word" positionX="135" positionY="324" width="128" height="103"/>
-        <element name="NewWordStatus" positionX="27" positionY="81" width="128" height="118"/>
-        <element name="ReviewStatus" positionX="27" positionY="207" width="128" height="88"/>
         <element name="ExamStatus" positionX="27" positionY="-18" width="128" height="73"/>
+        <element name="History" positionX="358" positionY="-79" width="128" height="193"/>
+        <element name="NewWordStatus" positionX="27" positionY="81" width="128" height="118"/>
+        <element name="Note" positionX="385" positionY="243" width="128" height="90"/>
+        <element name="ReviewStatus" positionX="27" positionY="207" width="128" height="88"/>
+        <element name="Word" positionX="135" positionY="324" width="128" height="103"/>
     </elements>
 </model>

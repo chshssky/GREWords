@@ -78,6 +78,7 @@ HistoryManager* _historyManagerInstance = nil;
     [history setTotalWordCount:[NSNumber numberWithInt:aEvent.totalWordCount]];
     [history setWrongWordCount:[NSNumber numberWithInt:aEvent.wrongWordCount]];
     [history setDuration:[NSNumber numberWithDouble:aEvent.duration]];
+    [history setDayOfSchedule:[NSNumber numberWithInt:aEvent.dayOfSchedule]];
     
     NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
     
@@ -390,5 +391,40 @@ HistoryManager* _historyManagerInstance = nil;
     }
     return results;
 }
+
+- (int)getANewDay
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"event == 'newWordEvent'"];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
+    
+    NSError *fetchError = nil;
+    NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
+    
+    int today = 0;
+    if ([fetchMatches count] > 0) {
+        History *his = [fetchMatches lastObject];
+        int today = [his.dayOfSchedule intValue] + 1;
+    }
+    NSLog(@"Today is %d", today);
+    return today;
+}
+
+- (NSArray *)newWordEventsInStage:(int)stage
+{
+    
+}
+
+- (NSArray *)reviewEventsInStage:(int)stage
+{
+    
+}
+
+- (NSArray *)examEventsInStage:(int)stage
+{
+    
+}
+
 
 @end

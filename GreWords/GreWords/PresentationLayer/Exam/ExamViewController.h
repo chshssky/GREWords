@@ -15,4 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
 
 @property (strong, nonatomic) NSDictionary *examInfo;
+@property (nonatomic, strong) NSArray * examArr;
+
+
 @end

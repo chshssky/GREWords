@@ -28,7 +28,14 @@
 - (float)currentStageProgress;
 - (BOOL)isFinishedForDate:(NSDate *)date;
 
+- (NSArray *)newWordEventsInStage:(int)stage;
+- (NSArray *)reviewEventsInStage:(int)stage;
+- (NSArray *)examEventsInStage:(int)stage;
+
+
 - (NSArray *)errorRatioInExams;
 - (NSArray *)dateAndDurationInStage:(int)stage;
+
+- (int)getANewDay;
 
 @end
