@@ -25,4 +25,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *suggestButton;
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 
+-(IBAction)sendSuggestionEmail;
+-(IBAction)rateMe;
+-(IBAction)tellFriend;
+
+
+- (IBAction)wordShowingComponentChange:(id)sender;
+
 @end

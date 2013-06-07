@@ -126,6 +126,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="wordShowingComponentChange:" destination="auf-OA-niR" eventType="touchUpInside" id="e8K-qU-rAD"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5VZ-e4-Wk3">
                                         <rect key="frame" x="234" y="102" width="43" height="43"/>
@@ -138,6 +141,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="wordShowingComponentChange:" destination="auf-OA-niR" eventType="touchUpInside" id="Gwr-tW-RFs"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FAy-ZR-OU3">
                                         <rect key="frame" x="234" y="152" width="43" height="43"/>
@@ -150,6 +156,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="wordShowingComponentChange:" destination="auf-OA-niR" eventType="touchUpInside" id="3xq-OJ-3rc"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="G6w-qH-mxv">
                                         <rect key="frame" x="234" y="201" width="43" height="43"/>
@@ -162,6 +171,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="wordShowingComponentChange:" destination="auf-OA-niR" eventType="touchUpInside" id="R3X-lm-vlE"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="n54-VE-Wp6">
                                         <rect key="frame" x="234" y="252" width="43" height="43"/>
@@ -174,6 +186,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="wordShowingComponentChange:" destination="auf-OA-niR" eventType="touchUpInside" id="3KG-n8-d2Y"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -197,6 +212,9 @@
                                         <state key="highlighted" image="Settings_selectButton_pressdown.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="tellFriend" destination="auf-OA-niR" eventType="touchUpInside" id="e4f-Dv-p4Y"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3dX-qP-AaF">
                                         <rect key="frame" x="234" y="101" width="43" height="43"/>
@@ -209,6 +227,9 @@
                                         <state key="highlighted" image="Settings_selectButton_pressdown.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="rateMe" destination="auf-OA-niR" eventType="touchUpInside" id="4Bx-T0-AGC"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mWz-go-Gex">
                                         <rect key="frame" x="234" y="152" width="43" height="43"/>
@@ -221,6 +242,9 @@
                                         <state key="highlighted" image="Settings_selectButton_pressdown.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="sendSuggestionEmail" destination="auf-OA-niR" eventType="touchUpInside" id="AdH-QL-slj"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -850,109 +874,6 @@
         <image name="words list_scrollBar_circle.png" width="83" height="67"/>
         <image name="words list_sound.png" width="19" height="17"/>
     </resources>
-    <classes>
-        <class className="CustomSearchBar" superclassName="UISearchBar">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomSearchBar.h"/>
-        </class>
-        <class className="GreTableViewSearchIndexIndicatorViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GreTableViewSearchIndexIndicatorViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="backgroundVIew" candidateClass="UIView"/>
-                <relationship kind="outlet" name="indicatorLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="GreTableViewSearchIndexViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GreTableViewSearchIndexViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="backgroundView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="backroundVIewPressed" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="sampleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="GreWordsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GreWordsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="backgroundImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="titleView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="MHTabBarController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MHTabBarController.h"/>
-        </class>
-        <class className="SettingsContentViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsContentViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="autoSpeakButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="chineseMeaningButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="englishMeaningButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="homoButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="rateMeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="remindTimeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="remindTimePageControl" candidateClass="UIPageControl"/>
-                <relationship kind="outlet" name="remindTimeScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="sentenceButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="suggestButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tellFriendButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="versionLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="exitPressed:"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="SmartWordListContentCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmartWordListContentCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="SmartWordListHeaderCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmartWordListHeaderCell.h"/>
-            <relationships>
-                <relationship kind="action" name="notePressed:"/>
-                <relationship kind="action" name="soundPressed:"/>
-                <relationship kind="outlet" name="mistakeRatioIndicatorImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="noteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="wordLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SmartWordListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmartWordListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="SplashViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SplashViewController.h"/>
-        </class>
-        <class className="WelcomeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WelcomeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="goPressed:"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="v1" candidateClass="UIView"/>
-                <relationship kind="outlet" name="v1i" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="v2" candidateClass="UIView"/>
-                <relationship kind="outlet" name="v2i" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="v3" candidateClass="UIView"/>
-                <relationship kind="outlet" name="v3i" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="v4" candidateClass="UIView"/>
-                <relationship kind="outlet" name="v4i" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="WholeSmartWordViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WholeSmartWordViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="exitPressed:"/>
-                <relationship kind="outlet" name="pageScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

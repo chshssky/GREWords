@@ -10,8 +10,10 @@
 #import <MessageUI/MessageUI.h> 
 #import "SocialShareModal.h"
 #import "UIDevice+IdentifierAddition.h"
+#import "ConfigurationHelper.h"
 
-#define RECOMMAND_TEXT @"我刚刚用了#同济电费早知道#，再也不用担心宿舍突然没电了。推荐你也来用。下载地址: http://sbhhbs.com/dfzzd_dl.php"
+
+#define RECOMMAND_TEXT @"小崔崔~~~"
 
 @interface SettingsContentViewController ()
 
@@ -28,9 +30,15 @@
     return self;
 }
 
+
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self configVersionLabel];
+    [self initWordShowingComponentIndicatorState];
+    
 	// Do any additional setup after loading the view.
 }
 
@@ -57,9 +65,60 @@
 }
 
 
-#pragma mark about methods
+#pragma mark Helper methods
+
+
+- (void)initWordShowingComponentIndicatorState
+{
+    [self configButton:self.chineseMeaningButton toBoolState:[ConfigurationHelper instance].chineseMeaningVisibility];
+    [self configButton:self.englishMeaningButton toBoolState:[ConfigurationHelper instance].englishMeaningVisibility];
+    [self configButton:self.homoButton toBoolState:[ConfigurationHelper instance].homoionymVisibility];
+    [self configButton:self.sentenceButton toBoolState:[ConfigurationHelper instance].sampleSentenceVisibility];
+    [self configButton:self.autoSpeakButton toBoolState:[ConfigurationHelper instance].autoSpeak];
+}
+
+
+- (void)configButton:(UIButton*)button toBoolState:(BOOL)state
+{
+    NSString *filename = state ?@"Settings_swithButton_yes" :@"Settings_swithButton_no.png";
+    [button setImage:[UIImage imageNamed:filename] forState:UIControlStateNormal];
+}
+
+- (void)configVersionLabel
+{
+    NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    self.versionLabel.text = [NSString stringWithFormat:@"v%@",appVersion];
+}
+
+
+#pragma mark - Word Showing Component Methods
+- (IBAction)wordShowingComponentChange:(id)sender
+{
+    if(sender == self.chineseMeaningButton)
+    {
+        [ConfigurationHelper instance].chineseMeaningVisibility = ! [ConfigurationHelper instance].chineseMeaningVisibility;
+    }
+    else if(sender == self.englishMeaningButton)
+    {
+        [ConfigurationHelper instance].chineseMeaningVisibility = ! [ConfigurationHelper instance].chineseMeaningVisibility;
+    }
+    else if(sender == self.sentenceButton)
+    {
+        
+    }
+    else if(sender == self.autoSpeakButton)
+    {
+        
+    }
+    else if(sender == self.homoButton)
+    {
+        
+    }
+    [self initWordShowingComponentIndicatorState];
+}
+
 #pragma mark - About Methods
--(void)sendSuggestionEmail
+-(IBAction)sendSuggestionEmail
 {
     if (![MFMailComposeViewController canSendMail]) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"未设置邮件帐户", nil)
@@ -86,7 +145,7 @@
         
         
         
-        NSString *subject = [NSString stringWithFormat:@"同济电费早知道 v%@ 用户反馈",appVersion];
+        NSString *subject = [NSString stringWithFormat:@"<好G友> v%@ 用户反馈",appVersion];
         
         NSString *receiver = [NSString stringWithFormat:@"haoGyou@gmail.com"];
         [picker setToRecipients:[NSArray arrayWithObject:receiver]];
@@ -101,8 +160,9 @@
     
 }
 
--(void)rateMe
+-(IBAction)rateMe
 {
+#warning CHANGE THE　App Code Here!!!!
     NSString* appid = [NSString stringWithFormat:@"599472349"];
     
     NSString* url = [NSString stringWithFormat:  @"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=%@&pageNumber=0&sortOrdering=1&type=Purple+Software&mt=8", appid];
@@ -112,7 +172,7 @@
 }
 
 
--(void)tellFriend
+-(IBAction)tellFriend
 {
         CMActionSheet *actionSheet = [[CMActionSheet alloc] init];
         //actionSheet.title = @"Test Action sheet";
@@ -141,6 +201,10 @@
         // Present
         [actionSheet present];
 }
+
+//- (IBAction)wordShowingComponentChange:(id)sender {
+//    
+//}
 
 #pragma mark - Share methods
 - (void)shareByWeibo
@@ -188,7 +252,7 @@
         MFMailComposeViewController* picker = [[MFMailComposeViewController alloc] init];
         picker.mailComposeDelegate = self;
         picker.modalPresentationStyle = UIModalPresentationPageSheet;
-        NSString *subject = [NSString stringWithFormat:@"推荐你使用电费早知道"];
+        NSString *subject = [NSString stringWithFormat:@"推荐你使用<好G友>"];
         [picker setSubject:subject];
         
         //        NSString *infoSouceFile = [[NSBundle mainBundle] pathForResource:@"recommand_email" ofType:@"html"];
