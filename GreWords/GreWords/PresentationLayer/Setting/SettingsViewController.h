@@ -7,14 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SettingTabViewDeckViewController.h"
-#import "SettingTabViewDelegate.h"
 
-@interface SettingsViewController : UIViewController<SettingTabViewDelegate>
-{
-    SettingTabViewDeckViewController *tabs;
-}
-@property (weak, nonatomic) IBOutlet UIButton *exitButton;
-@property (weak, nonatomic) IBOutlet UIView *tabViews;
-
+@interface SettingsViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+- (IBAction)exitPressed:(id)sender;
 @end
