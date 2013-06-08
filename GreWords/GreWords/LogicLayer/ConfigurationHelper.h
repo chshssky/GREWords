@@ -32,6 +32,9 @@
 
 -(void)resetAllData;
 -(void)initData;
+-(void)initConfigsForStage;
+
+-(void)reSchedule;
 
 -(bool)isFirstTimeRun;
 
