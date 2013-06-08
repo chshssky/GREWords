@@ -86,8 +86,6 @@
 		733F10F01763771400CAB692 /* history exam_upCardBottom_noTest@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 733F10EE1763771400CAB692 /* history exam_upCardBottom_noTest@2x.png */; };
 		733F10F3176379E100CAB692 /* Settings_task2Clock_9.png in Resources */ = {isa = PBXBuildFile; fileRef = 733F10F1176379E100CAB692 /* Settings_task2Clock_9.png */; };
 		733F10F4176379E100CAB692 /* Settings_task2Clock_9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 733F10F2176379E100CAB692 /* Settings_task2Clock_9@2x.png */; };
-		733F10F717637A2800CAB692 /* history exam_upCardBottom_noTest_mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 733F10F517637A2800CAB692 /* history exam_upCardBottom_noTest_mini.png */; };
-		733F10F817637A2800CAB692 /* history exam_upCardBottom_noTest_mini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 733F10F617637A2800CAB692 /* history exam_upCardBottom_noTest_mini@2x.png */; };
 		733F10FB17637AA700CAB692 /* history exam_upCardBottom_noTest_mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 733F10F917637AA700CAB692 /* history exam_upCardBottom_noTest_mini.png */; };
 		733F10FC17637AA700CAB692 /* history exam_upCardBottom_noTest_mini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 733F10FA17637AA700CAB692 /* history exam_upCardBottom_noTest_mini@2x.png */; };
 		735ED83317415D170008F945 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735ED83217415D170008F945 /* CoreImage.framework */; };
@@ -3835,8 +3833,6 @@
 		733F10EE1763771400CAB692 /* history exam_upCardBottom_noTest@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "history exam_upCardBottom_noTest@2x.png"; path = "History/history exam_upCardBottom_noTest@2x.png"; sourceTree = "<group>"; };
 		733F10F1176379E100CAB692 /* Settings_task2Clock_9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_task2Clock_9.png; sourceTree = "<group>"; };
 		733F10F2176379E100CAB692 /* Settings_task2Clock_9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_task2Clock_9@2x.png"; sourceTree = "<group>"; };
-		733F10F517637A2800CAB692 /* history exam_upCardBottom_noTest_mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "history exam_upCardBottom_noTest_mini.png"; sourceTree = "<group>"; };
-		733F10F617637A2800CAB692 /* history exam_upCardBottom_noTest_mini@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "history exam_upCardBottom_noTest_mini@2x.png"; sourceTree = "<group>"; };
 		733F10F917637AA700CAB692 /* history exam_upCardBottom_noTest_mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "history exam_upCardBottom_noTest_mini.png"; path = "History/history exam_upCardBottom_noTest_mini.png"; sourceTree = "<group>"; };
 		733F10FA17637AA700CAB692 /* history exam_upCardBottom_noTest_mini@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "history exam_upCardBottom_noTest_mini@2x.png"; path = "History/history exam_upCardBottom_noTest_mini@2x.png"; sourceTree = "<group>"; };
 		735ED83217415D170008F945 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
@@ -7826,8 +7822,6 @@
 				73C66A9E175BA16D004B064D /* history review_cardBottom@2x.png */,
 				733F10ED1763771400CAB692 /* history exam_upCardBottom_noTest.png */,
 				733F10EE1763771400CAB692 /* history exam_upCardBottom_noTest@2x.png */,
-				733F10F517637A2800CAB692 /* history exam_upCardBottom_noTest_mini.png */,
-				733F10F617637A2800CAB692 /* history exam_upCardBottom_noTest_mini@2x.png */,
 				733F10F917637AA700CAB692 /* history exam_upCardBottom_noTest_mini.png */,
 				733F10FA17637AA700CAB692 /* history exam_upCardBottom_noTest_mini@2x.png */,
 			);
@@ -15752,8 +15746,6 @@
 				733F10F01763771400CAB692 /* history exam_upCardBottom_noTest@2x.png in Resources */,
 				733F10F3176379E100CAB692 /* Settings_task2Clock_9.png in Resources */,
 				733F10F4176379E100CAB692 /* Settings_task2Clock_9@2x.png in Resources */,
-				733F10F717637A2800CAB692 /* history exam_upCardBottom_noTest_mini.png in Resources */,
-				733F10F817637A2800CAB692 /* history exam_upCardBottom_noTest_mini@2x.png in Resources */,
 				733F10FB17637AA700CAB692 /* history exam_upCardBottom_noTest_mini.png in Resources */,
 				733F10FC17637AA700CAB692 /* history exam_upCardBottom_noTest_mini@2x.png in Resources */,
 			);
