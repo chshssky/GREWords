@@ -74,7 +74,7 @@
 {
     [super viewDidLoad];
     
-    _time = 1020;
+    //self.time = 1020;
     //数据初始化
     _minute = fmod(_time, 60);
     _hour = floor(_time/60);

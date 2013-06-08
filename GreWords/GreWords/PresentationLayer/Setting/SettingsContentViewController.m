@@ -136,17 +136,15 @@
     
     
     watchRecite = [[SettingClockViewController alloc] init];
-    watchRecite.view.frame = frame;
-    
-    
-    frame.origin.x += self.remindTimeScrollView.frame.size.width;
     watchReview = [[SettingClockViewController alloc] init];
-    watchReview.view.frame = frame;
-    
-    
     watchRecite.delegate = watchReview.delegate = self;
     [watchRecite setAlertTime:[ConfigurationHelper instance].freshWordAlertTime];
     [watchReview setAlertTime:[ConfigurationHelper instance].reviewAlertTime];
+    
+    
+    watchRecite.view.frame = frame;
+    frame.origin.x += self.remindTimeScrollView.frame.size.width;
+    watchReview.view.frame = frame;
     
     [self.remindTimeScrollView addSubview:watchRecite.view];
     [self.remindTimeScrollView addSubview:watchReview.view];
