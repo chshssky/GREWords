@@ -67,7 +67,7 @@
 					<object class="IBUIImageView" id="676394273">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">290</int>
-						<string key="NSFrameSize">{320, 169}</string>
+						<string key="NSFrameSize">{320, 175}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSNextKeyView" ref="826797330"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
@@ -158,6 +158,7 @@
 						<int key="NSvFlags">307</int>
 						<string key="NSFrame">{{268, 52}, {46, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView" ref="88760196"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -312,6 +313,14 @@
 					<int key="connectionID">221</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">backgroundImage</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="230071120"/>
+					</object>
+					<int key="connectionID">222</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">BackButtonPushed:</string>
 						<reference key="source" ref="826797330"/>
@@ -420,7 +429,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">221</int>
+			<int key="maxID">222</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
@@ -428,7 +437,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="learning_backgournd_blank.png">{320, 568}</string>
+			<string key="learning_backgournd_blank.png">{320, 548}</string>
 			<string key="learning_downCover2.png">{320, 54}</string>
 			<string key="learning_sound.png">{19, 17}</string>
 			<string key="learning_upCover.png">{320, 175}</string>

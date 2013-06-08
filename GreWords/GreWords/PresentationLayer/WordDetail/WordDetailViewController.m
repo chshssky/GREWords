@@ -27,6 +27,7 @@
 {
     UIImageView *guideImageView;
 }
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *DownImage;
 @property (weak, nonatomic) IBOutlet UIButton *PronounceButton;
@@ -184,6 +185,7 @@
         self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -252));
     } else {
         self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -212));
+        [self.backgroundImage setImage:[UIImage imageNamed:@"learning_backgournd_blank_mini.png"]];
     }
     [self.view addSubview:self.dashboardVC.view];
     
@@ -297,6 +299,7 @@
     [self setWordPronounceLabel:nil];
     [self setPronounceLabel:nil];
     [self setTimeImage:nil];
+    [self setBackgroundImage:nil];
     [super viewDidUnload];
 }
 

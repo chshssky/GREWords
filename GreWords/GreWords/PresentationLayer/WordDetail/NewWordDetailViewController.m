@@ -32,6 +32,7 @@
 {
     UIImageView *guideImageView;
 }
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *DownImage;
@@ -39,7 +40,6 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *pageControlView;
 @property (weak, nonatomic) IBOutlet UILabel *wordLabel;
 @property (weak, nonatomic) IBOutlet UILabel *wordSoundLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *soundImage;
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
 @property (nonatomic) int added_height;
 
@@ -107,6 +107,7 @@
         self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -252));
     } else {
         self.dashboardVC.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -212));
+        [self.backgroundImage setImage:[UIImage imageNamed:@"learning_backgournd_blank_mini.png"]];
     }
     [self.view addSubview:self.dashboardVC.view];
     
@@ -190,8 +191,8 @@
 - (void)viewDidUnload {
     [self setPageControlView:nil];
     [self setWordPhonetic:nil];
-    [self setSoundImage:nil];
     [self setBackButton:nil];
+    [self setBackgroundImage:nil];
     [super viewDidUnload];
 }
 
@@ -201,11 +202,6 @@
 
 - (IBAction)soundButtonClicked:(id)sender {
     [[WordSpeaker instance] readWord:self.wordLabel.text];
-    [self.soundImage setImage:[UIImage imageNamed:@"learning_sound_clicked.png"]];
-}
-
-- (IBAction)soundButtonReleased:(id)sender {
-    [self.soundImage setImage:[UIImage imageNamed:@"learning_sound.png"]];
 }
 
 - (IBAction)BackButtonPushed:(id)sender {
@@ -363,7 +359,6 @@
         [self.phoneticControlArray replaceObjectAtIndex:page withObject:self.WordPhonetic];
     }
     
-    NSLog(@"!!!!!!!!!!!!!!!!!%f",self.WordParaphraseView.frame.origin.x);
     // add the controller's view to the scroll view
     if (self.WordParaphraseView.superview == nil)
     {
@@ -424,9 +419,9 @@
             if (_downImageView == nil) {
                 _downImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_downCoverWithButton.png"]];
                 CGRect frame = _downImageView.frame;
-                frame.size.height = 171.0f;
+                frame.size.height = 168.0f;
                 [_downImageView setFrame:frame];
-                _downImageView.center =CGPointMake(320.0/2, self.view.frame.size.height + 171.0/2);
+                _downImageView.center =CGPointMake(320.0/2, self.view.frame.size.height + 168.0/2);
                 [self.view addSubview:_downImageView];
             }
             
@@ -436,7 +431,7 @@
                 [_tapCoverImageView setFrame:CGRectMake(self.pageControlView.frame.size.width*_changePage+8, 0, 304.0, 460.0)];
                 [self.pageControlView addSubview:_tapCoverImageView];
             }
-            _downImageView.center =CGPointMake(320.0/2, self.view.frame.size.height + 171.0/2 - 171.0/320 * (scrollView.contentOffset.x - (_changePage*320-320)));
+            _downImageView.center =CGPointMake(320.0/2, self.view.frame.size.height + 168.0/2 - 168.0/320 * (scrollView.contentOffset.x - (_changePage*320-320)));
             return;
         }
         

@@ -144,14 +144,14 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="learning_backgournd_blank.png" id="Pgl-Jq-o5Z">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Main menu_bg.png" id="Sf2-zk-Iu3">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Main menu_title.png" id="3NN-tp-1dU">
-                                <rect key="frame" x="12" y="18" width="128" height="78"/>
+                                <rect key="frame" x="5" y="6" width="128" height="78"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -658,7 +658,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Main menu_bg.png" width="320" height="568"/>
+        <image name="Main menu_bg.png" width="320" height="548"/>
         <image name="Main menu_title.png" width="128" height="78"/>
         <image name="Settings_Backbutton.png" width="51" height="60"/>
         <image name="Settings_backButton_clicked.png" width="51" height="60"/>
@@ -680,7 +680,7 @@
         <image name="learning list_line.png" width="320" height="6"/>
         <image name="learning list_sound.png" width="19" height="17"/>
         <image name="learning list_up_and_down_moreBg.png" width="320" height="1136"/>
-        <image name="learning_backgournd_blank.png" width="320" height="568"/>
+        <image name="learning_backgournd_blank.png" width="320" height="548"/>
         <image name="words list_backButton.png" width="45" height="45"/>
         <image name="words list_bg_buttom.png" width="320" height="90"/>
         <image name="words list_button_click.png" width="45" height="45"/>
