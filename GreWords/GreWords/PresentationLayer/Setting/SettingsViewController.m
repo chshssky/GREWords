@@ -7,9 +7,9 @@
 //
 
 #import "SettingsViewController.h"
-#import "SettingTabViewController.h"
 #import "GreWordsViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "SettingsContentViewController.h"
 
 @interface SettingsViewController ()
 
@@ -17,20 +17,15 @@
 
 @implementation SettingsViewController
 
-- (void)SettingTabViewdidChangeTo:(int)index
-{
-    NSLog(@"Setting Now Select:%d",index);
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+ 
+    SettingsContentViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"settingcontent"];
+    [self addChildViewController:vc];
+    [self.scrollView addSubview:vc.view];
+    [self.scrollView setContentSize:vc.view.frame.size];
     
-    tabs = [self.storyboard instantiateViewControllerWithIdentifier:@"settingDeck"];
-    tabs.delegate = self;
-    
-    [self.tabViews addSubview:tabs.view];
-
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -41,10 +36,11 @@
 }
 
 - (void)viewDidUnload {
-    [self setExitButton:nil];
-    [self setTabViews:nil];
+
+    [self setScrollView:nil];
     [super viewDidUnload];
 }
+
 - (IBAction)exitPressed:(id)sender {
     GreWordsViewController *superController =  (GreWordsViewController *)[self presentingViewController];
     

@@ -4,33 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
-        <!--Setting Tab View Deck View Controller-->
-        <scene sceneID="y2f-Q4-mT1">
-            <objects>
-                <viewController storyboardIdentifier="settingDeck" autoresizesArchivedViewToFullSize="NO" id="kjb-Z2-nL6" customClass="SettingTabViewDeckViewController" sceneMemberID="viewController">
-                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="M8U-Cu-WEn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" id="KJa-Zn-frw">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <connections>
-                        <outlet property="tabViews" destination="KJa-Zn-frw" id="K6b-xp-eZV"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sW8-ZK-arf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="294" y="-945"/>
-        </scene>
         <!--Settings View Controller-->
         <scene sceneID="wRa-CL-Dcb">
             <objects>
@@ -39,32 +12,31 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="top" image="Settings_bg.png" id="Oou-l1-Ndq" userLabel="background">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                            <imageView userInteractionEnabled="NO" contentMode="top" image="Settings_background.png" id="UVf-rD-DGf">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="549"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <view clipsSubviews="YES" contentMode="scaleToFill" id="D6p-eE-bi8" userLabel="bottom tab">
-                                <rect key="frame" x="0.0" y="299" width="320" height="249"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="bottom" image="Settings_cover1.png" id="N7W-Xh-Z1N">
-                                <rect key="frame" x="0.0" y="-11" width="320" height="363"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="zwT-0k-BHi" userLabel="back">
-                                <rect key="frame" x="258" y="0.0" width="51" height="60"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="CJz-hp-0Id">
+                                <rect key="frame" x="0.0" y="52" width="320" height="496"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </scrollView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Settings_title.png" id="EWy-66-Iua">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Q03-nt-Tv5">
+                                <rect key="frame" x="277" y="1" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" backgroundImage="Settings_Backbutton.png">
+                                <state key="normal" title="back" image="words list_backButton.png">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted" backgroundImage="Settings_backButton_clicked.png">
+                                <state key="highlighted" image="words list_button_click.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="exitPressed:" destination="9pB-X6-pSb" eventType="touchUpInside" id="44O-xt-PIJ"/>
+                                    <action selector="exitPressed:" destination="9pB-X6-pSb" eventType="touchUpInside" id="Kdl-yz-468"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -73,52 +45,245 @@
                         <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     </view>
                     <connections>
-                        <outlet property="exitButton" destination="zwT-0k-BHi" id="289-3j-wvX"/>
-                        <outlet property="tabViews" destination="D6p-eE-bi8" id="huU-8j-TCL"/>
+                        <outlet property="scrollView" destination="CJz-hp-0Id" id="zbX-5z-CPY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cHU-Nk-5bP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-78" y="-945"/>
         </scene>
-        <!--Setting Tab View Controller-->
-        <scene sceneID="5qb-Kd-clJ">
+        <!--Settings Content View Controller-->
+        <scene sceneID="vmF-Af-Tsq">
             <objects>
-                <viewController storyboardIdentifier="settingTab" autoresizesArchivedViewToFullSize="NO" id="dlm-ca-hWI" customClass="SettingTabViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Vyc-Hl-W0U">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <viewController storyboardIdentifier="settingcontent" autoresizesArchivedViewToFullSize="NO" id="auf-OA-niR" customClass="SettingsContentViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WXR-hN-nGx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="1150"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Settings_taskCover.png" id="Gdd-LJ-KUh">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Settings_coverLight_noChoose.png" id="KWz-YA-77D">
-                                <rect key="frame" x="9" y="377" width="36" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" image="Settings_coverLight_noChoose_light.png" id="xTe-Pq-8aO">
-                                <rect key="frame" x="0.0" y="368" width="58" height="52"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </imageView>
+                            <view contentMode="scaleToFill" id="P7e-q1-sOS">
+                                <rect key="frame" x="12" y="15" width="297" height="340"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Settings_remind.png" id="E1d-XR-RHG">
+                                        <rect key="frame" x="0.0" y="0.0" width="297" height="340"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="每天上午8:00我会提醒你记忆单词" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4kB-vM-nCu" customClass="OHAttributedLabel">
+                                        <rect key="frame" x="10" y="276" width="277" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" id="Ya2-6s-8mj">
+                                        <rect key="frame" x="129" y="296" width="38" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </pageControl>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="yN2-cj-B3U">
+                                        <rect key="frame" x="20" y="53" width="257" height="205"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="auf-OA-niR" id="gFP-Ad-dRR"/>
+                                        </connections>
+                                    </scrollView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="u5G-fe-QO7">
+                                <rect key="frame" x="12" y="380" width="297" height="323"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Settings_word.png" id="bPE-Ug-CAd">
+                                        <rect key="frame" x="0.0" y="0.0" width="297" height="323"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="e9j-rX-2a7">
+                                        <rect key="frame" x="234" y="56" width="43" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="Settings_swithButton_no.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="wordShowingComponentChange:" destination="auf-OA-niR" eventType="touchUpInside" id="e8K-qU-rAD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5VZ-e4-Wk3">
+                                        <rect key="frame" x="234" y="102" width="43" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="Settings_swithButton_no.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="wordShowingComponentChange:" destination="auf-OA-niR" eventType="touchUpInside" id="Gwr-tW-RFs"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="FAy-ZR-OU3">
+                                        <rect key="frame" x="234" y="152" width="43" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="Settings_swithButton_no.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="wordShowingComponentChange:" destination="auf-OA-niR" eventType="touchUpInside" id="3xq-OJ-3rc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="G6w-qH-mxv">
+                                        <rect key="frame" x="234" y="201" width="43" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="Settings_swithButton_no.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="wordShowingComponentChange:" destination="auf-OA-niR" eventType="touchUpInside" id="R3X-lm-vlE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="n54-VE-Wp6">
+                                        <rect key="frame" x="234" y="252" width="43" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="Settings_swithButton_no.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="wordShowingComponentChange:" destination="auf-OA-niR" eventType="touchUpInside" id="3KG-n8-d2Y"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" id="kOy-1b-4qX">
+                                <rect key="frame" x="12" y="729" width="297" height="223"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Settings_about.png" id="nDD-l3-ski">
+                                        <rect key="frame" x="0.0" y="0.0" width="297" height="223"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="35x-5C-ZzL">
+                                        <rect key="frame" x="234" y="50" width="43" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="Settings_selectButton_normal.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="Settings_selectButton_pressdown.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tellFriend" destination="auf-OA-niR" eventType="touchUpInside" id="e4f-Dv-p4Y"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="3dX-qP-AaF">
+                                        <rect key="frame" x="234" y="101" width="43" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="Settings_selectButton_normal.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="Settings_selectButton_pressdown.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="rateMe" destination="auf-OA-niR" eventType="touchUpInside" id="4Bx-T0-AGC"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mWz-go-Gex">
+                                        <rect key="frame" x="234" y="152" width="43" height="43"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" image="Settings_selectButton_normal.png">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" image="Settings_selectButton_pressdown.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="sendSuggestionEmail" destination="auf-OA-niR" eventType="touchUpInside" id="AdH-QL-slj"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dpD-TQ-4a1">
+                                <rect key="frame" x="12" y="978" width="297" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Button" image="Settings_delete.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Copyright © 好G友 All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6cd-JF-imb">
+                                <rect key="frame" x="27" y="1057" width="266" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.57254901960000004" green="0.54117647059999996" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="v1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Lp6-gh-HBN">
+                                <rect key="frame" x="27" y="1079" width="266" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.57254901960000004" green="0.54117647059999996" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="0.0" height="1"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="describeImage" destination="Gdd-LJ-KUh" id="Vd9-W9-Lje"/>
-                        <outlet property="stateImage" destination="KWz-YA-77D" id="Q5t-s7-65D"/>
-                        <outlet property="stateImageLight" destination="xTe-Pq-8aO" id="UYn-FS-YPu"/>
+                        <outlet property="autoSpeakButton" destination="n54-VE-Wp6" id="Sb5-YU-5YQ"/>
+                        <outlet property="chineseMeaningButton" destination="e9j-rX-2a7" id="OEq-eL-hwq"/>
+                        <outlet property="englishMeaningButton" destination="5VZ-e4-Wk3" id="mYh-44-ulC"/>
+                        <outlet property="homoButton" destination="G6w-qH-mxv" id="9TO-O6-S8l"/>
+                        <outlet property="rateMeButton" destination="3dX-qP-AaF" id="5IX-4O-GEp"/>
+                        <outlet property="remindTimeLabel" destination="4kB-vM-nCu" id="fnO-vo-3Q7"/>
+                        <outlet property="remindTimePageControl" destination="Ya2-6s-8mj" id="Xub-Gs-Lj8"/>
+                        <outlet property="remindTimeScrollView" destination="yN2-cj-B3U" id="Uhc-Jh-TVz"/>
+                        <outlet property="sentenceButton" destination="FAy-ZR-OU3" id="nQc-NW-SNu"/>
+                        <outlet property="suggestButton" destination="mWz-go-Gex" id="aaf-Ti-iUR"/>
+                        <outlet property="tellFriendButton" destination="35x-5C-ZzL" id="JXJ-l5-hqH"/>
+                        <outlet property="versionLabel" destination="Lp6-gh-HBN" id="XZE-WJ-YAh"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EKY-Tm-uek" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oyt-Qy-ldX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="654" y="-945"/>
+            <point key="canvasLocation" x="308" y="-1190"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="pI8-yM-fSJ">
@@ -660,13 +825,15 @@
     <resources>
         <image name="Main menu_bg.png" width="320" height="568"/>
         <image name="Main menu_title.png" width="128" height="78"/>
-        <image name="Settings_Backbutton.png" width="51" height="60"/>
-        <image name="Settings_backButton_clicked.png" width="51" height="60"/>
-        <image name="Settings_bg.png" width="320" height="568"/>
-        <image name="Settings_cover1.png" width="320" height="363"/>
-        <image name="Settings_coverLight_noChoose.png" width="36" height="37"/>
-        <image name="Settings_coverLight_noChoose_light.png" width="58" height="52"/>
-        <image name="Settings_taskCover.png" width="320" height="406"/>
+        <image name="Settings_about.png" width="297" height="223"/>
+        <image name="Settings_background.png" width="320" height="568"/>
+        <image name="Settings_delete.png" width="297" height="59"/>
+        <image name="Settings_remind.png" width="297" height="340"/>
+        <image name="Settings_selectButton_normal.png" width="43" height="43"/>
+        <image name="Settings_selectButton_pressdown.png" width="43" height="43"/>
+        <image name="Settings_swithButton_no.png" width="43" height="43"/>
+        <image name="Settings_title.png" width="320" height="65"/>
+        <image name="Settings_word.png" width="297" height="323"/>
         <image name="Welcome1.png" width="320" height="568"/>
         <image name="Welcome2.png" width="320" height="568"/>
         <image name="Welcome3.png" width="320" height="568"/>
@@ -680,115 +847,15 @@
         <image name="learning list_line.png" width="320" height="6"/>
         <image name="learning list_sound.png" width="19" height="17"/>
         <image name="learning list_up_and_down_moreBg.png" width="320" height="1136"/>
-        <image name="learning_backgournd_blank.png" width="320" height="568"/>
-        <image name="words list_backButton.png" width="45" height="45"/>
+        <image name="learning_backgournd_blank.png" width="320" height="548"/>
+        <image name="words list_backButton.png" width="44" height="46"/>
         <image name="words list_bg_buttom.png" width="320" height="90"/>
-        <image name="words list_button_click.png" width="45" height="45"/>
+        <image name="words list_button_click.png" width="44" height="46"/>
         <image name="words list_note.png" width="19" height="19"/>
         <image name="words list_point5.png" width="52" height="6"/>
         <image name="words list_scrollBar_circle.png" width="83" height="67"/>
         <image name="words list_sound.png" width="19" height="17"/>
     </resources>
-    <classes>
-        <class className="CustomSearchBar" superclassName="UISearchBar">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomSearchBar.h"/>
-        </class>
-        <class className="GreTableViewSearchIndexIndicatorViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GreTableViewSearchIndexIndicatorViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="backgroundVIew" candidateClass="UIView"/>
-                <relationship kind="outlet" name="indicatorLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="GreTableViewSearchIndexViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GreTableViewSearchIndexViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="backgroundView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="backroundVIewPressed" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="sampleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="GreWordsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GreWordsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="backgroundImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="titleView" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="MHTabBarController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MHTabBarController.h"/>
-        </class>
-        <class className="SettingTabViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingTabViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="describeImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="stateImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="stateImageLight" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="SettingTabViewDeckViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingTabViewDeckViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tabViews" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="SettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="exitButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tabViews" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="SmartWordListContentCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmartWordListContentCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="contentView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="SmartWordListHeaderCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmartWordListHeaderCell.h"/>
-            <relationships>
-                <relationship kind="action" name="notePressed:"/>
-                <relationship kind="action" name="soundPressed:"/>
-                <relationship kind="outlet" name="mistakeRatioIndicatorImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="noteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="wordLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="SmartWordListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SmartWordListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="SplashViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SplashViewController.h"/>
-        </class>
-        <class className="WelcomeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WelcomeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="goPressed:"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="v1" candidateClass="UIView"/>
-                <relationship kind="outlet" name="v1i" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="v2" candidateClass="UIView"/>
-                <relationship kind="outlet" name="v2i" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="v3" candidateClass="UIView"/>
-                <relationship kind="outlet" name="v3i" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="v4" candidateClass="UIView"/>
-                <relationship kind="outlet" name="v4i" candidateClass="UIImageView"/>
-            </relationships>
-        </class>
-        <class className="WholeSmartWordViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WholeSmartWordViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="exitPressed:"/>
-                <relationship kind="outlet" name="pageScrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="topView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

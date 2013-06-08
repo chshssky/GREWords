@@ -12,10 +12,12 @@
 @interface ConfigurationHelper : NSObject
 
 #pragma mark -- setting property
-@property (nonatomic) bool meaningVisibility;
+@property (nonatomic) bool chineseMeaningVisibility;
+@property (nonatomic) bool englishMeaningVisibility;
 @property (nonatomic) bool sampleSentenceVisibility;
 @property (nonatomic) bool homoionymVisibility;
 @property (nonatomic) bool antonymVisiblity;
+@property (nonatomic) bool autoSpeak;
 
 @property (nonatomic,retain) NSDate* freshWordAlertTime;
 @property (nonatomic,retain) NSDate* reviewAlertTime;
