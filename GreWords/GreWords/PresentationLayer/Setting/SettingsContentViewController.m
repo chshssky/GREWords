@@ -136,19 +136,14 @@
     
     
     watchRecite = [[SettingClockViewController alloc] init];
-    watchReview = [[SettingClockViewController alloc] init];
     watchRecite.delegate = watchReview.delegate = self;
     [watchRecite setAlertTime:[ConfigurationHelper instance].freshWordAlertTime];
-    [watchReview setAlertTime:[ConfigurationHelper instance].reviewAlertTime];
-    
-    
+
     watchRecite.view.frame = frame;
-    frame.origin.x += self.remindTimeScrollView.frame.size.width;
-    watchReview.view.frame = frame;
+    
     
     [self.remindTimeScrollView addSubview:watchRecite.view];
-    [self.remindTimeScrollView addSubview:watchReview.view];
-    
+
     self.remindTimeScrollView.contentSize = CGSizeMake(self.remindTimeScrollView.frame.size.width * 2, self.remindTimeScrollView.frame.size.height);
     
     [self configLabelForReciteAtTime:[ConfigurationHelper instance].freshWordAlertTime];
@@ -504,7 +499,7 @@
 }
 
 
-#pragma mark UIScrollView delegate
+#pragma mark - UIScrollView delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     int x = self.remindTimeScrollView.contentOffset.x;
@@ -521,6 +516,20 @@
     }
     else
     {
+        if(watchReview == nil)
+        {
+            CGRect frame = self.remindTimeScrollView.frame;
+            frame.origin.x = 0;
+            frame.origin.y = 0;
+            
+            watchReview = [[SettingClockViewController alloc] init];
+            [watchReview setAlertTime:[ConfigurationHelper instance].reviewAlertTime];
+
+            frame.origin.x += self.remindTimeScrollView.frame.size.width;
+            watchReview.view.frame = frame;
+            
+            [self.remindTimeScrollView addSubview:watchReview.view];
+        }
         [self configLabelForReviewAtTime:[ConfigurationHelper instance].reviewAlertTime];
     }
 }

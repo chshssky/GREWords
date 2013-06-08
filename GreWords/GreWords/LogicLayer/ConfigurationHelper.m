@@ -303,19 +303,38 @@ ConfigurationHelper* _configurationHelperInstance = nil;
     if(stage == 0)
     {
         self.chineseMeaningVisibility = YES;
-        
+        self.englishMeaningVisibility = YES;
+        self.autoSpeak = YES;
+        self.homoionymVisibility = NO;
+        self.antonymVisiblity = NO;
+        self.sampleSentenceVisibility = NO;
     }
     else if(stage == 1)
     {
+        self.chineseMeaningVisibility = YES;
         self.englishMeaningVisibility = YES;
+        self.autoSpeak = YES;
+        self.homoionymVisibility = NO;
+        self.antonymVisiblity = NO;
+        self.sampleSentenceVisibility = YES;
     }
     else if(stage == 2)
     {
-        
+        self.chineseMeaningVisibility = YES;
+        self.englishMeaningVisibility = YES;
+        self.autoSpeak = YES;
+        self.homoionymVisibility = YES;
+        self.antonymVisiblity = YES;
+        self.sampleSentenceVisibility = YES;
     }
     else if(stage == 3)
     {
-        
+        self.chineseMeaningVisibility = YES;
+        self.englishMeaningVisibility = YES;
+        self.autoSpeak = YES;
+        self.homoionymVisibility = YES;
+        self.antonymVisiblity = YES;
+        self.sampleSentenceVisibility = YES;
     }
 }
 
