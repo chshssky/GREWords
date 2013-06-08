@@ -137,6 +137,7 @@
     
     watchRecite = [[SettingClockViewController alloc] init];
     watchRecite.delegate = watchReview.delegate = self;
+    watchRecite.whetherRecite = YES;
     [watchRecite setAlertTime:[ConfigurationHelper instance].freshWordAlertTime];
 
     watchRecite.view.frame = frame;

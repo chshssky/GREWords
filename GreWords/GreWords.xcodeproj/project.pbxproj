@@ -86,8 +86,6 @@
 		733F10F01763771400CAB692 /* history exam_upCardBottom_noTest@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 733F10EE1763771400CAB692 /* history exam_upCardBottom_noTest@2x.png */; };
 		733F10F3176379E100CAB692 /* Settings_task2Clock_9.png in Resources */ = {isa = PBXBuildFile; fileRef = 733F10F1176379E100CAB692 /* Settings_task2Clock_9.png */; };
 		733F10F4176379E100CAB692 /* Settings_task2Clock_9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 733F10F2176379E100CAB692 /* Settings_task2Clock_9@2x.png */; };
-		733F10F717637A2800CAB692 /* history exam_upCardBottom_noTest_mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 733F10F517637A2800CAB692 /* history exam_upCardBottom_noTest_mini.png */; };
-		733F10F817637A2800CAB692 /* history exam_upCardBottom_noTest_mini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 733F10F617637A2800CAB692 /* history exam_upCardBottom_noTest_mini@2x.png */; };
 		733F10FB17637AA700CAB692 /* history exam_upCardBottom_noTest_mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 733F10F917637AA700CAB692 /* history exam_upCardBottom_noTest_mini.png */; };
 		733F10FC17637AA700CAB692 /* history exam_upCardBottom_noTest_mini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 733F10FA17637AA700CAB692 /* history exam_upCardBottom_noTest_mini@2x.png */; };
 		735ED83317415D170008F945 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735ED83217415D170008F945 /* CoreImage.framework */; };
@@ -292,6 +290,8 @@
 		E407AF1B175B9D7A0098F702 /* MultiWallLongGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = E407AED9175B9D7A0098F702 /* MultiWallLongGraph.m */; };
 		E407AF1F175B9DDF0098F702 /* LineChartViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E407AF1D175B9DDF0098F702 /* LineChartViewController.m */; };
 		E407AF20175B9DDF0098F702 /* LineChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E407AF1E175B9DDF0098F702 /* LineChartViewController.xib */; };
+		E41686A717637DAD00F26831 /* Settings_task2Clock_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = E41686A517637DAD00F26831 /* Settings_task2Clock_circle.png */; };
+		E41686A817637DAD00F26831 /* Settings_task2Clock_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41686A617637DAD00F26831 /* Settings_task2Clock_circle@2x.png */; };
 		E418DA5F1713E5E8002C6743 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */; };
 		E41FF51B173F868F0078E738 /* WholeSmartWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41FF51A173F868F0078E738 /* WholeSmartWordViewController.m */; };
 		E41FF5971740E08A0078E738 /* words list_backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E41FF56F1740E0890078E738 /* words list_backButton.png */; };
@@ -4114,6 +4114,8 @@
 		E407AF1C175B9DDF0098F702 /* LineChartViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineChartViewController.h; sourceTree = "<group>"; };
 		E407AF1D175B9DDF0098F702 /* LineChartViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChartViewController.m; sourceTree = "<group>"; };
 		E407AF1E175B9DDF0098F702 /* LineChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LineChartViewController.xib; sourceTree = "<group>"; };
+		E41686A517637DAD00F26831 /* Settings_task2Clock_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_task2Clock_circle.png; sourceTree = "<group>"; };
+		E41686A617637DAD00F26831 /* Settings_task2Clock_circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_task2Clock_circle@2x.png"; sourceTree = "<group>"; };
 		E418DA5E1713E5E8002C6743 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E41FF519173F868F0078E738 /* WholeSmartWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholeSmartWordViewController.h; sourceTree = "<group>"; };
 		E41FF51A173F868F0078E738 /* WholeSmartWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholeSmartWordViewController.m; sourceTree = "<group>"; };
@@ -12008,6 +12010,8 @@
 		E480BABB17634C9C00F37106 /* clock */ = {
 			isa = PBXGroup;
 			children = (
+				E41686A517637DAD00F26831 /* Settings_task2Clock_circle.png */,
+				E41686A617637DAD00F26831 /* Settings_task2Clock_circle@2x.png */,
 				733F10C1176376D500CAB692 /* Settings_task2Clock_1.png */,
 				733F10C2176376D500CAB692 /* Settings_task2Clock_1@2x.png */,
 				733F10C3176376D500CAB692 /* Settings_task2Clock_2.png */,
@@ -15774,10 +15778,10 @@
 				733F10F01763771400CAB692 /* history exam_upCardBottom_noTest@2x.png in Resources */,
 				733F10F3176379E100CAB692 /* Settings_task2Clock_9.png in Resources */,
 				733F10F4176379E100CAB692 /* Settings_task2Clock_9@2x.png in Resources */,
-				733F10F717637A2800CAB692 /* history exam_upCardBottom_noTest_mini.png in Resources */,
-				733F10F817637A2800CAB692 /* history exam_upCardBottom_noTest_mini@2x.png in Resources */,
 				733F10FB17637AA700CAB692 /* history exam_upCardBottom_noTest_mini.png in Resources */,
 				733F10FC17637AA700CAB692 /* history exam_upCardBottom_noTest_mini@2x.png in Resources */,
+				E41686A717637DAD00F26831 /* Settings_task2Clock_circle.png in Resources */,
+				E41686A817637DAD00F26831 /* Settings_task2Clock_circle@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
