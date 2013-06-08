@@ -265,7 +265,7 @@
         _testSelectorController = nil;
     }
     
-    NSArray *arr = [[WordTaskGenerator instance] testTaskWithOptions:examInfo];
+    NSArray *arr = [[WordTaskGenerator instance] testTaskWithOptions:examInfo whetherWithAllWords:NO];
     
     if (arr == nil) {
         

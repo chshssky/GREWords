@@ -14,7 +14,7 @@
 - (NSArray *)newWordTask_threeList:(int)day;
 - (NSArray *)reviewTask_threeList:(int)day;
 - (NSArray *)reviewTask_twoList:(int)day;
-- (NSArray *)testTaskWithOptions:(NSDictionary *)dict;
+- (NSArray *)testTaskWithOptions:(NSDictionary *)dict whetherWithAllWords:(BOOL)allWords;
 - (void)setWhetherNoOrder:(bool)flag;
 
 

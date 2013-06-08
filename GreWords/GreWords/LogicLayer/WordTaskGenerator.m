@@ -882,16 +882,21 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
     return task;
 }
 
-- (NSArray *)testTaskWithOptions:(NSDictionary *)examInfo
+- (NSArray *)testTaskWithOptions:(NSDictionary *)examInfo whetherWithAllWords:(BOOL)allWords
 {
     NSMutableArray *task = [[NSMutableArray alloc] init];
     
     NSString *level = [examInfo objectForKey:@"level"];
     
-    NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:[self getRandomArray]];
+    NSArray *newArray = [[NSMutableArray alloc] initWithArray:[self getRandomArray]];
     
-    if (newArray.count < 30) {
-        return nil;
+    
+    if (allWords == YES) {
+        newArray = [self addRandomWordsToArray:newArray];
+    }else {
+        if (newArray.count < 30) {
+            return nil;
+        }
     }
     
     if ([level isEqualToString: @"easy"]) {
@@ -910,7 +915,7 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
     return task;
 }
 
-- (NSArray *) randomArrayWithArray:(NSArray *)arr
+- (NSArray *)randomArrayWithArray:(NSArray *)arr
 {
     NSMutableArray *array = [[NSMutableArray alloc] initWithArray:arr];
     int i = [array count];
@@ -959,6 +964,18 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
     [newArray addObjectsFromArray:fiveStarArray];
     
     return newArray;   
+}
+
+- (NSArray *)addRandomWordsToArray:(NSArray *)array
+{
+    NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:array];
+    
+    for (int i=0; i<50; i++) {
+        int key = arc4random() % 3073;
+        NSString *randomWord = [[WordHelper instance] wordWithID:key].wordText;
+        [newArray addObject:randomWord];
+    }
+    return newArray;
 }
 
 

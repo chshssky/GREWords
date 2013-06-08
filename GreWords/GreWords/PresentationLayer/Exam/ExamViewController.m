@@ -93,7 +93,7 @@
 - (NSArray *)examArr
 {
     if (_examArr == nil) {
-        _examArr = [[WordTaskGenerator instance] testTaskWithOptions:self.examInfo];
+        _examArr = [[WordTaskGenerator instance] testTaskWithOptions:self.examInfo whetherWithAllWords:NO];
     }
     return _examArr;
 }
