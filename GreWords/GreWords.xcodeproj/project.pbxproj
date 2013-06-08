@@ -3700,6 +3700,7 @@
 		E4D1B4CE1758F38B000796DF /* words list_scrollBar.png in Resources */ = {isa = PBXBuildFile; fileRef = E4D1B4CA1758F38B000796DF /* words list_scrollBar.png */; };
 		E4D1B4CF1758F38B000796DF /* words list_scrollBar_Pressdown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4D1B4CB1758F38B000796DF /* words list_scrollBar_Pressdown@2x.png */; };
 		E4D1B4D01758F38B000796DF /* words list_scrollBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4D1B4CC1758F38B000796DF /* words list_scrollBar@2x.png */; };
+		E4E1527417637496002A4482 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4E1527317637496002A4482 /* libGoogleAnalytics.a */; };
 		E4FA4B79175F0CE5001A103D /* TestPageCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FA4B74175F0CE5001A103D /* TestPageCardViewController.m */; };
 		E4FA4B7A175F0CE5001A103D /* TestPageCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4FA4B75175F0CE5001A103D /* TestPageCardViewController.xib */; };
 		E4FA4B7B175F0CE5001A103D /* TestPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FA4B77175F0CE5001A103D /* TestPageViewController.m */; };
@@ -7558,6 +7559,12 @@
 		E4D1B4CA1758F38B000796DF /* words list_scrollBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "words list_scrollBar.png"; sourceTree = "<group>"; };
 		E4D1B4CB1758F38B000796DF /* words list_scrollBar_Pressdown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "words list_scrollBar_Pressdown@2x.png"; sourceTree = "<group>"; };
 		E4D1B4CC1758F38B000796DF /* words list_scrollBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "words list_scrollBar@2x.png"; sourceTree = "<group>"; };
+		E4E1526E17637496002A4482 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		E4E1526F17637496002A4482 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		E4E1527017637496002A4482 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		E4E1527117637496002A4482 /* GAITransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransaction.h; sourceTree = "<group>"; };
+		E4E1527217637496002A4482 /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransactionItem.h; sourceTree = "<group>"; };
+		E4E1527317637496002A4482 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
 		E4E21C561743C2C4001A7EEF /* flipcard.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = flipcard.plist; sourceTree = "<group>"; };
 		E4FA4B73175F0CE5001A103D /* TestPageCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPageCardViewController.h; sourceTree = "<group>"; };
 		E4FA4B74175F0CE5001A103D /* TestPageCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPageCardViewController.m; sourceTree = "<group>"; };
@@ -7586,6 +7593,7 @@
 				3F70EC8F1701CADB00327770 /* CoreGraphics.framework in Frameworks */,
 				E46601F2173BD509001847D0 /* IAThreadSafeCoreData.framework in Frameworks */,
 				E4696E14174C8E8200C5F264 /* libCrittercism_v3_5_2.a in Frameworks */,
+				E4E1527417637496002A4482 /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -11711,6 +11719,7 @@
 		E466F4B3173BD508001847D0 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				E4E1526D17637496002A4482 /* GoogleAnalytics */,
 				E480BA921763239000F37106 /* OHAttributedLabel */,
 				E46D5645176235F9002DF48F /* FakeUUID */,
 				E46D564117623534002DF48F /* Social */,
@@ -12001,6 +12010,19 @@
 				E4D1B4C01758EA00000796DF /* GreTableViewSearchIndexIndicatorViewController.m */,
 			);
 			name = SearchIndex;
+			sourceTree = "<group>";
+		};
+		E4E1526D17637496002A4482 /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				E4E1526E17637496002A4482 /* GAI.h */,
+				E4E1526F17637496002A4482 /* GAITrackedViewController.h */,
+				E4E1527017637496002A4482 /* GAITracker.h */,
+				E4E1527117637496002A4482 /* GAITransaction.h */,
+				E4E1527217637496002A4482 /* GAITransactionItem.h */,
+				E4E1527317637496002A4482 /* libGoogleAnalytics.a */,
+			);
+			path = GoogleAnalytics;
 			sourceTree = "<group>";
 		};
 		E4FA4B71175F0CE5001A103D /* TestPage */ = {
@@ -15890,6 +15912,7 @@
 					"\"$(SRCROOT)/GreWords/Libs/CrittercismSDK\"",
 					"\"$(SRCROOT)/GreWords/Libs/CorePlot\"",
 					"\"$(SRCROOT)/GreWords/Libs/OHAttributedLabel\"",
+					"\"$(SRCROOT)/GreWords/Libs/GoogleAnalytics\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -15913,6 +15936,7 @@
 					"\"$(SRCROOT)/GreWords/Libs/CrittercismSDK\"",
 					"\"$(SRCROOT)/GreWords/Libs/CorePlot\"",
 					"\"$(SRCROOT)/GreWords/Libs/OHAttributedLabel\"",
+					"\"$(SRCROOT)/GreWords/Libs/GoogleAnalytics\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
