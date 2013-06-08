@@ -266,13 +266,11 @@
 
 -(IBAction)rateMe
 {
-#warning CHANGE THE　App Code Here!!!!
-    NSString* appid = [NSString stringWithFormat:@"599472349"];
+    NSString* appid = [NSString stringWithFormat:@"659880998"];
     
     NSString* url = [NSString stringWithFormat:  @"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=%@&pageNumber=0&sortOrdering=1&type=Purple+Software&mt=8", appid];
     
     [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];
-    
 }
 
 
@@ -523,6 +521,7 @@
             frame.origin.y = 0;
             
             watchReview = [[SettingClockViewController alloc] init];
+            watchReview.delegate = self;
             [watchReview setAlertTime:[ConfigurationHelper instance].reviewAlertTime];
 
             frame.origin.x += self.remindTimeScrollView.frame.size.width;
