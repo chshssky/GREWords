@@ -100,19 +100,19 @@
     }
     else if(sender == self.englishMeaningButton)
     {
-        [ConfigurationHelper instance].chineseMeaningVisibility = ! [ConfigurationHelper instance].chineseMeaningVisibility;
+        [ConfigurationHelper instance].englishMeaningVisibility = ! [ConfigurationHelper instance].englishMeaningVisibility;
     }
     else if(sender == self.sentenceButton)
     {
-        
+        [ConfigurationHelper instance].sampleSentenceVisibility = ! [ConfigurationHelper instance].sampleSentenceVisibility;
     }
     else if(sender == self.autoSpeakButton)
     {
-        
+        [ConfigurationHelper instance].autoSpeak = ! [ConfigurationHelper instance].autoSpeak;
     }
     else if(sender == self.homoButton)
     {
-        
+        [ConfigurationHelper instance].homoionymVisibility = ! [ConfigurationHelper instance].homoionymVisibility;
     }
     [self initWordShowingComponentIndicatorState];
 }
