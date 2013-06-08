@@ -523,6 +523,7 @@
             frame.origin.y = 0;
             
             watchReview = [[SettingClockViewController alloc] init];
+            watchReview.delegate = self;
             [watchReview setAlertTime:[ConfigurationHelper instance].reviewAlertTime];
 
             frame.origin.x += self.remindTimeScrollView.frame.size.width;
