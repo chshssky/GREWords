@@ -17,6 +17,7 @@
 
 @interface SettingClockViewController : UIViewController
 @property (retain,nonatomic) id<SettingClockProtocal> delegate;
+@property(nonatomic) bool whetherRecite;
 
 -(void)setAlertTime:(NSDate*)date;
 

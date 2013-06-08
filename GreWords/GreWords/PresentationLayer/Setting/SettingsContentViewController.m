@@ -137,6 +137,7 @@
     
     watchRecite = [[SettingClockViewController alloc] init];
     watchRecite.delegate = watchReview.delegate = self;
+    watchRecite.whetherRecite = YES;
     [watchRecite setAlertTime:[ConfigurationHelper instance].freshWordAlertTime];
 
     watchRecite.view.frame = frame;
@@ -196,6 +197,22 @@
 
 
 #pragma mark - Word Showing Component Methods
+
+
+- (int)showingComponentCount
+{
+    int count = 0;
+    if([ConfigurationHelper instance].chineseMeaningVisibility)
+        count++;
+    if([ConfigurationHelper instance].englishMeaningVisibility)
+        count++;
+    if([ConfigurationHelper instance].sampleSentenceVisibility)
+        count++;
+    if([ConfigurationHelper instance].homoionymVisibility)
+        count++;
+    return count;
+}
+
 - (IBAction)wordShowingComponentChange:(id)sender
 {
     if(sender == self.chineseMeaningButton)
@@ -219,6 +236,24 @@
         [ConfigurationHelper instance].homoionymVisibility = ! [ConfigurationHelper instance].homoionymVisibility;
     }
     [self initWordShowingComponentIndicatorState];
+    if([self showingComponentCount] <= 1)
+    {
+        if([ConfigurationHelper instance].chineseMeaningVisibility)
+           [self.chineseMeaningButton setEnabled:NO];
+        if([ConfigurationHelper instance].englishMeaningVisibility)
+            [self.englishMeaningButton setEnabled:NO];
+        if([ConfigurationHelper instance].sampleSentenceVisibility)
+            [self.sentenceButton setEnabled:NO];
+        if([ConfigurationHelper instance].homoionymVisibility)
+            [self.homoButton setEnabled:NO];
+    }
+    else
+    {
+        [self.chineseMeaningButton setEnabled:YES];
+        [self.englishMeaningButton setEnabled:YES];
+        [self.sentenceButton setEnabled:YES];
+        [self.homoButton setEnabled:YES];
+    }
 }
 
 #pragma mark - About Methods

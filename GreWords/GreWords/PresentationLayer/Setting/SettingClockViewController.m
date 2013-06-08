@@ -41,7 +41,7 @@
 @property(nonatomic) int movePointY;
 @property(nonatomic) bool whetherPlusHour;
 @property(nonatomic) bool whetherMinusHour;
-@property(nonatomic) bool whetherRecite;
+
 
 @property(nonatomic) int minute;
 @property(nonatomic) int temp_minute;
@@ -96,6 +96,16 @@
     //添加时钟数字
     
     if (_whetherRecite == YES) {
+        
+        //添加钟盘图片并消除锯齿
+        UIImage *clockCircle = [UIImage imageNamed:@"Settings_taskClock_circle.png"];
+        self.CimageView = [[UIImageView alloc] initWithImage:clockCircle];
+        self.CimageView.center = _centerPoint;
+        self.CimageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        //self.CimageView.alpha = 0.5;
+        [self.view addSubview:self.CimageView];
+        
+        
         UIImage *N1 = [UIImage imageNamed:@"Settings_taskClock_1.png"];
         self.N1_imageView = [[UIImageView alloc] initWithImage:N1];
         self.N1_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x+55, _centerPoint.y-95);
@@ -157,6 +167,15 @@
         self.N12_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
         [self.view addSubview:self.N12_imageView];
     }else {
+        
+        //添加钟盘图片并消除锯齿
+        UIImage *clockCircle = [UIImage imageNamed:@"Settings_task2Clock_circle.png"];
+        self.CimageView = [[UIImageView alloc] initWithImage:clockCircle];
+        self.CimageView.center = _centerPoint;
+        self.CimageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        //self.CimageView.alpha = 0.5;
+        [self.view addSubview:self.CimageView];
+        
         UIImage *N1 = [UIImage imageNamed:@"Settings_task2Clock_1.png"];
         self.N1_imageView = [[UIImageView alloc] initWithImage:N1];
         self.N1_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x+55, _centerPoint.y-95);
@@ -218,18 +237,6 @@
         self.N12_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
         [self.view addSubview:self.N12_imageView];
     }
-
-    
-    
-    
-    
-    //添加钟盘图片并消除锯齿
-    UIImage *clockCircle = [UIImage imageNamed:@"Settings_taskClock_circle.png"];
-    self.CimageView = [[UIImageView alloc] initWithImage:clockCircle];
-    self.CimageView.center = _centerPoint;
-    self.CimageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    //self.CimageView.alpha = 0.5;
-    [self.view addSubview:self.CimageView];
     
     //添加AM和PM
     _AM = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Settings_taskClock_AM.png"]];
@@ -273,6 +280,7 @@
     self.FimageView.layer.anchorPoint = CGPointMake(0.5, 0.78);
     [self.view addSubview:self.FimageView];
     
+    
     //添加中心点图片并消除锯齿
     UIImage *clockPoint = [UIImage imageNamed:@"Settings_taskClock_pointer.png"];
     //    UIGraphicsBeginImageContextWithOptions(f.size, NO, f.scale);
@@ -285,9 +293,6 @@
     self.PimageView.center = _centerPoint;
     self.PimageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     [self.view addSubview:self.PimageView];
-    
-    
-    
     
     //添加分针手势
     //    UIPanGestureRecognizer *gestureRecognizerF = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleF:)];
