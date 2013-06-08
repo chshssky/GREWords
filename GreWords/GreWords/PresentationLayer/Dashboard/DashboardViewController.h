@@ -37,6 +37,7 @@
 - (void)wordDetailIndicatorGen;
 - (void)changeTextViewToReview;
 - (void)changeTextViewToNewWord;
+- (void)changeTextViewToComplete;
 - (void)mainViewGen;
 - (void)plusData;
 - (void)minusData;

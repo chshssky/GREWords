@@ -1004,12 +1004,7 @@
     self.rEvent.endTime = [self getNowDate];
     
     [[HistoryManager instance] endEvent:self.rEvent];
-        
-#warning  return to Main menu
-    //!!!!!!!!!!!!!!!!!return
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日完成" message:[NSString stringWithFormat:@"今天错误率：%d 用时：30min", [TaskStatus instance].wrongWordCount] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
-//    [alert setAlertViewStyle:UIAlertViewStyleDefault];
-    
+            
     if (_reciteAndReviewResultCardViewController == nil) {
         _reciteAndReviewResultCardViewController = [[ReciteAndReviewResultViewController alloc] init];
         
@@ -1017,7 +1012,6 @@
         //_note.delegate = self;
     }
     
-#warning review complete event set here    
     self.rEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
     self.rEvent.totalWordCount = [TaskStatus instance].totalWordCount;
     self.rEvent.duration = [TaskStatus instance].duration;
@@ -1027,6 +1021,17 @@
     [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withEvent:self.rEvent];
     [_reciteAndReviewResultCardViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_reciteAndReviewResultCardViewController.view];
+    
+    DashboardViewController *dashboard = [DashboardViewController instance];
+    // Database: read from
+    dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].indexOfWordIDToday;
+    
+    dashboard.minNumber = dashboard.nonFinishedNumber;
+    dashboard.sumNumber = TaskWordNumber;
+    [dashboard reloadData];
+    [dashboard changeTextViewToReview];
+
+    
 }
 
 //- (void)createNewWord
