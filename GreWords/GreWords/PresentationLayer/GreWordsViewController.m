@@ -147,6 +147,8 @@
 {
     [super viewDidLoad];
 
+    [[ConfigurationHelper instance] reSchedule];
+    
     // 从数据库中读取现在的状态
     //初始化TaskStatus状态
 

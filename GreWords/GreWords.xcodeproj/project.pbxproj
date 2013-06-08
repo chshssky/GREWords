@@ -3608,6 +3608,48 @@
 		E480BAB21763239000F37106 /* OHASBasicHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E480BAA61763239000F37106 /* OHASBasicHTMLParser.m */; };
 		E480BAB31763239000F37106 /* OHASBasicMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E480BAA81763239000F37106 /* OHASBasicMarkupParser.m */; };
 		E480BAB41763239000F37106 /* OHASMarkupParserBase.m in Sources */ = {isa = PBXBuildFile; fileRef = E480BAAA1763239000F37106 /* OHASMarkupParserBase.m */; };
+		E480BAE017634C9C00F37106 /* Settings_taskClock_1.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BABC17634C9C00F37106 /* Settings_taskClock_1.png */; };
+		E480BAE117634C9C00F37106 /* Settings_taskClock_10.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BABD17634C9C00F37106 /* Settings_taskClock_10.png */; };
+		E480BAE217634C9C00F37106 /* Settings_taskClock_10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BABE17634C9C00F37106 /* Settings_taskClock_10@2x.png */; };
+		E480BAE317634C9C00F37106 /* Settings_taskClock_11.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BABF17634C9C00F37106 /* Settings_taskClock_11.png */; };
+		E480BAE417634C9C00F37106 /* Settings_taskClock_11@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAC017634C9C00F37106 /* Settings_taskClock_11@2x.png */; };
+		E480BAE517634C9C00F37106 /* Settings_taskClock_12.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAC117634C9C00F37106 /* Settings_taskClock_12.png */; };
+		E480BAE617634C9C00F37106 /* Settings_taskClock_12@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAC217634C9C00F37106 /* Settings_taskClock_12@2x.png */; };
+		E480BAE717634C9C00F37106 /* Settings_taskClock_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAC317634C9C00F37106 /* Settings_taskClock_1@2x.png */; };
+		E480BAE817634C9C00F37106 /* Settings_taskClock_2.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAC417634C9C00F37106 /* Settings_taskClock_2.png */; };
+		E480BAE917634C9C00F37106 /* Settings_taskClock_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAC517634C9C00F37106 /* Settings_taskClock_2@2x.png */; };
+		E480BAEA17634C9C00F37106 /* Settings_taskClock_3.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAC617634C9C00F37106 /* Settings_taskClock_3.png */; };
+		E480BAEB17634C9C00F37106 /* Settings_taskClock_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAC717634C9C00F37106 /* Settings_taskClock_3@2x.png */; };
+		E480BAEC17634C9C00F37106 /* Settings_taskClock_4.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAC817634C9C00F37106 /* Settings_taskClock_4.png */; };
+		E480BAED17634C9C00F37106 /* Settings_taskClock_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAC917634C9C00F37106 /* Settings_taskClock_4@2x.png */; };
+		E480BAEE17634C9C00F37106 /* Settings_taskClock_5.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BACA17634C9C00F37106 /* Settings_taskClock_5.png */; };
+		E480BAEF17634C9C00F37106 /* Settings_taskClock_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BACB17634C9C00F37106 /* Settings_taskClock_5@2x.png */; };
+		E480BAF017634C9C00F37106 /* Settings_taskClock_6.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BACC17634C9C00F37106 /* Settings_taskClock_6.png */; };
+		E480BAF117634C9C00F37106 /* Settings_taskClock_6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BACD17634C9C00F37106 /* Settings_taskClock_6@2x.png */; };
+		E480BAF217634C9C00F37106 /* Settings_taskClock_7.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BACE17634C9C00F37106 /* Settings_taskClock_7.png */; };
+		E480BAF317634C9C00F37106 /* Settings_taskClock_7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BACF17634C9C00F37106 /* Settings_taskClock_7@2x.png */; };
+		E480BAF417634C9C00F37106 /* Settings_taskClock_8.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAD017634C9C00F37106 /* Settings_taskClock_8.png */; };
+		E480BAF517634C9C00F37106 /* Settings_taskClock_8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAD117634C9C00F37106 /* Settings_taskClock_8@2x.png */; };
+		E480BAF617634C9C00F37106 /* Settings_taskClock_9.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAD217634C9C00F37106 /* Settings_taskClock_9.png */; };
+		E480BAF717634C9C00F37106 /* Settings_taskClock_9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAD317634C9C00F37106 /* Settings_taskClock_9@2x.png */; };
+		E480BAF817634C9C00F37106 /* Settings_taskClock_AM.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAD417634C9C00F37106 /* Settings_taskClock_AM.png */; };
+		E480BAF917634C9C00F37106 /* Settings_taskClock_AM@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAD517634C9C00F37106 /* Settings_taskClock_AM@2x.png */; };
+		E480BAFA17634C9C00F37106 /* Settings_taskClock_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAD617634C9C00F37106 /* Settings_taskClock_circle.png */; };
+		E480BAFB17634C9C00F37106 /* Settings_taskClock_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAD717634C9C00F37106 /* Settings_taskClock_circle@2x.png */; };
+		E480BAFC17634C9C00F37106 /* Settings_taskClock_hourHand.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAD817634C9C00F37106 /* Settings_taskClock_hourHand.png */; };
+		E480BAFD17634C9C00F37106 /* Settings_taskClock_hourHand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BAD917634C9C00F37106 /* Settings_taskClock_hourHand@2x.png */; };
+		E480BAFE17634C9C00F37106 /* Settings_taskClock_minuteHand.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BADA17634C9C00F37106 /* Settings_taskClock_minuteHand.png */; };
+		E480BAFF17634C9C00F37106 /* Settings_taskClock_minuteHand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BADB17634C9C00F37106 /* Settings_taskClock_minuteHand@2x.png */; };
+		E480BB0017634C9C00F37106 /* Settings_taskClock_PM.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BADC17634C9C00F37106 /* Settings_taskClock_PM.png */; };
+		E480BB0117634C9C00F37106 /* Settings_taskClock_PM@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BADD17634C9C00F37106 /* Settings_taskClock_PM@2x.png */; };
+		E480BB0217634C9C00F37106 /* Settings_taskClock_pointer.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BADE17634C9C00F37106 /* Settings_taskClock_pointer.png */; };
+		E480BB0317634C9C00F37106 /* Settings_taskClock_pointer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BADF17634C9C00F37106 /* Settings_taskClock_pointer@2x.png */; };
+		E480BB0717634D2400F37106 /* SettingClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E480BB0517634D2400F37106 /* SettingClockViewController.m */; };
+		E480BB0817634D2400F37106 /* SettingClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E480BB0617634D2400F37106 /* SettingClockViewController.xib */; };
+		E480BB09176357C000F37106 /* iPhone_Icon_icon ios.png in Resources */ = {isa = PBXBuildFile; fileRef = E4412387175F212900B4288D /* iPhone_Icon_icon ios.png */; };
+		E480BB0A176357C800F37106 /* iPhoneRetina_Icon_icon ios.png in Resources */ = {isa = PBXBuildFile; fileRef = E4412389175F212F00B4288D /* iPhoneRetina_Icon_icon ios.png */; };
+		E480BB0D1763588700F37106 /* history exam_upCardBottom_noTest.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BB0B1763588700F37106 /* history exam_upCardBottom_noTest.png */; };
+		E480BB0E1763588700F37106 /* history exam_upCardBottom_noTest@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BB0C1763588700F37106 /* history exam_upCardBottom_noTest@2x.png */; };
 		E4983ED0171A8CD90055A0E7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */; };
 		E4CB2CE41757767F00370700 /* findIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE01757767F00370700 /* findIcon.png */; };
 		E4CB2CE51757767F00370700 /* findIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE11757767F00370700 /* findIcon@2x.png */; };
@@ -7421,6 +7463,47 @@
 		E480BAA81763239000F37106 /* OHASBasicMarkupParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHASBasicMarkupParser.m; sourceTree = "<group>"; };
 		E480BAA91763239000F37106 /* OHASMarkupParserBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHASMarkupParserBase.h; sourceTree = "<group>"; };
 		E480BAAA1763239000F37106 /* OHASMarkupParserBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHASMarkupParserBase.m; sourceTree = "<group>"; };
+		E480BABC17634C9C00F37106 /* Settings_taskClock_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_taskClock_1.png; sourceTree = "<group>"; };
+		E480BABD17634C9C00F37106 /* Settings_taskClock_10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_taskClock_10.png; sourceTree = "<group>"; };
+		E480BABE17634C9C00F37106 /* Settings_taskClock_10@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_taskClock_10@2x.png"; sourceTree = "<group>"; };
+		E480BABF17634C9C00F37106 /* Settings_taskClock_11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_taskClock_11.png; sourceTree = "<group>"; };
+		E480BAC017634C9C00F37106 /* Settings_taskClock_11@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_taskClock_11@2x.png"; sourceTree = "<group>"; };
+		E480BAC117634C9C00F37106 /* Settings_taskClock_12.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_taskClock_12.png; sourceTree = "<group>"; };
+		E480BAC217634C9C00F37106 /* Settings_taskClock_12@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_taskClock_12@2x.png"; sourceTree = "<group>"; };
+		E480BAC317634C9C00F37106 /* Settings_taskClock_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_taskClock_1@2x.png"; sourceTree = "<group>"; };
+		E480BAC417634C9C00F37106 /* Settings_taskClock_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_taskClock_2.png; sourceTree = "<group>"; };
+		E480BAC517634C9C00F37106 /* Settings_taskClock_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_taskClock_2@2x.png"; sourceTree = "<group>"; };
+		E480BAC617634C9C00F37106 /* Settings_taskClock_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_taskClock_3.png; sourceTree = "<group>"; };
+		E480BAC717634C9C00F37106 /* Settings_taskClock_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_taskClock_3@2x.png"; sourceTree = "<group>"; };
+		E480BAC817634C9C00F37106 /* Settings_taskClock_4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_taskClock_4.png; sourceTree = "<group>"; };
+		E480BAC917634C9C00F37106 /* Settings_taskClock_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_taskClock_4@2x.png"; sourceTree = "<group>"; };
+		E480BACA17634C9C00F37106 /* Settings_taskClock_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_taskClock_5.png; sourceTree = "<group>"; };
+		E480BACB17634C9C00F37106 /* Settings_taskClock_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_taskClock_5@2x.png"; sourceTree = "<group>"; };
+		E480BACC17634C9C00F37106 /* Settings_taskClock_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_taskClock_6.png; sourceTree = "<group>"; };
+		E480BACD17634C9C00F37106 /* Settings_taskClock_6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_taskClock_6@2x.png"; sourceTree = "<group>"; };
+		E480BACE17634C9C00F37106 /* Settings_taskClock_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_taskClock_7.png; sourceTree = "<group>"; };
+		E480BACF17634C9C00F37106 /* Settings_taskClock_7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_taskClock_7@2x.png"; sourceTree = "<group>"; };
+		E480BAD017634C9C00F37106 /* Settings_taskClock_8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_taskClock_8.png; sourceTree = "<group>"; };
+		E480BAD117634C9C00F37106 /* Settings_taskClock_8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_taskClock_8@2x.png"; sourceTree = "<group>"; };
+		E480BAD217634C9C00F37106 /* Settings_taskClock_9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_taskClock_9.png; sourceTree = "<group>"; };
+		E480BAD317634C9C00F37106 /* Settings_taskClock_9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_taskClock_9@2x.png"; sourceTree = "<group>"; };
+		E480BAD417634C9C00F37106 /* Settings_taskClock_AM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_taskClock_AM.png; sourceTree = "<group>"; };
+		E480BAD517634C9C00F37106 /* Settings_taskClock_AM@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_taskClock_AM@2x.png"; sourceTree = "<group>"; };
+		E480BAD617634C9C00F37106 /* Settings_taskClock_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_taskClock_circle.png; sourceTree = "<group>"; };
+		E480BAD717634C9C00F37106 /* Settings_taskClock_circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_taskClock_circle@2x.png"; sourceTree = "<group>"; };
+		E480BAD817634C9C00F37106 /* Settings_taskClock_hourHand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_taskClock_hourHand.png; sourceTree = "<group>"; };
+		E480BAD917634C9C00F37106 /* Settings_taskClock_hourHand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_taskClock_hourHand@2x.png"; sourceTree = "<group>"; };
+		E480BADA17634C9C00F37106 /* Settings_taskClock_minuteHand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_taskClock_minuteHand.png; sourceTree = "<group>"; };
+		E480BADB17634C9C00F37106 /* Settings_taskClock_minuteHand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_taskClock_minuteHand@2x.png"; sourceTree = "<group>"; };
+		E480BADC17634C9C00F37106 /* Settings_taskClock_PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_taskClock_PM.png; sourceTree = "<group>"; };
+		E480BADD17634C9C00F37106 /* Settings_taskClock_PM@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_taskClock_PM@2x.png"; sourceTree = "<group>"; };
+		E480BADE17634C9C00F37106 /* Settings_taskClock_pointer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_taskClock_pointer.png; sourceTree = "<group>"; };
+		E480BADF17634C9C00F37106 /* Settings_taskClock_pointer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_taskClock_pointer@2x.png"; sourceTree = "<group>"; };
+		E480BB0417634D2400F37106 /* SettingClockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingClockViewController.h; sourceTree = "<group>"; };
+		E480BB0517634D2400F37106 /* SettingClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingClockViewController.m; sourceTree = "<group>"; };
+		E480BB0617634D2400F37106 /* SettingClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingClockViewController.xib; sourceTree = "<group>"; };
+		E480BB0B1763588700F37106 /* history exam_upCardBottom_noTest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "history exam_upCardBottom_noTest.png"; sourceTree = "<group>"; };
+		E480BB0C1763588700F37106 /* history exam_upCardBottom_noTest@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "history exam_upCardBottom_noTest@2x.png"; sourceTree = "<group>"; };
 		E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E4CB2CE01757767F00370700 /* findIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = findIcon.png; sourceTree = "<group>"; };
 		E4CB2CE11757767F00370700 /* findIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findIcon@2x.png"; sourceTree = "<group>"; };
@@ -7672,6 +7755,8 @@
 				73C66A8F175BA16D004B064D /* history exam_cardBottom.png */,
 				73C66A90175BA16D004B064D /* history exam_cardBottom@2x.png */,
 				73C66A91175BA16D004B064D /* history exam_upCardBottom_mini.png */,
+				E480BB0B1763588700F37106 /* history exam_upCardBottom_noTest.png */,
+				E480BB0C1763588700F37106 /* history exam_upCardBottom_noTest@2x.png */,
 				73C66A92175BA16D004B064D /* history exam_upCardBottom_mini@2x.png */,
 				73C66A93175BA16D004B064D /* history exam_upCardBottom.png */,
 				73C66A94175BA16D004B064D /* history exam_upCardBottom@2x.png */,
@@ -8187,6 +8272,7 @@
 		E466E766173BD4CB001847D0 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				E480BAB917634C3700F37106 /* Clock */,
 				E466E767173BD4CB001847D0 /* SettingsViewController.h */,
 				E466E768173BD4CB001847D0 /* SettingsViewController.m */,
 				E46D55DE1762242C002DF48F /* SettingsContentViewController.h */,
@@ -11698,6 +11784,7 @@
 		E46D55E217622928002DF48F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				E480BABB17634C9C00F37106 /* clock */,
 				E46D55E317622928002DF48F /* Settings_about.png */,
 				E46D55E417622928002DF48F /* Settings_about@2x.png */,
 				E46D55E517622928002DF48F /* Settings_background.png */,
@@ -11837,6 +11924,59 @@
 				E480BAAA1763239000F37106 /* OHASMarkupParserBase.m */,
 			);
 			path = TagParsers;
+			sourceTree = "<group>";
+		};
+		E480BAB917634C3700F37106 /* Clock */ = {
+			isa = PBXGroup;
+			children = (
+				E480BB0417634D2400F37106 /* SettingClockViewController.h */,
+				E480BB0517634D2400F37106 /* SettingClockViewController.m */,
+				E480BB0617634D2400F37106 /* SettingClockViewController.xib */,
+			);
+			name = Clock;
+			sourceTree = "<group>";
+		};
+		E480BABB17634C9C00F37106 /* clock */ = {
+			isa = PBXGroup;
+			children = (
+				E480BABC17634C9C00F37106 /* Settings_taskClock_1.png */,
+				E480BABD17634C9C00F37106 /* Settings_taskClock_10.png */,
+				E480BABE17634C9C00F37106 /* Settings_taskClock_10@2x.png */,
+				E480BABF17634C9C00F37106 /* Settings_taskClock_11.png */,
+				E480BAC017634C9C00F37106 /* Settings_taskClock_11@2x.png */,
+				E480BAC117634C9C00F37106 /* Settings_taskClock_12.png */,
+				E480BAC217634C9C00F37106 /* Settings_taskClock_12@2x.png */,
+				E480BAC317634C9C00F37106 /* Settings_taskClock_1@2x.png */,
+				E480BAC417634C9C00F37106 /* Settings_taskClock_2.png */,
+				E480BAC517634C9C00F37106 /* Settings_taskClock_2@2x.png */,
+				E480BAC617634C9C00F37106 /* Settings_taskClock_3.png */,
+				E480BAC717634C9C00F37106 /* Settings_taskClock_3@2x.png */,
+				E480BAC817634C9C00F37106 /* Settings_taskClock_4.png */,
+				E480BAC917634C9C00F37106 /* Settings_taskClock_4@2x.png */,
+				E480BACA17634C9C00F37106 /* Settings_taskClock_5.png */,
+				E480BACB17634C9C00F37106 /* Settings_taskClock_5@2x.png */,
+				E480BACC17634C9C00F37106 /* Settings_taskClock_6.png */,
+				E480BACD17634C9C00F37106 /* Settings_taskClock_6@2x.png */,
+				E480BACE17634C9C00F37106 /* Settings_taskClock_7.png */,
+				E480BACF17634C9C00F37106 /* Settings_taskClock_7@2x.png */,
+				E480BAD017634C9C00F37106 /* Settings_taskClock_8.png */,
+				E480BAD117634C9C00F37106 /* Settings_taskClock_8@2x.png */,
+				E480BAD217634C9C00F37106 /* Settings_taskClock_9.png */,
+				E480BAD317634C9C00F37106 /* Settings_taskClock_9@2x.png */,
+				E480BAD417634C9C00F37106 /* Settings_taskClock_AM.png */,
+				E480BAD517634C9C00F37106 /* Settings_taskClock_AM@2x.png */,
+				E480BAD617634C9C00F37106 /* Settings_taskClock_circle.png */,
+				E480BAD717634C9C00F37106 /* Settings_taskClock_circle@2x.png */,
+				E480BAD817634C9C00F37106 /* Settings_taskClock_hourHand.png */,
+				E480BAD917634C9C00F37106 /* Settings_taskClock_hourHand@2x.png */,
+				E480BADA17634C9C00F37106 /* Settings_taskClock_minuteHand.png */,
+				E480BADB17634C9C00F37106 /* Settings_taskClock_minuteHand@2x.png */,
+				E480BADC17634C9C00F37106 /* Settings_taskClock_PM.png */,
+				E480BADD17634C9C00F37106 /* Settings_taskClock_PM@2x.png */,
+				E480BADE17634C9C00F37106 /* Settings_taskClock_pointer.png */,
+				E480BADF17634C9C00F37106 /* Settings_taskClock_pointer@2x.png */,
+			);
+			path = clock;
 			sourceTree = "<group>";
 		};
 		E4CB2CDF1757767F00370700 /* UISearchBar */ = {
@@ -15463,6 +15603,47 @@
 				E46D5640176234E8002DF48F /* action-white-button@2x.png in Resources */,
 				E480BAAB1763239000F37106 /* CHANGELOG in Resources */,
 				E480BAAC1763239000F37106 /* LICENSE in Resources */,
+				E480BAE017634C9C00F37106 /* Settings_taskClock_1.png in Resources */,
+				E480BAE117634C9C00F37106 /* Settings_taskClock_10.png in Resources */,
+				E480BAE217634C9C00F37106 /* Settings_taskClock_10@2x.png in Resources */,
+				E480BAE317634C9C00F37106 /* Settings_taskClock_11.png in Resources */,
+				E480BAE417634C9C00F37106 /* Settings_taskClock_11@2x.png in Resources */,
+				E480BAE517634C9C00F37106 /* Settings_taskClock_12.png in Resources */,
+				E480BAE617634C9C00F37106 /* Settings_taskClock_12@2x.png in Resources */,
+				E480BAE717634C9C00F37106 /* Settings_taskClock_1@2x.png in Resources */,
+				E480BAE817634C9C00F37106 /* Settings_taskClock_2.png in Resources */,
+				E480BAE917634C9C00F37106 /* Settings_taskClock_2@2x.png in Resources */,
+				E480BAEA17634C9C00F37106 /* Settings_taskClock_3.png in Resources */,
+				E480BAEB17634C9C00F37106 /* Settings_taskClock_3@2x.png in Resources */,
+				E480BAEC17634C9C00F37106 /* Settings_taskClock_4.png in Resources */,
+				E480BAED17634C9C00F37106 /* Settings_taskClock_4@2x.png in Resources */,
+				E480BAEE17634C9C00F37106 /* Settings_taskClock_5.png in Resources */,
+				E480BAEF17634C9C00F37106 /* Settings_taskClock_5@2x.png in Resources */,
+				E480BAF017634C9C00F37106 /* Settings_taskClock_6.png in Resources */,
+				E480BAF117634C9C00F37106 /* Settings_taskClock_6@2x.png in Resources */,
+				E480BAF217634C9C00F37106 /* Settings_taskClock_7.png in Resources */,
+				E480BAF317634C9C00F37106 /* Settings_taskClock_7@2x.png in Resources */,
+				E480BAF417634C9C00F37106 /* Settings_taskClock_8.png in Resources */,
+				E480BAF517634C9C00F37106 /* Settings_taskClock_8@2x.png in Resources */,
+				E480BAF617634C9C00F37106 /* Settings_taskClock_9.png in Resources */,
+				E480BAF717634C9C00F37106 /* Settings_taskClock_9@2x.png in Resources */,
+				E480BAF817634C9C00F37106 /* Settings_taskClock_AM.png in Resources */,
+				E480BAF917634C9C00F37106 /* Settings_taskClock_AM@2x.png in Resources */,
+				E480BAFA17634C9C00F37106 /* Settings_taskClock_circle.png in Resources */,
+				E480BAFB17634C9C00F37106 /* Settings_taskClock_circle@2x.png in Resources */,
+				E480BAFC17634C9C00F37106 /* Settings_taskClock_hourHand.png in Resources */,
+				E480BAFD17634C9C00F37106 /* Settings_taskClock_hourHand@2x.png in Resources */,
+				E480BAFE17634C9C00F37106 /* Settings_taskClock_minuteHand.png in Resources */,
+				E480BAFF17634C9C00F37106 /* Settings_taskClock_minuteHand@2x.png in Resources */,
+				E480BB0017634C9C00F37106 /* Settings_taskClock_PM.png in Resources */,
+				E480BB0117634C9C00F37106 /* Settings_taskClock_PM@2x.png in Resources */,
+				E480BB0217634C9C00F37106 /* Settings_taskClock_pointer.png in Resources */,
+				E480BB0317634C9C00F37106 /* Settings_taskClock_pointer@2x.png in Resources */,
+				E480BB0817634D2400F37106 /* SettingClockViewController.xib in Resources */,
+				E480BB09176357C000F37106 /* iPhone_Icon_icon ios.png in Resources */,
+				E480BB0A176357C800F37106 /* iPhoneRetina_Icon_icon ios.png in Resources */,
+				E480BB0D1763588700F37106 /* history exam_upCardBottom_noTest.png in Resources */,
+				E480BB0E1763588700F37106 /* history exam_upCardBottom_noTest@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15605,6 +15786,7 @@
 				E480BAB21763239000F37106 /* OHASBasicHTMLParser.m in Sources */,
 				E480BAB31763239000F37106 /* OHASBasicMarkupParser.m in Sources */,
 				E480BAB41763239000F37106 /* OHASMarkupParserBase.m in Sources */,
+				E480BB0717634D2400F37106 /* SettingClockViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

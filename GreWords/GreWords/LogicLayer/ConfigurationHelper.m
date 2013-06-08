@@ -124,7 +124,7 @@ ConfigurationHelper* _configurationHelperInstance = nil;
     [ud setObject:freshWordAlertTime  forKey:@"freshWordAlertTime"];
     [ud synchronize];
     
-    [self schedulePushNotificationAt:freshWordAlertTime message:@"该学习新单词了"];
+    [self reSchedule];
 }
 
 
@@ -139,51 +139,100 @@ ConfigurationHelper* _configurationHelperInstance = nil;
     [ud setObject:reviewAlertTime  forKey:@"reviewAlertTime"];
     [ud synchronize];
     
-    [self schedulePushNotificationAt:reviewAlertTime message:@"该学习新单词了"];
+    [self reSchedule];
 }
 
 
 
 #pragma mark notification system
 
--(void)schedulePushNotificationAt:(NSDate*)alertTime message:(NSString*)message
+
+-(void)reSchedule
 {
-    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-    if (localNotif == nil)
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+
+    if(!self.freshWordAlertTime || !self.reviewAlertTime)
         return;
-    
-    
-    NSDate *fireDay = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * 1];
-    
-    NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
-    
-    NSDateComponents *dateComponents = [calendar components:( NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit )
-												   fromDate:fireDay];
-    NSDateComponents *timeComponents = [calendar components:( NSHourCalendarUnit | NSMinuteCalendarUnit )
-												   fromDate:alertTime];
-    
-	// Set up the fire time
-    NSDateComponents *dateComps = [[NSDateComponents alloc] init];
-    [dateComps setDay:[dateComponents day]];
-    [dateComps setMonth:[dateComponents month]];
-    [dateComps setYear:[dateComponents year]];
-    [dateComps setHour:[timeComponents hour]];
-    [dateComps setMinute:[timeComponents minute]];
-	[dateComps setSecond:0];
-    NSDate *itemDate = [calendar dateFromComponents:dateComps];
-    
-    
-    localNotif.fireDate = itemDate;
-    localNotif.timeZone = [NSTimeZone defaultTimeZone];
-	
-	// Notification details
-    localNotif.alertBody = message;
-	
-    localNotif.applicationIconBadgeNumber = 1;
-	
-	// Schedule the notification
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+    for(int i = 0; i <= 30; i++)
+    {
+        UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+        if (localNotif == nil)
+            return;
+        
+        
+        NSDate *fireDay = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * (i+1)];
+        
+        NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+        
+        NSDateComponents *dateComponents = [calendar components:( NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit )
+                                                       fromDate:fireDay];
+        NSDateComponents *timeComponents = [calendar components:( NSHourCalendarUnit | NSMinuteCalendarUnit )
+                                                       fromDate:self.freshWordAlertTime];
+        
+        // Set up the fire time
+        NSDateComponents *dateComps = [[NSDateComponents alloc] init];
+        [dateComps setDay:[dateComponents day]];
+        [dateComps setMonth:[dateComponents month]];
+        [dateComps setYear:[dateComponents year]];
+        [dateComps setHour:[timeComponents hour]];
+        [dateComps setMinute:[timeComponents minute]];
+        [dateComps setSecond:0];
+        NSDate *itemDate = [calendar dateFromComponents:dateComps];
+        
+        
+        localNotif.fireDate = itemDate;
+        localNotif.timeZone = [NSTimeZone defaultTimeZone];
+        
+        // Notification details
+        localNotif.alertBody = @"现在该背诵今天的新单词了哦~~↖(^ω^)↗";
+        
+        localNotif.applicationIconBadgeNumber = i+1;
+        
+        // Schedule the notification
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+    }
+    for(int i = 0; i <= 30; i++)
+    {
+        UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+        if (localNotif == nil)
+            return;
+        
+        
+        NSDate *fireDay = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * (i+1)];
+        
+        NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+        
+        NSDateComponents *dateComponents = [calendar components:( NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit )
+                                                       fromDate:fireDay];
+        NSDateComponents *timeComponents = [calendar components:( NSHourCalendarUnit | NSMinuteCalendarUnit )
+                                                       fromDate:self.reviewAlertTime];
+        
+        // Set up the fire time
+        NSDateComponents *dateComps = [[NSDateComponents alloc] init];
+        [dateComps setDay:[dateComponents day]];
+        [dateComps setMonth:[dateComponents month]];
+        [dateComps setYear:[dateComponents year]];
+        [dateComps setHour:[timeComponents hour]];
+        [dateComps setMinute:[timeComponents minute]];
+        [dateComps setSecond:0];
+        NSDate *itemDate = [calendar dateFromComponents:dateComps];
+        
+        
+        localNotif.fireDate = itemDate;
+        localNotif.timeZone = [NSTimeZone defaultTimeZone];
+        
+        // Notification details
+        localNotif.alertBody = @"现在该复习单词了哦~~↖(^ω^)↗";
+        
+        localNotif.applicationIconBadgeNumber = i+1;
+        
+        // Schedule the notification
+        [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+    }
 }
+
+
 
 
 
@@ -217,8 +266,78 @@ ConfigurationHelper* _configurationHelperInstance = nil;
     [[MyDataStorage instance] saveContext];
     
     [self boolPlistSetter:NO key:@"firstTimeRun"];
+    [self initNotificationTime];
     //NSAssert(NO, @"function not implemented yet");
 }
+
+-(void)initNotificationTime
+{
+    {
+        NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+        NSDateComponents *dateComps = [[NSDateComponents alloc] init];
+        [dateComps setDay:3];
+        [dateComps setMonth:10];
+        [dateComps setYear:1991];
+        [dateComps setHour:8];
+        [dateComps setMinute:0];
+        [dateComps setSecond:0];
+        NSDate *date = [calendar dateFromComponents:dateComps];
+        self.freshWordAlertTime = date;
+    }
+    {
+        NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+        NSDateComponents *dateComps = [[NSDateComponents alloc] init];
+        [dateComps setDay:3];
+        [dateComps setMonth:10];
+        [dateComps setYear:1991];
+        [dateComps setHour:14];
+        [dateComps setMinute:0];
+        [dateComps setSecond:0];
+        NSDate *date = [calendar dateFromComponents:dateComps];
+        self.reviewAlertTime = date;
+    }
+}
+
+-(void)initConfigsForStage:(int)stage
+{
+    if(stage == 0)
+    {
+        self.chineseMeaningVisibility = YES;
+        self.englishMeaningVisibility = YES;
+        self.autoSpeak = YES;
+        self.homoionymVisibility = NO;
+        self.antonymVisiblity = NO;
+        self.sampleSentenceVisibility = NO;
+    }
+    else if(stage == 1)
+    {
+        self.chineseMeaningVisibility = YES;
+        self.englishMeaningVisibility = YES;
+        self.autoSpeak = YES;
+        self.homoionymVisibility = NO;
+        self.antonymVisiblity = NO;
+        self.sampleSentenceVisibility = YES;
+    }
+    else if(stage == 2)
+    {
+        self.chineseMeaningVisibility = YES;
+        self.englishMeaningVisibility = YES;
+        self.autoSpeak = YES;
+        self.homoionymVisibility = YES;
+        self.antonymVisiblity = YES;
+        self.sampleSentenceVisibility = YES;
+    }
+    else if(stage == 3)
+    {
+        self.chineseMeaningVisibility = YES;
+        self.englishMeaningVisibility = YES;
+        self.autoSpeak = YES;
+        self.homoionymVisibility = YES;
+        self.antonymVisiblity = YES;
+        self.sampleSentenceVisibility = YES;
+    }
+}
+
 
 -(bool)isFirstTimeRun
 {

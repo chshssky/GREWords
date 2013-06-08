@@ -19,7 +19,10 @@
 #define RECOMMAND_TEXT @"小崔崔~~~"
 
 @interface SettingsContentViewController ()
-
+{
+    SettingClockViewController *watchRecite;
+    SettingClockViewController *watchReview;
+}
 @end
 
 @implementation SettingsContentViewController
@@ -96,7 +99,31 @@
 }
 
 #pragma mark - Watch delegate
+-(void)clockTimeChanged:(NSDate*)time
+{
+    if(self.remindTimePageControl.currentPage == 0)
+    {
+        [self configLabelForReciteAtTime:time];
+    }
+    else
+    {
+        [self configLabelForReviewAtTime:time];
+    }
+}
 
+-(void)clockTimeEndChange:(NSDate*)time
+{
+    if(self.remindTimePageControl.currentPage == 0)
+    {
+        [ConfigurationHelper instance].freshWordAlertTime = time;
+        [self configLabelForReciteAtTime:time];
+    }
+    else
+    {
+        [ConfigurationHelper instance].reviewAlertTime = time;
+        [self configLabelForReviewAtTime:time];
+    }
+}
 
 #pragma mark - Remind Time Methods
 
@@ -106,18 +133,17 @@
     CGRect frame = self.remindTimeScrollView.frame;
     frame.origin.x = 0;
     frame.origin.y = 0;
-    UIView *watch1 = [[UIView alloc] initWithFrame:frame];
-    watch1.alpha = 0.2;
-    watch1.backgroundColor = [UIColor blueColor];
     
-    frame.origin.x += self.remindTimeScrollView.frame.size.width;
-    UIView *watch2 = [[UIView alloc] initWithFrame:frame];
-    watch2.alpha = 0.2;
-    watch2.backgroundColor = [UIColor redColor];
     
-    [self.remindTimeScrollView addSubview:watch1];
-    [self.remindTimeScrollView addSubview:watch2];
+    watchRecite = [[SettingClockViewController alloc] init];
+    watchRecite.delegate = watchReview.delegate = self;
+    [watchRecite setAlertTime:[ConfigurationHelper instance].freshWordAlertTime];
+
+    watchRecite.view.frame = frame;
     
+    
+    [self.remindTimeScrollView addSubview:watchRecite.view];
+
     self.remindTimeScrollView.contentSize = CGSizeMake(self.remindTimeScrollView.frame.size.width * 2, self.remindTimeScrollView.frame.size.height);
     
     [self configLabelForReciteAtTime:[ConfigurationHelper instance].freshWordAlertTime];
@@ -342,6 +368,28 @@
     }
 }
 
+#pragma mark - Logout Function
+- (IBAction)logout
+{
+    CMActionSheet *actionSheet = [[CMActionSheet alloc] init];
+    //actionSheet.title = @"Test Action sheet";
+    
+    // Customize
+    [actionSheet addButtonWithTitle:@"删除并继续" type:CMActionSheetButtonTypeRed block:^{
+        [[ConfigurationHelper instance] resetAllData];
+#warning incomplete implementatoin here, should go to init screen. should crash 
+        NSLog(@"Logout");
+    }];
+    [actionSheet addSeparator];
+    [actionSheet addButtonWithTitle:@"取消" type:CMActionSheetButtonTypeGray block:^{
+        NSLog(@"Dismiss action sheet with \"Close Button\"");
+    }];
+    
+    // Present
+    [actionSheet present];
+}
+
+
 #pragma mark - MFMailComposeViewControllerDelegate
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller
@@ -451,7 +499,7 @@
 }
 
 
-#pragma mark UIScrollView delegate
+#pragma mark - UIScrollView delegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     int x = self.remindTimeScrollView.contentOffset.x;
@@ -468,6 +516,20 @@
     }
     else
     {
+        if(watchReview == nil)
+        {
+            CGRect frame = self.remindTimeScrollView.frame;
+            frame.origin.x = 0;
+            frame.origin.y = 0;
+            
+            watchReview = [[SettingClockViewController alloc] init];
+            [watchReview setAlertTime:[ConfigurationHelper instance].reviewAlertTime];
+
+            frame.origin.x += self.remindTimeScrollView.frame.size.width;
+            watchReview.view.frame = frame;
+            
+            [self.remindTimeScrollView addSubview:watchReview.view];
+        }
         [self configLabelForReviewAtTime:[ConfigurationHelper instance].reviewAlertTime];
     }
 }
