@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "CMActionSheet.h"
 #import <MessageUI/MessageUI.h> 
-
+#import "SettingClockViewController.h"
 #import "OHAttributedLabel.h"
+#import "SettingClockViewController.h"
 
-@interface SettingsContentViewController : UIViewController<MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate,UIScrollViewDelegate>
+@interface SettingsContentViewController : UIViewController<MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate,UIScrollViewDelegate,SettingClockProtocal>
 
 @property (weak, nonatomic) IBOutlet OHAttributedLabel *remindTimeLabel;
 @property (weak, nonatomic) IBOutlet UIPageControl *remindTimePageControl;

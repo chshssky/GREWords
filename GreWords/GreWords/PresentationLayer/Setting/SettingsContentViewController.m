@@ -19,7 +19,10 @@
 #define RECOMMAND_TEXT @"小崔崔~~~"
 
 @interface SettingsContentViewController ()
-
+{
+    SettingClockViewController *watchRecite;
+    SettingClockViewController *watchReview;
+}
 @end
 
 @implementation SettingsContentViewController
@@ -96,7 +99,31 @@
 }
 
 #pragma mark - Watch delegate
+-(void)clockTimeChanged:(NSDate*)time
+{
+    if(self.remindTimePageControl.currentPage == 0)
+    {
+        [self configLabelForReciteAtTime:time];
+    }
+    else
+    {
+        [self configLabelForReviewAtTime:time];
+    }
+}
 
+-(void)clockTimeEndChange:(NSDate*)time
+{
+    if(self.remindTimePageControl.currentPage == 0)
+    {
+        [ConfigurationHelper instance].freshWordAlertTime = time;
+        [self configLabelForReciteAtTime:time];
+    }
+    else
+    {
+        [ConfigurationHelper instance].reviewAlertTime = time;
+        [self configLabelForReviewAtTime:time];
+    }
+}
 
 #pragma mark - Remind Time Methods
 
@@ -106,17 +133,23 @@
     CGRect frame = self.remindTimeScrollView.frame;
     frame.origin.x = 0;
     frame.origin.y = 0;
-    UIView *watch1 = [[UIView alloc] initWithFrame:frame];
-    watch1.alpha = 0.2;
-    watch1.backgroundColor = [UIColor blueColor];
+    
+    
+    watchRecite = [[SettingClockViewController alloc] init];
+    watchRecite.view.frame = frame;
+    
     
     frame.origin.x += self.remindTimeScrollView.frame.size.width;
-    UIView *watch2 = [[UIView alloc] initWithFrame:frame];
-    watch2.alpha = 0.2;
-    watch2.backgroundColor = [UIColor redColor];
+    watchReview = [[SettingClockViewController alloc] init];
+    watchReview.view.frame = frame;
     
-    [self.remindTimeScrollView addSubview:watch1];
-    [self.remindTimeScrollView addSubview:watch2];
+    
+    watchRecite.delegate = watchReview.delegate = self;
+    [watchRecite setAlertTime:[ConfigurationHelper instance].freshWordAlertTime];
+    [watchReview setAlertTime:[ConfigurationHelper instance].reviewAlertTime];
+    
+    [self.remindTimeScrollView addSubview:watchRecite.view];
+    [self.remindTimeScrollView addSubview:watchReview.view];
     
     self.remindTimeScrollView.contentSize = CGSizeMake(self.remindTimeScrollView.frame.size.width * 2, self.remindTimeScrollView.frame.size.height);
     
