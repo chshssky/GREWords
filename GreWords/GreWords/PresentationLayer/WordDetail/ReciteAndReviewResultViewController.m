@@ -134,6 +134,7 @@
     if (_cardController == nil) {
         _cardController = [[ReciteAndReviewResultCardController alloc] init];
         _cardController.event = event;
+        _cardController.delegate = self.delegate;
     }
     
     _cardController.view.center = CGPointMake(_screenWidth/2, _screenHeight/2-_cardController.view.frame.size.height);

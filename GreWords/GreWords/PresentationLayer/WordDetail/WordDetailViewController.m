@@ -27,6 +27,7 @@
 {
     UIImageView *guideImageView;
 }
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *DownImage;
 @property (weak, nonatomic) IBOutlet UIButton *PronounceButton;
@@ -81,7 +82,21 @@
 
 @implementation WordDetailViewController
 
+- (NewWordEvent *)nwEvent
+{
+    if (_nwEvent == nil) {
+        _nwEvent = [[NewWordEvent alloc] init];
+    }
+    return _nwEvent;
+}
 
+- (ReviewEvent *)rEvent
+{
+    if (_rEvent == nil) {
+        _rEvent = [[ReviewEvent alloc] init];
+    }
+    return _rEvent;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -164,6 +179,9 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    if (!iPhone5) {
+        [_backgroundImage setImage:[UIImage imageNamed:@"learning_backgournd_blank_mini.png"]];
+    }
     //添加左上角的进度圆~
     [self.dashboardVC wordDetailIndicatorGen];
     if (iPhone5) {
@@ -283,6 +301,7 @@
     [self setWordPronounceLabel:nil];
     [self setPronounceLabel:nil];
     [self setTimeImage:nil];
+    [self setBackgroundImage:nil];
     [super viewDidUnload];
 }
 
@@ -981,19 +1000,10 @@
 
 - (void)reviewCompleted
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日复习完成" message:[NSString stringWithFormat:@"今天错误率：%d 用时：30min", [TaskStatus instance].wrongWordCount] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
-    [alert setAlertViewStyle:UIAlertViewStyleDefault];
+    self.rEvent.endTime = [self getNowDate];
     
-    [alert show];
-    
-    ReviewEvent *rEvent = [[ReviewEvent alloc] init];
-    
-    rEvent.endTime = [self getNowDate];
-    
-    [[HistoryManager instance] endEvent:rEvent];
-    
-    //[self createNewWord];
-    
+    [[HistoryManager instance] endEvent:self.rEvent];
+        
 #warning  return to Main menu
     //!!!!!!!!!!!!!!!!!return
 //    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日完成" message:[NSString stringWithFormat:@"今天错误率：%d 用时：30min", [TaskStatus instance].wrongWordCount] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
@@ -1002,13 +1012,18 @@
     if (_reciteAndReviewResultCardViewController == nil) {
         _reciteAndReviewResultCardViewController = [[ReciteAndReviewResultViewController alloc] init];
         
+        _reciteAndReviewResultCardViewController.delegate = self;
         //_note.delegate = self;
     }
     
-#warning review complete event set here
-    ReviewEvent *reviewEvent = [[ReviewEvent alloc] init];
+#warning review complete event set here    
+    self.rEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
+    self.rEvent.totalWordCount = [TaskStatus instance].totalWordCount;
+    self.rEvent.duration = [TaskStatus instance].duration;
     
-    [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withEvent:reviewEvent];
+    NSLog(@"ReviewEvent Result :%d, %d, %f", self.rEvent.wrongWordCount, self.rEvent.totalWordCount, self.rEvent.duration);
+    
+    [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withEvent:self.rEvent];
     [_reciteAndReviewResultCardViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_reciteAndReviewResultCardViewController.view];
 }
@@ -1022,47 +1037,42 @@
 
 - (void)newWordCompleted
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日新词完成" message:[NSString stringWithFormat:@"今天错误率：%d 用时：30min", [TaskStatus instance].wrongWordCount] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
-    [alert setAlertViewStyle:UIAlertViewStyleDefault];
-    
-    [alert show];
-    
-    NewWordEvent *nwEvent = [[NewWordEvent alloc] init];
-    
-    nwEvent.endTime = [self getNowDate];
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日完成" message:[NSString stringWithFormat:@"今天错误率：%d 用时：30min", [TaskStatus instance].wrongWordCount] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
-//    [alert setAlertViewStyle:UIAlertViewStyleDefault];
-//    
-//    [alert show];
-    
     if (_reciteAndReviewResultCardViewController == nil) {
         _reciteAndReviewResultCardViewController = [[ReciteAndReviewResultViewController alloc] init];
         
+        _reciteAndReviewResultCardViewController.delegate = self;
         //_note.delegate = self;
     }
 #warning NewWordEvent complete event set here
-    NewWordEvent *newwordEvent = [[NewWordEvent alloc] init];
-    [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withEvent:newwordEvent];
+    
+    self.nwEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
+    self.nwEvent.totalWordCount = [TaskStatus instance].totalWordCount;
+    NSDate *now = [self getNowDate];
+    self.nwEvent.duration = [now timeIntervalSinceDate:self.nwEvent.startTime];
+    
+    NSLog(@"NewWord Result :%d, %d, %f", self.nwEvent.wrongWordCount, self.nwEvent.totalWordCount, self.nwEvent.duration);
+    
+    [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withEvent:self.nwEvent];
     [_reciteAndReviewResultCardViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_reciteAndReviewResultCardViewController.view];
     
-    
-    
-//    NewWordEvent *nwEvent = [[NewWordEvent alloc] init];
-//    nwEvent.endTime = [self getNowDate];
-//    [[HistoryManager instance] endEvent:nwEvent];
-//
-//    //[self.delegate StartReview];
+    self.nwEvent.endTime = now;
+    [[HistoryManager instance] endEvent:self.nwEvent];
+
+//    [self.delegate StartReview];
 //    [self createReviewEvent];
 //    
 //    
-//    DashboardViewController *dashboard = [DashboardViewController instance];
-//    // Database: read from
-//    dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].indexOfWordIDToday;
-//     
-//    dashboard.minNumber = dashboard.nonFinishedNumber;
-//    dashboard.sumNumber = TaskWordNumber;
-//    [dashboard reloadData];
+    DashboardViewController *dashboard = [DashboardViewController instance];
+    // Database: read from
+    dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].indexOfWordIDToday;
+     
+    dashboard.minNumber = dashboard.nonFinishedNumber;
+    dashboard.sumNumber = TaskWordNumber;
+    [dashboard reloadData];
+    [dashboard changeTextViewToReview];
+    
+    
 //    [self dismissModalViewControllerAnimated:YES];
 //    [self.delegate AnimationBack];
 
@@ -1074,19 +1084,18 @@
     [[TaskStatus instance] beginReview];
     
     HistoryManager *historyManager = [HistoryManager instance];
+        
+    self.rEvent.eventType = EVENT_TYPE_REVIEW;
+    self.rEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
+    self.rEvent.totalWordCount = 200;
+    [TaskStatus instance].wrongWordCount = 200;
+    self.rEvent.startTime = [self getNowDate];
     
-    ReviewEvent *rEvent = [[ReviewEvent alloc] init];
+    self.rEvent.stage_now = [TaskStatus instance].stage_now;
+    self.rEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+    self.rEvent.dayOfSchedule = [TaskStatus instance].day;
     
-    rEvent.eventType = EVENT_TYPE_REVIEW;
-    rEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
-    rEvent.totalWordCount = 200;
-    rEvent.startTime = [self getNowDate];
-    
-    rEvent.stage_now = [TaskStatus instance].stage_now;
-    rEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-    rEvent.dayOfSchedule = [TaskStatus instance].day;
-    
-    [historyManager addEvent:rEvent];
+    [historyManager addEvent:self.rEvent];
 }
 
 
@@ -1317,7 +1326,6 @@
     }
     
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
-        ReviewEvent *reviewEvent = [[ReviewEvent alloc] init];
         
             if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
                 [self loadWord:[TaskStatus instance].indexOfWordIDToday];
@@ -1347,27 +1355,26 @@
                 [self Dismiss_RightAnimation];
                 [self Dismiss_WrongAnimation];
             }
-        reviewEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-        reviewEvent.stage_now = [TaskStatus instance].stage_now;
-        reviewEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
+        self.rEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+        self.rEvent.stage_now = [TaskStatus instance].stage_now;
+        self.rEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
         
-        [[HistoryManager instance] updateEvent:reviewEvent];
+        [[HistoryManager instance] updateEvent:self.rEvent];
         [[DashboardViewController instance] minusData];
     } else {
-    NewWordEvent *newWordEvent = [[NewWordEvent alloc] init];
     if (([TaskStatus instance].indexOfWordIDToday % 10) == 9) {
         [[TaskStatus instance] setReviewEnable];
     }
     
     if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue] > [TaskStatus instance].maxWordID) {
         [[TaskStatus instance] setReviewEnable:NO];
-        newWordEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-        newWordEvent.maxWordID = [TaskStatus instance].maxWordID;
-        newWordEvent.reviewEnable = [TaskStatus instance].reviewEnable;
-        newWordEvent.stage_now = [TaskStatus instance].stage_now;
-        newWordEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
+        self.nwEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+        self.nwEvent.maxWordID = [TaskStatus instance].maxWordID;
+        self.nwEvent.reviewEnable = [TaskStatus instance].reviewEnable;
+        self.nwEvent.stage_now = [TaskStatus instance].stage_now;
+        self.nwEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
         
-        [[HistoryManager instance] updateEvent:newWordEvent];
+        [[HistoryManager instance] updateEvent:self.nwEvent];
 
         if (_DownImage.alpha <= 0) {
             [self removeDownImageAnimation_withNoDownCover];
@@ -1406,13 +1413,13 @@
             [self Dismiss_WrongAnimation];
         }
     }
-    newWordEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-    newWordEvent.maxWordID = [TaskStatus instance].maxWordID;
-    newWordEvent.reviewEnable = [TaskStatus instance].reviewEnable;
-    newWordEvent.stage_now = [TaskStatus instance].stage_now;
-    newWordEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
+    self.nwEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+    self.nwEvent.maxWordID = [TaskStatus instance].maxWordID;
+    self.nwEvent.reviewEnable = [TaskStatus instance].reviewEnable;
+    self.nwEvent.stage_now = [TaskStatus instance].stage_now;
+    self.nwEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
     
-    [[HistoryManager instance] updateEvent:newWordEvent];
+    [[HistoryManager instance] updateEvent:self.nwEvent];
     }
 }
 
@@ -1431,5 +1438,15 @@
     [TaskStatus instance].indexOfWordIDToday --;
     //[self.delegate resetWordIndexto:[TaskStatus instance].indexOfWordIDToday - 1];
 }
+
+#pragma mark - CardProtocol Delegate
+
+- (void)returnHome
+{
+    [self dismissModalViewControllerAnimated:YES];
+    [self.delegate AnimationBack];
+    NSLog(@"return Home");
+}
+
 
 @end

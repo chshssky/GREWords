@@ -32,7 +32,7 @@
 {
     UIImageView *guideImageView;
 }
-
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *DownImage;
 @property (weak, nonatomic) IBOutlet UIButton *PronounceButton;
@@ -71,6 +71,14 @@
 
 @implementation NewWordDetailViewController
 
+- (NewWordEvent *)nwEvent
+{
+    if (_nwEvent == nil) {
+        _nwEvent = [[NewWordEvent alloc] init];
+    }
+    return _nwEvent;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -93,6 +101,9 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    if (!iPhone5) {
+        [_backgroundImage setImage:[UIImage imageNamed:@"learning_backgournd_blank_mini.png"]];
+    }
     //添加左上角的进度圆~
     [self.dashboardVC wordDetailIndicatorGen];
     if (iPhone5) {
@@ -154,16 +165,14 @@
     [[WordSpeaker instance] readWord:self.wordLabel.text];
     //为了初始化maxID
     [TaskStatus instance].maxWordID = [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue];
-    //[self.delegate ChangeWordWithIndex:self.beginWordID + _currentPage WithMax:self.maxWordID];
-    NewWordEvent *newWordEvent = [[NewWordEvent alloc] init];
     
-    newWordEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-    newWordEvent.maxWordID = [TaskStatus instance].maxWordID;
-    newWordEvent.reviewEnable = [TaskStatus instance].reviewEnable;
-    newWordEvent.stage_now = [TaskStatus instance].stage_now;
+    self.nwEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+    self.nwEvent.maxWordID = [TaskStatus instance].maxWordID;
+    self.nwEvent.reviewEnable = [TaskStatus instance].reviewEnable;
+    self.nwEvent.stage_now = [TaskStatus instance].stage_now;
     
     
-    [[HistoryManager instance] updateEvent:newWordEvent];
+    [[HistoryManager instance] updateEvent:self.nwEvent];
 
     
     if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_NewWordFirst])
@@ -186,6 +195,7 @@
     [self setWordPhonetic:nil];
     [self setSoundImage:nil];
     [self setBackButton:nil];
+    [self setBackgroundImage:nil];
     [super viewDidUnload];
 }
 
@@ -305,16 +315,14 @@
         [left addWord:addWord];
     }
     [[WordSpeaker instance] readWord:self.wordLabel.text];
-    
-    NewWordEvent *newWordEvent = [[NewWordEvent alloc] init];
-    
-    newWordEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-    newWordEvent.maxWordID = [TaskStatus instance].maxWordID;
-    newWordEvent.reviewEnable = [TaskStatus instance].reviewEnable;
-    newWordEvent.stage_now = [TaskStatus instance].stage_now;
+        
+    self.nwEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+    self.nwEvent.maxWordID = [TaskStatus instance].maxWordID;
+    self.nwEvent.reviewEnable = [TaskStatus instance].reviewEnable;
+    self.nwEvent.stage_now = [TaskStatus instance].stage_now;
     
     
-    [[HistoryManager instance] updateEvent:newWordEvent];
+    [[HistoryManager instance] updateEvent:self.nwEvent];
     
     
     NSLog(@"Now Word is Index: %d || MaxWordID %d", [TaskStatus instance].indexOfWordIDToday, [TaskStatus instance].maxWordID);
@@ -522,15 +530,14 @@
             [self dismissModalViewControllerAnimated:NO];
             
             [TaskStatus instance].indexOfWordIDToday = self.beginWordID + _currentPage + 1;
-            NewWordEvent *newWordEvent = [[NewWordEvent alloc] init];
             
-            newWordEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-            newWordEvent.maxWordID = [TaskStatus instance].maxWordID;
-            newWordEvent.reviewEnable = [TaskStatus instance].reviewEnable;
-            newWordEvent.stage_now = [TaskStatus instance].stage_now;
+            self.nwEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+            self.nwEvent.maxWordID = [TaskStatus instance].maxWordID;
+            self.nwEvent.reviewEnable = [TaskStatus instance].reviewEnable;
+            self.nwEvent.stage_now = [TaskStatus instance].stage_now;
             
             
-            [[HistoryManager instance] updateEvent:newWordEvent];
+            [[HistoryManager instance] updateEvent:self.nwEvent];
             [self.delegate GoToReviewWithWord];
         }
     }

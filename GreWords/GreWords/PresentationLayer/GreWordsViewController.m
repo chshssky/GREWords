@@ -43,6 +43,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView *titleView;
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 
+@property (nonatomic, strong) NewWordEvent *nwEvent;
+@property (nonatomic, strong) ReviewEvent *rEvent;
+
 @end
 
 @implementation GreWordsViewController
@@ -394,6 +397,7 @@
     newWordEve.eventType = EVENT_TYPE_NEWWORD;
     newWordEve.wrongWordCount = [TaskStatus instance].wrongWordCount;
     newWordEve.totalWordCount = 600;
+    [TaskStatus instance].totalWordCount = 600;
     newWordEve.startTime = [self getNowDate];
     
     newWordEve.reviewEnable = [TaskStatus instance].reviewEnable;

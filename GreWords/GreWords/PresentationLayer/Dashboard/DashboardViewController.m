@@ -387,6 +387,23 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     return [self.sliceColors objectAtIndex:(index % self.sliceColors.count)];
 }
 
+- (void)changeTextViewToReview
+{
+    _textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main Main menu_text_reciteWord.png"]];
+    _textView.center = CGPointMake(self.centerPoint.x-15, self.centerPoint.y-45);
+    _textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    [self.view addSubview:_textView];
+}
+
+- (void)changeTextViewToNewWord
+{
+    _textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_newWord.png"]];
+    _textView.center = CGPointMake(self.centerPoint.x-15, self.centerPoint.y-45);
+    _textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+    [self.view addSubview:_textView];
+}
+
+
 //- (UIColor *)pieChart:(PieChart *)pieChart colorForSliceAtIndex:(NSUInteger)index
 //{
 //    if(pieChart == self.pieChartRight) return nil;

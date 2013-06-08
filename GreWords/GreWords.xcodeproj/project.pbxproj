@@ -53,6 +53,8 @@
 		7315CDC6175DD1A500B22F07 /* history_slideBar_text4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7315CDBE175DD1A400B22F07 /* history_slideBar_text4@2x.png */; };
 		73191B061759059100E7E6CA /* learning list_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 73191B041759059100E7E6CA /* learning list_logo.png */; };
 		73191B071759059100E7E6CA /* learning list_logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73191B051759059100E7E6CA /* learning list_logo@2x.png */; };
+		731A489A17623EDF00C79342 /* learning_backgournd_blank_mini.png in Resources */ = {isa = PBXBuildFile; fileRef = 731A489817623EDF00C79342 /* learning_backgournd_blank_mini.png */; };
+		731A489B17623EDF00C79342 /* learning_backgournd_blank_mini@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 731A489917623EDF00C79342 /* learning_backgournd_blank_mini@2x.png */; };
 		7324846C17524D860058A6DD /* NoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7324846A17524D860058A6DD /* NoteViewController.m */; };
 		7324846D17524D860058A6DD /* NoteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7324846B17524D860058A6DD /* NoteViewController.xib */; };
 		732B748D17449E1400612277 /* flipcard.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4E21C561743C2C4001A7EEF /* flipcard.plist */; };
@@ -3710,6 +3712,8 @@
 		7315CDBE175DD1A400B22F07 /* history_slideBar_text4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "history_slideBar_text4@2x.png"; path = "History/history_slideBar_text4@2x.png"; sourceTree = "<group>"; };
 		73191B041759059100E7E6CA /* learning list_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning list_logo.png"; sourceTree = "<group>"; };
 		73191B051759059100E7E6CA /* learning list_logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning list_logo@2x.png"; sourceTree = "<group>"; };
+		731A489817623EDF00C79342 /* learning_backgournd_blank_mini.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = learning_backgournd_blank_mini.png; sourceTree = "<group>"; };
+		731A489917623EDF00C79342 /* learning_backgournd_blank_mini@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_backgournd_blank_mini@2x.png"; sourceTree = "<group>"; };
 		7324846917524D860058A6DD /* NoteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NoteViewController.h; path = PresentationLayer/Note/NoteViewController.h; sourceTree = "<group>"; };
 		7324846A17524D860058A6DD /* NoteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NoteViewController.m; path = PresentationLayer/Note/NoteViewController.m; sourceTree = "<group>"; };
 		7324846B17524D860058A6DD /* NoteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteViewController.xib; path = PresentationLayer/Note/NoteViewController.xib; sourceTree = "<group>"; };
@@ -8297,6 +8301,8 @@
 		E466E7AC173BD4CB001847D0 /* Learning */ = {
 			isa = PBXGroup;
 			children = (
+				731A489817623EDF00C79342 /* learning_backgournd_blank_mini.png */,
+				731A489917623EDF00C79342 /* learning_backgournd_blank_mini@2x.png */,
 				E466E7AD173BD4CB001847D0 /* learning_backButton_in.png */,
 				E466E7AE173BD4CB001847D0 /* learning_backButton_in@2x.png */,
 				E466E7AF173BD4CB001847D0 /* learning_backButton_side.png */,
