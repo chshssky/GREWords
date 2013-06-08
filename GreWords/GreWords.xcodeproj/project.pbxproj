@@ -3646,6 +3646,8 @@
 		E480BB0317634C9C00F37106 /* Settings_taskClock_pointer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E480BADF17634C9C00F37106 /* Settings_taskClock_pointer@2x.png */; };
 		E480BB0717634D2400F37106 /* SettingClockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E480BB0517634D2400F37106 /* SettingClockViewController.m */; };
 		E480BB0817634D2400F37106 /* SettingClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E480BB0617634D2400F37106 /* SettingClockViewController.xib */; };
+		E480BB09176357C000F37106 /* iPhone_Icon_icon ios.png in Resources */ = {isa = PBXBuildFile; fileRef = E4412387175F212900B4288D /* iPhone_Icon_icon ios.png */; };
+		E480BB0A176357C800F37106 /* iPhoneRetina_Icon_icon ios.png in Resources */ = {isa = PBXBuildFile; fileRef = E4412389175F212F00B4288D /* iPhoneRetina_Icon_icon ios.png */; };
 		E4983ED0171A8CD90055A0E7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */; };
 		E4CB2CE41757767F00370700 /* findIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE01757767F00370700 /* findIcon.png */; };
 		E4CB2CE51757767F00370700 /* findIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE11757767F00370700 /* findIcon@2x.png */; };
@@ -15632,6 +15634,8 @@
 				E480BB0217634C9C00F37106 /* Settings_taskClock_pointer.png in Resources */,
 				E480BB0317634C9C00F37106 /* Settings_taskClock_pointer@2x.png in Resources */,
 				E480BB0817634D2400F37106 /* SettingClockViewController.xib in Resources */,
+				E480BB09176357C000F37106 /* iPhone_Icon_icon ios.png in Resources */,
+				E480BB0A176357C800F37106 /* iPhoneRetina_Icon_icon ios.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

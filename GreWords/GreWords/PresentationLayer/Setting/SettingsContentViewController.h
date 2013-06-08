@@ -32,6 +32,7 @@
 -(IBAction)rateMe;
 -(IBAction)tellFriend;
 
+- (IBAction)logout;
 
 - (IBAction)wordShowingComponentChange:(id)sender;
 

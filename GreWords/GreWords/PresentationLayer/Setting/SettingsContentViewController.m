@@ -373,6 +373,28 @@
     }
 }
 
+#pragma mark - Logout Function
+- (IBAction)logout
+{
+    CMActionSheet *actionSheet = [[CMActionSheet alloc] init];
+    //actionSheet.title = @"Test Action sheet";
+    
+    // Customize
+    [actionSheet addButtonWithTitle:@"删除并继续" type:CMActionSheetButtonTypeRed block:^{
+        [[ConfigurationHelper instance] resetAllData];
+#warning incomplete implementatoin here, should go to init screen. should crash 
+        NSLog(@"Logout");
+    }];
+    [actionSheet addSeparator];
+    [actionSheet addButtonWithTitle:@"取消" type:CMActionSheetButtonTypeGray block:^{
+        NSLog(@"Dismiss action sheet with \"Close Button\"");
+    }];
+    
+    // Present
+    [actionSheet present];
+}
+
+
 #pragma mark - MFMailComposeViewControllerDelegate
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller
