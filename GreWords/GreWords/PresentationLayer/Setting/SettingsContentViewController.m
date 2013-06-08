@@ -266,13 +266,11 @@
 
 -(IBAction)rateMe
 {
-#warning CHANGE THE　App Code Here!!!!
-    NSString* appid = [NSString stringWithFormat:@"599472349"];
+    NSString* appid = [NSString stringWithFormat:@"659880998"];
     
     NSString* url = [NSString stringWithFormat:  @"http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=%@&pageNumber=0&sortOrdering=1&type=Purple+Software&mt=8", appid];
     
     [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];
-    
 }
 
 
