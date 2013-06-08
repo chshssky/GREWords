@@ -179,6 +179,9 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    if (!iPhone5) {
+        [_backgroundImage setImage:[UIImage imageNamed:@"learning_backgournd_blank_mini.png"]];
+    }
     //添加左上角的进度圆~
     [self.dashboardVC wordDetailIndicatorGen];
     if (iPhone5) {

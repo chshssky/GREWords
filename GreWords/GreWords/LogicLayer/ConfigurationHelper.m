@@ -55,13 +55,24 @@ ConfigurationHelper* _configurationHelperInstance = nil;
 
 #pragma mark - Setting values
 #pragma mark bool values
--(bool)meaningVisibility
+
+
+-(bool)chineseMeaningVisibility
 {
-    return [self boolPlistGetter:@"meaningVisibility"];
+    return [self boolPlistGetter:@"chineseMeaningVisibility"];
 }
--(void)setMeaningVisibility:(bool)meaningVisibility
+-(void)setChineseMeaningVisibility:(bool)meaningVisibility
 {
-    [self boolPlistSetter:meaningVisibility key:@"meaningVisibility"];
+    [self boolPlistSetter:meaningVisibility key:@"chineseMeaningVisibility"];
+}
+
+-(bool)englishMeaningVisibility
+{
+    return [self boolPlistGetter:@"englishMeaningVisibility"];
+}
+-(void)setEnglishMeaningVisibility:(bool)meaningVisibility
+{
+    [self boolPlistSetter:meaningVisibility key:@"englishMeaningVisibility"];
 }
 
 -(bool)sampleSentenceVisibility
@@ -89,6 +100,15 @@ ConfigurationHelper* _configurationHelperInstance = nil;
 -(void)setAntonymVisiblity:(bool)antonymVisiblity
 {
     [self boolPlistSetter:antonymVisiblity key:@"antonymVisiblity"];
+}
+
+-(bool)autoSpeak
+{
+    return [self boolPlistGetter:@"autoSpeak"];
+}
+-(void)setAutoSpeak:(bool)autoSpeak
+{
+    [self boolPlistSetter:autoSpeak key:@"autoSpeak"];
 }
 
 #pragma mark NSDate values
