@@ -71,6 +71,10 @@
         _pageText.center = CGPointMake(_pageText.center.x, _pageText.center.y - 75);
         
     }
+    if(self.data == nil || self.data.count == 0)
+    {
+        [self addNoExamCard];
+    }
     
     //设置横向滑动的scroll view
     for (unsigned i = 0; i < self.data.count; i++) {
@@ -131,6 +135,15 @@
     }
 }
 
+
+- (void)addNoExamCard
+{
+    NSString *filename = iPhone5 ? @"history exam_upCardBottom_noTest.png" :  @"history exam_upCardBottom_noTest.png";
+    UIImageView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:filename]];
+    
+    [_pageCardScrollView addSubview:view];
+}
+
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat pageWidth = _pageCardScrollView.frame.size.width;
@@ -149,6 +162,11 @@
 
 - (void)setTextInPageText
 {
+    if(self.data.count == 0)
+    {
+        _pageText.text = @"";
+        return;
+    }
     NSString *currentString = [NSString stringWithFormat:@"%d",_currentPage+1];
     NSString *sumString = [NSString stringWithFormat:@"%d",self.data.count];
     _pageText.text = [NSString stringWithFormat:@"%@%@%@%@%@",@"这是第",currentString,@"次测试, 一共有",sumString,@"次测试"];

@@ -146,7 +146,7 @@
         testPageViewController = [[TestPageViewController alloc] init];
         testPageViewController.view.center = CGPointMake(self.view.center.x, self.view.center.y+57);
         
-        testPageViewController.data = @[test1,test2];
+        testPageViewController.data = @[];
         [self.scrollView addSubview:testPageViewController.view];
     }
 }

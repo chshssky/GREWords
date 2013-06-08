@@ -53,7 +53,7 @@
         NSDate *date = aEvent.startTime;
         NSString *str = [NSString stringWithFormat:@"%d",value];
         [yArr addObject:str];
-        [xArr addObject:[NSString stringWithFormat:@"%d月%d",[date month],[date day]]];
+        [xArr addObject:[NSString stringWithFormat:@"%d/%d",[date month],[date day]]];
         
     }
     yValuesArray = yArr;
