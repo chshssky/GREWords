@@ -3598,6 +3598,16 @@
 		E46D564A176235F9002DF48F /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = E46D5647176235F9002DF48F /* NSString+MD5Addition.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E46D564B176235F9002DF48F /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = E46D5649176235F9002DF48F /* UIDevice+IdentifierAddition.m */; };
 		E46D564D1762367A002DF48F /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E46D564C1762367A002DF48F /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		E480BAAB1763239000F37106 /* CHANGELOG in Resources */ = {isa = PBXBuildFile; fileRef = E480BA931763239000F37106 /* CHANGELOG */; };
+		E480BAAC1763239000F37106 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E480BA941763239000F37106 /* LICENSE */; };
+		E480BAAD1763239000F37106 /* CoreTextUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E480BA9A1763239000F37106 /* CoreTextUtils.m */; };
+		E480BAAE1763239000F37106 /* NSAttributedString+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = E480BA9D1763239000F37106 /* NSAttributedString+Attributes.m */; };
+		E480BAAF1763239000F37106 /* NSTextCheckingResult+ExtendedURL.m in Sources */ = {isa = PBXBuildFile; fileRef = E480BA9F1763239000F37106 /* NSTextCheckingResult+ExtendedURL.m */; };
+		E480BAB01763239000F37106 /* OHAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = E480BAA11763239000F37106 /* OHAttributedLabel.m */; };
+		E480BAB11763239000F37106 /* OHParagraphStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = E480BAA31763239000F37106 /* OHParagraphStyle.m */; };
+		E480BAB21763239000F37106 /* OHASBasicHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E480BAA61763239000F37106 /* OHASBasicHTMLParser.m */; };
+		E480BAB31763239000F37106 /* OHASBasicMarkupParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E480BAA81763239000F37106 /* OHASBasicMarkupParser.m */; };
+		E480BAB41763239000F37106 /* OHASMarkupParserBase.m in Sources */ = {isa = PBXBuildFile; fileRef = E480BAAA1763239000F37106 /* OHASMarkupParserBase.m */; };
 		E4983ED0171A8CD90055A0E7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */; };
 		E4CB2CE41757767F00370700 /* findIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE01757767F00370700 /* findIcon.png */; };
 		E4CB2CE51757767F00370700 /* findIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE11757767F00370700 /* findIcon@2x.png */; };
@@ -3653,6 +3663,16 @@
 		E4FA4B7B175F0CE5001A103D /* TestPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FA4B77175F0CE5001A103D /* TestPageViewController.m */; };
 		E4FA4B7C175F0CE5001A103D /* TestPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4FA4B78175F0CE5001A103D /* TestPageViewController.xib */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E480BAB61763239000F37106 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E480BA951763239000F37106 /* OHAttributedLabel.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09E159E8160F573A003025B4;
+			remoteInfo = OHAttributedLabel;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3F0852E0174BB5D90043EFBE /* DashboardProtocal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardProtocal.h; sourceTree = "<group>"; };
@@ -7382,6 +7402,25 @@
 		E46D5648176235F9002DF48F /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
 		E46D5649176235F9002DF48F /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
 		E46D564C1762367A002DF48F /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		E480BA931763239000F37106 /* CHANGELOG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG; sourceTree = "<group>"; };
+		E480BA941763239000F37106 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		E480BA951763239000F37106 /* OHAttributedLabel.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = OHAttributedLabel.xcodeproj; sourceTree = "<group>"; };
+		E480BA991763239000F37106 /* CoreTextUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreTextUtils.h; sourceTree = "<group>"; };
+		E480BA9A1763239000F37106 /* CoreTextUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreTextUtils.m; sourceTree = "<group>"; };
+		E480BA9C1763239000F37106 /* NSAttributedString+Attributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Attributes.h"; sourceTree = "<group>"; };
+		E480BA9D1763239000F37106 /* NSAttributedString+Attributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Attributes.m"; sourceTree = "<group>"; };
+		E480BA9E1763239000F37106 /* NSTextCheckingResult+ExtendedURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextCheckingResult+ExtendedURL.h"; sourceTree = "<group>"; };
+		E480BA9F1763239000F37106 /* NSTextCheckingResult+ExtendedURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextCheckingResult+ExtendedURL.m"; sourceTree = "<group>"; };
+		E480BAA01763239000F37106 /* OHAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHAttributedLabel.h; sourceTree = "<group>"; };
+		E480BAA11763239000F37106 /* OHAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHAttributedLabel.m; sourceTree = "<group>"; };
+		E480BAA21763239000F37106 /* OHParagraphStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHParagraphStyle.h; sourceTree = "<group>"; };
+		E480BAA31763239000F37106 /* OHParagraphStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHParagraphStyle.m; sourceTree = "<group>"; };
+		E480BAA51763239000F37106 /* OHASBasicHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHASBasicHTMLParser.h; sourceTree = "<group>"; };
+		E480BAA61763239000F37106 /* OHASBasicHTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHASBasicHTMLParser.m; sourceTree = "<group>"; };
+		E480BAA71763239000F37106 /* OHASBasicMarkupParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHASBasicMarkupParser.h; sourceTree = "<group>"; };
+		E480BAA81763239000F37106 /* OHASBasicMarkupParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHASBasicMarkupParser.m; sourceTree = "<group>"; };
+		E480BAA91763239000F37106 /* OHASMarkupParserBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHASMarkupParserBase.h; sourceTree = "<group>"; };
+		E480BAAA1763239000F37106 /* OHASMarkupParserBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHASMarkupParserBase.m; sourceTree = "<group>"; };
 		E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		E4CB2CE01757767F00370700 /* findIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = findIcon.png; sourceTree = "<group>"; };
 		E4CB2CE11757767F00370700 /* findIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findIcon@2x.png"; sourceTree = "<group>"; };
@@ -11586,6 +11625,7 @@
 		E466F4B3173BD508001847D0 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				E480BA921763239000F37106 /* OHAttributedLabel */,
 				E46D5645176235F9002DF48F /* FakeUUID */,
 				E46D564117623534002DF48F /* Social */,
 				E46D5611176234E8002DF48F /* CMActionSheet */,
@@ -11741,6 +11781,64 @@
 			path = FakeUUID;
 			sourceTree = "<group>";
 		};
+		E480BA921763239000F37106 /* OHAttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				E480BA931763239000F37106 /* CHANGELOG */,
+				E480BA941763239000F37106 /* LICENSE */,
+				E480BA951763239000F37106 /* OHAttributedLabel.xcodeproj */,
+				E480BA981763239000F37106 /* PrivateUtils */,
+				E480BA9B1763239000F37106 /* Source */,
+				E480BAA41763239000F37106 /* TagParsers */,
+			);
+			path = OHAttributedLabel;
+			sourceTree = "<group>";
+		};
+		E480BA961763239000F37106 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E480BAB71763239000F37106 /* libOHAttributedLabel.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E480BA981763239000F37106 /* PrivateUtils */ = {
+			isa = PBXGroup;
+			children = (
+				E480BA991763239000F37106 /* CoreTextUtils.h */,
+				E480BA9A1763239000F37106 /* CoreTextUtils.m */,
+			);
+			path = PrivateUtils;
+			sourceTree = "<group>";
+		};
+		E480BA9B1763239000F37106 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E480BA9C1763239000F37106 /* NSAttributedString+Attributes.h */,
+				E480BA9D1763239000F37106 /* NSAttributedString+Attributes.m */,
+				E480BA9E1763239000F37106 /* NSTextCheckingResult+ExtendedURL.h */,
+				E480BA9F1763239000F37106 /* NSTextCheckingResult+ExtendedURL.m */,
+				E480BAA01763239000F37106 /* OHAttributedLabel.h */,
+				E480BAA11763239000F37106 /* OHAttributedLabel.m */,
+				E480BAA21763239000F37106 /* OHParagraphStyle.h */,
+				E480BAA31763239000F37106 /* OHParagraphStyle.m */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		E480BAA41763239000F37106 /* TagParsers */ = {
+			isa = PBXGroup;
+			children = (
+				E480BAA51763239000F37106 /* OHASBasicHTMLParser.h */,
+				E480BAA61763239000F37106 /* OHASBasicHTMLParser.m */,
+				E480BAA71763239000F37106 /* OHASBasicMarkupParser.h */,
+				E480BAA81763239000F37106 /* OHASBasicMarkupParser.m */,
+				E480BAA91763239000F37106 /* OHASMarkupParserBase.h */,
+				E480BAAA1763239000F37106 /* OHASMarkupParserBase.m */,
+			);
+			path = TagParsers;
+			sourceTree = "<group>";
+		};
 		E4CB2CDF1757767F00370700 /* UISearchBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -11828,12 +11926,28 @@
 			mainGroup = 3F70EC7E1701CADB00327770;
 			productRefGroup = 3F70EC881701CADB00327770 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E480BA961763239000F37106 /* Products */;
+					ProjectRef = E480BA951763239000F37106 /* OHAttributedLabel.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				3F70EC861701CADB00327770 /* GreWords */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E480BAB71763239000F37106 /* libOHAttributedLabel.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libOHAttributedLabel.a;
+			remoteRef = E480BAB61763239000F37106 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3F70EC851701CADB00327770 /* Resources */ = {
@@ -15305,6 +15419,8 @@
 				73837DF2175F94130012FC7E /* ExamResultCardController.xib in Resources */,
 				73837DF7175F96C80012FC7E /* ReciteAndReviewResultViewController.xib in Resources */,
 				73837E071760CEBE0012FC7E /* ReciteAndReviewResultCardController.xib in Resources */,
+				731A489A17623EDF00C79342 /* learning_backgournd_blank_mini.png in Resources */,
+				731A489B17623EDF00C79342 /* learning_backgournd_blank_mini@2x.png in Resources */,
 				E46D55F917622928002DF48F /* Settings_about.png in Resources */,
 				E46D55FA17622928002DF48F /* Settings_about@2x.png in Resources */,
 				E46D55FB17622928002DF48F /* Settings_background.png in Resources */,
@@ -15345,6 +15461,8 @@
 				E46D563E176234E8002DF48F /* action-white-button-selected@2x.png in Resources */,
 				E46D563F176234E8002DF48F /* action-white-button.png in Resources */,
 				E46D5640176234E8002DF48F /* action-white-button@2x.png in Resources */,
+				E480BAAB1763239000F37106 /* CHANGELOG in Resources */,
+				E480BAAC1763239000F37106 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15479,6 +15597,14 @@
 				E46D564417623534002DF48F /* SocialShareModal.m in Sources */,
 				E46D564A176235F9002DF48F /* NSString+MD5Addition.m in Sources */,
 				E46D564B176235F9002DF48F /* UIDevice+IdentifierAddition.m in Sources */,
+				E480BAAD1763239000F37106 /* CoreTextUtils.m in Sources */,
+				E480BAAE1763239000F37106 /* NSAttributedString+Attributes.m in Sources */,
+				E480BAAF1763239000F37106 /* NSTextCheckingResult+ExtendedURL.m in Sources */,
+				E480BAB01763239000F37106 /* OHAttributedLabel.m in Sources */,
+				E480BAB11763239000F37106 /* OHParagraphStyle.m in Sources */,
+				E480BAB21763239000F37106 /* OHASBasicHTMLParser.m in Sources */,
+				E480BAB31763239000F37106 /* OHASBasicMarkupParser.m in Sources */,
+				E480BAB41763239000F37106 /* OHASMarkupParserBase.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -15581,6 +15707,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/GreWords/Libs/CrittercismSDK\"",
 					"\"$(SRCROOT)/GreWords/Libs/CorePlot\"",
+					"\"$(SRCROOT)/GreWords/Libs/OHAttributedLabel\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -15603,6 +15730,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)/GreWords/Libs/CrittercismSDK\"",
 					"\"$(SRCROOT)/GreWords/Libs/CorePlot\"",
+					"\"$(SRCROOT)/GreWords/Libs/OHAttributedLabel\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

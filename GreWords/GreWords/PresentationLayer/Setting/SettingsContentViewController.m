@@ -11,7 +11,10 @@
 #import "SocialShareModal.h"
 #import "UIDevice+IdentifierAddition.h"
 #import "ConfigurationHelper.h"
-
+#import<CoreText/CoreText.h>
+#import "UIColor+RGB.h"
+#import "NSDate-Utilities.h"
+#import "NSAttributedString+Attributes.h"
 
 #define RECOMMAND_TEXT @"小崔崔~~~"
 
@@ -38,6 +41,8 @@
     [super viewDidLoad];
     [self configVersionLabel];
     [self initWordShowingComponentIndicatorState];
+    
+    [self configWatchs];
     
 	// Do any additional setup after loading the view.
 }
@@ -88,6 +93,79 @@
 {
     NSString *appVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     self.versionLabel.text = [NSString stringWithFormat:@"v%@",appVersion];
+}
+
+#pragma mark - Watch delegate
+
+
+#pragma mark - Remind Time Methods
+
+
+- (void)configWatchs
+{
+    CGRect frame = self.remindTimeScrollView.frame;
+    frame.origin.x = 0;
+    frame.origin.y = 0;
+    UIView *watch1 = [[UIView alloc] initWithFrame:frame];
+    watch1.alpha = 0.2;
+    watch1.backgroundColor = [UIColor blueColor];
+    
+    frame.origin.x += self.remindTimeScrollView.frame.size.width;
+    UIView *watch2 = [[UIView alloc] initWithFrame:frame];
+    watch2.alpha = 0.2;
+    watch2.backgroundColor = [UIColor redColor];
+    
+    [self.remindTimeScrollView addSubview:watch1];
+    [self.remindTimeScrollView addSubview:watch2];
+    
+    self.remindTimeScrollView.contentSize = CGSizeMake(self.remindTimeScrollView.frame.size.width * 2, self.remindTimeScrollView.frame.size.height);
+    
+    [self configLabelForReciteAtTime:[ConfigurationHelper instance].freshWordAlertTime];
+}
+
+
+- (void)configLabelForReviewAtTime:(NSDate*)date
+{
+    self.remindTimeLabel.attributedText = [self stringForEvent:@"复习单词" atTime:date];
+}
+
+- (void)configLabelForReciteAtTime:(NSDate*)date
+{
+    self.remindTimeLabel.attributedText = [self stringForEvent:@"记忆单词" atTime:date];
+}
+
+- (NSAttributedString*)stringForEvent:(NSString*)string atTime:(NSDate*)date
+{
+//    NSString *str = [NSString stringWithFormat:@"每天上午8:00我会提醒你记忆单词"];
+    NSMutableAttributedString *attriString = [[NSMutableAttributedString alloc] initWithString:@""];
+    {
+        NSMutableAttributedString * subString = [[NSMutableAttributedString alloc] initWithString:@"每天"];
+        [subString setTextColor:[UIColor colorWithR:158 G:148 B:136]];
+        [attriString appendAttributedString:subString];
+    }
+    {
+        NSString *timeStr = [NSString stringWithFormat:@"%d:%02d",[date hour],[date minute]];
+        
+        NSMutableAttributedString * subString = [[NSMutableAttributedString alloc] initWithString:timeStr];
+        [subString setTextColor:[UIColor colorWithR:224 G:155 B:70]];
+        [attriString appendAttributedString:subString];
+    }
+    {
+        NSMutableAttributedString * subString = [[NSMutableAttributedString alloc] initWithString:@"我会提醒你"];
+        [subString setTextColor:[UIColor colorWithR:158 G:148 B:136]];
+        [attriString appendAttributedString:subString];
+    }
+    {
+        NSMutableAttributedString * subString = [[NSMutableAttributedString alloc] initWithString:string];
+        [subString setTextColor:[UIColor colorWithR:224 G:155 B:70]];
+        [attriString appendAttributedString:subString];
+    }
+    OHParagraphStyle* paragraphStyle = [OHParagraphStyle defaultParagraphStyle];
+    paragraphStyle.textAlignment = kCTTextAlignmentCenter;
+    //paragraphStyle.lineBreakMode = kCTLineBreakByWordWrapping;
+    [attriString setParagraphStyle:paragraphStyle];
+    attriString.font = [UIFont fontWithName:@"STHeitiSC-Medium" size:17];
+    return attriString;
 }
 
 
@@ -372,5 +450,26 @@
     }
 }
 
+
+#pragma mark UIScrollView delegate
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    int x = self.remindTimeScrollView.contentOffset.x;
+    
+    x += self.remindTimeScrollView.frame.size.width / 2.0;
+    
+    int page = x / (self.remindTimeScrollView.frame.size.width);
+    
+    [self.remindTimePageControl setCurrentPage:page];
+    
+    if(page == 0)
+    {
+        [self configLabelForReciteAtTime:[ConfigurationHelper instance].freshWordAlertTime];
+    }
+    else
+    {
+        [self configLabelForReviewAtTime:[ConfigurationHelper instance].reviewAlertTime];
+    }
+}
 
 @end

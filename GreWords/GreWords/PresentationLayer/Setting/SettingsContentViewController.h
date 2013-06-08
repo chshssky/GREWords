@@ -10,9 +10,11 @@
 #import "CMActionSheet.h"
 #import <MessageUI/MessageUI.h> 
 
-@interface SettingsContentViewController : UIViewController<MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate>
+#import "OHAttributedLabel.h"
 
-@property (weak, nonatomic) IBOutlet UILabel *remindTimeLabel;
+@interface SettingsContentViewController : UIViewController<MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate,UIScrollViewDelegate>
+
+@property (weak, nonatomic) IBOutlet OHAttributedLabel *remindTimeLabel;
 @property (weak, nonatomic) IBOutlet UIPageControl *remindTimePageControl;
 @property (weak, nonatomic) IBOutlet UIScrollView *remindTimeScrollView;
 @property (weak, nonatomic) IBOutlet UIButton *chineseMeaningButton;
