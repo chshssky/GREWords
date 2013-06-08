@@ -41,6 +41,7 @@
 @property(nonatomic) int movePointY;
 @property(nonatomic) bool whetherPlusHour;
 @property(nonatomic) bool whetherMinusHour;
+@property(nonatomic) bool whetherRecite;
 
 @property(nonatomic) int minute;
 @property(nonatomic) int temp_minute;
@@ -93,66 +94,131 @@
     [self.view addSubview:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg.png"]]];
     
     //添加时钟数字
-    UIImage *N1 = [UIImage imageNamed:@"Settings_taskClock_1.png"];
-    self.N1_imageView = [[UIImageView alloc] initWithImage:N1];
-    self.N1_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x+55, _centerPoint.y-95);
-    self.N1_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    [self.view addSubview:self.N1_imageView];
-    UIImage *N2 = [UIImage imageNamed:@"Settings_taskClock_2.png"];
-    self.N2_imageView = [[UIImageView alloc] initWithImage:N2];
-    self.N2_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x+105, _centerPoint.y-65);
-    self.N2_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    [self.view addSubview:self.N2_imageView];
-    UIImage *N3 = [UIImage imageNamed:@"Settings_taskClock_3.png"];
-    self.N3_imageView = [[UIImageView alloc] initWithImage:N3];
-    self.N3_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x+123, _centerPoint.y);
-    self.N3_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    [self.view addSubview:self.N3_imageView];
-    UIImage *N4 = [UIImage imageNamed:@"Settings_taskClock_4.png"];
-    self.N4_imageView = [[UIImageView alloc] initWithImage:N4];
-    self.N4_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x+100, _centerPoint.y+62);
-    self.N4_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    [self.view addSubview:self.N4_imageView];
-    UIImage *N5 = [UIImage imageNamed:@"Settings_taskClock_5.png"];
-    self.N5_imageView = [[UIImageView alloc] initWithImage:N5];
-    self.N5_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x+58, _centerPoint.y+105);
-    self.N5_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    [self.view addSubview:self.N5_imageView];
-    UIImage *N6 = [UIImage imageNamed:@"Settings_taskClock_6.png"];
-    self.N6_imageView = [[UIImageView alloc] initWithImage:N6];
-    self.N6_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x, _centerPoint.y+120);
-    self.N6_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    [self.view addSubview:self.N6_imageView];
-    UIImage *N7 = [UIImage imageNamed:@"Settings_taskClock_7.png"];
-    self.N7_imageView = [[UIImageView alloc] initWithImage:N7];
-    self.N7_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x-60, _centerPoint.y+112);
-    self.N7_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    [self.view addSubview:self.N7_imageView];
-    UIImage *N8 = [UIImage imageNamed:@"Settings_taskClock_8.png"];
-    self.N8_imageView = [[UIImageView alloc] initWithImage:N8];
-    self.N8_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x-100, _centerPoint.y+62);
-    self.N8_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    [self.view addSubview:self.N8_imageView];
-    UIImage *N9 = [UIImage imageNamed:@"Settings_taskClock_9.png"];
-    self.N9_imageView = [[UIImageView alloc] initWithImage:N9];
-    self.N9_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x-130, _centerPoint.y);
-    self.N9_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    [self.view addSubview:self.N9_imageView];
-    UIImage *N10 = [UIImage imageNamed:@"Settings_taskClock_10.png"];
-    self.N10_imageView = [[UIImageView alloc] initWithImage:N10];
-    self.N10_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x-115, _centerPoint.y-68);
-    self.N10_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    [self.view addSubview:self.N10_imageView];
-    UIImage *N11 = [UIImage imageNamed:@"Settings_taskClock_11.png"];
-    self.N11_imageView = [[UIImageView alloc] initWithImage:N11];
-    self.N11_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x-55, _centerPoint.y-98);
-    self.N11_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    [self.view addSubview:self.N11_imageView];
-    UIImage *N12 = [UIImage imageNamed:@"Settings_taskClock_12.png"];
-    self.N12_imageView = [[UIImageView alloc] initWithImage:N12];
-    self.N12_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x, _centerPoint.y-117);
-    self.N12_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    [self.view addSubview:self.N12_imageView];
+    
+    if (_whetherRecite == YES) {
+        UIImage *N1 = [UIImage imageNamed:@"Settings_taskClock_1.png"];
+        self.N1_imageView = [[UIImageView alloc] initWithImage:N1];
+        self.N1_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x+55, _centerPoint.y-95);
+        self.N1_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N1_imageView];
+        UIImage *N2 = [UIImage imageNamed:@"Settings_taskClock_2.png"];
+        self.N2_imageView = [[UIImageView alloc] initWithImage:N2];
+        self.N2_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x+105, _centerPoint.y-65);
+        self.N2_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N2_imageView];
+        UIImage *N3 = [UIImage imageNamed:@"Settings_taskClock_3.png"];
+        self.N3_imageView = [[UIImageView alloc] initWithImage:N3];
+        self.N3_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x+123, _centerPoint.y);
+        self.N3_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N3_imageView];
+        UIImage *N4 = [UIImage imageNamed:@"Settings_taskClock_4.png"];
+        self.N4_imageView = [[UIImageView alloc] initWithImage:N4];
+        self.N4_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x+100, _centerPoint.y+62);
+        self.N4_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N4_imageView];
+        UIImage *N5 = [UIImage imageNamed:@"Settings_taskClock_5.png"];
+        self.N5_imageView = [[UIImageView alloc] initWithImage:N5];
+        self.N5_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x+58, _centerPoint.y+105);
+        self.N5_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N5_imageView];
+        UIImage *N6 = [UIImage imageNamed:@"Settings_taskClock_6.png"];
+        self.N6_imageView = [[UIImageView alloc] initWithImage:N6];
+        self.N6_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x, _centerPoint.y+120);
+        self.N6_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N6_imageView];
+        UIImage *N7 = [UIImage imageNamed:@"Settings_taskClock_7.png"];
+        self.N7_imageView = [[UIImageView alloc] initWithImage:N7];
+        self.N7_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x-60, _centerPoint.y+112);
+        self.N7_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N7_imageView];
+        UIImage *N8 = [UIImage imageNamed:@"Settings_taskClock_8.png"];
+        self.N8_imageView = [[UIImageView alloc] initWithImage:N8];
+        self.N8_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x-100, _centerPoint.y+62);
+        self.N8_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N8_imageView];
+        UIImage *N9 = [UIImage imageNamed:@"Settings_taskClock_9.png"];
+        self.N9_imageView = [[UIImageView alloc] initWithImage:N9];
+        self.N9_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x-130, _centerPoint.y);
+        self.N9_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N9_imageView];
+        UIImage *N10 = [UIImage imageNamed:@"Settings_taskClock_10.png"];
+        self.N10_imageView = [[UIImageView alloc] initWithImage:N10];
+        self.N10_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x-115, _centerPoint.y-68);
+        self.N10_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N10_imageView];
+        UIImage *N11 = [UIImage imageNamed:@"Settings_taskClock_11.png"];
+        self.N11_imageView = [[UIImageView alloc] initWithImage:N11];
+        self.N11_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x-55, _centerPoint.y-98);
+        self.N11_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N11_imageView];
+        UIImage *N12 = [UIImage imageNamed:@"Settings_taskClock_12.png"];
+        self.N12_imageView = [[UIImageView alloc] initWithImage:N12];
+        self.N12_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x, _centerPoint.y-117);
+        self.N12_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N12_imageView];
+    }else {
+        UIImage *N1 = [UIImage imageNamed:@"Settings_task2Clock_1.png"];
+        self.N1_imageView = [[UIImageView alloc] initWithImage:N1];
+        self.N1_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x+55, _centerPoint.y-95);
+        self.N1_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N1_imageView];
+        UIImage *N2 = [UIImage imageNamed:@"Settings_task2Clock_2.png"];
+        self.N2_imageView = [[UIImageView alloc] initWithImage:N2];
+        self.N2_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x+105, _centerPoint.y-65);
+        self.N2_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N2_imageView];
+        UIImage *N3 = [UIImage imageNamed:@"Settings_task2Clock_3.png"];
+        self.N3_imageView = [[UIImageView alloc] initWithImage:N3];
+        self.N3_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x+123, _centerPoint.y);
+        self.N3_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N3_imageView];
+        UIImage *N4 = [UIImage imageNamed:@"Settings_task2Clock_4.png"];
+        self.N4_imageView = [[UIImageView alloc] initWithImage:N4];
+        self.N4_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x+100, _centerPoint.y+62);
+        self.N4_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N4_imageView];
+        UIImage *N5 = [UIImage imageNamed:@"Settings_task2Clock_5.png"];
+        self.N5_imageView = [[UIImageView alloc] initWithImage:N5];
+        self.N5_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x+58, _centerPoint.y+105);
+        self.N5_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N5_imageView];
+        UIImage *N6 = [UIImage imageNamed:@"Settings_task2Clock_6.png"];
+        self.N6_imageView = [[UIImageView alloc] initWithImage:N6];
+        self.N6_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x, _centerPoint.y+120);
+        self.N6_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N6_imageView];
+        UIImage *N7 = [UIImage imageNamed:@"Settings_task2Clock_7.png"];
+        self.N7_imageView = [[UIImageView alloc] initWithImage:N7];
+        self.N7_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x-60, _centerPoint.y+112);
+        self.N7_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N7_imageView];
+        UIImage *N8 = [UIImage imageNamed:@"Settings_task2Clock_8.png"];
+        self.N8_imageView = [[UIImageView alloc] initWithImage:N8];
+        self.N8_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x-100, _centerPoint.y+62);
+        self.N8_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N8_imageView];
+        UIImage *N9 = [UIImage imageNamed:@"Settings_task2Clock_9.png"];
+        self.N9_imageView = [[UIImageView alloc] initWithImage:N9];
+        self.N9_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x-130, _centerPoint.y);
+        self.N9_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N9_imageView];
+        UIImage *N10 = [UIImage imageNamed:@"Settings_task2Clock_10.png"];
+        self.N10_imageView = [[UIImageView alloc] initWithImage:N10];
+        self.N10_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x-115, _centerPoint.y-68);
+        self.N10_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N10_imageView];
+        UIImage *N11 = [UIImage imageNamed:@"Settings_task2Clock_11.png"];
+        self.N11_imageView = [[UIImageView alloc] initWithImage:N11];
+        self.N11_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x-55, _centerPoint.y-98);
+        self.N11_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N11_imageView];
+        UIImage *N12 = [UIImage imageNamed:@"Settings_task2Clock_12.png"];
+        self.N12_imageView = [[UIImageView alloc] initWithImage:N12];
+        self.N12_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x, _centerPoint.y-117);
+        self.N12_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        [self.view addSubview:self.N12_imageView];
+    }
+
     
     
     
@@ -167,11 +233,11 @@
     
     //添加AM和PM
     _AM = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Settings_taskClock_AM.png"]];
-    _AM.center = CGPointMake(_centerPoint.x, _centerPoint.y+70.0);
+    _AM.center = CGPointMake(_centerPoint.x, _centerPoint.y+44.0);
     [self.view addSubview:_AM];
     _PM = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Settings_taskClock_PM.png"]];
     [self.view addSubview:_PM];
-    _PM.center = CGPointMake(_centerPoint.x, _centerPoint.y+70.0);
+    _PM.center = CGPointMake(_centerPoint.x, _centerPoint.y+44.0);
     if (_time >= 720) {
         _AM.alpha=0;
         _PM.alpha=1;
@@ -191,7 +257,7 @@
     
     //    self.SimageView.frame = CGRectMake(0, 0, 30, 90);
     self.SimageView.center = _centerPoint;
-    self.SimageView.layer.anchorPoint = CGPointMake(0.5, 0.95);
+    self.SimageView.layer.anchorPoint = CGPointMake(0.5, 0.92);
     [self.view addSubview:self.SimageView];
     
     //添加分针图片并消除锯齿
@@ -204,7 +270,7 @@
     
     //    self.FimageView.frame = CGRectMake(0, 0, 30, 150);
     self.FimageView.center = _centerPoint;
-    self.FimageView.layer.anchorPoint = CGPointMake(0.5, 0.85);
+    self.FimageView.layer.anchorPoint = CGPointMake(0.5, 0.78);
     [self.view addSubview:self.FimageView];
     
     //添加中心点图片并消除锯齿
@@ -242,7 +308,7 @@
     UILongPressGestureRecognizer *gestureRecognizerF = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleF:)];
     [self.FimageView addGestureRecognizer:gestureRecognizerF];
     self.FimageView.userInteractionEnabled = YES;
-    
+    gestureRecognizerF.minimumPressDuration=0;
     self.FimageView.transform = CGAffineTransformMakeRotation(_radio_f);
     self.SimageView.transform = CGAffineTransformMakeRotation(_radio_s);
 }
@@ -250,21 +316,21 @@
 - (void) AMPMAnimation
 {
     CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
-    scaleAnimation.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(0, 0, 1.0)];
+    scaleAnimation.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.1, 0.1, 1.0)];
     scaleAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1.0)];
     scaleAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     scaleAnimation.duration = 0.6f;
-    scaleAnimation.beginTime = CACurrentMediaTime()+0.4f;
+    scaleAnimation.beginTime = CACurrentMediaTime();
+    scaleAnimation.removedOnCompletion = NO;
     scaleAnimation.fillMode = kCAFillModeBackwards;
-    scaleAnimation.removedOnCompletion = YES;
     [self.AM.layer addAnimation:scaleAnimation forKey:nil];
     
     scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
-    scaleAnimation.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(0, 0, 1.0)];
+    scaleAnimation.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(0.1, 0.1, 1.0)];
     scaleAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1.0)];
     scaleAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     scaleAnimation.duration = 0.6f;
-    scaleAnimation.beginTime = CACurrentMediaTime()+0.4f;
+    scaleAnimation.beginTime = CACurrentMediaTime();
     scaleAnimation.fillMode = kCAFillModeBackwards;
     scaleAnimation.removedOnCompletion = YES;
     [self.PM.layer addAnimation:scaleAnimation forKey:nil];
@@ -325,9 +391,9 @@
     lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, _centerPoint.x, _centerPoint.y);
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+150*cos(M_PI/6), _centerPoint.y+150*sin(M_PI/6));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+115*cos(M_PI/6), _centerPoint.y+115*sin(M_PI/6));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+130*cos(M_PI/6), _centerPoint.y+130*sin(M_PI/6));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+100*cos(M_PI/6), _centerPoint.y+100*sin(M_PI/6));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+80*cos(M_PI/6), _centerPoint.y+80*sin(M_PI/6));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+85*cos(M_PI/6), _centerPoint.y+85*sin(M_PI/6));
     lineAnimation.path = path;
     CGPathRelease(path);
     
@@ -342,9 +408,9 @@
     lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, _centerPoint.x, _centerPoint.y);
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+150*cos(M_PI/6 * 2), _centerPoint.y+150*sin(M_PI/6 * 2));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+115*cos(M_PI/6 * 2), _centerPoint.y+115*sin(M_PI/6 * 2));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+130*cos(M_PI/6 * 2), _centerPoint.y+130*sin(M_PI/6 * 2));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+100*cos(M_PI/6 * 2), _centerPoint.y+100*sin(M_PI/6 * 2));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+80*cos(M_PI/6 * 2), _centerPoint.y+80*sin(M_PI/6 * 2));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+85*cos(M_PI/6 * 2), _centerPoint.y+85*sin(M_PI/6 * 2));
     lineAnimation.path = path;
     CGPathRelease(path);
     
@@ -359,9 +425,9 @@
     lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, _centerPoint.x, _centerPoint.y);
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+150*cos(M_PI/6 * 3), _centerPoint.y+150*sin(M_PI/6 * 3));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+115*cos(M_PI/6 * 3), _centerPoint.y+115*sin(M_PI/6 * 3));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+130*cos(M_PI/6 * 3), _centerPoint.y+130*sin(M_PI/6 * 3));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+100*cos(M_PI/6 * 3), _centerPoint.y+100*sin(M_PI/6 * 3));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+80*cos(M_PI/6 * 3), _centerPoint.y+80*sin(M_PI/6 * 3));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+85*cos(M_PI/6 * 3), _centerPoint.y+85*sin(M_PI/6 * 3));
     lineAnimation.path = path;
     CGPathRelease(path);
     
@@ -376,9 +442,9 @@
     lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, _centerPoint.x, _centerPoint.y);
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+150*cos(M_PI/6 * 4), _centerPoint.y+150*sin(M_PI/6 * 4));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+115*cos(M_PI/6 * 4), _centerPoint.y+115*sin(M_PI/6 * 4));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+130*cos(M_PI/6 * 4), _centerPoint.y+130*sin(M_PI/6 * 4));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+100*cos(M_PI/6 * 4), _centerPoint.y+100*sin(M_PI/6 * 4));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+80*cos(M_PI/6 * 4), _centerPoint.y+80*sin(M_PI/6 * 4));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+85*cos(M_PI/6 * 4), _centerPoint.y+85*sin(M_PI/6 * 4));
     lineAnimation.path = path;
     CGPathRelease(path);
     
@@ -393,9 +459,9 @@
     lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, _centerPoint.x, _centerPoint.y);
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+150*cos(M_PI/6 * 5), _centerPoint.y+150*sin(M_PI/6 * 5));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+115*cos(M_PI/6 * 5), _centerPoint.y+115*sin(M_PI/6 * 5));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+130*cos(M_PI/6 * 5), _centerPoint.y+130*sin(M_PI/6 * 5));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+100*cos(M_PI/6 * 5), _centerPoint.y+100*sin(M_PI/6 * 5));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+80*cos(M_PI/6 * 5), _centerPoint.y+80*sin(M_PI/6 * 5));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+85*cos(M_PI/6 * 5), _centerPoint.y+85*sin(M_PI/6 * 5));
     lineAnimation.path = path;
     CGPathRelease(path);
     
@@ -409,9 +475,9 @@
     lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, _centerPoint.x, _centerPoint.y);
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+150*cos(M_PI/6 * 6), _centerPoint.y+150*sin(M_PI/6 * 6));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+115*cos(M_PI/6 * 6), _centerPoint.y+115*sin(M_PI/6 * 6));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+130*cos(M_PI/6 * 6), _centerPoint.y+130*sin(M_PI/6 * 6));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+100*cos(M_PI/6 * 6), _centerPoint.y+100*sin(M_PI/6 * 6));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+80*cos(M_PI/6 * 6), _centerPoint.y+80*sin(M_PI/6 * 6));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+85*cos(M_PI/6 * 6), _centerPoint.y+85*sin(M_PI/6 * 6));
     lineAnimation.path = path;
     CGPathRelease(path);
     
@@ -426,9 +492,9 @@
     lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, _centerPoint.x, _centerPoint.y);
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+150*cos(M_PI/6 * 7), _centerPoint.y+150*sin(M_PI/6 * 7));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+115*cos(M_PI/6 * 7), _centerPoint.y+115*sin(M_PI/6 * 7));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+130*cos(M_PI/6 * 7), _centerPoint.y+130*sin(M_PI/6 * 7));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+100*cos(M_PI/6 * 7), _centerPoint.y+100*sin(M_PI/6 * 7));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+80*cos(M_PI/6 * 7), _centerPoint.y+80*sin(M_PI/6 * 7));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+85*cos(M_PI/6 * 7), _centerPoint.y+85*sin(M_PI/6 * 7));
     lineAnimation.path = path;
     CGPathRelease(path);
     
@@ -443,9 +509,9 @@
     lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, _centerPoint.x, _centerPoint.y);
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+150*cos(M_PI/6 * 8), _centerPoint.y+150*sin(M_PI/6 * 8));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+115*cos(M_PI/6 * 8), _centerPoint.y+115*sin(M_PI/6 * 8));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+130*cos(M_PI/6 * 8), _centerPoint.y+130*sin(M_PI/6 * 8));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+100*cos(M_PI/6 * 8), _centerPoint.y+100*sin(M_PI/6 * 8));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+80*cos(M_PI/6 * 8), _centerPoint.y+80*sin(M_PI/6 * 8));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+85*cos(M_PI/6 * 8), _centerPoint.y+85*sin(M_PI/6 * 8));
     lineAnimation.path = path;
     CGPathRelease(path);
     
@@ -460,9 +526,9 @@
     lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, _centerPoint.x, _centerPoint.y);
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+150*cos(M_PI/6 * 9), _centerPoint.y+150*sin(M_PI/6 * 9));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+115*cos(M_PI/6 * 9), _centerPoint.y+115*sin(M_PI/6 * 9));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+130*cos(M_PI/6 * 9), _centerPoint.y+130*sin(M_PI/6 * 9));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+100*cos(M_PI/6 * 9), _centerPoint.y+100*sin(M_PI/6 * 9));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+80*cos(M_PI/6 * 9), _centerPoint.y+80*sin(M_PI/6 * 9));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+85*cos(M_PI/6 * 9), _centerPoint.y+85*sin(M_PI/6 * 9));
     lineAnimation.path = path;
     CGPathRelease(path);
     
@@ -477,9 +543,9 @@
     lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, _centerPoint.x, _centerPoint.y);
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+150*cos(M_PI/6 * 10), _centerPoint.y+150*sin(M_PI/6 * 10));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+115*cos(M_PI/6 * 10), _centerPoint.y+115*sin(M_PI/6 * 10));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+130*cos(M_PI/6 * 10), _centerPoint.y+130*sin(M_PI/6 * 10));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+100*cos(M_PI/6 * 10), _centerPoint.y+100*sin(M_PI/6 * 10));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+80*cos(M_PI/6 * 10), _centerPoint.y+80*sin(M_PI/6 * 10));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+85*cos(M_PI/6 * 10), _centerPoint.y+85*sin(M_PI/6 * 10));
     lineAnimation.path = path;
     CGPathRelease(path);
     
@@ -493,9 +559,9 @@
     lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, _centerPoint.x, _centerPoint.y);
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+150*cos(M_PI/6 * 11), _centerPoint.y+150*sin(M_PI/6 * 11));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+115*cos(M_PI/6 * 11), _centerPoint.y+115*sin(M_PI/6 * 11));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+130*cos(M_PI/6 * 11), _centerPoint.y+130*sin(M_PI/6 * 11));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+100*cos(M_PI/6 * 11), _centerPoint.y+100*sin(M_PI/6 * 11));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+80*cos(M_PI/6 * 11), _centerPoint.y+80*sin(M_PI/6 * 11));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+85*cos(M_PI/6 * 11), _centerPoint.y+85*sin(M_PI/6 * 11));
     lineAnimation.path = path;
     CGPathRelease(path);
     
@@ -510,9 +576,9 @@
     lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, _centerPoint.x, _centerPoint.y);
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+150*cos(M_PI/6 * 12), _centerPoint.y+150*sin(M_PI/6 * 12));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+115*cos(M_PI/6 * 12), _centerPoint.y+115*sin(M_PI/6 * 12));
-    CGPathAddLineToPoint(path, NULL, _centerPoint.x+130*cos(M_PI/6 * 12), _centerPoint.y+130*sin(M_PI/6 * 12));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+100*cos(M_PI/6 * 12), _centerPoint.y+100*sin(M_PI/6 * 12));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+80*cos(M_PI/6 * 12), _centerPoint.y+80*sin(M_PI/6 * 12));
+    CGPathAddLineToPoint(path, NULL, _centerPoint.x+85*cos(M_PI/6 * 12), _centerPoint.y+85*sin(M_PI/6 * 12));
     lineAnimation.path = path;
     CGPathRelease(path);
     
@@ -615,7 +681,7 @@
     //记录分针位置
     _radio_f = fmod(_time, 60)*2*M_PI/60;
     
-    NSLog(@"%d:%d",_hour,_minute);
+    //NSLog(@"%d:%d",_hour,_minute);
     NSDate *date = [NSDate date];
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
     NSDateComponents *components = [gregorian components: NSUIntegerMax fromDate: date];
