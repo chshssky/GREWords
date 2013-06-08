@@ -32,7 +32,7 @@
 
 -(void)resetAllData;
 -(void)initData;
--(void)initConfigsForStage;
+-(void)initConfigsForStage:(int)stage;
 
 -(void)reSchedule;
 

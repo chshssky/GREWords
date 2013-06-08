@@ -147,11 +147,13 @@ ConfigurationHelper* _configurationHelperInstance = nil;
 #pragma mark notification system
 
 
-
-
 -(void)reSchedule
 {
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+
+    if(!self.freshWordAlertTime || !self.reviewAlertTime)
+        return;
     for(int i = 0; i <= 30; i++)
     {
         UILocalNotification *localNotif = [[UILocalNotification alloc] init];
@@ -264,13 +266,57 @@ ConfigurationHelper* _configurationHelperInstance = nil;
     [[MyDataStorage instance] saveContext];
     
     [self boolPlistSetter:NO key:@"firstTimeRun"];
+    [self initNotificationTime];
     //NSAssert(NO, @"function not implemented yet");
 }
 
-
--(void)initConfigsForStage
+-(void)initNotificationTime
 {
-#warning TODO
+    {
+        NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+        NSDateComponents *dateComps = [[NSDateComponents alloc] init];
+        [dateComps setDay:3];
+        [dateComps setMonth:10];
+        [dateComps setYear:1991];
+        [dateComps setHour:8];
+        [dateComps setMinute:0];
+        [dateComps setSecond:0];
+        NSDate *date = [calendar dateFromComponents:dateComps];
+        self.freshWordAlertTime = date;
+    }
+    {
+        NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
+        NSDateComponents *dateComps = [[NSDateComponents alloc] init];
+        [dateComps setDay:3];
+        [dateComps setMonth:10];
+        [dateComps setYear:1991];
+        [dateComps setHour:14];
+        [dateComps setMinute:0];
+        [dateComps setSecond:0];
+        NSDate *date = [calendar dateFromComponents:dateComps];
+        self.reviewAlertTime = date;
+    }
+}
+
+-(void)initConfigsForStage:(int)stage
+{
+    if(stage == 0)
+    {
+        self.chineseMeaningVisibility = YES;
+        
+    }
+    else if(stage == 1)
+    {
+        self.englishMeaningVisibility = YES;
+    }
+    else if(stage == 2)
+    {
+        
+    }
+    else if(stage == 3)
+    {
+        
+    }
 }
 
 
