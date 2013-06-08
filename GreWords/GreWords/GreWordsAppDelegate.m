@@ -10,6 +10,7 @@
 #import "MyDataStorage.h"
 #import "ConfigurationHelper.h"
 #import "Crittercism.h"
+#import "GAI.h"
 
 @implementation GreWordsAppDelegate
 
@@ -22,6 +23,17 @@
     [[NSUserDefaults standardUserDefaults] registerDefaults:userDefaultsDefaults];
 }
 
+- (void)initGoogleAnalytics
+{
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    // Optional: set debug to YES for extra debugging information.
+    //[GAI sharedInstance].debug = YES;
+    // Create tracker instance.
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-41569198-1"];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -29,6 +41,7 @@
     
     [self initUserDefault];
     
+    [self initGoogleAnalytics];
 //    for (NSString* fname in [UIFont familyNames])
 //    {
 //        NSLog(@"%@",fname);

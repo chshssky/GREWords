@@ -138,7 +138,7 @@
 
 - (void)addNoExamCard
 {
-    NSString *filename = iPhone5 ? @"history exam_upCardBottom_noTest.png" :  @"history exam_upCardBottom_noTest.png";
+    NSString *filename = iPhone5 ? @"history exam_upCardBottom_noTest.png" :  @"history exam_upCardBottom_noTest_mini.png";
     UIImageView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:filename]];
     
     [_pageCardScrollView addSubview:view];

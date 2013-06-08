@@ -1383,8 +1383,12 @@
         [[HistoryManager instance] updateEvent:self.nwEvent];
 
         if (_DownImage.alpha <= 0) {
+            _RightButton.userInteractionEnabled = NO;
+            _WrongButton.userInteractionEnabled = NO;
             [self removeDownImageAnimation_withNoDownCover];
         }else{
+            _RightButton.userInteractionEnabled = NO;
+            _WrongButton.userInteractionEnabled = NO;
             [self removeDownImageAnimation_withDownCover];
         }
         //[self dismissModalViewControllerAnimated:NO];
