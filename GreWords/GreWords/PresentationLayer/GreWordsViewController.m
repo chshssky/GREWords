@@ -303,13 +303,9 @@
 {
     [self transaction];
     
-//    SettingsViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"setting"];
-//    vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-//    [self presentModalViewController:vc animated:YES];
-    
-    GuideSettingViewController *a = [[GuideSettingViewController alloc]init];
-    a.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self presentModalViewController:a animated:YES];
+    SettingsViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"setting"];
+    vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentModalViewController:vc animated:YES];
 }
 
 #pragma mark - AwesomeMenu Response Delegate
