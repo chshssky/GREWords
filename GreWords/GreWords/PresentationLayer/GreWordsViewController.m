@@ -280,7 +280,7 @@
         
         [alert show];
 
-        
+        [_testSelectorController ChangeButtonTextWith:@"嘿嘿嘿嘿"];
     } else {
         ExamViewController *vc = [[ExamViewController alloc] init];
         vc.examInfo = examInfo;

@@ -93,6 +93,7 @@
         _examArr = [[WordTaskGenerator instance] testTaskWithOptions:self.examInfo whetherWithAllWords:NO];
     } else if ([TaskStatus instance].eEvent.index + 1 == [_examArr count]) {
         _examArr = [[WordTaskGenerator instance] testTaskWithOptions:self.examInfo whetherWithAllWords:NO];
+        [TaskStatus instance].eEvent.index = 1;
     }
     return _examArr;
 }
@@ -171,6 +172,7 @@
     if ([[now laterDate:[[TaskStatus instance].eEvent.startTime dateByAddingTimeInterval:[TaskStatus instance].eEvent.duration]] isEqualToDate:now]) {
 
         [self examResultShow];
+        [self.timer invalidate];
     }
 }
 
@@ -1055,7 +1057,8 @@
         
         //_note.delegate = self;
     }
-    [_examResultViewController addExamResultCardAt:self withResult:nil delegate:self];
+        
+    [_examResultViewController addExamResultCardAt:self withResult:[TaskStatus instance].eEvent delegate:self];
     [_examResultViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_examResultViewController.view];
 }
@@ -1363,6 +1366,14 @@
 -(void)reExam
 {
     NSLog(@"reexam");
+    [self.timer invalidate];
+    [[TaskStatus instance] beginExam];
+    [self loadWord:[TaskStatus instance].eEvent.index];
+    
+    [TaskStatus instance].eEvent.startTime = [self getNowDate];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+    [self.timer fire];
 }
 
 -(void)backHome
