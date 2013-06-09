@@ -29,19 +29,19 @@
     self.totalWordCountLabel.text = [NSString stringWithFormat:@"%d",self.event.totalWordCount];
     self.forgetCountLabel.text = [NSString stringWithFormat:@"%d",self.event.wrongWordCount];
     self.rememberCountLabel.text = [NSString stringWithFormat:@"%d",self.event.totalWordCount - self.event.wrongWordCount];
-    self.scoreLabel.text = [NSString stringWithFormat:@"%.02f%%",((float)self.event.totalWordCount - self.event.wrongWordCount) * 100 / self.event.totalWordCount];
+    self.scoreLabel.text = [NSString stringWithFormat:@"%.02f",(self.event.totalWordCount - self.event.wrongWordCount)* 100.0 / self.event.totalWordCount  ];
     self.timeLabel.text = [NSString stringWithFormat:@"%d分钟",(int)(self.event.duration / 60.0)];
     if(self.event.difficulty == 0)
     {
-        self.timeLabel.text = @"简单";
+        self.difficultLabel.text = @"简单";
     }
     else if(self.event.difficulty == 1)
     {
-        self.timeLabel.text = @"中等";
+        self.difficultLabel.text = @"中等";
     }
     else if(self.event.difficulty == 2)
     {
-        self.timeLabel.text = @"困难";
+        self.difficultLabel.text = @"困难";
     }
     // Do any additional setup after loading the view from its nib.
 }

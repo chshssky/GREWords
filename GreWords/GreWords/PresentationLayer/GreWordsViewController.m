@@ -255,6 +255,8 @@
         
         //_note.delegate = self;
     }
+    
+    
     [_testSelectorController addTestSelectorAt:self];
     [_testSelectorController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_testSelectorController.view];
@@ -262,26 +264,25 @@
 
 - (void)startExam:(NSNotification *)notification
 {
-    NSDictionary* examInfo = (NSDictionary*) notification.object;
-    [self transaction];
-    
-    if (_testSelectorController != nil) {
-        [_testSelectorController.view removeFromSuperview];
-        _testSelectorController = nil;
-    }
-    
+    NSDictionary* examInfo = (NSDictionary*) notification.object;    
     NSArray *arr = [[WordTaskGenerator instance] testTaskWithOptions:examInfo whetherWithAllWords:NO];
-    
-    if (arr == nil) {
-        
-        //  SHOW NO WORD FOR TEST
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"求Button text API" message:[NSString stringWithFormat:@"您学习的词数太少了，请多学一些"] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
-        [alert setAlertViewStyle:UIAlertViewStyleDefault];
-        
-        [alert show];
 
-        
+
+    if (arr == nil) {
+        //  SHOW NO WORD FOR TEST
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"求Button text API" message:[NSString stringWithFormat:@"您学习的词数太少了，请多学一些"] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+//        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+//        
+//        [alert show];
+
+        [_testSelectorController ChangeButtonTextWith:@"已学单词太少"];
     } else {
+        [self transaction];
+        if (_testSelectorController != nil) {
+            [_testSelectorController.view removeFromSuperview];
+            _testSelectorController = nil;
+        }
+
         ExamViewController *vc = [[ExamViewController alloc] init];
         vc.examInfo = examInfo;
         vc.examArr = arr;

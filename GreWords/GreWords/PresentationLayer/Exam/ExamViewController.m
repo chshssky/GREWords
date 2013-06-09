@@ -93,6 +93,7 @@
         _examArr = [[WordTaskGenerator instance] testTaskWithOptions:self.examInfo whetherWithAllWords:NO];
     } else if ([TaskStatus instance].eEvent.index + 1 == [_examArr count]) {
         _examArr = [[WordTaskGenerator instance] testTaskWithOptions:self.examInfo whetherWithAllWords:NO];
+        [TaskStatus instance].eEvent.index = 1;
     }
     return _examArr;
 }
@@ -171,6 +172,7 @@
     if ([[now laterDate:[[TaskStatus instance].eEvent.startTime dateByAddingTimeInterval:[TaskStatus instance].eEvent.duration]] isEqualToDate:now]) {
 
         [self examResultShow];
+        [self.timer invalidate];
     }
 }
 
@@ -227,34 +229,34 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [self.timer fire];
-    if (self.examArr == nil) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"无法测试" message:[NSString stringWithFormat:@"由于您的智能词表里的词数少于30，无法测试"] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
-        [alert setAlertViewStyle:UIAlertViewStyleDefault];
-        
-        [alert show];
-    
-
-        GreWordsViewController *superController =  (GreWordsViewController *)[self presentingViewController];
-        
-        UIImageView *blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        [blackView setBackgroundColor:[UIColor blackColor]];
-        blackView.alpha = 0;
-        [superController.view addSubview:blackView];
-        
-        
-        superController.whetherAllowViewFrameChanged = YES;
-        CABasicAnimation *opacityAnim_black = [CABasicAnimation animationWithKeyPath:@"opacity"];
-        opacityAnim_black.fromValue = [NSNumber numberWithFloat:0.7];
-        opacityAnim_black.toValue = [NSNumber numberWithFloat:0];
-        opacityAnim_black.removedOnCompletion = YES;
-        CAAnimationGroup *animGroup_black = [CAAnimationGroup animation];
-        animGroup_black.animations = [NSArray arrayWithObjects:opacityAnim_black, nil];
-        animGroup_black.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-        animGroup_black.duration = 0.5;
-        [blackView.layer addAnimation:animGroup_black forKey:nil];
-        
-        [self dismissModalViewControllerAnimated:YES];
-    }
+//    if (self.examArr == nil) {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"无法测试" message:[NSString stringWithFormat:@"由于您的智能词表里的词数少于30，无法测试"] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+//        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+//        
+//        [alert show];
+//    
+//
+//        GreWordsViewController *superController =  (GreWordsViewController *)[self presentingViewController];
+//        
+//        UIImageView *blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+//        [blackView setBackgroundColor:[UIColor blackColor]];
+//        blackView.alpha = 0;
+//        [superController.view addSubview:blackView];
+//        
+//        
+//        superController.whetherAllowViewFrameChanged = YES;
+//        CABasicAnimation *opacityAnim_black = [CABasicAnimation animationWithKeyPath:@"opacity"];
+//        opacityAnim_black.fromValue = [NSNumber numberWithFloat:0.7];
+//        opacityAnim_black.toValue = [NSNumber numberWithFloat:0];
+//        opacityAnim_black.removedOnCompletion = YES;
+//        CAAnimationGroup *animGroup_black = [CAAnimationGroup animation];
+//        animGroup_black.animations = [NSArray arrayWithObjects:opacityAnim_black, nil];
+//        animGroup_black.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//        animGroup_black.duration = 0.5;
+//        [blackView.layer addAnimation:animGroup_black forKey:nil];
+//        
+//        [self dismissModalViewControllerAnimated:YES];
+//    }
 }
 
 - (void)ShowMeaning
@@ -1055,7 +1057,8 @@
         
         //_note.delegate = self;
     }
-    [_examResultViewController addExamResultCardAt:self withResult:nil delegate:self];
+        
+    [_examResultViewController addExamResultCardAt:self withResult:[TaskStatus instance].eEvent delegate:self];
     [_examResultViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_examResultViewController.view];
 }
@@ -1363,6 +1366,14 @@
 -(void)reExam
 {
     NSLog(@"reexam");
+    [self.timer invalidate];
+    [[TaskStatus instance] beginExam];
+    [self loadWord:[TaskStatus instance].eEvent.index];
+    
+    [TaskStatus instance].eEvent.startTime = [self getNowDate];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+    [self.timer fire];
 }
 
 -(void)backHome
