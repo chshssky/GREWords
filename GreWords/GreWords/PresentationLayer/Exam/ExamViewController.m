@@ -88,7 +88,10 @@
 
 - (NSArray *)examArr
 {
+    NSLog(@"index:%d / count:%d", [TaskStatus instance].eEvent.index, [_examArr count]);
     if (_examArr == nil) {
+        _examArr = [[WordTaskGenerator instance] testTaskWithOptions:self.examInfo whetherWithAllWords:NO];
+    } else if ([TaskStatus instance].eEvent.index + 1 == [_examArr count]) {
         _examArr = [[WordTaskGenerator instance] testTaskWithOptions:self.examInfo whetherWithAllWords:NO];
     }
     return _examArr;
@@ -1052,7 +1055,7 @@
         
         //_note.delegate = self;
     }
-    [_examResultViewController addExamResultCardAt:self];
+    [_examResultViewController addExamResultCardAt:self withResult:nil delegate:self];
     [_examResultViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_examResultViewController.view];
 }
@@ -1352,8 +1355,19 @@
 
 - (IBAction)BackButtonPushed:(id)sender
 {
-    //[self examResultShow];
+    [self examResultShow];
     
+}
+
+#pragma mark -  exam result delegate
+-(void)reExam
+{
+    NSLog(@"reexam");
+}
+
+-(void)backHome
+{
+    NSLog(@"backHome");
     GreWordsViewController *superController =  (GreWordsViewController *)[self presentingViewController];
     
     UIImageView *blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
@@ -1374,7 +1388,6 @@
     [blackView.layer addAnimation:animGroup_black forKey:nil];
     
     [self dismissModalViewControllerAnimated:YES];
-    
 }
 
 @end

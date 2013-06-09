@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExamResultViewController.h"
 
-@interface ExamViewController : UIViewController
+@interface ExamViewController : UIViewController<ExamResultProtocal>
 @property (weak, nonatomic) IBOutlet UIScrollView *WordParaphraseView;
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;
 

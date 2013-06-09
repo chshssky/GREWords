@@ -39,11 +39,11 @@
         <relationship name="word2note" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Note" inverseName="note2word" inverseEntity="Note" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ExamStatus" positionX="27" positionY="-18" width="128" height="73"/>
-        <element name="History" positionX="358" positionY="-79" width="128" height="210"/>
-        <element name="NewWordStatus" positionX="27" positionY="81" width="128" height="105"/>
-        <element name="Note" positionX="385" positionY="243" width="128" height="90"/>
-        <element name="ReviewStatus" positionX="27" positionY="207" width="128" height="75"/>
-        <element name="Word" positionX="135" positionY="324" width="128" height="103"/>
+        <element name="ExamStatus" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="History" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="NewWordStatus" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Note" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ReviewStatus" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Word" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
