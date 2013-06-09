@@ -206,10 +206,6 @@
         count++;
     if([ConfigurationHelper instance].englishMeaningVisibility)
         count++;
-    if([ConfigurationHelper instance].sampleSentenceVisibility)
-        count++;
-    if([ConfigurationHelper instance].homoionymVisibility)
-        count++;
     return count;
 }
 
@@ -242,17 +238,11 @@
            [self.chineseMeaningButton setEnabled:NO];
         if([ConfigurationHelper instance].englishMeaningVisibility)
             [self.englishMeaningButton setEnabled:NO];
-        if([ConfigurationHelper instance].sampleSentenceVisibility)
-            [self.sentenceButton setEnabled:NO];
-        if([ConfigurationHelper instance].homoionymVisibility)
-            [self.homoButton setEnabled:NO];
     }
     else
     {
         [self.chineseMeaningButton setEnabled:YES];
         [self.englishMeaningButton setEnabled:YES];
-        [self.sentenceButton setEnabled:YES];
-        [self.homoButton setEnabled:YES];
     }
 }
 
