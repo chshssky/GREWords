@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F366C671764823800E5ADE6 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F366C661764823800E5ADE6 /* History.m */; };
-		3F366C6A1764823800E5ADE6 /* ExamStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F366C691764823800E5ADE6 /* ExamStatus.m */; };
-		3F366C6D1764823900E5ADE6 /* NewWordStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F366C6C1764823900E5ADE6 /* NewWordStatus.m */; };
-		3F366C701764823900E5ADE6 /* ReviewStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F366C6F1764823900E5ADE6 /* ReviewStatus.m */; };
-		3F366C731764823A00E5ADE6 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F366C721764823A00E5ADE6 /* Word.m */; };
-		3F366C761764823A00E5ADE6 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F366C751764823A00E5ADE6 /* Note.m */; };
 		3F70EC8B1701CADB00327770 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F70EC8A1701CADB00327770 /* UIKit.framework */; };
 		3F70EC8D1701CADB00327770 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F70EC8C1701CADB00327770 /* Foundation.framework */; };
 		3F70EC8F1701CADB00327770 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F70EC8E1701CADB00327770 /* CoreGraphics.framework */; };
@@ -226,14 +220,10 @@
 		E404ADC3175397BB00004FDC /* Welcome2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADBD175397BB00004FDC /* Welcome2@2x.png */; };
 		E404ADC4175397BB00004FDC /* Welcome3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADBE175397BB00004FDC /* Welcome3@2x.png */; };
 		E404ADC5175397BB00004FDC /* Welcome4_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADBF175397BB00004FDC /* Welcome4_bg@2x.png */; };
-		E404ADC6175397BB00004FDC /* Welcome4_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADC0175397BB00004FDC /* Welcome4_button@2x.png */; };
-		E404ADC7175397BB00004FDC /* Welcome4_buttonPressdown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADC1175397BB00004FDC /* Welcome4_buttonPressdown@2x.png */; };
 		E404ADCE1753984200004FDC /* Welcome1.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADC81753984200004FDC /* Welcome1.png */; };
 		E404ADCF1753984200004FDC /* Welcome2.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADC91753984200004FDC /* Welcome2.png */; };
 		E404ADD01753984200004FDC /* Welcome3.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADCA1753984200004FDC /* Welcome3.png */; };
 		E404ADD11753984200004FDC /* Welcome4_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADCB1753984200004FDC /* Welcome4_bg.png */; };
-		E404ADD21753984200004FDC /* Welcome4_button.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADCC1753984200004FDC /* Welcome4_button.png */; };
-		E404ADD31753984200004FDC /* Welcome4_buttonPressdown.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADCD1753984200004FDC /* Welcome4_buttonPressdown.png */; };
 		E404ADDC1754A14A00004FDC /* Welcome1_960.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADD41754A14A00004FDC /* Welcome1_960.png */; };
 		E404ADDD1754A14A00004FDC /* Welcome1_960@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADD51754A14A00004FDC /* Welcome1_960@2x.png */; };
 		E404ADDE1754A14A00004FDC /* Welcome2_960.png in Resources */ = {isa = PBXBuildFile; fileRef = E404ADD61754A14A00004FDC /* Welcome2_960.png */; };
@@ -4011,14 +4001,10 @@
 		E404ADBD175397BB00004FDC /* Welcome2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Welcome2@2x.png"; sourceTree = "<group>"; };
 		E404ADBE175397BB00004FDC /* Welcome3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Welcome3@2x.png"; sourceTree = "<group>"; };
 		E404ADBF175397BB00004FDC /* Welcome4_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Welcome4_bg@2x.png"; sourceTree = "<group>"; };
-		E404ADC0175397BB00004FDC /* Welcome4_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Welcome4_button@2x.png"; sourceTree = "<group>"; };
-		E404ADC1175397BB00004FDC /* Welcome4_buttonPressdown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Welcome4_buttonPressdown@2x.png"; sourceTree = "<group>"; };
 		E404ADC81753984200004FDC /* Welcome1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Welcome1.png; sourceTree = "<group>"; };
 		E404ADC91753984200004FDC /* Welcome2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Welcome2.png; sourceTree = "<group>"; };
 		E404ADCA1753984200004FDC /* Welcome3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Welcome3.png; sourceTree = "<group>"; };
 		E404ADCB1753984200004FDC /* Welcome4_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Welcome4_bg.png; sourceTree = "<group>"; };
-		E404ADCC1753984200004FDC /* Welcome4_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Welcome4_button.png; sourceTree = "<group>"; };
-		E404ADCD1753984200004FDC /* Welcome4_buttonPressdown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Welcome4_buttonPressdown.png; sourceTree = "<group>"; };
 		E404ADD41754A14A00004FDC /* Welcome1_960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Welcome1_960.png; sourceTree = "<group>"; };
 		E404ADD51754A14A00004FDC /* Welcome1_960@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Welcome1_960@2x.png"; sourceTree = "<group>"; };
 		E404ADD61754A14A00004FDC /* Welcome2_960.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Welcome2_960.png; sourceTree = "<group>"; };
@@ -8014,14 +8000,10 @@
 				E404ADC91753984200004FDC /* Welcome2.png */,
 				E404ADCA1753984200004FDC /* Welcome3.png */,
 				E404ADCB1753984200004FDC /* Welcome4_bg.png */,
-				E404ADCC1753984200004FDC /* Welcome4_button.png */,
-				E404ADCD1753984200004FDC /* Welcome4_buttonPressdown.png */,
 				E404ADBC175397BB00004FDC /* Welcome1@2x.png */,
 				E404ADBD175397BB00004FDC /* Welcome2@2x.png */,
 				E404ADBE175397BB00004FDC /* Welcome3@2x.png */,
 				E404ADBF175397BB00004FDC /* Welcome4_bg@2x.png */,
-				E404ADC0175397BB00004FDC /* Welcome4_button@2x.png */,
-				E404ADC1175397BB00004FDC /* Welcome4_buttonPressdown@2x.png */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -15568,14 +15550,10 @@
 				E404ADC3175397BB00004FDC /* Welcome2@2x.png in Resources */,
 				E404ADC4175397BB00004FDC /* Welcome3@2x.png in Resources */,
 				E404ADC5175397BB00004FDC /* Welcome4_bg@2x.png in Resources */,
-				E404ADC6175397BB00004FDC /* Welcome4_button@2x.png in Resources */,
-				E404ADC7175397BB00004FDC /* Welcome4_buttonPressdown@2x.png in Resources */,
 				E404ADCE1753984200004FDC /* Welcome1.png in Resources */,
 				E404ADCF1753984200004FDC /* Welcome2.png in Resources */,
 				E404ADD01753984200004FDC /* Welcome3.png in Resources */,
 				E404ADD11753984200004FDC /* Welcome4_bg.png in Resources */,
-				E404ADD21753984200004FDC /* Welcome4_button.png in Resources */,
-				E404ADD31753984200004FDC /* Welcome4_buttonPressdown.png in Resources */,
 				E404ADDC1754A14A00004FDC /* Welcome1_960.png in Resources */,
 				E404ADDD1754A14A00004FDC /* Welcome1_960@2x.png in Resources */,
 				E404ADDE1754A14A00004FDC /* Welcome2_960.png in Resources */,
