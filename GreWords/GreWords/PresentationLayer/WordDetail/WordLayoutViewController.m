@@ -189,10 +189,28 @@ float sumHeight = 10.0;//10.0;
                 sumHeight = textView.frame.origin.y + textView.contentSize.height;
                 
                 if ([[options objectForKey:@"shouldShowEnglishMeaning"] boolValue] == YES) {
-                    UIImageView *rectImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_meaning_rect.png"]];
-                    rectImage.frame = CGRectMake(12, h, 296, sumHeight-h);
-                    [self.view addSubview:rectImage];
-                    [self.view sendSubviewToBack:rectImage];
+                    if ([[options objectForKey:@"shouldShowSampleSentence"] boolValue] == NO &&
+                        [[options objectForKey:@"shouldShowSynonyms"] boolValue] == NO &&
+                        [[options objectForKey:@"shouldShowAntonyms"] boolValue] == NO) {
+                        
+                    }else{
+                        UIImageView *rectImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_meaning_rect.png"]];
+                        rectImage.frame = CGRectMake(12, h, 296, sumHeight-h);
+                        [self.view addSubview:rectImage];
+                        [self.view sendSubviewToBack:rectImage];
+                    }
+                }
+                
+                if ([[options objectForKey:@"shouldShowEnglishMeaning"] boolValue] == YES) {
+                    if ([[options objectForKey:@"shouldShowSampleSentence"] boolValue] == NO &&
+                        [[options objectForKey:@"shouldShowSynonyms"] boolValue] == NO &&
+                        [[options objectForKey:@"shouldShowAntonyms"] boolValue] == NO &&
+                        [[options objectForKey:@"shouldShowChineseMeaning"] boolValue] == NO) {
+                        UIImageView *rectImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_meaning_rect.png"]];
+                        rectImage.frame = CGRectMake(12, h, 296, sumHeight-h);
+                        [self.view addSubview:rectImage];
+                        [self.view sendSubviewToBack:rectImage];
+                    }
                 }
             }
             ///////////////////
@@ -235,10 +253,27 @@ float sumHeight = 10.0;//10.0;
             }
             ///////////////////
             if ([[options objectForKey:@"shouldShowEnglishMeaning"] boolValue] == YES) {
-                UIImageView *rectImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_meaning_rect.png"]];
-                rectImage.frame = CGRectMake(12, h, 296, sumHeight-h);
-                [self.view addSubview:rectImage];
-                [self.view sendSubviewToBack:rectImage];
+                if ([[options objectForKey:@"shouldShowSampleSentence"] boolValue] == NO &&
+                    [[options objectForKey:@"shouldShowSynonyms"] boolValue] == NO &&
+                    [[options objectForKey:@"shouldShowAntonyms"] boolValue] == NO) {
+                    
+                }else{
+                    UIImageView *rectImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_meaning_rect.png"]];
+                    rectImage.frame = CGRectMake(12, h, 296, sumHeight-h);
+                    [self.view addSubview:rectImage];
+                    [self.view sendSubviewToBack:rectImage];
+                }
+            }
+            if ([[options objectForKey:@"shouldShowEnglishMeaning"] boolValue] == YES) {
+                if ([[options objectForKey:@"shouldShowSampleSentence"] boolValue] == NO &&
+                    [[options objectForKey:@"shouldShowSynonyms"] boolValue] == NO &&
+                    [[options objectForKey:@"shouldShowAntonyms"] boolValue] == NO &&
+                    [[options objectForKey:@"shouldShowChineseMeaning"] boolValue] == NO) {
+                    UIImageView *rectImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_meaning_rect.png"]];
+                    rectImage.frame = CGRectMake(12, h, 296, sumHeight-h);
+                    [self.view addSubview:rectImage];
+                    [self.view sendSubviewToBack:rectImage];
+                }
             }
         }
         
