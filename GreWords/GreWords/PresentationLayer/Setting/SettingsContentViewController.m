@@ -16,7 +16,7 @@
 #import "NSDate-Utilities.h"
 #import "NSAttributedString+Attributes.h"
 
-#define RECOMMAND_TEXT @"小崔崔~~~"
+#define RECOMMAND_TEXT @"我刚刚用了#好G友#背GRE单词~方便、简单、实用、智能~推荐你们也使用哦~下载地址：https://itunes.apple.com/cn/app/haog-you/id659880998?ls=1&mt=8"
 
 @interface SettingsContentViewController ()
 {
@@ -339,9 +339,7 @@
     SocialShareModal *socialModal = [[SocialShareModal alloc] init];
     socialModal.targetViewController = self;
     socialModal.postText = RECOMMAND_TEXT;
-    
-    //UIImage *image = [UIImage imageNamed:@"ads.png"];
-    //socialModal.postImageList = @[image];
+    socialModal.postImageList = @[[UIImage imageNamed:@"ads.png"]];
     [socialModal sendWeiboMessage];
 }
 
