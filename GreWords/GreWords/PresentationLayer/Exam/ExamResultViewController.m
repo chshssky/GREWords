@@ -58,7 +58,7 @@
     if (_cardController == nil) {
         _cardController = [[ExamResultCardController alloc] init];
         _cardController.delegate = delegate;
-        _cardController.aEvent = result;
+        _cardController.event = result;
     }
     [self addBlurBackground:buttomController];
     [self addBlackToBackground];

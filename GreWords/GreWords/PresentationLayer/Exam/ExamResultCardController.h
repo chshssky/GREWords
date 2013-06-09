@@ -12,7 +12,7 @@
 
 @interface ExamResultCardController : UIViewController
 
-@property (retain, nonatomic) ExamEvent *aEvent;
+@property (retain, nonatomic) ExamEvent *event;
 @property (retain, nonatomic) id<ExamResultProtocal> delegate;
 
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;

@@ -1365,9 +1365,9 @@
     NSLog(@"reexam");
 }
 
--(void)backLHome
+-(void)backHome
 {
-    NSLog(@"backLHome");
+    NSLog(@"backHome");
     GreWordsViewController *superController =  (GreWordsViewController *)[self presentingViewController];
     
     UIImageView *blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];

@@ -26,20 +26,20 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.totalWordCountLabel.text = [NSString stringWithFormat:@"%d",self.aEvent.totalWordCount];
-    self.forgetCountLabel.text = [NSString stringWithFormat:@"%d",self.aEvent.wrongWordCount];
-    self.rememberCountLabel.text = [NSString stringWithFormat:@"%d",self.aEvent.totalWordCount - self.aEvent.wrongWordCount];
-    self.scoreLabel.text = [NSString stringWithFormat:@"%.02f",((float)self.aEvent.totalWordCount - self.aEvent.wrongWordCount) * 100 / self.aEvent.totalWordCount];
-    self.timeLabel.text = [NSString stringWithFormat:@"%d分钟",(int)(self.aEvent.duration / 60.0)];
-    if(self.aEvent.difficulty == 0)
+    self.totalWordCountLabel.text = [NSString stringWithFormat:@"%d",self.event.totalWordCount];
+    self.forgetCountLabel.text = [NSString stringWithFormat:@"%d",self.event.wrongWordCount];
+    self.rememberCountLabel.text = [NSString stringWithFormat:@"%d",self.event.totalWordCount - self.event.wrongWordCount];
+    self.scoreLabel.text = [NSString stringWithFormat:@"%.02f",((float)self.event.totalWordCount - self.event.wrongWordCount) * 100 / self.event.totalWordCount];
+    self.timeLabel.text = [NSString stringWithFormat:@"%d分钟",(int)(self.event.duration / 60.0)];
+    if(self.event.difficulty == 0)
     {
         self.timeLabel.text = @"简单";
     }
-    else if(self.aEvent.difficulty == 1)
+    else if(self.event.difficulty == 1)
     {
         self.timeLabel.text = @"中等";
     }
-    else if(self.aEvent.difficulty == 2)
+    else if(self.event.difficulty == 2)
     {
         self.timeLabel.text = @"困难";
     }
@@ -65,7 +65,7 @@
 
 - (IBAction)homePressed:(id)sender
 {
-    [self.delegate backLHome];
+    [self.delegate backHome];
 }
 
 - (IBAction)reexamPressed:(id)sender

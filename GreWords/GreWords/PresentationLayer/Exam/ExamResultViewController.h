@@ -12,7 +12,7 @@
 @protocol ExamResultProtocal <NSObject>
 
 -(void)reExam;
--(void)backLHome;
+-(void)backHome;
 
 @end
 
