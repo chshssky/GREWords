@@ -172,7 +172,9 @@
     // just for  test:
 //    int x = [[HistoryManager instance] currentStage];
 //    NSLog(@"stage:%d", x);
-//    [[HistoryManager instance] newWordEventsInStage:0];
+    [[HistoryManager instance] newWordEventsInStage:0];
+    [[HistoryManager instance] reviewEventsInStage:0];
+    [[HistoryManager instance] examEventsInStage:0];
     
 }
 

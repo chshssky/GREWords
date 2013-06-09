@@ -10,7 +10,6 @@
 
 @interface ReviewEvent : BaseEvent
 
-@property (nonatomic) enum Stage stage_now;
 @property (nonatomic) int indexOfWordToday;
 
 @end

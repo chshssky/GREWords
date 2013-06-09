@@ -9,6 +9,7 @@
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="event" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stage" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="totalWordCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="wrongWordCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -20,7 +21,6 @@
         <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="maxWordID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="reviewEnable" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="stage" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="history" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="History" inverseName="newWordStatus" inverseEntity="History" syncable="YES"/>
     </entity>
     <entity name="Note" representedClassName="Note" syncable="YES">
@@ -30,7 +30,6 @@
     </entity>
     <entity name="ReviewStatus" representedClassName="ReviewStatus" syncable="YES">
         <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="stage" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="history" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="History" inverseName="reviewStatus" inverseEntity="History" syncable="YES"/>
     </entity>
     <entity name="Word" representedClassName="Word" syncable="YES">
@@ -41,10 +40,10 @@
     </entity>
     <elements>
         <element name="ExamStatus" positionX="27" positionY="-18" width="128" height="73"/>
-        <element name="History" positionX="358" positionY="-79" width="128" height="193"/>
-        <element name="NewWordStatus" positionX="27" positionY="81" width="128" height="118"/>
+        <element name="History" positionX="358" positionY="-79" width="128" height="210"/>
+        <element name="NewWordStatus" positionX="27" positionY="81" width="128" height="105"/>
         <element name="Note" positionX="385" positionY="243" width="128" height="90"/>
-        <element name="ReviewStatus" positionX="27" positionY="207" width="128" height="88"/>
+        <element name="ReviewStatus" positionX="27" positionY="207" width="128" height="75"/>
         <element name="Word" positionX="135" positionY="324" width="128" height="103"/>
     </elements>
 </model>
