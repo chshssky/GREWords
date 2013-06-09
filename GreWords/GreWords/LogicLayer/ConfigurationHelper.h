@@ -10,6 +10,9 @@
 #import "GuideImageFactory.h"
 
 @interface ConfigurationHelper : NSObject
+{
+    NSArray* mottos;
+}
 
 #pragma mark -- setting property
 @property (nonatomic) bool chineseMeaningVisibility;

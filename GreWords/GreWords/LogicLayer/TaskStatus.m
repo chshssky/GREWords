@@ -24,22 +24,46 @@ TaskStatus* _taskStatusInstance = nil;
     return _taskStatusInstance;
 }
 
+- (NewWordEvent *)nwEvent
+{
+    if (_nwEvent == nil) {
+        _nwEvent = [[NewWordEvent alloc] init];
+    }
+    return _nwEvent;
+}
+
+- (ReviewEvent *)rEvent
+{
+    if (_rEvent == nil) {
+        _rEvent = [[ReviewEvent alloc] init];
+    }
+    return _rEvent;
+}
+
+-(ExamEvent *)eEvent
+{
+    if (_eEvent == nil) {
+        _eEvent = [[ExamEvent alloc] init];
+    }
+    return _eEvent;
+}
+
 - (void)beginExam
 {
-    self.indexOfExam = 0;
-    self.difficulty = 0;
-    self.duration = 0;
-    self.wrongWordCount = 0;
-    self.totalWordCount = 0;
+    self.eEvent.index = 0;
+    self.eEvent.difficulty = 0;
+    self.eEvent.duration = 0;
+    self.eEvent.wrongWordCount = 0;
+    self.eEvent.totalWordCount = 0;
 }
 
 - (void)endExam
 {
-    self.indexOfExam = 0;
-    self.difficulty = 0;
-    self.duration = 0;
-    self.wrongWordCount = 0;
-    self.totalWordCount = 0;
+    self.eEvent.index = 0;
+    self.eEvent.difficulty = 0;
+    self.eEvent.duration = 0;
+    self.eEvent.wrongWordCount = 0;
+    self.eEvent.totalWordCount = 0;
 }
 
 
@@ -47,32 +71,37 @@ TaskStatus* _taskStatusInstance = nil;
 {
     self.taskType = TASK_TYPE_NEWWORD;
     
-    self.indexOfWordIDToday = 0;
-    self.maxWordID = 0;
-    self.stage_now = 0;
-    self.reviewEnable = NO;
-    self.wrongWordCount = 0;
+    self.nwEvent.indexOfWordToday = 0;
+    self.nwEvent.maxWordID = 0;
+    self.nwEvent.stage_now = 0;
+    self.nwEvent.reviewEnable = NO;
+    self.nwEvent.wrongWordCount = 0;
     
-    self.day = [[HistoryManager instance] getANewDay];
+    self.nwEvent.dayOfSchedule = [[HistoryManager instance] getANewDay];
 }
 
 - (void)beginReview
 {
     self.taskType = TASK_TYPE_REVIEW;
-    self.indexOfWordIDToday = 0;
-    self.wrongWordCount = 0;
-    self.stage_now = 0;
+    self.rEvent.indexOfWordToday = 0;
+    self.rEvent.wrongWordCount = 0;
+    self.rEvent.stage_now = 0;
 }
 
 
+- (void)setReviewEnable:(BOOL)enable
+{
+    self.nwEvent.reviewEnable = enable;
+}
+
 - (void)setReviewEnable
 {
-    self.reviewEnable = YES;
+    self.nwEvent.reviewEnable = YES;
 }
 
 - (BOOL)getReviewEnable
 {
-    return self.reviewEnable;
+    return self.nwEvent.reviewEnable;
 }
 
 

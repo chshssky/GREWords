@@ -56,10 +56,10 @@
     dashboard = [DashboardViewController instance];
     // Database: read from
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
-        dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].indexOfWordIDToday;
+        dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].rEvent.indexOfWordToday;
         // change text ~ 
     } else {
-        dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].maxWordID;
+        dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].nwEvent.maxWordID;
     }
     dashboard.minNumber = dashboard.nonFinishedNumber;
     dashboard.sumNumber = TaskWordNumber;
@@ -169,6 +169,10 @@
     }
     
     [NSNotificationCenter registerStartExamNotificationWithSelector:@selector(startExam:) target:self];
+    
+    // just for  test:
+//    int x = [[HistoryManager instance] currentStage];
+//    NSLog(@"stage:%d", x);
 }
 
 - (void)viewDidUnload {
@@ -355,9 +359,9 @@
             
         } else {
         //根据MaxWordID和现在所在单词的ID 来判断 该跳转到 NewWord 还是 Review
-        if ([[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday ] integerValue] < [TaskStatus instance].maxWordID || [TaskStatus instance].reviewEnable) {
+        if ([[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].nwEvent.indexOfWordToday ] integerValue] < [TaskStatus instance].nwEvent.maxWordID || [TaskStatus instance].nwEvent.reviewEnable) {
             
-            [TaskStatus instance].reviewEnable = NO;
+            [TaskStatus instance].nwEvent.reviewEnable = NO;
             WordDetailViewController *vc = [[WordDetailViewController alloc] init];
             vc.delegate = self;
             [self presentViewController:vc animated:NO completion:nil];
@@ -369,15 +373,15 @@
             }
                     
             NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
-            vc.changePage = 10 - ([TaskStatus instance].maxWordID % 10);
+            vc.changePage = 10 - ([TaskStatus instance].nwEvent.maxWordID % 10);
             vc.delegate = self;
-            vc.beginWordID = [TaskStatus instance].indexOfWordIDToday;
+            vc.beginWordID = [TaskStatus instance].nwEvent.indexOfWordToday;
         
             SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
             leftController.type = SmartListType_Slide;
             
             NSMutableArray *wordsArr = [[NSMutableArray alloc] init];
-            for (int i = 0; i < [TaskStatus instance].maxWordID; i++) {
+            for (int i = 0; i < [TaskStatus instance].nwEvent.maxWordID; i++) {
                 WordEntity *addWord = [[WordHelper instance] wordWithID:i];
                 
                 [wordsArr addObject:addWord];
@@ -400,20 +404,11 @@
 {
     HistoryManager *historyManager = [HistoryManager instance];
     
-    NewWordEvent *newWordEve = [[NewWordEvent alloc] init];
-    newWordEve.eventType = EVENT_TYPE_NEWWORD;
-    newWordEve.wrongWordCount = [TaskStatus instance].wrongWordCount;
-    newWordEve.totalWordCount = 600;
-    [TaskStatus instance].totalWordCount = 600;
-    newWordEve.startTime = [self getNowDate];
-    
-    newWordEve.reviewEnable = [TaskStatus instance].reviewEnable;
-    newWordEve.stage_now = [TaskStatus instance].stage_now;
-    newWordEve.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-    newWordEve.maxWordID = [TaskStatus instance].maxWordID;
-    newWordEve.dayOfSchedule = [TaskStatus instance].day;
-    
-    [historyManager addEvent:newWordEve];
+    [TaskStatus instance].nwEvent.eventType = EVENT_TYPE_NEWWORD;
+    [TaskStatus instance].nwEvent.totalWordCount = 600;
+    [TaskStatus instance].nwEvent.startTime = [self getNowDate];
+        
+    [historyManager addEvent:[TaskStatus instance].nwEvent];
 }
 
 - (NSDate *)getNowDate
@@ -428,21 +423,13 @@
 - (void)resetIndexOfWordList:(int)remainWords
 {
     int theWordID = TaskWordNumber - remainWords;
-    for (int index = 0; index < [[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] count]; index++) {
-        if (theWordID == [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:index] integerValue])
+    for (int index = 0; index < [[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] count]; index++) {
+        if (theWordID == [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:index] integerValue])
         {
-            [TaskStatus instance].indexOfWordIDToday = index;
-            [TaskStatus instance].maxWordID = theWordID;
+            [TaskStatus instance].nwEvent.indexOfWordToday = index;
+            [TaskStatus instance].nwEvent.maxWordID = theWordID;
             
-            NewWordEvent *newWordEvent = [[NewWordEvent alloc] init];
-            
-            newWordEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-            newWordEvent.maxWordID = [TaskStatus instance].maxWordID;
-            newWordEvent.reviewEnable = [TaskStatus instance].reviewEnable;
-            newWordEvent.stage_now = [TaskStatus instance].stage_now;
-            
-            
-            [[HistoryManager instance] updateEvent:newWordEvent];
+            [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent];
             
             return;
         }
@@ -495,14 +482,14 @@
 
     vc.delegate = self;
     vc.changePage = 10;
-    vc.beginWordID = [TaskStatus instance].indexOfWordIDToday;
+    vc.beginWordID = [TaskStatus instance].nwEvent.indexOfWordToday;
     
     [dashboard minusData];
     
     SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
     leftController.type = SmartListType_Slide;
     NSMutableArray *wordsArr = [[NSMutableArray alloc] init];
-    for (int i = 0; i < [TaskStatus instance].maxWordID; i++) {
+    for (int i = 0; i < [TaskStatus instance].nwEvent.maxWordID; i++) {
         WordEntity *addWord = [[WordHelper instance] wordWithID:i];
         
         [wordsArr addObject:addWord];

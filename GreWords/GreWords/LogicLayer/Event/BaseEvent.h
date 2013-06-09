@@ -17,5 +17,6 @@
 @property (nonatomic) int totalWordCount;
 @property (nonatomic) int wrongWordCount;
 @property (nonatomic) int dayOfSchedule;
+@property (nonatomic) enum Stage stage_now;
 
 @end

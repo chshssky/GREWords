@@ -156,18 +156,20 @@
     [self.PronounceButton addTarget:self action:@selector(soundButtonClicked:) forControlEvents:UIControlEventTouchDown];
     
     [self.backButton.superview bringSubviewToFront:self.backButton];
-    
-    [[WordSpeaker instance] readWord:self.wordLabel.text];
+    if([ConfigurationHelper instance].autoSpeak)
+    {
+       [[WordSpeaker instance] readWord:self.wordLabel.text]; 
+    }
     //为了初始化maxID
-    [TaskStatus instance].maxWordID = [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue];
+    [TaskStatus instance].nwEvent.maxWordID = [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].nwEvent.indexOfWordToday] intValue];
     
-    self.nwEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-    self.nwEvent.maxWordID = [TaskStatus instance].maxWordID;
-    self.nwEvent.reviewEnable = [TaskStatus instance].reviewEnable;
-    self.nwEvent.stage_now = [TaskStatus instance].stage_now;
+//    self.nwEvent.indexOfWordToday = [TaskStatus instance].nwEvent.indexOfWordToday;
+//    self.nwEvent.maxWordID = [TaskStatus instance].nwEvent.maxWordID;
+//    self.nwEvent.reviewEnable = [TaskStatus instance].nwEvent.reviewEnable;
+//    self.nwEvent.stage_now = [TaskStatus instance].nwEvent.stage_now;
     
     
-    [[HistoryManager instance] updateEvent:self.nwEvent];
+    [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent];
 
     
     if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_NewWordFirst])
@@ -226,7 +228,7 @@
         _note = [[NoteViewController alloc] init];
         _note.delegate = self;
     }
-    [_note addNoteAt:self withWordID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:self.beginWordID + _currentPage] intValue]];
+    [_note addNoteAt:self withWordID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:self.beginWordID + _currentPage] intValue]];
     [_note.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_note.view];
     
@@ -268,13 +270,13 @@
     
     self.added_height = 0;
     
-    NSDictionary *option = @{@"shouldShowChineseMeaning":@YES,
-                             @"shouldShowEnglishMeaning":@YES,
-                             @"shouldShowSynonyms":@YES,
-                             @"shouldShowAntonyms":@YES,
-                             @"shouldShowSampleSentence":@YES};
+    NSDictionary *option = @{@"shouldShowChineseMeaning":@([ConfigurationHelper instance].chineseMeaningVisibility),
+                             @"shouldShowEnglishMeaning":@([ConfigurationHelper instance].englishMeaningVisibility),
+                             @"shouldShowSynonyms":@([ConfigurationHelper instance].homoionymVisibility),
+                             @"shouldShowAntonyms":@([ConfigurationHelper instance].homoionymVisibility),
+                             @"shouldShowSampleSentence":@([ConfigurationHelper instance].sampleSentenceVisibility)};
     
-    int wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:index] intValue];
+    int wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:index] intValue];
     [vc displayWord:[[WordHelper instance] wordWithID:wordID] withOption:option];
 
     
@@ -295,39 +297,42 @@
 
 - (void)nextWordAction
 {
-    [TaskStatus instance].indexOfWordIDToday = self.beginWordID + _currentPage;
-    [TaskStatus instance].maxWordID =   [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue];
+    [TaskStatus instance].nwEvent.indexOfWordToday = self.beginWordID + _currentPage;
+    [TaskStatus instance].nwEvent.maxWordID =   [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].nwEvent.indexOfWordToday] intValue];
     //把单词加入抽屉
     SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
-    WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:self.beginWordID + _currentPage - 1 ] intValue]];
+    WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:self.beginWordID + _currentPage - 1 ] intValue]];
     if ([left.array indexOfObject:addWord] == NSNotFound) {
         [left addWord:addWord];
     }
-    [[WordSpeaker instance] readWord:self.wordLabel.text];
-        
-    self.nwEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-    self.nwEvent.maxWordID = [TaskStatus instance].maxWordID;
-    self.nwEvent.reviewEnable = [TaskStatus instance].reviewEnable;
-    self.nwEvent.stage_now = [TaskStatus instance].stage_now;
+    if([ConfigurationHelper instance].autoSpeak)
+    {
+        [[WordSpeaker instance] readWord:self.wordLabel.text];
+    }
+       
+//    self.nwEvent.indexOfWordToday = [TaskStatus instance].nwEvent.indexOfWordToday;
+//    self.nwEvent.maxWordID = [TaskStatus instance].nwEvent.maxWordID;
+//    self.nwEvent.reviewEnable = [TaskStatus instance].nwEvent.reviewEnable;
+//    self.nwEvent.stage_now = [TaskStatus instance].nwEvent.stage_now;
     
     
-    [[HistoryManager instance] updateEvent:self.nwEvent];
+    [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent];
     
     
-    NSLog(@"Now Word is Index: %d || MaxWordID %d", [TaskStatus instance].indexOfWordIDToday, [TaskStatus instance].maxWordID);
+    NSLog(@"Now Word is Index: %d || MaxWordID %d", [TaskStatus instance].nwEvent.indexOfWordToday, [TaskStatus instance].nwEvent.maxWordID);
     
 }
 
 //加载单词名称进入数组
 - (void)loadWordName:(int)index
 {
-    self.WordName = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:index] intValue]].wordText;
+    self.WordName = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:index] intValue]].wordText;
 }
 
 //加载单词音标进入数组
 - (void)loadWordPhonetic:(int)index
 {
-    self.WordPhonetic = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].day] objectAtIndex:index] intValue]].data[@"phonetic"];
+    self.WordPhonetic = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:index] intValue]].data[@"phonetic"];
 }
 
 //加载单词
@@ -518,15 +523,15 @@
             [self.view removeGestureRecognizer:_noteRecognizer];
             [self dismissModalViewControllerAnimated:NO];
             
-            [TaskStatus instance].indexOfWordIDToday = self.beginWordID + _currentPage + 1;
+            [TaskStatus instance].nwEvent.indexOfWordToday = self.beginWordID + _currentPage + 1;
             
-            self.nwEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-            self.nwEvent.maxWordID = [TaskStatus instance].maxWordID;
-            self.nwEvent.reviewEnable = [TaskStatus instance].reviewEnable;
-            self.nwEvent.stage_now = [TaskStatus instance].stage_now;
+//            self.nwEvent.indexOfWordToday = [TaskStatus instance].nwEvent.indexOfWordToday;
+//            self.nwEvent.maxWordID = [TaskStatus instance].nwEvent.maxWordID;
+//            self.nwEvent.reviewEnable = [TaskStatus instance].nwEvent.reviewEnable;
+//            self.nwEvent.stage_now = [TaskStatus instance].nwEvent.stage_now;
             
             
-            [[HistoryManager instance] updateEvent:self.nwEvent];
+            [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent];
             [self.delegate GoToReviewWithWord];
         }
     }

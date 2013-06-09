@@ -26,17 +26,17 @@ enum TaskType {
 @property (nonatomic, strong) ReviewEvent *rEvent;
 @property (nonatomic, strong) ExamEvent *eEvent;
 
-@property (nonatomic) int indexOfWordIDToday;
-@property (nonatomic) int stage_now;
-@property (nonatomic) int day;
-@property (nonatomic) int maxWordID;
-@property (nonatomic) int wrongWordCount;
-@property (nonatomic) BOOL reviewEnable;
-
-@property (nonatomic) int indexOfExam;
-@property (nonatomic) int difficulty;
-@property (nonatomic) int duration;
-@property (nonatomic) int totalWordCount;
+//@property (nonatomic) int indexOfWordIDToday;
+//@property (nonatomic) int stage_now;
+//@property (nonatomic) int day;
+//@property (nonatomic) int maxWordID;
+//@property (nonatomic) int wrongWordCount;
+//@property (nonatomic) BOOL reviewEnable;
+//
+//@property (nonatomic) int indexOfExam;
+//@property (nonatomic) int difficulty;
+//@property (nonatomic) int duration;
+//@property (nonatomic) int totalWordCount;
 
 + (TaskStatus *)instance;
 
@@ -47,6 +47,7 @@ enum TaskType {
 - (void)endExam;
 
 - (void)setReviewEnable;
+- (void)setReviewEnable:(BOOL)enable;
 - (BOOL)getReviewEnable;
 
 @end
