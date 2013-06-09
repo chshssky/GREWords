@@ -175,19 +175,6 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GreWords/PresentationLayer/GreWordsViewController.m"
-         timestampString = "392496966.505656"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "273"
-         endingLineNumber = "273"
-         landmarkName = "-startExam:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "GreWords/PresentationLayer/GreWordsViewController.m"
          timestampString = "392497034.547228"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
