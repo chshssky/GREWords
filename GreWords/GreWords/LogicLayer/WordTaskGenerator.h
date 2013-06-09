@@ -18,6 +18,8 @@
 - (void)setWhetherNoOrder:(bool)flag;
 
 
+- (void)clearTask;
+
 @property(nonatomic) bool whetherViewNoOrder;
 
 @end

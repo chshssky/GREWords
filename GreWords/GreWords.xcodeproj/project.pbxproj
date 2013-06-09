@@ -8273,10 +8273,10 @@
 		E466E756173BD4CB001847D0 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
-				E4CB2CED1758D28800370700 /* SearchIndex */,
 				E466E760173BD4CB001847D0 /* GreWordsViewController.h */,
 				E466E761173BD4CB001847D0 /* GreWordsViewController.m */,
 				E466E757173BD4CB001847D0 /* Dashboard */,
+				E4CB2CED1758D28800370700 /* SearchIndex */,
 				73D7130E1757A05F00D09CF0 /* TestSelector */,
 				7324846817524CA30058A6DD /* Note */,
 				E466E75C173BD4CB001847D0 /* Exam */,
