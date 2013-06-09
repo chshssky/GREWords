@@ -29,7 +29,7 @@
     self.totalWordCountLabel.text = [NSString stringWithFormat:@"%d",self.event.totalWordCount];
     self.forgetCountLabel.text = [NSString stringWithFormat:@"%d",self.event.wrongWordCount];
     self.rememberCountLabel.text = [NSString stringWithFormat:@"%d",self.event.totalWordCount - self.event.wrongWordCount];
-    self.scoreLabel.text = [NSString stringWithFormat:@"%.02f",((float)self.event.totalWordCount - self.event.wrongWordCount) * 100 / self.event.totalWordCount];
+    self.scoreLabel.text = [NSString stringWithFormat:@"%.02f%%",((float)self.event.totalWordCount - self.event.wrongWordCount) * 100 / self.event.totalWordCount];
     self.timeLabel.text = [NSString stringWithFormat:@"%d分钟",(int)(self.event.duration / 60.0)];
     if(self.event.difficulty == 0)
     {
