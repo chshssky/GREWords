@@ -43,7 +43,7 @@
 {
     [super viewDidLoad];
     [self configVersionLabel];
-    [self initWordShowingComponentIndicatorState];
+    [self wordShowingComponentChange:nil];
     
     [self configWatchs];
     

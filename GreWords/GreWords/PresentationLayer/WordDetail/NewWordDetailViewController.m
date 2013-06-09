@@ -268,11 +268,11 @@
     
     self.added_height = 0;
     
-    NSDictionary *option = @{@"shouldShowChineseMeaning":@YES,
-                             @"shouldShowEnglishMeaning":@YES,
-                             @"shouldShowSynonyms":@YES,
-                             @"shouldShowAntonyms":@YES,
-                             @"shouldShowSampleSentence":@YES};
+    NSDictionary *option = @{@"shouldShowChineseMeaning":@([ConfigurationHelper instance].chineseMeaningVisibility),
+                             @"shouldShowEnglishMeaning":@([ConfigurationHelper instance].englishMeaningVisibility),
+                             @"shouldShowSynonyms":@([ConfigurationHelper instance].homoionymVisibility),
+                             @"shouldShowAntonyms":@([ConfigurationHelper instance].homoionymVisibility),
+                             @"shouldShowSampleSentence":@([ConfigurationHelper instance].sampleSentenceVisibility)};
     
     int wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:index] intValue];
     [vc displayWord:[[WordHelper instance] wordWithID:wordID] withOption:option];
