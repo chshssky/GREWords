@@ -148,7 +148,7 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     _wordNumberTest.innerShadowColor = [UIColor colorWithWhite:0.0f alpha:0.8f];
     _wordNumberTest.innerShadowOffset = CGSizeMake(0.0f, 0.8f);
     _wordNumberTest.center = CGPointMake(self.centerPoint.x+15, self.centerPoint.y+5);
-    _wordNumberTest.textAlignment = UITextAlignmentRight;
+    _wordNumberTest.textAlignment = UITextAlignmentCenter;
     [self.view addSubview:_wordNumberTest];
     
     _bigButton = [UIButton buttonWithType:UIButtonTypeCustom];

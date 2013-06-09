@@ -28,6 +28,7 @@
 #import "TaskStatus.h"
 #import "TestSelectorViewController.h"
 #import "NSNotificationCenter+Addition.h"
+#import "GuideSettingViewController.h"
 
 
 
@@ -298,9 +299,13 @@
 {
     [self transaction];
     
-    SettingsViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"setting"];
-    vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self presentModalViewController:vc animated:YES];
+//    SettingsViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"setting"];
+//    vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+//    [self presentModalViewController:vc animated:YES];
+    
+    GuideSettingViewController *a = [[GuideSettingViewController alloc]init];
+    a.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentModalViewController:a animated:YES];
 }
 
 #pragma mark - AwesomeMenu Response Delegate
