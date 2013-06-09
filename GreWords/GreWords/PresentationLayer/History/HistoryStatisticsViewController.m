@@ -12,6 +12,7 @@
 #import "LineChartViewController.h"
 #import "TestPageViewController.h"
 #import "BaseEvent.h"
+#import "HistoryManager.h"
 
 @interface HistoryStatisticsViewController ()
 {
@@ -50,10 +51,27 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self initialFourPoint];
-    [self initialLastPointWithPoint:_thridPoint];
+    int currentStage = 2;//[[HistoryManager instance] currentStage];
+    switch (currentStage) {
+        case 0:
+            [self initialLastPointWithPoint:_firstPoint];
+            break;
+        case 1:
+            [self initialLastPointWithPoint:_secondPoint];
+            break;
+        case 2:
+            [self initialLastPointWithPoint:_thridPoint];
+            break;
+        case 3:
+            [self initialLastPointWithPoint:_fourthPoint];
+            break;
+        default:
+            [self initialLastPointWithPoint:_firstPoint];
+            break;
+    }
     [self setGesture];
     
-    [self initData];
+    [self initDataForStage:currentStage];
     
     self.hitTestView.enabled = false;
     self.scrollView.delegate = self;
@@ -78,26 +96,19 @@
 
 #pragma mark Helpers
 
-- (void)initData
+- (void)initDataForStage:(int)stage
 {
+    for(UIView *v in self.scrollView.subviews)
+    {
+        [v removeFromSuperview];
+    }
+    
     {
         reciteVC = [[LineChartViewController alloc] init];
         reciteVC.type = HistoryChartRecite;
         
-        BaseEvent *r1 = [[BaseEvent alloc] init];
-        r1.duration = 90 * 60;
-        r1.startTime = [NSDate new];
-        
-        BaseEvent *r2 = [[BaseEvent alloc] init];
-        r2.duration = 330 * 60;
-        r2.startTime = [NSDate new];
-        
-        BaseEvent *r3 = [[BaseEvent alloc] init];
-        r3.duration = 160 * 60;
-        r3.startTime = [NSDate new];
-        reciteVC.data = @[r1,r2,r3];
-        
-        
+        reciteVC.data = [[HistoryManager instance] newWordEventsInStage:stage];
+    
         [self.scrollView addSubview:reciteVC.view];
         
     }
@@ -107,46 +118,16 @@
         reviewVC = [[LineChartViewController alloc] init];
         reviewVC.type = HistoryChartReview;
         
-        BaseEvent *r1 = [[BaseEvent alloc] init];
-        r1.duration = 20 * 60;
-        r1.startTime = [NSDate new];
-        
-        BaseEvent *r2 = [[BaseEvent alloc] init];
-        r2.duration = 120 * 60;
-        r2.startTime = [NSDate new];
-        
-        BaseEvent *r3 = [[BaseEvent alloc] init];
-        r3.duration = 60 * 60;
-        r3.startTime = [NSDate new];
-        reviewVC.data = @[r1,r2,r3];
-        
+        reviewVC.data = [[HistoryManager instance] reviewEventsInStage:stage];
         
         [self.scrollView addSubview:reviewVC.view];
         
     }
     {
-        ExamEvent *test1 = [[ExamEvent alloc] init];
-        test1.startTime = [NSDate new];
-        test1.duration = 600;
-        test1.difficulty = 1;
-        test1.totalWordCount = 100;
-        test1.wrongWordCount = 20;
-        
-        
-        ExamEvent *test2 = [[ExamEvent alloc] init];
-        test2.startTime = [NSDate new];
-        test2.duration = 6000;
-        test2.difficulty = 2;
-        test2.totalWordCount = 20;
-        test2.wrongWordCount = 2;
-        
-        
-        
-        //添加卡片，设置卡片数量
         testPageViewController = [[TestPageViewController alloc] init];
         testPageViewController.view.center = CGPointMake(self.view.center.x, self.view.center.y+57);
         
-        testPageViewController.data = @[];
+        testPageViewController.data = [[HistoryManager instance] examEventsInStage:stage];
         [self.scrollView addSubview:testPageViewController.view];
     }
 }
@@ -217,21 +198,34 @@
     _fourthPoint.y = 77.0f;
 }
 
+
+- (void)stageChanged:(int)stage
+{
+    NSLog(@"Stage: %d",stage);
+    [self initDataForStage:stage];
+    [self layoutViews];
+}
+
+
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag {
     if([[theAnimation valueForKey:@"id"] isEqual:@"GoToPointFinished"])
     {
         if (_progressButton.center.x == _firstPoint.x) {
             [_progressText setImage:[UIImage imageNamed:@"history_slideBar_text1.png"]];
             _choosePoint = _firstPoint;
+            [self stageChanged:0];
         }else if (_progressButton.center.x == _secondPoint.x) {
             [_progressText setImage:[UIImage imageNamed:@"history_slideBar_text2.png"]];
             _choosePoint = _secondPoint;
+            [self stageChanged:1];
         }else if (_progressButton.center.x == _thridPoint.x) {
             [_progressText setImage:[UIImage imageNamed:@"history_slideBar_text3.png"]];
             _choosePoint = _thridPoint;
+            [self stageChanged:2];
         }else if (_progressButton.center.x == _fourthPoint.x) {
             [_progressText setImage:[UIImage imageNamed:@"history_slideBar_text4.png"]];
             _choosePoint = _fourthPoint;
+            [self stageChanged:3];
         }
     }
 }

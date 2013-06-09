@@ -292,6 +292,7 @@
 		E407AF20175B9DDF0098F702 /* LineChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E407AF1E175B9DDF0098F702 /* LineChartViewController.xib */; };
 		E41686A717637DAD00F26831 /* Settings_task2Clock_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = E41686A517637DAD00F26831 /* Settings_task2Clock_circle.png */; };
 		E41686A817637DAD00F26831 /* Settings_task2Clock_circle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41686A617637DAD00F26831 /* Settings_task2Clock_circle@2x.png */; };
+		E41686E61764726000F26831 /* libFlurry.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E41686E51764726000F26831 /* libFlurry.a */; };
 		E418DA5F1713E5E8002C6743 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E418DA5D1713E5E8002C6743 /* Model.xcdatamodeld */; };
 		E41FF51B173F868F0078E738 /* WholeSmartWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E41FF51A173F868F0078E738 /* WholeSmartWordViewController.m */; };
 		E41FF5971740E08A0078E738 /* words list_backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = E41FF56F1740E0890078E738 /* words list_backButton.png */; };
@@ -3728,7 +3729,6 @@
 		E4D1B4CE1758F38B000796DF /* words list_scrollBar.png in Resources */ = {isa = PBXBuildFile; fileRef = E4D1B4CA1758F38B000796DF /* words list_scrollBar.png */; };
 		E4D1B4CF1758F38B000796DF /* words list_scrollBar_Pressdown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4D1B4CB1758F38B000796DF /* words list_scrollBar_Pressdown@2x.png */; };
 		E4D1B4D01758F38B000796DF /* words list_scrollBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4D1B4CC1758F38B000796DF /* words list_scrollBar@2x.png */; };
-		E4E1527417637496002A4482 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4E1527317637496002A4482 /* libGoogleAnalytics.a */; };
 		E4FA4B79175F0CE5001A103D /* TestPageCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FA4B74175F0CE5001A103D /* TestPageCardViewController.m */; };
 		E4FA4B7A175F0CE5001A103D /* TestPageCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4FA4B75175F0CE5001A103D /* TestPageCardViewController.xib */; };
 		E4FA4B7B175F0CE5001A103D /* TestPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E4FA4B77175F0CE5001A103D /* TestPageViewController.m */; };
@@ -4114,6 +4114,8 @@
 		E407AF1E175B9DDF0098F702 /* LineChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LineChartViewController.xib; sourceTree = "<group>"; };
 		E41686A517637DAD00F26831 /* Settings_task2Clock_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_task2Clock_circle.png; sourceTree = "<group>"; };
 		E41686A617637DAD00F26831 /* Settings_task2Clock_circle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_task2Clock_circle@2x.png"; sourceTree = "<group>"; };
+		E41686E41764726000F26831 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		E41686E51764726000F26831 /* libFlurry.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry.a; sourceTree = "<group>"; };
 		E418DA5E1713E5E8002C6743 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E41FF519173F868F0078E738 /* WholeSmartWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WholeSmartWordViewController.h; sourceTree = "<group>"; };
 		E41FF51A173F868F0078E738 /* WholeSmartWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WholeSmartWordViewController.m; sourceTree = "<group>"; };
@@ -7615,12 +7617,6 @@
 		E4D1B4CA1758F38B000796DF /* words list_scrollBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "words list_scrollBar.png"; sourceTree = "<group>"; };
 		E4D1B4CB1758F38B000796DF /* words list_scrollBar_Pressdown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "words list_scrollBar_Pressdown@2x.png"; sourceTree = "<group>"; };
 		E4D1B4CC1758F38B000796DF /* words list_scrollBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "words list_scrollBar@2x.png"; sourceTree = "<group>"; };
-		E4E1526E17637496002A4482 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
-		E4E1526F17637496002A4482 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
-		E4E1527017637496002A4482 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
-		E4E1527117637496002A4482 /* GAITransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransaction.h; sourceTree = "<group>"; };
-		E4E1527217637496002A4482 /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransactionItem.h; sourceTree = "<group>"; };
-		E4E1527317637496002A4482 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
 		E4E21C561743C2C4001A7EEF /* flipcard.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = flipcard.plist; sourceTree = "<group>"; };
 		E4FA4B73175F0CE5001A103D /* TestPageCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestPageCardViewController.h; sourceTree = "<group>"; };
 		E4FA4B74175F0CE5001A103D /* TestPageCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestPageCardViewController.m; sourceTree = "<group>"; };
@@ -7649,7 +7645,7 @@
 				3F70EC8F1701CADB00327770 /* CoreGraphics.framework in Frameworks */,
 				E46601F2173BD509001847D0 /* IAThreadSafeCoreData.framework in Frameworks */,
 				E4696E14174C8E8200C5F264 /* libCrittercism_v3_5_2.a in Frameworks */,
-				E4E1527417637496002A4482 /* libGoogleAnalytics.a in Frameworks */,
+				E41686E61764726000F26831 /* libFlurry.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -8213,6 +8209,15 @@
 				E407AEDA175B9D7A0098F702 /* WallGraphDelegate.h */,
 			);
 			path = "Wall Graph";
+			sourceTree = "<group>";
+		};
+		E41686E31764726000F26831 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				E41686E41764726000F26831 /* Flurry.h */,
+				E41686E51764726000F26831 /* libFlurry.a */,
+			);
+			path = Flurry;
 			sourceTree = "<group>";
 		};
 		E41FF5261740DF750078E738 /* SmartList */ = {
@@ -11777,7 +11782,7 @@
 		E466F4B3173BD508001847D0 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
-				E4E1526D17637496002A4482 /* GoogleAnalytics */,
+				E41686E31764726000F26831 /* Flurry */,
 				E480BA921763239000F37106 /* OHAttributedLabel */,
 				E46D5645176235F9002DF48F /* FakeUUID */,
 				E46D564117623534002DF48F /* Social */,
@@ -12094,19 +12099,6 @@
 				E4D1B4C01758EA00000796DF /* GreTableViewSearchIndexIndicatorViewController.m */,
 			);
 			name = SearchIndex;
-			sourceTree = "<group>";
-		};
-		E4E1526D17637496002A4482 /* GoogleAnalytics */ = {
-			isa = PBXGroup;
-			children = (
-				E4E1526E17637496002A4482 /* GAI.h */,
-				E4E1526F17637496002A4482 /* GAITrackedViewController.h */,
-				E4E1527017637496002A4482 /* GAITracker.h */,
-				E4E1527117637496002A4482 /* GAITransaction.h */,
-				E4E1527217637496002A4482 /* GAITransactionItem.h */,
-				E4E1527317637496002A4482 /* libGoogleAnalytics.a */,
-			);
-			path = GoogleAnalytics;
 			sourceTree = "<group>";
 		};
 		E4FA4B71175F0CE5001A103D /* TestPage */ = {
@@ -16025,6 +16017,9 @@
 					"\"$(SRCROOT)/GreWords/Libs/CorePlot\"",
 					"\"$(SRCROOT)/GreWords/Libs/OHAttributedLabel\"",
 					"\"$(SRCROOT)/GreWords/Libs/GoogleAnalytics\"",
+					"\"$(SRCROOT)/GreWords/Libs/baiduStat/Release-iphoneos\"",
+					"\"$(SRCROOT)/GreWords/Libs/baiduStat/Release-iphonesimulator\"",
+					"\"$(SRCROOT)/GreWords/Libs/Flurry\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -16049,6 +16044,9 @@
 					"\"$(SRCROOT)/GreWords/Libs/CorePlot\"",
 					"\"$(SRCROOT)/GreWords/Libs/OHAttributedLabel\"",
 					"\"$(SRCROOT)/GreWords/Libs/GoogleAnalytics\"",
+					"\"$(SRCROOT)/GreWords/Libs/baiduStat/Release-iphoneos\"",
+					"\"$(SRCROOT)/GreWords/Libs/baiduStat/Release-iphonesimulator\"",
+					"\"$(SRCROOT)/GreWords/Libs/Flurry\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
