@@ -206,7 +206,7 @@ ConfigurationHelper* _configurationHelperInstance = nil;
             return;
         
         
-        NSDate *fireDay = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * (i+1)];
+        NSDate *fireDay = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * i];
         
         NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
         
@@ -244,7 +244,7 @@ ConfigurationHelper* _configurationHelperInstance = nil;
             return;
         
         
-        NSDate *fireDay = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * (i+1)];
+        NSDate *fireDay = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * i];
         
         NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
         

@@ -247,6 +247,32 @@
 }
 
 #pragma mark - About Methods
+
+- (IBAction)headPressed:(id)sender
+{
+    UIButton *button = sender;
+    NSString* url = nil;
+    
+    if(button.tag == 101)
+    {
+        url = @"http://www.chshssky.com";
+    }
+    else if(button.tag == 102)
+    {
+        url = @"";
+    }
+    else if(button.tag == 103)
+    {
+        url = @"http://www.weibo.com/u/2075326815";
+    }
+    else if(button.tag == 104)
+    {
+        url = @"";
+    }
+    if(url)
+        [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];
+}
+
 -(IBAction)sendSuggestionEmail
 {
     if (![MFMailComposeViewController canSendMail]) {

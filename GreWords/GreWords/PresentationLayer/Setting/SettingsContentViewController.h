@@ -34,6 +34,8 @@
 
 - (IBAction)logout;
 
+- (IBAction)headPressed:(id)sender;
+
 - (IBAction)wordShowingComponentChange:(id)sender;
 
 @end
