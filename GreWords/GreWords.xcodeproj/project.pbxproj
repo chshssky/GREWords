@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F366C671764823800E5ADE6 /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F366C661764823800E5ADE6 /* History.m */; };
-		3F366C6A1764823800E5ADE6 /* ExamStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F366C691764823800E5ADE6 /* ExamStatus.m */; };
-		3F366C6D1764823900E5ADE6 /* NewWordStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F366C6C1764823900E5ADE6 /* NewWordStatus.m */; };
-		3F366C701764823900E5ADE6 /* ReviewStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F366C6F1764823900E5ADE6 /* ReviewStatus.m */; };
-		3F366C731764823A00E5ADE6 /* Word.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F366C721764823A00E5ADE6 /* Word.m */; };
-		3F366C761764823A00E5ADE6 /* Note.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F366C751764823A00E5ADE6 /* Note.m */; };
 		3F70EC8B1701CADB00327770 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F70EC8A1701CADB00327770 /* UIKit.framework */; };
 		3F70EC8D1701CADB00327770 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F70EC8C1701CADB00327770 /* Foundation.framework */; };
 		3F70EC8F1701CADB00327770 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F70EC8E1701CADB00327770 /* CoreGraphics.framework */; };
@@ -7741,7 +7735,6 @@
 		3F70EC901701CADB00327770 /* GreWords */ = {
 			isa = PBXGroup;
 			children = (
-				73A6D5E717646E0E001CE061 /* GuideSetting */,
 				E466E756173BD4CB001847D0 /* PresentationLayer */,
 				E466E787173BD4CB001847D0 /* LogicLayer */,
 				E466E7A6173BD4CB001847D0 /* Resources */,
@@ -7795,6 +7788,7 @@
 				73A6D5EB17646E40001CE061 /* GuideSettingViewController.xib */,
 			);
 			name = GuideSetting;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		73A6D5EE17646FCA001CE061 /* GuideSetting */ = {
@@ -7993,6 +7987,7 @@
 		E404ADB71753972200004FDC /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
+				73A6D5E717646E0E001CE061 /* GuideSetting */,
 				E404ADB81753975200004FDC /* WelcomeViewController.h */,
 				E404ADB91753975200004FDC /* WelcomeViewController.m */,
 			);

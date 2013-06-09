@@ -36,7 +36,6 @@
     UIViewController *vc;
     if([[ConfigurationHelper instance] isFirstTimeRun])
     {
-        [[ConfigurationHelper instance] initData];
         vc = [self.storyboard instantiateViewControllerWithIdentifier:@"welcomeVC"];
     }
     else
