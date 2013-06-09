@@ -28,6 +28,7 @@
 #import "TaskStatus.h"
 #import "TestSelectorViewController.h"
 #import "NSNotificationCenter+Addition.h"
+#import "GuideSettingViewController.h"
 
 
 
@@ -172,10 +173,6 @@
     // just for  test:
 //    int x = [[HistoryManager instance] currentStage];
 //    NSLog(@"stage:%d", x);
-    [[HistoryManager instance] newWordEventsInStage:0];
-    [[HistoryManager instance] reviewEventsInStage:0];
-    [[HistoryManager instance] examEventsInStage:0];
-    
 }
 
 - (void)viewDidUnload {

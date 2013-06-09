@@ -8,8 +8,13 @@
 
 #import "WelcomeViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "GuideSettingViewController.h"
+#import "ConfigurationHelper.h"
 
 @interface WelcomeViewController ()
+{
+    GuideSettingViewController *lastPage;
+}
 @property (nonatomic) UIViewController* vc;
 
 @end
@@ -28,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.scrollView setContentSize:CGSizeMake(320*4, self.scrollView.frame.size.height)];
+    [self.scrollView setContentSize:CGSizeMake(320 * 5, self.scrollView.frame.size.height)];
     if(!iPhone5)
     {
         _v1i.image = [UIImage imageNamed:@"Welcome1_960.png"];
@@ -36,7 +41,16 @@
         _v3i.image = [UIImage imageNamed:@"Welcome3_960.png"];
         _v4i.image = [UIImage imageNamed:@"Welcome4_bg_960.png"];
     }
-	// Do any additional setup after loading the view.
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    lastPage = [[GuideSettingViewController alloc] init];
+    lastPage.pview = self;
+    lastPage.view.frame = self.v1.frame;
+    [self.v5 addSubview:lastPage.view];
+    [self.scrollView sendSubviewToBack:self.v5];
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,10 +61,14 @@
 
 -(IBAction)goPressed:(id)sender
 {
+    int stage = [lastPage stage];
+    NSLog(@"initing for stage:%d",stage);
+    [[ConfigurationHelper instance] initData];
+    [[ConfigurationHelper instance] initConfigsForStage:stage];
+    
     _vc = [self.storyboard instantiateViewControllerWithIdentifier:@"mainScreen"];
     _vc.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentModalViewController:_vc animated:YES];
-    
 }
 
 - (void)viewDidUnload {
@@ -63,6 +81,7 @@
     [self setV2i:nil];
     [self setV3i:nil];
     [self setV4i:nil];
+    [self setV5:nil];
     [super viewDidUnload];
 }
 @end

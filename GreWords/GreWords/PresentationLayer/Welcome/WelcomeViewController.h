@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIView *v2;
 @property (weak, nonatomic) IBOutlet UIView *v3;
 @property (weak, nonatomic) IBOutlet UIView *v4;
+@property (weak, nonatomic) IBOutlet UIView *v5;
 
 @property (weak, nonatomic) IBOutlet UIImageView *v1i;
 @property (weak, nonatomic) IBOutlet UIImageView *v2i;
