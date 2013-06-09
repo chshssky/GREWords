@@ -133,7 +133,6 @@ float sumHeight = 10.0;//10.0;
         }else{
             label.text = [NSString stringWithFormat:@"%@%@%@",@"【考法", [NSString stringWithFormat:@"%d",i+1], @"】"];
         }
-        
         label.lineBreakMode = NSLineBreakByWordWrapping;
         label.numberOfLines = 0;
         [label sizeToFit];
@@ -199,6 +198,7 @@ float sumHeight = 10.0;//10.0;
                 textView.font = [UIFont fontWithName:@"STHeitiSC-Light" size:16];
                 textView.text = [theUsage substringFromIndex:offset+1];
                 [textView setEditable:NO];
+                [textView sizeToFit];
                 [textView setFrame:CGRectMake(85, sumHeight, 215, textView.contentSize.height)];
                 [self.view addSubview:textView];
                 sumHeight = textView.frame.origin.y + textView.contentSize.height;
