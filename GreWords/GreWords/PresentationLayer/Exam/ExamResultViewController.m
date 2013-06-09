@@ -69,6 +69,7 @@
 {
     [self removeExamResultCardAnimation];
 }
+
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag {
     if([[theAnimation valueForKey:@"id"] isEqual:@"removeExamResultCardAnimation"])
     {
