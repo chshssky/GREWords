@@ -160,8 +160,11 @@
     [self.WordParaphraseView addSubview:vc.view];
     [self.WordParaphraseView scrollsToTop];
     
-    [[WordSpeaker instance] readWord:self.wordLabel.text];
-
+    if([ConfigurationHelper instance].autoSpeak)
+    {
+        [[WordSpeaker instance] readWord:self.wordLabel.text];
+    }
+    
     [self DontShowMeaning];
     if ([TaskStatus instance].taskType == TASK_TYPE_NEWWORD) {
         [TaskStatus instance].nwEvent.indexOfWordToday ++;

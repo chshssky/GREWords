@@ -156,8 +156,10 @@
     [self.PronounceButton addTarget:self action:@selector(soundButtonClicked:) forControlEvents:UIControlEventTouchDown];
     
     [self.backButton.superview bringSubviewToFront:self.backButton];
-    
-    [[WordSpeaker instance] readWord:self.wordLabel.text];
+    if([ConfigurationHelper instance].autoSpeak)
+    {
+       [[WordSpeaker instance] readWord:self.wordLabel.text]; 
+    }
     //为了初始化maxID
     [TaskStatus instance].nwEvent.maxWordID = [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].nwEvent.indexOfWordToday] intValue];
     
@@ -303,8 +305,11 @@
     if ([left.array indexOfObject:addWord] == NSNotFound) {
         [left addWord:addWord];
     }
-    [[WordSpeaker instance] readWord:self.wordLabel.text];
-        
+    if([ConfigurationHelper instance].autoSpeak)
+    {
+        [[WordSpeaker instance] readWord:self.wordLabel.text];
+    }
+       
 //    self.nwEvent.indexOfWordToday = [TaskStatus instance].nwEvent.indexOfWordToday;
 //    self.nwEvent.maxWordID = [TaskStatus instance].nwEvent.maxWordID;
 //    self.nwEvent.reviewEnable = [TaskStatus instance].nwEvent.reviewEnable;
