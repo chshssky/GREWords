@@ -51,7 +51,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self initialFourPoint];
-    int currentStage = 2;//[[HistoryManager instance] currentStage];
+    int currentStage = [[HistoryManager instance] currentStage];
     switch (currentStage) {
         case 0:
             [self initialLastPointWithPoint:_firstPoint];
