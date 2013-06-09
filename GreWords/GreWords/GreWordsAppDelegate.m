@@ -25,7 +25,10 @@
 
 - (void)initAnalytics
 {
-     [Flurry startSession:@"HKHP8FQG68VDNZ5J2DF3"];
+    //[Flurry setDebugLogEnabled:YES];
+    //[Flurry setShowErrorInLogEnabled:YES];
+    [Flurry setAppVersion:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
+    [Flurry startSession:@"HKHP8FQG68VDNZ5J2DF3"];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
