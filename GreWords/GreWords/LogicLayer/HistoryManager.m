@@ -251,6 +251,8 @@ HistoryManager* _historyManagerInstance = nil;
             taskStatus.nwEvent.stage_now = [history.stage integerValue];
             taskStatus.nwEvent.reviewEnable = [nwStatus.reviewEnable boolValue];
             taskStatus.nwEvent.wrongWordCount = [history.wrongWordCount integerValue];
+            taskStatus.nwEvent.startTime = history.startTime;
+            taskStatus.nwEvent.totalWordCount = [history.totalWordCount intValue];
 
         } else if ([history.event isEqualToString:EVENT_TYPE_REVIEW]) {
             ReviewStatus *rStatus = history.reviewStatus;
@@ -258,7 +260,8 @@ HistoryManager* _historyManagerInstance = nil;
             taskStatus.taskType = TASK_TYPE_REVIEW;
             taskStatus.rEvent.indexOfWordToday = [rStatus.index integerValue];
             taskStatus.rEvent.stage_now = [history.stage integerValue];
-            
+            taskStatus.rEvent.startTime = history.startTime;
+            taskStatus.rEvent.totalWordCount = [history.totalWordCount intValue];
         } else if ([history.event isEqualToString:EVENT_TYPE_EXAM]) {
             //ExamStatus *eStatus = history.examStatus;
             //eStatus.difficulty;
