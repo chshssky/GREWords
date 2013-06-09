@@ -7727,7 +7727,6 @@
 		3F70EC901701CADB00327770 /* GreWords */ = {
 			isa = PBXGroup;
 			children = (
-				73A6D5E717646E0E001CE061 /* GuideSetting */,
 				E466E756173BD4CB001847D0 /* PresentationLayer */,
 				E466E787173BD4CB001847D0 /* LogicLayer */,
 				E466E7A6173BD4CB001847D0 /* Resources */,
@@ -7781,6 +7780,7 @@
 				73A6D5EB17646E40001CE061 /* GuideSettingViewController.xib */,
 			);
 			name = GuideSetting;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		73A6D5EE17646FCA001CE061 /* GuideSetting */ = {
@@ -7979,6 +7979,7 @@
 		E404ADB71753972200004FDC /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
+				73A6D5E717646E0E001CE061 /* GuideSetting */,
 				E404ADB81753975200004FDC /* WelcomeViewController.h */,
 				E404ADB91753975200004FDC /* WelcomeViewController.m */,
 			);

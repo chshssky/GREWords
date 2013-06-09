@@ -10,6 +10,9 @@
 #import <QuartzCore/QuartzCore.h>
 
 @interface GuideSettingViewController ()
+{
+    int stage;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *progressGreen;
 @property (weak, nonatomic) IBOutlet UIImageView *progressButton;
 @property (weak, nonatomic) IBOutlet UIImageView *background;
@@ -24,6 +27,16 @@
 @end
 
 @implementation GuideSettingViewController
+
+-(int)stage
+{
+    return stage;
+}
+
+- (IBAction)goPressed:(id)sender
+{
+    [self.pview goPressed:sender];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,7 +65,7 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
-    _titleText.center = CGPointMake(self.view.center.x, self.view.center.y - 210);
+    _titleText.center = CGPointMake(self.view.center.x, self.view.center.y - 200);
 }
 
 - (void)viewDidUnload {
@@ -60,6 +73,7 @@
     [self setProgressGreen:nil];
     [self setBackground:nil];
     [self setTitleText:nil];
+    [self setGoButton:nil];
     [super viewDidUnload];
 }
 
@@ -91,15 +105,19 @@
     if([[theAnimation valueForKey:@"id"] isEqual:@"GoToPointFinished"])
     {
         if (_progressButton.center.x == _firstPoint.x) {
+            stage = 0;
             [self popAnimationFrom:_firstPoint];
             _choosePoint = _firstPoint;
         }else if (_progressButton.center.x == _secondPoint.x) {
+            stage = 1;
             [self popAnimationFrom:_secondPoint];
             _choosePoint = _secondPoint;
         }else if (_progressButton.center.x == _thridPoint.x) {
+            stage = 2;
             [self popAnimationFrom:_thridPoint];
             _choosePoint = _thridPoint;
         }else if (_progressButton.center.x == _fourthPoint.x) {
+            stage = 3;
             [self popAnimationFrom:_fourthPoint];
             _choosePoint = _fourthPoint;
         }
