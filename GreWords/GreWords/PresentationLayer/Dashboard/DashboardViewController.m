@@ -389,7 +389,7 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 
 - (void)changeTextViewToReview
 {
-    _textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main Main menu_text_reciteWord.png"]];
+    _textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_reciteWord.png"]];
     _textView.center = CGPointMake(self.centerPoint.x-15, self.centerPoint.y-45);
     _textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     [self.view addSubview:_textView];

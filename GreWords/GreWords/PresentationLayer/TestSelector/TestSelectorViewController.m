@@ -21,6 +21,7 @@
 @property (strong, nonatomic) SelectorController *selectorController;
 @property (nonatomic) float screenHeight;
 @property (nonatomic) float screenWidth;
+
 @end
 
 @implementation TestSelectorViewController

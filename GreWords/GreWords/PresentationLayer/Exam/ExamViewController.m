@@ -88,7 +88,10 @@
 
 - (NSArray *)examArr
 {
+    NSLog(@"index:%d / count:%d", [TaskStatus instance].eEvent.index, [_examArr count]);
     if (_examArr == nil) {
+        _examArr = [[WordTaskGenerator instance] testTaskWithOptions:self.examInfo whetherWithAllWords:NO];
+    } else if ([TaskStatus instance].eEvent.index + 1 == [_examArr count]) {
         _examArr = [[WordTaskGenerator instance] testTaskWithOptions:self.examInfo whetherWithAllWords:NO];
     }
     return _examArr;
@@ -1352,28 +1355,28 @@
 
 - (IBAction)BackButtonPushed:(id)sender
 {
-    //[self examResultShow];
+    [self examResultShow];
     
-    GreWordsViewController *superController =  (GreWordsViewController *)[self presentingViewController];
-    
-    UIImageView *blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    [blackView setBackgroundColor:[UIColor blackColor]];
-    blackView.alpha = 0;
-    [superController.view addSubview:blackView];
-    
-    
-    superController.whetherAllowViewFrameChanged = YES;
-    CABasicAnimation *opacityAnim_black = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    opacityAnim_black.fromValue = [NSNumber numberWithFloat:0.7];
-    opacityAnim_black.toValue = [NSNumber numberWithFloat:0];
-    opacityAnim_black.removedOnCompletion = YES;
-    CAAnimationGroup *animGroup_black = [CAAnimationGroup animation];
-    animGroup_black.animations = [NSArray arrayWithObjects:opacityAnim_black, nil];
-    animGroup_black.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    animGroup_black.duration = 0.5;
-    [blackView.layer addAnimation:animGroup_black forKey:nil];
-    
-    [self dismissModalViewControllerAnimated:YES];
+//    GreWordsViewController *superController =  (GreWordsViewController *)[self presentingViewController];
+//    
+//    UIImageView *blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+//    [blackView setBackgroundColor:[UIColor blackColor]];
+//    blackView.alpha = 0;
+//    [superController.view addSubview:blackView];
+//    
+//    
+//    superController.whetherAllowViewFrameChanged = YES;
+//    CABasicAnimation *opacityAnim_black = [CABasicAnimation animationWithKeyPath:@"opacity"];
+//    opacityAnim_black.fromValue = [NSNumber numberWithFloat:0.7];
+//    opacityAnim_black.toValue = [NSNumber numberWithFloat:0];
+//    opacityAnim_black.removedOnCompletion = YES;
+//    CAAnimationGroup *animGroup_black = [CAAnimationGroup animation];
+//    animGroup_black.animations = [NSArray arrayWithObjects:opacityAnim_black, nil];
+//    animGroup_black.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//    animGroup_black.duration = 0.5;
+//    [blackView.layer addAnimation:animGroup_black forKey:nil];
+//    
+//    [self dismissModalViewControllerAnimated:YES];
     
 }
 
