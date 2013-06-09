@@ -10,6 +10,7 @@
 #import "MyDataStorage.h"
 #import "Word.h"
 #import "GuideImageFactory.h"
+#import "HistoryManager.h"
 
 @implementation ConfigurationHelper
 
@@ -196,6 +197,10 @@ ConfigurationHelper* _configurationHelperInstance = nil;
         return;
     for(int i = 0; i <= 30; i++)
     {
+        if([[HistoryManager instance] currentStage] >= 2)
+        {
+            break;
+        }
         UILocalNotification *localNotif = [[UILocalNotification alloc] init];
         if (localNotif == nil)
             return;
