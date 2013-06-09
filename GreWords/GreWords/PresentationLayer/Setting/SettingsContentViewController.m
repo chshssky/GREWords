@@ -267,7 +267,7 @@
     }
     else if(button.tag == 104)
     {
-        url = @"";
+        url = @"http://www.weibo.com/u/2120972133";
     }
     if(url)
         [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];
