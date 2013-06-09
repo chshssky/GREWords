@@ -168,6 +168,12 @@
     }
     
     [NSNotificationCenter registerStartExamNotificationWithSelector:@selector(startExam:) target:self];
+    
+    // just for  test:
+//    int x = [[HistoryManager instance] currentStage];
+//    NSLog(@"stage:%d", x);
+//    [[HistoryManager instance] newWordEventsInStage:0];
+    
 }
 
 - (void)viewDidUnload {
