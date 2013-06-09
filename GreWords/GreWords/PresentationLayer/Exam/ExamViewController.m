@@ -77,10 +77,6 @@
 @property (strong, nonatomic) UIImageView *showMeaningImageView;
 @property (nonatomic) int added_height;
 
-@property (nonatomic) int day;
-
-@property (nonatomic, strong) NSDate *startDate;
-
 @property (nonatomic, strong) NSTimer *timer;
 
 
@@ -93,7 +89,7 @@
 - (NSArray *)examArr
 {
     if (_examArr == nil) {
-        _examArr = [[WordTaskGenerator instance] testTaskWithOptions:self.examInfo];
+        _examArr = [[WordTaskGenerator instance] testTaskWithOptions:self.examInfo whetherWithAllWords:NO];
     }
     return _examArr;
 }
@@ -158,18 +154,18 @@
     [[WordSpeaker instance] readWord:self.wordLabel.text];
     
     [self DontShowMeaning];
-    [TaskStatus instance].indexOfExam ++;
+    [TaskStatus instance].eEvent.index ++;
 }
 
 - (void)updateTimer
 {
     NSTimeInterval timeInterval;
     NSDate *now = [self getNowDate];
-    timeInterval = [now timeIntervalSinceDate:self.startDate];
-    timeInterval = [TaskStatus instance].duration - timeInterval;
+    timeInterval = [now timeIntervalSinceDate:[TaskStatus instance].eEvent.startTime];
+    timeInterval = [TaskStatus instance].eEvent.duration - timeInterval;
     
     self.timerLabel.text = [NSString stringWithFormat:@"%02d : %02d", (int)(timeInterval + 0.01)/ 60, (int)(timeInterval + 0.01) % 60];
-    if ([[now laterDate:[self.startDate dateByAddingTimeInterval:[TaskStatus instance].duration]] isEqualToDate:now]) {
+    if ([[now laterDate:[[TaskStatus instance].eEvent.startTime dateByAddingTimeInterval:[TaskStatus instance].eEvent.duration]] isEqualToDate:now]) {
 
         [self examResultShow];
     }
@@ -180,7 +176,7 @@
     [super viewDidLoad];
     
     [[TaskStatus instance] beginExam];
-    [self loadWord:[TaskStatus instance].indexOfExam];
+    [self loadWord:[TaskStatus instance].eEvent.index];
     _RightButton.userInteractionEnabled = NO;
     _WrongButton.userInteractionEnabled = NO;
     _showMeaningButton.userInteractionEnabled = YES;
@@ -189,22 +185,23 @@
 
     NSString *level = [self.examInfo objectForKey:@"level"];
     if ([level isEqualToString: @"easy"]) {
-        [TaskStatus instance].difficulty = 0;
+        [TaskStatus instance].eEvent.difficulty = 0;
     }else if ([level isEqualToString:@"medium"]) {
-        [TaskStatus instance].difficulty = 1;
+        [TaskStatus instance].eEvent.difficulty = 1;
     }else if ([level isEqualToString:@"hard"]) {
-        [TaskStatus instance].difficulty = 2;
+        [TaskStatus instance].eEvent.difficulty = 2;
     }
     
     NSString *time = [self.examInfo objectForKey:@"time"];
     if ([time isEqualToString:@"10min"]) {
-        [TaskStatus instance].duration = 60 * 10;
+        [TaskStatus instance].eEvent.duration = 60 * 10;
     } else if ([time isEqualToString:@"30min"]) {
-        [TaskStatus instance].duration = 60 * 30;
+        [TaskStatus instance].eEvent.duration = 60 * 30;
     } else if ([time isEqualToString:@"60min"]) {
-        [TaskStatus instance].duration = 60 * 60;
+        [TaskStatus instance].eEvent.duration = 60 * 60;
     }
-    self.startDate = [self getNowDate];
+    [TaskStatus instance].eEvent.startTime = [self getNowDate];
+
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
 }
 
@@ -1026,7 +1023,7 @@
 //        [self examCompleted];
 //        return;
 //    }
-    word = [self.examArr  objectAtIndex:[TaskStatus instance].indexOfExam - 1];
+    word = [self.examArr  objectAtIndex:[TaskStatus instance].eEvent.index - 1];
     
     [word didRightOnDate:[NSDate new]];
     [self nextButtonPushed];
@@ -1040,11 +1037,11 @@
 //        [self examCompleted];
 //        return;
 //    }
-    word = [self.examArr  objectAtIndex:[TaskStatus instance].indexOfExam - 1];
+    word = [self.examArr  objectAtIndex:[TaskStatus instance].eEvent.index - 1];
     
     [word didMakeAMistakeOnDate:[NSDate new]];
     
-    [TaskStatus instance].wrongWordCount ++;
+    [TaskStatus instance].eEvent.wrongWordCount ++;
     [self nextButtonPushed];
 }
 
@@ -1090,20 +1087,11 @@
 
     HistoryManager *historyManager = [HistoryManager instance];
     
-    ExamEvent *eEvent = [[ExamEvent alloc] init];
+    [historyManager addEvent:[TaskStatus instance].eEvent];
     
-    eEvent.startTime = [self getNowDate];
-    eEvent.totalWordCount = [TaskStatus instance].totalWordCount;
-    eEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
+    [TaskStatus instance].eEvent.endTime = [self getNowDate];
     
-    eEvent.difficulty = [TaskStatus instance].difficulty;
-    eEvent.duration = [TaskStatus instance].duration;
-    
-    [historyManager addEvent:eEvent];
-    
-    eEvent.endTime = [self getNowDate];
-    
-    [historyManager endEvent:eEvent];
+    [historyManager endEvent:[TaskStatus instance].eEvent];
         
     [[TaskStatus instance] endExam];
     
@@ -1327,9 +1315,9 @@
 
 - (void)nextButtonPushed
 {
-    [TaskStatus instance].totalWordCount ++;
+    [TaskStatus instance].eEvent.totalWordCount ++;
     if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
-        [self loadWord:[TaskStatus instance].indexOfExam];
+        [self loadWord:[TaskStatus instance].eEvent.index];
         _showMeaningButton.userInteractionEnabled = YES;
         _RightButton.userInteractionEnabled = NO;
         _WrongButton.userInteractionEnabled = NO;
@@ -1352,7 +1340,7 @@
         }
     }
     if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
-        [self loadWord:[TaskStatus instance].indexOfExam];
+        [self loadWord:[TaskStatus instance].eEvent.index];
         [self Dismiss_RightAnimation];
         [self Dismiss_WrongAnimation];
     }

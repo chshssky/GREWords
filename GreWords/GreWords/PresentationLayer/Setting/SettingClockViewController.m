@@ -96,16 +96,6 @@
     //添加时钟数字
     
     if (_whetherRecite == YES) {
-        
-        //添加钟盘图片并消除锯齿
-        UIImage *clockCircle = [UIImage imageNamed:@"Settings_taskClock_circle.png"];
-        self.CimageView = [[UIImageView alloc] initWithImage:clockCircle];
-        self.CimageView.center = _centerPoint;
-        self.CimageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-        //self.CimageView.alpha = 0.5;
-        [self.view addSubview:self.CimageView];
-        
-        
         UIImage *N1 = [UIImage imageNamed:@"Settings_taskClock_1.png"];
         self.N1_imageView = [[UIImageView alloc] initWithImage:N1];
         self.N1_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x+55, _centerPoint.y-95);
@@ -166,15 +156,18 @@
         self.N12_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x, _centerPoint.y-117);
         self.N12_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
         [self.view addSubview:self.N12_imageView];
-    }else {
+        
         
         //添加钟盘图片并消除锯齿
-        UIImage *clockCircle = [UIImage imageNamed:@"Settings_task2Clock_circle.png"];
+        UIImage *clockCircle = [UIImage imageNamed:@"Settings_taskClock_circle.png"];
         self.CimageView = [[UIImageView alloc] initWithImage:clockCircle];
         self.CimageView.center = _centerPoint;
         self.CimageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
         //self.CimageView.alpha = 0.5;
         [self.view addSubview:self.CimageView];
+        
+        
+    }else {
         
         UIImage *N1 = [UIImage imageNamed:@"Settings_task2Clock_1.png"];
         self.N1_imageView = [[UIImageView alloc] initWithImage:N1];
@@ -236,6 +229,15 @@
         self.N12_imageView.center = _centerPoint;// CGPointMake(_centerPoint.x, _centerPoint.y-117);
         self.N12_imageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
         [self.view addSubview:self.N12_imageView];
+        
+        
+        //添加钟盘图片并消除锯齿
+        UIImage *clockCircle = [UIImage imageNamed:@"Settings_task2Clock_circle.png"];
+        self.CimageView = [[UIImageView alloc] initWithImage:clockCircle];
+        self.CimageView.center = _centerPoint;
+        self.CimageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
+        //self.CimageView.alpha = 0.5;
+        [self.view addSubview:self.CimageView];
     }
     
     //添加AM和PM
@@ -256,26 +258,14 @@
     
     //添加时针图片并消除锯齿
     UIImage *imageS = [UIImage imageNamed:@"Settings_taskClock_hourHand.png"];
-    //    UIGraphicsBeginImageContextWithOptions(s.size, NO, s.scale);
-    //    [s drawInRect:CGRectMake(1, 1, s.size.width-2, s.size.height-2)];
-    //    UIImage *imageS = UIGraphicsGetImageFromCurrentImageContext();
-    //    UIGraphicsEndImageContext();
     self.SimageView = [[UIImageView alloc] initWithImage:imageS];
-    
-    //    self.SimageView.frame = CGRectMake(0, 0, 30, 90);
     self.SimageView.center = _centerPoint;
     self.SimageView.layer.anchorPoint = CGPointMake(0.5, 0.92);
     [self.view addSubview:self.SimageView];
     
     //添加分针图片并消除锯齿
     UIImage *imageF = [UIImage imageNamed:@"Settings_taskClock_minuteHand.png"];
-    //    UIGraphicsBeginImageContextWithOptions(f.size, NO, f.scale);
-    //    [f drawInRect:CGRectMake(1, 1, f.size.width-2, f.size.height-2)];
-    //    UIImage *imageF = UIGraphicsGetImageFromCurrentImageContext();
-    //    UIGraphicsEndImageContext();
     self.FimageView = [[UIImageView alloc] initWithImage:imageF];
-    
-    //    self.FimageView.frame = CGRectMake(0, 0, 30, 150);
     self.FimageView.center = _centerPoint;
     self.FimageView.layer.anchorPoint = CGPointMake(0.5, 0.78);
     [self.view addSubview:self.FimageView];
@@ -283,21 +273,10 @@
     
     //添加中心点图片并消除锯齿
     UIImage *clockPoint = [UIImage imageNamed:@"Settings_taskClock_pointer.png"];
-    //    UIGraphicsBeginImageContextWithOptions(f.size, NO, f.scale);
-    //    [f drawInRect:CGRectMake(1, 1, f.size.width-2, f.size.height-2)];
-    //    UIImage *imageF = UIGraphicsGetImageFromCurrentImageContext();
-    //    UIGraphicsEndImageContext();
     self.PimageView = [[UIImageView alloc] initWithImage:clockPoint];
-    
-    //    self.FimageView.frame = CGRectMake(0, 0, 30, 150);
     self.PimageView.center = _centerPoint;
     self.PimageView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     [self.view addSubview:self.PimageView];
-    
-    //添加分针手势
-    //    UIPanGestureRecognizer *gestureRecognizerF = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleF:)];
-    //    [self.FimageView addGestureRecognizer:gestureRecognizerF];
-    //    self.FimageView.userInteractionEnabled = YES;
     
     
     [self AMPMAnimation];
@@ -314,8 +293,6 @@
     [self.FimageView addGestureRecognizer:gestureRecognizerF];
     self.FimageView.userInteractionEnabled = YES;
     gestureRecognizerF.minimumPressDuration=0;
-    self.FimageView.transform = CGAffineTransformMakeRotation(_radio_f);
-    self.SimageView.transform = CGAffineTransformMakeRotation(_radio_s);
 }
 
 - (void) AMPMAnimation
@@ -356,6 +333,8 @@
     minuteHandeAnimation.duration = 2.5f;
     minuteHandeAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.25 :1.0 :0.0 :1.0];
     [self.FimageView.layer addAnimation:minuteHandeAnimation forKey:@"shakeAnimation"];
+    
+    self.FimageView.transform = CGAffineTransformMakeRotation(_radio_f);
 }
 
 - (void) hourHandAnimation
@@ -373,6 +352,8 @@
     minuteHandeAnimation.duration = 2.5f;
     minuteHandeAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.25 :1.0 :0.0 :1.0];
     [self.SimageView.layer addAnimation:minuteHandeAnimation forKey:@"shakeAnimation"];
+    
+    self.SimageView.transform = CGAffineTransformMakeRotation(_radio_s);
 }
 
 - (void) circleAnimation
@@ -644,18 +625,16 @@
     }
     
     if (recognizer.state == UIGestureRecognizerStateEnded) {
-        //NSLog(@"UIGestureRecognizerStateEnded");
+        self.FimageView.transform = CGAffineTransformMakeRotation(_radio_f);
+        self.SimageView.transform = CGAffineTransformMakeRotation(_radio_s);
     }
     
-    //    CGPoint translation = [recognizer translationInView:self.view];
+    
     CGPoint movePoint = [recognizer locationInView:self.view];
     
     CGPoint startPoint = CGPointMake(_centerPoint.x,
                                      0);
-    //    CGPoint endPoint = CGPointMake(_len_f*sin(_radio_f) + translation.x + _touchPointX,
-    //                                   0-_len_f*cos(_radio_f) + translation.y + _touchPointY);
     CGPoint endPoint = CGPointMake(movePoint.x, movePoint.y);
-    //NSLog(@"%f,%f",movePoint.x,movePoint.y);
     
     CGFloat rads;
     if (endPoint.x>_centerPoint.x && endPoint.y<_centerPoint.y) {
@@ -686,7 +665,6 @@
     //记录分针位置
     _radio_f = fmod(_time, 60)*2*M_PI/60;
     
-    //NSLog(@"%d:%d",_hour,_minute);
     NSDate *date = [NSDate date];
     NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
     NSDateComponents *components = [gregorian components: NSUIntegerMax fromDate: date];

@@ -250,21 +250,21 @@ HistoryManager* _historyManagerInstance = nil;
             NewWordStatus *nwStatus = history.newWordStatus;
             
             taskStatus.taskType = TASK_TYPE_NEWWORD;
-            taskStatus.indexOfWordIDToday = [nwStatus.index integerValue];
-            taskStatus.maxWordID = [nwStatus.maxWordID integerValue];
-            taskStatus.stage_now = [nwStatus.stage integerValue];
-            taskStatus.reviewEnable = [nwStatus.reviewEnable boolValue];
-            taskStatus.wrongWordCount = [history.wrongWordCount integerValue];
+            taskStatus.nwEvent.indexOfWordToday = [nwStatus.index integerValue];
+            taskStatus.nwEvent.maxWordID = [nwStatus.maxWordID integerValue];
+            taskStatus.nwEvent.stage_now = [nwStatus.stage integerValue];
+            taskStatus.nwEvent.reviewEnable = [nwStatus.reviewEnable boolValue];
+            taskStatus.nwEvent.wrongWordCount = [history.wrongWordCount integerValue];
 
         } else if ([history.event isEqualToString:EVENT_TYPE_REVIEW]) {
             ReviewStatus *rStatus = history.reviewStatus;
             
             taskStatus.taskType = TASK_TYPE_REVIEW;
-            taskStatus.indexOfWordIDToday = [rStatus.index integerValue];
-            taskStatus.stage_now = [rStatus.stage integerValue];
+            taskStatus.rEvent.indexOfWordToday = [rStatus.index integerValue];
+            taskStatus.rEvent.stage_now = [rStatus.stage integerValue];
             
         } else if ([history.event isEqualToString:EVENT_TYPE_EXAM]) {
-            ExamStatus *eStatus = history.examStatus;
+            //ExamStatus *eStatus = history.examStatus;
             
             //eStatus.difficulty;
         }

@@ -424,5 +424,11 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     // Dispose of any resources that can be recreated.
 }
 
+- (void)changeTextViewToComplete
+{
+    self.textView.alpha = 0;
+    self.bigButton.alpha = 0;
+    
+}
 
 @end

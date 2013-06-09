@@ -2,19 +2,13 @@
 <Bucket
    type = "1"
    version = "1.0">
-   <FileBreakpoints>
-      <FileBreakpoint
+   <ExceptionBreakpoints>
+      <ExceptionBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "GreWords/PresentationLayer/WordDetail/ReciteAndReviewResultViewController.m"
-         timestampString = "392220726.62281"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "59"
-         endingLineNumber = "59"
-         landmarkName = "-addReciteAndReviewResultCardAt:withOption:"
-         landmarkType = "5">
-      </FileBreakpoint>
-   </FileBreakpoints>
+         scope = "0"
+         stopOnStyle = "0">
+      </ExceptionBreakpoint>
+   </ExceptionBreakpoints>
 </Bucket>

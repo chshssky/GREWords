@@ -9,6 +9,12 @@
 #import "WordTaskGenerator.h"
 #import "WordHelper.h"
 #import <math.h>
+@interface WordTaskGenerator ()
+@property (nonatomic) NSArray *reciteTwolist;
+@property (nonatomic) NSArray *reviewTwolist;
+@property (nonatomic) NSArray *reciteThreelist;
+@property (nonatomic) NSArray *reviewThreelist;
+@end
 
 @implementation WordTaskGenerator
 
@@ -28,8 +34,15 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
 }
 
 
+
+
 - (NSArray *)newWordTask_threeList:(int)day
 {
+    if (_reciteThreelist != nil && _reciteThreelist.count != 0) {
+        return _reciteThreelist;
+    }
+    
+    
     NSMutableArray *task = [[NSMutableArray alloc] init];
     [task removeAllObjects];
     
@@ -226,11 +239,17 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
     for (int i=0; i<task.count; i++) {
         [task replaceObjectAtIndex:i withObject:[NSNumber numberWithInt:day*300+[[task objectAtIndex:i] intValue]]];
     }
+    
+    _reciteThreelist = task;
     return task;
 }
 
 - (NSArray *)newWordTask_twoList:(int)day
 {
+    if (_reciteTwolist != nil && _reciteTwolist.count != 0) {
+        return _reciteTwolist;
+    }
+    
     NSMutableArray *task = [[NSMutableArray alloc] init];
     [task removeAllObjects];
     
@@ -427,6 +446,9 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
     for (int i=0; i<task.count; i++) {
         [task replaceObjectAtIndex:i withObject:[NSNumber numberWithInt:day*200+[[task objectAtIndex:i] intValue]]];
     }
+    
+    _reciteTwolist = task;
+    
     return task;
 }
 
@@ -450,6 +472,10 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
 
 - (NSArray *)reviewTask_threeList:(int)day
 {
+    if (_reviewThreelist != nil && _reviewThreelist.count != 0) {
+        return _reviewThreelist;
+    }
+    
     NSMutableArray *task = [[NSMutableArray alloc] init];
     
     
@@ -609,12 +635,16 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
     }else{
         //do nothing
     }
-    
+    _reviewThreelist = task;
     return task;
 }
 
 - (NSArray *)reviewTask_twoList:(int)day
 {
+    if (_reviewTwolist != nil && _reviewTwolist.count != 0) {
+        return _reviewTwolist;
+    }
+    
     NSMutableArray *task = [[NSMutableArray alloc] init];
     if(day == 0) {
         for (int i=0; i<200; i++) {
@@ -879,19 +909,27 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
     }else{
         //do nothing
     }
+    
+    _reviewTwolist = task;
+    
     return task;
 }
 
-- (NSArray *)testTaskWithOptions:(NSDictionary *)examInfo
+- (NSArray *)testTaskWithOptions:(NSDictionary *)examInfo whetherWithAllWords:(BOOL)allWords
 {
     NSMutableArray *task = [[NSMutableArray alloc] init];
     
     NSString *level = [examInfo objectForKey:@"level"];
     
-    NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:[self getRandomArray]];
+    NSArray *newArray = [[NSMutableArray alloc] initWithArray:[self getRandomArray]];
     
-    if (newArray.count < 30) {
-        return nil;
+    
+    if (allWords == YES) {
+        newArray = [self addRandomWordsToArray:newArray];
+    }else {
+        if (newArray.count < 30) {
+            return nil;
+        }
     }
     
     if ([level isEqualToString: @"easy"]) {
@@ -910,7 +948,7 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
     return task;
 }
 
-- (NSArray *) randomArrayWithArray:(NSArray *)arr
+- (NSArray *)randomArrayWithArray:(NSArray *)arr
 {
     NSMutableArray *array = [[NSMutableArray alloc] initWithArray:arr];
     int i = [array count];
@@ -959,6 +997,26 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
     [newArray addObjectsFromArray:fiveStarArray];
     
     return newArray;   
+}
+
+- (NSArray *)addRandomWordsToArray:(NSArray *)array
+{
+    NSMutableArray *newArray = [[NSMutableArray alloc] initWithArray:array];
+    
+    for (int i=0; i<50; i++) {
+        int key = arc4random() % 3073;
+        NSString *randomWord = [[WordHelper instance] wordWithID:key].wordText;
+        [newArray addObject:randomWord];
+    }
+    return newArray;
+}
+
+- (void)clearTask
+{
+    _reviewThreelist = nil;
+    _reciteThreelist = nil;
+    _reviewTwolist = nil;
+    _reviewTwolist = nil;
 }
 
 

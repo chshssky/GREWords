@@ -162,13 +162,23 @@
     [[WordSpeaker instance] readWord:self.wordLabel.text];
 
     [self DontShowMeaning];
-    [TaskStatus instance].indexOfWordIDToday ++;
+    if ([TaskStatus instance].taskType == TASK_TYPE_NEWWORD) {
+        [TaskStatus instance].nwEvent.indexOfWordToday ++;
+    } else {
+        [TaskStatus instance].rEvent.indexOfWordToday ++;
+    }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self loadWord:[TaskStatus instance].indexOfWordIDToday];
+    
+    if ([TaskStatus instance].taskType == TASK_TYPE_NEWWORD) {
+        [self loadWord:[TaskStatus instance].nwEvent.indexOfWordToday];
+    } else {
+        [self loadWord:[TaskStatus instance].rEvent.indexOfWordToday];
+    }
+    
     _RightButton.userInteractionEnabled = NO;
     _WrongButton.userInteractionEnabled = NO;
     _showMeaningButton.userInteractionEnabled = YES;
@@ -970,9 +980,9 @@
     [self viewWillAppear:YES];
     WordEntity *word;
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
-        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday - 1] intValue]];
+        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:self.day] objectAtIndex:[TaskStatus instance].rEvent.indexOfWordToday - 1] intValue]];
     } else {
-        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday - 1] intValue]];
+        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].nwEvent.indexOfWordToday - 1] intValue]];
 
     }
     [word didRightOnDate:[NSDate new]];
@@ -983,13 +993,16 @@
 
 - (IBAction)wrongButtonPushed:(id)sender {
     [self viewWillAppear:YES];
-    [TaskStatus instance].wrongWordCount ++;
 
     WordEntity *word;
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
-        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday - 1] intValue]];
+        [TaskStatus instance].rEvent.wrongWordCount ++;
+        
+        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:self.day] objectAtIndex:[TaskStatus instance].rEvent.indexOfWordToday - 1] intValue]];
     } else {
-        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday - 1] intValue]];
+        [TaskStatus instance].nwEvent.wrongWordCount ++;
+
+        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].nwEvent.indexOfWordToday - 1] intValue]];
         
     }
     [word didMakeAMistakeOnDate:[NSDate new]];
@@ -1004,12 +1017,7 @@
     self.rEvent.endTime = [self getNowDate];
     
     [[HistoryManager instance] endEvent:self.rEvent];
-        
-#warning  return to Main menu
-    //!!!!!!!!!!!!!!!!!return
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"今日完成" message:[NSString stringWithFormat:@"今天错误率：%d 用时：30min", [TaskStatus instance].wrongWordCount] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
-//    [alert setAlertViewStyle:UIAlertViewStyleDefault];
-    
+            
     if (_reciteAndReviewResultCardViewController == nil) {
         _reciteAndReviewResultCardViewController = [[ReciteAndReviewResultViewController alloc] init];
         
@@ -1017,24 +1025,29 @@
         //_note.delegate = self;
     }
     
-#warning review complete event set here    
-    self.rEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
-    self.rEvent.totalWordCount = [TaskStatus instance].totalWordCount;
-    self.rEvent.duration = [TaskStatus instance].duration;
+//    [TaskStatus instance].rEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
+//    [TaskStatus instance].rEvent.totalWordCount = [TaskStatus instance].totalWordCount;
+//    [TaskStatus instance].rEvent.duration = [TaskStatus instance].duration;
     
-    NSLog(@"ReviewEvent Result :%d, %d, %f", self.rEvent.wrongWordCount, self.rEvent.totalWordCount, self.rEvent.duration);
+    NSLog(@"ReviewEvent Result :%d, %d, %f", [TaskStatus instance].rEvent.wrongWordCount, [TaskStatus instance].rEvent.totalWordCount, [TaskStatus instance].rEvent.duration);
     
-    [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withEvent:self.rEvent];
+    [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withEvent:[TaskStatus instance].rEvent];
     [_reciteAndReviewResultCardViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_reciteAndReviewResultCardViewController.view];
-}
+    
+#warning  this may can be easier ~
+    
+    DashboardViewController *dashboard = [DashboardViewController instance];
+    // Database: read from
+    dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].nwEvent.indexOfWordToday;
+    
+    dashboard.minNumber = dashboard.nonFinishedNumber;
+    dashboard.sumNumber = TaskWordNumber;
+    [dashboard reloadData];
+    [dashboard changeTextViewToReview];
 
-//- (void)createNewWord
-//{
-//    NewWordEvent *nwEvent = [[NewWordEvent alloc] init];
-//    
-//#warning hljlkjlkasjdf;lkasjd
-//}
+    
+}
 
 - (void)newWordCompleted
 {
@@ -1044,34 +1057,30 @@
         _reciteAndReviewResultCardViewController.delegate = self;
         //_note.delegate = self;
     }
-#warning NewWordEvent complete event set here
     
-    self.nwEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
-    self.nwEvent.totalWordCount = [TaskStatus instance].totalWordCount;
     NSDate *now = [self getNowDate];
-    self.nwEvent.duration = [now timeIntervalSinceDate:self.nwEvent.startTime];
+    [TaskStatus instance].nwEvent.duration = [now timeIntervalSinceDate:[TaskStatus instance].nwEvent.startTime];
     
-    NSLog(@"NewWord Result :%d, %d, %f", self.nwEvent.wrongWordCount, self.nwEvent.totalWordCount, self.nwEvent.duration);
+    NSLog(@"NewWord Result :%d, %d, %f", [TaskStatus instance].nwEvent.wrongWordCount, [TaskStatus instance].nwEvent.totalWordCount, [TaskStatus instance].nwEvent.duration);
     
-    [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withEvent:self.nwEvent];
+    [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withEvent:[TaskStatus instance].nwEvent];
     [_reciteAndReviewResultCardViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_reciteAndReviewResultCardViewController.view];
     
-    self.nwEvent.endTime = now;
-    [[HistoryManager instance] endEvent:self.nwEvent];
+    [TaskStatus instance].nwEvent.endTime = now;
+    [[HistoryManager instance] endEvent:[TaskStatus instance].nwEvent];
 
-//    [self.delegate StartReview];
-//    [self createReviewEvent];
-//    
-//    
+    [self createReviewEvent];
+
     DashboardViewController *dashboard = [DashboardViewController instance];
     // Database: read from
-    dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].indexOfWordIDToday;
+    dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].rEvent.indexOfWordToday;
      
     dashboard.minNumber = dashboard.nonFinishedNumber;
     dashboard.sumNumber = TaskWordNumber;
-    [dashboard reloadData];
     [dashboard changeTextViewToReview];
+
+    [dashboard reloadData];
     
     
 //    [self dismissModalViewControllerAnimated:YES];
@@ -1086,17 +1095,16 @@
     
     HistoryManager *historyManager = [HistoryManager instance];
         
-    self.rEvent.eventType = EVENT_TYPE_REVIEW;
-    self.rEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
-    self.rEvent.totalWordCount = 200;
-    [TaskStatus instance].wrongWordCount = 200;
-    self.rEvent.startTime = [self getNowDate];
+    [TaskStatus instance].rEvent.eventType = EVENT_TYPE_REVIEW;
+    [TaskStatus instance].rEvent.wrongWordCount = 0;
+    [TaskStatus instance].rEvent.totalWordCount = 200;
+    [TaskStatus instance].rEvent.startTime = [self getNowDate];
     
-    self.rEvent.stage_now = [TaskStatus instance].stage_now;
-    self.rEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-    self.rEvent.dayOfSchedule = [TaskStatus instance].day;
+    //[TaskStatus instance].rEvent.stage_now = [TaskStatus instance].stage_now;
+    [TaskStatus instance].rEvent.indexOfWordToday = 0;
+    [TaskStatus instance].rEvent.dayOfSchedule = [TaskStatus instance].nwEvent.dayOfSchedule;
     
-    [historyManager addEvent:self.rEvent];
+    [historyManager addEvent:[TaskStatus instance].rEvent];
 }
 
 
@@ -1312,14 +1320,14 @@
 - (void)nextButtonPushed
 {
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
-        if ([TaskStatus instance].indexOfWordIDToday == [[[WordTaskGenerator instance] reviewTask_twoList:self.day] count])
+        if ([TaskStatus instance].rEvent.indexOfWordToday == [[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] count])
         {
             [self reviewCompleted];
             return;
         }
         
     } else {
-        if ([TaskStatus instance].indexOfWordIDToday == [[[WordTaskGenerator instance] newWordTask_twoList:self.day] count])
+        if ([TaskStatus instance].nwEvent.indexOfWordToday == [[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] count])
         {
             [self newWordCompleted];
             return;
@@ -1329,7 +1337,7 @@
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
         
             if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
-                [self loadWord:[TaskStatus instance].indexOfWordIDToday];
+                [self loadWord:[TaskStatus instance].rEvent.indexOfWordToday];
                 _showMeaningButton.userInteractionEnabled = YES;
                 _RightButton.userInteractionEnabled = NO;
                 _WrongButton.userInteractionEnabled = NO;
@@ -1352,75 +1360,80 @@
                 }
             }
             if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
-                [self loadWord:[TaskStatus instance].indexOfWordIDToday];
+                [self loadWord:[TaskStatus instance].rEvent.indexOfWordToday];
                 [self Dismiss_RightAnimation];
                 [self Dismiss_WrongAnimation];
             }
-        self.rEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-        self.rEvent.stage_now = [TaskStatus instance].stage_now;
-        self.rEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
+//        self.rEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+//        self.rEvent.stage_now = [TaskStatus instance].stage_now;
+//        self.rEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
         
-        [[HistoryManager instance] updateEvent:self.rEvent];
+        [[HistoryManager instance] updateEvent:[TaskStatus instance].rEvent];
         [[DashboardViewController instance] minusData];
     } else {
-    if (([TaskStatus instance].indexOfWordIDToday % 10) == 9) {
-        [[TaskStatus instance] setReviewEnable];
-    }
+        if (([TaskStatus instance].nwEvent.indexOfWordToday % 10) == 9) {
+            [[TaskStatus instance] setReviewEnable];
+        }
     
-    if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].indexOfWordIDToday] intValue] > [TaskStatus instance].maxWordID) {
-        [[TaskStatus instance] setReviewEnable:NO];
-        self.nwEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-        self.nwEvent.maxWordID = [TaskStatus instance].maxWordID;
-        self.nwEvent.reviewEnable = [TaskStatus instance].reviewEnable;
-        self.nwEvent.stage_now = [TaskStatus instance].stage_now;
-        self.nwEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
+        if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.nwEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].nwEvent.indexOfWordToday] intValue] > [TaskStatus instance].nwEvent.maxWordID) {
+            
+            [[TaskStatus instance] setReviewEnable:NO];
+//            self.nwEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+//            self.nwEvent.maxWordID = [TaskStatus instance].maxWordID;
+//            self.nwEvent.reviewEnable = [TaskStatus instance].reviewEnable;
+//            self.nwEvent.stage_now = [TaskStatus instance].stage_now;
+//            self.nwEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
         
-        [[HistoryManager instance] updateEvent:self.nwEvent];
+            [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent];
 
-        if (_DownImage.alpha <= 0) {
-            [self removeDownImageAnimation_withNoDownCover];
-        }else{
-            [self removeDownImageAnimation_withDownCover];
-        }
-        //[self dismissModalViewControllerAnimated:NO];
+            if (_DownImage.alpha <= 0) {
+                _RightButton.userInteractionEnabled = NO;
+                _WrongButton.userInteractionEnabled = NO;
+                [self removeDownImageAnimation_withNoDownCover];
+            }else{
+                _RightButton.userInteractionEnabled = NO;
+                _WrongButton.userInteractionEnabled = NO;
+                [self removeDownImageAnimation_withDownCover];
+            }
+            //[self dismissModalViewControllerAnimated:NO];
         
-    } else {
-        if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
-            [self loadWord:[TaskStatus instance].indexOfWordIDToday];
-            _showMeaningButton.userInteractionEnabled = YES;
-            _RightButton.userInteractionEnabled = NO;
-            _WrongButton.userInteractionEnabled = NO;
-            _WordParaphraseView.userInteractionEnabled = NO;
-            if (_RightUpImageView != nil) {
-                [_RightUpImageView removeFromSuperview];
-                _RightUpImageView = nil;
+        } else {
+            if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
+                [self loadWord:[TaskStatus instance].nwEvent.indexOfWordToday];
+                _showMeaningButton.userInteractionEnabled = YES;
+                _RightButton.userInteractionEnabled = NO;
+                _WrongButton.userInteractionEnabled = NO;
+                _WordParaphraseView.userInteractionEnabled = NO;
+                if (_RightUpImageView != nil) {
+                    [_RightUpImageView removeFromSuperview];
+                    _RightUpImageView = nil;
+                }
+                if (_WrongUpImageView != nil) {
+                    [_WrongUpImageView removeFromSuperview];
+                    _WrongUpImageView = nil;
+                }
+                if (_RightDownImageView != nil) {
+                    [_RightDownImageView removeFromSuperview];
+                    _RightDownImageView = nil;
+                }
+                if (_WrongDownImageView != nil) {
+                    [_WrongDownImageView removeFromSuperview];
+                    _WrongDownImageView = nil;
+                }
             }
-            if (_WrongUpImageView != nil) {
-                [_WrongUpImageView removeFromSuperview];
-                _WrongUpImageView = nil;
-            }
-            if (_RightDownImageView != nil) {
-                [_RightDownImageView removeFromSuperview];
-                _RightDownImageView = nil;
-            }
-            if (_WrongDownImageView != nil) {
-                [_WrongDownImageView removeFromSuperview];
-                _WrongDownImageView = nil;
+            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+                [self loadWord:[TaskStatus instance].nwEvent.indexOfWordToday];
+                [self Dismiss_RightAnimation];
+                [self Dismiss_WrongAnimation];
             }
         }
-        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
-            [self loadWord:[TaskStatus instance].indexOfWordIDToday];
-            [self Dismiss_RightAnimation];
-            [self Dismiss_WrongAnimation];
-        }
-    }
-    self.nwEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-    self.nwEvent.maxWordID = [TaskStatus instance].maxWordID;
-    self.nwEvent.reviewEnable = [TaskStatus instance].reviewEnable;
-    self.nwEvent.stage_now = [TaskStatus instance].stage_now;
-    self.nwEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
-    
-    [[HistoryManager instance] updateEvent:self.nwEvent];
+//        self.nwEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
+//        self.nwEvent.maxWordID = [TaskStatus instance].maxWordID;
+//        self.nwEvent.reviewEnable = [TaskStatus instance].reviewEnable;
+//        self.nwEvent.stage_now = [TaskStatus instance].stage_now;
+//        self.nwEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
+        
+        [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent];
     }
 }
 
@@ -1432,11 +1445,14 @@
     [self dismissModalViewControllerAnimated:YES];
     [self.delegate AnimationBack];
     if ([TaskStatus instance].taskType == TASK_TYPE_NEWWORD) {
-        if (([TaskStatus instance].indexOfWordIDToday % 10) == 0) {
+        if (([TaskStatus instance].nwEvent.indexOfWordToday % 10) == 0) {
             [[TaskStatus instance] setReviewEnable];
         }
+        [TaskStatus instance].nwEvent.indexOfWordToday --;
+    } else {
+        [TaskStatus instance].rEvent.indexOfWordToday --;
+
     }
-    [TaskStatus instance].indexOfWordIDToday --;
     //[self.delegate resetWordIndexto:[TaskStatus instance].indexOfWordIDToday - 1];
 }
 
