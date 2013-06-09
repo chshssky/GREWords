@@ -138,16 +138,15 @@ float sumHeight = 10.0;//10.0;
         [label sizeToFit];
         [self.view addSubview:label];
         
-        if ([[options objectForKey:@"shouldShowChineseMeaning"] boolValue] == NO &&
-            [[options objectForKey:@"shouldShowEnglishMeaning"] boolValue] == NO) {
-            UIImageView *rectImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_meaning_rect.png"]];
-            rectImage.frame = CGRectMake(12, h, 296, label.frame.size.height);
-            [self.view addSubview:rectImage];
-            [self.view sendSubviewToBack:rectImage];
-            
-            sumHeight = label.frame.origin.y + label.frame.size.height;
-        }
-        
+//        if ([[options objectForKey:@"shouldShowChineseMeaning"] boolValue] == NO &&
+//            [[options objectForKey:@"shouldShowEnglishMeaning"] boolValue] == NO) {
+//            UIImageView *rectImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_meaning_rect.png"]];
+//            rectImage.frame = CGRectMake(12, h, 296, label.frame.size.height);
+//            [self.view addSubview:rectImage];
+//            [self.view sendSubviewToBack:rectImage];
+//            
+//            sumHeight = label.frame.origin.y + label.frame.size.height;
+//        }
         
         //////////////////
         
@@ -167,6 +166,14 @@ float sumHeight = 10.0;//10.0;
                 [label sizeToFit];
                 [self.view addSubview:label];
                 sumHeight = label.frame.origin.y + label.frame.size.height;
+                
+                if ([[options objectForKey:@"shouldShowChineseMeaning"] boolValue] == YES) {
+                    UIImageView *rectImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_meaning_rect.png"]];
+                    rectImage.frame = CGRectMake(12, h, 296, sumHeight-h);
+                    [self.view addSubview:rectImage];
+                    [self.view sendSubviewToBack:rectImage];
+                }
+                
             }
             ////////////////////
             if ([[options objectForKey:@"shouldShowEnglishMeaning"] boolValue]) {
@@ -180,14 +187,15 @@ float sumHeight = 10.0;//10.0;
                 
                 [self.view addSubview:textView];
                 sumHeight = textView.frame.origin.y + textView.contentSize.height;
+                
+                if ([[options objectForKey:@"shouldShowEnglishMeaning"] boolValue] == YES) {
+                    UIImageView *rectImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_meaning_rect.png"]];
+                    rectImage.frame = CGRectMake(12, h, 296, sumHeight-h);
+                    [self.view addSubview:rectImage];
+                    [self.view sendSubviewToBack:rectImage];
+                }
             }
             ///////////////////
-            
-            UIImageView *rectImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_meaning_rect.png"]];
-            rectImage.frame = CGRectMake(12, h, 296, sumHeight-h);
-            [self.view addSubview:rectImage];
-            [self.view sendSubviewToBack:rectImage];
-
         }
         else
         {
@@ -205,6 +213,13 @@ float sumHeight = 10.0;//10.0;
                 [label sizeToFit];
                 [self.view addSubview:label];
                 sumHeight = label.frame.origin.y + label.frame.size.height;
+                
+                if ([[options objectForKey:@"shouldShowChineseMeaning"] boolValue] == YES) {
+                    UIImageView *rectImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_meaning_rect.png"]];
+                    rectImage.frame = CGRectMake(12, h, 296, sumHeight-h);
+                    [self.view addSubview:rectImage];
+                    [self.view sendSubviewToBack:rectImage];
+                }
             }
             ////////////////////
             if ([[options objectForKey:@"shouldShowEnglishMeaning"] boolValue]) {
@@ -219,11 +234,12 @@ float sumHeight = 10.0;//10.0;
                 sumHeight = textView.frame.origin.y + textView.contentSize.height;
             }
             ///////////////////
-            
-            UIImageView *rectImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_meaning_rect.png"]];
-            rectImage.frame = CGRectMake(12, h, 296, sumHeight-h);
-            [self.view addSubview:rectImage];
-            [self.view sendSubviewToBack:rectImage];
+            if ([[options objectForKey:@"shouldShowEnglishMeaning"] boolValue] == YES) {
+                UIImageView *rectImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"learning_meaning_rect.png"]];
+                rectImage.frame = CGRectMake(12, h, 296, sumHeight-h);
+                [self.view addSubview:rectImage];
+                [self.view sendSubviewToBack:rectImage];
+            }
         }
         
     }
