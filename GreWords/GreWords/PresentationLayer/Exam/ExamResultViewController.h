@@ -7,8 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExamEvent.h"
+
+@protocol ExamResultProtocal <NSObject>
+
+-(void)reExam;
+-(void)backLHome;
+
+@end
 
 @interface ExamResultViewController : UIViewController
-- (void)addExamResultCardAt:(UIViewController *)buttomController;
+- (void)addExamResultCardAt:(UIViewController *)buttomController withResult:(ExamEvent*)result delegate:(id<ExamResultProtocal>)delegate;
 - (void)removeExamResultCard;
 @end

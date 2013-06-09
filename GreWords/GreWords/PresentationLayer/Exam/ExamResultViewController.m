@@ -53,8 +53,13 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)addExamResultCardAt:(UIViewController *)buttomController
+- (void)addExamResultCardAt:(UIViewController *)buttomController withResult:(ExamEvent*)result delegate:(id<ExamResultProtocal>)delegate;
 {
+    if (_cardController == nil) {
+        _cardController = [[ExamResultCardController alloc] init];
+        _cardController.delegate = delegate;
+        _cardController.aEvent = result;
+    }
     [self addBlurBackground:buttomController];
     [self addBlackToBackground];
     [self addExamResultCardAnimation];
@@ -130,10 +135,6 @@
 
 - (void)addExamResultCardAnimation
 {
-    if (_cardController == nil) {
-        _cardController = [[ExamResultCardController alloc] init];
-    }
-    
     _cardController.view.center = CGPointMake(_screenWidth/2, _screenHeight/2-_cardController.view.frame.size.height);
     [self.view addSubview:_cardController.view];
     

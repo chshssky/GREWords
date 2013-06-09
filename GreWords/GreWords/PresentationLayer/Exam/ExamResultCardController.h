@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ExamEvent.h"
+#import "ExamResultViewController.h"
 
 @interface ExamResultCardController : UIViewController
+
+@property (retain, nonatomic) ExamEvent *aEvent;
+@property (retain, nonatomic) id<ExamResultProtocal> delegate;
 
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *difficultLabel;

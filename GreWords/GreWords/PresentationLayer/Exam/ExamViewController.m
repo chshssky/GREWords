@@ -1052,7 +1052,7 @@
         
         //_note.delegate = self;
     }
-    [_examResultViewController addExamResultCardAt:self];
+    [_examResultViewController addExamResultCardAt:self withResult:nil delegate:self];
     [_examResultViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_examResultViewController.view];
 }
@@ -1375,6 +1375,17 @@
     
     [self dismissModalViewControllerAnimated:YES];
     
+}
+
+#pragma mark -  exam result delegate
+-(void)reExam
+{
+    NSLog(@"reexam");
+}
+
+-(void)backLHome
+{
+    NSLog(@"backLHome");
 }
 
 @end
