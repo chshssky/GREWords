@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GreWords/PresentationLayer/Exam/ExamViewController.m"
-         timestampString = "392439822.329126"
+         timestampString = "392483913.464724"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1483"
-         endingLineNumber = "1483">
+         startingLineNumber = "1487"
+         endingLineNumber = "1487">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -84,11 +84,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GreWords/PresentationLayer/Exam/ExamViewController.m"
-         timestampString = "392439822.329126"
+         timestampString = "392483913.464724"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1042"
-         endingLineNumber = "1042"
+         startingLineNumber = "1045"
+         endingLineNumber = "1045"
          landmarkName = "-wrongButtonPushed:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -181,6 +181,19 @@
          startingLineNumber = "1065"
          endingLineNumber = "1065"
          landmarkName = "-newWordCompleted"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "GreWords/PresentationLayer/Exam/ExamViewController.m"
+         timestampString = "392483913.464724"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "94"
+         endingLineNumber = "94"
+         landmarkName = "-examArr"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
