@@ -398,7 +398,10 @@
     // Customize
     [actionSheet addButtonWithTitle:@"删除并继续" type:CMActionSheetButtonTypeRed block:^{
         [[ConfigurationHelper instance] resetAllData];
-#warning incomplete implementatoin here, should go to init screen. should crash 
+        
+        UIViewController *startScreen = [self.storyboard instantiateInitialViewController];
+        [self presentModalViewController:startScreen animated:NO];
+        
         NSLog(@"Logout");
     }];
     [actionSheet addSeparator];
