@@ -10,6 +10,7 @@
 #import "MyDataStorage.h"
 #import "Word.h"
 #import "GuideImageFactory.h"
+#import "HistoryManager.h"
 
 @implementation ConfigurationHelper
 
@@ -196,12 +197,16 @@ ConfigurationHelper* _configurationHelperInstance = nil;
         return;
     for(int i = 0; i <= 30; i++)
     {
+        if([[HistoryManager instance] currentStage] >= 2)
+        {
+            break;
+        }
         UILocalNotification *localNotif = [[UILocalNotification alloc] init];
         if (localNotif == nil)
             return;
         
         
-        NSDate *fireDay = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * (i+1)];
+        NSDate *fireDay = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * i];
         
         NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
         
@@ -239,7 +244,7 @@ ConfigurationHelper* _configurationHelperInstance = nil;
             return;
         
         
-        NSDate *fireDay = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * (i+1)];
+        NSDate *fireDay = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * i];
         
         NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
         
@@ -280,7 +285,7 @@ ConfigurationHelper* _configurationHelperInstance = nil;
 
 -(void)resetAllData
 {
-    [[MyDataStorage instance] deleteDaatabase];
+    [[MyDataStorage instance] deleteDatabase];
     [self boolPlistSetter:YES key:@"firstTimeRun"];
     //NSAssert(NO, @"function not implemented yet");
 }
