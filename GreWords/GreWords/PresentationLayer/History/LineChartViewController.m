@@ -93,6 +93,13 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    if (!iPhone5) {
+        CGRect frame = self.view.frame;
+        frame.size.height = 337;
+        self.view.frame = frame;
+    }
+    
+    
     if(self.data == nil || self.data.count == 0)
         return;
         
