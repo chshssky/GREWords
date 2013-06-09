@@ -263,7 +263,7 @@
     }
     else if(button.tag == 103)
     {
-        url = @"http://www.weibo.com/u/2075326815";
+        url = @"http://sbhhbs.com";
     }
     else if(button.tag == 104)
     {
