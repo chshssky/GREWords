@@ -12,8 +12,9 @@
 @interface WordTaskGenerator ()
 @property (nonatomic) NSArray *reciteTwolist;
 @property (nonatomic) NSArray *reviewTwolist;
-@property (nonatomic) NSArray *reciteThreelist;
-@property (nonatomic) NSArray *reviewThreelist;
+@property (nonatomic) NSArray *reviewRandom;
+//@property (nonatomic) NSArray *reciteThreelist;
+//@property (nonatomic) NSArray *reviewThreelist;
 @end
 
 @implementation WordTaskGenerator
@@ -36,214 +37,383 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
 
 
 
-- (NSArray *)newWordTask_threeList:(int)day
-{
-    if (_reciteThreelist != nil && _reciteThreelist.count != 0) {
-        return _reciteThreelist;
-    }
-    
-    
-    NSMutableArray *task = [[NSMutableArray alloc] init];
-    [task removeAllObjects];
-    
-    if (day > 10) {
-        return task;
-    }
-    
-    if (day == 10) {
-        for (int k=0; k<2; k++) {
-            for (int i=0; i<10; i++) {
-                [task addObject:[NSNumber numberWithInt:i]];
-            }
-        }
-        if (self.whetherViewNoOrder == YES) {
-            [task addObjectsFromArray:[self noOrderListFrom:0]];
-        }
-        
-        for (int k=0; k<2; k++) {
-            for (int i=10; i<20; i++) {
-                [task addObject:[NSNumber numberWithInt:i]];
-            }
-        }
-        if (self.whetherViewNoOrder == YES) {
-            [task addObjectsFromArray:[self noOrderListFrom:10]];
-        }
-        
-        for (int k=0; k<2; k++) {
-            for (int i=20; i<30; i++) {
-                [task addObject:[NSNumber numberWithInt:i]];
-            }
-        }
-        if (self.whetherViewNoOrder == YES) {
-            [task addObjectsFromArray:[self noOrderListFrom:20]];
-        }
-        
-        for (int k=0; k<2; k++) {
-            for (int i=30; i<40; i++) {
-                [task addObject:[NSNumber numberWithInt:i]];
-            }
-        }
-        if (self.whetherViewNoOrder == YES) {
-            [task addObjectsFromArray:[self noOrderListFrom:30]];
-        }
-        
-        for (int k=0; k<2; k++) {
-            for (int i=40; i<50; i++) {
-                [task addObject:[NSNumber numberWithInt:i]];
-            }
-        }
-        if (self.whetherViewNoOrder == YES) {
-            [task addObjectsFromArray:[self noOrderListFrom:40]];
-        }
-        
-        for (int i=0; i<50; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        
-        
-        //50~72
-        for (int k=0; k<2; k++) {
-            for (int i=50; i<60; i++) {
-                [task addObject:[NSNumber numberWithInt:i]];
-            }
-        }
-        if (self.whetherViewNoOrder == YES) {
-            [task addObjectsFromArray:[self noOrderListFrom:50]];
-        }
-        
-        for (int k=0; k<2; k++) {
-            for (int i=60; i<70; i++) {
-                [task addObject:[NSNumber numberWithInt:i]];
-            }
-        }
-        if (self.whetherViewNoOrder == YES) {
-            [task addObjectsFromArray:[self noOrderListFrom:60]];
-        }
-        
-        for (int k=0; k<2; k++) {
-            for (int i=70; i<73; i++) {
-                [task addObject:[NSNumber numberWithInt:i]];
-            }
-        }
-        
-        return task;
-    }
-    
-    for (int listNumber=0; listNumber<3; listNumber++) {
-        //0~50
-        for (int k=0; k<2; k++) {
-            for (int i=listNumber*100+0; i<listNumber*100+10; i++) {
-                [task addObject:[NSNumber numberWithInt:i]];
-            }
-        }
-        if (self.whetherViewNoOrder == YES) {
-            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+0]];
-        }
-        
-        for (int k=0; k<2; k++) {
-            for (int i=listNumber*100+10; i<listNumber*100+20; i++) {
-                [task addObject:[NSNumber numberWithInt:i]];
-            }
-        }
-        if (self.whetherViewNoOrder == YES) {
-            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+10]];
-        }
-        
-        for (int k=0; k<2; k++) {
-            for (int i=listNumber*100+20; i<listNumber*100+30; i++) {
-                [task addObject:[NSNumber numberWithInt:i]];
-            }
-        }
-        if (self.whetherViewNoOrder == YES) {
-            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+20]];
-        }
-        
-        for (int k=0; k<2; k++) {
-            for (int i=listNumber*100+30; i<listNumber*100+40; i++) {
-                [task addObject:[NSNumber numberWithInt:i]];
-            }
-        }
-        if (self.whetherViewNoOrder == YES) {
-            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+30]];
-        }
-        
-        for (int k=0; k<2; k++) {
-            for (int i=listNumber*100+40; i<listNumber*100+50; i++) {
-                [task addObject:[NSNumber numberWithInt:i]];
-            }
-        }
-        if (self.whetherViewNoOrder == YES) {
-            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+40]];
-        }
-        
-        for (int i=listNumber*100+0; i<listNumber*100+50; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        
-        
-        //50~100
-        for (int k=0; k<2; k++) {
-            for (int i=listNumber*100+50; i<listNumber*100+60; i++) {
-                [task addObject:[NSNumber numberWithInt:i]];
-            }
-        }
-        if (self.whetherViewNoOrder == YES) {
-            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+50]];
-        }
-        
-        for (int k=0; k<2; k++) {
-            for (int i=listNumber*100+60; i<listNumber*100+70; i++) {
-                [task addObject:[NSNumber numberWithInt:i]];
-            }
-        }
-        if (self.whetherViewNoOrder == YES) {
-            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+60]];
-        }
-        
-        for (int k=0; k<2; k++) {
-            for (int i=listNumber*100+70; i<listNumber*100+80; i++) {
-                [task addObject:[NSNumber numberWithInt:i]];
-            }
-        }
-        if (self.whetherViewNoOrder == YES) {
-            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+70]];
-        }
-        
-        for (int k=0; k<2; k++) {
-            for (int i=listNumber*100+80; i<listNumber*100+90; i++) {
-                [task addObject:[NSNumber numberWithInt:i]];
-            }
-        }
-        if (self.whetherViewNoOrder == YES) {
-            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+80]];
-        }
-        
-        for (int k=0; k<2; k++) {
-            for (int i=listNumber*100+90; i<listNumber*100+100; i++) {
-                [task addObject:[NSNumber numberWithInt:i]];
-            }
-        }
-        if (self.whetherViewNoOrder == YES) {
-            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+90]];
-        }
-        
-        for (int i=listNumber*100+50; i<listNumber*100+100; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        
-        for (int i=listNumber*100+0; i<listNumber*100+100; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }
-    
-    for (int i=0; i<task.count; i++) {
-        [task replaceObjectAtIndex:i withObject:[NSNumber numberWithInt:day*300+[[task objectAtIndex:i] intValue]]];
-    }
-    
-    _reciteThreelist = task;
-    return task;
-}
+//- (NSArray *)newWordTask_threeList:(int)day
+//{
+//    if (_reciteThreelist != nil && _reciteThreelist.count != 0) {
+//        return _reciteThreelist;
+//    }
+//    
+//    
+//    NSMutableArray *task = [[NSMutableArray alloc] init];
+//    [task removeAllObjects];
+//    
+//    if (day > 10) {
+//        return task;
+//    }
+//    
+//    if (day == 10) {
+//        for (int k=0; k<2; k++) {
+//            for (int i=0; i<10; i++) {
+//                [task addObject:[NSNumber numberWithInt:i]];
+//            }
+//        }
+//        if (self.whetherViewNoOrder == YES) {
+//            [task addObjectsFromArray:[self noOrderListFrom:0]];
+//        }
+//        
+//        for (int k=0; k<2; k++) {
+//            for (int i=10; i<20; i++) {
+//                [task addObject:[NSNumber numberWithInt:i]];
+//            }
+//        }
+//        if (self.whetherViewNoOrder == YES) {
+//            [task addObjectsFromArray:[self noOrderListFrom:10]];
+//        }
+//        
+//        for (int k=0; k<2; k++) {
+//            for (int i=20; i<30; i++) {
+//                [task addObject:[NSNumber numberWithInt:i]];
+//            }
+//        }
+//        if (self.whetherViewNoOrder == YES) {
+//            [task addObjectsFromArray:[self noOrderListFrom:20]];
+//        }
+//        
+//        for (int k=0; k<2; k++) {
+//            for (int i=30; i<40; i++) {
+//                [task addObject:[NSNumber numberWithInt:i]];
+//            }
+//        }
+//        if (self.whetherViewNoOrder == YES) {
+//            [task addObjectsFromArray:[self noOrderListFrom:30]];
+//        }
+//        
+//        for (int k=0; k<2; k++) {
+//            for (int i=40; i<50; i++) {
+//                [task addObject:[NSNumber numberWithInt:i]];
+//            }
+//        }
+//        if (self.whetherViewNoOrder == YES) {
+//            [task addObjectsFromArray:[self noOrderListFrom:40]];
+//        }
+//        
+//        for (int i=0; i<50; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        
+//        
+//        //50~72
+//        for (int k=0; k<2; k++) {
+//            for (int i=50; i<60; i++) {
+//                [task addObject:[NSNumber numberWithInt:i]];
+//            }
+//        }
+//        if (self.whetherViewNoOrder == YES) {
+//            [task addObjectsFromArray:[self noOrderListFrom:50]];
+//        }
+//        
+//        for (int k=0; k<2; k++) {
+//            for (int i=60; i<70; i++) {
+//                [task addObject:[NSNumber numberWithInt:i]];
+//            }
+//        }
+//        if (self.whetherViewNoOrder == YES) {
+//            [task addObjectsFromArray:[self noOrderListFrom:60]];
+//        }
+//        
+//        for (int k=0; k<2; k++) {
+//            for (int i=70; i<73; i++) {
+//                [task addObject:[NSNumber numberWithInt:i]];
+//            }
+//        }
+//        
+//        return task;
+//    }
+//    
+//    for (int listNumber=0; listNumber<3; listNumber++) {
+//        //0~50
+//        for (int k=0; k<2; k++) {
+//            for (int i=listNumber*100+0; i<listNumber*100+10; i++) {
+//                [task addObject:[NSNumber numberWithInt:i]];
+//            }
+//        }
+//        if (self.whetherViewNoOrder == YES) {
+//            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+0]];
+//        }
+//        
+//        for (int k=0; k<2; k++) {
+//            for (int i=listNumber*100+10; i<listNumber*100+20; i++) {
+//                [task addObject:[NSNumber numberWithInt:i]];
+//            }
+//        }
+//        if (self.whetherViewNoOrder == YES) {
+//            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+10]];
+//        }
+//        
+//        for (int k=0; k<2; k++) {
+//            for (int i=listNumber*100+20; i<listNumber*100+30; i++) {
+//                [task addObject:[NSNumber numberWithInt:i]];
+//            }
+//        }
+//        if (self.whetherViewNoOrder == YES) {
+//            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+20]];
+//        }
+//        
+//        for (int k=0; k<2; k++) {
+//            for (int i=listNumber*100+30; i<listNumber*100+40; i++) {
+//                [task addObject:[NSNumber numberWithInt:i]];
+//            }
+//        }
+//        if (self.whetherViewNoOrder == YES) {
+//            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+30]];
+//        }
+//        
+//        for (int k=0; k<2; k++) {
+//            for (int i=listNumber*100+40; i<listNumber*100+50; i++) {
+//                [task addObject:[NSNumber numberWithInt:i]];
+//            }
+//        }
+//        if (self.whetherViewNoOrder == YES) {
+//            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+40]];
+//        }
+//        
+//        for (int i=listNumber*100+0; i<listNumber*100+50; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        
+//        
+//        //50~100
+//        for (int k=0; k<2; k++) {
+//            for (int i=listNumber*100+50; i<listNumber*100+60; i++) {
+//                [task addObject:[NSNumber numberWithInt:i]];
+//            }
+//        }
+//        if (self.whetherViewNoOrder == YES) {
+//            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+50]];
+//        }
+//        
+//        for (int k=0; k<2; k++) {
+//            for (int i=listNumber*100+60; i<listNumber*100+70; i++) {
+//                [task addObject:[NSNumber numberWithInt:i]];
+//            }
+//        }
+//        if (self.whetherViewNoOrder == YES) {
+//            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+60]];
+//        }
+//        
+//        for (int k=0; k<2; k++) {
+//            for (int i=listNumber*100+70; i<listNumber*100+80; i++) {
+//                [task addObject:[NSNumber numberWithInt:i]];
+//            }
+//        }
+//        if (self.whetherViewNoOrder == YES) {
+//            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+70]];
+//        }
+//        
+//        for (int k=0; k<2; k++) {
+//            for (int i=listNumber*100+80; i<listNumber*100+90; i++) {
+//                [task addObject:[NSNumber numberWithInt:i]];
+//            }
+//        }
+//        if (self.whetherViewNoOrder == YES) {
+//            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+80]];
+//        }
+//        
+//        for (int k=0; k<2; k++) {
+//            for (int i=listNumber*100+90; i<listNumber*100+100; i++) {
+//                [task addObject:[NSNumber numberWithInt:i]];
+//            }
+//        }
+//        if (self.whetherViewNoOrder == YES) {
+//            [task addObjectsFromArray:[self noOrderListFrom:listNumber*100+90]];
+//        }
+//        
+//        for (int i=listNumber*100+50; i<listNumber*100+100; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        
+//        for (int i=listNumber*100+0; i<listNumber*100+100; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }
+//    
+//    for (int i=0; i<task.count; i++) {
+//        [task replaceObjectAtIndex:i withObject:[NSNumber numberWithInt:day*300+[[task objectAtIndex:i] intValue]]];
+//    }
+//    
+//    _reciteThreelist = task;
+//    return task;
+//}
+//- (NSArray *)reviewTask_threeList:(int)day
+//{
+//    if (_reviewThreelist != nil && _reviewThreelist.count != 0) {
+//        return _reviewThreelist;
+//    }
+//    
+//    NSMutableArray *task = [[NSMutableArray alloc] init];
+//    
+//    
+//    if (day == 0) {
+//        for (int i=0; i<300; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 1) {
+//        for (int i=0; i<600; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 2) {
+//        for (int i=300; i<900; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 3) {
+//        for (int i=0; i<300; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        for (int i=900; i<1200; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 4) {
+//        for (int i=300; i<600; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        for (int i=900; i<1500; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 5) {
+//        for (int i=600; i<900; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        for (int i=1200; i<1800; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 6) {
+//        for (int i=900; i<1200; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        for (int i=1500; i<2100; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 7) {
+//        for (int i=0; i<300; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        for (int i=1200; i<1500; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        for (int i=1800; i<2400; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 8) {
+//        for (int i=300; i<600; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        for (int i=1500; i<1800; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        for (int i=2100; i<2700; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 9) {
+//        for (int i=600; i<900; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        for (int i=1800; i<2100; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        for (int i=2400; i<3000; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 10) {
+//        for (int i=900; i<1200; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        for (int i=2100; i<2400; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        for (int i=2800; i<3072; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 11) {
+//        for (int i=1200; i<1500; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        for (int i=2400; i<2700; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        for (int i=3000; i<3072; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 12) {
+//        for (int i=1500; i<1800; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        for (int i=2700; i<3072; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 13) {
+//        for (int i=1800; i<2100; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        for (int i=3000; i<3072; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 14) {
+//        for (int i=0; i<300; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        for (int i=2100; i<2400; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 15) {
+//        for (int i=300; i<600; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        for (int i=2400; i<2700; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 16) {
+//        for (int i=600; i<900; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//        for (int i=2700; i<3072; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 17) {
+//        for (int i=900; i<1200; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 18) {
+//        for (int i=1200; i<1500; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 19) {
+//        for (int i=1500; i<1800; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 20) {
+//        for (int i=1800; i<2100; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 21) {
+//        for (int i=2100; i<2400; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 22) {
+//        for (int i=2400; i<2700; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else if(day == 23) {
+//        for (int i=2700; i<3072; i++) {
+//            [task addObject:[NSNumber numberWithInt:i]];
+//        }
+//    }else{
+//        //do nothing
+//    }
+//    _reviewThreelist = task;
+//    return task;
+//}
 
+#pragma mark - circle 1 and 2 and 3 task
 - (NSArray *)newWordTask_twoList:(int)day
 {
     if (_reciteTwolist != nil && _reciteTwolist.count != 0) {
@@ -468,175 +638,6 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
         [tempArray removeObjectAtIndex:index];
     }
     return resultArray;
-}
-
-- (NSArray *)reviewTask_threeList:(int)day
-{
-    if (_reviewThreelist != nil && _reviewThreelist.count != 0) {
-        return _reviewThreelist;
-    }
-    
-    NSMutableArray *task = [[NSMutableArray alloc] init];
-    
-    
-    if (day == 0) {
-        for (int i=0; i<300; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 1) {
-        for (int i=0; i<600; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 2) {
-        for (int i=300; i<900; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 3) {
-        for (int i=0; i<300; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        for (int i=900; i<1200; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 4) {
-        for (int i=300; i<600; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        for (int i=900; i<1500; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 5) {
-        for (int i=600; i<900; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        for (int i=1200; i<1800; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 6) {
-        for (int i=900; i<1200; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        for (int i=1500; i<2100; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 7) {
-        for (int i=0; i<300; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        for (int i=1200; i<1500; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        for (int i=1800; i<2400; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 8) {
-        for (int i=300; i<600; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        for (int i=1500; i<1800; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        for (int i=2100; i<2700; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 9) {
-        for (int i=600; i<900; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        for (int i=1800; i<2100; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        for (int i=2400; i<3000; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 10) {
-        for (int i=900; i<1200; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        for (int i=2100; i<2400; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        for (int i=2800; i<3072; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 11) {
-        for (int i=1200; i<1500; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        for (int i=2400; i<2700; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        for (int i=3000; i<3072; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 12) {
-        for (int i=1500; i<1800; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        for (int i=2700; i<3072; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 13) {
-        for (int i=1800; i<2100; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        for (int i=3000; i<3072; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 14) {
-        for (int i=0; i<300; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        for (int i=2100; i<2400; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 15) {
-        for (int i=300; i<600; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        for (int i=2400; i<2700; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 16) {
-        for (int i=600; i<900; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-        for (int i=2700; i<3072; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 17) {
-        for (int i=900; i<1200; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 18) {
-        for (int i=1200; i<1500; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 19) {
-        for (int i=1500; i<1800; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 20) {
-        for (int i=1800; i<2100; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 21) {
-        for (int i=2100; i<2400; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 22) {
-        for (int i=2400; i<2700; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else if(day == 23) {
-        for (int i=2700; i<3072; i++) {
-            [task addObject:[NSNumber numberWithInt:i]];
-        }
-    }else{
-        //do nothing
-    }
-    _reviewThreelist = task;
-    return task;
 }
 
 - (NSArray *)reviewTask_twoList:(int)day
@@ -915,6 +916,37 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
     return task;
 }
 
+#pragma mark - circle 4 task
+- (NSArray *)reviewTask_fourthCircle
+{
+    if (_reviewRandom != nil && _reviewRandom.count !=0) {
+        return _reviewRandom;
+    }
+    
+    NSMutableArray *randomTask = [[NSMutableArray alloc] init];
+    for (int i=0; i<500; i++) {
+        int j = arc4random() % 3073;
+        [randomTask addObject:[[WordHelper instance] wordWithID:j].wordText];
+    }
+    
+    _reviewRandom = randomTask;
+    
+    return randomTask;
+}
+
+
+#pragma mark - clear task
+- (void)clearTask
+{
+    //_reviewThreelist = nil;
+    //_reciteThreelist = nil;
+    _reviewTwolist = nil;
+    _reviewTwolist = nil;
+    _reviewRandom = nil;
+}
+
+
+#pragma mark - Test task
 - (NSArray *)testTaskWithOptions:(NSDictionary *)examInfo whetherWithAllWords:(BOOL)allWords
 {
     NSMutableArray *task = [[NSMutableArray alloc] init];
@@ -1009,14 +1041,6 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
         [newArray addObject:randomWord];
     }
     return newArray;
-}
-
-- (void)clearTask
-{
-    _reviewThreelist = nil;
-    _reciteThreelist = nil;
-    _reviewTwolist = nil;
-    _reviewTwolist = nil;
 }
 
 

@@ -17,5 +17,5 @@
 
 - (void)saveContext;
 + (MyDataStorage*)instance;
-- (void)deleteDaatabase;
+- (void)deleteDatabase;
 @end

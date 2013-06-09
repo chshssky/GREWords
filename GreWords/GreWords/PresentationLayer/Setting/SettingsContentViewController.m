@@ -16,7 +16,7 @@
 #import "NSDate-Utilities.h"
 #import "NSAttributedString+Attributes.h"
 
-#define RECOMMAND_TEXT @"小崔崔~~~"
+#define RECOMMAND_TEXT @"我刚刚用了#好G友#背陈琦和周树林老师的《再要你命3000》~方便、简单、实用、智能。同时使用杨鹏记忆法记忆单词高效快捷~推荐你们也使用哦~下载地址：https://itunes.apple.com/cn/app/haog-you/id659880998?ls=1&mt=8"
 
 @interface SettingsContentViewController ()
 {
@@ -247,6 +247,32 @@
 }
 
 #pragma mark - About Methods
+
+- (IBAction)headPressed:(id)sender
+{
+    UIButton *button = sender;
+    NSString* url = nil;
+    
+    if(button.tag == 101)
+    {
+        url = @"http://www.chshssky.com";
+    }
+    else if(button.tag == 102)
+    {
+        url = @"";
+    }
+    else if(button.tag == 103)
+    {
+        url = @"http://sbhhbs.com";
+    }
+    else if(button.tag == 104)
+    {
+        url = @"http://www.weibo.com/u/2120972133";
+    }
+    if(url)
+        [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];
+}
+
 -(IBAction)sendSuggestionEmail
 {
     if (![MFMailComposeViewController canSendMail]) {
@@ -339,9 +365,7 @@
     SocialShareModal *socialModal = [[SocialShareModal alloc] init];
     socialModal.targetViewController = self;
     socialModal.postText = RECOMMAND_TEXT;
-    
-    //UIImage *image = [UIImage imageNamed:@"ads.png"];
-    //socialModal.postImageList = @[image];
+    socialModal.postImageList = @[[UIImage imageNamed:@"ads.png"]];
     [socialModal sendWeiboMessage];
 }
 
@@ -400,7 +424,10 @@
     // Customize
     [actionSheet addButtonWithTitle:@"删除并继续" type:CMActionSheetButtonTypeRed block:^{
         [[ConfigurationHelper instance] resetAllData];
-#warning incomplete implementatoin here, should go to init screen. should crash 
+        
+        UIViewController *startScreen = [self.storyboard instantiateInitialViewController];
+        [self presentModalViewController:startScreen animated:NO];
+        
         NSLog(@"Logout");
     }];
     [actionSheet addSeparator];

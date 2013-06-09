@@ -742,15 +742,15 @@
 		<array>
 			<dict>
 				<key>content</key>
-				<string>上面的词+in/im/un</string>
-				<key>key</key>
-				<string>不可感知的</string>
-			</dict>
-			<dict>
-				<key>content</key>
 				<string>perceptible appreciable apprehensible detectable discernible distinguishable palpable(palatable 好吃的) sensible</string>
 				<key>key</key>
 				<string>可感知的</string>
+			</dict>
+			<dict>
+				<key>content</key>
+				<string>上面的词+in/im/un</string>
+				<key>key</key>
+				<string>不可感知的</string>
 			</dict>
 		</array>
 		<key>key</key>

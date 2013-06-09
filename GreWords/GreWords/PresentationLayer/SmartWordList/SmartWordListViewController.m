@@ -335,9 +335,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray *arr = nil;
-    if(self.type == SmartListType_Note)
-        return;
-        
+            
     if (tableView == self.searchDisplayController.searchResultsTableView)
 	{
         arr = filteredRetractableControllers;
@@ -346,9 +344,17 @@
 	{
         arr = retractableControllers;
     }
-    GCRetractableSectionController* sectionController = [arr objectAtIndex:indexPath.section];
+    SmartWordListSectionController* sectionController = [arr objectAtIndex:indexPath.section];
     //[self performSelector:@selector(addButtomTexture) withObject:nil afterDelay:0.3];
-    
+    if(self.type == SmartListType_Note)
+    {
+        int wordID = sectionController.wordID;
+        WordEntity *word = [[WordHelper instance] wordWithID:wordID];
+        [NSNotificationCenter postShowNoteForWordNotification:word];
+        return;
+    }
+        
+
     if(indexPath.row != 0)
         return;
     

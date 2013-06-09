@@ -54,7 +54,7 @@ MyDataStorage* _datainstance;
 }
 
 
-- (void)deleteDaatabase
+- (void)deleteDatabase
 {
     NSError *error;
     NSArray *stores = [self.persistentStoreCoordinator persistentStores];
@@ -63,6 +63,8 @@ MyDataStorage* _datainstance;
         [self.persistentStoreCoordinator removePersistentStore:store error:&error];
         [[NSFileManager defaultManager] removeItemAtPath:store.URL.path error:nil];
     }
+    _datainstance = nil;
+
 }
 
 
