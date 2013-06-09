@@ -11,5 +11,6 @@
 @interface ExamEvent : BaseEvent
 
 @property (nonatomic) int difficulty;
+@property (nonatomic) int index;
 
 @end
