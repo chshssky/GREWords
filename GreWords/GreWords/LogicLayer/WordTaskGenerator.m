@@ -13,6 +13,7 @@
 @property (nonatomic) NSArray *reciteTwolist;
 @property (nonatomic) NSArray *reviewTwolist;
 @property (nonatomic) NSArray *reviewRandom;
+@property (nonatomic) int theNumberOfNewWordToday_twolist;
 //@property (nonatomic) NSArray *reciteThreelist;
 //@property (nonatomic) NSArray *reviewThreelist;
 @end
@@ -412,19 +413,30 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
 //    _reviewThreelist = task;
 //    return task;
 //}
+- (int)theNumberOfNewWordToday_twolist:(int)day
+{
+    if (day < 15 && day >= 0) {
+        return 200;
+    }else if (day == 15){
+        return 273;
+    }else{
+        return 0;
+    }
+}
+
 
 #pragma mark - circle 1 and 2 and 3 task
 - (NSArray *)newWordTask_twoList:(int)day
 {
-    if (_reciteTwolist != nil && _reciteTwolist.count != 0) {
-        return _reciteTwolist;
-    }
-    
     NSMutableArray *task = [[NSMutableArray alloc] init];
     [task removeAllObjects];
     
     if (day >15) {
         return task;
+    }
+    
+    if (_reciteTwolist != nil && _reciteTwolist.count != 0) {
+        return _reciteTwolist;
     }
     
     if (day == 15) {

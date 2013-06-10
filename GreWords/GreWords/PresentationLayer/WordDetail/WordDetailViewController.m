@@ -1001,7 +1001,6 @@
 
 - (IBAction)wrongButtonPushed:(id)sender {
     [self viewWillAppear:YES];
-
     WordEntity *word;
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
         [TaskStatus instance].rEvent.wrongWordCount ++;
