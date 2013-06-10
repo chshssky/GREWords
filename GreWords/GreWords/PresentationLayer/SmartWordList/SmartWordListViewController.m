@@ -34,7 +34,8 @@
         NSLog(@"Homo List Don't support add word");
         return;
     }
-    
+    if([_array indexOfObject:aWord] != NSNotFound)
+        return;
     
     _array = [_array arrayByAddingObject:aWord];
     SmartWordListSectionController* sectionController = [[SmartWordListSectionController alloc] initWithViewController:self];

@@ -437,10 +437,10 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="learning_backgournd_blank.png">{320, 548}</string>
-			<string key="learning_downCover2.png">{320, 54}</string>
-			<string key="learning_sound.png">{19, 17}</string>
-			<string key="learning_upCover.png">{320, 175}</string>
+			<string key="learning_backgournd_blank.png">{16, 16}</string>
+			<string key="learning_downCover2.png">{16, 16}</string>
+			<string key="learning_sound.png">{16, 16}</string>
+			<string key="learning_upCover.png">{16, 16}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>

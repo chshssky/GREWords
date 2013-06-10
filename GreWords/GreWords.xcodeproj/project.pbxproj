@@ -351,6 +351,14 @@
 		E41FF5BC1740E08A0078E738 /* words list_note@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41FF5941740E08A0078E738 /* words list_note@2x.png */; };
 		E41FF5BD1740E08A0078E738 /* words list_yellow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41FF5951740E08A0078E738 /* words list_yellow@2x.png */; };
 		E41FF5BE1740E08A0078E738 /* words list_bg_buttom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E41FF5961740E08A0078E738 /* words list_bg_buttom@2x.png */; };
+		E4236DA017654CDB0035F980 /* exam3.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4236D9C17654CDB0035F980 /* exam3.5@2x.png */; };
+		E4236DA117654CDB0035F980 /* exam4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4236D9D17654CDB0035F980 /* exam4@2x.png */; };
+		E4236DA217654CDB0035F980 /* noteslide3.5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4236D9E17654CDB0035F980 /* noteslide3.5@2x.png */; };
+		E4236DA317654CDB0035F980 /* noteslide4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4236D9F17654CDB0035F980 /* noteslide4@2x.png */; };
+		E4236DA917654D4B0035F980 /* exam3.5.png in Resources */ = {isa = PBXBuildFile; fileRef = E4236DA517654D4B0035F980 /* exam3.5.png */; };
+		E4236DAA17654D4B0035F980 /* exam4.png in Resources */ = {isa = PBXBuildFile; fileRef = E4236DA617654D4B0035F980 /* exam4.png */; };
+		E4236DAB17654D4B0035F980 /* noteslide3.5.png in Resources */ = {isa = PBXBuildFile; fileRef = E4236DA717654D4B0035F980 /* noteslide3.5.png */; };
+		E4236DAC17654D4B0035F980 /* noteslide4.png in Resources */ = {isa = PBXBuildFile; fileRef = E4236DA817654D4B0035F980 /* noteslide4.png */; };
 		E423DEC9174A3EB00079CB60 /* NSNotificationCenter+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = E423DEC8174A3EB00079CB60 /* NSNotificationCenter+Addition.m */; };
 		E423DECC174A77280079CB60 /* NSDate-Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = E423DECB174A77280079CB60 /* NSDate-Utilities.m */; };
 		E43908C8174108A000E36078 /* UIImage+ColorImage.m in Sources */ = {isa = PBXBuildFile; fileRef = E43908C5174108A000E36078 /* UIImage+ColorImage.m */; };
@@ -4207,6 +4215,14 @@
 		E41FF5941740E08A0078E738 /* words list_note@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "words list_note@2x.png"; sourceTree = "<group>"; };
 		E41FF5951740E08A0078E738 /* words list_yellow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "words list_yellow@2x.png"; sourceTree = "<group>"; };
 		E41FF5961740E08A0078E738 /* words list_bg_buttom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "words list_bg_buttom@2x.png"; sourceTree = "<group>"; };
+		E4236D9C17654CDB0035F980 /* exam3.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exam3.5@2x.png"; sourceTree = "<group>"; };
+		E4236D9D17654CDB0035F980 /* exam4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "exam4@2x.png"; sourceTree = "<group>"; };
+		E4236D9E17654CDB0035F980 /* noteslide3.5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noteslide3.5@2x.png"; sourceTree = "<group>"; };
+		E4236D9F17654CDB0035F980 /* noteslide4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noteslide4@2x.png"; sourceTree = "<group>"; };
+		E4236DA517654D4B0035F980 /* exam3.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exam3.5.png; sourceTree = "<group>"; };
+		E4236DA617654D4B0035F980 /* exam4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exam4.png; sourceTree = "<group>"; };
+		E4236DA717654D4B0035F980 /* noteslide3.5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noteslide3.5.png; sourceTree = "<group>"; };
+		E4236DA817654D4B0035F980 /* noteslide4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noteslide4.png; sourceTree = "<group>"; };
 		E423DEC7174A3EB00079CB60 /* NSNotificationCenter+Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+Addition.h"; sourceTree = "<group>"; };
 		E423DEC8174A3EB00079CB60 /* NSNotificationCenter+Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNotificationCenter+Addition.m"; sourceTree = "<group>"; };
 		E423DECA174A77280079CB60 /* NSDate-Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate-Utilities.h"; sourceTree = "<group>"; };
@@ -8034,6 +8050,14 @@
 		E404ADEA1754DA1800004FDC /* Guide */ = {
 			isa = PBXGroup;
 			children = (
+				E4236DA517654D4B0035F980 /* exam3.5.png */,
+				E4236DA617654D4B0035F980 /* exam4.png */,
+				E4236DA717654D4B0035F980 /* noteslide3.5.png */,
+				E4236DA817654D4B0035F980 /* noteslide4.png */,
+				E4236D9C17654CDB0035F980 /* exam3.5@2x.png */,
+				E4236D9D17654CDB0035F980 /* exam4@2x.png */,
+				E4236D9E17654CDB0035F980 /* noteslide3.5@2x.png */,
+				E4236D9F17654CDB0035F980 /* noteslide4@2x.png */,
 				E404ADEB1754DA1800004FDC /* dashboard3.5.png */,
 				E404ADEC1754DA1800004FDC /* dashboard3.5@2x.png */,
 				E404ADED1754DA1800004FDC /* dashboard4.png */,
@@ -12257,7 +12281,7 @@
 			attributes = {
 				CLASSPREFIX = GreWords;
 				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = "Cui Hao";
+				ORGANIZATIONNAME = TAC;
 			};
 			buildConfigurationList = 3F70EC821701CADB00327770 /* Build configuration list for PBXProject "GreWords" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -15906,6 +15930,14 @@
 				E47E9254176507DB000868CE /* Settings_about_xby@2x.png in Resources */,
 				3FB2C3CE17654E2300FB0AD5 /* Main menu_text_allFinished.png in Resources */,
 				3FB2C3CF17654E2300FB0AD5 /* Main menu_text_allFinished@2x.png in Resources */,
+				E4236DA017654CDB0035F980 /* exam3.5@2x.png in Resources */,
+				E4236DA117654CDB0035F980 /* exam4@2x.png in Resources */,
+				E4236DA217654CDB0035F980 /* noteslide3.5@2x.png in Resources */,
+				E4236DA317654CDB0035F980 /* noteslide4@2x.png in Resources */,
+				E4236DA917654D4B0035F980 /* exam3.5.png in Resources */,
+				E4236DAA17654D4B0035F980 /* exam4.png in Resources */,
+				E4236DAB17654D4B0035F980 /* noteslide3.5.png in Resources */,
+				E4236DAC17654D4B0035F980 /* noteslide4.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

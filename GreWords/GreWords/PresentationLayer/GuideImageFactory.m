@@ -72,10 +72,19 @@
                        @{
                            @"image3.5" : @"rollback3.5.png",
                            @"image4" : @"rollback4.png"
+                           },
+                   @"note":
+                       @{
+                           @"image3.5" : @"noteslide3.5.png",
+                           @"image4" : @"noteslide4.png"
+                           },
+
+                   @"exam":
+                       @{
+                           @"image3.5" : @"exam3.5.png",
+                           @"image4" : @"exam4.png"
                            }
-
-
-                
+  
                  };
     }
     return self;
@@ -110,6 +119,12 @@
             break;
         case GuideType_Rollback:
             return @"rollback";
+            break;
+        case GuideType_Note:
+            return @"note";
+            break;
+        case GuideType_Exam:
+            return @"exam";
             break;
         default:
             break;
@@ -148,6 +163,11 @@
     {
         [[ConfigurationHelper instance] setGuideForTypeHasShown:sender.view.tag value:YES];
         [sender.view removeFromSuperview];
+        if([self.oneTimeDelegate respondsToSelector:@selector(guideEnded)])
+        {
+            [self.oneTimeDelegate guideEnded];
+            self.oneTimeDelegate = nil;
+        }
     }];
 }
 
