@@ -11,4 +11,7 @@
 @interface TestSelectorViewController : UIViewController
 - (void)addTestSelectorAt:(UIViewController *)buttomController;
 - (void)removeTestSelector;
+
+- (void)ChangeButtonTextWith:(NSString *)text;
+
 @end

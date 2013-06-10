@@ -101,6 +101,11 @@
     [NSNotificationCenter postStartExamNotification:examInfo];
 }
 
+- (void)ChangeTestOfBeginTestLabelWith:(NSString *)text
+{
+    self.beginTestLabel.text = text;
+}
+
 - (void)viewDidUnload {
     [self setTenMinButton:nil];
     [self setThirtyMinButton:nil];
@@ -109,6 +114,7 @@
     [self setMediumButton:nil];
     [self setHardButton:nil];
     [self setStartButton:nil];
+    [self setBeginTestLabel:nil];
     [super viewDidUnload];
 }
 @end

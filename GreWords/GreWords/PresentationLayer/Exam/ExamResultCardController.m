@@ -37,15 +37,15 @@
     self.timeLabel.text = [NSString stringWithFormat:@"%d分钟",(int)(self.event.duration / 60.0)];
     if(self.event.difficulty == 0)
     {
-        self.timeLabel.text = @"简单";
+        self.difficultLabel.text = @"简单";
     }
     else if(self.event.difficulty == 1)
     {
-        self.timeLabel.text = @"中等";
+        self.difficultLabel.text = @"中等";
     }
     else if(self.event.difficulty == 2)
     {
-        self.timeLabel.text = @"困难";
+        self.difficultLabel.text = @"困难";
     }
     // Do any additional setup after loading the view from its nib.
 }

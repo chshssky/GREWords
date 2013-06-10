@@ -283,4 +283,10 @@
     [self removeTestSelector];
 }
 
+- (void)ChangeButtonTextWith:(NSString *)text
+{
+    [self.selectorController ChangeTestOfBeginTestLabelWith:text];
+}
+
+
 @end

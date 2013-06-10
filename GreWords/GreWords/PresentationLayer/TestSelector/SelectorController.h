@@ -8,4 +8,8 @@
 
 #import <UIKit/UIKit.h>
 @interface SelectorController : UIViewController
+@property (weak, nonatomic) IBOutlet UILabel *beginTestLabel;
+
+- (void)ChangeTestOfBeginTestLabelWith:(NSString *)text;
+
 @end

@@ -31,6 +31,7 @@
 {
     UIImageView *guideImageView;
 }
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIImageView *backImage;
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *DownImage;
@@ -88,11 +89,12 @@
 
 - (NSArray *)examArr
 {
-    NSLog(@"index:%d / count:%d", [TaskStatus instance].eEvent.index, [_examArr count]);
+    //NSLog(@"index:%d / count:%d", [TaskStatus instance].eEvent.index, [_examArr count]);
     if (_examArr == nil) {
         _examArr = [[WordTaskGenerator instance] testTaskWithOptions:self.examInfo whetherWithAllWords:NO];
     } else if ([TaskStatus instance].eEvent.index + 1 == [_examArr count]) {
         _examArr = [[WordTaskGenerator instance] testTaskWithOptions:self.examInfo whetherWithAllWords:NO];
+        [TaskStatus instance].eEvent.index = 1;
     }
     return _examArr;
 }
@@ -105,6 +107,61 @@
     }
     return self;
 }
+
+- (void)loadWordAgain:(int)index
+{
+    // Do any additional setup after loading the view from its nib.
+    WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
+    /*
+     key: shouldShowWord                default:[NSNumber numberWithBool:YES]
+     key: shouldShowPhonetic            default:[NSNumber numberWithBool:YES]
+     key: shouldShowMeaning             default:[NSNumber numberWithBool:YES]
+     key: shouldShowSampleSentence      default:[NSNumber numberWithBool:YES]
+     key: shouldShowSynonyms            default:[NSNumber numberWithBool:YES]
+     key: shouldShowAntonyms            default:[NSNumber numberWithBool:YES]
+     this maybe nil to apply all default options
+     */
+    
+    self.added_height = 0;
+    NSDictionary *option = @{@"shouldShowChineseMeaning":@YES,
+                             @"shouldShowEnglishMeaning":@YES,
+                             @"shouldShowSynonyms":@YES,
+                             @"shouldShowAntonyms":@YES,
+                             @"shouldShowSampleSentence":@YES};
+    WordEntity *word = [self.examArr objectAtIndex:index];
+    
+    [vc displayWord:word withOption:option];
+    //[vc displayWord:[[WordHelper instance] wordWithID:wordID] withOption:option];
+    
+    self.wordLabel.text = word.wordText;
+    self.pronounceLabel.text = word.data[@"phonetic"];
+    self.WordParaphraseView.delegate = self;
+    self.WordParaphraseView.contentSize = vc.view.frame.size;
+    
+    NSArray* subviews = [self.WordParaphraseView subviews];
+    for(UIView* v in subviews)
+    {
+        [v removeFromSuperview];
+    }
+    
+    if(self.WordParaphraseView.contentSize.height <= self.WordParaphraseView.frame.size.height)
+    {
+        self.added_height = self.WordParaphraseView.frame.size.height - self.WordParaphraseView.contentSize.height;
+        CGSize size = self.WordParaphraseView.contentSize;
+        size.height = self.WordParaphraseView.frame.size.height + 1;
+        self.WordParaphraseView.contentSize = size;
+        
+    }
+    
+    [self.WordParaphraseView addSubview:vc.view];
+    [self.WordParaphraseView scrollsToTop];
+    
+    [[WordSpeaker instance] readWord:self.wordLabel.text];
+    
+    //[self DontShowMeaning];
+    [TaskStatus instance].eEvent.index ++;
+}
+
 
 - (void)loadWord:(int)index
 {
@@ -171,6 +228,7 @@
     if ([[now laterDate:[[TaskStatus instance].eEvent.startTime dateByAddingTimeInterval:[TaskStatus instance].eEvent.duration]] isEqualToDate:now]) {
 
         [self examResultShow];
+        [self.timer invalidate];
     }
 }
 
@@ -211,6 +269,9 @@
 
 -(void)viewWillAppear:(BOOL)animated
 {
+    if (!iPhone5) {
+        [self.backgroundImage setImage:[UIImage imageNamed:@"learning_backgournd_blank_mini.png"]];
+    }
     
     [self.backButton.superview bringSubviewToFront:self.backButton];
     [self.timeImage setImage:[UIImage imageNamed:nil]];
@@ -227,34 +288,34 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [self.timer fire];
-    if (self.examArr == nil) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"无法测试" message:[NSString stringWithFormat:@"由于您的智能词表里的词数少于30，无法测试"] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
-        [alert setAlertViewStyle:UIAlertViewStyleDefault];
-        
-        [alert show];
-    
-
-        GreWordsViewController *superController =  (GreWordsViewController *)[self presentingViewController];
-        
-        UIImageView *blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        [blackView setBackgroundColor:[UIColor blackColor]];
-        blackView.alpha = 0;
-        [superController.view addSubview:blackView];
-        
-        
-        superController.whetherAllowViewFrameChanged = YES;
-        CABasicAnimation *opacityAnim_black = [CABasicAnimation animationWithKeyPath:@"opacity"];
-        opacityAnim_black.fromValue = [NSNumber numberWithFloat:0.7];
-        opacityAnim_black.toValue = [NSNumber numberWithFloat:0];
-        opacityAnim_black.removedOnCompletion = YES;
-        CAAnimationGroup *animGroup_black = [CAAnimationGroup animation];
-        animGroup_black.animations = [NSArray arrayWithObjects:opacityAnim_black, nil];
-        animGroup_black.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-        animGroup_black.duration = 0.5;
-        [blackView.layer addAnimation:animGroup_black forKey:nil];
-        
-        [self dismissModalViewControllerAnimated:YES];
-    }
+//    if (self.examArr == nil) {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"无法测试" message:[NSString stringWithFormat:@"由于您的智能词表里的词数少于30，无法测试"] delegate:self cancelButtonTitle:@"知道了" otherButtonTitles:nil];
+//        [alert setAlertViewStyle:UIAlertViewStyleDefault];
+//        
+//        [alert show];
+//    
+//
+//        GreWordsViewController *superController =  (GreWordsViewController *)[self presentingViewController];
+//        
+//        UIImageView *blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+//        [blackView setBackgroundColor:[UIColor blackColor]];
+//        blackView.alpha = 0;
+//        [superController.view addSubview:blackView];
+//        
+//        
+//        superController.whetherAllowViewFrameChanged = YES;
+//        CABasicAnimation *opacityAnim_black = [CABasicAnimation animationWithKeyPath:@"opacity"];
+//        opacityAnim_black.fromValue = [NSNumber numberWithFloat:0.7];
+//        opacityAnim_black.toValue = [NSNumber numberWithFloat:0];
+//        opacityAnim_black.removedOnCompletion = YES;
+//        CAAnimationGroup *animGroup_black = [CAAnimationGroup animation];
+//        animGroup_black.animations = [NSArray arrayWithObjects:opacityAnim_black, nil];
+//        animGroup_black.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//        animGroup_black.duration = 0.5;
+//        [blackView.layer addAnimation:animGroup_black forKey:nil];
+//        
+//        [self dismissModalViewControllerAnimated:YES];
+//    }
 }
 
 - (void)ShowMeaning
@@ -357,6 +418,7 @@
     [self setPronounceLabel:nil];
     [self setTimeImage:nil];
     [self setBackImage:nil];
+    [self setBackgroundImage:nil];
     [super viewDidUnload];
 }
 
@@ -1055,7 +1117,15 @@
         
         //_note.delegate = self;
     }
-    [_examResultViewController addExamResultCardAt:self withResult:nil delegate:self];
+    
+    [TaskStatus instance].eEvent.endTime = [self getNowDate];
+    
+    ExamEvent *eEvent = [[ExamEvent alloc] init];
+    eEvent.totalWordCount = [TaskStatus instance].eEvent.totalWordCount;
+    eEvent.wrongWordCount = [TaskStatus instance].eEvent.wrongWordCount;
+    eEvent.duration = [[TaskStatus instance].eEvent.endTime timeIntervalSinceDate:[TaskStatus instance].eEvent.startTime];
+        
+    [_examResultViewController addExamResultCardAt:self withResult:eEvent delegate:self];
     [_examResultViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_examResultViewController.view];
 }
@@ -1363,6 +1433,29 @@
 -(void)reExam
 {
     NSLog(@"reexam");
+    [self.timer invalidate];
+    
+    [TaskStatus instance].eEvent.index = 0;
+    [TaskStatus instance].eEvent.wrongWordCount = 0;
+    [TaskStatus instance].eEvent.totalWordCount = 0;
+    [TaskStatus instance].eEvent.startTime = [self getNowDate];
+    
+    _examArr = [[WordTaskGenerator instance] testTaskWithOptions:self.examInfo whetherWithAllWords:NO];
+    
+    if (_RightButton.userInteractionEnabled == YES) {
+        [self nextButtonPushed];
+        [self loadWordAgain:[TaskStatus instance].eEvent.index];
+    }else{
+        [self loadWordAgain:[TaskStatus instance].eEvent.index];
+    }
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+    [self.timer fire];
+    
+    if (_examResultViewController != nil) {
+        [_examResultViewController removeExamResultCard];
+        _examResultViewController = nil;
+    }
 }
 
 -(void)backHome

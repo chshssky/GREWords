@@ -144,7 +144,7 @@
 					<object class="IBUILabel" id="439677181">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{78, 181}, {65, 21}}</string>
+						<string key="NSFrame">{{78, 181}, {182, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="360340234"/>
@@ -161,19 +161,23 @@
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
-						<object class="IBUIFontDescription" key="IBUIFontDescription" id="984448331">
+						<object class="IBUIFontDescription" key="IBUIFontDescription" id="907173465">
 							<string key="name">Helvetica</string>
 							<string key="family">Helvetica</string>
 							<int key="traits">0</int>
-							<double key="pointSize">17</double>
+							<double key="pointSize">15</double>
 						</object>
-						<reference key="IBUIFont" ref="384774488"/>
+						<object class="NSFont" key="IBUIFont" id="692695262">
+							<string key="NSName">Helvetica</string>
+							<double key="NSSize">15</double>
+							<int key="NSfFlags">16</int>
+						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
 					<object class="IBUILabel" id="360340234">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{78, 199}, {65, 21}}</string>
+						<string key="NSFrame">{{78, 200}, {182, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="393083244"/>
@@ -190,8 +194,8 @@
 						</object>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">0</int>
-						<reference key="IBUIFontDescription" ref="984448331"/>
-						<reference key="IBUIFont" ref="384774488"/>
+						<reference key="IBUIFontDescription" ref="907173465"/>
+						<reference key="IBUIFont" ref="692695262"/>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
 					<object class="IBUILabel" id="902221609">
@@ -432,13 +436,13 @@
 							<reference ref="783519806"/>
 							<reference ref="939123818"/>
 							<reference ref="146278011"/>
-							<reference ref="439677181"/>
-							<reference ref="360340234"/>
 							<reference ref="732168725"/>
 							<reference ref="393083244"/>
 							<reference ref="87696257"/>
 							<reference ref="902221609"/>
 							<reference ref="117142880"/>
+							<reference ref="360340234"/>
+							<reference ref="439677181"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
