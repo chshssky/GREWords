@@ -97,13 +97,17 @@
 					</object>
 					<object class="IBUIImageView" id="338799999">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">289</int>
-						<string key="NSFrame">{{225, 12}, {81, 21}}</string>
+						<int key="NSvFlags">-2147483359</int>
+						<string key="NSFrame">{{280, 20}, {22, 21}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSNextKeyView" ref="562107953"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">learning_clock.png</string>
+						</object>
 					</object>
 					<object class="IBUIButton" id="164080497">
 						<reference key="NSNextResponder" ref="191373211"/>
@@ -201,6 +205,7 @@
 						<int key="NSvFlags">265</int>
 						<string key="NSFrame">{{208, 443}, {93, 90}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -454,7 +459,6 @@
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="183711492"/>
-							<reference ref="338799999"/>
 							<reference ref="852386505"/>
 							<reference ref="8447338"/>
 							<reference ref="164080497"/>
@@ -464,6 +468,7 @@
 							<reference ref="1057222410"/>
 							<reference ref="196056420"/>
 							<reference ref="324383819"/>
+							<reference ref="338799999"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -573,6 +578,7 @@
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
 			<string key="learning_backgournd_blank.png">{320, 548}</string>
+			<string key="learning_clock.png">{22, 21}</string>
 			<string key="learning_downCover.png">{320, 168}</string>
 			<string key="learning_rightButton_first.png">{93, 93}</string>
 			<string key="learning_sound.png">{19, 17}</string>

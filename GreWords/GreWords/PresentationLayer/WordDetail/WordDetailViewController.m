@@ -26,6 +26,9 @@
 @interface WordDetailViewController () <UIScrollViewDelegate>
 {
     UIImageView *guideImageView;
+    
+    NSTimer *clockTimer;
+    float currentWordTimeEsclaped;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
@@ -171,6 +174,8 @@
     } else {
         [TaskStatus instance].rEvent.indexOfWordToday ++;
     }
+    
+    [self startAlertCounting];
 }
 
 - (void)viewDidLoad
@@ -207,7 +212,6 @@
     [self.view addSubview:self.dashboardVC.view];
     
     [self.backButton.superview bringSubviewToFront:self.backButton];
-    [self.timeImage setImage:[UIImage imageNamed:nil]];
     
     if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_ReviewFirst])
     {
@@ -1469,5 +1473,39 @@
     NSLog(@"return Home");
 }
 
+#pragma mark - time alert Methods
+- (void)startAlertCounting
+{
+    [clockTimer invalidate];
+    currentWordTimeEsclaped = 0;
+    self.timeImage.hidden = YES;
+    clockTimer = [NSTimer scheduledTimerWithTimeInterval: 0.5
+                                                  target: self
+                                                selector: @selector(tick)
+                                                userInfo: nil
+                                                 repeats: YES];
+}
 
+- (void)tick
+{
+    NSLog(@"time %f",currentWordTimeEsclaped);
+    currentWordTimeEsclaped += 0.5;
+    if(currentWordTimeEsclaped > 25 && currentWordTimeEsclaped < 30)
+    {
+        int temp = currentWordTimeEsclaped * 2;
+        if(temp % 2)
+        {
+            self.timeImage.hidden = NO;
+        }
+        else
+        {
+            self.timeImage.hidden = YES;
+        }
+    }
+    else if(currentWordTimeEsclaped >= 30)
+    {
+        self.timeImage.hidden = NO;
+        [clockTimer invalidate];
+    }
+}
 @end

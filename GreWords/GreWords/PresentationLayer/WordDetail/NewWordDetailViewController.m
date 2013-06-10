@@ -31,9 +31,12 @@
 @interface NewWordDetailViewController ()
 {
     UIImageView *guideImageView;
+    
+    NSTimer *clockTimer;
+    float currentWordTimeEsclaped;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
-
+@property (weak, nonatomic) IBOutlet UIImageView *clockAlertImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
 @property (weak, nonatomic) IBOutlet UIImageView *DownImage;
 @property (weak, nonatomic) IBOutlet UIButton *PronounceButton;
@@ -192,6 +195,7 @@
     [self setWordPhonetic:nil];
     [self setBackButton:nil];
     [self setBackgroundImage:nil];
+    [self setClockAlertImageView:nil];
     [super viewDidUnload];
 }
 
@@ -603,6 +607,41 @@
     _noteRecognizer.direction = UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:_noteRecognizer];
     self.viewDeckController.panningMode = IIViewDeckAllViewsPanning;
+}
+
+#pragma mark - time alert Methods
+- (void)startAlertCounting
+{
+    [clockTimer invalidate];
+    currentWordTimeEsclaped = 0;
+    self.clockAlertImageView.hidden = YES;
+    clockTimer = [NSTimer scheduledTimerWithTimeInterval: 0.5
+                                             target: self
+                                           selector: @selector(tick)
+                                           userInfo: nil
+                                            repeats: YES];
+}
+
+- (void)tick
+{
+    currentWordTimeEsclaped += 0.5;
+    if(currentWordTimeEsclaped > 25 && currentWordTimeEsclaped < 30)
+    {
+        int temp = currentWordTimeEsclaped * 2;
+        if(temp % 2)
+        {
+            self.clockAlertImageView.hidden = NO;
+        }
+        else
+        {
+            self.clockAlertImageView.hidden = YES;
+        }
+    }
+    else if(currentWordTimeEsclaped >= 30)
+    {
+        self.clockAlertImageView.hidden = NO;
+        [clockTimer invalidate];
+    }
 }
 
 @end

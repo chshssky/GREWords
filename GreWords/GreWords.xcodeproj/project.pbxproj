@@ -3711,6 +3711,8 @@
 		E480BB09176357C000F37106 /* iPhone_Icon_icon ios.png in Resources */ = {isa = PBXBuildFile; fileRef = E4412387175F212900B4288D /* iPhone_Icon_icon ios.png */; };
 		E480BB0A176357C800F37106 /* iPhoneRetina_Icon_icon ios.png in Resources */ = {isa = PBXBuildFile; fileRef = E4412389175F212F00B4288D /* iPhoneRetina_Icon_icon ios.png */; };
 		E4983ED0171A8CD90055A0E7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */; };
+		E49C328F1765685E00700D7B /* learning_clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E49C328D1765685D00700D7B /* learning_clock@2x.png */; };
+		E49C32901765685E00700D7B /* learning_clock.png in Resources */ = {isa = PBXBuildFile; fileRef = E49C328E1765685E00700D7B /* learning_clock.png */; };
 		E4CB2CE41757767F00370700 /* findIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE01757767F00370700 /* findIcon.png */; };
 		E4CB2CE51757767F00370700 /* findIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE11757767F00370700 /* findIcon@2x.png */; };
 		E4CB2CE61757767F00370700 /* UISearchBarBG.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE21757767F00370700 /* UISearchBarBG.png */; };
@@ -7633,6 +7635,8 @@
 		E480BB0517634D2400F37106 /* SettingClockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingClockViewController.m; sourceTree = "<group>"; };
 		E480BB0617634D2400F37106 /* SettingClockViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingClockViewController.xib; sourceTree = "<group>"; };
 		E4983ECF171A8CD90055A0E7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E49C328D1765685D00700D7B /* learning_clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "learning_clock@2x.png"; sourceTree = "<group>"; };
+		E49C328E1765685E00700D7B /* learning_clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = learning_clock.png; sourceTree = "<group>"; };
 		E4CB2CE01757767F00370700 /* findIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = findIcon.png; sourceTree = "<group>"; };
 		E4CB2CE11757767F00370700 /* findIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findIcon@2x.png"; sourceTree = "<group>"; };
 		E4CB2CE21757767F00370700 /* UISearchBarBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UISearchBarBG.png; sourceTree = "<group>"; };
@@ -8613,6 +8617,8 @@
 		E466E7AC173BD4CB001847D0 /* Learning */ = {
 			isa = PBXGroup;
 			children = (
+				E49C328D1765685D00700D7B /* learning_clock@2x.png */,
+				E49C328E1765685E00700D7B /* learning_clock.png */,
 				733F10B7176346FD00CAB692 /* learning_backgournd_blank_mini.png */,
 				733F10B8176346FD00CAB692 /* learning_backgournd_blank_mini@2x.png */,
 				E466E7AD173BD4CB001847D0 /* learning_backButton_in.png */,
@@ -15930,6 +15936,8 @@
 				E4236DAA17654D4B0035F980 /* exam4.png in Resources */,
 				E4236DAB17654D4B0035F980 /* noteslide3.5.png in Resources */,
 				E4236DAC17654D4B0035F980 /* noteslide4.png in Resources */,
+				E49C328F1765685E00700D7B /* learning_clock@2x.png in Resources */,
+				E49C32901765685E00700D7B /* learning_clock.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
