@@ -22,7 +22,10 @@
 }
 @property (nonatomic, strong)UIButton *bigButton;
 @property (nonatomic, strong)UIImageView *textView;
+@property (nonatomic, strong) UIImageView *theNewTextView;
 @property (nonatomic, strong)FXLabel *wordNumberTest;
+
+@property (nonatomic) BOOL complete;
 
 @property(nonatomic) int nonFinishedNumber;
 @property(nonatomic) int sumNumber;

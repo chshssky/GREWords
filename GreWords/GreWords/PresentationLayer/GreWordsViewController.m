@@ -351,6 +351,7 @@
     } completion:^(BOOL finished) {
         if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
             WordDetailViewController *vc = [[WordDetailViewController alloc] init];
+#warning read from Database
             vc.delegate = self;
             [self presentViewController:vc animated:NO completion:nil];
             
@@ -453,11 +454,13 @@
         dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.0f,1.0f), CGAffineTransformMakeTranslation(0, 0));
         self.menu.transform = CGAffineTransformMakeTranslation(0, 0);
         self.backgroundImage.alpha = 1.0f;
-        dashboard.textView.alpha = 1.0f;
-        dashboard.bigButton.alpha = 1.0f;
+        if (dashboard.complete == NO) {
+            
+            dashboard.textView.alpha = 1.0f;
+            dashboard.bigButton.alpha = 1.0f;
+        }
         dashboard.wordNumberTest.transform = CGAffineTransformMakeTranslation(0, 0);
     }];
-    
 }
 
 - (void)GoToReviewWithWord

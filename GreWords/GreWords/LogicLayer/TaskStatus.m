@@ -71,10 +71,10 @@ TaskStatus* _taskStatusInstance = nil;
 {
     self.taskType = TASK_TYPE_NEWWORD;
     
-    self.nwEvent.indexOfWordToday = 0;
-    self.nwEvent.maxWordID = 0;
+    self.nwEvent.indexOfWordToday = 799;
+    self.nwEvent.maxWordID = 199;
     self.nwEvent.stage_now = 0;
-    self.nwEvent.reviewEnable = NO;
+    self.nwEvent.reviewEnable = YES;
     self.nwEvent.wrongWordCount = 0;
     
     self.nwEvent.dayOfSchedule = [[HistoryManager instance] getANewDay];

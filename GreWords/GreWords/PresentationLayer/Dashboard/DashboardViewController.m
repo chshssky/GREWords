@@ -389,6 +389,7 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 
 - (void)changeTextViewToReview
 {
+    self.complete = NO;
     _textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_reciteWord.png"]];
     _textView.center = CGPointMake(self.centerPoint.x-15, self.centerPoint.y-45);
     _textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
@@ -397,10 +398,26 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 
 - (void)changeTextViewToNewWord
 {
+    self.complete = NO;
     _textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_newWord.png"]];
     _textView.center = CGPointMake(self.centerPoint.x-15, self.centerPoint.y-45);
     _textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     [self.view addSubview:_textView];
+}
+
+- (void)changeTextViewToComplete
+{
+    self.complete = YES;
+    
+    self.wordNumberTest.alpha = 0;
+    
+    self.bigButton.userInteractionEnabled = NO;
+    
+    self.theNewTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_allFinished.png"]];
+    self.theNewTextView.center = CGPointMake(self.centerPoint.x, self.centerPoint.y);
+    [self.view addSubview:self.theNewTextView];
+    
+    
 }
 
 
@@ -422,13 +439,6 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)changeTextViewToComplete
-{
-    self.textView.alpha = 0;
-    self.bigButton.alpha = 0;
-    
 }
 
 @end
