@@ -405,6 +405,19 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     [self.view addSubview:_textView];
 }
 
+- (void)changeTextViewToHalfComplete
+{
+    self.complete = YES;
+    
+    self.wordNumberTest.alpha = 0;
+    
+    self.bigButton.userInteractionEnabled = NO;
+    
+    self.theNewTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_HalfFinished.png"]];
+    self.theNewTextView.center = CGPointMake(self.centerPoint.x, self.centerPoint.y);
+    [self.view addSubview:self.theNewTextView];
+}
+
 - (void)changeTextViewToComplete
 {
     self.complete = YES;
@@ -416,7 +429,6 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     self.theNewTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_allFinished.png"]];
     self.theNewTextView.center = CGPointMake(self.centerPoint.x, self.centerPoint.y);
     [self.view addSubview:self.theNewTextView];
-    
     
 }
 

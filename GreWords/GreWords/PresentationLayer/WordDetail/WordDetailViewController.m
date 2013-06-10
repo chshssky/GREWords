@@ -1458,8 +1458,11 @@
             [[TaskStatus instance] setReviewEnable];
         }
         [TaskStatus instance].nwEvent.indexOfWordToday --;
+        [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent];
+
     } else {
         [TaskStatus instance].rEvent.indexOfWordToday --;
+        [[HistoryManager instance] updateEvent:[TaskStatus instance].rEvent];
 
     }
     //[self.delegate resetWordIndexto:[TaskStatus instance].indexOfWordIDToday - 1];
