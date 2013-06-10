@@ -1412,7 +1412,7 @@
 //        self.nwEvent.reviewEnable = [TaskStatus instance].reviewEnable;
 //        self.nwEvent.stage_now = [TaskStatus instance].stage_now;
 //        self.nwEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
-        
+        [self.WordParaphraseView setContentOffset:CGPointMake(0, 0)];
         [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent];
     }
 }
