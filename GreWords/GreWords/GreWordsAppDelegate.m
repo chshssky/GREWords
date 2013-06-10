@@ -38,6 +38,8 @@
     [self initUserDefault];
     
     [self initAnalytics];
+    
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 //    for (NSString* fname in [UIFont familyNames])
 //    {
 //        NSLog(@"%@",fname);
