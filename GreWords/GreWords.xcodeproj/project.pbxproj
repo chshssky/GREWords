@@ -12275,7 +12275,7 @@
 			attributes = {
 				CLASSPREFIX = GreWords;
 				LastUpgradeCheck = 0460;
-				ORGANIZATIONNAME = "Cui Hao";
+				ORGANIZATIONNAME = TAC;
 			};
 			buildConfigurationList = 3F70EC821701CADB00327770 /* Build configuration list for PBXProject "GreWords" */;
 			compatibilityVersion = "Xcode 3.2";
