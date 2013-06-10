@@ -69,6 +69,7 @@ TaskStatus* _taskStatusInstance = nil;
 
 - (void)beginNewWord
 {
+    self.nwComplete = NO;
     self.taskType = TASK_TYPE_NEWWORD;
     
     self.nwEvent.indexOfWordToday = 0;
@@ -82,7 +83,9 @@ TaskStatus* _taskStatusInstance = nil;
 
 - (void)beginReview
 {
+    self.rComplete = NO;
     self.taskType = TASK_TYPE_REVIEW;
+    
     self.rEvent.indexOfWordToday = 0;
     self.rEvent.wrongWordCount = 0;
     self.rEvent.stage_now = 0;

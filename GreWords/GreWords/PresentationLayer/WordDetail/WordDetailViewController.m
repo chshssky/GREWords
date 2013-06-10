@@ -1044,20 +1044,6 @@
     [_reciteAndReviewResultCardViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_reciteAndReviewResultCardViewController.view];
     
-#warning  this may can be easier ~
-    
-    DashboardViewController *dashboard = [DashboardViewController instance];
-    // Database: read from
-    dashboard.nonFinishedNumber = TaskWordNumber - 0;
-    
-    dashboard.minNumber = dashboard.nonFinishedNumber;
-    dashboard.sumNumber = TaskWordNumber;
-    
-    [dashboard changeTextViewToComplete];
-
-    [dashboard reloadData];
-
-    
 }
 
 - (void)newWordCompleted

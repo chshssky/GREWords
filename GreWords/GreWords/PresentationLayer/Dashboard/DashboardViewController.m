@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <CoreGraphics/CoreGraphics.h>
 #import "PieChart.h"
+#import "TaskStatus.h"
 
 @interface DashboardViewController ()
 
@@ -389,7 +390,9 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 
 - (void)changeTextViewToReview
 {
-    self.complete = NO;
+    [TaskStatus instance].rComplete = NO;
+    [TaskStatus instance].nwComplete = NO;
+    self.wordNumberTest.alpha = 1;
     _textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_reciteWord.png"]];
     _textView.center = CGPointMake(self.centerPoint.x-15, self.centerPoint.y-45);
     _textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
@@ -398,7 +401,9 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 
 - (void)changeTextViewToNewWord
 {
-    self.complete = NO;
+    [TaskStatus instance].rComplete = NO;
+    [TaskStatus instance].nwComplete = NO;
+    self.wordNumberTest.alpha = 1;
     _textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_newWord.png"]];
     _textView.center = CGPointMake(self.centerPoint.x-15, self.centerPoint.y-45);
     _textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
@@ -407,7 +412,7 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 
 - (void)changeTextViewToHalfComplete
 {
-    self.complete = YES;
+    [TaskStatus instance].nwComplete = YES;
     
     self.wordNumberTest.alpha = 0;
     
@@ -420,7 +425,7 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 
 - (void)changeTextViewToComplete
 {
-    self.complete = YES;
+    [TaskStatus instance].rComplete = YES;
     
     self.wordNumberTest.alpha = 0;
     

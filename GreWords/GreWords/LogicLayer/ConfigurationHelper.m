@@ -205,6 +205,7 @@ ConfigurationHelper* _configurationHelperInstance = nil;
             return;
         
         
+        
         NSDate *fireDay = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * i];
         
         NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
@@ -213,7 +214,7 @@ ConfigurationHelper* _configurationHelperInstance = nil;
                                                        fromDate:fireDay];
         NSDateComponents *timeComponents = [calendar components:( NSHourCalendarUnit | NSMinuteCalendarUnit )
                                                        fromDate:self.freshWordAlertTime];
-        
+
         // Set up the fire time
         NSDateComponents *dateComps = [[NSDateComponents alloc] init];
         [dateComps setDay:[dateComponents day]];

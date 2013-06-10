@@ -306,7 +306,7 @@
     //把单词加入抽屉
     SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
     
-    for (int i = 1; i <= self.beginWordID + _currentPage; i ++) {
+    for (int i = 1; i <=  _currentPage; i ++) {
         WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:self.beginWordID + i - 1 ] intValue]];
         
         if ([left.array indexOfObject:addWord] == NSNotFound) {
