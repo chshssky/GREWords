@@ -187,13 +187,19 @@
 {
     NSLog(@"WIEW　ＷＩＬＬ　Ａｐｐaｅｒ!!!!!!!");
     
-    NSDate *now = [self getNowDate];
+    NSDate *now = [self getNowDate];    
     
+    NSDate *newWordTime = [now nowdateWithHour:[[ConfigurationHelper instance].freshWordAlertTime hour] AndMinute:[[ConfigurationHelper instance].freshWordAlertTime minute]];
     
+    NSLog(@"Hour : %d And Minute: %d", [[ConfigurationHelper instance].freshWordAlertTime hour], [[ConfigurationHelper instance].freshWordAlertTime minute]);
     
-    NSDate *newWordTime = [ConfigurationHelper instance].freshWordAlertTime;//[now dateByAddingTimeInterval:60.0];
-    NSDate *reviewTime = now;//[now dateByAddingTimeInterval:60.0];
+    NSLog(@"NowAlertTime: %@", newWordTime);
+        
+    NSDate *reviewTime = [now nowdateWithHour:[[ConfigurationHelper instance].reviewAlertTime hour] AndMinute:[[ConfigurationHelper instance].reviewAlertTime minute]];       //[now dateByAddingTimeInterval:60.0];
 
+    NSLog(@"Hour : %d And Minute: %d", [[ConfigurationHelper instance].freshWordAlertTime hour], [[ConfigurationHelper instance].freshWordAlertTime minute]);
+    
+    NSLog(@"ReviewAlertTime: %@", reviewTime);
     
     if ([TaskStatus instance].rComplete == YES) {
         if ([[now laterDate:newWordTime] isEqualToDate:now]) {
@@ -402,7 +408,7 @@
         } else {
             if ([[HistoryManager instance] readStatusIfNew])
             {
-                [self createNewWordEvent];
+                [self beginNewWordEvent];
             }
                     
             NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
@@ -435,10 +441,11 @@
 
 - (NSDate *)getNowDate
 {
-    NSTimeZone *zone = [NSTimeZone defaultTimeZone];//获得当前应用程序默认的时区
-    NSInteger interval = [zone secondsFromGMTForDate:[NSDate date]];//以秒为单位返回当前应用程序与世界标准时间（格林威尼时间）的时差
-//    NSDate *localeDate = [[NSDate date] dateByAddingTimeInterval:interval];
-    NSDate *nowDate=[NSDate dateWithTimeIntervalSinceNow:interval];
+//    NSTimeZone *zone = [NSTimeZone defaultTimeZone];//获得当前应用程序默认的时区
+//    NSInteger interval = [zone secondsFromGMTForDate:[NSDate date]];//以秒为单位返回当前应用程序与世界标准时间（格林威尼时间）的时差
+////    NSDate *localeDate = [[NSDate date] dateByAddingTimeInterval:interval];
+//    NSDate *nowDate=[NSDate dateWithTimeIntervalSinceNow:interval];
+    NSDate *nowDate = [NSDate new];
     return nowDate;
 }
 
@@ -480,8 +487,7 @@
     dashboard.delegate = self;
     [self.view insertSubview:dashboard.view atIndex:2];
     [dashboard mainViewGen];
-    
-    
+        
     dashboard.textView.alpha = 0.0f;
     dashboard.bigButton.alpha = 0.0f;
     [UIView animateWithDuration:0.5f animations:^{
@@ -495,6 +501,8 @@
         if ([TaskStatus instance].rComplete == NO && [TaskStatus instance].nwComplete == NO) {
             dashboard.textView.alpha = 1.0f;
             dashboard.bigButton.alpha = 1.0f;
+        } else {
+            dashboard.theNewTextView.alpha = 1.0f;
         }
         dashboard.wordNumberTest.transform = CGAffineTransformMakeTranslation(0, 0);
     }];
@@ -526,7 +534,7 @@
     SmartWordListViewController *leftController = [self.storyboard instantiateViewControllerWithIdentifier:@"SmartWordList"];
     leftController.type = SmartListType_Slide;
     NSMutableArray *wordsArr = [[NSMutableArray alloc] init];
-    for (int i = 0; i < [TaskStatus instance].nwEvent.maxWordID; i++) {
+    for (int i = 0; i <= [TaskStatus instance].nwEvent.maxWordID; i++) {
         WordEntity *addWord = [[WordHelper instance] wordWithID:i];
         
         [wordsArr addObject:addWord];
@@ -582,22 +590,12 @@
 - (void)beginNewWordEvent
 {
     [[TaskStatus instance] beginNewWord];
-    [TaskStatus instance].nwEvent.totalWordCount = [[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] count];
+#warning New Word Count
+    [TaskStatus instance].nwEvent.totalWordCount = 0;
+    //[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] count];
 
     [self createNewWordEvent];
 #warning  this may can be easier ~
-    
-    [dashboard changeTextViewToNewWord];
-    
-    // Database: read from
-    dashboard.nonFinishedNumber = [TaskStatus instance].nwEvent.totalWordCount - 0;
-    
-    dashboard.minNumber = dashboard.nonFinishedNumber;
-    dashboard.sumNumber = [TaskStatus instance].nwEvent.totalWordCount;
-    
-    [dashboard changeTextViewToNewWord];
-    
-    [dashboard reloadData];
 }
 
 - (void)createNewWordEvent

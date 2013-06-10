@@ -1044,6 +1044,20 @@
     [_reciteAndReviewResultCardViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_reciteAndReviewResultCardViewController.view];
     
+    
+    DashboardViewController *dashboard = [DashboardViewController instance];
+    [dashboard changeTextViewToNewWord];
+    
+    // Database: read from
+#warning Get A Total New Word Numer!! the API 
+    dashboard.nonFinishedNumber = 200;//[TaskStatus instance].nwEvent.totalWordCount - 0;
+    
+    dashboard.minNumber = dashboard.nonFinishedNumber;
+    dashboard.sumNumber = 200;
+    
+    [dashboard changeTextViewToNewWord];
+    
+    [dashboard reloadData];
 }
 
 - (void)newWordCompleted
@@ -1078,10 +1092,12 @@
 
 - (NSDate *)getNowDate
 {
-    NSTimeZone *zone = [NSTimeZone defaultTimeZone];//获得当前应用程序默认的时区
-    NSInteger interval = [zone secondsFromGMTForDate:[NSDate date]];//以秒为单位返回当前应用程序与世界标准时间（格林威尼时间）的时差
-    //    NSDate *localeDate = [[NSDate date] dateByAddingTimeInterval:interval];
-    NSDate *nowDate=[NSDate dateWithTimeIntervalSinceNow:interval];
+//    NSTimeZone *zone = [NSTimeZone defaultTimeZone];//获得当前应用程序默认的时区
+//    NSInteger interval = [zone secondsFromGMTForDate:[NSDate date]];//以秒为单位返回当前应用程序与世界标准时间（格林威尼时间）的时差
+//    //    NSDate *localeDate = [[NSDate date] dateByAddingTimeInterval:interval];
+//    NSDate *nowDate=[NSDate dateWithTimeIntervalSinceNow:interval];
+    
+    NSDate *nowDate = [NSDate new];
     return nowDate;
 }
 
@@ -1303,35 +1319,35 @@
     }
     
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
-        
-            if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
-                [self loadWord:[TaskStatus instance].rEvent.indexOfWordToday];
-                _showMeaningButton.userInteractionEnabled = YES;
-                _RightButton.userInteractionEnabled = NO;
-                _WrongButton.userInteractionEnabled = NO;
-                _WordParaphraseView.userInteractionEnabled = NO;
-                if (_RightUpImageView != nil) {
-                    [_RightUpImageView removeFromSuperview];
-                    _RightUpImageView = nil;
-                }
-                if (_WrongUpImageView != nil) {
-                    [_WrongUpImageView removeFromSuperview];
-                    _WrongUpImageView = nil;
-                }
-                if (_RightDownImageView != nil) {
-                    [_RightDownImageView removeFromSuperview];
-                    _RightDownImageView = nil;
-                }
-                if (_WrongDownImageView != nil) {
-                    [_WrongDownImageView removeFromSuperview];
-                    _WrongDownImageView = nil;
-                }
+        if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
+            [self loadWord:[TaskStatus instance].rEvent.indexOfWordToday];
+            _showMeaningButton.userInteractionEnabled = YES;
+            _RightButton.userInteractionEnabled = NO;
+            _WrongButton.userInteractionEnabled = NO;
+            _WordParaphraseView.userInteractionEnabled = NO;
+            if (_RightUpImageView != nil) {
+                [_RightUpImageView removeFromSuperview];
+                _RightUpImageView = nil;
             }
-            if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
-                [self loadWord:[TaskStatus instance].rEvent.indexOfWordToday];
-                [self Dismiss_RightAnimation];
-                [self Dismiss_WrongAnimation];
+            if (_WrongUpImageView != nil) {
+                [_WrongUpImageView removeFromSuperview];
+                _WrongUpImageView = nil;
             }
+            if (_RightDownImageView != nil) {
+                [_RightDownImageView removeFromSuperview];
+                _RightDownImageView = nil;
+            }
+            if (_WrongDownImageView != nil) {
+                [_WrongDownImageView removeFromSuperview];
+                _WrongDownImageView = nil;
+            }
+        }
+        if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+            [self loadWord:[TaskStatus instance].rEvent.indexOfWordToday];
+            [self Dismiss_RightAnimation];
+            [self Dismiss_WrongAnimation];
+        }
+     
 //        self.rEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
 //        self.rEvent.stage_now = [TaskStatus instance].stage_now;
 //        self.rEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
@@ -1339,6 +1355,8 @@
         [[HistoryManager instance] updateEvent:[TaskStatus instance].rEvent];
         [[DashboardViewController instance] minusData];
     } else {
+        [TaskStatus instance].nwEvent.totalWordCount ++;
+        
         if (([TaskStatus instance].nwEvent.indexOfWordToday % 10) == 9) {
             [[TaskStatus instance] setReviewEnable];
         }
@@ -1366,6 +1384,8 @@
             //[self dismissModalViewControllerAnimated:NO];
         
         } else {
+            
+            
             if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
                 [self loadWord:[TaskStatus instance].nwEvent.indexOfWordToday];
                 _showMeaningButton.userInteractionEnabled = YES;
@@ -1451,7 +1471,7 @@
 
 - (void)tick
 {
-    NSLog(@"time %f",currentWordTimeEsclaped);
+    //NSLog(@"time %f",currentWordTimeEsclaped);
     currentWordTimeEsclaped += 0.5;
     if(currentWordTimeEsclaped > 25 && currentWordTimeEsclaped < 30)
     {

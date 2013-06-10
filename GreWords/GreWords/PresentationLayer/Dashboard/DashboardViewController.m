@@ -253,8 +253,13 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     FimageView.transform = CGAffineTransformMakeRotation(_percent*2*M_PI);
     centerCircleView.transform = CGAffineTransformMakeRotation(_percent*2*M_PI+M_PI/2);
     
-    
-    _nonFinishedNumber = (_percent-0.001)/(0.999-0.001) * _sumNumber;
+    if (_percent < 0.5) {
+        _nonFinishedNumber = ceil((_percent-0.001)/(0.999-0.001) * _sumNumber);
+    }else{
+        _nonFinishedNumber = (_percent-0.001)/(0.999-0.001) * _sumNumber;
+
+    }
+    //_nonFinishedNumber = (_percent-0.001)/(0.999-0.001) * _sumNumber;
     _wordNumberTest.text =  [NSString stringWithFormat:@"%d", _nonFinishedNumber];
     
     
@@ -413,14 +418,14 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 - (void)changeTextViewToHalfComplete
 {
     [TaskStatus instance].nwComplete = YES;
-    
+    self.view.userInteractionEnabled = NO;
     self.wordNumberTest.alpha = 0;
-    
     self.bigButton.userInteractionEnabled = NO;
     
     self.theNewTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_HalfFinished.png"]];
     self.theNewTextView.center = CGPointMake(self.centerPoint.x, self.centerPoint.y);
-    [self.view addSubview:self.theNewTextView];
+    [self.view insertSubview:self.theNewTextView atIndex:100];
+    //    [self.view addSubview:self.theNewTextView];
 }
 
 - (void)changeTextViewToComplete

@@ -307,7 +307,7 @@
     SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
     
     for (int i = 1; i <=  _currentPage; i ++) {
-        WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:self.beginWordID + i - 1 ] intValue]];
+        WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:self.beginWordID + i - 1] intValue]];
         
         if ([left.array indexOfObject:addWord] == NSNotFound) {
             [left addWord:addWord];
@@ -526,7 +526,7 @@
     }
 
     
-    if (scrollView == self.pageControlView) {        
+    if (scrollView == self.pageControlView) {
         
         if (scrollView.contentOffset.x >= _changePage*320) {
             scrollView.userInteractionEnabled = NO;
@@ -534,12 +534,6 @@
             [self dismissModalViewControllerAnimated:NO];
             
             [TaskStatus instance].nwEvent.indexOfWordToday = self.beginWordID + _currentPage + 1;
-            
-//            self.nwEvent.indexOfWordToday = [TaskStatus instance].nwEvent.indexOfWordToday;
-//            self.nwEvent.maxWordID = [TaskStatus instance].nwEvent.maxWordID;
-//            self.nwEvent.reviewEnable = [TaskStatus instance].nwEvent.reviewEnable;
-//            self.nwEvent.stage_now = [TaskStatus instance].nwEvent.stage_now;
-            
             
             [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent];
             [self.delegate GoToReviewWithWord];
