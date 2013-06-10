@@ -257,9 +257,11 @@
 
 - (NSDate *) nowdateWithHour:(NSInteger)hours AndMinute:(NSInteger)minutes
 {
-    NSDate *date = self;
-
-#warning date Add Hours And Minutes~~~
+    NSDateComponents *components = [CURRENT_CALENDAR components:DATE_COMPONENTS fromDate:self];
+	components.hour = hours;
+	components.minute = minutes;
+	components.second = 0;
+    return [CURRENT_CALENDAR dateFromComponents:components];
 }
 
 - (NSDateComponents *) componentsWithOffsetFromDate: (NSDate *) aDate
