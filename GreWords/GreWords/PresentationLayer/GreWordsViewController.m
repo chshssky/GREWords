@@ -356,11 +356,14 @@
         self.menu.transform = CGAffineTransformMakeTranslation(-300, 0);
     } completion:^(BOOL finished) {
         if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
+            [[HistoryManager instance] readStatusIfNew];
             WordDetailViewController *vc = [[WordDetailViewController alloc] init];
+#warning read from Database
             vc.delegate = self;
             [self presentViewController:vc animated:NO completion:nil];
             
         } else {
+            [[HistoryManager instance] readStatusIfNew];
         //根据MaxWordID和现在所在单词的ID 来判断 该跳转到 NewWord 还是 Review
         if ([[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].nwEvent.indexOfWordToday ] integerValue] < [TaskStatus instance].nwEvent.maxWordID || [TaskStatus instance].nwEvent.reviewEnable) {
             
@@ -459,11 +462,13 @@
         dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.0f,1.0f), CGAffineTransformMakeTranslation(0, 0));
         self.menu.transform = CGAffineTransformMakeTranslation(0, 0);
         self.backgroundImage.alpha = 1.0f;
-        dashboard.textView.alpha = 1.0f;
-        dashboard.bigButton.alpha = 1.0f;
+        if (dashboard.complete == NO) {
+            
+            dashboard.textView.alpha = 1.0f;
+            dashboard.bigButton.alpha = 1.0f;
+        }
         dashboard.wordNumberTest.transform = CGAffineTransformMakeTranslation(0, 0);
     }];
-    
 }
 
 - (void)GoToReviewWithWord

@@ -1022,7 +1022,7 @@
 
 - (void)reviewCompleted
 {
-    self.rEvent.endTime = [self getNowDate];
+    [TaskStatus instance].rEvent.endTime = [self getNowDate];
     
     [[HistoryManager instance] endEvent:self.rEvent];
             
@@ -1032,12 +1032,13 @@
         _reciteAndReviewResultCardViewController.delegate = self;
         //_note.delegate = self;
     }
+    [TaskStatus instance].rEvent.duration = [[TaskStatus instance].rEvent.endTime timeIntervalSinceDate:[TaskStatus instance].rEvent.startTime];
     
 //    [TaskStatus instance].rEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
 //    [TaskStatus instance].rEvent.totalWordCount = [TaskStatus instance].totalWordCount;
 //    [TaskStatus instance].rEvent.duration = [TaskStatus instance].duration;
     
-    NSLog(@"ReviewEvent Result :%d, %d, %f", [TaskStatus instance].rEvent.wrongWordCount, [TaskStatus instance].rEvent.totalWordCount, [TaskStatus instance].rEvent.duration);
+    NSLog(@"ReviewEvent Result :%d, %d, %f StartTime:%@ EndTime:%@", [TaskStatus instance].rEvent.wrongWordCount, [TaskStatus instance].rEvent.totalWordCount, [TaskStatus instance].rEvent.duration, [TaskStatus instance].rEvent.startTime, [TaskStatus instance].rEvent.endTime);
     
     [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withEvent:[TaskStatus instance].rEvent];
     [_reciteAndReviewResultCardViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
@@ -1047,12 +1048,14 @@
     
     DashboardViewController *dashboard = [DashboardViewController instance];
     // Database: read from
-    dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].nwEvent.indexOfWordToday;
+    dashboard.nonFinishedNumber = TaskWordNumber - 0;
     
     dashboard.minNumber = dashboard.nonFinishedNumber;
     dashboard.sumNumber = TaskWordNumber;
+    
+    [dashboard changeTextViewToComplete];
+
     [dashboard reloadData];
-    [dashboard changeTextViewToReview];
 
     
 }
@@ -1065,6 +1068,8 @@
         _reciteAndReviewResultCardViewController.delegate = self;
         //_note.delegate = self;
     }
+    
+    [[WordTaskGenerator instance] clearTask];
     
     NSDate *now = [self getNowDate];
     [TaskStatus instance].nwEvent.duration = [now timeIntervalSinceDate:[TaskStatus instance].nwEvent.startTime];
@@ -1457,8 +1462,11 @@
             [[TaskStatus instance] setReviewEnable];
         }
         [TaskStatus instance].nwEvent.indexOfWordToday --;
+        [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent];
+
     } else {
         [TaskStatus instance].rEvent.indexOfWordToday --;
+        [[HistoryManager instance] updateEvent:[TaskStatus instance].rEvent];
 
     }
     //[self.delegate resetWordIndexto:[TaskStatus instance].indexOfWordIDToday - 1];

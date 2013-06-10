@@ -17,6 +17,10 @@
 		3FA4849217142BF9003E88A6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848F17142BF9003E88A6 /* MainStoryboard.storyboard */; };
 		3FA484C41719590D003E88A6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA484C31719590D003E88A6 /* QuartzCore.framework */; };
 		3FB1CF3A1755ECC100017F88 /* TaskStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF391755ECC100017F88 /* TaskStatus.m */; };
+		3FB2C3D71765691A00FB0AD5 /* Main menu_text_AllFinished.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB2C3D31765691900FB0AD5 /* Main menu_text_AllFinished.png */; };
+		3FB2C3D81765691A00FB0AD5 /* Main menu_text_AllFinished@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB2C3D41765691900FB0AD5 /* Main menu_text_AllFinished@2x.png */; };
+		3FB2C3D91765691A00FB0AD5 /* Main menu_text_HalfFinished.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB2C3D51765691900FB0AD5 /* Main menu_text_HalfFinished.png */; };
+		3FB2C3DA1765691A00FB0AD5 /* Main menu_text_HalfFinished@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB2C3D61765691A00FB0AD5 /* Main menu_text_HalfFinished@2x.png */; };
 		3FE5F407175DE46D002EB59E /* test backButton_clicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F401175DE462002EB59E /* test backButton_clicked.png */; };
 		3FE5F408175DE46D002EB59E /* test backButton_clicked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F402175DE464002EB59E /* test backButton_clicked@2x.png */; };
 		3FE5F409175DE46D002EB59E /* test backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F403175DE466002EB59E /* test backButton.png */; };
@@ -3805,6 +3809,10 @@
 		3FA484C31719590D003E88A6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3FB1CF381755ECC100017F88 /* TaskStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskStatus.h; sourceTree = "<group>"; };
 		3FB1CF391755ECC100017F88 /* TaskStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskStatus.m; sourceTree = "<group>"; };
+		3FB2C3D31765691900FB0AD5 /* Main menu_text_AllFinished.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main menu_text_AllFinished.png"; sourceTree = "<group>"; };
+		3FB2C3D41765691900FB0AD5 /* Main menu_text_AllFinished@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main menu_text_AllFinished@2x.png"; sourceTree = "<group>"; };
+		3FB2C3D51765691900FB0AD5 /* Main menu_text_HalfFinished.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main menu_text_HalfFinished.png"; sourceTree = "<group>"; };
+		3FB2C3D61765691A00FB0AD5 /* Main menu_text_HalfFinished@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Main menu_text_HalfFinished@2x.png"; sourceTree = "<group>"; };
 		3FE5F401175DE462002EB59E /* test backButton_clicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test backButton_clicked.png"; sourceTree = "<group>"; };
 		3FE5F402175DE464002EB59E /* test backButton_clicked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test backButton_clicked@2x.png"; sourceTree = "<group>"; };
 		3FE5F403175DE466002EB59E /* test backButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "test backButton.png"; sourceTree = "<group>"; };
@@ -8716,6 +8724,10 @@
 		E466E7E7173BD4CC001847D0 /* MainMenu */ = {
 			isa = PBXGroup;
 			children = (
+				3FB2C3D31765691900FB0AD5 /* Main menu_text_AllFinished.png */,
+				3FB2C3D41765691900FB0AD5 /* Main menu_text_AllFinished@2x.png */,
+				3FB2C3D51765691900FB0AD5 /* Main menu_text_HalfFinished.png */,
+				3FB2C3D61765691A00FB0AD5 /* Main menu_text_HalfFinished@2x.png */,
 				73B40BE2175F4BC70073FEC6 /* Main menu_text_reciteWord.png */,
 				73B40BE3175F4BC70073FEC6 /* Main menu_text_reciteWord@2x.png */,
 				73E11B25174CD239000E6035 /* Main menu_title.png */,
