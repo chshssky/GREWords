@@ -258,6 +258,12 @@
     [_testSelectorController addTestSelectorAt:self];
     [_testSelectorController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_testSelectorController.view];
+    
+    if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_Exam])
+    {
+        guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_Exam];
+        [self.view addSubview:guideImageView];
+    }
 }
 
 - (void)startExam:(NSNotification *)notification

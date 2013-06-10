@@ -21,6 +21,8 @@
 #import "WordCardLayoutViewController.h"
 #import "WordNoteLayoutViewController.h"
 #import "WordDetailViewController.h"
+#import "ConfigurationHelper.h"
+
 
 @interface NoteViewController () <UITextViewDelegate,UIGestureRecognizerDelegate>
 @property (strong, nonatomic) UIImageView *noteUp;
@@ -56,6 +58,17 @@
     [self.view addGestureRecognizer:_noteRecognizer];
 
     
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_Note])
+    {
+        [GuideImageFactory instance].oneTimeDelegate = self;
+        guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_Note];
+        [self.view addSubview:guideImageView];
+        _noteRecognizer.enabled = NO;
+    }
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
@@ -157,6 +170,8 @@
 }
 
 - (void)animationDidStop:(CAAnimation *)theAnimation finished:(BOOL)flag {
+    
+
     if([[theAnimation valueForKey:@"id"] isEqual:@"removeUpNoteImageAnimation"])
     {
         [_noteDown removeFromSuperview];
@@ -468,5 +483,11 @@
     [self.delegate whenNoteDismissed];
 }
 
+
+#pragma mark - guide image delegate
+-(void)guideEnded
+{
+    _noteRecognizer.enabled = YES;
+}
 
 @end
