@@ -305,10 +305,16 @@
     [TaskStatus instance].nwEvent.maxWordID =   [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].nwEvent.indexOfWordToday] intValue];
     //把单词加入抽屉
     SmartWordListViewController *left = (SmartWordListViewController *)self.viewDeckController.leftController;
-    WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:self.beginWordID + _currentPage - 1 ] intValue]];
-    if ([left.array indexOfObject:addWord] == NSNotFound) {
-        [left addWord:addWord];
+    
+    for (int i = 1; i <= self.beginWordID + _currentPage; i ++) {
+        WordEntity *addWord = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:self.beginWordID + i - 1 ] intValue]];
+        
+        if ([left.array indexOfObject:addWord] == NSNotFound) {
+            [left addWord:addWord];
+        }
     }
+    
+    
     if([ConfigurationHelper instance].autoSpeak)
     {
         [[WordSpeaker instance] readWord:self.wordLabel.text];
