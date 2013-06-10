@@ -1079,41 +1079,8 @@
     [TaskStatus instance].nwEvent.endTime = now;
     [[HistoryManager instance] endEvent:[TaskStatus instance].nwEvent];
 
-    [self createReviewEvent];
-
-    DashboardViewController *dashboard = [DashboardViewController instance];
-    // Database: read from
-    dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].rEvent.indexOfWordToday;
-     
-    dashboard.minNumber = dashboard.nonFinishedNumber;
-    dashboard.sumNumber = TaskWordNumber;
-    [dashboard changeTextViewToReview];
-
-    [dashboard reloadData];
+    [[DashboardViewController instance] changeTextViewToHalfComplete];
     
-    
-//    [self dismissModalViewControllerAnimated:YES];
-//    [self.delegate AnimationBack];
-
-}
-
-- (void)createReviewEvent
-{
-    
-    [[TaskStatus instance] beginReview];
-    
-    HistoryManager *historyManager = [HistoryManager instance];
-        
-    [TaskStatus instance].rEvent.eventType = EVENT_TYPE_REVIEW;
-    [TaskStatus instance].rEvent.wrongWordCount = 0;
-    [TaskStatus instance].rEvent.totalWordCount = 200;
-    [TaskStatus instance].rEvent.startTime = [self getNowDate];
-    
-    //[TaskStatus instance].rEvent.stage_now = [TaskStatus instance].stage_now;
-    [TaskStatus instance].rEvent.indexOfWordToday = 0;
-    [TaskStatus instance].rEvent.dayOfSchedule = [TaskStatus instance].nwEvent.dayOfSchedule;
-    
-    [historyManager addEvent:[TaskStatus instance].rEvent];
 }
 
 

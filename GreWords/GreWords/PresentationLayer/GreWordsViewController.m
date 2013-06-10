@@ -29,6 +29,7 @@
 #import "TestSelectorViewController.h"
 #import "NSNotificationCenter+Addition.h"
 #import "GuideSettingViewController.h"
+#import "NSDate-Utilities.h"
 
 
 
@@ -179,6 +180,7 @@
     [self setTitleView:nil];
     [self setBackgroundImage:nil];
     [super viewDidUnload];
+    
 }
 
 
@@ -356,9 +358,9 @@
         self.menu.transform = CGAffineTransformMakeTranslation(-300, 0);
     } completion:^(BOOL finished) {
         if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
+#warning read from Database
             [[HistoryManager instance] readStatusIfNew];
             WordDetailViewController *vc = [[WordDetailViewController alloc] init];
-#warning read from Database
             vc.delegate = self;
             [self presentViewController:vc animated:NO completion:nil];
             
@@ -406,16 +408,11 @@
     }];
 }
 
-- (void)createNewWordEvent
+- (void)beganTest
 {
-    HistoryManager *historyManager = [HistoryManager instance];
     
-    [TaskStatus instance].nwEvent.eventType = EVENT_TYPE_NEWWORD;
-    [TaskStatus instance].nwEvent.totalWordCount = 600;
-    [TaskStatus instance].nwEvent.startTime = [self getNowDate];
-        
-    [historyManager addEvent:[TaskStatus instance].nwEvent];
 }
+
 
 - (NSDate *)getNowDate
 {
@@ -509,6 +506,54 @@
                                                                                     leftViewController:leftController
                                                                                    rightViewController:nil];
     [self presentViewController:deckController animated:NO completion:nil];
+}
+
+
+#pragma mark - Event Methods
+
+- (void)beginReviewEvent
+{
+    [self createReviewEvent];
+    
+    DashboardViewController *dashboard = [DashboardViewController instance];
+    // Database: read from
+    dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].rEvent.indexOfWordToday;
+    
+    dashboard.minNumber = dashboard.nonFinishedNumber;
+    dashboard.sumNumber = TaskWordNumber;
+    [dashboard changeTextViewToReview];
+    
+    [dashboard reloadData];
+}
+
+- (void)createReviewEvent
+{
+    
+    [[TaskStatus instance] beginReview];
+    
+    HistoryManager *historyManager = [HistoryManager instance];
+    
+    [TaskStatus instance].rEvent.eventType = EVENT_TYPE_REVIEW;
+    [TaskStatus instance].rEvent.wrongWordCount = 0;
+    [TaskStatus instance].rEvent.totalWordCount = 200;
+    [TaskStatus instance].rEvent.startTime = [self getNowDate];
+    
+    //[TaskStatus instance].rEvent.stage_now = [TaskStatus instance].stage_now;
+    [TaskStatus instance].rEvent.indexOfWordToday = 0;
+    [TaskStatus instance].rEvent.dayOfSchedule = [TaskStatus instance].nwEvent.dayOfSchedule;
+    
+    [historyManager addEvent:[TaskStatus instance].rEvent];
+}
+
+- (void)createNewWordEvent
+{
+    HistoryManager *historyManager = [HistoryManager instance];
+    
+    [TaskStatus instance].nwEvent.eventType = EVENT_TYPE_NEWWORD;
+    [TaskStatus instance].nwEvent.totalWordCount = 600;
+    [TaskStatus instance].nwEvent.startTime = [self getNowDate];
+    
+    [historyManager addEvent:[TaskStatus instance].nwEvent];
 }
 
 @end

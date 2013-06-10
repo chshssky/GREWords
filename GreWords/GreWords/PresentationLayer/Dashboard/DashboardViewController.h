@@ -41,6 +41,7 @@
 - (void)changeTextViewToReview;
 - (void)changeTextViewToNewWord;
 - (void)changeTextViewToComplete;
+- (void)changeTextViewToHalfComplete;
 - (void)mainViewGen;
 - (void)plusData;
 - (void)minusData;
