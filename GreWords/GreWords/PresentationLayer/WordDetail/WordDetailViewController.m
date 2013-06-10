@@ -1055,7 +1055,6 @@
         //_note.delegate = self;
     }
     
-    [[WordTaskGenerator instance] clearTask];
     
     NSDate *now = [self getNowDate];
     [TaskStatus instance].nwEvent.duration = [now timeIntervalSinceDate:[TaskStatus instance].nwEvent.startTime];
@@ -1068,6 +1067,9 @@
     
     [TaskStatus instance].nwEvent.endTime = now;
     [[HistoryManager instance] endEvent:[TaskStatus instance].nwEvent];
+    
+    [[WordTaskGenerator instance] clearTask];
+
 
     [[DashboardViewController instance] changeTextViewToHalfComplete];
     
