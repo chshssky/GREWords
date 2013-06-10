@@ -26,6 +26,9 @@
 @interface WordDetailViewController () <UIScrollViewDelegate>
 {
     UIImageView *guideImageView;
+    
+    NSTimer *clockTimer;
+    float currentWordTimeEsclaped;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
@@ -171,6 +174,8 @@
     } else {
         [TaskStatus instance].rEvent.indexOfWordToday ++;
     }
+    
+    [self startAlertCounting];
 }
 
 - (void)viewDidLoad
@@ -207,7 +212,6 @@
     [self.view addSubview:self.dashboardVC.view];
     
     [self.backButton.superview bringSubviewToFront:self.backButton];
-    [self.timeImage setImage:[UIImage imageNamed:nil]];
     
     if(![[ConfigurationHelper instance] guideForTypeHasShown:GuideType_ReviewFirst])
     {
@@ -1039,20 +1043,6 @@
     [_reciteAndReviewResultCardViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_reciteAndReviewResultCardViewController.view];
     
-#warning  this may can be easier ~
-    
-    DashboardViewController *dashboard = [DashboardViewController instance];
-    // Database: read from
-    dashboard.nonFinishedNumber = TaskWordNumber - 0;
-    
-    dashboard.minNumber = dashboard.nonFinishedNumber;
-    dashboard.sumNumber = TaskWordNumber;
-    
-    [dashboard changeTextViewToComplete];
-
-    [dashboard reloadData];
-
-    
 }
 
 - (void)newWordCompleted
@@ -1064,7 +1054,6 @@
         //_note.delegate = self;
     }
     
-    [[WordTaskGenerator instance] clearTask];
     
     NSDate *now = [self getNowDate];
     [TaskStatus instance].nwEvent.duration = [now timeIntervalSinceDate:[TaskStatus instance].nwEvent.startTime];
@@ -1077,42 +1066,12 @@
     
     [TaskStatus instance].nwEvent.endTime = now;
     [[HistoryManager instance] endEvent:[TaskStatus instance].nwEvent];
+    
+    [[WordTaskGenerator instance] clearTask];
 
-    [self createReviewEvent];
 
-    DashboardViewController *dashboard = [DashboardViewController instance];
-    // Database: read from
-    dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].rEvent.indexOfWordToday;
-     
-    dashboard.minNumber = dashboard.nonFinishedNumber;
-    dashboard.sumNumber = TaskWordNumber;
-    [dashboard changeTextViewToReview];
-
-    [dashboard reloadData];
+    [[DashboardViewController instance] changeTextViewToHalfComplete];
     
-    
-//    [self dismissModalViewControllerAnimated:YES];
-//    [self.delegate AnimationBack];
-
-}
-
-- (void)createReviewEvent
-{
-    
-    [[TaskStatus instance] beginReview];
-    
-    HistoryManager *historyManager = [HistoryManager instance];
-        
-    [TaskStatus instance].rEvent.eventType = EVENT_TYPE_REVIEW;
-    [TaskStatus instance].rEvent.wrongWordCount = 0;
-    [TaskStatus instance].rEvent.totalWordCount = 200;
-    [TaskStatus instance].rEvent.startTime = [self getNowDate];
-    
-    //[TaskStatus instance].rEvent.stage_now = [TaskStatus instance].stage_now;
-    [TaskStatus instance].rEvent.indexOfWordToday = 0;
-    [TaskStatus instance].rEvent.dayOfSchedule = [TaskStatus instance].nwEvent.dayOfSchedule;
-    
-    [historyManager addEvent:[TaskStatus instance].rEvent];
 }
 
 
@@ -1440,7 +1399,7 @@
 //        self.nwEvent.reviewEnable = [TaskStatus instance].reviewEnable;
 //        self.nwEvent.stage_now = [TaskStatus instance].stage_now;
 //        self.nwEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
-        
+        [self.WordParaphraseView setContentOffset:CGPointMake(0, 0)];
         [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent];
     }
 }
@@ -1457,8 +1416,11 @@
             [[TaskStatus instance] setReviewEnable];
         }
         [TaskStatus instance].nwEvent.indexOfWordToday --;
+        [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent];
+
     } else {
         [TaskStatus instance].rEvent.indexOfWordToday --;
+        [[HistoryManager instance] updateEvent:[TaskStatus instance].rEvent];
 
     }
     //[self.delegate resetWordIndexto:[TaskStatus instance].indexOfWordIDToday - 1];
@@ -1473,5 +1435,39 @@
     NSLog(@"return Home");
 }
 
+#pragma mark - time alert Methods
+- (void)startAlertCounting
+{
+    [clockTimer invalidate];
+    currentWordTimeEsclaped = 0;
+    self.timeImage.hidden = YES;
+    clockTimer = [NSTimer scheduledTimerWithTimeInterval: 0.5
+                                                  target: self
+                                                selector: @selector(tick)
+                                                userInfo: nil
+                                                 repeats: YES];
+}
 
+- (void)tick
+{
+    NSLog(@"time %f",currentWordTimeEsclaped);
+    currentWordTimeEsclaped += 0.5;
+    if(currentWordTimeEsclaped > 25 && currentWordTimeEsclaped < 30)
+    {
+        int temp = currentWordTimeEsclaped * 2;
+        if(temp % 2)
+        {
+            self.timeImage.hidden = NO;
+        }
+        else
+        {
+            self.timeImage.hidden = YES;
+        }
+    }
+    else if(currentWordTimeEsclaped >= 30)
+    {
+        self.timeImage.hidden = NO;
+        [clockTimer invalidate];
+    }
+}
 @end

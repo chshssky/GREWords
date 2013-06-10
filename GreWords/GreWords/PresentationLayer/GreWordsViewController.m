@@ -29,6 +29,7 @@
 #import "TestSelectorViewController.h"
 #import "NSNotificationCenter+Addition.h"
 #import "GuideSettingViewController.h"
+#import "NSDate-Utilities.h"
 
 
 
@@ -179,8 +180,34 @@
     [self setTitleView:nil];
     [self setBackgroundImage:nil];
     [super viewDidUnload];
+    
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSLog(@"WIEW　ＷＩＬＬ　Ａｐｐaｅｒ!!!!!!!");
+    
+    NSDate *now = [self getNowDate];
+    
+    
+    
+    NSDate *newWordTime = [ConfigurationHelper instance].freshWordAlertTime;//[now dateByAddingTimeInterval:60.0];
+    NSDate *reviewTime = now;//[now dateByAddingTimeInterval:60.0];
+
+    
+    if ([TaskStatus instance].rComplete == YES) {
+        if ([[now laterDate:newWordTime] isEqualToDate:now]) {
+            [self beginReviewEvent];
+            
+        }
+    } else if ([TaskStatus instance].nwComplete == YES) {
+        if ([[now laterDate:reviewTime] isEqualToDate:now]) {
+            [self createNewWordEvent];
+        }
+    }
+    
+    
+}
 
 
 
@@ -356,12 +383,14 @@
         self.menu.transform = CGAffineTransformMakeTranslation(-300, 0);
     } completion:^(BOOL finished) {
         if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
-            WordDetailViewController *vc = [[WordDetailViewController alloc] init];
 #warning read from Database
+            [[HistoryManager instance] readStatusIfNew];
+            WordDetailViewController *vc = [[WordDetailViewController alloc] init];
             vc.delegate = self;
             [self presentViewController:vc animated:NO completion:nil];
             
         } else {
+            [[HistoryManager instance] readStatusIfNew];
         //根据MaxWordID和现在所在单词的ID 来判断 该跳转到 NewWord 还是 Review
         if ([[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].nwEvent.indexOfWordToday ] integerValue] < [TaskStatus instance].nwEvent.maxWordID || [TaskStatus instance].nwEvent.reviewEnable) {
             
@@ -404,17 +433,6 @@
     }];
 }
 
-- (void)createNewWordEvent
-{
-    HistoryManager *historyManager = [HistoryManager instance];
-    
-    [TaskStatus instance].nwEvent.eventType = EVENT_TYPE_NEWWORD;
-    [TaskStatus instance].nwEvent.totalWordCount = 600;
-    [TaskStatus instance].nwEvent.startTime = [self getNowDate];
-        
-    [historyManager addEvent:[TaskStatus instance].nwEvent];
-}
-
 - (NSDate *)getNowDate
 {
     NSTimeZone *zone = [NSTimeZone defaultTimeZone];//获得当前应用程序默认的时区
@@ -426,18 +444,32 @@
 
 - (void)resetIndexOfWordList:(int)remainWords
 {
-    int theWordID = TaskWordNumber - remainWords;
-    for (int index = 0; index < [[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] count]; index++) {
-        if (theWordID == [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:index] integerValue])
-        {
-            [TaskStatus instance].nwEvent.indexOfWordToday = index;
-            [TaskStatus instance].nwEvent.maxWordID = theWordID;
-            
-            [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent];
-            
-            return;
+    if ([TaskStatus instance].taskType == TASK_TYPE_NEWWORD) {
+        int theWordID = TaskWordNumber - remainWords;
+        for (int index = 0; index < [[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] count]; index++) {
+            if (theWordID == [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:index] integerValue])
+            {
+                [TaskStatus instance].nwEvent.indexOfWordToday = index;
+                [TaskStatus instance].nwEvent.maxWordID = theWordID;
+                
+                [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent];
+                
+                return;
+            }
         }
+    } else {
+        int index = TaskWordNumber - remainWords;
+        
+        [TaskStatus instance].rEvent.indexOfWordToday = index;
+        
+        [[HistoryManager instance] updateEvent:[TaskStatus instance].rEvent];
+        
+        return;
+
+        
+        
     }
+
 }
 
 #pragma mark - WordDetailDelegate
@@ -460,8 +492,7 @@
         dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.0f,1.0f), CGAffineTransformMakeTranslation(0, 0));
         self.menu.transform = CGAffineTransformMakeTranslation(0, 0);
         self.backgroundImage.alpha = 1.0f;
-        if (dashboard.complete == NO) {
-            
+        if ([TaskStatus instance].rComplete == NO && [TaskStatus instance].nwComplete == NO) {
             dashboard.textView.alpha = 1.0f;
             dashboard.bigButton.alpha = 1.0f;
         }
@@ -507,6 +538,77 @@
                                                                                     leftViewController:leftController
                                                                                    rightViewController:nil];
     [self presentViewController:deckController animated:NO completion:nil];
+}
+
+
+#pragma mark - Event Methods
+
+- (void)beginReviewEvent
+{
+    [TaskStatus instance].rEvent.totalWordCount = [[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] count];
+    
+    [self createReviewEvent];
+    
+//    DashboardViewController *dashboard = [DashboardViewController instance];
+    // Database: read from
+
+    dashboard.nonFinishedNumber = [TaskStatus instance].rEvent.totalWordCount - [TaskStatus instance].rEvent.indexOfWordToday;
+    
+    dashboard.minNumber = dashboard.nonFinishedNumber;
+    dashboard.sumNumber = [TaskStatus instance].rEvent.totalWordCount;
+    [dashboard changeTextViewToReview];
+    
+    [dashboard reloadData];
+}
+
+- (void)createReviewEvent
+{
+    
+    [[TaskStatus instance] beginReview];
+    
+    HistoryManager *historyManager = [HistoryManager instance];
+    
+    [TaskStatus instance].rEvent.eventType = EVENT_TYPE_REVIEW;
+    [TaskStatus instance].rEvent.wrongWordCount = 0;
+    [TaskStatus instance].rEvent.startTime = [self getNowDate];
+    
+    //[TaskStatus instance].rEvent.stage_now = [TaskStatus instance].stage_now;
+    [TaskStatus instance].rEvent.indexOfWordToday = 0;
+    [TaskStatus instance].rEvent.dayOfSchedule = [TaskStatus instance].nwEvent.dayOfSchedule;
+    
+    [historyManager addEvent:[TaskStatus instance].rEvent];
+}
+
+- (void)beginNewWordEvent
+{
+    [[TaskStatus instance] beginNewWord];
+    [TaskStatus instance].nwEvent.totalWordCount = [[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] count];
+
+    [self createNewWordEvent];
+#warning  this may can be easier ~
+    
+    [dashboard changeTextViewToNewWord];
+    
+    // Database: read from
+    dashboard.nonFinishedNumber = [TaskStatus instance].nwEvent.totalWordCount - 0;
+    
+    dashboard.minNumber = dashboard.nonFinishedNumber;
+    dashboard.sumNumber = [TaskStatus instance].nwEvent.totalWordCount;
+    
+    [dashboard changeTextViewToNewWord];
+    
+    [dashboard reloadData];
+}
+
+- (void)createNewWordEvent
+{
+    HistoryManager *historyManager = [HistoryManager instance];
+    
+    [TaskStatus instance].nwEvent.eventType = EVENT_TYPE_NEWWORD;
+    [TaskStatus instance].nwEvent.startTime = [self getNowDate];
+    
+    [historyManager addEvent:[TaskStatus instance].nwEvent];
+    
 }
 
 @end

@@ -193,7 +193,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{59, 44}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView" ref="981749814"/>
+						<reference key="NSNextKeyView" ref="758016991"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -213,6 +213,20 @@
 							<double key="pointSize">15</double>
 						</object>
 						<reference key="IBUIFont" ref="884100430"/>
+					</object>
+					<object class="IBUIImageView" id="758016991">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">-2147483356</int>
+						<string key="NSFrame">{{280, 11}, {22, 21}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSNextKeyView" ref="981749814"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">learning_clock.png</string>
+						</object>
 					</object>
 				</array>
 				<string key="NSFrame">{{0, 20}, {320, 548}}</string>
@@ -321,6 +335,14 @@
 					<int key="connectionID">222</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">clockAlertImageView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="758016991"/>
+					</object>
+					<int key="connectionID">224</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">BackButtonPushed:</string>
 						<reference key="source" ref="826797330"/>
@@ -350,6 +372,7 @@
 							<reference ref="676394273"/>
 							<reference ref="59622698"/>
 							<reference ref="826797330"/>
+							<reference ref="758016991"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -407,6 +430,11 @@
 						<reference key="object" ref="1069963052"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">223</int>
+						<reference key="object" ref="758016991"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -422,6 +450,7 @@
 				<string key="211.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="219.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="0.0" key="219.IBUIButtonInspectorSelectedEdgeInsetMetadataKey"/>
+				<string key="223.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="34.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
@@ -429,7 +458,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">222</int>
+			<int key="maxID">224</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
@@ -437,10 +466,11 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="learning_backgournd_blank.png">{16, 16}</string>
-			<string key="learning_downCover2.png">{16, 16}</string>
-			<string key="learning_sound.png">{16, 16}</string>
-			<string key="learning_upCover.png">{16, 16}</string>
+			<string key="learning_backgournd_blank.png">{320, 548}</string>
+			<string key="learning_clock.png">{22, 21}</string>
+			<string key="learning_downCover2.png">{320, 54}</string>
+			<string key="learning_sound.png">{19, 17}</string>
+			<string key="learning_upCover.png">{320, 175}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
 	</data>

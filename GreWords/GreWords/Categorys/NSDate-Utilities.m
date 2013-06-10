@@ -255,6 +255,15 @@
 	return [CURRENT_CALENDAR dateFromComponents:components];
 }
 
+- (NSDate *) nowdateWithHour:(NSInteger)hours AndMinute:(NSInteger)minutes
+{
+    NSDateComponents *components = [CURRENT_CALENDAR components:DATE_COMPONENTS fromDate:self];
+	components.hour = hours;
+	components.minute = minutes;
+	components.second = 0;
+    return [CURRENT_CALENDAR dateFromComponents:components];
+}
+
 - (NSDateComponents *) componentsWithOffsetFromDate: (NSDate *) aDate
 {
 	NSDateComponents *dTime = [CURRENT_CALENDAR components:DATE_COMPONENTS fromDate:aDate toDate:self options:0];

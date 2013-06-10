@@ -25,7 +25,7 @@
 @property (nonatomic, strong) UIImageView *theNewTextView;
 @property (nonatomic, strong)FXLabel *wordNumberTest;
 
-@property (nonatomic) BOOL complete;
+//@property (nonatomic) BOOL complete;
 
 @property(nonatomic) int nonFinishedNumber;
 @property(nonatomic) int sumNumber;
@@ -41,6 +41,7 @@
 - (void)changeTextViewToReview;
 - (void)changeTextViewToNewWord;
 - (void)changeTextViewToComplete;
+- (void)changeTextViewToHalfComplete;
 - (void)mainViewGen;
 - (void)plusData;
 - (void)minusData;

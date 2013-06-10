@@ -84,11 +84,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GreWords/PresentationLayer/WordDetail/WordDetailViewController.m"
-         timestampString = "392517401.216015"
+         timestampString = "392531369.412184"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1061"
-         endingLineNumber = "1061"
+         startingLineNumber = "1047"
+         endingLineNumber = "1047"
          landmarkName = "-newWordCompleted"
          landmarkType = "5">
       </FileBreakpoint>
@@ -97,12 +97,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GreWords/PresentationLayer/WordDetail/WordDetailViewController.m"
-         timestampString = "392517401.216015"
+         timestampString = "392531369.412184"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1070"
-         endingLineNumber = "1070"
+         startingLineNumber = "1056"
+         endingLineNumber = "1056"
          landmarkName = "-newWordCompleted"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "GreWords/PresentationLayer/WordDetail/NewWordDetailViewController.m"
+         timestampString = "392525040.650855"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "309"
+         endingLineNumber = "309"
+         landmarkName = "-nextWordAction"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

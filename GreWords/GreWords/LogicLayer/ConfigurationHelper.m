@@ -191,8 +191,7 @@ ConfigurationHelper* _configurationHelperInstance = nil;
 -(void)reSchedule
 {
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
-    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
-
+    
     if(!self.freshWordAlertTime || !self.reviewAlertTime)
         return;
     for(int i = 0; i <= 30; i++)
@@ -206,6 +205,7 @@ ConfigurationHelper* _configurationHelperInstance = nil;
             return;
         
         
+        
         NSDate *fireDay = [NSDate dateWithTimeIntervalSinceNow:60 * 60 * 24 * i];
         
         NSCalendar *calendar = [NSCalendar autoupdatingCurrentCalendar];
@@ -214,7 +214,7 @@ ConfigurationHelper* _configurationHelperInstance = nil;
                                                        fromDate:fireDay];
         NSDateComponents *timeComponents = [calendar components:( NSHourCalendarUnit | NSMinuteCalendarUnit )
                                                        fromDate:self.freshWordAlertTime];
-        
+
         // Set up the fire time
         NSDateComponents *dateComps = [[NSDateComponents alloc] init];
         [dateComps setDay:[dateComponents day]];
@@ -224,7 +224,10 @@ ConfigurationHelper* _configurationHelperInstance = nil;
         [dateComps setMinute:[timeComponents minute]];
         [dateComps setSecond:0];
         NSDate *itemDate = [calendar dateFromComponents:dateComps];
-        
+        if(itemDate.timeIntervalSinceNow < 0)
+        {
+            continue;
+        }
         
         localNotif.fireDate = itemDate;
         localNotif.timeZone = [NSTimeZone defaultTimeZone];
@@ -262,7 +265,10 @@ ConfigurationHelper* _configurationHelperInstance = nil;
         [dateComps setMinute:[timeComponents minute]];
         [dateComps setSecond:0];
         NSDate *itemDate = [calendar dateFromComponents:dateComps];
-        
+        if(itemDate.timeIntervalSinceNow < 0)
+        {
+            continue;
+        }
         
         localNotif.fireDate = itemDate;
         localNotif.timeZone = [NSTimeZone defaultTimeZone];
@@ -275,6 +281,7 @@ ConfigurationHelper* _configurationHelperInstance = nil;
         // Schedule the notification
         [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
     }
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 
