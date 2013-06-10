@@ -189,7 +189,9 @@
     
     NSDate *now = [self getNowDate];
     
-    NSDate *newWordTime = now;//[now dateByAddingTimeInterval:60.0];
+    
+    
+    NSDate *newWordTime = [ConfigurationHelper instance].freshWordAlertTime;//[now dateByAddingTimeInterval:60.0];
     NSDate *reviewTime = now;//[now dateByAddingTimeInterval:60.0];
 
     

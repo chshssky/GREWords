@@ -57,6 +57,10 @@
 - (NSDate *) dateBySubtractingMinutes: (NSInteger) dMinutes;
 - (NSDate *) dateAtStartOfDay;
 
+- (NSDate *) nowdateWithHour:(NSInteger)hours AndMinute:(NSInteger)minutes;
+
+
+
 // Retrieving intervals
 - (NSInteger) minutesAfterDate: (NSDate *) aDate;
 - (NSInteger) minutesBeforeDate: (NSDate *) aDate;
