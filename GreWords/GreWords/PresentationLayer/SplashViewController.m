@@ -28,7 +28,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    if(!iPhone5)
+    {
+        self.splashImageView.image = [UIImage imageNamed:@"Default.png"];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -52,4 +61,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidUnload {
+    [self setSplashImageView:nil];
+    [super viewDidUnload];
+}
 @end
