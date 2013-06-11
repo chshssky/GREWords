@@ -426,27 +426,24 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 - (void)changeTextViewToHalfComplete
 {
     self.theNewTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_HalfFinished.png"]];
-    self.theNewTextView.center = CGPointMake(self.centerPoint.x, self.centerPoint.y);
+    self.theNewTextView.center = CGPointMake(self.centerPoint.x, self.centerPoint.y+5);
     [self.view addSubview:self.theNewTextView];
     
     [TaskStatus instance].nwComplete = YES;
     self.view.userInteractionEnabled = NO;
-    self.wordNumberTest.alpha = 0;
     self.bigButton.userInteractionEnabled = NO;
+    self.wordNumberTest.alpha = 0;
 }
 
 - (void)changeTextViewToComplete
 {
-    [TaskStatus instance].rComplete = YES;
-    
-    self.wordNumberTest.alpha = 0;
-    
-    self.bigButton.userInteractionEnabled = NO;
-    
     self.theNewTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_allFinished.png"]];
-    self.theNewTextView.center = CGPointMake(self.centerPoint.x, self.centerPoint.y);
+    self.theNewTextView.center = CGPointMake(self.centerPoint.x, self.centerPoint.y+5);
     [self.view addSubview:self.theNewTextView];
-    
+
+    [TaskStatus instance].rComplete = YES;
+    self.wordNumberTest.alpha = 0;
+    self.bigButton.userInteractionEnabled = NO;
 }
 
 
