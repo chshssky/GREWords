@@ -33,7 +33,7 @@
     {
         self.backgroundView.image = [UIImage imageNamed:@"learning_reviewResult.png"];
     }
-    self.countLabel.text = [NSString stringWithFormat:@"%d个",self.event.totalWordCount];
+    self.countLabel.text = [NSString stringWithFormat:@"%d个",self.event.newWordCount];
     self.timeLabel.text = [NSString stringWithFormat:@"%d分钟",(int)(self.event.duration / 60.0)];
     self.percentLabel.text = [NSString stringWithFormat:@"%.02f%%",(float)100 - (self.event.wrongWordCount * 100.0 / self.event.totalWordCount)];
 }
