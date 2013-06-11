@@ -397,8 +397,10 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 {
     [TaskStatus instance].rComplete = NO;
     [TaskStatus instance].nwComplete = NO;
-    self.wordNumberTest.alpha = 1;
-    _textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_reciteWord.png"]];
+    self.view.userInteractionEnabled = YES;
+    self.bigButton.userInteractionEnabled = YES;
+    
+    self.wordNumberTest.alpha = 1;    _textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_reciteWord.png"]];
     _textView.center = CGPointMake(self.centerPoint.x-15, self.centerPoint.y-45);
     _textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     [self.view addSubview:_textView];
@@ -408,7 +410,11 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 {
     [TaskStatus instance].rComplete = NO;
     [TaskStatus instance].nwComplete = NO;
+    self.view.userInteractionEnabled = YES;
+    self.bigButton.userInteractionEnabled = YES;
+    
     self.wordNumberTest.alpha = 1;
+    
     _textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_newWord.png"]];
     _textView.center = CGPointMake(self.centerPoint.x-15, self.centerPoint.y-45);
     _textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
