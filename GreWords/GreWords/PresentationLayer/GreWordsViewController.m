@@ -501,8 +501,9 @@
         if ([TaskStatus instance].rComplete == NO && [TaskStatus instance].nwComplete == NO) {
             dashboard.textView.alpha = 1.0f;
             dashboard.bigButton.alpha = 1.0f;
-        } else {
+        } else if ([TaskStatus instance].nwComplete == YES){
             dashboard.theNewTextView.alpha = 1.0f;
+            [dashboard.theNewTextView bringSubviewToFront:dashboard.view];
         }
         dashboard.wordNumberTest.transform = CGAffineTransformMakeTranslation(0, 0);
     }];

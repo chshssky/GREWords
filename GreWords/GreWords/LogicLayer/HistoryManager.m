@@ -155,6 +155,7 @@ HistoryManager* _historyManagerInstance = nil;
     NSLog(@"History Start Time: %@ Wrong: %@", history.startTime, history.wrongWordCount);
     
     history.wrongWordCount = [NSNumber numberWithInt:aEvent.wrongWordCount];
+    history.totalWordCount = [NSNumber numberWithBool:aEvent.totalWordCount];
 
     
     if ([aEvent isKindOfClass:[NewWordEvent class]]) {

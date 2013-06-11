@@ -1072,7 +1072,11 @@
     NSDate *now = [self getNowDate];
     [TaskStatus instance].nwEvent.duration = [now timeIntervalSinceDate:[TaskStatus instance].nwEvent.startTime];
     
+    [TaskStatus instance].nwEvent.newWordCount = [[WordTaskGenerator instance] theNumberOfNewWordToday_twolist:[TaskStatus instance].nwEvent.dayOfSchedule];
+    
     NSLog(@"NewWord Result :%d, %d, %f", [TaskStatus instance].nwEvent.wrongWordCount, [TaskStatus instance].nwEvent.totalWordCount, [TaskStatus instance].nwEvent.duration);
+    
+    
     
     [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withEvent:[TaskStatus instance].nwEvent];
     [_reciteAndReviewResultCardViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
