@@ -155,7 +155,7 @@ HistoryManager* _historyManagerInstance = nil;
     NSLog(@"History Start Time: %@ Wrong: %@", history.startTime, history.wrongWordCount);
     
     history.wrongWordCount = [NSNumber numberWithInt:aEvent.wrongWordCount];
-    history.totalWordCount = [NSNumber numberWithBool:aEvent.totalWordCount];
+    history.totalWordCount = [NSNumber numberWithInt:aEvent.totalWordCount];
 
     
     if ([aEvent isKindOfClass:[NewWordEvent class]]) {
@@ -254,6 +254,7 @@ HistoryManager* _historyManagerInstance = nil;
             taskStatus.nwEvent.wrongWordCount = [history.wrongWordCount integerValue];
             taskStatus.nwEvent.startTime = history.startTime;
             taskStatus.nwEvent.totalWordCount = [history.totalWordCount intValue];
+            NSLog(@"History Manager : Total Word Count: %d", taskStatus.nwEvent.totalWordCount);
 
         } else if ([history.event isEqualToString:EVENT_TYPE_REVIEW]) {
             ReviewStatus *rStatus = history.reviewStatus;
