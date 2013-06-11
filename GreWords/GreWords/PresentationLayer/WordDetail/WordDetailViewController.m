@@ -78,8 +78,6 @@
 @property (strong, nonatomic) UIImageView *showMeaningImageView;
 @property (nonatomic) int added_height;
 
-@property (nonatomic) int day;
-
 @property (nonatomic, strong) ReciteAndReviewResultViewController *reciteAndReviewResultCardViewController;
 @end
 
@@ -133,11 +131,11 @@
     
     int wordID;
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
-        wordID = [[[[WordTaskGenerator instance] reviewTask_twoList:self.day] objectAtIndex:index] intValue];
+        wordID = [[[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] objectAtIndex:index] intValue];
     } else {
-        wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:index] intValue];
+        wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:index] intValue];
     }
-    
+
     [vc displayWord:[[WordHelper instance] wordWithID:wordID] withOption:option];
     
     self.wordLabel.text = [[WordHelper instance] wordWithID:wordID].wordText;
@@ -988,9 +986,9 @@
     [self viewWillAppear:YES];
     WordEntity *word;
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
-        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:self.day] objectAtIndex:[TaskStatus instance].rEvent.indexOfWordToday - 1] intValue]];
+        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].rEvent.indexOfWordToday - 1] intValue]];
     } else {
-        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].nwEvent.indexOfWordToday - 1] intValue]];
+        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].nwEvent.indexOfWordToday - 1] intValue]];
 
     }
     [word didRightOnDate:[NSDate new]];
@@ -1005,11 +1003,11 @@
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
         [TaskStatus instance].rEvent.wrongWordCount ++;
         
-        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:self.day] objectAtIndex:[TaskStatus instance].rEvent.indexOfWordToday - 1] intValue]];
+        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].rEvent.indexOfWordToday - 1] intValue]];
     } else {
         [TaskStatus instance].nwEvent.wrongWordCount ++;
 
-        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:self.day] objectAtIndex:[TaskStatus instance].nwEvent.indexOfWordToday - 1] intValue]];
+        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].nwEvent.indexOfWordToday - 1] intValue]];
         
     }
     [word didMakeAMistakeOnDate:[NSDate new]];

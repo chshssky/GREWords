@@ -259,6 +259,7 @@ HistoryManager* _historyManagerInstance = nil;
             taskStatus.nwEvent.wrongWordCount = [history.wrongWordCount integerValue];
             taskStatus.nwEvent.startTime = history.startTime;
             taskStatus.nwEvent.totalWordCount = [history.totalWordCount intValue];
+            taskStatus.nwEvent.dayOfSchedule = [history.dayOfSchedule intValue];
             NSLog(@"History Manager : Total Word Count: %d", taskStatus.nwEvent.totalWordCount);
 
         } else if ([history.event isEqualToString:EVENT_TYPE_REVIEW]) {
@@ -270,6 +271,7 @@ HistoryManager* _historyManagerInstance = nil;
             taskStatus.rEvent.startTime = history.startTime;
             taskStatus.rEvent.totalWordCount = [history.totalWordCount intValue];
             taskStatus.rEvent.wrongWordCount = [history.wrongWordCount intValue];
+            taskStatus.rEvent.dayOfSchedule = [history.dayOfSchedule intValue];
             
         } else if ([history.event isEqualToString:EVENT_TYPE_EXAM]) {
             //ExamStatus *eStatus = history.examStatus;

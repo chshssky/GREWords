@@ -73,11 +73,12 @@ TaskStatus* _taskStatusInstance = nil;
     
     self.nwEvent.indexOfWordToday = 0;
     self.nwEvent.maxWordID = 0;
-    self.nwEvent.stage_now = 0;
     self.nwEvent.reviewEnable = NO;
     self.nwEvent.wrongWordCount = 0;
-    
     self.nwEvent.dayOfSchedule = [[HistoryManager instance] getANewDay];
+    
+    self.nwEvent.stage_now = 0;
+
 }
 
 - (void)beginReview
@@ -86,7 +87,11 @@ TaskStatus* _taskStatusInstance = nil;
     
     self.rEvent.indexOfWordToday = 0;
     self.rEvent.wrongWordCount = 0;
+    self.rEvent.totalWordCount = 0;
+    self.rEvent.dayOfSchedule = self.nwEvent.dayOfSchedule;
+    
     self.rEvent.stage_now = 0;
+    
 }
 
 

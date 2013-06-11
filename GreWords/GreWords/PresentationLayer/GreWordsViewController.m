@@ -57,10 +57,10 @@
     dashboard = [DashboardViewController instance];
     // Database: read from
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
-        dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].rEvent.indexOfWordToday;
+        dashboard.nonFinishedNumber = [TaskStatus instance].rEvent.totalWordCount - [TaskStatus instance].rEvent.indexOfWordToday;
         [dashboard changeTextViewToReview];
     } else {
-        dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].nwEvent.maxWordID;
+        dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].nwEvent.maxWordID % 200;
         [dashboard changeTextViewToNewWord];
     }
     dashboard.minNumber = dashboard.nonFinishedNumber;
@@ -586,9 +586,8 @@
 
 - (void)beginReviewEvent
 {
-    [TaskStatus instance].rEvent.totalWordCount = [[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] count];
-    
     [self createReviewEvent];
+    
     
     dashboard = [DashboardViewController instance];
     dashboard.nonFinishedNumber = [TaskStatus instance].rEvent.totalWordCount - [TaskStatus instance].rEvent.indexOfWordToday;
@@ -610,11 +609,11 @@
     [TaskStatus instance].rEvent.eventType = EVENT_TYPE_REVIEW;
     [TaskStatus instance].rEvent.wrongWordCount = 0;
     [TaskStatus instance].rEvent.startTime = [self getNowDate];
-    
+    [TaskStatus instance].rEvent.dayOfSchedule = [historyManager getANewDay] - 1;
+
     //[TaskStatus instance].rEvent.stage_now = [TaskStatus instance].stage_now;
     [TaskStatus instance].rEvent.indexOfWordToday = 0;
-    [TaskStatus instance].rEvent.dayOfSchedule = [TaskStatus instance].nwEvent.dayOfSchedule;
-    
+    [TaskStatus instance].rEvent.totalWordCount = [[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] count];
     [historyManager addEvent:[TaskStatus instance].rEvent];
 }
 
