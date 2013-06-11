@@ -17,10 +17,6 @@
 		3FA4849217142BF9003E88A6 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FA4848F17142BF9003E88A6 /* MainStoryboard.storyboard */; };
 		3FA484C41719590D003E88A6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FA484C31719590D003E88A6 /* QuartzCore.framework */; };
 		3FB1CF3A1755ECC100017F88 /* TaskStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB1CF391755ECC100017F88 /* TaskStatus.m */; };
-		3FB2C3D71765691A00FB0AD5 /* Main menu_text_AllFinished.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB2C3D31765691900FB0AD5 /* Main menu_text_AllFinished.png */; };
-		3FB2C3D81765691A00FB0AD5 /* Main menu_text_AllFinished@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB2C3D41765691900FB0AD5 /* Main menu_text_AllFinished@2x.png */; };
-		3FB2C3D91765691A00FB0AD5 /* Main menu_text_HalfFinished.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB2C3D51765691900FB0AD5 /* Main menu_text_HalfFinished.png */; };
-		3FB2C3DA1765691A00FB0AD5 /* Main menu_text_HalfFinished@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB2C3D61765691A00FB0AD5 /* Main menu_text_HalfFinished@2x.png */; };
 		3FE5F407175DE46D002EB59E /* test backButton_clicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F401175DE462002EB59E /* test backButton_clicked.png */; };
 		3FE5F408175DE46D002EB59E /* test backButton_clicked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F402175DE464002EB59E /* test backButton_clicked@2x.png */; };
 		3FE5F409175DE46D002EB59E /* test backButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FE5F403175DE466002EB59E /* test backButton.png */; };
@@ -209,6 +205,10 @@
 		73E11B3C174D26F9000E6035 /* learning_right_up_page2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E11B3A174D26F7000E6035 /* learning_right_up_page2@2x.png */; };
 		73E11B3F174D2717000E6035 /* learning_wrong_up_page2.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E11B3D174D2715000E6035 /* learning_wrong_up_page2.png */; };
 		73E11B40174D2717000E6035 /* learning_wrong_up_page2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E11B3E174D2716000E6035 /* learning_wrong_up_page2@2x.png */; };
+		73E33EB31767230B00194798 /* Main menu_text_HalfFinished.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB2C3D51765691900FB0AD5 /* Main menu_text_HalfFinished.png */; };
+		73E33EB41767230B00194798 /* Main menu_text_HalfFinished@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB2C3D61765691A00FB0AD5 /* Main menu_text_HalfFinished@2x.png */; };
+		73E33EB61767232D00194798 /* Main menu_text_AllFinished.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB2C3D31765691900FB0AD5 /* Main menu_text_AllFinished.png */; };
+		73E33EB71767232D00194798 /* Main menu_text_AllFinished@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FB2C3D41765691900FB0AD5 /* Main menu_text_AllFinished@2x.png */; };
 		73E46AF7176477AD000660F0 /* GuideSetting_progressBar_Button_clicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E46AF5176477AD000660F0 /* GuideSetting_progressBar_Button_clicked.png */; };
 		73E46AF8176477AD000660F0 /* GuideSetting_progressBar_Button_clicked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 73E46AF6176477AD000660F0 /* GuideSetting_progressBar_Button_clicked@2x.png */; };
 		73F2E63E174C765900E5D88B /* learning_downCoverWithButton2.png in Resources */ = {isa = PBXBuildFile; fileRef = 73F2E63C174C765900E5D88B /* learning_downCoverWithButton2.png */; };
@@ -12334,6 +12334,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73E33EB61767232D00194798 /* Main menu_text_AllFinished.png in Resources */,
+				73E33EB71767232D00194798 /* Main menu_text_AllFinished@2x.png in Resources */,
+				73E33EB31767230B00194798 /* Main menu_text_HalfFinished.png in Resources */,
+				73E33EB41767230B00194798 /* Main menu_text_HalfFinished@2x.png in Resources */,
 				733F10BB1763477000CAB692 /* learning_backgournd_blank_mini.png in Resources */,
 				733F10BC1763477000CAB692 /* learning_backgournd_blank_mini@2x.png in Resources */,
 				732B748D17449E1400612277 /* flipcard.plist in Resources */,

@@ -13,7 +13,6 @@
 @property (nonatomic) NSArray *reciteTwolist;
 @property (nonatomic) NSArray *reviewTwolist;
 @property (nonatomic) NSArray *reviewRandom;
-@property (nonatomic) int theNumberOfNewWordToday_twolist;
 //@property (nonatomic) NSArray *reciteThreelist;
 //@property (nonatomic) NSArray *reviewThreelist;
 @end
