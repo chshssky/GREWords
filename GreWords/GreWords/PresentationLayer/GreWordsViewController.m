@@ -204,11 +204,14 @@
     if ([TaskStatus instance].rComplete == YES) {
         if ([[now laterDate:newWordTime] isEqualToDate:now]) {
             [self beginNewWordEvent];
-            
+            [TaskStatus instance].nwComplete = NO;
+            [TaskStatus instance].rComplete = NO;
         }
     } else if ([TaskStatus instance].nwComplete == YES) {
         if ([[now laterDate:reviewTime] isEqualToDate:now]) {
             [self beginReviewEvent];
+            [TaskStatus instance].rComplete = NO;
+            [TaskStatus instance].nwComplete = NO;
         }
     }
     
@@ -594,6 +597,8 @@
 #warning New Word Count
     [TaskStatus instance].nwEvent.totalWordCount = 0;
     //[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] count];
+    
+    
     
     [self createNewWordEvent];
 #warning  this may can be easier ~
