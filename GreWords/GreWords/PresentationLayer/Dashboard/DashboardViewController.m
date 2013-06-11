@@ -44,21 +44,21 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     return _dashboardViewControllerInstance;
 }
 
-- (UIImageView *)theNewTextView
-{
-    if (_theNewTextView == nil) {
-        _theNewTextView =  [[UIImageView alloc] init];
-    }
-    return _theNewTextView;
-}
+//- (UIImageView *)theNewTextView
+//{
+//    if (_theNewTextView == nil) {
+//        _theNewTextView =  [[UIImageView alloc] init];
+//    }
+//    return _theNewTextView;
+//}
 
-- (UIImageView *)textView
-{
-    if (_textView == nil) {
-        _textView = [[UIImageView alloc] init];
-    }
-    return _textView;
-}
+//- (UIImageView *)textView
+//{
+//    if (_textView == nil) {
+//        _textView = [[UIImageView alloc] init];
+//    }
+//    return _textView;
+//}
 
 
 - (void)viewDidLoad
@@ -414,11 +414,19 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     
     self.wordNumberTest.alpha = 1;
     self.bigButton.alpha = 1;
-    self.theNewTextView.alpha = 0;
+    if (_theNewTextView != nil) {
+        self.theNewTextView.alpha = 0;
+    }
     
-    [self.theNewTextView removeFromSuperview];
+    if (_textView != nil) {
+        [_textView removeFromSuperview];
+        _textView = nil;
+    }
     
-    [self.textView setImage:[UIImage imageNamed:@"Main menu_text_reciteWord.png"]];
+    if (_textView == nil) {
+        _textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_reciteWord.png"]];
+    }
+    
     self.textView.center = CGPointMake(self.centerPoint.x-15, self.centerPoint.y-45);
     self.textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     [self.view addSubview:_textView];
@@ -431,9 +439,21 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     
     self.wordNumberTest.alpha = 1;
     self.bigButton.alpha = 1;
-    self.theNewTextView.alpha = 0;
+    if (_theNewTextView != nil) {
+        self.theNewTextView.alpha = 0;
+    }
     
-    [self.textView setImage:[UIImage imageNamed:@"Main menu_text_newWord.png"]];
+    if (_textView != nil) {
+        [_textView removeFromSuperview];
+        _textView = nil;
+    }
+    
+    if (_textView == nil) {
+        _textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_newWord.png"]];
+    }
+    
+    
+    //[self.textView setImage:[UIImage imageNamed:@"Main menu_text_newWord.png"]];
     self.textView.center = CGPointMake(self.centerPoint.x-15, self.centerPoint.y-45);
     self.textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     [self.view addSubview:_textView];
@@ -441,8 +461,17 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 
 - (void)changeTextViewToHalfComplete
 {
-    [self.theNewTextView setImage:[UIImage imageNamed:@"Main menu_text_HalfFinished.png"]];
+    if (_theNewTextView != nil) {
+        [_theNewTextView removeFromSuperview];
+        _theNewTextView = nil;
+    }
+    if (_theNewTextView == nil) {
+        _theNewTextView =  [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_HalfFinished.png"]];
+    }
+
     self.theNewTextView.center = CGPointMake(self.centerPoint.x, self.centerPoint.y+5);
+    self.theNewTextView.alpha = 1;
+
     [self.view addSubview:self.theNewTextView];
     
     self.view.userInteractionEnabled = NO;
@@ -450,10 +479,19 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     self.wordNumberTest.alpha = 0;
 }
 
-- (void)changeTextViewToComplete
+- (void)changeTextViewToComplete 
 {
-    [self.theNewTextView setImage:[UIImage imageNamed:@"Main menu_text_allFinished.png"]];
+    if (_theNewTextView != nil) {
+        [_theNewTextView removeFromSuperview];
+        _theNewTextView = nil;
+    }
+    if (_theNewTextView == nil) {
+        _theNewTextView =  [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_AllFinished.png"]];
+    }
+    
     self.theNewTextView.center = CGPointMake(self.centerPoint.x, self.centerPoint.y+5);
+    self.theNewTextView.alpha = 1;
+
     [self.view addSubview:self.theNewTextView];
 
     self.wordNumberTest.alpha = 0;

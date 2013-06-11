@@ -177,6 +177,15 @@
     // just for  test:
 //    int x = [[HistoryManager instance] currentStage];
 //    NSLog(@"stage:%d", x);
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nowStatus) name:UIApplicationWillEnterForegroundNotification object:nil];
+    
+}
+
+-(void)dealloc
+{
+//    [super dealloc];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 - (void)viewDidUnload {
@@ -190,24 +199,32 @@
 {
     NSLog(@"WIEW　ＷＩＬＬ　Ａｐｐaｅｒ!!!!!!!");
     
-    NSDate *now = [self getNowDate];    
+    [self nowStatus];
+    
+    
+}
+
+
+
+- (void)nowStatus
+{
+    NSDate *now = [self getNowDate];
     
     NSDate *newWordTime = [now nowdateWithHour:[[ConfigurationHelper instance].freshWordAlertTime hour] AndMinute:[[ConfigurationHelper instance].freshWordAlertTime minute]];
     
     NSLog(@"Hour : %d And Minute: %d", [[ConfigurationHelper instance].freshWordAlertTime hour], [[ConfigurationHelper instance].freshWordAlertTime minute]);
-    newWordTime = [newWordTime dateByAddingDays:1];
-
+    //newWordTime = [newWordTime dateByAddingDays:1];
+    
     
     NSLog(@"NowAlertTime: %@", newWordTime);
     
-        
+    
     NSDate *reviewTime = [now nowdateWithHour:[[ConfigurationHelper instance].reviewAlertTime hour] AndMinute:[[ConfigurationHelper instance].reviewAlertTime minute]];       //[now dateByAddingTimeInterval:60.0];
-
+    
     NSLog(@"Hour : %d And Minute: %d", [[ConfigurationHelper instance].freshWordAlertTime hour], [[ConfigurationHelper instance].freshWordAlertTime minute]);
     
     
     NSLog(@"ReviewAlertTime: %@", reviewTime);
-    
     if ([[TaskStatus instance] isReviewComplete] == YES) {
         [[DashboardViewController instance] changeTextViewToComplete];
         
@@ -222,7 +239,6 @@
         }
     }
 }
-
 
 
 - (void)viewDidLayoutSubviews
@@ -520,10 +536,7 @@
             dashboard.textView.alpha = 1.0f;
             dashboard.bigButton.alpha = 1.0f;
         }
-//        } else if ([TaskStatus instance].nwComplete == YES){
-//            dashboard.theNewTextView.alpha = 1.0f;
-//            [dashboard.theNewTextView bringSubviewToFront:dashboard.view];
-//        }
+
         dashboard.wordNumberTest.transform = CGAffineTransformMakeTranslation(0, 0);
     }];
 }
@@ -608,14 +621,24 @@
 - (void)beginNewWordEvent
 {
     [[TaskStatus instance] beginNewWord];
-#warning New Word Count
     [TaskStatus instance].nwEvent.totalWordCount = 0;
     //[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] count];
     
     [TaskStatus instance].nwEvent.newWordCount = [[WordTaskGenerator instance] theNumberOfNewWordToday_twolist:[TaskStatus instance].nwEvent.dayOfSchedule];
     
     [self createNewWordEvent];
+    
 #warning  this may can be easier ~
+
+    dashboard.nonFinishedNumber = [TaskStatus instance].nwEvent.newWordCount;//[TaskStatus instance].nwEvent.totalWordCount - 0;
+    
+    dashboard.minNumber = dashboard.nonFinishedNumber;
+    dashboard.sumNumber = [TaskStatus instance].nwEvent.newWordCount;
+    
+    [dashboard changeTextViewToNewWord];
+    
+    [dashboard reloadData];
+
 }
 
 - (void)createNewWordEvent
@@ -629,13 +652,5 @@
     
 }
 
-//dashboard.nonFinishedNumber = 200;//[TaskStatus instance].nwEvent.totalWordCount - 0;
-//
-//dashboard.minNumber = dashboard.nonFinishedNumber;
-//dashboard.sumNumber = 200;
-//
-//[dashboard changeTextViewToNewWord];
-//
-//[dashboard reloadData];
 
 @end
