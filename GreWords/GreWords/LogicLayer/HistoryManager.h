@@ -22,20 +22,23 @@
 //Statistic Methods
 - (BOOL)readStatusIfNew;
 
-- (BOOL)isNewWordPaused;
-- (BOOL)isReviewPaused;
+//- (BOOL)isNewWordPaused;
+//- (BOOL)isReviewPaused;
 - (int)currentStage;
-- (float)currentStageProgress;
-- (BOOL)isFinishedForDate:(NSDate *)date;
+//- (float)currentStageProgress;
+//- (BOOL)isFinishedForDate:(NSDate *)date;
 
 - (NSArray *)newWordEventsInStage:(int)stage;
 - (NSArray *)reviewEventsInStage:(int)stage;
 - (NSArray *)examEventsInStage:(int)stage;
 
 
-- (NSArray *)errorRatioInExams;
-- (NSArray *)dateAndDurationInStage:(int)stage;
+//- (NSArray *)errorRatioInExams;
+//- (NSArray *)dateAndDurationInStage:(int)stage;
 
 - (int)getANewDay;
+
+- (BOOL)isNewWordComplete;
+- (BOOL)isReviewComplete;
 
 @end

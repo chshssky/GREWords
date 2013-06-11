@@ -395,13 +395,12 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 
 - (void)changeTextViewToReview
 {
-    [TaskStatus instance].rComplete = NO;
-    [TaskStatus instance].nwComplete = NO;
     self.view.userInteractionEnabled = YES;
     self.bigButton.userInteractionEnabled = YES;
     
     self.wordNumberTest.alpha = 1;
     self.theNewTextView.alpha = 0;
+    
     _textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_reciteWord.png"]];
     _textView.center = CGPointMake(self.centerPoint.x-15, self.centerPoint.y-45);
     _textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
@@ -410,8 +409,6 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 
 - (void)changeTextViewToNewWord
 {
-    [TaskStatus instance].rComplete = NO;
-    [TaskStatus instance].nwComplete = NO;
     self.view.userInteractionEnabled = YES;
     self.bigButton.userInteractionEnabled = YES;
     
@@ -429,7 +426,6 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     self.theNewTextView.center = CGPointMake(self.centerPoint.x, self.centerPoint.y+5);
     [self.view addSubview:self.theNewTextView];
     
-    [TaskStatus instance].nwComplete = YES;
     self.view.userInteractionEnabled = NO;
     self.bigButton.userInteractionEnabled = NO;
     self.wordNumberTest.alpha = 0;
@@ -441,7 +437,6 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     self.theNewTextView.center = CGPointMake(self.centerPoint.x, self.centerPoint.y+5);
     [self.view addSubview:self.theNewTextView];
 
-    [TaskStatus instance].rComplete = YES;
     self.wordNumberTest.alpha = 0;
     self.bigButton.userInteractionEnabled = NO;
 }

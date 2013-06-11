@@ -109,13 +109,39 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "GreWords/PresentationLayer/GreWordsViewController.m"
-         timestampString = "392617932.989199"
+         filePath = "GreWords/LogicLayer/HistoryManager.m"
+         timestampString = "392646920.250747"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "505"
-         endingLineNumber = "505"
-         landmarkName = "-AnimationBack"
+         startingLineNumber = "236"
+         endingLineNumber = "236"
+         landmarkName = "-readStatusIfNew"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "GreWords/PresentationLayer/WordDetail/WordDetailViewController.m"
+         timestampString = "392644711.540505"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1365"
+         endingLineNumber = "1365"
+         landmarkName = "-nextButtonPushed"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "GreWords/PresentationLayer/WordDetail/WordDetailViewController.m"
+         timestampString = "392644711.540505"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1431"
+         endingLineNumber = "1431"
+         landmarkName = "-nextButtonPushed"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -123,7 +149,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GreWords/PresentationLayer/GreWordsViewController.m"
-         timestampString = "392632131.986837"
+         timestampString = "392647091.792737"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "204"
@@ -135,39 +161,26 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "GreWords/LogicLayer/HistoryManager.m"
-         timestampString = "392633905.310511"
+         filePath = "GreWords/PresentationLayer/GreWordsViewController.m"
+         timestampString = "392647100.125879"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "233"
-         endingLineNumber = "233"
-         landmarkName = "-readStatusIfNew"
+         startingLineNumber = "208"
+         endingLineNumber = "208"
+         landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "GreWords/PresentationLayer/WordDetail/WordDetailViewController.m"
-         timestampString = "392634238.485373"
+         filePath = "GreWords/PresentationLayer/GreWordsViewController.m"
+         timestampString = "392647103.138812"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1361"
-         endingLineNumber = "1361"
-         landmarkName = "-nextButtonPushed"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "GreWords/PresentationLayer/WordDetail/WordDetailViewController.m"
-         timestampString = "392634300.963475"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1427"
-         endingLineNumber = "1427"
-         landmarkName = "-nextButtonPushed"
+         startingLineNumber = "214"
+         endingLineNumber = "214"
+         landmarkName = "-viewWillAppear:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

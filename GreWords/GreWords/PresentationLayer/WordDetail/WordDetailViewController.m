@@ -1074,6 +1074,8 @@
     
     [TaskStatus instance].nwEvent.newWordCount = [[WordTaskGenerator instance] theNumberOfNewWordToday_twolist:[TaskStatus instance].nwEvent.dayOfSchedule];
     
+    [TaskStatus instance].nwEvent.totalWordCount ++;
+    
     NSLog(@"NewWord Result :%d, %d, %f", [TaskStatus instance].nwEvent.wrongWordCount, [TaskStatus instance].nwEvent.totalWordCount, [TaskStatus instance].nwEvent.duration);
     
     
@@ -1087,6 +1089,8 @@
     
     [[WordTaskGenerator instance] clearTask];
 
+    NSLog(@"IF NEWWORD End: %d , Review Event :%d", [[HistoryManager instance] isNewWordComplete], [[HistoryManager instance] isReviewComplete]);
+    
 
     [[DashboardViewController instance] changeTextViewToHalfComplete];
     

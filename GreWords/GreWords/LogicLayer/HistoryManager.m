@@ -208,17 +208,20 @@ HistoryManager* _historyManagerInstance = nil;
     //History *history = [matches lastObject];
         
     for (History *history in matches) {
-        if ([history.event isEqualToString:EVENT_TYPE_EXAM] && [aEvent.eventType isEqualToString:EVENT_TYPE_EXAM]) {
-            history.endTime = aEvent.endTime;
-            NSLog(@"History End: %@", EVENT_TYPE_EXAM);
+        if (history.endTime != nil) {
+            break;
         }
-        if ([history.event isEqualToString:EVENT_TYPE_NEWWORD] && [aEvent.eventType isEqualToString:EVENT_TYPE_NEWWORD]) {
+        if ([history.event isEqualToString:EVENT_TYPE_EXAM] && [aEvent isKindOfClass:[ExamEvent class]]) {
             history.endTime = aEvent.endTime;
-            NSLog(@"History End: %@", EVENT_TYPE_NEWWORD);
+            NSLog(@"History End: %@ : %@", EVENT_TYPE_EXAM, history.endTime);
         }
-        if ([history.event isEqualToString:EVENT_TYPE_REVIEW] && [aEvent.eventType isEqualToString:EVENT_TYPE_REVIEW]) {
+        if ([history.event isEqualToString:EVENT_TYPE_NEWWORD] && [aEvent isKindOfClass:[NewWordEvent class]]) {
             history.endTime = aEvent.endTime;
-            NSLog(@"History End: %@", EVENT_TYPE_REVIEW);
+            NSLog(@"History End: %@ : %@", EVENT_TYPE_NEWWORD, history.endTime);
+        }
+        if ([history.event isEqualToString:EVENT_TYPE_REVIEW] && [aEvent isKindOfClass:[ReviewEvent class]]) {
+            history.endTime = aEvent.endTime;
+            NSLog(@"History End: %@ : %@", EVENT_TYPE_REVIEW, history.endTime);
         }
     }
     
@@ -418,7 +421,7 @@ HistoryManager* _historyManagerInstance = nil;
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
     
-    request.predicate = [NSPredicate predicateWithFormat:@"event == 'newWordEvent' && stage == %d", stage];
+    request.predicate = [NSPredicate predicateWithFormat:@"event == 'NewWordEvent' && stage == %d", stage];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
     
     NSError *fetchError = nil;
@@ -468,7 +471,7 @@ HistoryManager* _historyManagerInstance = nil;
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
     
-    request.predicate = [NSPredicate predicateWithFormat:@"event == 'reviewEvent' && stage == %d", stage];
+    request.predicate = [NSPredicate predicateWithFormat:@"event == 'ReviewEvent' && stage == %d", stage];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
     
     NSError *fetchError = nil;
@@ -516,7 +519,7 @@ HistoryManager* _historyManagerInstance = nil;
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
     
-    request.predicate = [NSPredicate predicateWithFormat:@"event == 'reviewEvent' && stage == %d", stage];
+    request.predicate = [NSPredicate predicateWithFormat:@"event == 'ExamEvent' && stage == %d", stage];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
     
     NSError *fetchError = nil;
@@ -559,5 +562,43 @@ HistoryManager* _historyManagerInstance = nil;
     return resultArr;
 }
 
+- (BOOL)isNewWordComplete
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"event == 'ReviewEvent' || event == 'NewWordEvent'"];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
+    
+    NSError *fetchError = nil;
+    NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
+    
+    History *his = [fetchMatches lastObject];
+    
+    if ([his.event isEqualToString:EVENT_TYPE_NEWWORD] && his.endTime != nil) {
+        return YES;
+    } else {
+        return NO;
+    }
+    
+}
+
+- (BOOL)isReviewComplete
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"event == 'ReviewEvent' || event == 'NewWordEvent'"];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
+    
+    NSError *fetchError = nil;
+    NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
+    
+    History *his = [fetchMatches lastObject];
+    
+    if ([his.event isEqualToString:EVENT_TYPE_REVIEW] && his.endTime != nil) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
 
 @end

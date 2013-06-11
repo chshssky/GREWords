@@ -26,8 +26,8 @@ enum TaskType {
 @property (nonatomic, strong) ReviewEvent *rEvent;
 @property (nonatomic, strong) ExamEvent *eEvent;
 
-@property (nonatomic) BOOL nwComplete;
-@property (nonatomic) BOOL rComplete;
+//@property (nonatomic) BOOL nwComplete;
+//@property (nonatomic) BOOL rComplete;
 
 + (TaskStatus *)instance;
 
@@ -40,5 +40,8 @@ enum TaskType {
 - (void)setReviewEnable;
 - (void)setReviewEnable:(BOOL)enable;
 - (BOOL)getReviewEnable;
+
+- (BOOL)isNewWordComplete;
+- (BOOL)isReviewComplete;
 
 @end

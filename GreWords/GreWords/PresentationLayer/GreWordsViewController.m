@@ -201,21 +201,19 @@
     
     NSLog(@"ReviewAlertTime: %@", reviewTime);
     
-    if ([TaskStatus instance].rComplete == YES) {
+    if ([[TaskStatus instance] isReviewComplete] == YES) {
+        [[DashboardViewController instance] changeTextViewToComplete];
+        
         if ([[now laterDate:newWordTime] isEqualToDate:now]) {
             [self beginNewWordEvent];
-            [TaskStatus instance].nwComplete = NO;
-            [TaskStatus instance].rComplete = NO;
         }
-    } else if ([TaskStatus instance].nwComplete == YES) {
+    } else if ([[TaskStatus instance] isNewWordComplete] == YES) {
+        [[DashboardViewController instance] changeTextViewToHalfComplete];
+        
         if ([[now laterDate:reviewTime] isEqualToDate:now]) {
             [self beginReviewEvent];
-            [TaskStatus instance].rComplete = NO;
-            [TaskStatus instance].nwComplete = NO;
         }
     }
-    
-    
 }
 
 
@@ -391,6 +389,16 @@
         }
         self.menu.transform = CGAffineTransformMakeTranslation(-300, 0);
     } completion:^(BOOL finished) {
+        
+        
+        if ([[TaskStatus instance] isReviewComplete] == YES) {
+            
+        } else if ([[TaskStatus instance] isNewWordComplete] == YES) {
+            
+        }
+        
+        
+        
         if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
 #warning read from Database
             [[HistoryManager instance] readStatusIfNew];
@@ -501,13 +509,14 @@
         dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.0f,1.0f), CGAffineTransformMakeTranslation(0, 0));
         self.menu.transform = CGAffineTransformMakeTranslation(0, 0);
         self.backgroundImage.alpha = 1.0f;
-        if ([TaskStatus instance].rComplete == NO && [TaskStatus instance].nwComplete == NO) {
+        if ([[TaskStatus instance] isReviewComplete] == NO && [[TaskStatus instance] isNewWordComplete] == NO) {
             dashboard.textView.alpha = 1.0f;
             dashboard.bigButton.alpha = 1.0f;
-        } else if ([TaskStatus instance].nwComplete == YES){
-            dashboard.theNewTextView.alpha = 1.0f;
-            [dashboard.theNewTextView bringSubviewToFront:dashboard.view];
         }
+//        } else if ([TaskStatus instance].nwComplete == YES){
+//            dashboard.theNewTextView.alpha = 1.0f;
+//            [dashboard.theNewTextView bringSubviewToFront:dashboard.view];
+//        }
         dashboard.wordNumberTest.transform = CGAffineTransformMakeTranslation(0, 0);
     }];
 }
