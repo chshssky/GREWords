@@ -44,6 +44,14 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     return _dashboardViewControllerInstance;
 }
 
+- (UIImageView *)theNewTextView
+{
+    if (_theNewTextView == nil) {
+        _theNewTextView =  [[UIImageView alloc] init];
+    }
+    return _theNewTextView;
+}
+
 
 - (void)viewDidLoad
 {
@@ -399,7 +407,10 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     self.bigButton.userInteractionEnabled = YES;
     
     self.wordNumberTest.alpha = 1;
+    self.bigButton.alpha = 1;
     self.theNewTextView.alpha = 0;
+    
+    [self.theNewTextView removeFromSuperview];
     
     _textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_reciteWord.png"]];
     _textView.center = CGPointMake(self.centerPoint.x-15, self.centerPoint.y-45);
@@ -413,7 +424,9 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     self.bigButton.userInteractionEnabled = YES;
     
     self.wordNumberTest.alpha = 1;
+    self.bigButton.alpha = 1;
     self.theNewTextView.alpha = 0;
+    
     _textView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_newWord.png"]];
     _textView.center = CGPointMake(self.centerPoint.x-15, self.centerPoint.y-45);
     _textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
@@ -422,7 +435,7 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 
 - (void)changeTextViewToHalfComplete
 {
-    self.theNewTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_HalfFinished.png"]];
+    [self.theNewTextView setImage:[UIImage imageNamed:@"Main menu_text_HalfFinished.png"]];
     self.theNewTextView.center = CGPointMake(self.centerPoint.x, self.centerPoint.y+5);
     [self.view addSubview:self.theNewTextView];
     
@@ -433,7 +446,7 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 
 - (void)changeTextViewToComplete
 {
-    self.theNewTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_text_allFinished.png"]];
+    [self.theNewTextView setImage:[UIImage imageNamed:@"Main menu_text_allFinished.png"]];
     self.theNewTextView.center = CGPointMake(self.centerPoint.x, self.centerPoint.y+5);
     [self.view addSubview:self.theNewTextView];
 

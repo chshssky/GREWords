@@ -570,9 +570,7 @@
     
     [self createReviewEvent];
     
-//    DashboardViewController *dashboard = [DashboardViewController instance];
-    // Database: read from
-
+    dashboard = [DashboardViewController instance];
     dashboard.nonFinishedNumber = [TaskStatus instance].rEvent.totalWordCount - [TaskStatus instance].rEvent.indexOfWordToday;
     
     dashboard.minNumber = dashboard.nonFinishedNumber;
