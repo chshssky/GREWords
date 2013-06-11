@@ -58,14 +58,17 @@
     // Database: read from
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
         dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].rEvent.indexOfWordToday;
-        // change text ~ 
+        [dashboard changeTextViewToReview];
     } else {
         dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].nwEvent.maxWordID;
+        [dashboard changeTextViewToNewWord];
     }
     dashboard.minNumber = dashboard.nonFinishedNumber;
     dashboard.sumNumber = TaskWordNumber;
     dashboard.delegate = self;
     [self.view addSubview:dashboard.view];
+    [dashboard reloadData];
+
 }
 
 - (void)initslideBar
@@ -192,12 +195,16 @@
     NSDate *newWordTime = [now nowdateWithHour:[[ConfigurationHelper instance].freshWordAlertTime hour] AndMinute:[[ConfigurationHelper instance].freshWordAlertTime minute]];
     
     NSLog(@"Hour : %d And Minute: %d", [[ConfigurationHelper instance].freshWordAlertTime hour], [[ConfigurationHelper instance].freshWordAlertTime minute]);
+    newWordTime = [newWordTime dateByAddingDays:1];
+
     
     NSLog(@"NowAlertTime: %@", newWordTime);
+    
         
     NSDate *reviewTime = [now nowdateWithHour:[[ConfigurationHelper instance].reviewAlertTime hour] AndMinute:[[ConfigurationHelper instance].reviewAlertTime minute]];       //[now dateByAddingTimeInterval:60.0];
 
     NSLog(@"Hour : %d And Minute: %d", [[ConfigurationHelper instance].freshWordAlertTime hour], [[ConfigurationHelper instance].freshWordAlertTime minute]);
+    
     
     NSLog(@"ReviewAlertTime: %@", reviewTime);
     

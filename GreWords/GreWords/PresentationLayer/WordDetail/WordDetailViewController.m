@@ -1038,7 +1038,7 @@
 //    [TaskStatus instance].rEvent.duration = [TaskStatus instance].duration;
     
     NSLog(@"ReviewEvent Result :%d, %d, %f StartTime:%@ EndTime:%@", [TaskStatus instance].rEvent.wrongWordCount, [TaskStatus instance].rEvent.totalWordCount, [TaskStatus instance].rEvent.duration, [TaskStatus instance].rEvent.startTime, [TaskStatus instance].rEvent.endTime);
-    
+    [TaskStatus instance].rEvent.newWordCount = [TaskStatus instance].rEvent.totalWordCount;
     [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withEvent:[TaskStatus instance].rEvent];
     [_reciteAndReviewResultCardViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_reciteAndReviewResultCardViewController.view];
