@@ -1023,7 +1023,7 @@
 {
     [TaskStatus instance].rEvent.endTime = [self getNowDate];
     
-    [[HistoryManager instance] endEvent:self.rEvent];
+    [[HistoryManager instance] endEvent:[TaskStatus instance].rEvent];
             
     if (_reciteAndReviewResultCardViewController == nil) {
         _reciteAndReviewResultCardViewController = [[ReciteAndReviewResultViewController alloc] init];
@@ -1046,17 +1046,7 @@
     
     DashboardViewController *dashboard = [DashboardViewController instance];
     [dashboard changeTextViewToNewWord];
-    
-    // Database: read from
-#warning Get A Total New Word Numer!! the API 
-    dashboard.nonFinishedNumber = 200;//[TaskStatus instance].nwEvent.totalWordCount - 0;
-    
-    dashboard.minNumber = dashboard.nonFinishedNumber;
-    dashboard.sumNumber = 200;
-    
-    [dashboard changeTextViewToNewWord];
-    
-    [dashboard reloadData];
+
 }
 
 - (void)newWordCompleted

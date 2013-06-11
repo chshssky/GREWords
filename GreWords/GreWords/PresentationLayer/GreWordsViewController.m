@@ -612,7 +612,7 @@
     [TaskStatus instance].nwEvent.totalWordCount = 0;
     //[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] count];
     
-    
+    [TaskStatus instance].nwEvent.newWordCount = [[WordTaskGenerator instance] theNumberOfNewWordToday_twolist:[TaskStatus instance].nwEvent.dayOfSchedule];
     
     [self createNewWordEvent];
 #warning  this may can be easier ~
@@ -628,5 +628,14 @@
     [historyManager addEvent:[TaskStatus instance].nwEvent];
     
 }
+
+//dashboard.nonFinishedNumber = 200;//[TaskStatus instance].nwEvent.totalWordCount - 0;
+//
+//dashboard.minNumber = dashboard.nonFinishedNumber;
+//dashboard.sumNumber = 200;
+//
+//[dashboard changeTextViewToNewWord];
+//
+//[dashboard reloadData];
 
 @end
