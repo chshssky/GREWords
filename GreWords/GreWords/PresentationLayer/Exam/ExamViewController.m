@@ -123,11 +123,11 @@
      */
     
     self.added_height = 0;
-    NSDictionary *option = @{@"shouldShowChineseMeaning":@YES,
-                             @"shouldShowEnglishMeaning":@YES,
-                             @"shouldShowSynonyms":@YES,
-                             @"shouldShowAntonyms":@YES,
-                             @"shouldShowSampleSentence":@YES};
+    NSDictionary *option = @{@"shouldShowChineseMeaning":@([ConfigurationHelper instance].chineseMeaningVisibility),
+                             @"shouldShowEnglishMeaning":@([ConfigurationHelper instance].englishMeaningVisibility),
+                             @"shouldShowSynonyms":@([ConfigurationHelper instance].homoionymVisibility),
+                             @"shouldShowAntonyms":@([ConfigurationHelper instance].homoionymVisibility),
+                             @"shouldShowSampleSentence":@([ConfigurationHelper instance].sampleSentenceVisibility)};
     WordEntity *word = [self.examArr objectAtIndex:index];
     
     [vc displayWord:word withOption:option];
@@ -156,7 +156,11 @@
     [self.WordParaphraseView addSubview:vc.view];
     [self.WordParaphraseView scrollsToTop];
     
-    [[WordSpeaker instance] readWord:self.wordLabel.text];
+    if([ConfigurationHelper instance].autoSpeak)
+    {
+        [[WordSpeaker instance] readWord:self.wordLabel.text];
+    }
+    
     
     //[self DontShowMeaning];
     [TaskStatus instance].eEvent.index ++;
@@ -178,11 +182,11 @@
      */
     
     self.added_height = 0;
-    NSDictionary *option = @{@"shouldShowChineseMeaning":@YES,
-                             @"shouldShowEnglishMeaning":@YES,
-                             @"shouldShowSynonyms":@YES,
-                             @"shouldShowAntonyms":@YES,
-                             @"shouldShowSampleSentence":@YES};
+    NSDictionary *option = @{@"shouldShowChineseMeaning":@([ConfigurationHelper instance].chineseMeaningVisibility),
+                             @"shouldShowEnglishMeaning":@([ConfigurationHelper instance].englishMeaningVisibility),
+                             @"shouldShowSynonyms":@([ConfigurationHelper instance].homoionymVisibility),
+                             @"shouldShowAntonyms":@([ConfigurationHelper instance].homoionymVisibility),
+                             @"shouldShowSampleSentence":@([ConfigurationHelper instance].sampleSentenceVisibility)};
     WordEntity *word = [self.examArr objectAtIndex:index];
     
     [vc displayWord:word withOption:option];
@@ -211,7 +215,10 @@
     [self.WordParaphraseView addSubview:vc.view];
     [self.WordParaphraseView scrollsToTop];
     
-    [[WordSpeaker instance] readWord:self.wordLabel.text];
+    if([ConfigurationHelper instance].autoSpeak)
+    {
+        [[WordSpeaker instance] readWord:self.wordLabel.text];
+    }
     
     [self DontShowMeaning];
     [TaskStatus instance].eEvent.index ++;
