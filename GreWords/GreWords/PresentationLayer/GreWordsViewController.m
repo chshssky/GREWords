@@ -589,7 +589,6 @@
     [self createReviewEvent];
     
     
-    
     dashboard = [DashboardViewController instance];
     dashboard.nonFinishedNumber = [TaskStatus instance].rEvent.totalWordCount - [TaskStatus instance].rEvent.indexOfWordToday;
     
@@ -606,17 +605,10 @@
     [[TaskStatus instance] beginReview];
     
     HistoryManager *historyManager = [HistoryManager instance];
-    
-    [TaskStatus instance].rEvent.eventType = EVENT_TYPE_REVIEW;
-    [TaskStatus instance].rEvent.wrongWordCount = 0;
-    [TaskStatus instance].rEvent.startTime = [self getNowDate];
-    [TaskStatus instance].rEvent.dayOfSchedule = [historyManager getANewDay];
-
-    //[TaskStatus instance].rEvent.stage_now = [TaskStatus instance].stage_now;
-    [TaskStatus instance].rEvent.indexOfWordToday = 0;
-    [TaskStatus instance].rEvent.totalWordCount = [[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] count];
     [historyManager addEvent:[TaskStatus instance].rEvent];
 }
+
+
 
 - (void)beginNewWordEvent
 {
@@ -626,12 +618,6 @@
         [self beginReviewEvent];
         return;
     }
-    
-    [[TaskStatus instance] beginNewWord];
-    [TaskStatus instance].nwEvent.totalWordCount = 0;
-    
-    
-    [TaskStatus instance].nwEvent.newWordCount = [[WordTaskGenerator instance] theNumberOfNewWordToday_twolist:[TaskStatus instance].nwEvent.dayOfSchedule];
     
     [self createNewWordEvent];
     
@@ -650,11 +636,9 @@
 
 - (void)createNewWordEvent
 {
+    [[TaskStatus instance] beginNewWord];
+    
     HistoryManager *historyManager = [HistoryManager instance];
-    
-    [TaskStatus instance].nwEvent.eventType = EVENT_TYPE_NEWWORD;
-    [TaskStatus instance].nwEvent.startTime = [self getNowDate];
-    
     [historyManager addEvent:[TaskStatus instance].nwEvent];
     
 }

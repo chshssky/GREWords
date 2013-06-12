@@ -10,6 +10,7 @@
 
 #import "HistoryManager.h"
 
+#import "WordTaskGenerator.h"
 
 @implementation TaskStatus
 
@@ -66,6 +67,16 @@ TaskStatus* _taskStatusInstance = nil;
     self.eEvent.totalWordCount = 0;
 }
 
+- (int)getANewDay
+{
+    int day = [[HistoryManager instance] getANewDay];
+    if (day >= 31) {
+        day = 0;
+        self.nwEvent.stage_now ++;
+        self.rEvent.stage_now ++;
+    }
+    return day;
+}
 
 - (void)beginNewWord
 {
@@ -75,10 +86,22 @@ TaskStatus* _taskStatusInstance = nil;
     self.nwEvent.maxWordID = 0;
     self.nwEvent.reviewEnable = NO;
     self.nwEvent.wrongWordCount = 0;
-    self.nwEvent.dayOfSchedule = [[HistoryManager instance] getANewDay];
-    
-    self.nwEvent.stage_now = 0;
+    self.nwEvent.stage_now = [[HistoryManager instance] currentStage];
 
+    int day = [[HistoryManager instance] getANewDay];
+    if (day >= 31) {
+        day = 0;
+        self.nwEvent.stage_now ++;
+    }
+    self.nwEvent.dayOfSchedule = day;
+    
+    self.nwEvent.totalWordCount = 0;
+    
+    
+    self.nwEvent.newWordCount = [[WordTaskGenerator instance] theNumberOfNewWordToday_twolist:[TaskStatus instance].nwEvent.dayOfSchedule];
+    
+    self.nwEvent.eventType = EVENT_TYPE_NEWWORD;
+    self.nwEvent.startTime = [NSDate new];
 }
 
 - (void)beginReview
@@ -88,10 +111,18 @@ TaskStatus* _taskStatusInstance = nil;
     self.rEvent.indexOfWordToday = 0;
     self.rEvent.wrongWordCount = 0;
     self.rEvent.totalWordCount = 0;
-    self.rEvent.dayOfSchedule = self.nwEvent.dayOfSchedule;
+    self.rEvent.stage_now = [[HistoryManager instance] currentStage];
+
+    int day = [[HistoryManager instance] getANewDay];
+    if (day >= 31) {
+        day = 0;
+        self.rEvent.stage_now ++;
+    }
+    self.rEvent.dayOfSchedule = day;
     
-    self.rEvent.stage_now = 0;
-    
+    self.rEvent.eventType = EVENT_TYPE_REVIEW;
+    self.rEvent.startTime = [NSDate new];
+    self.rEvent.totalWordCount = [[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] count];
 }
 
 
