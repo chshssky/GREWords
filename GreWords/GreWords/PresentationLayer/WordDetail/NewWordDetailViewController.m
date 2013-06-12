@@ -661,9 +661,9 @@
     NSTimeInterval duration = [now timeIntervalSinceDate:_comingTime];
     
     if ([TaskStatus instance].taskType == TASK_TYPE_EXAM) {
-        [[HistoryManager instance] updateEvent:[TaskStatus instance].rEvent WithDuration:duration];
+        [[HistoryManager instance] updateEventWithDuration:duration];
     } else {
-        [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent WithDuration:duration];
+        [[HistoryManager instance] updateEventWithDuration:duration];
     }
 }
 

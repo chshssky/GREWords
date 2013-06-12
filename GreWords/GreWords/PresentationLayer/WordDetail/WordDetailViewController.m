@@ -1037,6 +1037,8 @@
 //    [TaskStatus instance].rEvent.totalWordCount = [TaskStatus instance].totalWordCount;
 //    [TaskStatus instance].rEvent.duration = [TaskStatus instance].duration;
     
+    [TaskStatus instance].nwEvent.totalWordCount ++;
+    
     NSLog(@"ReviewEvent Result :%d, %d, %f StartTime:%@ EndTime:%@", [TaskStatus instance].rEvent.wrongWordCount, [TaskStatus instance].rEvent.totalWordCount, [TaskStatus instance].rEvent.duration, [TaskStatus instance].rEvent.startTime, [TaskStatus instance].rEvent.endTime);
     
     [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withEvent:[TaskStatus instance].rEvent];
@@ -1507,9 +1509,9 @@
     NSTimeInterval duration = [now timeIntervalSinceDate:_comingTime];
     
     if ([TaskStatus instance].taskType == TASK_TYPE_EXAM) {
-        [[HistoryManager instance] updateEvent:[TaskStatus instance].rEvent WithDuration:duration];
+        [[HistoryManager instance] updateEventWithDuration:duration];
     } else {
-        [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent WithDuration:duration];
+        [[HistoryManager instance] updateEventWithDuration:duration];
     }
 }
 
