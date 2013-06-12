@@ -32,7 +32,6 @@
 #import "NSDate-Utilities.h"
 
 
-
 @interface GreWordsViewController ()<NewWordDetailViewControllerProtocol, WordDetailViewControllerProtocol>
 
 @property (nonatomic, strong) UIImageView *slideBarView;
@@ -47,6 +46,8 @@
 
 @property (nonatomic, strong) NewWordEvent *nwEvent;
 @property (nonatomic, strong) ReviewEvent *rEvent;
+@property (nonatomic, strong) NSTimer *clockTimer;
+
 
 @end
 
@@ -163,6 +164,7 @@
     [self initDashboard];
     [self initslideBar];
     [self initAwesomeMenu];
+    [self startAlertCounting];
         
     _whetherAllowViewFrameChanged = NO;
     
@@ -199,10 +201,14 @@
 {
     NSLog(@"WIEW　ＷＩＬＬ　Ａｐｐaｅｒ!!!!!!!");
     
+    
+    
     [self nowStatus];
     
     
 }
+
+
 
 
 
@@ -643,6 +649,26 @@
     [historyManager addEvent:[TaskStatus instance].nwEvent];
     
 }
+
+
+#pragma mark - time alert Methods
+- (void)startAlertCounting
+{
+    [_clockTimer invalidate];
+    
+    _clockTimer = [NSTimer scheduledTimerWithTimeInterval: 60
+                                                  target: self
+                                                selector: @selector(tick)
+                                                userInfo: nil
+                                                 repeats: YES];
+    [_clockTimer fire];
+}
+
+- (void)tick
+{
+    [self nowStatus];
+}
+
 
 
 @end
