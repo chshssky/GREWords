@@ -121,7 +121,8 @@ TaskStatus* _taskStatusInstance = nil;
     
     self.rEvent.eventType = EVENT_TYPE_REVIEW;
     self.rEvent.startTime = [NSDate new];
-    self.rEvent.totalWordCount = [[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] count];
+    self.rEvent.newWordCount = [[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] count];
+    self.rEvent.totalWordCount = 0;
 }
 
 

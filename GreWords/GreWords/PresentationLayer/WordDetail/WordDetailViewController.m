@@ -78,6 +78,8 @@
 @property (strong, nonatomic) UIImageView *showMeaningImageView;
 @property (nonatomic) int added_height;
 
+@property (nonatomic, strong) NSDate *comingTime;
+
 @property (nonatomic, strong) ReciteAndReviewResultViewController *reciteAndReviewResultCardViewController;
 @end
 
@@ -1036,7 +1038,7 @@
 //    [TaskStatus instance].rEvent.duration = [TaskStatus instance].duration;
     
     NSLog(@"ReviewEvent Result :%d, %d, %f StartTime:%@ EndTime:%@", [TaskStatus instance].rEvent.wrongWordCount, [TaskStatus instance].rEvent.totalWordCount, [TaskStatus instance].rEvent.duration, [TaskStatus instance].rEvent.startTime, [TaskStatus instance].rEvent.endTime);
-    [TaskStatus instance].rEvent.newWordCount = [TaskStatus instance].rEvent.totalWordCount;
+    
     [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withEvent:[TaskStatus instance].rEvent];
     [_reciteAndReviewResultCardViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_reciteAndReviewResultCardViewController.view];
@@ -1299,6 +1301,7 @@
 - (void)nextButtonPushed
 {
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
+        
         if ([TaskStatus instance].rEvent.indexOfWordToday == [[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] count])
         {
             [self reviewCompleted];
@@ -1314,6 +1317,8 @@
     }
     
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
+        [TaskStatus instance].rEvent.totalWordCount ++;
+
         if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
             [self loadWord:[TaskStatus instance].rEvent.indexOfWordToday];
             _showMeaningButton.userInteractionEnabled = YES;
@@ -1486,4 +1491,26 @@
         [clockTimer invalidate];
     }
 }
+
+#pragma mark - Add Duration
+
+- (void)beginDuration
+{
+    _comingTime = nil;
+    _comingTime = [NSDate new];
+    
+}
+
+- (void)endDuration
+{
+    NSDate *now = [NSDate new];
+    NSTimeInterval duration = [now timeIntervalSinceDate:_comingTime];
+    
+    if ([TaskStatus instance].taskType == TASK_TYPE_EXAM) {
+        [[HistoryManager instance] updateEvent:[TaskStatus instance].rEvent WithDuration:duration];
+    } else {
+        [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent WithDuration:duration];
+    }
+}
+
 @end

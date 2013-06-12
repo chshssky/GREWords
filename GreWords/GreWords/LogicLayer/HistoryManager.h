@@ -19,6 +19,7 @@
 - (void)updateEvent:(BaseEvent *)aEvent;
 - (void)endEvent:(BaseEvent *)aEvent;
 - (void)deleteEvent:(BaseEvent *)aEvent;
+- (void)updateEventWithDuration:(NSTimeInterval)duration;
 
 //Statistic Methods
 - (BOOL)readStatusIfNew;

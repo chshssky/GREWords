@@ -58,8 +58,8 @@
     dashboard = [DashboardViewController instance];
     // Database: read from
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
-        dashboard.nonFinishedNumber = [TaskStatus instance].rEvent.totalWordCount - [TaskStatus instance].rEvent.indexOfWordToday;
-        dashboard.sumNumber = [TaskStatus instance].rEvent.totalWordCount;
+        dashboard.nonFinishedNumber = [TaskStatus instance].rEvent.newWordCount - [TaskStatus instance].rEvent.indexOfWordToday;
+        dashboard.sumNumber = [TaskStatus instance].rEvent.newWordCount;
 
         [dashboard changeTextViewToReview];
     } else {
@@ -509,7 +509,7 @@
             }
         }
     } else {
-        int index = [TaskStatus instance].rEvent.totalWordCount - remainWords;
+        int index = [TaskStatus instance].rEvent.newWordCount - remainWords;
         
         [TaskStatus instance].rEvent.indexOfWordToday = index;
         
@@ -600,10 +600,10 @@
     
     
     dashboard = [DashboardViewController instance];
-    dashboard.nonFinishedNumber = [TaskStatus instance].rEvent.totalWordCount - [TaskStatus instance].rEvent.indexOfWordToday;
+    dashboard.nonFinishedNumber = [TaskStatus instance].rEvent.newWordCount - [TaskStatus instance].rEvent.indexOfWordToday;
     
     dashboard.minNumber = dashboard.nonFinishedNumber;
-    dashboard.sumNumber = [TaskStatus instance].rEvent.totalWordCount;
+    dashboard.sumNumber = [TaskStatus instance].rEvent.newWordCount;
     [dashboard changeTextViewToReview];
     
     [dashboard reloadData];
@@ -636,8 +636,7 @@
     
 #warning  this may can be easier ~
 
-    dashboard.nonFinishedNumber = [TaskStatus instance].nwEvent.newWordCount;//[TaskStatus instance].nwEvent.totalWordCount - 0;
-    
+    dashboard.nonFinishedNumber = [TaskStatus instance].nwEvent.newWordCount;
     dashboard.minNumber = dashboard.nonFinishedNumber;
     dashboard.sumNumber = [TaskStatus instance].nwEvent.newWordCount;
     

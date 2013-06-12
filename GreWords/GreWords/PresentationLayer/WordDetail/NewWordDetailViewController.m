@@ -68,6 +68,8 @@
 
 @property int currentPage;
 
+@property (nonatomic, strong) NSDate *comingTime;
+
 @property (strong, nonatomic) DashboardViewController *dashboardVC;
 
 @end
@@ -641,6 +643,27 @@
     {
         self.clockAlertImageView.hidden = NO;
         [clockTimer invalidate];
+    }
+}
+
+#pragma mark - Add Duration
+
+- (void)beginDuration
+{
+    _comingTime = nil;
+    _comingTime = [NSDate new];
+    
+}
+
+- (void)endDuration
+{
+    NSDate *now = [NSDate new];
+    NSTimeInterval duration = [now timeIntervalSinceDate:_comingTime];
+    
+    if ([TaskStatus instance].taskType == TASK_TYPE_EXAM) {
+        [[HistoryManager instance] updateEvent:[TaskStatus instance].rEvent WithDuration:duration];
+    } else {
+        [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent WithDuration:duration];
     }
 }
 
