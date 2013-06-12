@@ -159,7 +159,7 @@ HistoryManager* _historyManagerInstance = nil;
     
     history.wrongWordCount = [NSNumber numberWithInt:aEvent.wrongWordCount];
     history.totalWordCount = [NSNumber numberWithInt:aEvent.totalWordCount];
-
+    history.duration = [NSNumber numberWithDouble:aEvent.duration];
     
     if ([aEvent isKindOfClass:[NewWordEvent class]]) {
         NewWordEvent *newWordEvent = (NewWordEvent *)aEvent;

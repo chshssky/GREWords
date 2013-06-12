@@ -474,6 +474,10 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 
     [self.view addSubview:self.theNewTextView];
     
+    
+    self.bigButton.alpha = 0;
+    _textView.alpha = 0;
+    
     self.view.userInteractionEnabled = NO;
     self.bigButton.userInteractionEnabled = NO;
     self.wordNumberTest.alpha = 0;
@@ -494,6 +498,8 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 
     [self.view addSubview:self.theNewTextView];
 
+    self.bigButton.alpha = 0;
+    _textView.alpha = 0;
     self.wordNumberTest.alpha = 0;
     self.bigButton.userInteractionEnabled = NO;
     self.view.userInteractionEnabled = NO;
