@@ -494,9 +494,11 @@
 - (void)resetIndexOfWordList:(int)remainWords
 {
     if ([TaskStatus instance].taskType == TASK_TYPE_NEWWORD) {
-        int theWordID = [TaskStatus instance].nwEvent.newWordCount - remainWords;
+        int theWordID = [TaskStatus instance].nwEvent.newWordCount - remainWords + 200 * [TaskStatus instance].nwEvent.dayOfSchedule;
         for (int index = 0; index < [[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] count]; index++) {
-            if (theWordID == [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:index] integerValue])
+            
+            
+            if (theWordID == [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:index] intValue])
             {
                 [TaskStatus instance].nwEvent.indexOfWordToday = index;
                 [TaskStatus instance].nwEvent.maxWordID = theWordID;
