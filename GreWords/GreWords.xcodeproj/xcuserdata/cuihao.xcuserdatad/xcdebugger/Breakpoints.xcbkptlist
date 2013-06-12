@@ -110,11 +110,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GreWords/LogicLayer/HistoryManager.m"
-         timestampString = "392731420.873438"
+         timestampString = "392741043.053853"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "442"
-         endingLineNumber = "442"
+         startingLineNumber = "449"
+         endingLineNumber = "449"
          landmarkName = "-getANewDay"
          landmarkType = "5">
       </FileBreakpoint>
@@ -123,11 +123,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GreWords/PresentationLayer/GreWordsViewController.m"
-         timestampString = "392738464.249663"
+         timestampString = "392740718.260138"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "431"
-         endingLineNumber = "431"
+         startingLineNumber = "434"
+         endingLineNumber = "434"
          landmarkName = "-bigButtonPressed"
          landmarkType = "5">
       </FileBreakpoint>
@@ -136,11 +136,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GreWords/PresentationLayer/GreWordsViewController.m"
-         timestampString = "392738464.249663"
+         timestampString = "392740718.260138"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "433"
-         endingLineNumber = "433"
+         startingLineNumber = "436"
+         endingLineNumber = "436"
          landmarkName = "-bigButtonPressed"
          landmarkType = "5">
       </FileBreakpoint>
@@ -175,11 +175,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GreWords/PresentationLayer/GreWordsViewController.m"
-         timestampString = "392738464.249663"
+         timestampString = "392740718.260138"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "622"
-         endingLineNumber = "622"
+         startingLineNumber = "625"
+         endingLineNumber = "625"
          landmarkName = "-beginNewWordEvent"
          landmarkType = "5">
       </FileBreakpoint>
@@ -194,6 +194,19 @@
          startingLineNumber = "429"
          endingLineNumber = "429"
          landmarkName = "-newWordTask_twoList:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "GreWords/PresentationLayer/GreWordsViewController.m"
+         timestampString = "392740852.701902"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "66"
+         endingLineNumber = "66"
+         landmarkName = "-initDashboard"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

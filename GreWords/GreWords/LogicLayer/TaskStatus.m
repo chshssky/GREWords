@@ -110,7 +110,6 @@ TaskStatus* _taskStatusInstance = nil;
     
     self.rEvent.indexOfWordToday = 0;
     self.rEvent.wrongWordCount = 0;
-    self.rEvent.totalWordCount = 0;
     self.rEvent.stage_now = [[HistoryManager instance] currentStage];
 
     int day = [[HistoryManager instance] getANewDay];

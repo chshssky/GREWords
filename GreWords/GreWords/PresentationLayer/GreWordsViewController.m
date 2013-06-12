@@ -59,13 +59,16 @@
     // Database: read from
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
         dashboard.nonFinishedNumber = [TaskStatus instance].rEvent.totalWordCount - [TaskStatus instance].rEvent.indexOfWordToday;
+        dashboard.sumNumber = [TaskStatus instance].rEvent.totalWordCount;
+
         [dashboard changeTextViewToReview];
     } else {
-        dashboard.nonFinishedNumber = TaskWordNumber - [TaskStatus instance].nwEvent.maxWordID % 200;
+        dashboard.nonFinishedNumber = [TaskStatus instance].nwEvent.newWordCount - [TaskStatus instance].nwEvent.maxWordID % 200;
+        dashboard.sumNumber = [TaskStatus instance].nwEvent.newWordCount;
+
         [dashboard changeTextViewToNewWord];
     }
     dashboard.minNumber = dashboard.nonFinishedNumber;
-    dashboard.sumNumber = TaskWordNumber;
     dashboard.delegate = self;
     [self.view addSubview:dashboard.view];
     [dashboard reloadData];
@@ -492,7 +495,7 @@
 - (void)resetIndexOfWordList:(int)remainWords
 {
     if ([TaskStatus instance].taskType == TASK_TYPE_NEWWORD) {
-        int theWordID = TaskWordNumber - remainWords;
+        int theWordID = [TaskStatus instance].nwEvent.newWordCount - remainWords;
         for (int index = 0; index < [[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] count]; index++) {
             if (theWordID == [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:index] integerValue])
             {
@@ -505,7 +508,7 @@
             }
         }
     } else {
-        int index = TaskWordNumber - remainWords;
+        int index = [TaskStatus instance].rEvent.totalWordCount - remainWords;
         
         [TaskStatus instance].rEvent.indexOfWordToday = index;
         

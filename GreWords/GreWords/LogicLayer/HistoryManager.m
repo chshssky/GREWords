@@ -16,6 +16,7 @@
 #import "Entity/NewWordStatus.h"
 #import "Entity/ReviewStatus.h"
 #import "TaskStatus.h"
+#import "WordTaskGenerator.h"
 
 #import "NSDate-Utilities.h"
 
@@ -277,7 +278,9 @@ HistoryManager* _historyManagerInstance = nil;
     NSError *err = nil;
     NSArray *matches = [self.context executeFetchRequest:request error:&err];
 
+#warning !!!!!!!!!!!!!  15天以后。。。
     if ([matches count] == 0) {
+        
         [taskStatus beginNewWord];
         
         return YES;
@@ -295,6 +298,8 @@ HistoryManager* _historyManagerInstance = nil;
             taskStatus.nwEvent.startTime = history.startTime;
             taskStatus.nwEvent.totalWordCount = [history.totalWordCount intValue];
             taskStatus.nwEvent.dayOfSchedule = [history.dayOfSchedule intValue];
+            taskStatus.nwEvent.newWordCount = [[WordTaskGenerator instance] theNumberOfNewWordToday_twolist:taskStatus.nwEvent.dayOfSchedule];
+            
             NSLog(@"History Manager : Total Word Count: %d", taskStatus.nwEvent.totalWordCount);
 
         } else if ([history.event isEqualToString:EVENT_TYPE_REVIEW]) {
@@ -307,7 +312,7 @@ HistoryManager* _historyManagerInstance = nil;
             taskStatus.rEvent.totalWordCount = [history.totalWordCount intValue];
             taskStatus.rEvent.wrongWordCount = [history.wrongWordCount intValue];
             taskStatus.rEvent.dayOfSchedule = [history.dayOfSchedule intValue];
-            
+            NSLog(@"History Manager : Total Word Count: %d", taskStatus.nwEvent.totalWordCount);
         } else if ([history.event isEqualToString:EVENT_TYPE_EXAM]) {
             //ExamStatus *eStatus = history.examStatus;
             //eStatus.difficulty;
