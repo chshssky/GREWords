@@ -496,9 +496,10 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 
     self.bigButton.alpha = 0;
     _textView.alpha = 0;
-    self.wordNumberTest.alpha = 0;
-    self.bigButton.userInteractionEnabled = NO;
+    
     self.view.userInteractionEnabled = NO;
+    self.bigButton.userInteractionEnabled = NO;
+    self.wordNumberTest.alpha = 0;
 }
 
 

@@ -184,7 +184,6 @@
 //    NSLog(@"stage:%d", x);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nowStatus) name:UIApplicationWillEnterForegroundNotification object:nil];
-    
 }
 
 -(void)dealloc

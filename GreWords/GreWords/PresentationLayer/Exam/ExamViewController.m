@@ -238,36 +238,7 @@
 {
     [super viewDidLoad];
     
-    [[TaskStatus instance] beginExam];
-    [self loadWord:[TaskStatus instance].eEvent.index];
-    _RightButton.userInteractionEnabled = NO;
-    _WrongButton.userInteractionEnabled = NO;
-    _showMeaningButton.userInteractionEnabled = YES;
-    _WordParaphraseView.userInteractionEnabled = NO;
-    
-
-    NSString *level = [self.examInfo objectForKey:@"level"];
-    if ([level isEqualToString: @"easy"]) {
-        [TaskStatus instance].eEvent.difficulty = 0;
-    }else if ([level isEqualToString:@"medium"]) {
-        [TaskStatus instance].eEvent.difficulty = 1;
-    }else if ([level isEqualToString:@"hard"]) {
-        [TaskStatus instance].eEvent.difficulty = 2;
-    }
-    
-    NSString *time = [self.examInfo objectForKey:@"time"];
-    if ([time isEqualToString:@"10min"]) {
-        [TaskStatus instance].eEvent.duration = 60 * 10;
-    } else if ([time isEqualToString:@"30min"]) {
-        [TaskStatus instance].eEvent.duration = 60 * 30;
-    } else if ([time isEqualToString:@"60min"]) {
-        [TaskStatus instance].eEvent.duration = 60 * 60;
-    }
-    [TaskStatus instance].eEvent.startTime = [self getNowDate];
-
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
-    
-    [[HistoryManager instance] addEvent:[TaskStatus instance].eEvent];
+    [self beginExamEvent];
 }
 
 
@@ -1435,16 +1406,70 @@
     [self examResultShow];
 }
 
+- (void)beginExamEvent
+{
+    [[TaskStatus instance] beginExam];
+    [self loadWord:[TaskStatus instance].eEvent.index];
+    _RightButton.userInteractionEnabled = NO;
+    _WrongButton.userInteractionEnabled = NO;
+    _showMeaningButton.userInteractionEnabled = YES;
+    _WordParaphraseView.userInteractionEnabled = NO;
+    
+    
+    NSString *level = [self.examInfo objectForKey:@"level"];
+    if ([level isEqualToString: @"easy"]) {
+        [TaskStatus instance].eEvent.difficulty = 0;
+    }else if ([level isEqualToString:@"medium"]) {
+        [TaskStatus instance].eEvent.difficulty = 1;
+    }else if ([level isEqualToString:@"hard"]) {
+        [TaskStatus instance].eEvent.difficulty = 2;
+    }
+    
+    NSString *time = [self.examInfo objectForKey:@"time"];
+    if ([time isEqualToString:@"10min"]) {
+        [TaskStatus instance].eEvent.duration = 60 * 10;
+    } else if ([time isEqualToString:@"30min"]) {
+        [TaskStatus instance].eEvent.duration = 60 * 30;
+    } else if ([time isEqualToString:@"60min"]) {
+        [TaskStatus instance].eEvent.duration = 60 * 60;
+    }
+    [TaskStatus instance].eEvent.startTime = [self getNowDate];
+    
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+    
+    [[HistoryManager instance] addEvent:[TaskStatus instance].eEvent];
+    
+}
+
 #pragma mark -  exam result delegate
 -(void)reExam
 {
     NSLog(@"reexam");
     [self.timer invalidate];
     
+    
     [TaskStatus instance].eEvent.index = 0;
     [TaskStatus instance].eEvent.wrongWordCount = 0;
     [TaskStatus instance].eEvent.totalWordCount = 0;
     [TaskStatus instance].eEvent.startTime = [self getNowDate];
+    
+    NSString *level = [self.examInfo objectForKey:@"level"];
+    if ([level isEqualToString: @"easy"]) {
+        [TaskStatus instance].eEvent.difficulty = 0;
+    }else if ([level isEqualToString:@"medium"]) {
+        [TaskStatus instance].eEvent.difficulty = 1;
+    }else if ([level isEqualToString:@"hard"]) {
+        [TaskStatus instance].eEvent.difficulty = 2;
+    }
+    
+    NSString *time = [self.examInfo objectForKey:@"time"];
+    if ([time isEqualToString:@"10min"]) {
+        [TaskStatus instance].eEvent.duration = 60 * 10;
+    } else if ([time isEqualToString:@"30min"]) {
+        [TaskStatus instance].eEvent.duration = 60 * 30;
+    } else if ([time isEqualToString:@"60min"]) {
+        [TaskStatus instance].eEvent.duration = 60 * 60;
+    }
     
     _examArr = [[WordTaskGenerator instance] testTaskWithOptions:self.examInfo whetherWithAllWords:NO];
     
@@ -1457,6 +1482,8 @@
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
     [self.timer fire];
+    
+    [[HistoryManager instance] addEvent:[TaskStatus instance].eEvent];
     
     if (_examResultViewController != nil) {
         [_examResultViewController removeExamResultCard];
