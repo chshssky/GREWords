@@ -17,6 +17,8 @@
 #import "Entity/ReviewStatus.h"
 #import "TaskStatus.h"
 
+#import "NSDate-Utilities.h"
+
 
 @interface HistoryManager ()
 
@@ -470,6 +472,9 @@ HistoryManager* _historyManagerInstance = nil;
     
     NSLog(@"Count: %d", [fetchMatches count]);
     for (History *his in fetchMatches) {
+        if (his.endTime == nil) {
+            break;
+        }
         NewWordStatus *nwStatus = his.newWordStatus;
         
         NewWordEvent *nwEvent = [[NewWordEvent alloc] init];
@@ -520,6 +525,9 @@ HistoryManager* _historyManagerInstance = nil;
     
     NSLog(@"Count: %d", [fetchMatches count]);
     for (History *his in fetchMatches) {
+        if (his.endTime == nil) {
+            break;
+        }
         ReviewStatus *rStatus = his.reviewStatus;
         
         ReviewEvent *rEvent = [[ReviewEvent alloc] init];
@@ -568,6 +576,9 @@ HistoryManager* _historyManagerInstance = nil;
     
     NSLog(@"Count: %d", [fetchMatches count]);
     for (History *his in fetchMatches) {
+        if (his.endTime == nil) {
+            break;
+        }
         ExamStatus *eStatus = his.examStatus;
         
         ExamEvent *eEvent = [[ExamEvent alloc] init];
@@ -634,6 +645,28 @@ HistoryManager* _historyManagerInstance = nil;
     History *his = [fetchMatches lastObject];
     
     if ([his.event isEqualToString:EVENT_TYPE_REVIEW] && his.endTime != nil) {
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (BOOL)isNewWordCompleteToday
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"event == 'ReviewEvent' || event == 'NewWordEvent'"];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
+    
+    NSError *fetchError = nil;
+    NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
+    
+    History *his = [fetchMatches lastObject];
+    
+    if ([his.event isEqualToString:EVENT_TYPE_NEWWORD] && his.endTime != nil) {
+        if (his.startTime.day == [NSDate new].day) {
+            return NO;
+        }
         return YES;
     } else {
         return NO;

@@ -39,6 +39,8 @@
 
 - (int)getANewDay;
 
+- (BOOL)isNewWordCompleteToday;
+
 - (BOOL)isNewWordComplete;
 - (BOOL)isReviewComplete;
 
