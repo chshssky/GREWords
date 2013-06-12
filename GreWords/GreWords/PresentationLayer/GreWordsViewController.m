@@ -613,13 +613,16 @@
 - (void)beginNewWordEvent
 {
     [[WordTaskGenerator instance] clearTask];
-    
+        
+    [[TaskStatus instance] beginNewWord];
+
     if ([[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] == nil || [[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] count] <= 0) {
         [self beginReviewEvent];
         return;
     }
     
     [self createNewWordEvent];
+
     
 #warning  this may can be easier ~
 
@@ -636,8 +639,6 @@
 
 - (void)createNewWordEvent
 {
-    [[TaskStatus instance] beginNewWord];
-    
     HistoryManager *historyManager = [HistoryManager instance];
     [historyManager addEvent:[TaskStatus instance].nwEvent];
     
