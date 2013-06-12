@@ -589,6 +589,7 @@
     [self createReviewEvent];
     
     
+    
     dashboard = [DashboardViewController instance];
     dashboard.nonFinishedNumber = [TaskStatus instance].rEvent.totalWordCount - [TaskStatus instance].rEvent.indexOfWordToday;
     
@@ -619,6 +620,7 @@
 
 - (void)beginNewWordEvent
 {
+    [[WordTaskGenerator instance] clearTask];
     [[TaskStatus instance] beginNewWord];
     [TaskStatus instance].nwEvent.totalWordCount = 0;
     //[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] count];

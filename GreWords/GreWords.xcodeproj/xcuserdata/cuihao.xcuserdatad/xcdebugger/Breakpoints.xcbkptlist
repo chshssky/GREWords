@@ -123,11 +123,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GreWords/PresentationLayer/GreWordsViewController.m"
-         timestampString = "392663464.169697"
+         timestampString = "392708594.96644"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "604"
-         endingLineNumber = "604"
+         startingLineNumber = "605"
+         endingLineNumber = "605"
          landmarkName = "-createReviewEvent"
          landmarkType = "5">
       </FileBreakpoint>
@@ -168,6 +168,19 @@
          startingLineNumber = "59"
          endingLineNumber = "59"
          landmarkName = "-initDashboard"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "GreWords/PresentationLayer/WordDetail/NewWordDetailViewController.m"
+         timestampString = "392708324.676907"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "283"
+         endingLineNumber = "283"
+         landmarkName = "-loadWordView:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

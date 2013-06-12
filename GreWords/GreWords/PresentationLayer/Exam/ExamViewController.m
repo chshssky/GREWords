@@ -108,59 +108,59 @@
     return self;
 }
 
-- (void)loadWordAgain:(int)index
-{
-    // Do any additional setup after loading the view from its nib.
-    WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
-    /*
-     key: shouldShowWord                default:[NSNumber numberWithBool:YES]
-     key: shouldShowPhonetic            default:[NSNumber numberWithBool:YES]
-     key: shouldShowMeaning             default:[NSNumber numberWithBool:YES]
-     key: shouldShowSampleSentence      default:[NSNumber numberWithBool:YES]
-     key: shouldShowSynonyms            default:[NSNumber numberWithBool:YES]
-     key: shouldShowAntonyms            default:[NSNumber numberWithBool:YES]
-     this maybe nil to apply all default options
-     */
-    
-    self.added_height = 0;
-    NSDictionary *option = @{@"shouldShowChineseMeaning":@YES,
-                             @"shouldShowEnglishMeaning":@YES,
-                             @"shouldShowSynonyms":@YES,
-                             @"shouldShowAntonyms":@YES,
-                             @"shouldShowSampleSentence":@YES};
-    WordEntity *word = [self.examArr objectAtIndex:index];
-    
-    [vc displayWord:word withOption:option];
-    //[vc displayWord:[[WordHelper instance] wordWithID:wordID] withOption:option];
-    
-    self.wordLabel.text = word.wordText;
-    self.pronounceLabel.text = word.data[@"phonetic"];
-    self.WordParaphraseView.delegate = self;
-    self.WordParaphraseView.contentSize = vc.view.frame.size;
-    
-    NSArray* subviews = [self.WordParaphraseView subviews];
-    for(UIView* v in subviews)
-    {
-        [v removeFromSuperview];
-    }
-    
-    if(self.WordParaphraseView.contentSize.height <= self.WordParaphraseView.frame.size.height)
-    {
-        self.added_height = self.WordParaphraseView.frame.size.height - self.WordParaphraseView.contentSize.height;
-        CGSize size = self.WordParaphraseView.contentSize;
-        size.height = self.WordParaphraseView.frame.size.height + 1;
-        self.WordParaphraseView.contentSize = size;
-        
-    }
-    
-    [self.WordParaphraseView addSubview:vc.view];
-    [self.WordParaphraseView scrollsToTop];
-    
-    [[WordSpeaker instance] readWord:self.wordLabel.text];
-    
-    //[self DontShowMeaning];
-    [TaskStatus instance].eEvent.index ++;
-}
+//- (void)loadWordAgain:(int)index
+//{
+//    // Do any additional setup after loading the view from its nib.
+//    WordLayoutViewController *vc = [[WordLayoutViewController alloc] init];
+//    /*
+//     key: shouldShowWord                default:[NSNumber numberWithBool:YES]
+//     key: shouldShowPhonetic            default:[NSNumber numberWithBool:YES]
+//     key: shouldShowMeaning             default:[NSNumber numberWithBool:YES]
+//     key: shouldShowSampleSentence      default:[NSNumber numberWithBool:YES]
+//     key: shouldShowSynonyms            default:[NSNumber numberWithBool:YES]
+//     key: shouldShowAntonyms            default:[NSNumber numberWithBool:YES]
+//     this maybe nil to apply all default options
+//     */
+//    
+//    self.added_height = 0;
+//    NSDictionary *option = @{@"shouldShowChineseMeaning":@YES,
+//                             @"shouldShowEnglishMeaning":@YES,
+//                             @"shouldShowSynonyms":@YES,
+//                             @"shouldShowAntonyms":@YES,
+//                             @"shouldShowSampleSentence":@YES};
+//    WordEntity *word = [self.examArr objectAtIndex:index];
+//    
+//    [vc displayWord:word withOption:option];
+//    //[vc displayWord:[[WordHelper instance] wordWithID:wordID] withOption:option];
+//    
+//    self.wordLabel.text = word.wordText;
+//    self.pronounceLabel.text = word.data[@"phonetic"];
+//    self.WordParaphraseView.delegate = self;
+//    self.WordParaphraseView.contentSize = vc.view.frame.size;
+//    
+//    NSArray* subviews = [self.WordParaphraseView subviews];
+//    for(UIView* v in subviews)
+//    {
+//        [v removeFromSuperview];
+//    }
+//    
+//    if(self.WordParaphraseView.contentSize.height <= self.WordParaphraseView.frame.size.height)
+//    {
+//        self.added_height = self.WordParaphraseView.frame.size.height - self.WordParaphraseView.contentSize.height;
+//        CGSize size = self.WordParaphraseView.contentSize;
+//        size.height = self.WordParaphraseView.frame.size.height + 1;
+//        self.WordParaphraseView.contentSize = size;
+//        
+//    }
+//    
+//    [self.WordParaphraseView addSubview:vc.view];
+//    [self.WordParaphraseView scrollsToTop];
+//    
+//    [[WordSpeaker instance] readWord:self.wordLabel.text];
+//    
+//    //[self DontShowMeaning];
+//    [TaskStatus instance].eEvent.index ++;
+//}
 
 
 - (void)loadWord:(int)index
@@ -1445,9 +1445,9 @@
     
     if (_RightButton.userInteractionEnabled == YES) {
         [self nextButtonPushed];
-        [self loadWordAgain:[TaskStatus instance].eEvent.index];
+        [self loadWord:[TaskStatus instance].eEvent.index];
     }else{
-        [self loadWordAgain:[TaskStatus instance].eEvent.index];
+        [self loadWord:[TaskStatus instance].eEvent.index];
     }
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];

@@ -335,7 +335,7 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
         _whetherMax = YES;
         _whetherMin = NO;
     }else{
-        _whetherMax = NO;
+        _whetherMax = NO; 
         _whetherMin = YES;
     }
     
