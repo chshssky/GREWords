@@ -951,7 +951,7 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
 {
     //_reviewThreelist = nil;
     //_reciteThreelist = nil;
-    _reviewTwolist = nil;
+    _reciteTwolist = nil;
     _reviewTwolist = nil;
     _reviewRandom = nil;
 }

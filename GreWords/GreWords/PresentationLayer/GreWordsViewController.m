@@ -614,7 +614,7 @@
 {
     [[WordTaskGenerator instance] clearTask];
     
-    if ([[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] == nil) {
+    if ([[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] == nil || [[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] count] <= 0) {
         [self beginReviewEvent];
         return;
     }
