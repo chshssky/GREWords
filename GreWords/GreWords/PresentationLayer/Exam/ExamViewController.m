@@ -264,6 +264,8 @@
     [TaskStatus instance].eEvent.startTime = [self getNowDate];
 
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+    
+    [[HistoryManager instance] addEvent:[TaskStatus instance].eEvent];
 }
 
 
@@ -281,8 +283,6 @@
         guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_ReviewFirst];
         [self.view addSubview:guideImageView];
     }
-
-
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -1119,13 +1119,15 @@
     }
     
     [TaskStatus instance].eEvent.endTime = [self getNowDate];
+    [TaskStatus instance].eEvent.duration = [[TaskStatus instance].eEvent.endTime timeIntervalSinceDate:[TaskStatus instance].eEvent.startTime];
     
-    ExamEvent *eEvent = [[ExamEvent alloc] init];
-    eEvent.totalWordCount = [TaskStatus instance].eEvent.totalWordCount;
-    eEvent.wrongWordCount = [TaskStatus instance].eEvent.wrongWordCount;
-    eEvent.duration = [[TaskStatus instance].eEvent.endTime timeIntervalSinceDate:[TaskStatus instance].eEvent.startTime];
-        
-    [_examResultViewController addExamResultCardAt:self withResult:eEvent delegate:self];
+    if ([TaskStatus instance].eEvent.totalWordCount == 0) {
+        [[HistoryManager instance] deleteEvent:[TaskStatus instance].eEvent];
+    } else {
+        [[HistoryManager instance] endEvent:[TaskStatus instance].eEvent];
+    }
+    
+    [_examResultViewController addExamResultCardAt:self withResult:[TaskStatus instance].eEvent delegate:self];
     [_examResultViewController.view setFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     [self.view addSubview:_examResultViewController.view];
 }
@@ -1167,7 +1169,6 @@
     [historyManager endEvent:[TaskStatus instance].eEvent];
         
     [[TaskStatus instance] endExam];
-    
     
     
 }
@@ -1418,6 +1419,7 @@
         [self Dismiss_RightAnimation];
         [self Dismiss_WrongAnimation];
     }
+    [[HistoryManager instance] updateEvent:[TaskStatus instance].eEvent];
 }
 
 - (IBAction)pronounceButtonPushed:(id)sender {
@@ -1427,7 +1429,6 @@
 - (IBAction)BackButtonPushed:(id)sender
 {
     [self examResultShow];
-    
 }
 
 #pragma mark -  exam result delegate

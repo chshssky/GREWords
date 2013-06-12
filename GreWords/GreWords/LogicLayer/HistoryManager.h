@@ -18,6 +18,7 @@
 - (void)addEvent:(BaseEvent *)aEvent;
 - (void)updateEvent:(BaseEvent *)aEvent;
 - (void)endEvent:(BaseEvent *)aEvent;
+- (void)deleteEvent:(BaseEvent *)aEvent;
 
 //Statistic Methods
 - (BOOL)readStatusIfNew;

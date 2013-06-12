@@ -231,6 +231,39 @@ HistoryManager* _historyManagerInstance = nil;
 
 }
 
+- (void)deleteEvent:(BaseEvent *)aEvent
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
+    request.predicate = [NSPredicate predicateWithFormat:@"endTime = nil"];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
+    NSError *err = nil;
+    NSArray *matches = [self.context executeFetchRequest:request error:&err];
+    
+    NSLog(@"Fetch Event Results number: %d", [matches count]);
+    
+    //History *history = [matches lastObject];
+    
+    for (History *history in matches) {
+        if (history.endTime != nil) {
+            break;
+        }
+        if ([history.event isEqualToString:EVENT_TYPE_EXAM] && [aEvent isKindOfClass:[ExamEvent class]]) {
+            [self.context deleteObject:history];
+            NSLog(@"delete Exam");
+        }
+        if ([history.event isEqualToString:EVENT_TYPE_NEWWORD] && [aEvent isKindOfClass:[NewWordEvent class]]) {
+            [self.context deleteObject:history];
+            NSLog(@"delete NewWord");
+
+        }
+        if ([history.event isEqualToString:EVENT_TYPE_REVIEW] && [aEvent isKindOfClass:[ReviewEvent class]]) {
+            [self.context deleteObject:history];
+            NSLog(@"delete Review");
+
+        }
+    }
+}
+
 - (BOOL)readStatusIfNew
 {
     TaskStatus *taskStatus = [TaskStatus instance];
