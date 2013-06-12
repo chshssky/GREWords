@@ -610,7 +610,7 @@
     [TaskStatus instance].rEvent.eventType = EVENT_TYPE_REVIEW;
     [TaskStatus instance].rEvent.wrongWordCount = 0;
     [TaskStatus instance].rEvent.startTime = [self getNowDate];
-    [TaskStatus instance].rEvent.dayOfSchedule = [historyManager getANewDay] - 1;
+    [TaskStatus instance].rEvent.dayOfSchedule = [historyManager getANewDay];
 
     //[TaskStatus instance].rEvent.stage_now = [TaskStatus instance].stage_now;
     [TaskStatus instance].rEvent.indexOfWordToday = 0;
@@ -621,9 +621,15 @@
 - (void)beginNewWordEvent
 {
     [[WordTaskGenerator instance] clearTask];
+    
+    if ([[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] == nil) {
+        [self beginReviewEvent];
+        return;
+    }
+    
     [[TaskStatus instance] beginNewWord];
     [TaskStatus instance].nwEvent.totalWordCount = 0;
-    //[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] count];
+    
     
     [TaskStatus instance].nwEvent.newWordCount = [[WordTaskGenerator instance] theNumberOfNewWordToday_twolist:[TaskStatus instance].nwEvent.dayOfSchedule];
     

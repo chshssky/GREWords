@@ -441,7 +441,7 @@ HistoryManager* _historyManagerInstance = nil;
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
     
-    request.predicate = [NSPredicate predicateWithFormat:@"event == 'NewWordEvent'"];
+    request.predicate = [NSPredicate predicateWithFormat:@"event == 'ReviewEvent'"];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
     
     NSError *fetchError = nil;
