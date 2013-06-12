@@ -335,7 +335,7 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
         _whetherMax = YES;
         _whetherMin = NO;
     }else{
-        _whetherMax = NO;
+        _whetherMax = NO; 
         _whetherMin = YES;
     }
     
@@ -496,6 +496,7 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
 
     self.wordNumberTest.alpha = 0;
     self.bigButton.userInteractionEnabled = NO;
+    self.view.userInteractionEnabled = NO;
 }
 
 

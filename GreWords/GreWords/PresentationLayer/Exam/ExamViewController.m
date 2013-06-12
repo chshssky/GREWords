@@ -1452,9 +1452,9 @@
     
     if (_RightButton.userInteractionEnabled == YES) {
         [self nextButtonPushed];
-        [self loadWordAgain:[TaskStatus instance].eEvent.index];
+        [self loadWord:[TaskStatus instance].eEvent.index];
     }else{
-        [self loadWordAgain:[TaskStatus instance].eEvent.index];
+        [self loadWord:[TaskStatus instance].eEvent.index];
     }
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
