@@ -377,6 +377,7 @@
         [self.phoneticControlArray replaceObjectAtIndex:page withObject:self.WordPhonetic];
     }
     
+    
     // add the controller's view to the scroll view
     if (self.WordParaphraseView.superview == nil)
     {
@@ -472,7 +473,9 @@
             _currentPage = page;
         }
         //[self performSelectorOnMainThread:@selector(loadViewWithPage:) withObject:[NSNumber numberWithInt:page+1] waitUntilDone:NO];
+        
         [self loadViewWithPage:page+1];
+        
         ///////////////////////////////////////////////////////////////////////////////
         //显示单词内容和单词名称
         self.WordParaphraseView = [self.viewControlArray objectAtIndex:page];

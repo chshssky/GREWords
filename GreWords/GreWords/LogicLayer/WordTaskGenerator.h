@@ -14,8 +14,7 @@
 - (NSArray *)newWordTask_twoList:(int)day;
 - (int)theNumberOfNewWordToday_twolist:(int)day;
 - (NSArray *)reviewTask_twoList:(int)day;
-- (NSArray *)reviewTask_threeCircle:(int)day;
-- (NSArray *)reviewTask_fourthCircle;
+- (NSArray *)reviewTask_fourthCircle:(int)day;
 
 
 - (NSArray *)testTaskWithOptions:(NSDictionary *)dict whetherWithAllWords:(BOOL)allWords;

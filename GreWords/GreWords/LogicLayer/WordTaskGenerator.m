@@ -417,7 +417,7 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
     if (day < 15 && day >= 0) {
         return 200;
     }else if (day == 15){
-        return 273;
+        return 73;
     }else{
         return 0;
     }
@@ -514,9 +514,15 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
             }
         }
         
+        for (int i=0; i<73; i++) {
+            [task addObject:[NSNumber numberWithInt:i]];
+        }
+        
         for (int i=0; i<task.count; i++) {
             [task replaceObjectAtIndex:i withObject:[NSNumber numberWithInt:day*200+[[task objectAtIndex:i] intValue]]];
         }
+        
+        _reciteTwolist = task;
         
         return task;
     }
@@ -834,11 +840,11 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
         for (int i=200; i<400; i++) {
             [task addObject:[NSNumber numberWithInt:i]];
         }
-        for (int i=3000; i<3072; i++) {
+        for (int i=3000; i<3073; i++) {
             [task addObject:[NSNumber numberWithInt:i]];
         }
     }else if(day == 16) {
-        for (int i=3000; i<3072; i++) {
+        for (int i=3000; i<3073; i++) {
             [task addObject:[NSNumber numberWithInt:i]];
         }
         for (int i=2600; i<2800; i++) {
@@ -861,7 +867,7 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
             [task addObject:[NSNumber numberWithInt:i]];
         }
     }else if(day == 18) {
-        for (int i=3000; i<3072; i++) {
+        for (int i=3000; i<3073; i++) {
             [task addObject:[NSNumber numberWithInt:i]];
         }
         for (int i=2200; i<2400; i++) {
@@ -892,7 +898,7 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
             [task addObject:[NSNumber numberWithInt:i]];
         }
     }else if(day == 22) {
-        for (int i=3000; i<3072; i++) {
+        for (int i=3000; i<3073; i++) {
             [task addObject:[NSNumber numberWithInt:i]];
         }
         for (int i=1600; i<1800; i++) {
@@ -919,7 +925,7 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
             [task addObject:[NSNumber numberWithInt:i]];
         }
     }else if(day == 28) {
-        for (int i=2800; i<3072; i++) {
+        for (int i=2800; i<3073; i++) {
             [task addObject:[NSNumber numberWithInt:i]];
         }
     }else{
@@ -932,7 +938,7 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
 }
 
 #pragma mark - circle 4 task
-- (NSArray *)reviewTask_fourthCircle
+- (NSArray *)reviewTask_fourthCircle:(int)day
 {
     if (_reviewRandom != nil && _reviewRandom.count !=0) {
         return _reviewRandom;

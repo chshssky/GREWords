@@ -457,7 +457,15 @@
             }
                     
             NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
-            vc.changePage = 10 - ([TaskStatus instance].nwEvent.maxWordID % 10);
+            if ([TaskStatus instance].nwEvent.maxWordID > 3069) {
+                vc.changePage =  4 - ([TaskStatus instance].nwEvent.maxWordID % 3);
+                if (vc.changePage == 4) {
+                    vc.changePage = 1;
+                }
+                
+            } else {
+                vc.changePage = 10 - ([TaskStatus instance].nwEvent.maxWordID % 10);
+            }
             vc.delegate = self;
             vc.beginWordID = [TaskStatus instance].nwEvent.indexOfWordToday;
         
@@ -572,7 +580,11 @@
     NewWordDetailViewController *vc = [[NewWordDetailViewController alloc] init];
 
     vc.delegate = self;
-    vc.changePage = 10;
+    if ([TaskStatus instance].nwEvent.maxWordID == 3069) {
+        vc.changePage = 3;
+    } else {
+        vc.changePage = 10;
+    }
     vc.beginWordID = [TaskStatus instance].nwEvent.indexOfWordToday;
     
     [dashboard minusData];

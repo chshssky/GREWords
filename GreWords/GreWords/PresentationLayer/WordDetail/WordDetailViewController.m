@@ -137,6 +137,11 @@
     } else {
         wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:index] intValue];
     }
+    
+    NSArray *b = [[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule];
+    for (NSString *a in b) {
+        NSLog(@"%@",a);
+    }
 
     [vc displayWord:[[WordHelper instance] wordWithID:wordID] withOption:option];
     
