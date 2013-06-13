@@ -299,6 +299,7 @@ HistoryManager* _historyManagerInstance = nil;
 
     NSError *err = nil;
     NSArray *matches = [self.context executeFetchRequest:request error:&err];
+    
 
 #warning !!!!!!!!!!!!!  15天以后。。。
     if ([matches count] == 0) {
@@ -308,40 +309,112 @@ HistoryManager* _historyManagerInstance = nil;
         return YES;
     } else {
         History *history = [matches lastObject];
-        if ([history.event isEqualToString:EVENT_TYPE_NEWWORD]) {
-            NewWordStatus *nwStatus = history.newWordStatus;
-            
-            taskStatus.taskType = TASK_TYPE_NEWWORD;
-            taskStatus.nwEvent.indexOfWordToday = [nwStatus.index integerValue];
-            taskStatus.nwEvent.maxWordID = [nwStatus.maxWordID integerValue];
-            taskStatus.nwEvent.stage_now = [history.stage integerValue];
-            taskStatus.nwEvent.reviewEnable = [nwStatus.reviewEnable boolValue];
-            taskStatus.nwEvent.wrongWordCount = [history.wrongWordCount integerValue];
-            taskStatus.nwEvent.startTime = history.startTime;
-            taskStatus.nwEvent.totalWordCount = [history.totalWordCount intValue];
-            taskStatus.nwEvent.dayOfSchedule = [history.dayOfSchedule intValue];
-            taskStatus.nwEvent.newWordCount = [[WordTaskGenerator instance] theNumberOfNewWordToday_twolist:taskStatus.nwEvent.dayOfSchedule];
-            
-            NSLog(@"History Manager : Total Word Count: %d", taskStatus.nwEvent.totalWordCount);
-            NSLog(@"History Manager : New Word Count: %d", taskStatus.nwEvent.newWordCount);
 
-        } else if ([history.event isEqualToString:EVENT_TYPE_REVIEW]) {
-            ReviewStatus *rStatus = history.reviewStatus;
+        if (history.startTime.day != [NSDate new].day) {
+            if ([history.event isEqualToString:EVENT_TYPE_NEWWORD]) {
+                NewWordStatus *nwStatus = history.newWordStatus;
+                
+                taskStatus.taskType = TASK_TYPE_NEWWORD;
+                taskStatus.nwEvent.indexOfWordToday = 0;
+                nwStatus.index = [NSNumber numberWithInt:0];
+                
+                taskStatus.nwEvent.maxWordID = 0;
+                nwStatus.maxWordID = [NSNumber numberWithInt:0];
+                
+                taskStatus.nwEvent.stage_now = [history.stage integerValue];
+                
+                taskStatus.nwEvent.reviewEnable = NO;
+                nwStatus.reviewEnable = [NSNumber numberWithInt:NO];
+                
+                taskStatus.nwEvent.wrongWordCount = 0;
+                history.wrongWordCount = [NSNumber numberWithInt:0];
+                
+                taskStatus.nwEvent.startTime = [NSDate new];
+                history.startTime = [NSDate new];
+                
+                taskStatus.nwEvent.totalWordCount = 0;
+                history.totalWordCount = [NSNumber numberWithInt:0];
+                
+                taskStatus.nwEvent.dayOfSchedule = [history.dayOfSchedule intValue];
+                
+                taskStatus.nwEvent.newWordCount = [[WordTaskGenerator instance] theNumberOfNewWordToday_twolist:taskStatus.nwEvent.dayOfSchedule];
+                
+                //nwStatus.inde
+                
+                NSLog(@"History Manager :A New Day Total Word Count: %d", taskStatus.nwEvent.totalWordCount);
+                NSLog(@"History Manager : New Word Count: %d", taskStatus.nwEvent.newWordCount);
+                
+            } else if ([history.event isEqualToString:EVENT_TYPE_REVIEW]) {
+                ReviewStatus *rStatus = history.reviewStatus;
+                
+                taskStatus.taskType = TASK_TYPE_REVIEW;
+                
+                taskStatus.rEvent.indexOfWordToday = 0;
+                rStatus.index = [NSNumber numberWithInt:0];
+                
+                taskStatus.rEvent.stage_now = [history.stage integerValue];
+                
+                taskStatus.rEvent.startTime = [NSDate new];
+                history.startTime = [NSDate new];
+                
+                taskStatus.rEvent.totalWordCount = 0;
+                history.totalWordCount = [NSNumber numberWithInt:0];
+                
+                taskStatus.rEvent.wrongWordCount = 0;
+                history.wrongWordCount = [NSNumber numberWithInt:0];
+                
+                taskStatus.rEvent.dayOfSchedule = [history.dayOfSchedule intValue];
+                
+                NSLog(@"History Manager : Total Word Count: %d", taskStatus.nwEvent.totalWordCount);
+                taskStatus.rEvent.newWordCount = [[[WordTaskGenerator instance] reviewTask_twoList:taskStatus.rEvent.dayOfSchedule] count];
+                NSLog(@"History Manager : New Word Count: %d", taskStatus.rEvent.newWordCount);
+            } else if ([history.event isEqualToString:EVENT_TYPE_EXAM]) {
+                //ExamStatus *eStatus = history.examStatus;
+                //eStatus.difficulty;
+            }
             
-            taskStatus.taskType = TASK_TYPE_REVIEW;
-            taskStatus.rEvent.indexOfWordToday = [rStatus.index integerValue];
-            taskStatus.rEvent.stage_now = [history.stage integerValue];
-            taskStatus.rEvent.startTime = history.startTime;
-            taskStatus.rEvent.totalWordCount = [history.totalWordCount intValue];
-            taskStatus.rEvent.wrongWordCount = [history.wrongWordCount intValue];
-            taskStatus.rEvent.dayOfSchedule = [history.dayOfSchedule intValue];
-            NSLog(@"History Manager : Total Word Count: %d", taskStatus.nwEvent.totalWordCount);
-            taskStatus.rEvent.newWordCount = [[[WordTaskGenerator instance] reviewTask_twoList:taskStatus.rEvent.dayOfSchedule] count];
-            NSLog(@"History Manager : New Word Count: %d", taskStatus.rEvent.newWordCount);
-        } else if ([history.event isEqualToString:EVENT_TYPE_EXAM]) {
-            //ExamStatus *eStatus = history.examStatus;
-            //eStatus.difficulty;
+            if (![self.context save:&err]) {
+                NSLog(@"End Event Error");
+            }
+            
+        } else {
+            if ([history.event isEqualToString:EVENT_TYPE_NEWWORD]) {
+                NewWordStatus *nwStatus = history.newWordStatus;
+                
+                taskStatus.taskType = TASK_TYPE_NEWWORD;
+                taskStatus.nwEvent.indexOfWordToday = [nwStatus.index integerValue];
+                taskStatus.nwEvent.maxWordID = [nwStatus.maxWordID integerValue];
+                taskStatus.nwEvent.stage_now = [history.stage integerValue];
+                taskStatus.nwEvent.reviewEnable = [nwStatus.reviewEnable boolValue];
+                taskStatus.nwEvent.wrongWordCount = [history.wrongWordCount integerValue];
+                taskStatus.nwEvent.startTime = history.startTime;
+                taskStatus.nwEvent.totalWordCount = [history.totalWordCount intValue];
+                taskStatus.nwEvent.dayOfSchedule = [history.dayOfSchedule intValue];
+                taskStatus.nwEvent.newWordCount = [[WordTaskGenerator instance] theNumberOfNewWordToday_twolist:taskStatus.nwEvent.dayOfSchedule];
+                
+                NSLog(@"History Manager : Total Word Count: %d", taskStatus.nwEvent.totalWordCount);
+                NSLog(@"History Manager : New Word Count: %d", taskStatus.nwEvent.newWordCount);
+                
+            } else if ([history.event isEqualToString:EVENT_TYPE_REVIEW]) {
+                ReviewStatus *rStatus = history.reviewStatus;
+                
+                taskStatus.taskType = TASK_TYPE_REVIEW;
+                taskStatus.rEvent.indexOfWordToday = [rStatus.index integerValue];
+                taskStatus.rEvent.stage_now = [history.stage integerValue];
+                taskStatus.rEvent.startTime = history.startTime;
+                taskStatus.rEvent.totalWordCount = [history.totalWordCount intValue];
+                taskStatus.rEvent.wrongWordCount = [history.wrongWordCount intValue];
+                taskStatus.rEvent.dayOfSchedule = [history.dayOfSchedule intValue];
+                NSLog(@"History Manager : Total Word Count: %d", taskStatus.nwEvent.totalWordCount);
+                taskStatus.rEvent.newWordCount = [[[WordTaskGenerator instance] reviewTask_twoList:taskStatus.rEvent.dayOfSchedule] count];
+                NSLog(@"History Manager : New Word Count: %d", taskStatus.rEvent.newWordCount);
+            } else if ([history.event isEqualToString:EVENT_TYPE_EXAM]) {
+                //ExamStatus *eStatus = history.examStatus;
+                //eStatus.difficulty;
+            }
         }
+        
+
         return NO;
     }
 }

@@ -10,6 +10,7 @@
 #import "GreWordsViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SettingsContentViewController.h"
+#import "Flurry.h"
 
 @interface SettingsViewController ()
 
@@ -26,6 +27,7 @@
     [self.scrollView addSubview:vc.view];
     [self.scrollView setContentSize:vc.view.frame.size];
     
+    [Flurry logEvent:@"viewSetting"];
     // Do any additional setup after loading the view from its nib.
 }
 

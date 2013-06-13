@@ -15,6 +15,7 @@
 #import "UIColor+RGB.h"
 #import "NSDate-Utilities.h"
 #import "NSAttributedString+Attributes.h"
+#import "Flurry.h"
 
 #define RECOMMAND_TEXT @"我刚刚用了#好G友#背陈琦和周树林老师的《再要你命3000》~方便、简单、实用、智能。同时使用杨鹏记忆法记忆单词高效快捷~推荐你们也使用哦~下载地址：https://itunes.apple.com/cn/app/haog-you/id659880998?ls=1&mt=8"
 
@@ -22,6 +23,10 @@
 {
     SettingClockViewController *watchRecite;
     SettingClockViewController *watchReview;
+    
+    NSDate *lastPressTime;
+    UIButton *lastPressedHead;
+    int tapCount;
 }
 @end
 
@@ -69,6 +74,10 @@
     [self setRateMeButton:nil];
     [self setSuggestButton:nil];
     [self setVersionLabel:nil];
+    [self setXbyHan:nil];
+    [self setLtwHan:nil];
+    [self setSbhHan:nil];
+    [self setChHan:nil];
     [super viewDidUnload];
 }
 
@@ -248,29 +257,79 @@
 
 #pragma mark - About Methods
 
+
+
+
 - (IBAction)headPressed:(id)sender
 {
     UIButton *button = sender;
     NSString* url = nil;
+    UIImageView *hanImage = nil;
     
     if(button.tag == 101)
     {
         url = @"http://www.chshssky.com";
+        [Flurry logEvent:@"ch_Pressed"];
+        hanImage = self.chHan;
     }
     else if(button.tag == 102)
     {
         url = @"";
+        [Flurry logEvent:@"ltw_Pressed"];
+        hanImage = self.ltwHan;
     }
     else if(button.tag == 103)
     {
         url = @"http://sbhhbs.com";
+        [Flurry logEvent:@"sbh_Pressed"];
+        hanImage = self.sbhHan;
     }
     else if(button.tag == 104)
     {
-        url = @"http://www.weibo.com/u/2120972133";
+        url = @"";
+        [Flurry logEvent:@"xby_Pressed"];
+        hanImage = self.xbyHan;
     }
-    if(url)
-        [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];
+
+    
+    if(lastPressedHead != sender)
+    {
+        tapCount = 0;
+        lastPressTime = nil;
+        lastPressedHead = sender;
+    }
+    else
+    {
+        if(!lastPressTime)
+        {
+            lastPressTime = [NSDate date];
+        }
+        else
+        {
+            NSTimeInterval interval = -lastPressTime.timeIntervalSinceNow;
+            NSLog(@"%f",interval);
+            if(interval <= 1)
+            {
+                tapCount++;
+                if(tapCount > 3)
+                {
+                    hanImage.alpha = 1;
+                    [UIView animateWithDuration:2 animations:^()
+                    {
+                        hanImage.alpha = 0;
+                    }];
+                }
+            }
+            else
+            {
+                tapCount = 0;
+            }
+            lastPressTime = [NSDate date];
+        }
+    }
+    
+//    if(url)
+//        [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];
 }
 
 -(IBAction)sendSuggestionEmail
