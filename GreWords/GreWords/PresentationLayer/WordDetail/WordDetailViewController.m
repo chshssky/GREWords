@@ -988,8 +988,10 @@
     [self viewWillAppear:YES];
     WordEntity *word;
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
+
         word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].rEvent.indexOfWordToday - 1] intValue]];
     } else {
+
         word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].nwEvent.indexOfWordToday - 1] intValue]];
 
     }
@@ -1004,7 +1006,7 @@
     WordEntity *word;
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
         [TaskStatus instance].rEvent.wrongWordCount ++;
-        
+
         word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].rEvent.indexOfWordToday - 1] intValue]];
     } else {
         [TaskStatus instance].nwEvent.wrongWordCount ++;
@@ -1034,8 +1036,6 @@
     [TaskStatus instance].rEvent.duration = [[TaskStatus instance].rEvent.endTime timeIntervalSinceDate:[TaskStatus instance].rEvent.startTime];
     
     
-    [TaskStatus instance].rEvent.totalWordCount ++;
-    
     NSLog(@"ReviewEvent Result :%d, %d, %f StartTime:%@ EndTime:%@", [TaskStatus instance].rEvent.wrongWordCount, [TaskStatus instance].rEvent.totalWordCount, [TaskStatus instance].rEvent.duration, [TaskStatus instance].rEvent.startTime, [TaskStatus instance].rEvent.endTime);
     
     [_reciteAndReviewResultCardViewController addReciteAndReviewResultCardAt:self withEvent:[TaskStatus instance].rEvent];
@@ -1062,8 +1062,6 @@
     [TaskStatus instance].nwEvent.duration = [now timeIntervalSinceDate:[TaskStatus instance].nwEvent.startTime];
     
     [TaskStatus instance].nwEvent.newWordCount = [[WordTaskGenerator instance] theNumberOfNewWordToday_twolist:[TaskStatus instance].nwEvent.dayOfSchedule];
-    
-    [TaskStatus instance].nwEvent.totalWordCount ++;
     
     NSLog(@"NewWord Result :%d, %d, %f", [TaskStatus instance].nwEvent.wrongWordCount, [TaskStatus instance].nwEvent.totalWordCount, [TaskStatus instance].nwEvent.duration);
     
@@ -1300,7 +1298,8 @@
 - (void)nextButtonPushed
 {
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
-        
+        [TaskStatus instance].rEvent.totalWordCount ++;
+
         if ([TaskStatus instance].rEvent.indexOfWordToday == [[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] count])
         {
             [self reviewCompleted];
@@ -1308,6 +1307,8 @@
         }
         
     } else {
+        [TaskStatus instance].nwEvent.totalWordCount ++;
+        
         if ([TaskStatus instance].nwEvent.indexOfWordToday == [[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] count])
         {
             [self newWordCompleted];
@@ -1316,7 +1317,6 @@
     }
     
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
-        [TaskStatus instance].rEvent.totalWordCount ++;
 
         if (SYSTEM_VERSION_LESS_THAN(@"6.0")) {
             [self loadWord:[TaskStatus instance].rEvent.indexOfWordToday];
@@ -1347,15 +1347,11 @@
             [self Dismiss_WrongAnimation];
         }
      
-//        self.rEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-//        self.rEvent.stage_now = [TaskStatus instance].stage_now;
-//        self.rEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
         [TaskStatus instance].rEvent.indexOfWordToday --;
         [[HistoryManager instance] updateEvent:[TaskStatus instance].rEvent];
         [TaskStatus instance].rEvent.indexOfWordToday ++;
         [[DashboardViewController instance] minusData];
     } else {
-        [TaskStatus instance].nwEvent.totalWordCount ++;
         
         if (([TaskStatus instance].nwEvent.indexOfWordToday % 10) == 9) {
             [[TaskStatus instance] setReviewEnable];
@@ -1364,11 +1360,6 @@
         if ([[[[WordTaskGenerator instance] newWordTask_twoList:self.nwEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].nwEvent.indexOfWordToday] intValue] > [TaskStatus instance].nwEvent.maxWordID) {
             
             [[TaskStatus instance] setReviewEnable:NO];
-//            self.nwEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-//            self.nwEvent.maxWordID = [TaskStatus instance].maxWordID;
-//            self.nwEvent.reviewEnable = [TaskStatus instance].reviewEnable;
-//            self.nwEvent.stage_now = [TaskStatus instance].stage_now;
-//            self.nwEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
         
             [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent];
 
@@ -1415,11 +1406,7 @@
                 [self Dismiss_WrongAnimation];
             }
         }
-//        self.nwEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
-//        self.nwEvent.maxWordID = [TaskStatus instance].maxWordID;
-//        self.nwEvent.reviewEnable = [TaskStatus instance].reviewEnable;
-//        self.nwEvent.stage_now = [TaskStatus instance].stage_now;
-//        self.nwEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
+
         [self.WordParaphraseView setContentOffset:CGPointMake(0, 0)];
         [TaskStatus instance].nwEvent.indexOfWordToday --;
         [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent];
