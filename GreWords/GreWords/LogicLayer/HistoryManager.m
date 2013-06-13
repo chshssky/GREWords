@@ -322,6 +322,7 @@ HistoryManager* _historyManagerInstance = nil;
             taskStatus.nwEvent.newWordCount = [[WordTaskGenerator instance] theNumberOfNewWordToday_twolist:taskStatus.nwEvent.dayOfSchedule];
             
             NSLog(@"History Manager : Total Word Count: %d", taskStatus.nwEvent.totalWordCount);
+            NSLog(@"History Manager : New Word Count: %d", taskStatus.nwEvent.newWordCount);
 
         } else if ([history.event isEqualToString:EVENT_TYPE_REVIEW]) {
             ReviewStatus *rStatus = history.reviewStatus;
@@ -334,6 +335,8 @@ HistoryManager* _historyManagerInstance = nil;
             taskStatus.rEvent.wrongWordCount = [history.wrongWordCount intValue];
             taskStatus.rEvent.dayOfSchedule = [history.dayOfSchedule intValue];
             NSLog(@"History Manager : Total Word Count: %d", taskStatus.nwEvent.totalWordCount);
+            taskStatus.rEvent.newWordCount = [[[WordTaskGenerator instance] reviewTask_twoList:taskStatus.rEvent.dayOfSchedule] count];
+            NSLog(@"History Manager : New Word Count: %d", taskStatus.rEvent.newWordCount);
         } else if ([history.event isEqualToString:EVENT_TYPE_EXAM]) {
             //ExamStatus *eStatus = history.examStatus;
             //eStatus.difficulty;

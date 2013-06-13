@@ -84,11 +84,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GreWords/LogicLayer/HistoryManager.m"
-         timestampString = "392751653.965067"
+         timestampString = "392800810.152594"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "470"
-         endingLineNumber = "470"
+         startingLineNumber = "473"
+         endingLineNumber = "473"
          landmarkName = "-getANewDay"
          landmarkType = "5">
       </FileBreakpoint>
@@ -214,11 +214,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GreWords/PresentationLayer/WordDetail/WordDetailViewController.m"
-         timestampString = "392753142.452908"
+         timestampString = "392800448.346172"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1320"
-         endingLineNumber = "1320"
+         startingLineNumber = "1322"
+         endingLineNumber = "1322"
          landmarkName = "-nextButtonPushed"
          landmarkType = "5">
       </FileBreakpoint>
