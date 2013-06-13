@@ -743,7 +743,7 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
         for (int i=1200; i<1400; i++) {
             [task addObject:[NSNumber numberWithInt:i]];
         }
-        for (int i=400; i<700; i++) {
+        for (int i=400; i<600; i++) {
             [task addObject:[NSNumber numberWithInt:i]];
         }
         for (int i=1800; i<2000; i++) {
