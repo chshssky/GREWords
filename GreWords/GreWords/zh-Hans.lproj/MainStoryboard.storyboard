@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12D78" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="SIm-TX-3I6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="SIm-TX-3I6">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
@@ -288,6 +288,22 @@
                                             <action selector="headPressed:" destination="auf-OA-niR" eventType="touchUpInside" id="SOd-AN-Nc5"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" image="Settings_about_xby_han.png" id="drc-iK-qlo">
+                                        <rect key="frame" x="224" y="209" width="61" height="61"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" image="Settings_about_ltw_han.png" id="p5b-tY-t1m">
+                                        <rect key="frame" x="83" y="209" width="61" height="61"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" image="Settings_about_sbh_han.png" id="Etc-Cv-0zt">
+                                        <rect key="frame" x="154" y="209" width="61" height="61"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" image="Settings_about_ch_han.png" id="U5u-6w-eur">
+                                        <rect key="frame" x="13" y="209" width="61" height="61"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
@@ -331,17 +347,21 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="autoSpeakButton" destination="n54-VE-Wp6" id="Sb5-YU-5YQ"/>
+                        <outlet property="chHan" destination="U5u-6w-eur" id="Duc-nb-eIo"/>
                         <outlet property="chineseMeaningButton" destination="e9j-rX-2a7" id="OEq-eL-hwq"/>
                         <outlet property="englishMeaningButton" destination="5VZ-e4-Wk3" id="mYh-44-ulC"/>
                         <outlet property="homoButton" destination="G6w-qH-mxv" id="9TO-O6-S8l"/>
+                        <outlet property="ltwHan" destination="p5b-tY-t1m" id="f6j-77-dpt"/>
                         <outlet property="rateMeButton" destination="3dX-qP-AaF" id="5IX-4O-GEp"/>
                         <outlet property="remindTimeLabel" destination="4kB-vM-nCu" id="fnO-vo-3Q7"/>
                         <outlet property="remindTimePageControl" destination="Ya2-6s-8mj" id="Xub-Gs-Lj8"/>
                         <outlet property="remindTimeScrollView" destination="yN2-cj-B3U" id="Uhc-Jh-TVz"/>
+                        <outlet property="sbhHan" destination="Etc-Cv-0zt" id="zGH-te-SVn"/>
                         <outlet property="sentenceButton" destination="FAy-ZR-OU3" id="nQc-NW-SNu"/>
                         <outlet property="suggestButton" destination="mWz-go-Gex" id="aaf-Ti-iUR"/>
                         <outlet property="tellFriendButton" destination="35x-5C-ZzL" id="JXJ-l5-hqH"/>
                         <outlet property="versionLabel" destination="Lp6-gh-HBN" id="XZE-WJ-YAh"/>
+                        <outlet property="xbyHan" destination="drc-iK-qlo" id="Xas-6v-yRe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oyt-Qy-ldX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -891,9 +911,13 @@
         <image name="Main menu_title.png" width="128" height="78"/>
         <image name="Settings_about.png" width="297" height="290"/>
         <image name="Settings_about_ch.png" width="61" height="61"/>
+        <image name="Settings_about_ch_han.png" width="61" height="61"/>
         <image name="Settings_about_ltw.png" width="61" height="61"/>
+        <image name="Settings_about_ltw_han.png" width="61" height="61"/>
         <image name="Settings_about_sbh.png" width="61" height="61"/>
+        <image name="Settings_about_sbh_han.png" width="61" height="61"/>
         <image name="Settings_about_xby.png" width="61" height="61"/>
+        <image name="Settings_about_xby_han.png" width="61" height="61"/>
         <image name="Settings_background.png" width="320" height="568"/>
         <image name="Settings_delete.png" width="297" height="59"/>
         <image name="Settings_remind.png" width="297" height="340"/>

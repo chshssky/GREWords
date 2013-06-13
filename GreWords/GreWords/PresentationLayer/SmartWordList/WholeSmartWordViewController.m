@@ -15,6 +15,7 @@
 #import "NoteViewController.h"
 #import "ConfigurationHelper.h"
 #import "GuideImageFactory.h"
+#import "Flurry.h"
 
 @interface WholeSmartWordViewController ()
 {
@@ -36,6 +37,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [Flurry logEvent:@"viewSmartList" timed:YES];
     
     isDragging = NO;
     isSearching = NO;
@@ -148,6 +151,8 @@
 }
 
 - (IBAction)exitPressed:(id)sender {
+    [Flurry endTimedEvent:@"viewSmartList" withParameters:nil];
+    
     GreWordsViewController *superController =  (GreWordsViewController *)[self presentingViewController];
     
     UIImageView *blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
