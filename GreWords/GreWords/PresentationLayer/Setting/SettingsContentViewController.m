@@ -314,7 +314,7 @@
                 if(tapCount > 3)
                 {
                     hanImage.alpha = 1;
-                    [UIView animateWithDuration:1.5 animations:^()
+                    [UIView animateWithDuration:2 animations:^()
                     {
                         hanImage.alpha = 0;
                     }];
