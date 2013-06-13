@@ -1033,11 +1033,8 @@
     }
     [TaskStatus instance].rEvent.duration = [[TaskStatus instance].rEvent.endTime timeIntervalSinceDate:[TaskStatus instance].rEvent.startTime];
     
-//    [TaskStatus instance].rEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
-//    [TaskStatus instance].rEvent.totalWordCount = [TaskStatus instance].totalWordCount;
-//    [TaskStatus instance].rEvent.duration = [TaskStatus instance].duration;
     
-    [TaskStatus instance].nwEvent.totalWordCount ++;
+    [TaskStatus instance].rEvent.totalWordCount ++;
     
     NSLog(@"ReviewEvent Result :%d, %d, %f StartTime:%@ EndTime:%@", [TaskStatus instance].rEvent.wrongWordCount, [TaskStatus instance].rEvent.totalWordCount, [TaskStatus instance].rEvent.duration, [TaskStatus instance].rEvent.startTime, [TaskStatus instance].rEvent.endTime);
     
