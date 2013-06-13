@@ -198,6 +198,27 @@ HistoryManager* _historyManagerInstance = nil;
     }
 }
 
+- (void)updateEventWithDuration:(NSTimeInterval)duration
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
+    request.predicate = [NSPredicate predicateWithFormat:@"endTime = nil"];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
+    NSError *err = nil;
+    NSArray *matches = [self.context executeFetchRequest:request error:&err];
+    
+    NSLog(@"Fetch Event Results number: %d", [matches count]);
+    History *history = [matches lastObject];
+    
+    NSLog(@"History Start Time: %@ Wrong: %@", history.startTime, history.wrongWordCount);
+    
+    history.duration = [NSNumber numberWithDouble:duration + [history.duration doubleValue]];
+    
+    if (![self.context save:&err]) {
+        NSLog(@"End Event Error");
+    }
+   
+}
+
 - (void)endEvent:(BaseEvent *)aEvent
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
