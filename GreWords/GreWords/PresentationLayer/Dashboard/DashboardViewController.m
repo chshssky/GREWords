@@ -157,14 +157,14 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     _textView.layer.anchorPoint = CGPointMake(0.5, 0.5);
     [self.view addSubview:_textView];
     
-    _wordNumberTest = [[FXLabel alloc] initWithFrame:CGRectMake(20, 10, 120, 70)];
+    _wordNumberTest = [[FXLabel alloc] initWithFrame:CGRectMake(20, 10, 160, 70)];
     _wordNumberTest.text =  [NSString stringWithFormat:@"%d",0];
     _wordNumberTest.textColor = [UIColor colorWithRed:101/255.00 green:116/255.00 blue:68/255.00 alpha:1];
     _wordNumberTest.font = [UIFont fontWithName:@"STHeitiTC-Medium" size:70];
     _wordNumberTest.backgroundColor = [UIColor clearColor];
     _wordNumberTest.innerShadowColor = [UIColor colorWithWhite:0.0f alpha:0.8f];
     _wordNumberTest.innerShadowOffset = CGSizeMake(0.0f, 0.8f);
-    _wordNumberTest.center = CGPointMake(self.centerPoint.x+15, self.centerPoint.y+5);
+    _wordNumberTest.center = CGPointMake(self.centerPoint.x, self.centerPoint.y+5);
     _wordNumberTest.textAlignment = UITextAlignmentCenter;
     [self.view addSubview:_wordNumberTest];
     

@@ -412,7 +412,7 @@
         self.backgroundImage.alpha = 0;
         dashboard.textView.alpha = 0;
         dashboard.bigButton.alpha = 0;
-        dashboard.wordNumberTest.transform = CGAffineTransformMakeTranslation(-15, 0);
+        //dashboard.wordNumberTest.transform = CGAffineTransformMakeTranslation(0, 0);
         if (iPhone5) {
             dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(0.2f, 0.2f), CGAffineTransformMakeTranslation(-128, -252));
         } else {
@@ -547,7 +547,7 @@
             dashboard.bigButton.alpha = 1.0f;
         }
 
-        dashboard.wordNumberTest.transform = CGAffineTransformMakeTranslation(0, 0);
+        //dashboard.wordNumberTest.transform = CGAffineTransformMakeTranslation(0, 0);
     }];
 }
 

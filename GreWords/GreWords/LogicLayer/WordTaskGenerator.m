@@ -514,6 +514,10 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
             }
         }
         
+        for (int i=0; i<task.count; i++) {
+            [task replaceObjectAtIndex:i withObject:[NSNumber numberWithInt:day*200+[[task objectAtIndex:i] intValue]]];
+        }
+        
         return task;
     }
     
