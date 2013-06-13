@@ -646,6 +646,11 @@
     }
 }
 
+-(void)viewWillDisappear:(BOOL)animated
+{
+    
+}
+
 #pragma mark - Add Duration
 
 - (void)beginDuration
