@@ -214,12 +214,38 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GreWords/PresentationLayer/WordDetail/WordDetailViewController.m"
-         timestampString = "392800448.346172"
+         timestampString = "392802577.301976"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1322"
-         endingLineNumber = "1322"
+         startingLineNumber = "1319"
+         endingLineNumber = "1319"
          landmarkName = "-nextButtonPushed"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "GreWords/PresentationLayer/WordDetail/WordDetailViewController.m"
+         timestampString = "392803122.217278"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1005"
+         endingLineNumber = "1005"
+         landmarkName = "-wrongButtonPushed:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "GreWords/PresentationLayer/WordDetail/WordDetailViewController.m"
+         timestampString = "392803125.451211"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "1009"
+         endingLineNumber = "1009"
+         landmarkName = "-wrongButtonPushed:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

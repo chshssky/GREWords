@@ -1350,8 +1350,9 @@
 //        self.rEvent.indexOfWordToday = [TaskStatus instance].indexOfWordIDToday;
 //        self.rEvent.stage_now = [TaskStatus instance].stage_now;
 //        self.rEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
-        
+        [TaskStatus instance].rEvent.indexOfWordToday --;
         [[HistoryManager instance] updateEvent:[TaskStatus instance].rEvent];
+        [TaskStatus instance].rEvent.indexOfWordToday ++;
         [[DashboardViewController instance] minusData];
     } else {
         [TaskStatus instance].nwEvent.totalWordCount ++;
@@ -1420,7 +1421,9 @@
 //        self.nwEvent.stage_now = [TaskStatus instance].stage_now;
 //        self.nwEvent.wrongWordCount = [TaskStatus instance].wrongWordCount;
         [self.WordParaphraseView setContentOffset:CGPointMake(0, 0)];
+        [TaskStatus instance].nwEvent.indexOfWordToday --;
         [[HistoryManager instance] updateEvent:[TaskStatus instance].nwEvent];
+        [TaskStatus instance].nwEvent.indexOfWordToday ++;
     }
 }
 
@@ -1497,7 +1500,6 @@
 {
     _comingTime = nil;
     _comingTime = [NSDate new];
-    
 }
 
 - (void)endDuration
