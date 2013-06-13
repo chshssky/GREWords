@@ -30,7 +30,7 @@
 #import "NSNotificationCenter+Addition.h"
 #import "GuideSettingViewController.h"
 #import "NSDate-Utilities.h"
-
+#import "Flurry.h"
 
 @interface GreWordsViewController ()<NewWordDetailViewControllerProtocol, WordDetailViewControllerProtocol>
 
@@ -311,6 +311,7 @@
     WholeSmartWordViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"zncb"];
     vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentModalViewController:vc animated:YES];
+
 }
 
 - (void)examController
@@ -331,6 +332,7 @@
         guideImageView = [[GuideImageFactory instance] guideViewForType:GuideType_Exam];
         [self.view addSubview:guideImageView];
     }
+    [Flurry logEvent:@"selectExam"];
 }
 
 - (void)startExam:(NSNotification *)notification
@@ -369,6 +371,7 @@
     HistoryStatisticsViewController *vc = [[HistoryStatisticsViewController alloc] init];
     vc.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentModalViewController:vc animated:YES];
+
 }
 
 - (void)settingController

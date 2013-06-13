@@ -22,8 +22,7 @@
 #import "TaskStatus.h"
 #import "GreWordsViewController.h"
 #import "ExamResultViewController.h"
-
-#import "ExamResultViewController.h"
+#import "Flurry.h"
 
 #define PI M_PI
 
@@ -238,6 +237,7 @@
 {
     [super viewDidLoad];
     
+    [Flurry logEvent:@"startExam" withParameters:self.examInfo timed:YES];
     [self beginExamEvent];
 }
 
@@ -1085,6 +1085,7 @@
 
 - (void)examResultShow
 {
+    [Flurry endTimedEvent:@"startExam" withParameters:nil];
     if (_examResultViewController == nil) {
         _examResultViewController = [[ExamResultViewController alloc] init];
         

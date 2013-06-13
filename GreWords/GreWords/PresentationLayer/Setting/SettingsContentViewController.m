@@ -15,6 +15,7 @@
 #import "UIColor+RGB.h"
 #import "NSDate-Utilities.h"
 #import "NSAttributedString+Attributes.h"
+#import "Flurry.h"
 
 #define RECOMMAND_TEXT @"我刚刚用了#好G友#背陈琦和周树林老师的《再要你命3000》~方便、简单、实用、智能。同时使用杨鹏记忆法记忆单词高效快捷~推荐你们也使用哦~下载地址：https://itunes.apple.com/cn/app/haog-you/id659880998?ls=1&mt=8"
 
@@ -256,18 +257,22 @@
     if(button.tag == 101)
     {
         url = @"http://www.chshssky.com";
+        [Flurry logEvent:@"ch_Pressed"];
     }
     else if(button.tag == 102)
     {
         url = @"";
+        [Flurry logEvent:@"ltw_Pressed"];
     }
     else if(button.tag == 103)
     {
         url = @"http://sbhhbs.com";
+        [Flurry logEvent:@"sbh_Pressed"];
     }
     else if(button.tag == 104)
     {
         url = @"http://www.weibo.com/u/2120972133";
+        [Flurry logEvent:@"xby_Pressed"];
     }
     if(url)
         [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];

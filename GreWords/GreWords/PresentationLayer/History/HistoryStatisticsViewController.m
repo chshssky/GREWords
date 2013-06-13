@@ -13,6 +13,7 @@
 #import "TestPageViewController.h"
 #import "BaseEvent.h"
 #import "HistoryManager.h"
+#import "Flurry.h"
 
 @interface HistoryStatisticsViewController ()
 {
@@ -49,6 +50,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [Flurry logEvent:@"viewHistory" timed:YES];
     // Do any additional setup after loading the view from its nib.
     [self initialFourPoint];
     int currentStage = [[HistoryManager instance] currentStage];
@@ -162,6 +164,8 @@
 
 #pragma mark - exitButton
 - (IBAction)exitPressed:(id)sender {
+    [Flurry endTimedEvent:@"viewHistory" withParameters:nil];
+    
     GreWordsViewController *superController =  (GreWordsViewController *)[self presentingViewController];
     
     UIImageView *blackView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
