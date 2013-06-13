@@ -28,6 +28,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *suggestButton;
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 
+@property (weak, nonatomic) IBOutlet UIImageView *xbyHan;
+@property (weak, nonatomic) IBOutlet UIImageView *ltwHan;
+@property (weak, nonatomic) IBOutlet UIImageView *sbhHan;
+@property (weak, nonatomic) IBOutlet UIImageView *chHan;
+
+
+
 -(IBAction)sendSuggestionEmail;
 -(IBAction)rateMe;
 -(IBAction)tellFriend;
