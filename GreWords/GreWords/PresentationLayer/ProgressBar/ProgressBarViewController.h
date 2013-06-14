@@ -10,6 +10,7 @@
 
 @interface ProgressBarViewController : UIViewController
 - (void)setStage:(int)stage andDayOfSchedule:(int)day;
+//- (void)changeStageTo:(int)stage andDayOfScheduleTo:(int)day;
 @property (nonatomic) int stage;
 @property (nonatomic) int day;
 + (ProgressBarViewController*)instance;
