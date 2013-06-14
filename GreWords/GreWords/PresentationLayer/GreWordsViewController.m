@@ -74,6 +74,19 @@
 
 }
 
+- (void)reloadSlideBar
+{
+    _progressBarViewController = [ProgressBarViewController instance];
+    if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
+        _progressBarViewController.stage = [TaskStatus instance].rEvent.stage_now + 1;
+        _progressBarViewController.day = [TaskStatus instance].rEvent.dayOfSchedule + 1;
+    } else {
+        _progressBarViewController.stage = [TaskStatus instance].nwEvent.stage_now + 1;
+        _progressBarViewController.day = [TaskStatus instance].nwEvent.dayOfSchedule + 1;
+    }
+}
+
+
 - (void)initslideBar
 {
     _progressBarViewController = [ProgressBarViewController instance];
@@ -583,6 +596,7 @@
 {
     [self createReviewEvent];
     
+    [self reloadSlideBar];
     
     dashboard = [DashboardViewController instance];
     dashboard.nonFinishedNumber = [TaskStatus instance].rEvent.newWordCount - [TaskStatus instance].rEvent.indexOfWordToday;
@@ -624,7 +638,7 @@
     [self createNewWordEvent];
 
     
-    
+    [self reloadSlideBar];
     
     dashboard.nonFinishedNumber = [TaskStatus instance].nwEvent.newWordCount;
     dashboard.minNumber = dashboard.nonFinishedNumber;
