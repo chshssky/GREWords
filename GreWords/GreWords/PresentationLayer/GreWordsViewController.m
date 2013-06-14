@@ -30,14 +30,13 @@
 #import "NSNotificationCenter+Addition.h"
 #import "GuideSettingViewController.h"
 #import "NSDate-Utilities.h"
+#import "ProgressBarViewController.h"
 #import "Flurry.h"
 
 @interface GreWordsViewController ()<NewWordDetailViewControllerProtocol, WordDetailViewControllerProtocol>
 
-@property (nonatomic, strong) UIImageView *slideBarView;
-@property (nonatomic, strong) UIImageView *slideBarStatusView;
-@property (nonatomic, strong) UIImageView *slideBarStatusTextView;
 @property (nonatomic, strong) TestSelectorViewController *testSelectorController;
+@property (nonatomic, strong) ProgressBarViewController *progressBarViewController;
 @property (nonatomic, strong) AwesomeMenu *menu;
 
 
@@ -77,33 +76,12 @@
 
 - (void)initslideBar
 {
-    self.slideBarView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar.png"]];
-    self.slideBarView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+190);
-    self.slideBarView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    self.slideBarView.gestureRecognizers = self.view.gestureRecognizers;
-    [self.view addSubview:self.slideBarView];
-    
-    
-    //slideBarStatusView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus1.png"]];
-    self.slideBarStatusView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus2.png"]];
-    //slideBarStatusView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus3.png"]];
-    //slideBarStatusView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideStatus4.png"]];
-    
-    self.slideBarStatusView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3+190);
-    self.slideBarStatusView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    self.slideBarStatusView.gestureRecognizers = self.view.gestureRecognizers;
-    //slideBarStatusView.alpha = 0.5;
-    [self.view addSubview:self.slideBarStatusView];
-    
-    //slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text1.png"]];
-    self.slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text2.png"]];
-    //slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text3.png"]];
-    //slideBarStatusTextView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Main menu_slideBar_text4.png"]];
-    self.slideBarStatusTextView.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/3 + 215);
-    self.slideBarStatusTextView.layer.anchorPoint = CGPointMake(0.5, 0.5);
-    self.slideBarStatusTextView.gestureRecognizers = self.view.gestureRecognizers;
-    //slideBarStatusView.alpha = 0.5;
-    [self.view addSubview:self.slideBarStatusTextView];
+    _progressBarViewController = [[ProgressBarViewController alloc] init];
+    _progressBarViewController.stage = 1;
+    _progressBarViewController.day = 1;
+    [self addChildViewController:_progressBarViewController];
+    [self.view addSubview:_progressBarViewController.view];
+    _progressBarViewController.view.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2+120);
 }
 
 - (void)initAwesomeMenu
@@ -409,9 +387,10 @@
 {
     [UIView animateWithDuration:0.5f animations:^{
         self.titleView.transform = CGAffineTransformMakeTranslation(-150, -100);
-        self.slideBarView.transform = CGAffineTransformMakeTranslation(-300, 0);
-        self.slideBarStatusTextView.transform = CGAffineTransformMakeTranslation(-300, 0);
-        self.slideBarStatusView.transform = CGAffineTransformMakeTranslation(-300, 0);
+//        self.slideBarView.transform = CGAffineTransformMakeTranslation(-300, 0);
+//        self.slideBarStatusTextView.transform = CGAffineTransformMakeTranslation(-300, 0);
+//        self.slideBarStatusView.transform = CGAffineTransformMakeTranslation(-300, 0);
+        self.progressBarViewController.view.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.backgroundImage.alpha = 0;
         dashboard.textView.alpha = 0;
         dashboard.bigButton.alpha = 0;
@@ -547,9 +526,10 @@
     dashboard.bigButton.alpha = 0.0f;
     [UIView animateWithDuration:0.5f animations:^{
         self.titleView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
-        self.slideBarView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
-        self.slideBarStatusTextView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
-        self.slideBarStatusView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
+//        self.slideBarView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
+//        self.slideBarStatusTextView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
+//        self.slideBarStatusView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
+        self.progressBarViewController.view.transform = CGAffineTransformMakeTranslation(0, 0);
         dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.0f,1.0f), CGAffineTransformMakeTranslation(0, 0));
         self.menu.transform = CGAffineTransformMakeTranslation(0, 0);
         self.backgroundImage.alpha = 1.0f;
