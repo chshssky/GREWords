@@ -455,7 +455,7 @@ HistoryManager* _historyManagerInstance = nil;
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
     
-    request.predicate = [NSPredicate predicateWithFormat:@"event == 'newWordEvent'"];
+    request.predicate = [NSPredicate predicateWithFormat:@"event == 'NewWordEvent' or event == 'ReviewWordEvent'"];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
     
     NSError *fetchError = nil;
@@ -670,7 +670,7 @@ HistoryManager* _historyManagerInstance = nil;
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
     
     request.predicate = [NSPredicate predicateWithFormat:@"event == 'ExamEvent' && stage == %d", stage];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
     
     NSError *fetchError = nil;
     NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
