@@ -635,8 +635,8 @@
     [self createNewWordEvent];
 
     
-#warning  this may can be easier ~
-
+    
+    
     dashboard.nonFinishedNumber = [TaskStatus instance].nwEvent.newWordCount;
     dashboard.minNumber = dashboard.nonFinishedNumber;
     dashboard.sumNumber = [TaskStatus instance].nwEvent.newWordCount;

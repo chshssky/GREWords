@@ -1437,7 +1437,8 @@
     [TaskStatus instance].eEvent.startTime = [self getNowDate];
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
-    
+    [TaskStatus instance].eEvent.stage_now = [[HistoryManager instance] currentStage];
+
     [[HistoryManager instance] addEvent:[TaskStatus instance].eEvent];
     
 }
@@ -1483,6 +1484,7 @@
     
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
     [self.timer fire];
+    [TaskStatus instance].eEvent.stage_now = [[HistoryManager instance] currentStage];
     
     [[HistoryManager instance] addEvent:[TaskStatus instance].eEvent];
     
