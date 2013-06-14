@@ -25,6 +25,7 @@
 @property (nonatomic,retain) NSDate* freshWordAlertTime;
 @property (nonatomic,retain) NSDate* reviewAlertTime;
 
+@property (nonatomic) NSNumber *startupInitStage;
 
 #pragma mark -- guide property
 

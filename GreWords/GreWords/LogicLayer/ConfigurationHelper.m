@@ -152,6 +152,21 @@ ConfigurationHelper* _configurationHelperInstance = nil;
     [self boolPlistSetter:autoSpeak key:@"autoSpeak"];
 }
 
+#pragma mark NSNumber values
+
+-(NSNumber*)startupInitStage
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    return [ud objectForKey:@"startupInitStage"];
+}
+
+-(void)setStartupInitStage:(NSNumber *)startupInitStage
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setObject:startupInitStage forKey:@"startupInitStage"];
+    [ud synchronize];
+}
+
 #pragma mark NSDate values
 
 -(NSDate*)freshWordAlertTime

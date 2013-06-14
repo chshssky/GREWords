@@ -38,6 +38,7 @@
 - (void)viewDidUnload {
     [self setBackgroundVIew:nil];
     [self setIndicatorLabel:nil];
+    [self setBackgroundImage:nil];
     [super viewDidUnload];
 }
 @end

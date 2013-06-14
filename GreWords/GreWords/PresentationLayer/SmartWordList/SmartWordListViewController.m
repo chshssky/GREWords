@@ -137,9 +137,10 @@
         [NSNotificationCenter registerRemoveNoteForWordNotificationWithSelector:@selector(removeNoteItem:) target:self];
     }
     
-    if(self.type == SmartListType_Full)
+    if(self.type == SmartListType_Full || self.type == SmartListType_Mistake)
     {
-        [self addSearchIndex];
+        if(self.array.count > 200)
+            [self addSearchIndex];
     }
     
     [self updateNoContentIndicator];
@@ -408,6 +409,7 @@
     }
 }
 
+
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
 {
     searchIndex.view.hidden = NO;
@@ -450,7 +452,7 @@
         [self.scrollDelegate smartWordList:self didTranslationYSinceLast:contentOffsetY];
         
     }
-    if(self.type == SmartListType_Full && self.tableView == aScrollView)
+    if((self.type == SmartListType_Full || self.type == SmartListType_Mistake )&& self.tableView == aScrollView)
     {
         [searchIndex setCurrentIndex:[self currentSectionIndex]];
     }
@@ -627,19 +629,114 @@
 
 #pragma mark - GreTableViewSearchIndexDelegate
 
+- (BOOL)useCustomView
+{
+    return self.type == SmartListType_Mistake;
+}
+
+- (UIView*)unselectedCellViewAtIndex:(NSUInteger)index
+{
+    NSString *str;
+    switch (index) {
+        case 0:
+            str = @"words list_scrollBar_fiveStar.png";
+            break;
+        case 1:
+            str = @"words list_scrollBar_fourStar.png";
+            break;
+        case 2:
+            str = @"words list_scrollBar_threeStar.png";
+            break;
+        case 3:
+            str = @"words list_scrollBar_twoStar.png";
+            break;
+        case 4:
+            str = @"words list_scrollBar_oneStar.png";
+            break;
+        case 5:
+            str = @"words list_scrollBar_zeroStar.png";
+            break;
+        default:
+            break;
+    }
+    UIImageView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:str]];
+    return view;
+}
+
+- (UIView*)selectedCellViewAtIndex:(NSUInteger)index
+{
+    NSString *str;
+    switch (index) {
+        case 0:
+            str = @"words list_scrollBar_fiveStar_highLight.png";
+            break;
+        case 1:
+            str = @"words list_scrollBar_fourStar_highLight.png";
+            break;
+        case 2:
+            str = @"words list_scrollBar_threeStar_highLight.png";
+            break;
+        case 3:
+            str = @"words list_scrollBar_twoStar_highLight.png";
+            break;
+        case 4:
+            str = @"words list_scrollBar_oneStar_highLight.png";
+            break;
+        case 5:
+            str = @"words list_scrollBar_zeroStar_highLight.png";
+            break;
+        default:
+            break;
+    }
+    UIImageView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:str]];
+    return view;
+}
+
+- (int)numberOfTiles
+{
+    return 6;
+}
+
 
 - (int)currentSectionIndex
 {
-    NSIndexPath *firstVisibleIndexPath = [[self.tableView indexPathsForVisibleRows] objectAtIndex:0];
-    WordEntity *word = self.array[firstVisibleIndexPath.section];
-    NSString *firstLetter = [[word.wordText substringToIndex:1] uppercaseString];
-    NSArray *arr = [self sectionTitles];
-    for(int i = 0; i < arr.count ; i++)
+    if(self.type == SmartListType_Full)
     {
-        if([arr[i] isEqualToString:firstLetter])
-            return i;
+        NSIndexPath *firstVisibleIndexPath = [[self.tableView indexPathsForVisibleRows] objectAtIndex:0];
+        WordEntity *word = self.array[firstVisibleIndexPath.section];
+        NSString *firstLetter = [[word.wordText substringToIndex:1] uppercaseString];
+        NSArray *arr = [self sectionTitles];
+        for(int i = 0; i < arr.count ; i++)
+        {
+            if([arr[i] isEqualToString:firstLetter])
+                return i;
+        }
+    }
+    else if(self.type == SmartListType_Mistake)
+    {
+        NSIndexPath *firstVisibleIndexPath = [[self.tableView indexPathsForVisibleRows] objectAtIndex:0];
+        WordEntity *word = self.array[firstVisibleIndexPath.section];
+        int pointCount = word.ratioOfMistake * 100 / 20.0;
+        return 5 - pointCount;
     }
     return -1;
+}
+
+- (NSDictionary*)wrongOrderInfo
+{
+    if(wrongRateIndexInfo)
+        return wrongRateIndexInfo;
+    NSMutableDictionary *dict = [@{} mutableCopy];
+    for(int i = _array.count - 1; i >= 0; i--)
+    {
+        WordEntity *word = _array[i];
+        int pointCount = word.ratioOfMistake * 100 / 20.0;
+        NSString *firstLetter = [NSString stringWithFormat:@"%d",pointCount];
+        dict[firstLetter] = [NSNumber numberWithInt:i];
+    }
+    wrongRateIndexInfo = dict;
+    return wrongRateIndexInfo;
+
 }
 
 - (NSDictionary*)alphabetInfo
@@ -670,12 +767,25 @@
 
 - (void)didSelectedIndex:(int)index
 {
-    NSDictionary *info = [self alphabetInfo];
-    NSNumber *number = info[[self sectionTitles][index]];
-    if(!number)
-        return;
-    int section = [number intValue];
-    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    if(self.type == SmartListType_Full)
+    {
+        NSDictionary *info = [self alphabetInfo];
+        NSNumber *number = info[[self sectionTitles][index]];
+        if(!number)
+            return;
+        int section = [number intValue];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    }
+    else if(self.type == SmartListType_Mistake)
+    {
+        NSDictionary *info = [self wrongOrderInfo];
+        NSString *key = [NSString stringWithFormat:@"%d",5 - index];
+        NSNumber *number = info[key];
+        if(!number)
+            return;
+        int section = [number intValue];
+        [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:section] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+    }
 }
 
 - (void)startTouch

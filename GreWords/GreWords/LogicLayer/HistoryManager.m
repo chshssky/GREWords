@@ -17,7 +17,7 @@
 #import "Entity/ReviewStatus.h"
 #import "TaskStatus.h"
 #import "WordTaskGenerator.h"
-
+#import "ConfigurationHelper.h"
 #import "NSDate-Utilities.h"
 
 
@@ -461,7 +461,7 @@ HistoryManager* _historyManagerInstance = nil;
     NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
     History *his = [fetchMatches lastObject];
     if ([fetchMatches count] <= 0) {
-        return 0;
+        return [[ConfigurationHelper instance].startupInitStage intValue];
     }
     
     NSLog(@"Today is %d", [his.stage intValue]);

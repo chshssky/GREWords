@@ -16,6 +16,8 @@
     CGRect frame;
     CGFloat averageHeight;
     NSMutableArray *labelArr;
+    NSMutableArray *selectedViewArr;
+    
     BOOL pressing;
 }
 
@@ -47,31 +49,76 @@
 }
 
 
+- (int)numberOfTiles
+{
+    if([self useCustomViews])
+    {
+        return [self.delegate numberOfTiles];
+    }
+    else return [self.delegate sectionTitles].count;
+}
+
 - (NSArray*)sectionTitles
 {
     return [self.delegate sectionTitles];
 }
 
 
+- (BOOL)useCustomViews
+{
+    if([self.delegate respondsToSelector:@selector(useCustomView)])
+    {
+        return [self.delegate useCustomView];
+    }
+    return NO;
+}
+
 - (void)generateLayouts
 {
     NSArray *titles = [self sectionTitles];
-    if([titles count] == 0)
+    if([self numberOfTiles] == 0)
         return;
     frame = self.view.frame;
-    averageHeight = (frame.size.height - CORNER)/ (titles.count + 1);
+    averageHeight = (frame.size.height - CORNER)/ ([self numberOfTiles] + 1);
     CGFloat currentHeight = CORNER;
     labelArr = [@[] mutableCopy];
-    for(NSString *title in titles)
+    
+    if([self useCustomViews])
     {
-        UILabel *label = [self generateLabel:title];
-        CGRect labelFrame = label.frame;
-        labelFrame.origin.y = currentHeight;
-        currentHeight += averageHeight;
-        labelFrame.size.height = averageHeight;
-        label.frame = labelFrame;
-        [self.view addSubview:label];
-        [labelArr addObject:label];
+        selectedViewArr = [@[] mutableCopy];
+        int count = [self.delegate numberOfTiles];
+        for(int i = 0; i < count; i++)
+        {
+            UIView *unv = [self.delegate unselectedCellViewAtIndex:i];
+            UIView *sv = [self.delegate selectedCellViewAtIndex:i];
+            [selectedViewArr addObject:sv];
+            [labelArr addObject:unv];
+            CGRect labelFrame = unv.frame;
+            labelFrame.origin.y = currentHeight;
+            labelFrame.origin.x = 3;
+            currentHeight += averageHeight;
+            //labelFrame.size.height = averageHeight;
+            unv.frame = labelFrame;
+            sv.frame = labelFrame;
+            [self.view addSubview:unv];
+        }
+        CGRect vframe = self.view.frame;
+        vframe.size.height = currentHeight - averageHeight + CORNER + [[labelArr lastObject] frame].size.height;
+        self.view.frame = vframe;
+    }
+    else
+    {
+        for(NSString *title in titles)
+        {
+            UILabel *label = [self generateLabel:title];
+            CGRect labelFrame = label.frame;
+            labelFrame.origin.y = currentHeight;
+            currentHeight += averageHeight;
+            labelFrame.size.height = averageHeight;
+            label.frame = labelFrame;
+            [self.view addSubview:label];
+            [labelArr addObject:label];
+        }
     }
     [self setTileColorAtIndex: -1];
 }
@@ -86,13 +133,36 @@
 {
     for(int i = 0; i < labelArr.count; i++)
     {
-        UIColor *color = YES ? [UIColor colorWithR:248 G:246 B:244] : [UIColor colorWithR:162 G:152 B:145];
-        if(index == i)
+        if([self useCustomViews])
         {
-            color = YES ? [UIColor colorWithR:255 G:144 B:0] : [UIColor colorWithR:210 G:157 B:88];
+            if (index == i) {
+                UIView *v = selectedViewArr[i];
+                if(v.superview == nil)
+                {
+                    [labelArr[i] removeFromSuperview];
+                    [self.view addSubview:v];
+                }
+            }
+            else
+            {
+                UIView *v = labelArr[i];
+                if(v.superview == nil)
+                {
+                    [selectedViewArr[i] removeFromSuperview];
+                    [self.view addSubview:v];
+                }
+            }
         }
-        UILabel *label = labelArr[i];
-        [label setTextColor:color];
+        else
+        {
+            UIColor *color = YES ? [UIColor colorWithR:248 G:246 B:244] : [UIColor colorWithR:162 G:152 B:145];
+            if(index == i)
+            {
+                color = YES ? [UIColor colorWithR:255 G:144 B:0] : [UIColor colorWithR:210 G:157 B:88];
+            }
+            UILabel *label = labelArr[i];
+            [label setTextColor:color];
+        }
     }
 }
 
@@ -125,8 +195,8 @@
     }
     
     int index = (curPoint.y - CORNER) / averageHeight;
-    if(index >= [self sectionTitles].count)
-        index = [self sectionTitles].count - 1;
+    if(index >= [self numberOfTiles])
+        index = [self numberOfTiles] - 1;
     if(curPoint.y < 0)
         index = 0;
     if(index >= 0)
@@ -135,8 +205,15 @@
         [self.delegate didSelectedIndex:index];
     }
     
-    indicator.indicatorLabel.text = [self sectionTitles][index];
-    UILabel *label = labelArr[index];
+    if([self useCustomViews])
+    {
+        indicator.indicatorLabel.text = [NSString stringWithFormat:@"%d星词",5-index];
+    }
+    else
+    {
+        indicator.indicatorLabel.text = [self sectionTitles][index];
+    }
+    UIView *label = labelArr[index];
     CGRect indicatorFrame = indicator.view.frame;
     indicatorFrame.origin.y = label.frame.origin.y - 26;
     indicator.view.frame = indicatorFrame;
@@ -147,7 +224,19 @@
 {
     indicator = [self.storyboard instantiateViewControllerWithIdentifier:@"searchIndexIndicator"];
     CGRect indicatorFrame = indicator.view.frame;
-    indicatorFrame.origin.x = -110;
+    if([self useCustomViews])
+    {
+        UIImageView *v;
+        UIImage *image = [UIImage imageNamed:@"words list_scrollBar_rectangle.png"];
+        v = [[UIImageView alloc] initWithImage:image];
+        indicatorFrame.size.width = v.frame.size.width;
+        indicatorFrame.size.height = v.frame.size.height;
+        indicator.backgroundImage.frame = v.frame;
+        indicator.backgroundImage.image = image;
+    }
+    
+    
+    indicatorFrame.origin.x = -indicatorFrame.size.width - 40;
     indicator.view.frame = indicatorFrame;
     [self.view addSubview:indicator.view];
     indicator.view.hidden = YES;
@@ -156,8 +245,13 @@
 
 - (void)initBackgroundViews
 {
-    self.backroundVIewPressed.image = [[UIImage imageNamed:@"words list_scrollBar_Pressdown.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 0, 10 , 0)];
-    self.backroundVIewPressed.alpha = 0;
+    CGRect vframe = self.backgroundView.frame;
+    vframe.size.height = self.view.frame.size.height;
+    self.backgroundView.frame = vframe;
+    self.backroundViewPressed.frame = vframe;
+    
+    self.backroundViewPressed.image = [[UIImage imageNamed:@"words list_scrollBar_Pressdown.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 0, 10 , 0)];
+    self.backroundViewPressed.alpha = 0;
     self.backgroundView.image = [[UIImage imageNamed:@"words list_scrollBar.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(10, 0, 10 , 0)];
 }
 
@@ -168,7 +262,7 @@
         [UIView animateWithDuration:0.2f animations:^()
         {
             self.backgroundView.alpha = 0;
-            self.backroundVIewPressed.alpha = 1;
+            self.backroundViewPressed.alpha = 1;
         }];
     }
     else
@@ -176,7 +270,7 @@
         [UIView animateWithDuration:0.2f animations:^()
          {
              self.backgroundView.alpha = 1;
-             self.backroundVIewPressed.alpha = 0;
+             self.backroundViewPressed.alpha = 0;
          }];
     }
 }
@@ -206,7 +300,7 @@
 - (void)viewDidUnload {
     [self setBackgroundView:nil];
     [self setSampleLabel:nil];
-    [self setBackroundVIewPressed:nil];
+    [self setBackroundViewPressed:nil];
     [super viewDidUnload];
 }
 

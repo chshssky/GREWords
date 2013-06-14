@@ -63,6 +63,7 @@
 {
     int stage = [lastPage stage];
     NSLog(@"initing for stage:%d",stage);
+    [ConfigurationHelper instance].startupInitStage = @(stage);
     [[ConfigurationHelper instance] initData];
     [[ConfigurationHelper instance] initConfigsForStage:stage];
     

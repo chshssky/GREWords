@@ -17,6 +17,13 @@
 - (void)startTouch;
 - (void)endTouch;
 
+@optional
+
+- (BOOL)useCustomView;
+- (UIView*)selectedCellViewAtIndex:(NSUInteger)index;
+- (UIView*)unselectedCellViewAtIndex:(NSUInteger)index;
+- (int)numberOfTiles;
+
 @end
 
 @interface GreTableViewSearchIndexViewController : UIViewController<UIGestureRecognizerDelegate>
@@ -25,8 +32,10 @@
 }
 
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundView;
-@property (weak, nonatomic) IBOutlet UIImageView *backroundVIewPressed;
+@property (weak, nonatomic) IBOutlet UIImageView *backroundViewPressed;
 @property (strong, nonatomic) IBOutlet UILabel *sampleLabel;
+
+@property (nonatomic) BOOL usePicture;
 
 @property (retain,nonatomic) id<GreTableViewSearchIndexDelegate> delegate;
 

@@ -11,5 +11,6 @@
 @interface GreTableViewSearchIndexIndicatorViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIView *backgroundVIew;
 @property (strong, nonatomic) IBOutlet UILabel *indicatorLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 
 @end

@@ -39,6 +39,8 @@
     
     UIImageView *noContentIndicator;
     
+    NSDictionary* wrongRateIndexInfo;
+    
     GreTableViewSearchIndexViewController *searchIndex;
 }
 
