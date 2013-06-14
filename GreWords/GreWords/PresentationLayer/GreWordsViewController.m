@@ -77,8 +77,14 @@
 - (void)initslideBar
 {
     _progressBarViewController = [[ProgressBarViewController alloc] init];
-    _progressBarViewController.stage = 1;
-    _progressBarViewController.day = 1;
+    if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
+        _progressBarViewController.stage = [TaskStatus instance].rEvent.stage_now + 1;
+        _progressBarViewController.day = [TaskStatus instance].rEvent.dayOfSchedule + 1;
+    } else {
+        _progressBarViewController.stage = [TaskStatus instance].nwEvent.stage_now + 1;
+        _progressBarViewController.day = [TaskStatus instance].nwEvent.dayOfSchedule + 1;
+    }
+
     [self addChildViewController:_progressBarViewController];
     [self.view addSubview:_progressBarViewController.view];
     _progressBarViewController.view.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2+120);
@@ -181,11 +187,7 @@
 {
     NSLog(@"WIEW　ＷＩＬＬ　Ａｐｐaｅｒ!!!!!!!");
     
-    
-    
     [self nowStatus];
-    
-    
 }
 
 
@@ -413,7 +415,6 @@
         
         
         if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
-#warning read from Database
             [[HistoryManager instance] readStatusIfNew];
             WordDetailViewController *vc = [[WordDetailViewController alloc] init];
             vc.delegate = self;
@@ -620,6 +621,11 @@
     [[WordTaskGenerator instance] clearTask];
         
     [[TaskStatus instance] beginNewWord];
+    
+    if ([[HistoryManager instance] currentStage] >= 3) {
+        [self beginReviewEvent];
+        return;
+    }
 
     if ([[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] == nil || [[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] count] <= 0) {
         [self beginReviewEvent];

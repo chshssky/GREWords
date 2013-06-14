@@ -133,7 +133,11 @@
     
     int wordID;
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
-        wordID = [[[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] objectAtIndex:index] intValue];
+        if ([[HistoryManager instance] currentStage] == 4) {
+            wordID = [[[[WordTaskGenerator instance] reviewTask_fourthCircle:0] objectAtIndex:index] intValue];
+        } else {
+            wordID = [[[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] objectAtIndex:index] intValue];
+        }
     } else {
         wordID =  [[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:index] intValue];
     }
@@ -1040,6 +1044,8 @@
     }
     [TaskStatus instance].rEvent.duration = [[TaskStatus instance].rEvent.endTime timeIntervalSinceDate:[TaskStatus instance].rEvent.startTime];
     
+    [[WordTaskGenerator instance] clearTask];
+
     
     NSLog(@"ReviewEvent Result :%d, %d, %f StartTime:%@ EndTime:%@", [TaskStatus instance].rEvent.wrongWordCount, [TaskStatus instance].rEvent.totalWordCount, [TaskStatus instance].rEvent.duration, [TaskStatus instance].rEvent.startTime, [TaskStatus instance].rEvent.endTime);
     

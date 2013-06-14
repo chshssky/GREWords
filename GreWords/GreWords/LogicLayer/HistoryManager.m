@@ -301,7 +301,6 @@ HistoryManager* _historyManagerInstance = nil;
     NSArray *matches = [self.context executeFetchRequest:request error:&err];
     
 
-#warning !!!!!!!!!!!!!  15天以后。。。
     if ([matches count] == 0) {
         
         [taskStatus beginNewWord];

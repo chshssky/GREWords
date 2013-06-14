@@ -114,9 +114,12 @@ TaskStatus* _taskStatusInstance = nil;
     self.rEvent.indexOfWordToday = 0;
     self.rEvent.wrongWordCount = 0;
     self.rEvent.stage_now = [[HistoryManager instance] currentStage];
+    
 
     int day = [[HistoryManager instance] getANewDay];
-    if (day > 28) {
+    
+    
+    if (self.rEvent.stage_now != 4 && day > 28) {
         day = 0;
         self.rEvent.stage_now ++;
         [[ConfigurationHelper instance] initConfigsForStage:self.rEvent.stage_now];
@@ -125,7 +128,11 @@ TaskStatus* _taskStatusInstance = nil;
     
     self.rEvent.eventType = EVENT_TYPE_REVIEW;
     self.rEvent.startTime = [NSDate new];
-    self.rEvent.newWordCount = [[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] count];
+    if (self.rEvent.stage_now == 4) {
+        self.rEvent.newWordCount = 500;
+    } else {
+        self.rEvent.newWordCount = [[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] count];
+    }
     self.rEvent.totalWordCount = 0;
 }
 
