@@ -58,26 +58,67 @@ ProgressBarViewController* _progressBarViewController = nil;
 {
     if (stage == 1) {
         [_statusImage setImage:[UIImage imageNamed:@"Main menu_slideStatus1.png"]];
-        _statusText.text = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@,%@%d%@",@"第一阶段",@"第",day,@"天"]];
+        if (day <= 99) {
+            _statusText.text = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@,%@%d%@",@"第一阶段",@"第",day,@"天"]];
+        }else{
+            _statusText.text = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@,%@%@%@",@"第一阶段",@"第",@"99+",@"天"]];
+        }
         _statusText.center = CGPointMake(84, 35);
         [_statusText setFont:[UIFont fontWithName:@"STHeitiSC-Light" size:18]];
     }else if (stage == 2) {
         [_statusImage setImage:[UIImage imageNamed:@"Main menu_slideStatus2.png"]];
-        _statusText.text = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@,%@%d%@",@"第二阶段",@"第",day,@"天"]];
+        if (day <= 99) {
+            _statusText.text = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@,%@%d%@",@"第二阶段",@"第",day,@"天"]];
+        }else{
+            _statusText.text = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@,%@%@%@",@"第二阶段",@"第",@"99+",@"天"]];
+        }
         _statusText.center = CGPointMake(140, 35);
         [_statusText setFont:[UIFont fontWithName:@"STHeitiSC-Light" size:18]];
     }else if (stage == 3) {
         [_statusImage setImage:[UIImage imageNamed:@"Main menu_slideStatus3.png"]];
-        _statusText.text = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@,%@%d%@",@"第三阶段",@"第",day,@"天"]];
+        if (day <= 99) {
+            _statusText.text = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@,%@%d%@",@"第三阶段",@"第",day,@"天"]];
+        }else{
+            _statusText.text = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@,%@%@%@",@"第三阶段",@"第",@"99+",@"天"]];
+        }
         _statusText.center = CGPointMake(198, 35);
         [_statusText setFont:[UIFont fontWithName:@"STHeitiSC-Light" size:18]];
     }else if (stage == 4) {
         [_statusImage setImage:[UIImage imageNamed:@"Main menu_slideStatus4.png"]];
-        _statusText.text = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@,%@%d%@",@"第四阶段",@"第",day,@"天"]];
+        if (day <= 99) {
+            _statusText.text = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@,%@%d%@",@"第四阶段",@"第",day,@"天"]];
+        }else{
+            _statusText.text = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@,%@%@%@",@"第四阶段",@"第",@"99+",@"天"]];
+        }
         _statusText.center = CGPointMake(250, 35);
         [_statusText setFont:[UIFont fontWithName:@"STHeitiSC-Light" size:18]];
     }
 }
+
+//- (void)changeStageTo:(int)stage andDayOfScheduleTo:(int)day
+//{
+//    if (stage == 1) {
+//        [_statusImage setImage:[UIImage imageNamed:@"Main menu_slideStatus1.png"]];
+//        _statusText.text = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@,%@%d%@",@"第一阶段",@"第",day,@"天"]];
+//        _statusText.center = CGPointMake(84, 35);
+//        [_statusText setFont:[UIFont fontWithName:@"STHeitiSC-Light" size:18]];
+//    }else if (stage == 2) {
+//        [_statusImage setImage:[UIImage imageNamed:@"Main menu_slideStatus2.png"]];
+//        _statusText.text = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@,%@%d%@",@"第二阶段",@"第",day,@"天"]];
+//        _statusText.center = CGPointMake(140, 35);
+//        [_statusText setFont:[UIFont fontWithName:@"STHeitiSC-Light" size:18]];
+//    }else if (stage == 3) {
+//        [_statusImage setImage:[UIImage imageNamed:@"Main menu_slideStatus3.png"]];
+//        _statusText.text = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@,%@%d%@",@"第三阶段",@"第",day,@"天"]];
+//        _statusText.center = CGPointMake(198, 35);
+//        [_statusText setFont:[UIFont fontWithName:@"STHeitiSC-Light" size:18]];
+//    }else if (stage == 4) {
+//        [_statusImage setImage:[UIImage imageNamed:@"Main menu_slideStatus4.png"]];
+//        _statusText.text = [[NSString alloc] initWithString:[NSString stringWithFormat:@"%@,%@%d%@",@"第四阶段",@"第",day,@"天"]];
+//        _statusText.center = CGPointMake(250, 35);
+//        [_statusText setFont:[UIFont fontWithName:@"STHeitiSC-Light" size:18]];
+//    }
+//}
 
 - (void)viewDidUnload {
     [self setStatusImage:nil];
