@@ -294,7 +294,7 @@ HistoryManager* _historyManagerInstance = nil;
     TaskStatus *taskStatus = [TaskStatus instance];
     
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
-    request.predicate = [NSPredicate predicateWithFormat:@"endTime = nil"];
+    request.predicate = [NSPredicate predicateWithFormat:@"( event == 'ReviewEvent' || event == 'NewWordEvent' ) && endTime = nil"];
     request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
 
     NSError *err = nil;
@@ -313,8 +313,9 @@ HistoryManager* _historyManagerInstance = nil;
         return YES;
     } else {
         History *history = [matches lastObject];
-
-        if (history.startTime.day != [NSDate new].day) {
+        if (false) {
+   
+       // if (history.startTime.day != [NSDate new].day) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"来自好G友的惩罚" message:[NSString stringWithFormat:@"上次没有背完就走了吧~ 之前背的词都忘了吧~ 那就重新开始吧~"] delegate:self cancelButtonTitle:@"我知道错了" otherButtonTitles:nil];
             [alert setAlertViewStyle:UIAlertViewStyleDefault];
             
@@ -788,7 +789,7 @@ HistoryManager* _historyManagerInstance = nil;
     }
 }
 
-- (BOOL)isNewWordCompleteToday
+- (BOOL)isTodayReviewComplete
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
     
@@ -800,10 +801,28 @@ HistoryManager* _historyManagerInstance = nil;
     
     History *his = [fetchMatches lastObject];
     
-    if ([his.event isEqualToString:EVENT_TYPE_NEWWORD] && his.endTime != nil) {
-        if (his.startTime.day == [NSDate new].day) {
-            return NO;
-        }
+    if ([his.event isEqualToString:EVENT_TYPE_REVIEW] && his.endTime != nil && his.startTime.day == [NSDate new].day) {
+//        if (his.startTime.day == [NSDate new].day) {
+//            return NO;
+//        }
+        return YES;
+    } else {
+        return NO;
+    }
+}
+
+- (BOOL)isTheNextDay
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"event == 'ReviewEvent' || event == 'NewWordEvent'"];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
+    
+    NSError *fetchError = nil;
+    NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
+    
+    History *his = [fetchMatches lastObject];
+    if ([his.event isEqualToString:EVENT_TYPE_REVIEW] && his.startTime.day != [NSDate new].day) {
         return YES;
     } else {
         return NO;

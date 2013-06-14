@@ -40,9 +40,11 @@
 
 - (int)getANewDay;
 
-- (BOOL)isNewWordCompleteToday;
+//- (BOOL)isTodayNewWordComplete;
 
 - (BOOL)isNewWordComplete;
 - (BOOL)isReviewComplete;
+//- (BOOL)isTodayReviewComplete;
+- (BOOL)isTheNextDay;
 
 @end
