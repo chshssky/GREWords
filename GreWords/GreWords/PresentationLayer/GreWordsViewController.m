@@ -76,7 +76,7 @@
 
 - (void)initslideBar
 {
-    _progressBarViewController = [[ProgressBarViewController alloc] init];
+    _progressBarViewController = [ProgressBarViewController instance];
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
         _progressBarViewController.stage = [TaskStatus instance].rEvent.stage_now + 1;
         _progressBarViewController.day = [TaskStatus instance].rEvent.dayOfSchedule + 1;
@@ -84,7 +84,6 @@
         _progressBarViewController.stage = [TaskStatus instance].nwEvent.stage_now + 1;
         _progressBarViewController.day = [TaskStatus instance].nwEvent.dayOfSchedule + 1;
     }
-
     [self addChildViewController:_progressBarViewController];
     [self.view addSubview:_progressBarViewController.view];
     _progressBarViewController.view.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2+120);
@@ -162,10 +161,6 @@
     }
     
     [NSNotificationCenter registerStartExamNotificationWithSelector:@selector(startExam:) target:self];
-    
-    // just for  test:
-//    int x = [[HistoryManager instance] currentStage];
-//    NSLog(@"stage:%d", x);
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nowStatus) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
@@ -389,9 +384,6 @@
 {
     [UIView animateWithDuration:0.5f animations:^{
         self.titleView.transform = CGAffineTransformMakeTranslation(-150, -100);
-//        self.slideBarView.transform = CGAffineTransformMakeTranslation(-300, 0);
-//        self.slideBarStatusTextView.transform = CGAffineTransformMakeTranslation(-300, 0);
-//        self.slideBarStatusView.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.progressBarViewController.view.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.backgroundImage.alpha = 0;
         dashboard.textView.alpha = 0;
@@ -527,9 +519,6 @@
     dashboard.bigButton.alpha = 0.0f;
     [UIView animateWithDuration:0.5f animations:^{
         self.titleView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
-//        self.slideBarView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
-//        self.slideBarStatusTextView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
-//        self.slideBarStatusView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
         self.progressBarViewController.view.transform = CGAffineTransformMakeTranslation(0, 0);
         dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.0f,1.0f), CGAffineTransformMakeTranslation(0, 0));
         self.menu.transform = CGAffineTransformMakeTranslation(0, 0);

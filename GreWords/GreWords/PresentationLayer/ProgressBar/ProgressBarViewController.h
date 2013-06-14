@@ -12,4 +12,5 @@
 - (void)setStage:(int)stage andDayOfSchedule:(int)day;
 @property (nonatomic) int stage;
 @property (nonatomic) int day;
++ (ProgressBarViewController*)instance;
 @end
