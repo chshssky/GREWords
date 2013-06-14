@@ -76,7 +76,7 @@
 
 - (void)initslideBar
 {
-    _progressBarViewController = [[ProgressBarViewController alloc] init];
+    _progressBarViewController = [ProgressBarViewController instance];
     _progressBarViewController.stage = 1;
     _progressBarViewController.day = 1;
     [self addChildViewController:_progressBarViewController];
