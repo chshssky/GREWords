@@ -157,10 +157,6 @@
     
     [NSNotificationCenter registerStartExamNotificationWithSelector:@selector(startExam:) target:self];
     
-    // just for  test:
-//    int x = [[HistoryManager instance] currentStage];
-//    NSLog(@"stage:%d", x);
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nowStatus) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
@@ -387,9 +383,6 @@
 {
     [UIView animateWithDuration:0.5f animations:^{
         self.titleView.transform = CGAffineTransformMakeTranslation(-150, -100);
-//        self.slideBarView.transform = CGAffineTransformMakeTranslation(-300, 0);
-//        self.slideBarStatusTextView.transform = CGAffineTransformMakeTranslation(-300, 0);
-//        self.slideBarStatusView.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.progressBarViewController.view.transform = CGAffineTransformMakeTranslation(-300, 0);
         self.backgroundImage.alpha = 0;
         dashboard.textView.alpha = 0;
@@ -526,9 +519,6 @@
     dashboard.bigButton.alpha = 0.0f;
     [UIView animateWithDuration:0.5f animations:^{
         self.titleView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
-//        self.slideBarView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
-//        self.slideBarStatusTextView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
-//        self.slideBarStatusView.transform = CGAffineTransformInvert(CGAffineTransformMakeTranslation(0, 0));
         self.progressBarViewController.view.transform = CGAffineTransformMakeTranslation(0, 0);
         dashboard.view.transform = CGAffineTransformConcat(CGAffineTransformMakeScale(1.0f,1.0f), CGAffineTransformMakeTranslation(0, 0));
         self.menu.transform = CGAffineTransformMakeTranslation(0, 0);
