@@ -12,6 +12,8 @@
 
 #import "WordTaskGenerator.h"
 
+#import "ConfigurationHelper.h"
+
 @implementation TaskStatus
 
 TaskStatus* _taskStatusInstance = nil;
@@ -66,17 +68,17 @@ TaskStatus* _taskStatusInstance = nil;
     self.eEvent.wrongWordCount = 0;
     self.eEvent.totalWordCount = 0;
 }
-
-- (int)getANewDay
-{
-    int day = [[HistoryManager instance] getANewDay];
-    if (day >= 31) {
-        day = 0;
-        self.nwEvent.stage_now ++;
-        self.rEvent.stage_now ++;
-    }
-    return day;
-}
+//
+//- (int)getANewDay
+//{
+//    int day = [[HistoryManager instance] getANewDay];
+//    if (day >= 31) {
+//        day = 0;
+//        self.nwEvent.stage_now ++;
+//        self.rEvent.stage_now ++;
+//    }
+//    return day;
+//}
 
 - (void)beginNewWord
 {
@@ -89,9 +91,10 @@ TaskStatus* _taskStatusInstance = nil;
     self.nwEvent.stage_now = [[HistoryManager instance] currentStage];
 
     int day = [[HistoryManager instance] getANewDay];
-    if (day >= 28) {
+    if (day > 28) {
         day = 0;
         self.nwEvent.stage_now ++;
+        [[ConfigurationHelper instance] initConfigsForStage:self.nwEvent.stage_now];
     }
     self.nwEvent.dayOfSchedule = day;
     
@@ -116,6 +119,7 @@ TaskStatus* _taskStatusInstance = nil;
     if (day > 28) {
         day = 0;
         self.rEvent.stage_now ++;
+        [[ConfigurationHelper instance] initConfigsForStage:self.rEvent.stage_now];
     }
     self.rEvent.dayOfSchedule = day;
     

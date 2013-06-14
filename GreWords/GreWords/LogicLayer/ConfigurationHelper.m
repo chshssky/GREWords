@@ -319,6 +319,7 @@ ConfigurationHelper* _configurationHelperInstance = nil;
     
     [self boolPlistSetter:NO key:@"firstTimeRun"];
     [self initNotificationTime];
+    self.autoSpeak = YES;
     //NSAssert(NO, @"function not implemented yet");
 }
 
@@ -356,7 +357,6 @@ ConfigurationHelper* _configurationHelperInstance = nil;
     {
         self.chineseMeaningVisibility = YES;
         self.englishMeaningVisibility = YES;
-        self.autoSpeak = YES;
         self.homoionymVisibility = NO;
         self.antonymVisiblity = NO;
         self.sampleSentenceVisibility = NO;
@@ -365,7 +365,6 @@ ConfigurationHelper* _configurationHelperInstance = nil;
     {
         self.chineseMeaningVisibility = YES;
         self.englishMeaningVisibility = YES;
-        self.autoSpeak = YES;
         self.homoionymVisibility = NO;
         self.antonymVisiblity = NO;
         self.sampleSentenceVisibility = YES;
@@ -374,7 +373,6 @@ ConfigurationHelper* _configurationHelperInstance = nil;
     {
         self.chineseMeaningVisibility = YES;
         self.englishMeaningVisibility = YES;
-        self.autoSpeak = YES;
         self.homoionymVisibility = YES;
         self.antonymVisiblity = YES;
         self.sampleSentenceVisibility = YES;
@@ -383,7 +381,6 @@ ConfigurationHelper* _configurationHelperInstance = nil;
     {
         self.chineseMeaningVisibility = YES;
         self.englishMeaningVisibility = YES;
-        self.autoSpeak = YES;
         self.homoionymVisibility = YES;
         self.antonymVisiblity = YES;
         self.sampleSentenceVisibility = YES;
