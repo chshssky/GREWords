@@ -44,6 +44,11 @@ DashboardViewController* _dashboardViewControllerInstance = nil;
     return _dashboardViewControllerInstance;
 }
 
++ (void)purge
+{
+    _dashboardViewControllerInstance = nil;
+}
+
 //- (UIImageView *)theNewTextView
 //{
 //    if (_theNewTextView == nil) {

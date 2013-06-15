@@ -13,6 +13,7 @@
 #import "HistoryManager.h"
 #import "TaskStatus.h"
 #import "WordHelper.h"
+#import "DashboardViewController.h"
 
 @implementation ConfigurationHelper
 
@@ -312,6 +313,7 @@ ConfigurationHelper* _configurationHelperInstance = nil;
     [[MyDataStorage instance] deleteDatabase];
     [WordHelper purge];
     [[TaskStatus instance] resetAllData];
+    [DashboardViewController purge];
     
     [self boolPlistSetter:YES key:@"firstTimeRun"];
     //NSAssert(NO, @"function not implemented yet");
