@@ -162,5 +162,13 @@ TaskStatus* _taskStatusInstance = nil;
     return [[HistoryManager instance] isReviewComplete];
 }
 
+- (void)resetAllData
+{
+    self.nwEvent = nil;
+    self.rEvent = nil;
+    self.eEvent = nil;
+    self.taskType = -1;
+}
+
 
 @end
