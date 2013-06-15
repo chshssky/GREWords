@@ -643,7 +643,7 @@
         
     [[TaskStatus instance] beginNewWord];
     
-    if ([[HistoryManager instance] currentStage] >= 3) {
+    if ([[HistoryManager instance] currentStage] >= 2) {
         [self beginReviewEvent];
         return;
     }
