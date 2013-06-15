@@ -119,7 +119,7 @@ TaskStatus* _taskStatusInstance = nil;
     int day = [[HistoryManager instance] getANewDay];
     
     
-    if (self.rEvent.stage_now != 4 && day > 28) {
+    if (self.rEvent.stage_now != 3 && day > 28) {
         day = 0;
         self.rEvent.stage_now ++;
         [[ConfigurationHelper instance] initConfigsForStage:self.rEvent.stage_now];
@@ -128,7 +128,7 @@ TaskStatus* _taskStatusInstance = nil;
     
     self.rEvent.eventType = EVENT_TYPE_REVIEW;
     self.rEvent.startTime = [NSDate new];
-    if (self.rEvent.stage_now == 4) {
+    if (self.rEvent.stage_now == 3) {
         self.rEvent.newWordCount = 500;
     } else {
         self.rEvent.newWordCount = [[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] count];

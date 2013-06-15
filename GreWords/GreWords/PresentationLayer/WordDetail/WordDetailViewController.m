@@ -133,7 +133,7 @@
     
     int wordID;
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
-        if ([[HistoryManager instance] currentStage] == 4) {
+        if ([[HistoryManager instance] currentStage] == 3) {
             wordID = [[[[WordTaskGenerator instance] reviewTask_fourthCircle:0] objectAtIndex:index] intValue];
         } else {
             wordID = [[[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] objectAtIndex:index] intValue];
