@@ -238,17 +238,20 @@
 {
     _lastPoint = lastPoint;
     _progressButton.center = lastPoint;
-    _greenCover.center = CGPointMake(_progressButton.center.x - 85.0f, _progressButton.center.y);
     _choosePoint = lastPoint;
     
     if (lastPoint.x == _firstPoint.x) {
         [_progressText setImage:[UIImage imageNamed:@"history_slideBar_text1.png"]];
+        _greenCover.center = CGPointMake(_progressButton.center.x - 84.0f, _progressButton.center.y);
     }else if (lastPoint.x == _secondPoint.x) {
         [_progressText setImage:[UIImage imageNamed:@"history_slideBar_text2.png"]];
+        _greenCover.center = CGPointMake(_progressButton.center.x - 86.0f, _progressButton.center.y);
     }else if (lastPoint.x == _thridPoint.x) {
         [_progressText setImage:[UIImage imageNamed:@"history_slideBar_text3.png"]];
+        _greenCover.center = CGPointMake(_progressButton.center.x - 84.0f, _progressButton.center.y);
     }else if (lastPoint.x == _fourthPoint.x) {
         [_progressText setImage:[UIImage imageNamed:@"history_slideBar_text4.png"]];
+        _greenCover.center = CGPointMake(_progressButton.center.x - 84.0f, _progressButton.center.y);
     }
 }
 
@@ -282,22 +285,22 @@
     [_progressButton.layer addAnimation:lineAnimation forKey:nil];
     
     
-    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    [lineAnimation setValue:@"GoToPointFinished" forKey:@"id"];
-    path = CGPathCreateMutable();
-    CGPathMoveToPoint(path, NULL, _progressButton.center.x - 85.0f, _progressButton.center.y);
-    CGPathAddLineToPoint(path, NULL, destinationPoint.x - 85.0f, destinationPoint.y);
-    lineAnimation.path = path;
-    CGPathRelease(path);
-    lineAnimation.duration = 0.15f;
-    lineAnimation.beginTime = CACurrentMediaTime();
-    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
-    lineAnimation.delegate = self;
-    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
-    [_greenCover.layer addAnimation:lineAnimation forKey:nil];
+//    lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+//    [lineAnimation setValue:@"GoToPointFinished" forKey:@"id"];
+//    path = CGPathCreateMutable();
+//    CGPathMoveToPoint(path, NULL, _progressButton.center.x - 85.0f, _progressButton.center.y);
+//    CGPathAddLineToPoint(path, NULL, destinationPoint.x - 85.0f, destinationPoint.y);
+//    lineAnimation.path = path;
+//    CGPathRelease(path);
+//    lineAnimation.duration = 0.15f;
+//    lineAnimation.beginTime = CACurrentMediaTime();
+//    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
+//    lineAnimation.delegate = self;
+//    lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+//    [_greenCover.layer addAnimation:lineAnimation forKey:nil];
     
     _progressButton.center = destinationPoint;
-    _greenCover.center = CGPointMake(_progressButton.center.x - 85.0f, _progressButton.center.y);
+    //_greenCover.center = CGPointMake(_progressButton.center.x - 85.0f, _progressButton.center.y);
 }
 
 - (void)setGesture
@@ -321,13 +324,13 @@
         CGPoint movePoint = [recognizer locationInView:self.view];
         if (movePoint.x >= _firstPoint.x && movePoint.x <= _lastPoint.x) {
             _progressButton.center = CGPointMake(movePoint.x, _progressButton.center.y);
-            _greenCover.center = CGPointMake(_progressButton.center.x - 85.0f, _progressButton.center.y);
+            //_greenCover.center = CGPointMake(_progressButton.center.x - 85.0f, _progressButton.center.y);
         }else if (movePoint.x < _firstPoint.x) {
             _progressButton.center = _firstPoint;
-            _greenCover.center = CGPointMake(_progressButton.center.x - 85.0f, _progressButton.center.y);
+            //_greenCover.center = CGPointMake(_progressButton.center.x - 85.0f, _progressButton.center.y);
         }else if (movePoint.x > _lastPoint.x) {
             _progressButton.center = _lastPoint;
-            _greenCover.center = CGPointMake(_progressButton.center.x - 85.0f, _progressButton.center.y);
+            //_greenCover.center = CGPointMake(_progressButton.center.x - 85.0f, _progressButton.center.y);
         }
     }
     
