@@ -303,8 +303,13 @@ HistoryManager* _historyManagerInstance = nil;
 
     if ([matches count] == 0) {
         
-        [taskStatus beginNewWord];
-        
+        if ([[ConfigurationHelper instance].startupInitStage intValue] >= 2) {
+            [taskStatus beginReview];
+            [self addEvent:[TaskStatus instance].rEvent];
+        } else {
+            [taskStatus beginNewWord];
+            [self addEvent:[TaskStatus instance].nwEvent];
+        }
         return YES;
     } else {
         History *history = [matches lastObject];
