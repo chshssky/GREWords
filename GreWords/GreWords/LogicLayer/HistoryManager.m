@@ -303,7 +303,7 @@ HistoryManager* _historyManagerInstance = nil;
 
     if ([matches count] == 0) {
         
-        if ([[ConfigurationHelper instance].startupInitStage intValue] >= 2) {
+        if ([[ConfigurationHelper instance].startupInitStage intValue] >= 2 || [self getANewDay] >= 16) {
             [taskStatus beginReview];
             [self addEvent:[TaskStatus instance].rEvent];
         } else {
@@ -484,6 +484,24 @@ HistoryManager* _historyManagerInstance = nil;
     NSLog(@"Today is %d", [his.stage intValue]);
     return [his.stage intValue];
 }
+
+//- (int)currentDayOfSchedule
+//{
+//    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
+//    
+//    request.predicate = [NSPredicate predicateWithFormat:@"event == 'NewWordEvent' or event == 'ReviewWordEvent'"];
+//    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
+//    
+//    NSError *fetchError = nil;
+//    NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
+//    History *his = [fetchMatches lastObject];
+//    if ([fetchMatches count] <= 0) {
+//        return 0;
+//    }
+//    
+//    NSLog(@"Today is %d day", [his.dayOfSchedule intValue]);
+//    return [his.dayOfSchedule intValue];
+//}
 
 //- (float)currentStageProgress
 //{
