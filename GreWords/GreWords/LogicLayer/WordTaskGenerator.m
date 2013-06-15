@@ -947,7 +947,7 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
     NSMutableArray *randomTask = [[NSMutableArray alloc] init];
     for (int i=0; i<500; i++) {
         int j = arc4random() % 3073;
-        [randomTask addObject:[[WordHelper instance] wordWithID:j].wordText];
+        [randomTask addObject:[NSNumber numberWithInt:j]];
     }
     
     _reviewRandom = randomTask;
