@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class SettingClockViewController;
+
 @protocol SettingClockProtocal <NSObject>
 
--(void)clockTimeChanged:(NSDate*)time;
--(void)clockTimeEndChange:(NSDate*)time;
+-(void)clock:(SettingClockViewController*)clock timeChanged:(NSDate*)time;
+-(void)clock:(SettingClockViewController*)clock timeEndChange:(NSDate*)time;
 
 @end
 
@@ -20,5 +22,5 @@
 @property(nonatomic) bool whetherRecite;
 
 -(void)setAlertTime:(NSDate*)date;
-
+-(void)setStartTime:(NSDate*)date;
 @end

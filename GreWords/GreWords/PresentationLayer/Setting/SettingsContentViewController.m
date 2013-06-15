@@ -107,10 +107,11 @@
     self.versionLabel.text = [NSString stringWithFormat:@"v%@",appVersion];
 }
 
+
 #pragma mark - Watch delegate
--(void)clockTimeChanged:(NSDate*)time
+-(void)clock:(SettingClockViewController*)clock timeChanged:(NSDate*)time;
 {
-    if(self.remindTimePageControl.currentPage == 0)
+    if(clock == watchRecite)
     {
         [self configLabelForReciteAtTime:time];
     }
@@ -120,12 +121,13 @@
     }
 }
 
--(void)clockTimeEndChange:(NSDate*)time
+-(void)clock:(SettingClockViewController*)clock timeEndChange:(NSDate*)time;
 {
-    if(self.remindTimePageControl.currentPage == 0)
+    if(clock == watchRecite)
     {
         [ConfigurationHelper instance].freshWordAlertTime = time;
         [self configLabelForReciteAtTime:time];
+        [watchReview setStartTime:time];
     }
     else
     {
@@ -133,6 +135,7 @@
         [self configLabelForReviewAtTime:time];
     }
 }
+
 
 #pragma mark - Remind Time Methods
 

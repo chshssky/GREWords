@@ -46,7 +46,12 @@
 @property(nonatomic) int minute;
 @property(nonatomic) int temp_minute;
 @property(nonatomic) int hour;
+
+
+
 @property(nonatomic) int time;
+@property(nonatomic) int minTime;
+@property(nonatomic) BOOL whetherSetTimeToMinTime;
 @end
 
 @implementation SettingClockViewController
@@ -69,7 +74,39 @@
 {
     [self setTime: date.hour*60 + date.minute];
 }
-
+-(void)setStartTime:(NSDate*)date
+{
+    self.minTime =  date.hour*60 + date.minute;
+    
+    if (_minTime > _time) {
+        _whetherSetTimeToMinTime = YES;
+    }
+    
+    if (_whetherSetTimeToMinTime == YES) {
+        [self.delegate clock:self timeEndChange:date];
+        int difference = _minTime - _time;
+        int difference_hour = floor(difference/60);
+        int difference_minute = fmod(difference, 60);
+        
+        float difference_radioOfMinute = (float)difference_minute/60.0*2*M_PI + difference_hour*M_PI*2;
+        float difference_radioOfHour = (float)difference_hour/12.0*2*M_PI + (float)difference_minute/60.0*M_PI/6;
+        
+        _time = _minTime;
+        _minute = fmod(_time, 60);
+        _hour = floor(_time/60);
+        _radio_f = (float)_minute/60.0*2*M_PI;
+        _radio_s = (float)_hour/12.0*2*M_PI + (float)_minute/60.0*M_PI/6;
+        _whetherPlusHour = NO;
+        _whetherMinusHour = NO;
+        _whetherSetTimeToMinTime = NO;
+        
+        
+        [self minuteHandAnimationChangeBackFrom:_radio_f-difference_radioOfMinute to:_radio_f];
+        [self hourHandAnimationChangeBackFrom:_radio_s-difference_radioOfHour to:_radio_s];
+        self.FimageView.transform = CGAffineTransformMakeRotation(_radio_f);
+        self.SimageView.transform = CGAffineTransformMakeRotation(_radio_s);
+    }
+}
 
 - (void)viewDidLoad
 {
@@ -77,6 +114,7 @@
     
     //self.time = 1020;
     //数据初始化
+    //self.minTime = 425;
     _minute = fmod(_time, 60);
     _hour = floor(_time/60);
     
@@ -87,6 +125,7 @@
     _len_s = 90;
     _whetherPlusHour = NO;
     _whetherMinusHour = NO;
+    _whetherSetTimeToMinTime = NO;
     
 	// Do any additional setup after loading the view, typically from a nib.
     
@@ -293,6 +332,35 @@
     [self.FimageView addGestureRecognizer:gestureRecognizerF];
     self.FimageView.userInteractionEnabled = YES;
     gestureRecognizerF.minimumPressDuration=0;
+    
+    self.FimageView.transform = CGAffineTransformMakeRotation(_radio_f);
+    self.SimageView.transform = CGAffineTransformMakeRotation(_radio_s);
+}
+
+- (void) minuteHandAnimationChangeBackFrom:(float)startRad to:(float)endRad
+{
+    CABasicAnimation *circleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    circleAnimation.fromValue = [NSNumber numberWithFloat:startRad];
+    circleAnimation.toValue = [NSNumber numberWithFloat:endRad];
+    
+    CAAnimationGroup *minuteHandeAnimation = [CAAnimationGroup animation];
+    minuteHandeAnimation.animations = [NSArray arrayWithObjects:circleAnimation, nil];
+    minuteHandeAnimation.duration = 2.5f;
+    minuteHandeAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.25 :1.0 :0.0 :1.0];
+    [self.FimageView.layer addAnimation:minuteHandeAnimation forKey:@"shakeAnimation"];
+}
+
+- (void) hourHandAnimationChangeBackFrom:(float)startRad to:(float)endRad
+{
+    CABasicAnimation *circleAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    circleAnimation.fromValue = [NSNumber numberWithFloat:startRad];
+    circleAnimation.toValue = [NSNumber numberWithFloat:endRad];
+    
+    CAAnimationGroup *minuteHandeAnimation = [CAAnimationGroup animation];
+    minuteHandeAnimation.animations = [NSArray arrayWithObjects:circleAnimation, nil];
+    minuteHandeAnimation.duration = 2.5f;
+    minuteHandeAnimation.timingFunction = [CAMediaTimingFunction functionWithControlPoints:0.25 :1.0 :0.0 :1.0];
+    [self.SimageView.layer addAnimation:minuteHandeAnimation forKey:@"shakeAnimation"];
 }
 
 - (void) AMPMAnimation
@@ -625,8 +693,29 @@
     }
     
     if (recognizer.state == UIGestureRecognizerStateEnded) {
-        self.FimageView.transform = CGAffineTransformMakeRotation(_radio_f);
-        self.SimageView.transform = CGAffineTransformMakeRotation(_radio_s);
+        if (_whetherSetTimeToMinTime == YES) {
+            
+            int difference = _minTime - _time;
+            int difference_hour = floor(difference/60);
+            int difference_minute = fmod(difference, 60);
+            
+            float difference_radioOfMinute = (float)difference_minute/60.0*2*M_PI + difference_hour*M_PI*2;
+            float difference_radioOfHour = (float)difference_hour/12.0*2*M_PI + (float)difference_minute/60.0*M_PI/6;
+            
+            _time = _minTime;
+            _minute = fmod(_time, 60);
+            _hour = floor(_time/60);
+            _radio_f = (float)_minute/60.0*2*M_PI;
+            _radio_s = (float)_hour/12.0*2*M_PI + (float)_minute/60.0*M_PI/6;
+            _whetherPlusHour = NO;
+            _whetherMinusHour = NO;
+            _whetherSetTimeToMinTime = NO;
+            
+            
+            [self minuteHandAnimationChangeBackFrom:_radio_f-difference_radioOfMinute to:_radio_f];
+            [self hourHandAnimationChangeBackFrom:_radio_s-difference_radioOfHour to:_radio_s];
+            
+        }
     }
     
     
@@ -674,11 +763,12 @@
     
     NSDate *newDate = [gregorian dateFromComponents: components];
     if (recognizer.state == UIGestureRecognizerStateEnded) {
-        [self.delegate clockTimeEndChange:newDate];
+        [self.delegate clock:self timeEndChange:newDate];
     }
     else
     {
-        [self.delegate clockTimeChanged:newDate];
+        if(!_whetherSetTimeToMinTime)
+            [self.delegate clock:self timeChanged:newDate];
     }
 }
 
@@ -736,8 +826,13 @@
     }
     
     _time = _hour*60 + _minute;
-    
     _temp_minute = _minute;
+    
+    if (_time < _minTime) {
+        _whetherSetTimeToMinTime = YES;
+    }else{
+        _whetherSetTimeToMinTime = NO;
+    }
 }
 
 - (CGFloat) angleBetweenLine1Start:(CGPoint)line1Start line1End:(CGPoint)line1End line2Start:(CGPoint)line2Start line2End:(CGPoint)line2End
@@ -759,17 +854,6 @@
     _touchPointX = (int)(touchPoint.x);
     _touchPointY = (int)(touchPoint.y);
 }
-
-//- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    UITouch *touch = [touches anyObject];
-//    CGPoint touchPoint = [touch locationInView:self.view];
-//
-//    _movePointX = (int)(touchPoint.x);
-//    _movePointY = (int)(touchPoint.y);
-//
-//    NSLog(@"%d,%d",_movePointX,_movePointY);
-//}
 
 - (void)didReceiveMemoryWarning
 {
