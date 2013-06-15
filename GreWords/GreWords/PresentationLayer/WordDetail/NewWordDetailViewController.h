@@ -23,8 +23,4 @@
 @property (nonatomic, strong) NewWordEvent *nwEvent;
 
 
-- (void)removeDownImageAnimation_withDownCover;
-- (void)removeDownImageAnimation_withNoDownCover;
-
-
 @end
