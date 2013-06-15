@@ -47,5 +47,6 @@
 - (void)minusData;
 - (void)reloadData;
 + (DashboardViewController*)instance;
++ (void)purge;
 
 @end

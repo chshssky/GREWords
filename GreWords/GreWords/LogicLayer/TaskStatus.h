@@ -44,6 +44,8 @@ enum TaskType {
 - (BOOL)isNewWordComplete;
 - (BOOL)isReviewComplete;
 
+- (BOOL)isTheNextDay;
+
 - (void)resetAllData;
 
 @end

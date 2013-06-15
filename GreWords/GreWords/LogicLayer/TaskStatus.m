@@ -162,6 +162,11 @@ TaskStatus* _taskStatusInstance = nil;
     return [[HistoryManager instance] isReviewComplete];
 }
 
+- (BOOL)isTheNextDay
+{
+    return [[HistoryManager instance] isTheNextDay];
+}
+
 - (void)resetAllData
 {
     self.nwEvent = nil;

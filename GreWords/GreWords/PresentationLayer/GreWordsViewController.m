@@ -179,7 +179,9 @@
         [[DashboardViewController instance] changeTextViewToComplete];
         
         if ([[now laterDate:newWordTime] isEqualToDate:now]) {
-            [self beginNewWordEvent];
+            if ([[TaskStatus instance] isTheNextDay]) {
+                [self beginNewWordEvent];
+            }
         }
     } else if ([[TaskStatus instance] isNewWordComplete] == YES) {
         [[DashboardViewController instance] changeTextViewToHalfComplete];
@@ -272,7 +274,9 @@
         [[DashboardViewController instance] changeTextViewToComplete];
         
         if ([[now laterDate:newWordTime] isEqualToDate:now]) {
-            [self beginNewWordEvent];
+            if ([[TaskStatus instance] isTheNextDay]) {
+                [self beginNewWordEvent];
+            }
         }
     } else if ([[TaskStatus instance] isNewWordComplete] == YES) {
         [[DashboardViewController instance] changeTextViewToHalfComplete];
