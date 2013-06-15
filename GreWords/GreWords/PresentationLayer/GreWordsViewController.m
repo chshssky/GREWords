@@ -158,9 +158,38 @@
     
     // 从数据库中读取现在的状态
     //初始化TaskStatus状态
-
-    [[HistoryManager instance] readStatusIfNew];
-
+    NSDate *now = [self getNowDate];
+    
+    NSDate *newWordTime = [now nowdateWithHour:[[ConfigurationHelper instance].freshWordAlertTime hour] AndMinute:[[ConfigurationHelper instance].freshWordAlertTime minute]];
+    
+    NSLog(@"Hour : %d And Minute: %d", [[ConfigurationHelper instance].freshWordAlertTime hour], [[ConfigurationHelper instance].freshWordAlertTime minute]);
+    //newWordTime = [newWordTime dateByAddingDays:1];
+    
+    
+    NSLog(@"NowAlertTime: %@", newWordTime);
+    
+    
+    NSDate *reviewTime = [now nowdateWithHour:[[ConfigurationHelper instance].reviewAlertTime hour] AndMinute:[[ConfigurationHelper instance].reviewAlertTime minute]];       //[now dateByAddingTimeInterval:60.0];
+    
+    NSLog(@"Hour : %d And Minute: %d", [[ConfigurationHelper instance].freshWordAlertTime hour], [[ConfigurationHelper instance].freshWordAlertTime minute]);
+    
+    
+    NSLog(@"ReviewAlertTime: %@", reviewTime);
+    if ([[TaskStatus instance] isReviewComplete] == YES) {
+        [[DashboardViewController instance] changeTextViewToComplete];
+        
+        if ([[now laterDate:newWordTime] isEqualToDate:now]) {
+            [self beginNewWordEvent];
+        }
+    } else if ([[TaskStatus instance] isNewWordComplete] == YES) {
+        [[DashboardViewController instance] changeTextViewToHalfComplete];
+        
+        if ([[now laterDate:reviewTime] isEqualToDate:now]) {
+            [self beginReviewEvent];
+        }
+    } else {
+        [[HistoryManager instance] readStatusIfNew];
+    }
     
     [self initDashboard];
     [self initslideBar];
