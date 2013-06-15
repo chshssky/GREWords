@@ -508,6 +508,7 @@
 - (void)resetIndexOfWordList:(int)remainWords
 {
     if ([TaskStatus instance].taskType == TASK_TYPE_NEWWORD) {
+        [TaskStatus instance].nwEvent.reviewEnable = NO;
         int theWordID = [TaskStatus instance].nwEvent.newWordCount - remainWords + 200 * [TaskStatus instance].nwEvent.dayOfSchedule;
         for (int index = 0; index < [[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] count]; index++) {
             
