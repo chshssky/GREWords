@@ -314,7 +314,15 @@ HistoryManager* _historyManagerInstance = nil;
     } else {
         History *history = [matches lastObject];
 
-        if (history.startTime.day != [NSDate new].day) {
+#warning 记得解注~~！！！！！！！！！！！！！
+//        if (history.startTime.day != [NSDate new].day) {
+        if (false) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"来自好G友的惩罚" message:[NSString stringWithFormat:@"上次没有背完就走了吧~ 之前背的词都忘了吧~ 那就重新开始吧~"] delegate:self cancelButtonTitle:@"我知道错了" otherButtonTitles:nil];
+            [alert setAlertViewStyle:UIAlertViewStyleDefault];
+            
+            [alert show];
+
+            
             if ([history.event isEqualToString:EVENT_TYPE_NEWWORD]) {
                 NewWordStatus *nwStatus = history.newWordStatus;
                 

@@ -163,6 +163,7 @@
     [self initDashboard];
     [self initslideBar];
     [self initAwesomeMenu];
+    
     [self startAlertCounting];
         
     _whetherAllowViewFrameChanged = NO;
@@ -175,7 +176,9 @@
     
     [NSNotificationCenter registerStartExamNotificationWithSelector:@selector(startExam:) target:self];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(nowStatus) name:UIApplicationWillEnterForegroundNotification object:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(coming) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
 -(void)dealloc
@@ -198,6 +201,10 @@
     [self nowStatus];
 }
 
+- (void)coming
+{
+    [self performSelector:@selector(nowStatus) withObject:nil afterDelay:1];
+}
 
 
 
