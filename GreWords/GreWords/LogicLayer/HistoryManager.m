@@ -303,7 +303,7 @@ HistoryManager* _historyManagerInstance = nil;
 
     if ([matches count] == 0) {
         
-        if ([[ConfigurationHelper instance].startupInitStage intValue] >= 2) {
+        if ([[ConfigurationHelper instance].startupInitStage intValue] >= 2 || [self getANewDay] >= 16) {
             [taskStatus beginReview];
             [self addEvent:[TaskStatus instance].rEvent];
         } else {
@@ -314,9 +314,7 @@ HistoryManager* _historyManagerInstance = nil;
     } else {
         History *history = [matches lastObject];
 
-#warning 记得解注~~！！！！！！！！！！！！！
-//        if (history.startTime.day != [NSDate new].day) {
-        if (false) {
+        if (history.startTime.day != [NSDate new].day) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"来自好G友的惩罚" message:[NSString stringWithFormat:@"上次没有背完就走了吧~ 之前背的词都忘了吧~ 那就重新开始吧~"] delegate:self cancelButtonTitle:@"我知道错了" otherButtonTitles:nil];
             [alert setAlertViewStyle:UIAlertViewStyleDefault];
             
@@ -487,22 +485,40 @@ HistoryManager* _historyManagerInstance = nil;
     return [his.stage intValue];
 }
 
-- (float)currentStageProgress
-{
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
-    
-    request.predicate = [NSPredicate predicateWithFormat:@"event == 'newWordEvent'"];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
-    [request setFetchLimit:1];
-    
-    NSError *fetchError = nil;
-    NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
-    History *history = [fetchMatches lastObject];
-    
-    float progress = 0;
-    
-    return progress;
-}
+//- (int)currentDayOfSchedule
+//{
+//    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
+//    
+//    request.predicate = [NSPredicate predicateWithFormat:@"event == 'NewWordEvent' or event == 'ReviewWordEvent'"];
+//    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:YES]];
+//    
+//    NSError *fetchError = nil;
+//    NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
+//    History *his = [fetchMatches lastObject];
+//    if ([fetchMatches count] <= 0) {
+//        return 0;
+//    }
+//    
+//    NSLog(@"Today is %d day", [his.dayOfSchedule intValue]);
+//    return [his.dayOfSchedule intValue];
+//}
+
+//- (float)currentStageProgress
+//{
+//    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
+//    
+//    request.predicate = [NSPredicate predicateWithFormat:@"event == 'newWordEvent'"];
+//    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
+//    [request setFetchLimit:1];
+//    
+//    NSError *fetchError = nil;
+//    NSArray *fetchMatches = [self.context executeFetchRequest:request error:&fetchError];
+//    History *history = [fetchMatches lastObject];
+//    
+//    float progress = 0;
+//    
+//    return progress;
+//}
 
 - (BOOL)isFinishedForDate:(NSDate *)date
 {
