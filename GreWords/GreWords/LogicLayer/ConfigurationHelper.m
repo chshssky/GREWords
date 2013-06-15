@@ -11,6 +11,7 @@
 #import "Word.h"
 #import "GuideImageFactory.h"
 #import "HistoryManager.h"
+#import "TaskStatus.h"
 
 @implementation ConfigurationHelper
 
@@ -308,6 +309,9 @@ ConfigurationHelper* _configurationHelperInstance = nil;
 -(void)resetAllData
 {
     [[MyDataStorage instance] deleteDatabase];
+    
+    [[TaskStatus instance] resetAllData];
+    
     [self boolPlistSetter:YES key:@"firstTimeRun"];
     //NSAssert(NO, @"function not implemented yet");
 }
