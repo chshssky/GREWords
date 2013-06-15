@@ -16,6 +16,8 @@
 }
 
 +(WordHelper*) instance;
++(void) purge;
+
 //-(WordEntity*)wordWithString:(NSString*)string;
 -(WordEntity*)wordWithID:(int)wordID;
 -(int)wordIDForWord:(WordEntity*)word;

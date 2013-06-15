@@ -21,6 +21,11 @@ WordHelper* _wordHelperInstance = nil;
     return _wordHelperInstance;
 }
 
++(void) purge
+{
+    _wordHelperInstance = nil;
+}
+
 -(void)loadFlipcard
 {
     NSString *infoSouceFile = [[NSBundle mainBundle] pathForResource:@"flipcard" ofType:@"plist"];

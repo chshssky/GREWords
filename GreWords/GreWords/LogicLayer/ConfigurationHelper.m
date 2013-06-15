@@ -12,6 +12,7 @@
 #import "GuideImageFactory.h"
 #import "HistoryManager.h"
 #import "TaskStatus.h"
+#import "WordHelper.h"
 
 @implementation ConfigurationHelper
 
@@ -309,7 +310,7 @@ ConfigurationHelper* _configurationHelperInstance = nil;
 -(void)resetAllData
 {
     [[MyDataStorage instance] deleteDatabase];
-    
+    [WordHelper purge];
     [[TaskStatus instance] resetAllData];
     
     [self boolPlistSetter:YES key:@"firstTimeRun"];
