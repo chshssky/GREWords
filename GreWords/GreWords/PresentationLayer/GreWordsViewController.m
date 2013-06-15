@@ -84,6 +84,7 @@
         _progressBarViewController.stage = [TaskStatus instance].nwEvent.stage_now + 1;
         _progressBarViewController.day = [TaskStatus instance].nwEvent.dayOfSchedule + 1;
     }
+    [_progressBarViewController reloadData];
 }
 
 
@@ -97,6 +98,7 @@
         _progressBarViewController.stage = [TaskStatus instance].nwEvent.stage_now + 1;
         _progressBarViewController.day = [TaskStatus instance].nwEvent.dayOfSchedule + 1;
     }
+    [_progressBarViewController reloadData];
     [self addChildViewController:_progressBarViewController];
     [self.view addSubview:_progressBarViewController.view];
     _progressBarViewController.view.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2+120);
@@ -179,12 +181,17 @@
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(coming) name:UIApplicationWillEnterForegroundNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(going) name:UIApplicationDidEnterBackgroundNotification object:nil];
+
 }
 
 -(void)dealloc
 {
 //    [super dealloc];
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillEnterForegroundNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationDidEnterBackgroundNotification object:nil];
+
 }
 
 - (void)viewDidUnload {
@@ -203,10 +210,14 @@
 
 - (void)coming
 {
-    [self performSelector:@selector(nowStatus) withObject:nil afterDelay:1];
+    //[self performSelector:@selector(nowStatus) withObject:nil afterDelay:2];
+    [self startAlertCounting];
 }
 
-
+- (void)going
+{
+    [_clockTimer invalidate];
+}
 
 
 - (void)nowStatus

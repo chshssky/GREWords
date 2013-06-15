@@ -54,6 +54,11 @@ ProgressBarViewController* _progressBarViewController = nil;
     [self setStage:_stage andDayOfSchedule:_day];
 }
 
+- (void)reloadData
+{
+    [self setStage:_stage andDayOfSchedule:_day];
+}
+
 - (void)setStage:(int)stage andDayOfSchedule:(int)day
 {
     if (stage == 1) {

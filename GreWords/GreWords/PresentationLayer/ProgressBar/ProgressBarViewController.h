@@ -14,4 +14,5 @@
 @property (nonatomic) int stage;
 @property (nonatomic) int day;
 + (ProgressBarViewController*)instance;
+- (void)reloadData;
 @end
