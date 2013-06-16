@@ -29,6 +29,7 @@
     
     NSTimer *clockTimer;
     float currentWordTimeEsclaped;
+    BOOL nextButtonPushed;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIImageView *UpImage;
@@ -312,7 +313,9 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    [self AddShadows];
+    if (nextButtonPushed == NO) {
+        [self AddShadows];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -1311,6 +1314,7 @@
 
 - (void)nextButtonPushed
 {
+    nextButtonPushed = YES;
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
         [TaskStatus instance].rEvent.totalWordCount ++;
 

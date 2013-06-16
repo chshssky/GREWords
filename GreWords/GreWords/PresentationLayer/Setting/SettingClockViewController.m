@@ -647,6 +647,9 @@
 
 - (void) numberHitAnimationWithNumber:(int)i
 {
+    if (_whetherSetTimeToMinTime == YES) {
+        return;
+    }
     CABasicAnimation *scaleAnimation = [CABasicAnimation animationWithKeyPath:@"transform"];
     scaleAnimation.fromValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1, 1, 1.0)];
     scaleAnimation.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeScale(1.5, 1.5, 1.0)];
