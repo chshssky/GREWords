@@ -33,7 +33,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //[Crittercism enableWithAppID:@"519c56bbc463c25c49000004"];
+    #ifndef DEBUG
+    [Crittercism enableWithAppID:@"519c56bbc463c25c49000004"];
+    #endif
     
     [self initUserDefault];
     
