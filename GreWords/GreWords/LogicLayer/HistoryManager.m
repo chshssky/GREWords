@@ -313,9 +313,8 @@ HistoryManager* _historyManagerInstance = nil;
         return YES;
     } else {
         History *history = [matches lastObject];
-        if (false) {
    
-       // if (history.startTime.day != [NSDate new].day) {
+        if (history.startTime.day != [NSDate new].day) {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"来自好G友的惩罚" message:[NSString stringWithFormat:@"上次没有背完就走了吧~ 之前背的词都忘了吧~ 那就重新开始吧~"] delegate:self cancelButtonTitle:@"我知道错了" otherButtonTitles:nil];
             [alert setAlertViewStyle:UIAlertViewStyleDefault];
             

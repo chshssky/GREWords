@@ -8487,8 +8487,6 @@
 		E466E756173BD4CB001847D0 /* PresentationLayer */ = {
 			isa = PBXGroup;
 			children = (
-				E466E760173BD4CB001847D0 /* GreWordsViewController.h */,
-				E466E761173BD4CB001847D0 /* GreWordsViewController.m */,
 				73BA87F2176B4AF600E6B6C7 /* ProgressBar */,
 				E466E757173BD4CB001847D0 /* Dashboard */,
 				E4CB2CED1758D28800370700 /* SearchIndex */,
@@ -8500,6 +8498,8 @@
 				E466E76F173BD4CB001847D0 /* SmartWordList */,
 				E466E778173BD4CB001847D0 /* WordDetail */,
 				E404ADB71753972200004FDC /* Welcome */,
+				E466E760173BD4CB001847D0 /* GreWordsViewController.h */,
+				E466E761173BD4CB001847D0 /* GreWordsViewController.m */,
 				E404ADE41754A31F00004FDC /* SplashViewController.h */,
 				E404ADE51754A31F00004FDC /* SplashViewController.m */,
 				E404ADE71754D43600004FDC /* GuideImageFactory.h */,
@@ -8607,10 +8607,10 @@
 		E466E787173BD4CB001847D0 /* LogicLayer */ = {
 			isa = PBXGroup;
 			children = (
-				E466E788173BD4CB001847D0 /* ConfigurationHelper.h */,
-				E466E789173BD4CB001847D0 /* ConfigurationHelper.m */,
 				E466E78A173BD4CB001847D0 /* Entity */,
 				E466E791173BD4CB001847D0 /* Event */,
+				E466E788173BD4CB001847D0 /* ConfigurationHelper.h */,
+				E466E789173BD4CB001847D0 /* ConfigurationHelper.m */,
 				E466E79A173BD4CB001847D0 /* HistoryManager.h */,
 				E466E79B173BD4CB001847D0 /* HistoryManager.m */,
 				E466E79C173BD4CB001847D0 /* MyDataStorage.h */,
