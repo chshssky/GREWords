@@ -274,6 +274,7 @@
     CGMutablePathRef path;
     
     lineAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    [lineAnimation setValue:@"GoToPointFinished" forKey:@"id"];
     path = CGPathCreateMutable();
     CGPathMoveToPoint(path, NULL, _progressButton.center.x, _progressButton.center.y);
     CGPathAddLineToPoint(path, NULL, destinationPoint.x, destinationPoint.y);
@@ -281,6 +282,8 @@
     CGPathRelease(path);
     lineAnimation.duration = 0.15f;
     lineAnimation.beginTime = CACurrentMediaTime();
+    lineAnimation.delegate = self;
+    [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:)];
     lineAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
     [_progressButton.layer addAnimation:lineAnimation forKey:nil];
     
