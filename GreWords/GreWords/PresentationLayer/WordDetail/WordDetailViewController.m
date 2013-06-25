@@ -20,6 +20,7 @@
 #import "GuideImageFactory.h"
 #import "TaskStatus.h"
 #import "ReciteAndReviewResultViewController.h"
+#import "Flurry.h"
 
 #define PI M_PI
 
@@ -1437,6 +1438,7 @@
 }
 
 - (IBAction)BackButtonPushed:(id)sender {
+    [Flurry endTimedEvent:@"bigButton" withParameters:nil];
     [self dismissModalViewControllerAnimated:YES];
     [self.delegate AnimationBack];
     if ([TaskStatus instance].taskType == TASK_TYPE_NEWWORD) {

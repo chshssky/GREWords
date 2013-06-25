@@ -27,6 +27,7 @@
 #import "TaskStatus.h"
 #import "HistoryManager.h"
 #import "NewWordEvent.h"
+#import "Flurry.h"
 
 @interface NewWordDetailViewController ()
 {
@@ -210,6 +211,7 @@
 }
 
 - (IBAction)BackButtonPushed:(id)sender {
+    [Flurry endTimedEvent:@"bigButton" withParameters:nil];
     [self dismissModalViewControllerAnimated:NO];
     [self.delegate AnimationBack];
 }

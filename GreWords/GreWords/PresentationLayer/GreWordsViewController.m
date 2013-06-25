@@ -462,21 +462,28 @@
     } completion:^(BOOL finished) {
         
         
-        if ([[TaskStatus instance] isReviewComplete] == YES) {
-            
-        } else if ([[TaskStatus instance] isNewWordComplete] == YES) {
-            
-        }
-        
+//        if ([[TaskStatus instance] isReviewComplete] == YES) {
+//            
+//        } else if ([[TaskStatus instance] isNewWordComplete] == YES) {
+//            
+//        }
         
         
         if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
+            [Flurry logEvent:@"bigButton" withParameters:@{@"type":@"review",
+                                                            @"stage":[NSString stringWithFormat:@"%d", [TaskStatus instance].rEvent.stage_now],
+                                                            @"day":[NSString stringWithFormat:@"%d", [TaskStatus instance].rEvent.dayOfSchedule]} timed:YES];
+
             [[HistoryManager instance] readStatusIfNew];
             WordDetailViewController *vc = [[WordDetailViewController alloc] init];
             vc.delegate = self;
             [self presentViewController:vc animated:NO completion:nil];
             
         } else {
+            [Flurry logEvent:@"bigButton" withParameters:@{@"type":@"newWord",
+             @"stage":[NSString stringWithFormat:@"%d", [TaskStatus instance].nwEvent.stage_now],
+             @"day":[NSString stringWithFormat:@"%d", [TaskStatus instance].nwEvent.dayOfSchedule]} timed:YES];
+
             [[HistoryManager instance] readStatusIfNew];
         //根据MaxWordID和现在所在单词的ID 来判断 该跳转到 NewWord 还是 Review
         if ([[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].nwEvent.indexOfWordToday ] integerValue] < [TaskStatus instance].nwEvent.maxWordID || [TaskStatus instance].nwEvent.reviewEnable) {

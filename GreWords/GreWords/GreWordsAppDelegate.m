@@ -25,8 +25,11 @@
 
 - (void)initAnalytics
 {
-    //[Flurry setDebugLogEnabled:YES];
-    //[Flurry setShowErrorInLogEnabled:YES];
+    #ifdef DEBUG
+    [Flurry setDebugLogEnabled:YES];
+    [Flurry setShowErrorInLogEnabled:YES];
+    #endif
+    
     [Flurry setAppVersion:[[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]];
     [Flurry startSession:@"HKHP8FQG68VDNZ5J2DF3"];
 }
