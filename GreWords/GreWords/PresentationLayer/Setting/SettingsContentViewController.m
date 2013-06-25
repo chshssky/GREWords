@@ -127,12 +127,29 @@
     {
         [ConfigurationHelper instance].freshWordAlertTime = time;
         [self configLabelForReciteAtTime:time];
-        [watchReview setStartTime:time];
+        
+        
+        NSDate *offsetTime;
+        if (time.hour >= 21) {
+            NSDate *date = [NSDate date];
+            NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
+            NSDateComponents *components = [gregorian components: NSUIntegerMax fromDate: date];
+            [components setHour: 23];
+            [components setMinute: 59];
+            [components setSecond: 0];
+            offsetTime = [gregorian dateFromComponents: components];
+        }else {
+            offsetTime = [time dateByAddingHours:3];
+        }
+        [watchReview setStartTime:offsetTime];
     }
     else
     {
         [ConfigurationHelper instance].reviewAlertTime = time;
-        [self configLabelForReviewAtTime:time];
+        if(self.remindTimePageControl.currentPage == 1)
+        {
+            [self configLabelForReviewAtTime:time];
+        }
     }
 }
 
@@ -637,7 +654,19 @@
             watchReview = [[SettingClockViewController alloc] init];
             watchReview.delegate = self;
             [watchReview setAlertTime:[ConfigurationHelper instance].reviewAlertTime];
-            [watchReview setStartTime:[ConfigurationHelper instance].freshWordAlertTime];
+            NSDate *offsetTime;
+            if ([ConfigurationHelper instance].freshWordAlertTime.hour >= 21) {
+                NSDate *date = [NSDate date];
+                NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier: NSGregorianCalendar];
+                NSDateComponents *components = [gregorian components: NSUIntegerMax fromDate: date];
+                [components setHour: 23];
+                [components setMinute: 59];
+                [components setSecond: 0];
+                offsetTime = [gregorian dateFromComponents: components];
+            }else {
+                offsetTime = [[ConfigurationHelper instance].freshWordAlertTime dateByAddingHours:3];
+            }
+            [watchReview setStartTime:offsetTime];
             frame.origin.x += self.remindTimeScrollView.frame.size.width;
             watchReview.view.frame = frame;
             

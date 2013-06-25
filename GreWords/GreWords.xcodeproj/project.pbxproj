@@ -8493,7 +8493,6 @@
 				73D7130E1757A05F00D09CF0 /* TestSelector */,
 				7324846817524CA30058A6DD /* Note */,
 				E466E75C173BD4CB001847D0 /* Exam */,
-				E466E762173BD4CB001847D0 /* History */,
 				E466E766173BD4CB001847D0 /* Setting */,
 				E466E76F173BD4CB001847D0 /* SmartWordList */,
 				E466E778173BD4CB001847D0 /* WordDetail */,
@@ -8511,6 +8510,7 @@
 		E466E757173BD4CB001847D0 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
+				E466E762173BD4CB001847D0 /* History */,
 				E466E758173BD4CB001847D0 /* DashboardViewController.h */,
 				E466E759173BD4CB001847D0 /* DashboardViewController.m */,
 				E466E75A173BD4CB001847D0 /* PieChart.h */,
@@ -8547,7 +8547,8 @@
 				73B40BD6175F219C0073FEC6 /* LineChart */,
 				E4FA4B71175F0CE5001A103D /* TestPage */,
 			);
-			path = History;
+			name = History;
+			path = ../History;
 			sourceTree = "<group>";
 		};
 		E466E766173BD4CB001847D0 /* Setting */ = {
