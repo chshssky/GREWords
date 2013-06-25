@@ -41,10 +41,10 @@
     {
         return NO;
     }
-    else if (action == @selector(_define:))
-    {
-        return NO;
-    }
+//    else if (action == @selector(_define:))
+//    {
+//        return NO;
+//    }
     else
     {
         return [super canPerformAction:action withSender:sender];
