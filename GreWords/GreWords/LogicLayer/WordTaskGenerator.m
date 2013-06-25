@@ -980,7 +980,7 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
     if (allWords == YES) {
         newArray = [self addRandomWordsToArray:newArray];
     }else {
-        if (newArray.count < 30) {
+        if (newArray.count < 50) {
             return nil;
         }
     }
