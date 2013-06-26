@@ -3741,6 +3741,12 @@
 		E4A8C4A11769E45700DFA6BB /* Settings_about_sbh_han@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4A8C4991769E45700DFA6BB /* Settings_about_sbh_han@2x.png */; };
 		E4A8C4A21769E45700DFA6BB /* Settings_about_ltw_han@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4A8C49A1769E45700DFA6BB /* Settings_about_ltw_han@2x.png */; };
 		E4A8C4A31769E45700DFA6BB /* Settings_about_sbh_han.png in Resources */ = {isa = PBXBuildFile; fileRef = E4A8C49B1769E45700DFA6BB /* Settings_about_sbh_han.png */; };
+		E4C7AD94177B1242003B7E30 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C7AD93177B1242003B7E30 /* SenTestingKit.framework */; };
+		E4C7AD95177B1242003B7E30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F70EC8A1701CADB00327770 /* UIKit.framework */; };
+		E4C7AD96177B1242003B7E30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F70EC8C1701CADB00327770 /* Foundation.framework */; };
+		E4C7AD9C177B1242003B7E30 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E4C7AD9A177B1242003B7E30 /* InfoPlist.strings */; };
+		E4C7AD9F177B1242003B7E30 /* GREWordsTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C7AD9E177B1242003B7E30 /* GREWordsTest.m */; };
+		E4C7ADA7177B1467003B7E30 /* IAThreadSafeCoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E466F4BF173BD508001847D0 /* IAThreadSafeCoreData.framework */; };
 		E4CB2CE41757767F00370700 /* findIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE01757767F00370700 /* findIcon.png */; };
 		E4CB2CE51757767F00370700 /* findIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE11757767F00370700 /* findIcon@2x.png */; };
 		E4CB2CE61757767F00370700 /* UISearchBarBG.png in Resources */ = {isa = PBXBuildFile; fileRef = E4CB2CE21757767F00370700 /* UISearchBarBG.png */; };
@@ -3803,6 +3809,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 09E159E8160F573A003025B4;
 			remoteInfo = OHAttributedLabel;
+		};
+		E4C7ADA5177B124E003B7E30 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3F70EC7F1701CADB00327770 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3F70EC861701CADB00327770;
+			remoteInfo = GreWords;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -7694,6 +7707,13 @@
 		E4A8C4991769E45700DFA6BB /* Settings_about_sbh_han@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_about_sbh_han@2x.png"; sourceTree = "<group>"; };
 		E4A8C49A1769E45700DFA6BB /* Settings_about_ltw_han@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings_about_ltw_han@2x.png"; sourceTree = "<group>"; };
 		E4A8C49B1769E45700DFA6BB /* Settings_about_sbh_han.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Settings_about_sbh_han.png; sourceTree = "<group>"; };
+		E4C7AD92177B1242003B7E30 /* GREWordsTest.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GREWordsTest.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4C7AD93177B1242003B7E30 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		E4C7AD99177B1242003B7E30 /* GREWordsTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GREWordsTest-Info.plist"; sourceTree = "<group>"; };
+		E4C7AD9B177B1242003B7E30 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		E4C7AD9D177B1242003B7E30 /* GREWordsTest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GREWordsTest.h; sourceTree = "<group>"; };
+		E4C7AD9E177B1242003B7E30 /* GREWordsTest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GREWordsTest.m; sourceTree = "<group>"; };
+		E4C7ADA0177B1242003B7E30 /* GREWordsTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GREWordsTest-Prefix.pch"; sourceTree = "<group>"; };
 		E4CB2CE01757767F00370700 /* findIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = findIcon.png; sourceTree = "<group>"; };
 		E4CB2CE11757767F00370700 /* findIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "findIcon@2x.png"; sourceTree = "<group>"; };
 		E4CB2CE21757767F00370700 /* UISearchBarBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UISearchBarBG.png; sourceTree = "<group>"; };
@@ -7779,6 +7799,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E4C7AD8E177B1242003B7E30 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4C7ADA7177B1467003B7E30 /* IAThreadSafeCoreData.framework in Frameworks */,
+				E4C7AD94177B1242003B7E30 /* SenTestingKit.framework in Frameworks */,
+				E4C7AD95177B1242003B7E30 /* UIKit.framework in Frameworks */,
+				E4C7AD96177B1242003B7E30 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -7786,6 +7817,7 @@
 			isa = PBXGroup;
 			children = (
 				3F70EC901701CADB00327770 /* GreWords */,
+				E4C7AD97177B1242003B7E30 /* GREWordsTest */,
 				3F70EC891701CADB00327770 /* Frameworks */,
 				3F70EC881701CADB00327770 /* Products */,
 			);
@@ -7795,6 +7827,7 @@
 			isa = PBXGroup;
 			children = (
 				3F70EC871701CADB00327770 /* GreWords.app */,
+				E4C7AD92177B1242003B7E30 /* GREWordsTest.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -7815,6 +7848,7 @@
 				3F70EC8A1701CADB00327770 /* UIKit.framework */,
 				3F70EC8C1701CADB00327770 /* Foundation.framework */,
 				3F70EC8E1701CADB00327770 /* CoreGraphics.framework */,
+				E4C7AD93177B1242003B7E30 /* SenTestingKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -12302,6 +12336,26 @@
 			path = clock;
 			sourceTree = "<group>";
 		};
+		E4C7AD97177B1242003B7E30 /* GREWordsTest */ = {
+			isa = PBXGroup;
+			children = (
+				E4C7AD9D177B1242003B7E30 /* GREWordsTest.h */,
+				E4C7AD9E177B1242003B7E30 /* GREWordsTest.m */,
+				E4C7AD98177B1242003B7E30 /* Supporting Files */,
+			);
+			path = GREWordsTest;
+			sourceTree = "<group>";
+		};
+		E4C7AD98177B1242003B7E30 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E4C7AD99177B1242003B7E30 /* GREWordsTest-Info.plist */,
+				E4C7AD9A177B1242003B7E30 /* InfoPlist.strings */,
+				E4C7ADA0177B1242003B7E30 /* GREWordsTest-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		E4CB2CDF1757767F00370700 /* UISearchBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -12368,6 +12422,25 @@
 			productReference = 3F70EC871701CADB00327770 /* GreWords.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E4C7AD91177B1242003B7E30 /* GREWordsTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4C7ADA4177B1242003B7E30 /* Build configuration list for PBXNativeTarget "GREWordsTest" */;
+			buildPhases = (
+				E4C7AD8D177B1242003B7E30 /* Sources */,
+				E4C7AD8E177B1242003B7E30 /* Frameworks */,
+				E4C7AD8F177B1242003B7E30 /* Resources */,
+				E4C7AD90177B1242003B7E30 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E4C7ADA6177B124E003B7E30 /* PBXTargetDependency */,
+			);
+			name = GREWordsTest;
+			productName = GREWordsTest;
+			productReference = E4C7AD92177B1242003B7E30 /* GREWordsTest.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -12398,6 +12471,7 @@
 			projectRoot = "";
 			targets = (
 				3F70EC861701CADB00327770 /* GreWords */,
+				E4C7AD91177B1242003B7E30 /* GREWordsTest */,
 			);
 		};
 /* End PBXProject section */
@@ -16063,7 +16137,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E4C7AD8F177B1242003B7E30 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4C7AD9C177B1242003B7E30 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E4C7AD90177B1242003B7E30 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3F70EC831701CADB00327770 /* Sources */ = {
@@ -16202,7 +16300,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E4C7AD8D177B1242003B7E30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4C7AD9F177B1242003B7E30 /* GREWordsTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E4C7ADA6177B124E003B7E30 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3F70EC861701CADB00327770 /* GreWords */;
+			targetProxy = E4C7ADA5177B124E003B7E30 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3FA4848D17142BF9003E88A6 /* InfoPlist.strings */ = {
@@ -16219,6 +16333,14 @@
 				E423DECD174A7BC80079CB60 /* zh-Hans */,
 			);
 			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		E4C7AD9A177B1242003B7E30 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E4C7AD9B177B1242003B7E30 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -16339,6 +16461,42 @@
 			};
 			name = Release;
 		};
+		E4C7ADA1177B1242003B7E30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GreWords.app/GreWords";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)/GreWords/Libs\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GREWordsTest/GREWordsTest-Prefix.pch";
+				INFOPLIST_FILE = "GREWordsTest/GREWordsTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		E4C7ADA2177B1242003B7E30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/GreWords.app/GreWords";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)/GreWords/Libs\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GREWordsTest/GREWordsTest-Prefix.pch";
+				INFOPLIST_FILE = "GREWordsTest/GREWordsTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -16359,6 +16517,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		E4C7ADA4177B1242003B7E30 /* Build configuration list for PBXNativeTarget "GREWordsTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4C7ADA1177B1242003B7E30 /* Debug */,
+				E4C7ADA2177B1242003B7E30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
