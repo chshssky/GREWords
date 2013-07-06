@@ -14,6 +14,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "NSNotificationCenter+Addition.h"
 
+#define SearchBarItemMinCount 200
 
 @interface SmartWordListViewController ()
 
@@ -139,7 +140,7 @@
     
     if(self.type == SmartListType_Full || self.type == SmartListType_Mistake)
     {
-        if(self.array.count > 200)
+        if(self.array.count > SearchBarItemMinCount)
             [self addSearchIndex];
     }
     
@@ -454,7 +455,8 @@
     }
     if((self.type == SmartListType_Full || self.type == SmartListType_Mistake )&& self.tableView == aScrollView)
     {
-        [searchIndex setCurrentIndex:[self currentSectionIndex]];
+        if(self.array.count > SearchBarItemMinCount)
+            [searchIndex setCurrentIndex:[self currentSectionIndex]];
     }
 }
 
