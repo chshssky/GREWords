@@ -430,7 +430,7 @@ WordTaskGenerator* _taskGeneratorInstance = nil;
     NSMutableArray *task = [[NSMutableArray alloc] init];
     [task removeAllObjects];
     
-    if (day >15) {
+    if (day < 0 || day >15) {
         return task;
     }
     

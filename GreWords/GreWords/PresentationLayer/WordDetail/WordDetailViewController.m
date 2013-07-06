@@ -987,7 +987,9 @@
     [self.showMeaningImageView removeFromSuperview];
     [self.showMeaningButton removeFromSuperview];
     self.showMeaningButton = nil;
+    nextButtonPushed = NO;
     [self ShowMeaning];
+    
 }
 
 - (void)showButtonTouchDown
