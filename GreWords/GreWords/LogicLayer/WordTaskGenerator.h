@@ -14,6 +14,7 @@
 - (NSArray *)newWordTask_twoList:(int)day;
 - (int)theNumberOfNewWordToday_twolist:(int)day;
 - (NSArray *)reviewTask_twoList:(int)day;
+
 - (NSArray *)reviewTask_fourthCircle:(int)day;
 
 
