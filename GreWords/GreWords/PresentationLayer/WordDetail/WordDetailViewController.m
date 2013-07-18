@@ -1320,11 +1320,18 @@
     nextButtonPushed = YES;
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
         [TaskStatus instance].rEvent.totalWordCount ++;
-
-        if ([TaskStatus instance].rEvent.indexOfWordToday == [[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] count])
-        {
-            [self reviewCompleted];
-            return;
+        
+        if ([[HistoryManager instance] currentStage] == 3) {
+            if ([TaskStatus instance].rEvent.indexOfWordToday == 500) {
+                [self reviewCompleted];
+                return;
+            }
+        } else {
+            if ([TaskStatus instance].rEvent.indexOfWordToday == [[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] count])
+            {
+                [self reviewCompleted];
+                return;
+            }
         }
         
     } else {
