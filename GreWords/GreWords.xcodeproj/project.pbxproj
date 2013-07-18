@@ -16525,6 +16525,7 @@
 				E4C7ADA2177B1242003B7E30 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
