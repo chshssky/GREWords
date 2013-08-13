@@ -27,7 +27,7 @@
 #import "TaskStatus.h"
 #import "HistoryManager.h"
 #import "NewWordEvent.h"
-#import "Flurry.h"
+#import <Flurry.h>
 
 @interface NewWordDetailViewController ()
 {

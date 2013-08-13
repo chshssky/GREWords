@@ -22,7 +22,7 @@
 #import "TaskStatus.h"
 #import "GreWordsViewController.h"
 #import "ExamResultViewController.h"
-#import "Flurry.h"
+#import <Flurry.h>
 
 #define PI M_PI
 

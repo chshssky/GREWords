@@ -15,7 +15,7 @@
 #import "NoteViewController.h"
 #import "ConfigurationHelper.h"
 #import "GuideImageFactory.h"
-#import "Flurry.h"
+#import <Flurry.h>
 
 @interface WholeSmartWordViewController ()
 {

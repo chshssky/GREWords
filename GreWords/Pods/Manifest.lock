@@ -1,0 +1,28 @@
+PODS:
+  - AwesomeMenu (1.0.0)
+  - CrittercismSDK (4.0.6)
+  - FlurrySDK (4.2.2)
+  - MagicalRecord (2.1)
+  - MBProgressHUD (0.7)
+  - NSDate+TimeAgo (1.0.2)
+  - OHAttributedLabel (3.4.1)
+
+DEPENDENCIES:
+  - AwesomeMenu
+  - CrittercismSDK
+  - FlurrySDK
+  - MagicalRecord
+  - MBProgressHUD (~> 0.7)
+  - NSDate+TimeAgo
+  - OHAttributedLabel
+
+SPEC CHECKSUMS:
+  AwesomeMenu: c2014d6d6f4a2b6bbb91ca2f67183bc2674a9cff
+  CrittercismSDK: a8e58ae22bee55a85fdb43983c9a3848e3260251
+  FlurrySDK: a3f369251a1f46eb6d53fbd817cb41ce4bd9b513
+  MagicalRecord: 64e7184c240087a45e9588a722eaf05b0ad837f7
+  MBProgressHUD: 1fd8591a2216d5dec6de24e09187bb03bcbe9946
+  NSDate+TimeAgo: fe93d3042e83093ae3630bc47ae7d57f782733f6
+  OHAttributedLabel: 770332ef810ca15c9bd4a79f300ce620bc443e9d
+
+COCOAPODS: 0.23.0

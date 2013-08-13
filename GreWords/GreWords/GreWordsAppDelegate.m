@@ -9,8 +9,8 @@
 #import "GreWordsAppDelegate.h"
 #import "MyDataStorage.h"
 #import "ConfigurationHelper.h"
-#import "Crittercism.h"
-#import "Flurry.h"
+#import <Crittercism.h>
+#import <Flurry.h>
 
 @implementation GreWordsAppDelegate
 

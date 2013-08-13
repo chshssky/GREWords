@@ -10,7 +10,7 @@
 #import "GreWordsViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SettingsContentViewController.h"
-#import "Flurry.h"
+#import <Flurry.h>
 
 @interface SettingsViewController ()
 

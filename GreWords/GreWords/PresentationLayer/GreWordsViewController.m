@@ -10,7 +10,7 @@
 #import "WordLayoutViewController.h"
 #import "WordHelper.h"
 #import "SmartWordListViewController.h"
-#import "AwesomeMenu.h"
+#import <AwesomeMenu.h>
 #import "HistoryStatisticsViewController.h"
 #import "SettingsViewController.h"
 #import "ExamViewController.h"
@@ -31,7 +31,7 @@
 #import "GuideSettingViewController.h"
 #import "NSDate-Utilities.h"
 #import "ProgressBarViewController.h"
-#import "Flurry.h"
+#import <Flurry.h>
 
 @interface GreWordsViewController ()<NewWordDetailViewControllerProtocol, WordDetailViewControllerProtocol>
 

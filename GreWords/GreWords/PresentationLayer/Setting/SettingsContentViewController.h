@@ -10,7 +10,7 @@
 #import "CMActionSheet.h"
 #import <MessageUI/MessageUI.h> 
 #import "SettingClockViewController.h"
-#import "OHAttributedLabel.h"
+#import <OHAttributedLabel.h>
 #import "SettingClockViewController.h"
 
 @interface SettingsContentViewController : UIViewController<MFMessageComposeViewControllerDelegate, MFMailComposeViewControllerDelegate,UIScrollViewDelegate,SettingClockProtocal>

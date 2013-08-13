@@ -1,0 +1,8 @@
+platform :ios, '5.0'
+pod 'MagicalRecord'
+pod 'NSDate+TimeAgo'
+pod 'AwesomeMenu'
+pod 'CrittercismSDK'
+pod 'FlurrySDK'
+pod 'OHAttributedLabel'
+pod 'MBProgressHUD', '~> 0.7'

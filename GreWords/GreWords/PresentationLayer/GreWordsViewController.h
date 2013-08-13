@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DashboardViewController.h"
-#import "AwesomeMenu.h"
+#import <AwesomeMenu.h>
 #import "IIViewDeckController.h"
 
 @interface GreWordsViewController : UIViewController<DashboardProtocal,AwesomeMenuDelegate>

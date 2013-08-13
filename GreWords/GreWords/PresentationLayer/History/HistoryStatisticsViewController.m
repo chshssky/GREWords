@@ -13,7 +13,7 @@
 #import "TestPageViewController.h"
 #import "BaseEvent.h"
 #import "HistoryManager.h"
-#import "Flurry.h"
+#import <Flurry.h>
 
 @interface HistoryStatisticsViewController ()
 {

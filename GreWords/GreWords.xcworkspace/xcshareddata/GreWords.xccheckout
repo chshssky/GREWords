@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>959EF9FE-613D-4B20-8C48-40BBA74D763C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GreWords</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>330B76A8-B36B-4047-AD25-DBF8F6A6FCE6</key>
+		<string>https://github.com/chshssky/GREWords.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GreWords/GreWords.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>330B76A8-B36B-4047-AD25-DBF8F6A6FCE6</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/chshssky/GREWords.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>330B76A8-B36B-4047-AD25-DBF8F6A6FCE6</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>330B76A8-B36B-4047-AD25-DBF8F6A6FCE6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>HaoGYo</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -1,0 +1,6 @@
+#include "Pods-CrittercismSDK.xcconfig"
+GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/CrittercismSDK" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AwesomeMenu" "${PODS_ROOT}/Headers/CrittercismSDK" "${PODS_ROOT}/Headers/FlurrySDK" "${PODS_ROOT}/Headers/MBProgressHUD" "${PODS_ROOT}/Headers/MagicalRecord" "${PODS_ROOT}/Headers/NSDate+TimeAgo" "${PODS_ROOT}/Headers/OHAttributedLabel"
+LIBRARY_SEARCH_PATHS = ${PODS_CRITTERCISMSDK_LIBRARY_SEARCH_PATHS}
+OTHER_LDFLAGS = -ObjC ${PODS_CRITTERCISMSDK_OTHER_LDFLAGS}
+PODS_ROOT = ${SRCROOT}
