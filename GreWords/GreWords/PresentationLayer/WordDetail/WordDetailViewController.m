@@ -1006,8 +1006,11 @@
     [self viewWillAppear:YES];
     WordEntity *word;
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
-
-        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].rEvent.indexOfWordToday - 1] intValue]];
+        if ([[HistoryManager instance] currentStage] == 3) {
+            word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_fourthCircle:0] objectAtIndex:[TaskStatus instance].rEvent.indexOfWordToday - 1] intValue]];
+        } else {
+            word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].rEvent.indexOfWordToday - 1] intValue]];
+        }
     } else {
 
         word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] newWordTask_twoList:[TaskStatus instance].nwEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].nwEvent.indexOfWordToday - 1] intValue]];
@@ -1025,7 +1028,11 @@
     if ([TaskStatus instance].taskType == TASK_TYPE_REVIEW) {
         [TaskStatus instance].rEvent.wrongWordCount ++;
 
-        word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].rEvent.indexOfWordToday - 1] intValue]];
+        if ([[HistoryManager instance] currentStage] == 3) {
+            word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_fourthCircle:0] objectAtIndex:[TaskStatus instance].rEvent.indexOfWordToday - 1] intValue]];
+        } else {
+            word = [[WordHelper instance] wordWithID:[[[[WordTaskGenerator instance] reviewTask_twoList:[TaskStatus instance].rEvent.dayOfSchedule] objectAtIndex:[TaskStatus instance].rEvent.indexOfWordToday - 1] intValue]];
+        }
     } else {
         [TaskStatus instance].nwEvent.wrongWordCount ++;
 
