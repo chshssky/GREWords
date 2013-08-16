@@ -3827,7 +3827,7 @@
 				<key>antonym</key>
 				<string>benign, kind, kindhearted, benignant, good-hearted, humane, sympathetic, tenderhearted 善良的，好的</string>
 				<key>example</key>
-				<string>Murder is an atrocious crime. 犯罪是一种极其恶劣的犯罪活动。</string>
+				<string>Murder is an atrocious crime. 谋杀是一种极其恶劣的犯罪活动。</string>
 				<key>homoionym</key>
 				<string>heinous</string>
 				<key>usage</key>
@@ -11138,7 +11138,7 @@
 				<key>homoionym</key>
 				<string>close, obstruct, block</string>
 				<key>usage</key>
-				<string>v. 围城一道防线： to form a protective or restrictive cordon around</string>
+				<string>v. 围成一道防线： to form a protective or restrictive cordon around</string>
 			</dict>
 		</array>
 		<key>phonetic</key>
